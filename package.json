@@ -9,7 +9,8 @@
     "prettier-fix": "prettier --write .",
     "find:unused": "next-unused",
     "generate": "graphql-codegen",
-    "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js"
+    "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js",
+    "hygen": "hygen"
   },
   "sideEffects": false,
   "license": "MIT",
@@ -66,11 +67,13 @@
     "deepmerge": "^4.2.2",
     "graphql": "^15.4.0",
     "husky": "^4.3.8",
+    "hygen": "^6.2.2",
     "lint-staged": "^10.5.3",
     "next-unused": "^0.0.3",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
+    "sass": "^1.52.1",
     "typescript": "^4.0.3"
   },
   "resolutions": {

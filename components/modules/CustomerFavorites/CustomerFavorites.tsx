@@ -1,11 +1,8 @@
-const CustomerFavorites = () => {
-  return <div>CustomerFavorites</div>
+import { FunctionComponent } from 'react'
+import ICustomerFavorites from './customerFavorites.interface'
+
+const CustomerFavorites: FunctionComponent<ICustomerFavorites> = (props) => {
+  return <div>Headline: {props.headline}</div>
 }
 
 export default CustomerFavorites
-
-export const CustomerFavoritesFragment = (t: string) => `
-  fragment CustomerFavorites on ${t}_CustomerFavorites {
-    headline
-  }
-`
