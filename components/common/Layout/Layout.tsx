@@ -38,17 +38,7 @@ const FeatureBar = dynamic(
   dynamicProps
 )
 
-interface Props {
-  pageProps: {
-    pages?: Page[]
-    commerceFeatures: Record<string, boolean>
-  }
-}
-
-const Layout: FC<Props> = ({
-  children,
-  pageProps: { commerceFeatures, ...pageProps },
-}) => {
+const Layout: FC<any> = ({ children }) => {
   const {
     displaySidebar,
     displayModal,
@@ -63,7 +53,7 @@ const Layout: FC<Props> = ({
       <div className={cn(s.root)}>
         <Navbar />
         <main className="fit">{children}</main>
-        <Footer pages={pageProps.pages} />
+        {/* <Footer pages={} /> */}
 
         <Modal open={displayModal} onClose={closeModal}>
           {modalView === 'LOGIN_VIEW' && <LoginView />}
