@@ -9,7 +9,6 @@ const ShopByCategoryModule:FunctionComponent<{ module: IShopByCategory }> = ({ m
       className={`${styles.root} container`}
     >
       Shopbycategory Module
-      {console.log(module)}
     </div>
   )
 }

@@ -1,12 +1,12 @@
 import Link from '@components/interfaces/Link'
 
-export default interface IProductSlider {
+export default interface IChipLinks {
   fieldGroupName: string
   headline: string
-  link: Link
-  products: [
+  links: [
     {
-      productId: number
+      link: Link
+      defaultYellow: boolean
     }
   ]
 }

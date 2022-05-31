@@ -9,7 +9,6 @@ const ResourceGridModule:FunctionComponent<{ module: IResourceGrid }> = ({ modul
       className={`${styles.root} container`}
     >
       Resourcegrid Module
-      {console.log(module)}
     </div>
   )
 }

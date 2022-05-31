@@ -9,7 +9,6 @@ const OurBrandsModule:FunctionComponent<{ module: IOurBrands }> = ({ module }) =
       className={`${styles.root} container`}
     >
       Ourbrands Module
-      {console.log(module)}
     </div>
   )
 }
