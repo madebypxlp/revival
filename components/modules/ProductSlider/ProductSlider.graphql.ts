@@ -1,5 +1,5 @@
 const ProductSliderFragment = (t: string) => `
-  fragment ProductSlider on ${t}_ProductSlider {
+  fragment ProductSlider_${t} on ${t}_ProductSlider {
     fieldGroupName
     headline
     link {

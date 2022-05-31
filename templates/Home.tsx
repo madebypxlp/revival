@@ -63,37 +63,37 @@ export const fragment = `
     pageHome {
       fieldGroupName
       heroCarousel {
-        ...HeroCarousel
+        ...HeroCarousel_${TEMPLATE_PREFIX}
       }
       fullwidthItemRow {
-        ...FullwidthItemRow
+        ...FullwidthItemRow_${TEMPLATE_PREFIX}
       }
       shopByCategory {
-        ...ShopByCategory
+        ...ShopByCategory_${TEMPLATE_PREFIX}
       }
       chipLinks {
-        ...ChipLinks
+        ...ChipLinks_${TEMPLATE_PREFIX}
       }
       productSlider {
-        ...ProductSlider
+        ...ProductSlider_${TEMPLATE_PREFIX}
       }
       textImage {
-        ...TextImage
+        ...TextImage_${TEMPLATE_PREFIX}
       }
       ourBrands {
-        ...OurBrands
+        ...OurBrands_${TEMPLATE_PREFIX}
       }
       doubleImageCardWithLink {
-        ...DoubleImageCardWithLink
+        ...DoubleImageCardWithLink_${TEMPLATE_PREFIX}
       }
       customerReviewSlider {
-        ...CustomerReviewSlider
+        ...CustomerReviewSlider_${TEMPLATE_PREFIX}
       }
       imageWithInfos {
-        ...ImageWithInfos
+        ...ImageWithInfos_${TEMPLATE_PREFIX}
       }
       resourceGrid {
-        ...ResourceGrid
+        ...ResourceGrid_${TEMPLATE_PREFIX}
       }
     }
   }

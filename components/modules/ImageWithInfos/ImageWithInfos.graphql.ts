@@ -1,7 +1,7 @@
 import { ImageComponent } from "@components/fragments/Image"
 
 const ImageWithInfosFragment = (t: string) => `
-  fragment ImageWithInfos on ${t}_ImageWithInfos {
+  fragment ImageWithInfos_${t} on ${t}_ImageWithInfos {
     fieldGroupName
     copy
     headline

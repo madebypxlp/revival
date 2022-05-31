@@ -1,5 +1,5 @@
 const OurBrandsFragment = (t: string) => `
-  fragment OurBrands on ${t}_OurBrands {
+  fragment OurBrands_${t} on ${t}_OurBrands {
     fieldGroupName
     rows {
       headline

@@ -1,7 +1,7 @@
 import { ImageComponent } from "@components/fragments/Image"
 
 const HeroCarouselFragment = (t: string) => `
-  fragment HeroCarousel on ${t}_HeroCarousel {
+  fragment HeroCarousel_${t} on ${t}_HeroCarousel {
     fieldGroupName
     carousel {
       blurb

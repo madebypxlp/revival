@@ -1,5 +1,5 @@
 const ChipLinksFragment = (t: string) => `
-  fragment ChipLinks on ${t}_ChipLinks {
+  fragment ChipLinks_${t} on ${t}_ChipLinks {
     fieldGroupName
     headline
     links {

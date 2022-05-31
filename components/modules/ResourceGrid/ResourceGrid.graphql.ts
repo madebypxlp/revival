@@ -1,5 +1,5 @@
 const ResourceGridFragment = (t: string) => `
-  fragment ResourceGrid on ${t}_ResourceGrid {
+  fragment ResourceGrid_${t} on ${t}_ResourceGrid {
     fieldGroupName
     headline
     link {

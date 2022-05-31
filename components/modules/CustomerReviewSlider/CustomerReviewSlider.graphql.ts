@@ -1,5 +1,5 @@
 const CustomerReviewSliderFragment = (t: string) => `
-  fragment CustomerReviewSlider on ${t}_CustomerReviewSlider {
+  fragment CustomerReviewSlider_${t} on ${t}_CustomerReviewSlider {
     fieldGroupName
     headline
     reviews {

@@ -2,7 +2,7 @@
 to: components/modules/<%= h.inflection.camelize(name) %>/<%= h.inflection.camelize(name) %>.graphql.ts
 ---
 const <%= h.inflection.camelize(name) %>Fragment = (t: string) => `
-  fragment <%= h.inflection.camelize(name) %> on ${t}_<%= h.inflection.camelize(name) %> {
+  fragment <%= h.inflection.camelize(name) %>_${t} on ${t}_<%= h.inflection.camelize(name) %> {
     fieldGroupName
   }
 `

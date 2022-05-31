@@ -1,12 +1,13 @@
 import Link from '@components/fragments/Link'
 import Image from '@components/fragments/Image'
 import { fragment as HomeFragment } from '../../templates/Home'
+import { fragment as BrandListingFragment } from '../../templates/BrandListing'
 
-// ${AssetFragment}
 export default `
   ${Link}
   ${Image}
   ${HomeFragment}
+  ${BrandListingFragment}
   query page($uri: String) {
     entry: pageBy(uri: $uri) {
       id
@@ -17,6 +18,9 @@ export default `
         __typename
         ... on Template_Home {
           ...TemplateHome
+        }
+        ... on Template_BrandListing {
+          ...TemplateBrandListing
         }
       }
     }

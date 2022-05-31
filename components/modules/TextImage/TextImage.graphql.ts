@@ -1,7 +1,7 @@
 import { ImageComponent } from "@components/fragments/Image"
 
 const TextImageFragment = (t: string) => `
-  fragment TextImage on ${t}_TextImage {
+  fragment TextImage_${t} on ${t}_TextImage {
     fieldGroupName
     rows {
       buttonLink {

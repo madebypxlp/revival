@@ -2,6 +2,7 @@ import type { InferGetStaticPropsType } from 'next'
 import { Layout } from '@components/common'
 import { getWpStaticPaths, getWpStaticProps } from 'framework/wordpress/wp'
 import TemplateHome from '../templates/Home'
+import TemplateBrandListing from '../templates/BrandListing'
 import { PageInterface } from 'framework/wordpress/page-query'
 
 export const getStaticProps = getWpStaticProps
@@ -10,6 +11,7 @@ export const getStaticPaths = getWpStaticPaths
 
 const Templates: { [k: string]: any } = {
   Template_Home: TemplateHome,
+  Template_BrandListing: TemplateBrandListing,
   default: (t: string) => <div>TEMPLATE "{t}" NOT FOUND</div>,
 }
 

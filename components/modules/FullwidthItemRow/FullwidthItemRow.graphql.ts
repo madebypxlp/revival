@@ -1,5 +1,5 @@
 const FullwidthItemRowFragment = (t: string) => `
-  fragment FullwidthItemRow on ${t}_FullwidthItemRow {
+  fragment FullwidthItemRow_${t} on ${t}_FullwidthItemRow {
     fieldGroupName
     backgroundColor
     headline
