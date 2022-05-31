@@ -15,9 +15,20 @@ module.exports = {
     },
   },
   theme: {
+    screens: {
+      sm: '375px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1560px',
+      xxl: '1920px',
+    },
+    fontSize: {},
     extend: {
       maxWidth: {
         '8xl': '1920px',
+      },
+      gap: {
+        20: '2rem',
       },
       colors: {
         primary: 'var(--primary)',
@@ -63,4 +74,31 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    // eslint-disable-next-line
+    function ({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '100%',
+          padding: '0 2rem',
+          '@screen lg': {
+            margin: '0 auto',
+            maxWidth: '1560px',
+          },
+          '@screen xl': {
+            padding: '0 8.5rem',
+          },
+        },
+        '.defaultGrid': {
+          display: 'grid',
+          'grid-template-columns': 'repeat(2, minmax(0, 1fr))',
+          'column-gap': '2rem',
+          '@screen md': {
+            'grid-template-columns': 'repeat(12, minmax(0, 1fr))',
+          },
+        },
+      })
+    },
+  ],
 }

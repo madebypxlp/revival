@@ -111,7 +111,7 @@ export default function Cart() {
                 <div className="mr-5">
                   <MapPin />
                 </div>
-                <div className="text-sm text-center font-medium">
+                <div className=" text-center font-medium">
                   <span className="uppercase">+ Add Shipping Address</span>
                   {/* <span>
                     1046 Kearny Street.<br/>
@@ -125,7 +125,7 @@ export default function Cart() {
                 <div className="mr-5">
                   <CreditCard />
                 </div>
-                <div className="text-sm text-center font-medium">
+                <div className=" text-center font-medium">
                   <span className="uppercase">+ Add Payment Method</span>
                   {/* <span>VISA #### #### #### 2345</span> */}
                 </div>

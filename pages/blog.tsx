@@ -20,10 +20,10 @@ export default function Blog() {
     <div className="pb-20">
       <div className="text-center pt-40 pb-56 bg-violet">
         <Container>
-          <h2 className="text-4xl tracking-tight leading-10 font-extrabold text-white sm:text-5xl sm:leading-none md:text-6xl">
+          <h2 className=" tracking-tight leading-10 font-extrabold text-white  sm:leading-none ">
             Welcome to Acme, the simplest way to start publishing with Next.js
           </h2>
-          <p className="mt-3 max-w-md mx-auto text-gray-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+          <p className="mt-3 max-w-md mx-auto text-gray-100  md:mt-5 md:max-w-3xl">
             The Yeezy BOOST 350 V2 lineup continues to grow. We recently had the
             ‘Carbon’ iteration, and now release details have been locked in for
             this ‘Natural’ joint. Revealed by Yeezy Mafia earlier this year, the
@@ -57,7 +57,7 @@ export default function Blog() {
           <img src="/jacket.png" alt="Jacket" />
         </div>
         {/** Replace by HTML Content */}
-        <div className="text-lg leading-7 font-medium py-6 text-justify max-w-6xl mx-auto">
+        <div className="leading-7 font-medium py-6 text-justify max-w-6xl mx-auto">
           <p className="py-6">
             Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
             Candy canes bonbon dragée jujubes chocolate bar. Cotton candy gummi

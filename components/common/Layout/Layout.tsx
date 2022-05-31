@@ -11,7 +11,6 @@ import CartSidebarView from '@components/cart/CartSidebarView'
 
 import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
-import type { Page } from '@framework/common/get-all-pages'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -50,8 +49,27 @@ const Layout: FC<any> = ({ children }) => {
   const { locale = 'en-US' } = useRouter()
   return (
     <CommerceProvider locale={locale}>
+      {true && process.env.NODE_ENV === 'development' && (
+        <div className="fixed top-0 left-0 w-full h-full">
+          <div className="w-full h-full container">
+            <div className={'default-grid'}>
+              {Array(12)
+                .fill({})
+                .map(() => {
+                  return (
+                    <div
+                      className={'col col-span-1'}
+                      key={new Date().getTime() + Math.random()}
+                    />
+                  )
+                })}
+            </div>
+          </div>
+        </div>
+      )}
       <div className={cn(s.root)}>
         <Navbar />
+
         <main className="fit">{children}</main>
         {/* <Footer pages={} /> */}
 

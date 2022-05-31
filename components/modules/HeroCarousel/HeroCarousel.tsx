@@ -10,7 +10,6 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
   return (
     <div className={`${styles.root} container`}>
       Herocarousel Module
-      {console.log(module)}
       <Image image={module.carousel[0].image} />
     </div>
   )

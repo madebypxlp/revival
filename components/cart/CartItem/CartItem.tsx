@@ -105,7 +105,7 @@ const CartItem = ({
       <div className="flex-1 flex flex-col text-base">
         <Link href={`/product/${item.path}`}>
           <span
-            className="font-bold text-lg cursor-pointer leading-6"
+            className="font-bold cursor-pointer leading-6"
             onClick={() => closeSidebarIfPresent()}
           >
             {item.name}
@@ -116,7 +116,7 @@ const CartItem = ({
             {options.map((option: ItemOption, i: number) => (
               <span
                 key={`${item.id}-${option.name}`}
-                className="text-sm font-semibold text-accents-7"
+                className=" font-semibold text-accents-7"
               >
                 {option.value}
                 {i === options.length - 1 ? '' : ', '}

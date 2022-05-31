@@ -6,7 +6,12 @@ import styles from './Image.module.scss'
 const ImageComponent: FunctionComponent<IImage> = ({ image }) => {
   return (
     <div className={`${styles.root}`}>
-      <Image layout="fill" src={image.desktopImage.sourceUrl} />
+      <Image
+        width={image.desktopImage.mediaDetails.width}
+        height={image.desktopImage.mediaDetails.height}
+        layout="responsive"
+        src={image.desktopImage.sourceUrl}
+      />
     </div>
   )
 }

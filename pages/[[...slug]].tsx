@@ -1,5 +1,4 @@
 import type { InferGetStaticPropsType } from 'next'
-import { Text } from '@components/ui'
 import { Layout } from '@components/common'
 import { getWpStaticPaths, getWpStaticProps } from 'framework/wordpress/wp'
 import TemplateHome from '../templates/Home'

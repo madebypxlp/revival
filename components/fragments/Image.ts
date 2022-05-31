@@ -12,5 +12,9 @@ export default `
   fragment Image on MediaItem {
       altText
       sourceUrl
+      mediaDetails {
+        width
+        height
+      }
   }
 `

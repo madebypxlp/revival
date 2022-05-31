@@ -1,0 +1,13 @@
+html {
+  font-size: 10px;
+}
+
+
+
+.default-grid {
+  @apply w-full h-full sm:grid sm:grid-cols-2 lg:grid-cols-12 gap-x-20;
+  > div {
+    background-color: orangered;
+    opacity: .2;
+  }
+}

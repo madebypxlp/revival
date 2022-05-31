@@ -60,7 +60,7 @@ const ForgotPassword: FC<Props> = () => {
           </Button>
         </div>
 
-        <span className="pt-3 text-center text-sm">
+        <span className="pt-3 text-center ">
           <span className="text-accents-7">Do you have an account?</span>
           {` `}
           <a

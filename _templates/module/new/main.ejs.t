@@ -12,7 +12,6 @@ const <%= h.inflection.camelize(name) %>Module:FunctionComponent<{ module: I<%= 
       className={`${styles.root} container`}
     >
       <%= h.inflection.humanize(name) %> Module
-      {console.log(module)}
     </div>
   )
 }

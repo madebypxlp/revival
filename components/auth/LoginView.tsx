@@ -86,7 +86,7 @@ const LoginView: FC<Props> = () => {
         >
           Log In
         </Button>
-        <div className="pt-1 text-center text-sm">
+        <div className="pt-1 text-center ">
           <span className="text-accents-7">Don't have an account?</span>
           {` `}
           <a

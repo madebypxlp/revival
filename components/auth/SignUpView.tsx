@@ -80,7 +80,7 @@ const SignUpView: FC<Props> = () => {
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />
           </span>{' '}
-          <span className="leading-6 text-sm">
+          <span className="leading-6 ">
             <strong>Info</strong>: Passwords must be longer than 7 chars and
             include numbers.{' '}
           </span>
@@ -96,7 +96,7 @@ const SignUpView: FC<Props> = () => {
           </Button>
         </div>
 
-        <span className="pt-1 text-center text-sm">
+        <span className="pt-1 text-center ">
           <span className="text-accents-7">Do you have an account?</span>
           {` `}
           <a

@@ -95,7 +95,7 @@
   }
 
   & .productPrice {
-    @apply text-sm;
+    @apply ;
   }
 }
 
@@ -114,7 +114,7 @@
 }
 
 .productPrice {
-  @apply py-4 px-6 bg-primary text-primary font-semibold inline-block text-sm leading-6;
+  @apply py-4 px-6 bg-primary text-primary font-semibold inline-block  leading-6;
   letter-spacing: 0.4px;
 }
 
