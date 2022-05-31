@@ -9,7 +9,7 @@
 }
 
 .container > * {
-  @apply relative flex-1 px-16 py-4 h-full;
+  @apply relative flex-1 px-15 py-5 h-full;
   min-height: 320px;
 }
 

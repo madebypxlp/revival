@@ -8,7 +8,7 @@ import s from './Navbar.module.css'
 const Navbar: FC = () => (
   <NavbarRoot>
     <Container>
-      <div className="relative flex flex-row justify-between py-4 align-center md:py-6">
+      <div className="relative flex flex-row justify-between py-5 align-center md:py-6">
         <div className="flex items-center flex-1">
           <Link href="/">
             <a className={s.logo} aria-label="Logo">
@@ -40,7 +40,7 @@ const Navbar: FC = () => (
         </div>
       </div>
 
-      <div className="flex pb-4 lg:px-6 lg:hidden">
+      <div className="flex pb-5 lg:px-5 lg:hidden">
         <Searchbar id="mobile-search" />
       </div>
     </Container>

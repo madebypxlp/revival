@@ -26,7 +26,7 @@
 }
 
 .layoutNormal {
-  @apply gap-3;
+  @apply gap-5;
 
   & > * {
     min-height: 325px;

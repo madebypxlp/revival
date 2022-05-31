@@ -1,3 +1,11 @@
+const generateSpacings = (interval = 5, max = 300) => {
+  const array = {}
+  for(var x = 0; x <= max; x+=interval) {
+    array[x] = `${interval / 10 }rem`
+  }
+  return array
+}
+
 module.exports = {
   future: {
     purgeLayersByDefault: true,
@@ -22,6 +30,7 @@ module.exports = {
       xl: '1560px',
       xxl: '1920px',
     },
+    spacing: generateSpacings(),
     fontSize: {},
     extend: {
       maxWidth: {

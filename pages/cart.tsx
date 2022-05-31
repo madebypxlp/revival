@@ -41,8 +41,8 @@ export default function Cart() {
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
         {isLoading || isEmpty ? (
-          <div className="flex-1 px-12 py-24 flex flex-col justify-center items-center ">
-            <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-12 rounded-lg text-primary">
+          <div className="flex-1 px-12 py-54 flex flex-col justify-center items-center ">
+            <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-10 rounded-lg text-primary">
               <Bag className="absolute" />
             </span>
             <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
@@ -72,7 +72,7 @@ export default function Cart() {
             </h2>
           </div>
         ) : (
-          <div className="px-4 sm:px-6 flex-1">
+          <div className="px-4 sm:px-5 flex-1">
             <Text variant="pageHeading">My Cart</Text>
             <Text variant="sectionHeading">Review your Order</Text>
             <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-2 border-b border-accents-2">
@@ -102,12 +102,12 @@ export default function Cart() {
         )}
       </div>
       <div className="lg:col-span-4">
-        <div className="flex-shrink-0 px-4 py-24 sm:px-6">
+        <div className="flex-shrink-0 px-4 py-54 sm:px-5">
           {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED && (
             <>
               {/* Shipping Address */}
               {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-md border border-accents-2 px-6 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:border-accents-4">
+              <div className="rounded-md border border-accents-2 px-5 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:border-accents-4">
                 <div className="mr-5">
                   <MapPin />
                 </div>
@@ -121,7 +121,7 @@ export default function Cart() {
               </div>
               {/* Payment Method */}
               {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-md border border-accents-2 px-6 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:border-accents-4">
+              <div className="rounded-md border border-accents-2 px-5 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:border-accents-4">
                 <div className="mr-5">
                   <CreditCard />
                 </div>
@@ -133,7 +133,7 @@ export default function Cart() {
             </>
           )}
           <div className="border-t border-accents-2">
-            <ul className="py-3">
+            <ul className="py-5">
               <li className="flex justify-between py-1">
                 <span>Subtotal</span>
                 <span>{subTotal}</span>
@@ -147,7 +147,7 @@ export default function Cart() {
                 <span className="font-bold tracking-wide">FREE</span>
               </li>
             </ul>
-            <div className="flex justify-between border-t border-accents-2 py-3 font-bold mb-10">
+            <div className="flex justify-between border-t border-accents-2 py-5 font-bold mb-10">
               <span>Total</span>
               <span>{total}</span>
             </div>

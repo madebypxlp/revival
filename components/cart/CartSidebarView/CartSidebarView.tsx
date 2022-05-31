@@ -37,7 +37,7 @@ const CartSidebarView: FC = () => {
         [s.empty]: error || success || isLoading || isEmpty,
       })}
     >
-      <header className="px-4 pt-6 pb-4 sm:px-6">
+      <header className="px-4 pt-6 pb-5 sm:px-5">
         <div className="flex items-start justify-between space-x-3">
           <div className="h-7 flex items-center">
             <button
@@ -56,7 +56,7 @@ const CartSidebarView: FC = () => {
 
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
-          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-secondary text-secondary">
+          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10 bg-secondary text-secondary">
             <Bag className="absolute" />
           </span>
           <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
@@ -87,10 +87,10 @@ const CartSidebarView: FC = () => {
         </div>
       ) : (
         <>
-          <div className="px-4 sm:px-6 flex-1">
+          <div className="px-4 sm:px-5 flex-1">
             <Link href="/cart">
               <h2
-                className="pt-1 pb-4 text-2xl leading-7 font-bold text-base tracking-wide cursor-pointer inline-block"
+                className="pt-0 pb-5 text-2xl leading-7 font-bold text-base tracking-wide cursor-pointer inline-block"
                 onClick={handleClose}
               >
                 My Cart
@@ -107,9 +107,9 @@ const CartSidebarView: FC = () => {
             </ul>
           </div>
 
-          <div className="flex-shrink-0 px-4  py-5 sm:px-6">
+          <div className="flex-shrink-0 px-4  py-5 sm:px-5">
             <div className="border-t border-accents-3">
-              <ul className="py-3">
+              <ul className="py-5">
                 <li className="flex justify-between py-1">
                   <span>Subtotal</span>
                   <span>{subTotal}</span>
@@ -123,7 +123,7 @@ const CartSidebarView: FC = () => {
                   <span className="font-bold tracking-wide">FREE</span>
                 </li>
               </ul>
-              <div className="flex justify-between border-t border-accents-3 py-3 font-bold mb-10">
+              <div className="flex justify-between border-t border-accents-3 py-5 font-bold mb-10">
                 <span>Total</span>
                 <span>{total}</span>
               </div>

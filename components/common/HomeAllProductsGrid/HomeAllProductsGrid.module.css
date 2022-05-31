@@ -1,12 +1,12 @@
 .root {
-  @apply py-12 flex flex-col w-full px-6;
+  @apply py-12 flex flex-col w-full px-5;
 
   @screen md {
     @apply flex-row;
   }
 
   & .asideWrapper {
-    @apply pr-3 w-full relative;
+    @apply pr-5 w-full relative;
 
     @screen md {
       @apply w-48;
@@ -14,7 +14,7 @@
   }
 
   & .aside {
-    @apply flex flex-row w-full justify-around mb-12;
+    @apply flex flex-row w-full justify-around mb-10;
 
     @screen md {
       @apply mb-0 block sticky top-32;

@@ -17,7 +17,7 @@ export async function getStaticProps({
 
 export default function Blog() {
   return (
-    <div className="pb-20">
+    <div className="pb-50">
       <div className="text-center pt-40 pb-56 bg-violet">
         <Container>
           <h2 className=" tracking-tight leading-10 font-extrabold text-white  sm:leading-none ">

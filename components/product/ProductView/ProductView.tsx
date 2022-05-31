@@ -102,9 +102,9 @@ const ProductView: FC<Props> = ({ product }) => {
         <div className={s.sidebar}>
           <section>
             {product.options?.map((opt) => (
-              <div className="pb-4" key={opt.displayName}>
+              <div className="pb-5" key={opt.displayName}>
                 <h2 className="uppercase font-medium">{opt.displayName}</h2>
-                <div className="flex flex-row py-4">
+                <div className="flex flex-row py-5">
                   {opt.values.map((v, i: number) => {
                     const active = (choices as any)[
                       opt.displayName.toLowerCase()

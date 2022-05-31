@@ -3,13 +3,13 @@
 }
 
 .heading {
-  @apply mb-12;
+  @apply mb-10;
 }
 
 .pageHeading {
-  @apply pt-1 pb-4  leading-7 font-bold tracking-wide;
+  @apply pt-0 pb-5  leading-7 font-bold tracking-wide;
 }
 
 .sectionHeading {
-  @apply pt-1 pb-2 font-semibold leading-7 tracking-wider uppercase border-b border-accents-2 mb-3;
+  @apply pt-0 pb-5 font-semibold leading-7 tracking-wider uppercase border-b border-accents-2 mb-5;
 }

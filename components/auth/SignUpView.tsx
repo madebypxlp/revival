@@ -63,7 +63,7 @@ const SignUpView: FC<Props> = () => {
   return (
     <form
       onSubmit={handleSignup}
-      className="w-80 flex flex-col justify-between p-3"
+      className="w-100 flex flex-col justify-between p-3"
     >
       <div className="flex justify-center pb-12 ">
         <Logo width="64px" height="64px" />
@@ -96,7 +96,7 @@ const SignUpView: FC<Props> = () => {
           </Button>
         </div>
 
-        <span className="pt-1 text-center ">
+        <span className="pt-0 text-center ">
           <span className="text-accents-7">Do you have an account?</span>
           {` `}
           <a

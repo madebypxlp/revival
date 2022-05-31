@@ -41,8 +41,8 @@ export default function Wishlist() {
         <Text variant="pageHeading">My Wishlist</Text>
         <div className="group flex flex-col">
           {isLoading || isEmpty ? (
-            <div className="flex-1 px-12 py-24 flex flex-col justify-center items-center ">
-              <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-12 rounded-lg text-primary">
+            <div className="flex-1 px-12 py-54 flex flex-col justify-center items-center ">
+              <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-10 rounded-lg text-primary">
                 <Heart className="absolute" />
               </span>
               <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">

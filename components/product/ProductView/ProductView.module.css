@@ -28,20 +28,20 @@
 }
 
 .nameBox {
-  @apply absolute top-6 left-0 z-20 pr-16;
+  @apply absolute top-5 left-0 z-20 pr-16;
 
   @screen lg {
     @apply left-6 pr-16;
   }
 
   & .name {
-    @apply px-6 py-2 bg-primary text-primary font-bold;
+    @apply px-5 py-5 bg-primary text-primary font-bold;
     font-size: 2rem;
     letter-spacing: 0.4px;
   }
 
   & .price {
-    @apply px-6 py-2 pb-4 bg-primary text-primary font-bold inline-block tracking-wide;
+    @apply px-5 py-5 pb-5 bg-primary text-primary font-bold inline-block tracking-wide;
   }
 
   @screen lg {
@@ -53,10 +53,10 @@
 }
 
 .sidebar {
-  @apply flex flex-col col-span-1 mx-auto max-w-8xl px-6 w-full h-full;
+  @apply flex flex-col col-span-1 mx-auto max-w-10xl px-5 w-full h-full;
 
   @screen lg {
-    @apply col-span-6 py-24 justify-between;
+    @apply col-span-6 py-54 justify-between;
   }
 }
 
@@ -88,7 +88,7 @@
 }
 
 .wishlistButton {
-  @apply absolute z-30 top-6 right-0 bg-primary text-primary w-10 h-10 flex items-center justify-center font-semibold leading-6 cursor-pointer;
+  @apply absolute z-30 top-5 right-0 bg-primary text-primary w-10 h-10 flex items-center justify-center font-semibold leading-6 cursor-pointer;
 
   @screen lg {
     @apply right-12 text-white bg-violet;

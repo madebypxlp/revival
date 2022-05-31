@@ -13,7 +13,7 @@ import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
 
 const Loading = () => (
-  <div className="w-80 h-80 flex items-center text-center justify-center p-3">
+  <div className="w-100 h-80 flex items-center text-center justify-center p-3">
     <LoadingDots />
   </div>
 )

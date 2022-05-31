@@ -93,7 +93,7 @@ export default function Search({
 
   return (
     <Container>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-3 mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-3 mb-20">
         <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
           {/* Categories */}
           <div className="relative inline-block w-full">
@@ -102,7 +102,7 @@ export default function Search({
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, 'categories')}
-                  className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-3 bg-white  leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+                  className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-5 bg-white  leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
                   id="options-menu"
                   aria-haspopup="true"
                   aria-expanded="true"
@@ -126,7 +126,7 @@ export default function Search({
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'categories' || toggleFilter !== true
                   ? 'hidden'
                   : ''
@@ -153,7 +153,7 @@ export default function Search({
                         <a
                           onClick={(e) => handleClick(e, 'categories')}
                           className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
+                            'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
                           All Categories
@@ -180,7 +180,7 @@ export default function Search({
                           <a
                             onClick={(e) => handleClick(e, 'categories')}
                             className={
-                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
+                              'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
                             }
                           >
                             {cat.name}
@@ -201,7 +201,7 @@ export default function Search({
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, 'brands')}
-                  className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-3 bg-white  leading-5 font-medium text-gray-900 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+                  className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-5 bg-white  leading-5 font-medium text-gray-900 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
                   id="options-menu"
                   aria-haspopup="true"
                   aria-expanded="true"
@@ -225,7 +225,7 @@ export default function Search({
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'brands' || toggleFilter !== true
                   ? 'hidden'
                   : ''
@@ -255,7 +255,7 @@ export default function Search({
                         <a
                           onClick={(e) => handleClick(e, 'brands')}
                           className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
+                            'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
                           All Designers
@@ -282,7 +282,7 @@ export default function Search({
                           <a
                             onClick={(e) => handleClick(e, 'brands')}
                             className={
-                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
+                              'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
                             }
                           >
                             {node.name}
@@ -299,7 +299,7 @@ export default function Search({
         {/* Products */}
         <div className="col-span-8 order-3 lg:order-none">
           {(q || activeCategory || activeBrand) && (
-            <div className="mb-12 transition ease-in duration-75">
+            <div className="mb-10 transition ease-in duration-75">
               {data ? (
                 <>
                   <span
@@ -379,7 +379,7 @@ export default function Search({
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, 'sort')}
-                  className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-3 bg-white  leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+                  className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-5 bg-white  leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
                   id="options-menu"
                   aria-haspopup="true"
                   aria-expanded="true"
@@ -401,7 +401,7 @@ export default function Search({
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'sort' || toggleFilter !== true ? 'hidden' : ''
               }`}
             >
@@ -424,7 +424,7 @@ export default function Search({
                         <a
                           onClick={(e) => handleClick(e, 'sort')}
                           className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
+                            'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
                           Relevance
@@ -450,7 +450,7 @@ export default function Search({
                           <a
                             onClick={(e) => handleClick(e, 'sort')}
                             className={
-                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
+                              'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
                             }
                           >
                             {text}

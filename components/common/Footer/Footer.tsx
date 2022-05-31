@@ -37,21 +37,21 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-2">
             <ul className="flex flex-initial flex-col md:flex-1">
-              <li className="py-3 md:py-0 md:pb-4">
+              <li className="py-5 md:py-0 md:pb-5">
                 <Link href="/">
                   <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                     Home
                   </a>
                 </Link>
               </li>
-              <li className="py-3 md:py-0 md:pb-4">
+              <li className="py-5 md:py-0 md:pb-5">
                 <Link href="/">
                   <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                     Careers
                   </a>
                 </Link>
               </li>
-              <li className="py-3 md:py-0 md:pb-4">
+              <li className="py-5 md:py-0 md:pb-5">
                 <Link href="/blog">
                   <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                     Blog
@@ -59,7 +59,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </Link>
               </li>
               {sitePages.map((page) => (
-                <li key={page.url} className="py-3 md:py-0 md:pb-4">
+                <li key={page.url} className="py-5 md:py-0 md:pb-5">
                   <Link href={page.url!}>
                     <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                       {page.name}
@@ -72,7 +72,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="col-span-1 lg:col-span-2">
             <ul className="flex flex-initial flex-col md:flex-1">
               {legalPages.map((page) => (
-                <li key={page.url} className="py-3 md:py-0 md:pb-4">
+                <li key={page.url} className="py-5 md:py-0 md:pb-5">
                   <Link href={page.url!}>
                     <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                       {page.name}

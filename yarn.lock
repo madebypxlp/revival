@@ -571,7 +571,7 @@
 
 "@graphql-codegen/typescript@^1.19.0", "@graphql-codegen/typescript@^1.20.1":
   version "1.21.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-1.21.0.tgz#301b1851cd278bedd1f49e1b3d654f4dc0af2943"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-0.21.0.tgz#301b1851cd278bedd1f49e1b3d654f4dc0af2943"
   integrity sha512-23YttnZ+87dA/3lbCvPKdsrpEOx142dCT9xSh6XkSeyCvn+vUtETN2MhamCYB87G7Nu2EcLDFKDZjgXH73f4fg==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^1.18.2"
@@ -1300,7 +1300,7 @@
 
 "@webassemblyjs/wasm-opt@1.9.1":
   version "1.9.1"
-  resolved "https://registry.yarnpkg.com/@webassemblyjs/wasm-opt/-/wasm-opt-1.9.1.tgz#fbdf8943a825e6dcc4cd69c3e092289fa4aec96c"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/wasm-opt/-/wasm-opt-0.9.1.tgz#fbdf8943a825e6dcc4cd69c3e092289fa4aec96c"
   integrity sha512-gSf7I7YWVXZ5c6XqTEqkZjVs8K1kc1k57vsB6KBQscSagDNbAdxt6MwuJoMjsE1yWY1tsuL+pga268A6u+Fdkg==
   dependencies:
     "@webassemblyjs/ast" "1.9.1"
