@@ -10,6 +10,9 @@ module.exports = withCommerceConfig({
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
   },
+  images: {
+    domains: ['revival-wp.weareenvoy.net'],
+  },
   rewrites() {
     return [
       (isBC || isShopify) && {
