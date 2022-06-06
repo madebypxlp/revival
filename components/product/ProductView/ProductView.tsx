@@ -5,7 +5,7 @@ import { FC, useState } from 'react'
 import s from './ProductView.module.css'
 
 import { Swatch, ProductSlider } from '@components/product'
-import { Button, Container, Text, useUI } from '@components/ui'
+import { Container, Text, useUI } from '@components/ui'
 
 import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
@@ -13,6 +13,7 @@ import { useAddItem } from '@framework/cart'
 
 import { getVariant, SelectedOptions } from '../helpers'
 import WishlistButton from '@components/wishlist/WishlistButton'
+import Button from '@components/ui/Button/Button'
 
 interface Props {
   className?: string
@@ -138,7 +139,6 @@ const ProductView: FC<Props> = ({ product }) => {
           </section>
           <div>
             <Button
-              aria-label="Add to Cart"
               type="button"
               className={s.button}
               onClick={addToCart}

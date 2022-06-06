@@ -4,13 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import s from './WishlistCard.module.css'
 import { Trash } from '@components/icons'
-import { Button, Text } from '@components/ui'
+import { Text } from '@components/ui'
 
 import { useUI } from '@components/ui/context'
 import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/cart/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
+import Button from '@components/ui/Button/Button'
 
 interface Props {
   product: Product
@@ -77,9 +78,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
         <Button
           aria-label="Add to Cart"
           type="button"
-          className={
-            'py-1 px-5 border  rounded-md shadow-sm hover:-hover'
-          }
+          className={'py-1 px-5 border  rounded-md shadow-sm hover:-hover'}
           onClick={addToCart}
           loading={loading}
         >

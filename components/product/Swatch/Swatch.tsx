@@ -2,8 +2,9 @@ import cn from 'classnames'
 import { FC } from 'react'
 import s from './Swatch.module.css'
 import { Check } from '@components/icons'
-import Button, { ButtonProps } from '@components/ui/Button'
 import { isDark } from '@lib/colors'
+import Button from '@components/ui/Button/Button'
+import IButton from '@components/ui/Button/Button.interface'
 interface Props {
   active?: boolean
   children?: any
@@ -13,7 +14,7 @@ interface Props {
   color?: string
 }
 
-const Swatch: FC<Omit<ButtonProps, 'variant'> & Props> = ({
+const Swatch: FC<Omit<IButton, 'variant'> & Props> = ({
   className,
   color = '',
   label,

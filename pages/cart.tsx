@@ -4,9 +4,10 @@ import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import { Layout } from '@components/common'
-import { Button, Text } from '@components/ui'
+import { Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import Button from '@components/ui/Button/Button'
 
 export async function getStaticProps({
   preview,
@@ -155,11 +156,11 @@ export default function Cart() {
           <div className="flex flex-row justify-end">
             <div className="w-full lg:w-72">
               {isEmpty ? (
-                <Button href="/" Component="a" width="100%">
+                <Button href="/">
                   Continue Shopping
                 </Button>
               ) : (
-                <Button href="/checkout" Component="a" width="100%">
+                <Button href="/checkout">
                   Proceed to Checkout
                 </Button>
               )}
