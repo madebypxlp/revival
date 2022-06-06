@@ -1,14 +1,14 @@
 import React from 'react'
 
 export default interface IButton {
-  variant?: string
-  type?: string
-  loading?: boolean
-  disabled?: Boolean
+  variant: 'large' | 'small'
+  type: 'default' | 'arrow' | 'plus'
+  color: 'yellow' | 'blue' | 'red' | 'white' | 'black'
+  outline?: boolean
+  disabled?: boolean
   children: React.ReactNode
   className?: string
   onClick?: () => void
   ariaLabel?: string
-  style?: any
   href?: string
 }

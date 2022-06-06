@@ -1,3 +1,151 @@
+.blue-default {
+  background: theme('colors.blue.default');
+  color: #fff;
+}
+.blue-variant {
+  border: 1px solid theme('colors.blue.default');
+  color: theme('colors.blue.default');
+  background: theme('colors.yellow.default');
+}
+
+.red-default {
+  background: theme('colors.red');
+  color: #fff;
+}
+.red-variant {
+  border: 1px solid theme('colors.red');
+  color: theme('colors.red');
+  background: transparent;
+}
+
+.yellow-default {
+  background: theme('colors.yellow.default');
+  color: theme('colors.blue.default');
+}
+
+.black-default {
+  background: theme('colors.black');
+  color: #fff;
+}
+
+.black-variant {
+  background: transparent;
+  color: theme('colors.black');
+}
+
 .root {
-  // add your styles here
+  position: relative;
+  font-weight: 700;
+  transition: 400ms ease;
+
+  &.large {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    padding: 1.35rem 4rem;
+    border-radius: 3rem;
+  }
+  &.small {
+    padding: 1.35rem 2.5rem;
+    border-radius: 2.5rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+
+  &.yellow {
+    @extend .yellow-default;
+    border: 1px solid theme('colors.yellow.default');
+
+    &:hover {
+      border: 1px solid theme('colors.blue.default');
+    }
+
+    &.outline {
+      border: 1px solid theme('colors.yellow.default');
+      color: theme('colors.blue.default');
+      background: transparent;
+      &:hover {
+        @extend .yellow-default;
+      }
+    }
+  }
+  &.blue {
+    @extend .blue-default;
+    border: 1px solid theme('colors.blue.default');
+
+    &:hover {
+      @extend .blue-variant;
+    }
+    &.outline {
+      @extend .blue-variant;
+      background: transparent;
+      &:hover {
+        @extend .blue-default;
+      }
+    }
+  }
+  &.red {
+    @extend .red-default;
+    border: 1px solid theme('colors.red');
+
+    &:hover {
+      @extend .red-variant;
+    }
+    &.outline {
+      @extend .red-variant;
+      &:hover {
+        @extend .red-default;
+      }
+    }
+  }
+  &.white {
+    background: theme('colors.white');
+    color: theme('colors.black');
+    &:hover {
+      @extend .yellow-default;
+    }
+    &.outline {
+      border: 1px solid theme('colors.white');
+      color: theme('colors.white');
+      background: transparent;
+      &:hover {
+        background: #fff;
+        color: theme('colors.blue.default');
+      }
+    }
+  }
+  &.black {
+    @extend .black-default;
+    border: 1px solid theme('colors.black');
+    &:hover {
+      @extend .black-variant;
+    }
+    &.outline {
+      @extend .black-variant;
+      &:hover {
+        @extend .black-default;
+      }
+    }
+  }
+
+  &[disabled]:not(&.white) {
+    background: theme('colors.greyscale.4');
+    color: #fff;
+    pointer-events: none;
+    border: 1.5px solid theme('colors.greyscale.4');
+    &.outline {
+      background: theme('colors.greyscale.6');
+      color: theme('colors.greyscale.4');
+    }
+  }
+
+  &[disabled].white{
+    pointer-events: none;
+    background: theme('colors.greyscale.6');
+    border: 1px solid theme('colors.greyscale.6');
+    color: theme('colors.greyscale.4');
+    &.outline {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+  }
 }
