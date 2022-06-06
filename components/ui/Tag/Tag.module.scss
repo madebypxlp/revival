@@ -1,0 +1,30 @@
+.root {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  text-transform: uppercase;
+
+  @screen lg {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding: 0.6rem 1.7rem;
+    border-radius: 1.25rem;
+  }
+
+  &.blue-outline {
+    color: theme('colors.blue.default');
+    border: 1px solid theme('colors.blue.default');
+  }
+  &.red-filled {
+    background: theme('colors.blue.default');
+    color: #fff;
+  }
+
+  &.blue-filled {
+    background: theme('colors.red');
+    color: #fff;
+  }
+}
