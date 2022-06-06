@@ -6,7 +6,7 @@ const ResourceGridFragment = (t: string) => `
       ...Link
     }
     featuredResource {
-      ... on Post {
+      ... on Learning_center {
         id
         featuredImage {
           node {

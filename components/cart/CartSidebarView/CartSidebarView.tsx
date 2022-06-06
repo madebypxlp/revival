@@ -56,7 +56,7 @@ const CartSidebarView: FC = () => {
 
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
-          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10 bg-secondary text-secondary">
+          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10  ">
             <Bag className="absolute" />
           </span>
           <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
@@ -96,7 +96,7 @@ const CartSidebarView: FC = () => {
                 My Cart
               </h2>
             </Link>
-            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t border-accents-3">
+            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t ">
               {data!.lineItems.map((item: any) => (
                 <CartItem
                   key={item.id}
@@ -108,7 +108,7 @@ const CartSidebarView: FC = () => {
           </div>
 
           <div className="flex-shrink-0 px-4  py-5 sm:px-5">
-            <div className="border-t border-accents-3">
+            <div className="border-t ">
               <ul className="py-5">
                 <li className="flex justify-between py-1">
                   <span>Subtotal</span>
@@ -123,7 +123,7 @@ const CartSidebarView: FC = () => {
                   <span className="font-bold tracking-wide">FREE</span>
                 </li>
               </ul>
-              <div className="flex justify-between border-t border-accents-3 py-5 font-bold mb-10">
+              <div className="flex justify-between border-t  py-5 font-bold mb-10">
                 <span>Total</span>
                 <span>{total}</span>
               </div>

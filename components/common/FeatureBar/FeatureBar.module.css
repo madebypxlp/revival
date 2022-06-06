@@ -1,5 +1,5 @@
 .root {
-  @apply text-center p-5 bg-primary  flex-row justify-center items-center font-medium fixed bottom-0 w-full z-30 transition-all duration-300 ease-out;
+  @apply text-center p-5   flex-row justify-center items-center font-medium fixed bottom-0 w-full z-30 transition-all duration-300 ease-out;
 
   @screen md {
     @apply flex text-left;

@@ -1,13 +1,17 @@
 html {
+  font-family: 'Foco';
   font-size: 10px;
 }
 
-
-
-.default-grid {
-  @apply w-full h-full sm:grid sm:grid-cols-2 lg:grid-cols-12 gap-x-20;
-  > div {
-    background-color: orangered;
-    opacity: .2;
-  }
+/**
+ * Chrome has a bug with transitions on load since 2012!
+ *
+ * To prevent a "pop" of content, you have to disable all transitions until
+ * the page is done loading.
+ *
+ * https://lab.laukstein.com/bug/input
+ * https://twitter.com/timer150/status/1345217126680899584
+ */
+body.loading * {
+  transition: none !important;
 }

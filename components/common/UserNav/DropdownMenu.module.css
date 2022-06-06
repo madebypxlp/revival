@@ -1,22 +1,19 @@
 .dropdownMenu {
-  @apply fixed right-0 mt-5 origin-top-right outline-none bg-primary z-40 w-full h-full;
+  @apply fixed right-0 mt-5 origin-top-right outline-none  z-40 w-full h-full;
 
   @screen lg {
-    @apply absolute top-10 border border-accents-1 shadow-lg w-55 h-auto;
+    @apply absolute top-10 border  shadow-lg w-55 h-auto;
   }
 }
 
 .link {
-  @apply text-primary flex cursor-pointer px-5 py-5 flex transition ease-in-out duration-150 leading-6 font-medium items-center;
+  @apply  flex cursor-pointer px-5 py-5 flex transition ease-in-out duration-150 leading-6 font-medium items-center;
   text-transform: capitalize;
 }
 
-.link:hover {
-  @apply bg-accents-1;
-}
 
 .link.active {
-  @apply font-bold bg-accents-2;
+  @apply font-bold ;
 }
 
 .off {

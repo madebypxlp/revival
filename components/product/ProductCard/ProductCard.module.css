@@ -13,51 +13,42 @@
       transform: scale(1.2625);
     }
 
-    & .productTitle > span,
-    & .productPrice,
-    & .wishlistButton {
-      @apply bg-secondary text-secondary;
-    }
-
     &:nth-child(6n + 1) .productTitle > span,
     &:nth-child(6n + 1) .productPrice,
     &:nth-child(6n + 1) .wishlistButton {
-      @apply bg-violet text-white;
+      @apply  text-white;
     }
 
     &:nth-child(6n + 5) .productTitle > span,
     &:nth-child(6n + 5) .productPrice,
     &:nth-child(6n + 5) .wishlistButton {
-      @apply bg-blue text-white;
+      @apply text-white;
     }
 
     &:nth-child(6n + 3) .productTitle > span,
     &:nth-child(6n + 3) .productPrice,
     &:nth-child(6n + 3) .wishlistButton {
-      @apply bg-pink text-white;
+      @apply text-white;
     }
 
     &:nth-child(6n + 6) .productTitle > span,
     &:nth-child(6n + 6) .productPrice,
     &:nth-child(6n + 6) .wishlistButton {
-      @apply bg-cyan text-white;
+      @apply text-white;
     }
   }
 
   &:nth-child(6n + 1) .squareBg {
-    @apply bg-violet;
+    @apply ;
   }
 
   &:nth-child(6n + 5) .squareBg {
-    @apply bg-blue;
   }
 
   &:nth-child(6n + 3) .squareBg {
-    @apply bg-pink;
   }
 
   &:nth-child(6n + 6) .squareBg {
-    @apply bg-cyan;
   }
 }
 
@@ -81,31 +72,25 @@
 
 .simple {
   & .squareBg {
-    @apply bg-accents-0 !important;
     background-image: url('/bg-products.svg');
   }
 
   & .productTitle {
     @apply pt-2;
     font-size: 1rem;
-
-    & span {
-      @apply leading-extra-loose;
-    }
   }
 
   & .productPrice {
-    @apply ;
   }
 }
 
 .productTitle {
-  @apply pt-0 max-w-full w-full leading-extra-loose;
+  @apply pt-0 max-w-full w-full;
   font-size: 2rem;
   letter-spacing: 0.4px;
 
   & span {
-    @apply py-5 px-5 bg-primary text-primary font-bold;
+    @apply py-5 px-5   font-bold;
     font-size: inherit;
     letter-spacing: inherit;
     box-decoration-break: clone;
@@ -114,12 +99,12 @@
 }
 
 .productPrice {
-  @apply py-5 px-5 bg-primary text-primary font-semibold inline-block  leading-6;
+  @apply py-5 px-5   font-semibold inline-block  leading-6;
   letter-spacing: 0.4px;
 }
 
 .wishlistButton {
-  @apply w-10 h-10 flex ml-auto items-center justify-center bg-primary text-primary font-semibold  text-xs leading-6 cursor-pointer;
+  @apply w-10 h-10 flex ml-auto items-center justify-center   font-semibold  text-xs leading-6 cursor-pointer;
 }
 
 .imageContainer {
@@ -132,5 +117,5 @@
 }
 
 .productImage {
-  @apply transform transition-transform duration-500 object-cover scale-120;
+  @apply transform transition-transform duration-500 object-cover;
 }

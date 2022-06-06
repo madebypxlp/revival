@@ -1,17 +1,13 @@
 .root {
-  @apply sticky top-0 bg-primary z-40 transition-all duration-150;
+  @apply sticky top-0  z-40 transition-all duration-150;
 }
 
 .link {
-  @apply inline-flex items-center text-primary leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-accents-6;
-}
-
-.link:hover {
-  @apply text-accents-9;
+  @apply inline-flex items-center  leading-6 font-medium transition ease-in-out duration-75 cursor-pointer ;
 }
 
 .link:focus {
-  @apply outline-none text-accents-8;
+  @apply outline-none ;
 }
 
 .logo {

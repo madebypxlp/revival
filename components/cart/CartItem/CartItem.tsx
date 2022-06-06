@@ -92,7 +92,7 @@ const CartItem = ({
       })}
       {...rest}
     >
-      <div className="w-16 h-16 bg-violet relative overflow-hidden">
+      <div className="w-16 h-16  relative overflow-hidden">
         <Image
           className={s.productImage}
           width={150}

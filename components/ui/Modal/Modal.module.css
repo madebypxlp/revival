@@ -1,10 +1,10 @@
 .root {
-  @apply fixed bg-primary text-primary flex items-center inset-0 z-50 justify-center;
+  @apply fixed   flex items-center inset-0 z-50 justify-center;
   background-color: rgba(0, 0, 0, 0.35);
 }
 
 .modal {
-  @apply bg-primary p-10 border border-accents-2 relative;
+  @apply  p-10 border  relative;
 }
 
 .modal:focus {

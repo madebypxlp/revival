@@ -3,11 +3,11 @@
 }
 
 .button {
-  @apply h-10 px-5 rounded-md border border-accents-2 flex items-center justify-center;
+  @apply h-10 px-5 rounded-md border  flex items-center justify-center;
 }
 
 .button:hover {
-  @apply border-accents-4 shadow-sm;
+  @apply  shadow-sm;
 }
 
 .button:focus {
@@ -15,10 +15,10 @@
 }
 
 .dropdownMenu {
-  @apply fixed right-0 top-10 mt-5 origin-top-right outline-none bg-primary z-40 w-full h-full;
+  @apply fixed right-0 top-10 mt-5 origin-top-right outline-none  z-40 w-full h-full;
 
   @screen lg {
-    @apply absolute border border-accents-1 shadow-lg w-55 h-auto;
+    @apply absolute border  shadow-lg w-55 h-auto;
   }
 }
 
@@ -29,12 +29,8 @@
 }
 
 .item {
-  @apply flex cursor-pointer px-5 py-5 transition ease-in-out duration-150 text-primary leading-6 font-medium items-center;
+  @apply flex cursor-pointer px-5 py-5 transition ease-in-out duration-150  leading-6 font-medium items-center;
   text-transform: capitalize;
-}
-
-.item:hover {
-  @apply bg-accents-1;
 }
 
 .icon {

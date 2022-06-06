@@ -9,7 +9,7 @@ const VideoHeroFragment = (t: string) => `
       altText
     }
     videoName
-    vimeoId
+    youtubeId
   }
 `
 export default VideoHeroFragment

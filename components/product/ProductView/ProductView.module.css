@@ -7,7 +7,7 @@
 }
 
 .productDisplay {
-  @apply relative flex px-0 pb-0 box-border col-span-1 bg-violet;
+  @apply relative flex px-0 pb-0 box-border col-span-1 ;
   min-height: 600px;
 
   @screen md {
@@ -24,7 +24,7 @@
 }
 
 .squareBg {
-  @apply absolute inset-0 bg-violet z-0 h-full;
+  @apply absolute inset-0  z-0 h-full;
 }
 
 .nameBox {
@@ -35,19 +35,19 @@
   }
 
   & .name {
-    @apply px-5 py-5 bg-primary text-primary font-bold;
+    @apply px-5 py-5   font-bold;
     font-size: 2rem;
     letter-spacing: 0.4px;
   }
 
   & .price {
-    @apply px-5 py-5 pb-5 bg-primary text-primary font-bold inline-block tracking-wide;
+    @apply px-5 py-5 pb-5   font-bold inline-block tracking-wide;
   }
 
   @screen lg {
     & .name,
     & .price {
-      @apply bg-violet-light text-white;
+      @apply -light text-white;
     }
   }
 }
@@ -88,9 +88,9 @@
 }
 
 .wishlistButton {
-  @apply absolute z-30 top-5 right-0 bg-primary text-primary w-10 h-10 flex items-center justify-center font-semibold leading-6 cursor-pointer;
+  @apply absolute z-30 top-5 right-0   w-10 h-10 flex items-center justify-center font-semibold leading-6 cursor-pointer;
 
   @screen lg {
-    @apply right-12 text-white bg-violet;
+    @apply right-12 text-white ;
   }
 }

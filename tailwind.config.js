@@ -1,7 +1,7 @@
 const generateSpacings = (interval = 5, max = 300) => {
   const array = {}
-  for(var x = 0; x <= max; x+=interval) {
-    array[x] = `${interval / 10 }rem`
+  for (var x = 0; x <= max; x += interval) {
+    array[x] = `${x / 10}rem`
   }
   return array
 }
@@ -16,11 +16,6 @@ module.exports = {
       './pages/**/*.{js,ts,jsx,tsx}',
       './components/**/*.{js,ts,jsx,tsx}',
     ],
-    options: {
-      safelist: {
-        standard: ['outline-none'],
-      },
-    },
   },
   theme: {
     screens: {
@@ -31,55 +26,44 @@ module.exports = {
       xxl: '1920px',
     },
     spacing: generateSpacings(),
-    fontSize: {},
     extend: {
-      maxWidth: {
-        '8xl': '1920px',
+      aspectRatio: {
+				'3120/1238': '3120 / 1238',
+        '3120/700': '3120 / 700',
+        '1560/310': '1560 / 310',
+        '1372/920': '1372 / 920',
+        '600/1000': '600 / 1000',
+        '750/1336': '750 / 1336',
+        '336/225': '336 / 225',
       },
       gap: {
         20: '2rem',
       },
       colors: {
-        primary: 'var(--primary)',
-        'primary-2': 'var(--primary-2)',
-        secondary: 'var(--secondary)',
-        'secondary-2': 'var(--secondary-2)',
-        hover: 'var(--hover)',
-        'hover-1': 'var(--hover-1)',
-        'hover-2': 'var(--hover-2)',
-        'accents-0': 'var(--accents-0)',
-        'accents-1': 'var(--accents-1)',
-        'accents-2': 'var(--accents-2)',
-        'accents-3': 'var(--accents-3)',
-        'accents-4': 'var(--accents-4)',
-        'accents-5': 'var(--accents-5)',
-        'accents-6': 'var(--accents-6)',
-        'accents-7': 'var(--accents-7)',
-        'accents-8': 'var(--accents-8)',
-        'accents-9': 'var(--accents-9)',
-        violet: 'var(--violet)',
-        'violet-light': 'var(--violet-light)',
-        pink: 'var(--pink)',
-        cyan: 'var(--cyan)',
-        blue: 'var(--blue)',
-        green: 'var(--green)',
-        red: 'var(--red)',
-      },
-      textColor: {
-        base: 'var(--text-base)',
-        primary: 'var(--text-primary)',
-        secondary: 'var(--text-secondary)',
-      },
-      boxShadow: {
-        'outline-normal': '0 0 0 2px var(--accents-2)',
-        magical:
-          'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
-      },
-      lineHeight: {
-        'extra-loose': '2.2',
-      },
-      scale: {
-        120: '1.2',
+        black: '#000',
+        blue: {
+          default: '#00338D',
+          light: '#5096D9',
+        },
+        red: '#C30045',
+        cream: {
+          default: '#F3F1E8',
+          dark: '#ECEAE1',
+        },
+        white: '#fff',
+        yellow: {
+          default: '##FFD749',
+          light: '#FFF5D1',
+        },
+        greyscale: {
+          01: '#404040',
+          02: '#666666',
+          03: '#B3B3B3',
+          04: '#C4C4C4',
+          05: '#E6E6E6',
+          06: '#F5F5F5',
+        },
+        green: '#2E9775',
       },
     },
   },
