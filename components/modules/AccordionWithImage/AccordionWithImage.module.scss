@@ -1,3 +1,24 @@
 .root {
   position: relative;
+
+  .accordionRoot {
+    @apply py-20;
+    border-top: 1.5px solid theme('colors.greyscale.4');
+    &:last-of-type {
+      border-bottom: 1.5px solid theme('colors.greyscale.4');
+    }
+    div {
+      font-size: 1.8rem;
+      line-height: 3rem;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+    }
+    &.visible {
+      div {
+        max-height: 1000px;
+        transition: max-height 1s ease-in-out;
+      }
+    }
+  }
 }
