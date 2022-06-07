@@ -7,6 +7,7 @@ const generateSpacings = (interval = 5, max = 300) => {
 }
 
 module.exports = {
+  important: 'body',
   future: {
     purgeLayersByDefault: true,
     applyComplexClasses: true,
@@ -25,10 +26,13 @@ module.exports = {
       xl: '1560px',
       xxl: '1920px',
     },
-    spacing: generateSpacings(),
+    spacing: {
+      ...generateSpacings(1, 20),
+      ...generateSpacings(),
+    },
     extend: {
       aspectRatio: {
-				'3120/1238': '3120 / 1238',
+        '3120/1238': '3120 / 1238',
         '3120/700': '3120 / 700',
         '1560/310': '1560 / 310',
         '1372/920': '1372 / 920',
@@ -42,16 +46,18 @@ module.exports = {
       colors: {
         black: '#000',
         blue: {
+          DEFAULT: '#00338D',
           default: '#00338D',
           light: '#5096D9',
         },
         red: '#C30045',
         cream: {
-          default: '#F3F1E8',
+          DEFAULT: '#F3F1E8',
           dark: '#ECEAE1',
         },
         white: '#fff',
         yellow: {
+          DEFAULT: '#FFD749',
           default: '#FFD749',
           light: '#FFF5D1',
         },

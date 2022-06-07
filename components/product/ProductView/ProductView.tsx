@@ -2,7 +2,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import { FC, useState } from 'react'
-import s from './ProductView.module.css'
+import s from './ProductView.module.scss'
 
 import { Swatch, ProductSlider } from '@components/product'
 import { Container, Text, useUI } from '@components/ui'
@@ -122,7 +122,8 @@ const ProductView: FC<Props> = ({ product }) => {
                           setChoices((choices) => {
                             return {
                               ...choices,
-                              [opt.displayName.toLowerCase()]: v.label.toLowerCase(),
+                              [opt.displayName.toLowerCase()]:
+                                v.label.toLowerCase(),
                             }
                           })
                         }}

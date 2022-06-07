@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import cn from 'classnames'
 
-import s from './ProductSlider.module.css'
+import s from './ProductSlider.module.scss'
 
 const ProductSlider: FC = ({ children }) => {
   const [currentSlide, setCurrentSlide] = useState(0)

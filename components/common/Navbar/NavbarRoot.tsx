@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from 'react'
 import throttle from 'lodash.throttle'
 import cn from 'classnames'
-import s from './Navbar.module.css'
+import s from './Navbar.module.scss'
 
 const NavbarRoot: FC = ({ children }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -23,11 +23,7 @@ const NavbarRoot: FC = ({ children }) => {
     }
   }, [hasScrolled])
 
-  return (
-    <div className={cn(s.root, { 'XYZ': hasScrolled })}>
-      {children}
-    </div>
-  )
+  return <div className={cn(s.root, { XYZ: hasScrolled })}>{children}</div>
 }
 
 export default NavbarRoot

@@ -1,4 +1,8 @@
 .root {
   position: relative;
   width: 100%;
+
+  img {
+    object-fit: cover;
+  }
 }

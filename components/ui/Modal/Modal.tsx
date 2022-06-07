@@ -1,6 +1,6 @@
 import { FC, useRef, useEffect, useCallback } from 'react'
 import Portal from '@reach/portal'
-import s from './Modal.module.css'
+import s from './Modal.module.scss'
 import { Cross } from '@components/icons'
 import {
   disableBodyScroll,
