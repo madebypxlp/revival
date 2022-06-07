@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import dynamic from 'next/dynamic'
-import s from './Layout.module.css'
+import s from './Layout.module.scss'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 import { useUI } from '@components/ui/context'
