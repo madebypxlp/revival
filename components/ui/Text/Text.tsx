@@ -4,7 +4,7 @@ import React, {
   CSSProperties,
 } from 'react'
 import cn from 'classnames'
-import s from './Text.module.css'
+import s from './Text.module.scss'
 
 interface Props {
   variant?: Variant

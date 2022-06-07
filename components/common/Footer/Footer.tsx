@@ -7,7 +7,7 @@ import getSlug from '@lib/get-slug'
 import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
-import s from './Footer.module.css'
+import s from './Footer.module.scss'
 
 interface Props {
   className?: string
