@@ -1,4 +1,4 @@
-import s from './Sidebar.module.css'
+import s from './Sidebar.module.scss'
 import Portal from '@reach/portal'
 import { FC, useEffect, useRef } from 'react'
 import {

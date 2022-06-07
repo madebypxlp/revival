@@ -7,6 +7,7 @@ const generateSpacings = (interval = 5, max = 300) => {
 }
 
 module.exports = {
+  important: 'body',
   future: {
     purgeLayersByDefault: true,
     applyComplexClasses: true,
@@ -28,7 +29,7 @@ module.exports = {
     spacing: generateSpacings(),
     extend: {
       aspectRatio: {
-				'3120/1238': '3120 / 1238',
+        '3120/1238': '3120 / 1238',
         '3120/700': '3120 / 700',
         '1560/310': '1560 / 310',
         '1372/920': '1372 / 920',

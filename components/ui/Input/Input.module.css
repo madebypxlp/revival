@@ -1,7 +1,0 @@
-.root {
-  @apply  py-5 px-5 w-full appearance-none transition duration-150 ease-in-out pr-10 border  ;
-}
-
-.root:focus {
-  @apply outline-none;
-}
