@@ -4,13 +4,24 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    svg {
+
+    &.right:hover {
+      .icon {
+        transform: translateX(8px);
+      }
+    }
+    .icon {
+      transition: 500ms ease;
       margin-left: 1rem;
-      height: 1rem;
-      width: auto;
       @screen lg {
         margin-left: 1.2rem;
-        height: 1.5rem;
+      }
+      svg {
+        width: auto;
+        height: 1rem;
+        @screen lg {
+          height: 1.5rem;
+        }
       }
     }
     &.down {

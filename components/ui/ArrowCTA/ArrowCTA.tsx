@@ -22,7 +22,9 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
           )}
         >
           <div>{children}</div>
-          <ChevronUp />
+          <div className={styles.icon}>
+            <ChevronUp />
+          </div>
         </a>
       </Link>
     </div>
