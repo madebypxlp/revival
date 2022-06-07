@@ -57,8 +57,8 @@ export default function Blog() {
           <img src="/jacket.png" alt="Jacket" />
         </div>
         {/** Replace by HTML Content */}
-        <div className="leading-7 font-medium py-6 text-justify max-w-6xl mx-auto">
-          <p className="py-6">
+        <div className="leading-7 font-medium py-5 text-justify max-w-6xl mx-auto">
+          <p className="py-5">
             Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
             Candy canes bonbon dragée jujubes chocolate bar. Cotton candy gummi
             bears toffee cake muffin caramels. Gummi bears danish liquorice ice
@@ -73,7 +73,7 @@ export default function Blog() {
             danish fruitcake chupa chups jujubes carrot cake bonbon. Halvah
             donut jelly halvah bonbon.
           </p>
-          <p className="py-6">
+          <p className="py-5">
             Biscuit sugar plum sweet chocolate cake sesame snaps soufflé
             topping. Gummies topping bonbon chocolate pudding cookie. Wafer
             icing cake pastry. Gummies candy dessert chupa chups lemon drops.

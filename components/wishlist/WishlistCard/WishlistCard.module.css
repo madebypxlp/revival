@@ -1,5 +1,5 @@
 .root {
-  @apply grid grid-cols-12 w-full gap-5 px-5 py-6 border-b  transition duration-100 ease-in-out;
+  @apply grid grid-cols-12 w-full gap-5 px-5 py-5 border-b  transition duration-100 ease-in-out;
 
   &:nth-child(3n + 1) {
     & .productBg {
