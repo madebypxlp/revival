@@ -12,6 +12,7 @@ import CartSidebarView from '@components/cart/CartSidebarView'
 import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
 import Button from '@components/ui/Button/Button'
+import { useIsMobile } from '@commerce/utils/hooks'
 
 const Loading = () => (
   <div className="w-100 h-80 flex items-center text-center justify-center p-3">
@@ -48,13 +49,14 @@ const Layout: FC<any> = ({ children }) => {
   } = useUI()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   const { locale = 'en-US' } = useRouter()
+  const isMobile = useIsMobile()
   return (
     <CommerceProvider locale={locale}>
       {true && process.env.NODE_ENV === 'development' && (
         <div className="fixed top-0 left-0 w-full h-full">
-          <div className="w-full h-full container">
-            <div className={'default-grid'}>
-              {Array(12)
+          <div className="devGrid w-full h-full container">
+            <div className={'default-grid h-full'}>
+              {Array(isMobile ? 2 : 12)
                 .fill({})
                 .map(() => {
                   return (

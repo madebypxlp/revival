@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 import '../styles/main.scss'
+import { useIsMobile } from '@commerce/utils/hooks'
 
 const Noop: FC = ({ children }) => <>{children}</>
 
@@ -21,6 +22,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ManagedUIContext>
         <Layout pageProps={pageProps}>
           <Component {...pageProps} />
+
         </Layout>
       </ManagedUIContext>
     </>
