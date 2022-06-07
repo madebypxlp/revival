@@ -7,16 +7,17 @@ import { useIsMobile } from '@commerce/utils/hooks'
 const ImageComponent: FunctionComponent<IImage> = ({
   image,
   className = '',
+  imgClassName = '',
   width = undefined,
   height = undefined,
 }) => {
   const isMobile = useIsMobile()
 
   return (
-    <div className={`${styles.root}`}>
+    <div className={`${styles.root} ${className}`}>
       {isMobile && image.mobileImage ? (
         <Image
-          className={className}
+          className={imgClassName}
           width={width || image.mobileImage.mediaDetails.width}
           height={height || image.mobileImage.mediaDetails.height}
           layout="responsive"
@@ -24,7 +25,7 @@ const ImageComponent: FunctionComponent<IImage> = ({
         />
       ) : (
         <Image
-          className={className}
+          className={imgClassName}
           width={width || image.desktopImage.mediaDetails.width}
           height={height || image.desktopImage.mediaDetails.height}
           layout="responsive"
