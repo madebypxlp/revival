@@ -5,7 +5,7 @@
   }
 
   :global(.swiper-pagination) {
-    @apply bottom-50;
+    @apply bottom-20 lg:bottom-50;
   }
 
   :global(.swiper-pagination-bullet) {

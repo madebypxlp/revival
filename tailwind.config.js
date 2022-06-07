@@ -7,6 +7,7 @@ const generateSpacings = (interval = 5, max = 300) => {
 }
 
 module.exports = {
+  important: 'body',
   future: {
     purgeLayersByDefault: true,
     applyComplexClasses: true,

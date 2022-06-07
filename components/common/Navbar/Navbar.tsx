@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import NavbarRoot from './NavbarRoot'
-import s from './Navbar.module.css'
+import s from './Navbar.module.scss'
 
 const Navbar: FC = () => (
   <NavbarRoot>

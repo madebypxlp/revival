@@ -1,14 +1,14 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
+import cn from 'classnames'
 import styles from './AccordionWithImage.module.scss'
 import IAccordionWithImage from './AccordionWithImage.interface'
 import ImageComponent from '@components/ui/Image/Image'
-import Accordion from '@components/ui/Accordion/Accordion'
 
 const AccordionWithImageModule: FunctionComponent<{
   module: IAccordionWithImage
 }> = ({ module }) => {
-  console.log(module)
   const { subline, headline, image, accordion } = module
+  const [visibleIndex, setVisibleIndex] = useState(-1)
   return (
     <div className={`${styles.root} container`}>
       <div className="default-grid">
@@ -20,10 +20,19 @@ const AccordionWithImageModule: FunctionComponent<{
           {headline && <h3>{headline}</h3>}
           <div>
             {accordion &&
-              accordion.map((item) => (
-                <Accordion title={item.headline}>
+              accordion.map((item, index) => (
+                <div
+                  key={item.headline}
+                  onClick={() => setVisibleIndex(index)}
+                  onMouseOver={() => setVisibleIndex(index)}
+                  className={`${cn(
+                    styles.accordionRoot,
+                    visibleIndex === index ? styles.visible : ''
+                  )}`}
+                >
+                  <h5 className="text-red font-bold">{item.headline}</h5>
                   <div dangerouslySetInnerHTML={{ __html: item.copy }} />
-                </Accordion>
+                </div>
               ))}
           </div>
         </div>

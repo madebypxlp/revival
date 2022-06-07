@@ -7,7 +7,7 @@ const { theme } = require('../../../tailwind.config')
  * @param breakPoint - tailwind breakpoint to use as max width, default is md
  * @returns isMobile - boolean
  */
-export function useIsMobile(defaultState = false, breakPoint = 'md') {
+export function useIsMobile(defaultState = false, breakPoint = 'lg') {
   const [isMobile, setIsMobile] = useState(defaultState)
   const bpWidth = theme.screens[breakPoint].replace('px', '')
 
