@@ -24,3 +24,150 @@
     url('./../assets/fonts/FOCOBOLD.woff') format('woff'),
     url('./../assets/fonts/FOCOBOLD.woff2') format('woff2');
 }
+
+
+
+@layer utilities {
+  .typo-h1,
+  h1 {
+    font-weight: 700;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: -0.02em;
+    @screen lg {
+      font-size: 8rem;
+      line-height: 8.5rem;
+    }
+  }
+
+  .typo-h2,
+  h2 {
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    letter-spacing: -0.02em;
+    @screen lg {
+      font-size: 7rem;
+      line-height: 7.5rem;
+    }
+  }
+
+  .typo-h3,
+  h3 {
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    letter-spacing: -0.02em;
+    @screen lg {
+      font-size: 5rem;
+      line-height: 5.5rem;
+    }
+  }
+
+  .typo-h4,
+  h4 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: -0.02em;
+    @screen lg {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+  }
+
+  .typo-h5,
+  h5 {
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  .typo-h6,
+  h6 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+  }
+
+  .typo-eyebrow {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.1em;
+    @screen lg {
+      font-size: 1.6rem;
+      line-height: 3rem;
+    }
+  }
+
+  .typo-large-paragraph {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    @screen lg {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+  }
+
+  .typo-small-paragraph {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    @screen lg {
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+    }
+  }
+
+  .typo-nav-links {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+    @screen lg {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  .typo-legal-text {
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    @screen lg {
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+  }
+
+  .typo-button-01 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    @screen lg {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  .typo-right-arrow-cta {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    @screen lg {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  .typo-hyperlink {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    @screen lg {
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+    }
+  }
+}

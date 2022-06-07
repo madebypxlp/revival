@@ -1,0 +1,54 @@
+.root {
+  display: inline-block;
+  a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    svg {
+      margin-left: 1rem;
+      height: 1rem;
+      width: auto;
+      @screen lg {
+        margin-left: 1.2rem;
+        height: 1.5rem;
+      }
+    }
+    &.down {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    &.right {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    &.blue {
+      color: theme('colors.blue.default');
+      svg path {
+        stroke: theme('colors.blue.default');
+      }
+    }
+    &.black {
+      color: theme('colors.black');
+      svg path {
+        stroke: theme('colors.black');
+      }
+    }
+    &.white {
+      color: theme('colors.white');
+      svg path {
+        stroke: theme('colors.white');
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      color: theme('colors.greyscale.4');
+      svg path {
+        stroke: theme('colors.greyscale.4');
+      }
+    }
+  }
+}

@@ -26,7 +26,7 @@ export default function Pages({
 }
 
 Pages.Layout = function getLayout(page: any) {
-  if (!Templates[page.pageProps.page.template.__typename])
+  if (!Templates[page?.pageProps?.page?.template.__typename])
     return Templates['default'](page.pageProps.page.template.__typename)
   return (
     <Layout

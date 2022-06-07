@@ -4,18 +4,50 @@ import IComponentRenderer from './ComponentRenderer.interface'
 import Tag from '../Tag/Tag'
 import Button from '../Button/Button'
 import PlusCTA from '../PlusCTA/PlusCTA'
+import ArrowCTA from '../ArrowCTA/ArrowCTA'
+import Link from '../Link/Link'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   return (
     <div className={`${styles.root} container`}>
       <div>
+        <div style={{ background: 'orange' }}>
+          <h1>Hyperlinks</h1>
+          <Link color="blue" href="/our-story">Hello World Hyperlink</Link>
+          <Link disabled color="blue" href="/our-story">Hello World Hyperlink</Link>
+        </div>
+        <div style={{ background: 'orange' }}>
+          <h1>Arrow CTA</h1>
+          <ArrowCTA
+            orientation="down"
+            color="black"
+            href="https://revival-wp.weareenvoy.net/our-story"
+          >
+            Right arrow CTA
+          </ArrowCTA>
+          <br /> <br />
+          <ArrowCTA orientation="right" color="blue" href="https://google.com">
+            Right arrow CTA
+          </ArrowCTA>
+          <br /> <br />
+          <ArrowCTA orientation="up" color="white" href="/our-story">
+            Right arrow CTA
+          </ArrowCTA>
+          <br /> <br />
+          <ArrowCTA disabled orientation="up" color="white" href="/our-story">
+            Right arrow CTA
+          </ArrowCTA>
+          <br /> <br />
+        </div>
         <div>
           <h1>Plus CTA</h1>
           <PlusCTA href="/our-story">Add to cart</PlusCTA>
           <br />
           <PlusCTA onClick={() => console.log('clicked')}>Add to cart</PlusCTA>
           <br />
-          <PlusCTA disabled onClick={() => console.log('clicked')}>Add to cart</PlusCTA>
+          <PlusCTA disabled onClick={() => console.log('clicked')}>
+            Add to cart
+          </PlusCTA>
         </div>
         <h1>Tags</h1>
         <Tag label="Hello World" variant="blue-filled" />

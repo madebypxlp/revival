@@ -26,11 +26,6 @@
       text-decoration: underline;
     }
   }
-  &:focus {
-    padding: 0.8rem;
-    border-radius: 2rem;
-    border: 1.5px solid theme('colors.black');
-  }
 
   &[disabled] {
     pointer-events: none;
