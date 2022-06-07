@@ -1,15 +1,25 @@
-import { GraphQLFetcherResult } from '@commerce/api'
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next'
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import pageQuery from './page-query'
+import learningCenterQuery from './learning-center-query'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
     pages {
+      edges {
+        node {
+          id
+          slug
+          uri
+        }
+      }
+    }
+  }
+`
+
+export const getAllLearningCenterDetailPagesQuery = /* GraphQL */ `
+  query getAllLearningCenterDetailPagesQuery {
+    allLearningCenter {
       edges {
         node {
           id
@@ -41,6 +51,28 @@ export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
   return res
 }
 
+export const getWpStaticLearningCenterDetailPaths = async (
+  ctx: GetStaticPropsContext
+) => {
+  const { allLearningCenter } = await fetch({
+    query: getAllLearningCenterDetailPagesQuery,
+  })
+  const res = {
+    paths: allLearningCenter.edges.map(
+      ({ node }: { node: { slug: string; uri: string; id: string } }) => ({
+        params: {
+          slug: node.uri
+            .substring(1)
+            .split('/')
+            .filter((i) => !!i),
+        },
+      })
+    ),
+    fallback: 'blocking',
+  }
+  return res
+}
+
 export const getWpStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
@@ -58,6 +90,28 @@ export const getWpStaticProps = async (
   return {
     props: {
       page: res.entry,
+    },
+    revalidate: undefined,
+  }
+}
+
+export const getLearningCenterDetailPageWpStaticProps = async (
+  ctx: GetStaticPropsContext
+): Promise<GetStaticPropsResult<any>> => {
+  const res = await fetch({
+    query: learningCenterQuery,
+    variables: {
+      uri: (ctx.params?.slug as string[])?.join('/') || '/',
+    },
+  })
+  if (!res) {
+    return {
+      notFound: true,
+    }
+  }
+  return {
+    props: {
+      learningCenter: res.entry,
     },
     revalidate: undefined,
   }

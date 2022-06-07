@@ -12,12 +12,22 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
   return (
     <div className={`${styles.root}`}>
       {!!carousel?.length && (
-        <Swiper pagination>
+        <Swiper pagination autoplay>
           {[...carousel, ...carousel, ...carousel].map((item) => {
             return (
-              <SwiperSlide className="relative">
-                <Image className="absolute inset-0" image={item.image} />
-                <div className="container">{item.headline}</div>
+              <SwiperSlide>
+                <div className="aspect-w-[1560] aspect-h-[619]">
+                  <Image
+                    className="!absolute inset-0"
+                    imgClassName="object-cover object-right-top"
+                    width={1560}
+                    height={619}
+                    image={item.image}
+                  />
+                  <div className="container flex flex-row items-center">
+                    {item.headline}
+                  </div>
+                </div>
               </SwiperSlide>
             )
           })}
