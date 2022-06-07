@@ -1,0 +1,11 @@
+.root {
+  @apply h-full flex flex-col;
+}
+
+.root.success {
+  @apply bg-green text-white;
+}
+
+.root.error {
+  @apply bg-red text-white;
+}
