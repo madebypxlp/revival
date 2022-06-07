@@ -15,3 +15,16 @@ html {
 body.loading * {
   transition: none !important;
 }
+
+button {
+  outline: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+
+  &:active,
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+    -webkit-appearance: none;
+  }
+}

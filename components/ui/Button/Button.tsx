@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styles from './Button.module.scss'
 import cn from 'classnames'
 import IButton from './Button.interface'
-import Link from '@components/ui/Link'
+import Link from 'next/link'
 
 const Button: FunctionComponent<IButton> = (props) => {
   const {
@@ -61,7 +61,13 @@ const Button: FunctionComponent<IButton> = (props) => {
     </button>
   )
 
-  return hrefStripped ? <Link href={hrefStripped}>{button}</Link> : button
+  return hrefStripped ? (
+    <Link href={hrefStripped}>
+      <a>{button}</a>
+    </Link>
+  ) : (
+    button
+  )
 }
 
 export default Button

@@ -3,11 +3,20 @@ import styles from './ComponentRenderer.module.scss'
 import IComponentRenderer from './ComponentRenderer.interface'
 import Tag from '../Tag/Tag'
 import Button from '../Button/Button'
+import PlusCTA from '../PlusCTA/PlusCTA'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   return (
     <div className={`${styles.root} container`}>
       <div>
+        <div>
+          <h1>Plus CTA</h1>
+          <PlusCTA href="/our-story">Add to cart</PlusCTA>
+          <br />
+          <PlusCTA onClick={() => console.log('clicked')}>Add to cart</PlusCTA>
+          <br />
+          <PlusCTA disabled onClick={() => console.log('clicked')}>Add to cart</PlusCTA>
+        </div>
         <h1>Tags</h1>
         <Tag label="Hello World" variant="blue-filled" />
         <Tag label="Hello World" variant="blue-outline" />

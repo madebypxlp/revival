@@ -37,15 +37,6 @@
   position: relative;
   font-weight: 700;
   transition: 400ms ease;
-  outline: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-
-  &:focus {
-    outline: none;
-    box-shadow: none;
-    -webkit-appearance: none;
-  }
 
   &.large {
     font-size: 1.8rem;
@@ -86,7 +77,7 @@
         @extend .yellow-default;
       }
     }
-    &:focus {
+    &:active {
       border: 3px solid theme('colors.blue.default');
     }
   }
@@ -103,7 +94,7 @@
       &:hover {
         @extend .blue-default;
       }
-      &:focus {
+      &:active {
         @extend .blue-default;
         &::after {
           content: '';
@@ -146,7 +137,7 @@
         color: theme('colors.blue.default');
       }
     }
-    &:focus {
+    &:active {
       color: theme('colors.blue.default');
       background: #fff;
 
