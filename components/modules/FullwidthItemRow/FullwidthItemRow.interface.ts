@@ -5,12 +5,14 @@ export default interface IFullwidthItemRow {
   backgroundColor: string
   headline: string
   subline: string
-  items: {
-    label: string
-    link: Link
-    icon: {
-      altText: string
-      sourceUrl: string
+  items: [
+    {
+      label: string
+      link: Link
+      icon: {
+        altText: string
+        sourceUrl: string
+      }
     }
-  }
+  ]
 }
