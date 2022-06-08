@@ -1,22 +1,27 @@
 import React, { FunctionComponent } from 'react'
 import styles from './FullwidthItemRow.module.scss'
 import IFullwidthItemRow from './FullwidthItemRow.interface'
-import ChevronRight from '@components/icons/ChevronRight'
 import Image from 'next/image'
-import Link from 'next/link'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import parse from 'html-react-parser'
 import { useIsMobile } from '@commerce/utils/hooks'
 
+const backgroundColors = {
+  red: 'bg-red',
+  blue: 'bg-blue',
+}
+
 const FullwidthItemRowModule: FunctionComponent<{
   module: IFullwidthItemRow
 }> = ({ module }) => {
-  const { headline, subline, items, backgroundColor } = module
+  const { headline, subline, items, backgroundColor = 'red' } = module
   const isMobile = useIsMobile()
 
   return (
     <div className={`${styles.root} container mt-20 mb-40 md:mt-60 md:mb-100`}>
-      <div className="bg-red rounded-[15px] default-grid pt-30 pb-20 md:pb-60">
+      <div
+        className={`${backgroundColors[backgroundColor]} rounded-[15px] default-grid pt-30 pb-20 md:pb-60`}
+      >
         <div className="col-span-2 text-white flex justify-center flex-col items-center md:col-span-4 md:items-start md:pl-35">
           <div className="typo-eyebrow text-16 leading-[30px] font-bold mb-10 tracking-widest">
             {subline}
