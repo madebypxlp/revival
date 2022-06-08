@@ -17,6 +17,7 @@ const Button: FunctionComponent<IButton> = (props) => {
     className = '',
     onClick,
     href,
+    target = '_self'
   } = props
 
   /**
@@ -47,7 +48,7 @@ const Button: FunctionComponent<IButton> = (props) => {
 
   return hrefStripped ? (
     <Link href={hrefStripped}>
-      <a>{button}</a>
+      <a target={target}>{button}</a>
     </Link>
   ) : (
     button
