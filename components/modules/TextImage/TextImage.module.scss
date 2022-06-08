@@ -1,7 +1,147 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: 0.5;
-  border-bottom: 1px solid black;
+  @apply py-50;
+
+  @screen md {
+    @apply py-80;
+  }
+
+  .row + .row {
+    margin-top: 6.5rem;
+
+    @screen md {
+      margin-top: 4rem;
+    }
+  }
+
+  .image_wrapper_right {
+  }
+
+  .image_wrapper {
+  }
+
+  .image_right {
+    overflow: hidden;
+    border-top-left-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+
+    @screen md {
+      border-top-left-radius: 20rem;
+      border-bottom-right-radius: 20rem;
+      border-top-right-radius: 3rem;
+      border-bottom-left-radius: 3rem;
+    }
+  }
+
+  .image_right_pattern1_wrapper {
+    @apply relative;
+    &::before {
+      content: ' ';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  .image_right_pattern1 {
+    border-radius: 50%;
+    border: 20px solid #FFF5D1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .image_right_pattern2_wrapper {
+    @apply relative w-50 justify-end;
+    z-index: 10;
+
+    @screen md {
+      @apply w-full;
+    }
+    &::before {
+      content: ' ';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  .image_right_pattern2 {
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #FFF5D1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .image_left {
+    overflow: hidden;
+    border-top-right-radius: 10rem;
+    border-bottom-left-radius: 10rem;
+    border-top-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+
+    @screen md {
+      border-top-right-radius: 20rem;
+      border-bottom-left-radius: 20rem;
+      border-top-left-radius: 3rem;
+      border-bottom-right-radius: 3rem;
+    }
+  }
+
+  .image_left_pattern1_wrapper {
+    @apply relative;
+    &::before {
+      content: ' ';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  .image_left_pattern1 {
+    border-radius: 50%;
+    background: #FFF5D1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .image_left_pattern2_block {
+    width: calc(25% + 2em);
+    &::before {
+      content: ' ';
+    }
+  }
+
+  .image_left_pattern2_wrapper {
+    @apply relative w-50 justify-end;
+    z-index: 10;
+
+    @screen md {
+      @apply w-full;
+    }
+    &::before {
+      content: ' ';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  .image_left_pattern2 {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 20px solid #FFF5D1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
 }
