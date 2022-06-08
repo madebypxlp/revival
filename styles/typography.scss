@@ -18,14 +18,12 @@
 
 @font-face {
   font-family: 'Foco';
-  font-weight: 500;
+  font-weight: 700;
   font-display: swap;
   src: url('./../assets/fonts/FOCOBOLD.TTF') format('ttf'),
     url('./../assets/fonts/FOCOBOLD.woff') format('woff'),
     url('./../assets/fonts/FOCOBOLD.woff2') format('woff2');
 }
-
-
 
 @layer utilities {
   .typo-h1,
@@ -95,6 +93,7 @@
     font-size: 1.1rem;
     line-height: 2.5rem;
     letter-spacing: 0.1em;
+    @apply uppercase;
     @screen md {
       font-size: 1.6rem;
       line-height: 3rem;
