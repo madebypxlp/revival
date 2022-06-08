@@ -1,7 +1,23 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: 0.5;
-  border-bottom: 1px solid black;
+  &::before {
+    content: '';
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 1;
+    @apply absolute inset-0;
+  }
+
+  .fact {
+    @screen md {
+      &:not(:last-of-type)::after {
+        content: '|';
+        display: inline-block;
+        margin-left: 0.7rem;
+      }
+    }
+  }
 }
