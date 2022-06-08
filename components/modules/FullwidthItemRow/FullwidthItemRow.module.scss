@@ -1,3 +1,6 @@
 .root {
-  opacity: 1;
+  .cta a::before {
+    content: '';
+    @apply absolute inset-0;
+  }
 }
