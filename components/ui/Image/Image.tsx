@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
-import IImage from './Image.interface'
+import { IImage } from './Image.interface'
 import styles from './Image.module.scss'
 import { useIsMobile } from '@commerce/utils/hooks'
 
@@ -10,28 +10,28 @@ const ImageComponent: FunctionComponent<IImage> = ({
   imgClassName = '',
   width = undefined,
   height = undefined,
+  layout = 'responsive',
 }) => {
   const isMobile = useIsMobile()
+  const img = () => {
+    return isMobile && image.mobileImage
+      ? image.mobileImage
+      : image.desktopImage
+  }
 
   return (
     <div className={`${styles.root} ${className}`}>
-      {isMobile && image.mobileImage ? (
-        <Image
-          className={imgClassName}
-          width={width || image.mobileImage.mediaDetails.width}
-          height={height || image.mobileImage.mediaDetails.height}
-          layout="responsive"
-          src={image.mobileImage.sourceUrl}
-        />
-      ) : (
-        <Image
-          className={imgClassName}
-          width={width || image.desktopImage.mediaDetails.width}
-          height={height || image.desktopImage.mediaDetails.height}
-          layout="responsive"
-          src={image.desktopImage.sourceUrl}
-        />
-      )}
+      <Image
+        className={imgClassName}
+        width={
+          layout === 'fill' ? undefined : width || img().mediaDetails.width
+        }
+        height={
+          layout === 'fill' ? undefined : height || img().mediaDetails.height
+        }
+        layout={layout}
+        src={img().sourceUrl}
+      />
     </div>
   )
 }
