@@ -7,11 +7,19 @@ import Link from 'next/link'
 import { cleanHref } from '@lib/utils'
 
 const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
-  const { href, color, orientation, children, disabled = false } = props
+  const {
+    href,
+    color,
+    orientation = 'right',
+    children,
+    disabled = false,
+    target,
+    link,
+  } = props
 
   return (
     <div className={styles.root}>
-      <Link href={cleanHref(href)}>
+      <Link href={cleanHref(link?.url || href)}>
         <a
           className={cn(
             styles[color],
@@ -20,8 +28,9 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
             'typo-right-arrow-cta',
             'rounded-focus-box'
           )}
+          target={link?.target || target}
         >
-          <div>{children}</div>
+          <div>{children || link?.title}</div>
           <div className={styles.icon}>
             <ChevronUp />
           </div>

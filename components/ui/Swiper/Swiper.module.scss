@@ -16,4 +16,12 @@
   :global(.swiper-bullet-active) {
     @apply bg-transparent;
   }
+
+  :global(.swiper-button-prev),
+  :global(.swiper-button-next) {
+    @apply w-50 md:w-70 h-auto;
+    &::before {
+      content: '';
+    }
+  }
 }
