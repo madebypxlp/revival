@@ -11,4 +11,5 @@ export default interface IButton {
   onClick?: () => void
   ariaLabel?: string
   href?: string
+  target?: string
 }

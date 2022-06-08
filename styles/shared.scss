@@ -1,0 +1,31 @@
+.rounded-focus-box {
+  &::after {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: -1.3rem;
+    right: -1.3rem;
+    bottom: -1rem;
+    border: 1.5px solid #000;
+    border-radius: 2rem;
+    opacity: 0;
+    transition: 400ms ease;
+  }
+  &:focus {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.wysiwyg {
+  p {
+    margin-bottom: 3rem;
+  }
+  b {
+    font-weight: 700;
+  }
+  a {
+    text-decoration: underline;
+  }
+}

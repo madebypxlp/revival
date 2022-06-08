@@ -4,6 +4,8 @@ import { fragment as HomeFragment } from '../../templates/Home'
 import { fragment as BrandListingFragment } from '../../templates/BrandListing'
 import { fragment as OurStoryFragment } from '../../templates/OurStory'
 import { fragment as VaccineExpertsFragment } from '../../templates/VaccineExperts'
+import { fragment as PrivacyPolicyFragment } from '../../templates/PrivacyPolicy'
+import { fragment as ContactUsFragment } from '../../templates/ContactUs'
 
 export default `
   ${Link}
@@ -12,6 +14,8 @@ export default `
   ${BrandListingFragment}
   ${OurStoryFragment}
   ${VaccineExpertsFragment}
+  ${PrivacyPolicyFragment}
+  ${ContactUsFragment}
   query page($uri: String) {
     entry: pageBy(uri: $uri) {
       id
@@ -31,6 +35,12 @@ export default `
         }
         ... on Template_VaccineExperts {
           ...TemplateVaccineExperts
+        }
+        ... on Template_PrivacyPolicy {
+          ...TemplatePrivacyPolicy
+        }
+        ... on Template_ContactUs {
+          ...TemplateContactUs
         }
       }
     }
