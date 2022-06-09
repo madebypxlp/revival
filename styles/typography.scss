@@ -68,10 +68,6 @@
     font-size: 2.5rem;
     line-height: 3rem;
     letter-spacing: -0.02em;
-    @screen md {
-      font-size: 3.5rem;
-      line-height: 4rem;
-    }
   }
 
   .typo-h5,
@@ -168,5 +164,11 @@
       font-size: 1.8rem;
       line-height: 2.8rem;
     }
+  }
+
+  .typo-fact {
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 3rem;
   }
 }
