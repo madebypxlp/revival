@@ -17,6 +17,8 @@ const Button: FunctionComponent<IButton> = (props) => {
     className = '',
     onClick,
     href,
+    target = '_self',
+    link,
   } = props
 
   /**
@@ -26,12 +28,14 @@ const Button: FunctionComponent<IButton> = (props) => {
     if (onClick) onClick()
   }
 
-  const hrefStripped = cleanHref(href)
+  const hrefStripped = cleanHref(link?.url || href)
+  const Type = hrefStripped ? 'a' : 'button'
   const button = (
-    <button
+    <Type
       disabled={disabled}
       aria-label={ariaLabel}
       onClick={handleClick}
+      target={link?.target || target}
       className={`${cn(
         className,
         styles.root,
@@ -41,17 +45,11 @@ const Button: FunctionComponent<IButton> = (props) => {
         outline ? styles.outline : null
       )}`}
     >
-      {children}
-    </button>
+      {children || link?.title}
+    </Type>
   )
 
-  return hrefStripped ? (
-    <Link href={hrefStripped}>
-      <a>{button}</a>
-    </Link>
-  ) : (
-    button
-  )
+  return hrefStripped ? <Link href={hrefStripped}>{button}</Link> : button
 }
 
 export default Button

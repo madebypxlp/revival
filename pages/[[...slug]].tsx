@@ -6,6 +6,8 @@ import TemplateBrandListing from '../templates/BrandListing'
 import TemplateOurStory from '../templates/OurStory'
 import TemplateVaccineExperts from '../templates/VaccineExperts'
 import { PageInterface } from 'framework/wordpress/page-query'
+import TemplatePrivacyPolicy from 'templates/PrivacyPolicy'
+import TemplateContactUs from 'templates/ContactUs'
 
 export const getStaticProps = getWpStaticProps
 
@@ -16,6 +18,8 @@ const Templates: { [k: string]: any } = {
   Template_BrandListing: TemplateBrandListing,
   Template_OurStory: TemplateOurStory,
   Template_VaccineExperts: TemplateVaccineExperts,
+  Template_PrivacyPolicy: TemplatePrivacyPolicy,
+  Template_ContactUs: TemplateContactUs,
   default: (t: string) => <div>TEMPLATE "{t}" NOT FOUND</div>,
 }
 
