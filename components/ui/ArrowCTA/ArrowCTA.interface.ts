@@ -9,4 +9,5 @@ export default interface IArrowCTA {
   orientation: 'up' | 'down' | 'right'
   disabled?: boolean
   link?: Link
+  className?: string
 }

@@ -1,7 +1,6 @@
 .root {
-
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  .cta a::before {
+    content: '';
+    @apply absolute inset-0;
+  }
 }
