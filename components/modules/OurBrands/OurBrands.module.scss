@@ -3,7 +3,9 @@
   @apply bg-cream;
 
   .headline {
-    @apply text-blue mb-35;
+    @apply text-blue typo-h2;
+    font-size: 2.5rem;
+    line-height: 3rem;
     @screen md {
       font-size: 3.5rem;
       line-height: 4rem;
