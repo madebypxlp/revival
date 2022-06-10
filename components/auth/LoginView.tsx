@@ -80,9 +80,9 @@ const LoginView: FC<Props> = () => {
         <Input type="password" placeholder="Password" onChange={setPassword} />
 
         <Button
-          variant="slim"
-          type="submit"
-          loading={loading}
+          variant="small"
+          type="default"
+          color="yellow"
           disabled={disabled}
         >
           Log In

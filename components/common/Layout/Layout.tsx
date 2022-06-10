@@ -90,7 +90,7 @@ const Layout: FC<any> = ({ children }) => {
           title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
           hide={acceptedCookies}
           action={
-            <Button className="mx-5" onClick={() => onAcceptCookies()}>
+            <Button color="white" type="default" variant="small" className="mx-5" onClick={() => onAcceptCookies()}>
               Accept cookies
             </Button>
           }

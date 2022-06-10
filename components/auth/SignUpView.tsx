@@ -87,12 +87,7 @@ const SignUpView: FC<Props> = () => {
           </span>
         </span>
         <div className="pt-2 w-full flex flex-col">
-          <Button
-            variant="slim"
-            type="submit"
-            loading={loading}
-            disabled={disabled}
-          >
+          <Button color="yellow" variant="small" type="default" disabled={disabled}>
             Sign Up
           </Button>
         </div>
