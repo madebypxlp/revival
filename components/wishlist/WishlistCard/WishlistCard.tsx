@@ -77,10 +77,11 @@ const WishlistCard: FC<Props> = ({ product }) => {
         </div>
         <Button
           aria-label="Add to Cart"
-          type="button"
+          type="default"
+          variant="large"
+          color="yellow"
           className={'py-1 px-5 border  rounded-md shadow-sm hover:-hover'}
           onClick={addToCart}
-          loading={loading}
         >
           Add to Cart
         </Button>

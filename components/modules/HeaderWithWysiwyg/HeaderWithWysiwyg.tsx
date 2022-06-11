@@ -21,7 +21,7 @@ const HeaderWithWysiwygModule: FunctionComponent<{
           {headline && <h2 className="text-blue-default pb-50">{headline}</h2>}
           {link && (
             <Button
-              className='mb-85'
+              className="mb-85"
               href={link.url}
               target={link.target}
               variant="small"

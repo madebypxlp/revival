@@ -7,7 +7,6 @@ export default interface ITextImage {
     {
       buttonLink: Link
       classicLink: Link
-
       flipOrientation: boolean
       copy: string
       headline: string

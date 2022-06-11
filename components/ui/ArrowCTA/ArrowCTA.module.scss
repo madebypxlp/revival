@@ -1,7 +1,8 @@
 .root {
-  display: inline-block;
+  display: inline-flex;
   a {
-    display: inline-flex;
+    position: relative;
+    display: flex;
     align-items: center;
 
     &.right:hover {

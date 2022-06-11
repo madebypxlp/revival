@@ -39,9 +39,10 @@ const Swatch: FC<Omit<IButton, 'variant'> & Props> = ({
   return (
     <Button
       className={rootClassName}
-      style={color ? { backgroundColor: color } : {}}
+      variant="small"
+      color="yellow"
       aria-label="Variant Swatch"
-      {...props}
+      type="default"
     >
       {variant === 'color' && active && (
         <span>

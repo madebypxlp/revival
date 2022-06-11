@@ -30,7 +30,8 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
       {!!carousel?.length && (
         <Swiper
           pagination
-          autoplay
+          loop
+          autoplay={{ disableOnInteraction: false, delay: 8000 }}
           onSwiper={(s) => setSwiperInstance(s)}
           onAutoplayStop={() => setSwiperAutoplaying(false)}
           onAutoplayStart={() => setSwiperAutoplaying(true)}

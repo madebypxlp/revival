@@ -1,7 +1,61 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: 0.5;
-  border-bottom: 1px solid black;
+  @apply py-20;
+  @screen md {
+    @apply py-85;
+  }
+
+  .card + .card {
+    // @apply mt-20;
+  }
+
+  .card {
+    &+ .card {
+      @apply mt-20;
+      @screen md {
+        @apply mt-0;
+      }
+    }
+  }
+
+  .headline {
+    @apply absolute text-white z-10 typo-h4;
+    bottom: 6rem;
+    left: 2.5rem;
+    right: 4rem;
+    @screen md {
+      @apply typo-h3;
+      bottom: 14rem;
+      right: 10rem;
+      left: 6rem;
+    }
+  }
+
+  .image {
+    @apply overflow-hidden;
+    border-radius: 1rem;
+    @screen md {
+      border-radius: 1.5rem;
+    }
+  }
+
+  .link {
+    @apply absolute z-10;
+    bottom: 1.5rem;
+    left: 2.5rem;
+    height: 4rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    @screen md {
+      height: 5rem;
+      bottom: 6rem;
+      left: 6rem;
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+      padding-top: 1.35rem;
+      padding-bottom: 1.35rem;
+    }
+  }
 }

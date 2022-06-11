@@ -12,11 +12,11 @@ export declare type IImage = {
   | {
       width?: never
       height?: never
-      layout: 'fill'
+      layout?: 'fill'
     }
   | {
       width: number | string
       height: number | string
-      layout?: ['fixed', 'intrinsic', 'responsive', undefined]
+      layout?: 'fixed' | 'intrinsic' | 'responsive' | undefined
     }
 )

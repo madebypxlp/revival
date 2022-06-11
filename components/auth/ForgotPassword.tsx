@@ -52,9 +52,9 @@ const ForgotPassword: FC<Props> = () => {
         <Input placeholder="Email" onChange={setEmail} type="email" />
         <div className="pt-2 w-full flex flex-col">
           <Button
-            variant="slim"
-            type="submit"
-            loading={loading}
+            color="yellow"
+            variant="small"
+            type="default"
             disabled={disabled}
           >
             Recover Password
