@@ -40,20 +40,15 @@ const FeatureBar = dynamic(
 )
 
 const Layout: FC<any> = ({ children }) => {
-  const {
-    displaySidebar,
-    displayModal,
-    closeSidebar,
-    closeModal,
-    modalView,
-  } = useUI()
+  const { displaySidebar, displayModal, closeSidebar, closeModal, modalView } =
+    useUI()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   const { locale = 'en-US' } = useRouter()
   const isMobile = useIsMobile()
   return (
     <CommerceProvider locale={locale}>
       {true && process.env.NODE_ENV === 'development' && (
-        <div className="fixed top-0 left-0 w-full h-full">
+        <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
           <div className="devGrid w-full h-full container">
             <div className={'default-grid h-full'}>
               {Array(isMobile ? 2 : 12)

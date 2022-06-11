@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from '@components/interfaces/Link'
 
 export default interface IButton {
   variant: 'large' | 'small'
@@ -6,10 +7,11 @@ export default interface IButton {
   color: 'yellow' | 'blue' | 'red' | 'white' | 'black'
   outline?: boolean
   disabled?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
   onClick?: () => void
   ariaLabel?: string
   href?: string
   target?: string
+  link?: Link
 }
