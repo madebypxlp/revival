@@ -111,7 +111,8 @@ const ProductView: FC<Props> = ({ product }) => {
                       opt.displayName.toLowerCase()
                     ]
 
-                    return (
+                    return null
+                    /*
                       <Swatch
                         key={`${opt.id}-${i}`}
                         active={v.label.toLowerCase() === active}
@@ -128,7 +129,7 @@ const ProductView: FC<Props> = ({ product }) => {
                           })
                         }}
                       />
-                    )
+                      */
                   })}
                 </div>
               </div>
@@ -140,10 +141,11 @@ const ProductView: FC<Props> = ({ product }) => {
           </section>
           <div>
             <Button
-              type="button"
+              type="default"
               className={s.button}
               onClick={addToCart}
-              loading={loading}
+              variant="large"
+              color="yellow"
               disabled={!variant && product.options.length > 0}
             >
               Add to Cart

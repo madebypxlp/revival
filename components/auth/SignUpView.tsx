@@ -42,7 +42,7 @@ const SignUpView: FC<Props> = () => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
@@ -88,9 +88,9 @@ const SignUpView: FC<Props> = () => {
         </span>
         <div className="pt-2 w-full flex flex-col">
           <Button
-            variant="slim"
-            type="submit"
-            loading={loading}
+            color="yellow"
+            variant="small"
+            type="default"
             disabled={disabled}
           >
             Sign Up

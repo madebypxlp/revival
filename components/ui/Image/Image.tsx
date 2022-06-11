@@ -18,20 +18,19 @@ const ImageComponent: FunctionComponent<IImage> = ({
       ? image.mobileImage
       : image.desktopImage
   }
-
   return (
     <div className={`${styles.root} ${className}`}>
-      <Image
-        className={imgClassName}
-        width={
-          layout === 'fill' ? undefined : width || img().mediaDetails.width
-        }
-        height={
-          layout === 'fill' ? undefined : height || img().mediaDetails.height
-        }
-        layout={layout}
-        src={img().sourceUrl}
-      />
+      {layout === 'fill' ? (
+        <Image className={imgClassName} layout="fill" src={img().sourceUrl} />
+      ) : (
+        <Image
+          className={imgClassName}
+          width={img().mediaDetails.width}
+          height={img().mediaDetails.height}
+          layout={layout}
+          src={img().sourceUrl}
+        />
+      )}
     </div>
   )
 }

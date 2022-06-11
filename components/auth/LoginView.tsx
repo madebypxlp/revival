@@ -37,7 +37,7 @@ const LoginView: FC<Props> = () => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
@@ -80,9 +80,9 @@ const LoginView: FC<Props> = () => {
         <Input type="password" placeholder="Password" onChange={setPassword} />
 
         <Button
-          variant="slim"
-          type="submit"
-          loading={loading}
+          variant="small"
+          type="default"
+          color="yellow"
           disabled={disabled}
         >
           Log In
