@@ -38,7 +38,7 @@ export default function Pages({
 }
 
 Pages.Layout = function getLayout(page: any) {
-  console.log(page)
+  if (page?.pageProps?.page === null) return null
   if (!Templates[page?.pageProps?.page?.template.__typename])
     return Templates['default'](page.pageProps.page.template.__typename)
   return (
