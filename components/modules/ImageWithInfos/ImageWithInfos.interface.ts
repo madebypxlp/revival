@@ -1,4 +1,4 @@
-import Image from '@components/interfaces/Image'
+import Image, { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 
 export default interface IImageWithInfos {
@@ -8,17 +8,11 @@ export default interface IImageWithInfos {
   subline: string
   link: Link
   image: Image
-  sublineImage: {
-    sourceUrl: string
-    altText: string
-  }
+  sublineImage: MediaItem
   facts: [
     {
       text: string
-      icon: {
-        sourceUrl: string
-        altText: string
-      }
+      icon: MediaItem
     }
   ]
 }

@@ -1,3 +1,4 @@
+import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 
 export default interface IFullwidthItemRow {
@@ -9,10 +10,7 @@ export default interface IFullwidthItemRow {
     {
       label: string
       link: Link
-      icon: {
-        altText: string
-        sourceUrl: string
-      }
+      icon: MediaItem
     }
   ]
 }

@@ -1,3 +1,4 @@
+import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 
 export default interface IShopByCategory {
@@ -6,10 +7,7 @@ export default interface IShopByCategory {
   categories: [
     {
       link: Link
-      image: {
-        sourceUrl: string
-        altText: string
-      }
+      image: MediaItem
     }
   ]
 }
