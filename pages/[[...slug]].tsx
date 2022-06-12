@@ -9,6 +9,7 @@ import { PageInterface } from 'framework/wordpress/page-query'
 import TemplatePrivacyPolicy from 'templates/PrivacyPolicy'
 import TemplateContactUs from 'templates/ContactUs'
 import TemplateCareers from 'templates/Careers'
+import TemplatePawSquad from 'templates/PawSquad'
 
 export const getStaticProps = getWpStaticProps
 
@@ -22,6 +23,7 @@ const Templates: { [k: string]: any } = {
   Template_PrivacyPolicy: TemplatePrivacyPolicy,
   Template_ContactUs: TemplateContactUs,
   Template_Careers: TemplateCareers,
+  Template_PawSquad: TemplatePawSquad,
   default: (t: string) => <div>TEMPLATE "{t}" NOT FOUND</div>,
 }
 
