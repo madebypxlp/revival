@@ -2,6 +2,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import pageQuery from './page-query'
 import learningCenterQuery from './learning-center-query'
+import globalsQuery from './globals'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
@@ -82,7 +83,7 @@ export const getWpStaticProps = async (
       uri: (ctx.params?.slug as string[])?.join('/') || '/',
     },
   })
-  if (!res) {
+  if (!res || !res.entry) {
     return {
       notFound: true,
     }
@@ -90,6 +91,20 @@ export const getWpStaticProps = async (
   return {
     props: {
       page: res.entry,
+    },
+    revalidate: undefined,
+  }
+}
+
+export const getWpData = async (
+  ctx: GetStaticPropsContext
+): Promise<GetStaticPropsResult<any>> => {
+  const res = await fetch({
+    query: globalsQuery,
+  })
+  return {
+    props: {
+      ...res,
     },
     revalidate: undefined,
   }
