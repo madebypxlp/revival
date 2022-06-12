@@ -37,7 +37,7 @@ const FullwidthItemRowModule: FunctionComponent<{
           items.map((item, idx) => {
             return (
               <div
-                key={item.link.title}
+                key={item?.link?.title}
                 className="text-white col-span-2 mb-20 pl-20 pr-30 md:px-0  md:mb-0 md:self-end"
               >
                 <div className="relative flex items-center md:flex-col">

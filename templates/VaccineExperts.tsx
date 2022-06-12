@@ -2,10 +2,15 @@ import CustomerReviewSlider from '@components/modules/CustomerReviewSlider/Custo
 import CustomerReviewSliderFragment from '@components/modules/CustomerReviewSlider/CustomerReviewSlider.graphql'
 import FullwidthItemRowModule from '@components/modules/FullwidthItemRow/FullwidthItemRow'
 import FullwidthItemRowFragment from '@components/modules/FullwidthItemRow/FullwidthItemRow.graphql'
+import TextImageHeroModule from '@components/modules/TextImageHero/TextImageHero'
+import TextImageHeroFragment from '@components/modules/TextImageHero/TextImageHero.graphql'
 
 const VaccineExperts = (props: any) => {
   return (
     <div>
+      <TextImageHeroModule
+        module={props.template.pageVaccineExperts.textImageHero}
+      />
       <FullwidthItemRowModule
         module={props.template.pageVaccineExperts.fullwidthItemRow}
       />
@@ -22,6 +27,7 @@ const TEMPLATE_PREFIX = 'Template_VaccineExperts_Pagevaccineexperts'
 export const fragment = `
   ${CustomerReviewSliderFragment(TEMPLATE_PREFIX)}
   ${FullwidthItemRowFragment(TEMPLATE_PREFIX)}
+  ${TextImageHeroFragment(TEMPLATE_PREFIX)}
   fragment TemplateVaccineExperts on Template_VaccineExperts
   {
     templateName
@@ -32,6 +38,9 @@ export const fragment = `
       }
       customerReviewSlider {
         ...CustomerReviewSlider_${TEMPLATE_PREFIX}
+      }
+      textImageHero {
+        ...TextImageHero_${TEMPLATE_PREFIX}
       }
     }
   }
