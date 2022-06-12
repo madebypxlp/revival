@@ -1,3 +1,4 @@
+import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 
 export default interface IResourceGrid {
@@ -7,10 +8,7 @@ export default interface IResourceGrid {
   featuredResource: {
     id: string
     featuredImage: {
-      node: {
-        sourceUrl: string
-        altText: string
-      }
+      node: MediaItem
     }
     title: string
   }

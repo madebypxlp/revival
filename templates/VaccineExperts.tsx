@@ -1,3 +1,5 @@
+import ContentAccordionModule from '@components/modules/ContentAccordion/ContentAccordion'
+import ContentAccordionFragment from '@components/modules/ContentAccordion/ContentAccordion.graphql'
 import CustomerReviewSlider from '@components/modules/CustomerReviewSlider/CustomerReviewSlider'
 import CustomerReviewSliderFragment from '@components/modules/CustomerReviewSlider/CustomerReviewSlider.graphql'
 import FullwidthItemRowModule from '@components/modules/FullwidthItemRow/FullwidthItemRow'
@@ -17,6 +19,9 @@ const VaccineExperts = (props: any) => {
       <CustomerReviewSlider
         module={props.template.pageVaccineExperts.inlineText}
       />
+      <ContentAccordionModule
+        module={props.template.pageVaccineExperts.contentAccordion}
+      />
     </div>
   )
 }
@@ -28,6 +33,7 @@ export const fragment = `
   ${CustomerReviewSliderFragment(TEMPLATE_PREFIX)}
   ${FullwidthItemRowFragment(TEMPLATE_PREFIX)}
   ${TextImageHeroFragment(TEMPLATE_PREFIX)}
+  ${ContentAccordionFragment(TEMPLATE_PREFIX)}
   fragment TemplateVaccineExperts on Template_VaccineExperts
   {
     templateName
@@ -41,6 +47,9 @@ export const fragment = `
       }
       textImageHero {
         ...TextImageHero_${TEMPLATE_PREFIX}
+      }
+      contentAccordion {
+        ...ContentAccordion_${TEMPLATE_PREFIX}
       }
     }
   }
