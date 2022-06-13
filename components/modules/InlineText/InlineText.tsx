@@ -15,7 +15,7 @@ const InlineTextModule: FunctionComponent<{ module: IInlineText }> = ({
           {module.headline && (
             <h3
               style={{
-                color: module.headlineColor,
+                color: module.headlineColor || 'blue',
               }}
               className={styles.headline}
             >
