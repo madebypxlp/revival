@@ -13,3 +13,12 @@ export const cleanHref = (href: string | undefined) => {
 
   return href || '/'
 }
+
+export const isEmailValid = (email: string) => {
+  // https://en.wikipedia.org/wiki/Email_address
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#basic_validation
+  // eslint-disable-next-line
+  const regex =
+    /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+  return email.match(regex)
+}

@@ -6,6 +6,7 @@ import Button from '../Button/Button'
 import PlusCTA from '../PlusCTA/PlusCTA'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Link from '../Link/Link'
+import Input from '../Input/Input'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   return (
@@ -13,8 +14,12 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       <div>
         <div style={{ background: 'orange' }}>
           <h1>Hyperlinks</h1>
-          <Link color="blue" href="/our-story">Hello World Hyperlink</Link>
-          <Link disabled color="blue" href="/our-story">Hello World Hyperlink</Link>
+          <Link color="blue" href="/our-story">
+            Hello World Hyperlink
+          </Link>
+          <Link disabled color="blue" href="/our-story">
+            Hello World Hyperlink
+          </Link>
         </div>
         <div style={{ background: 'orange' }}>
           <h1>Arrow CTA</h1>
@@ -108,6 +113,12 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         >
           internal link test
         </Button>
+      </div>
+      <div>
+        <h1>Input</h1>
+        <form action="">
+          <Input placeholder="Test"></Input>
+        </form>
       </div>
     </div>
   )

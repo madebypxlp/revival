@@ -1,5 +1,7 @@
 .root {
-  @apply  py-5 px-5 w-full appearance-none transition duration-150 ease-in-out pr-10 border  ;
+  @apply  py-15 px-20 w-full appearance-none transition duration-150 ease-in-out;
+  border-radius: 1.5rem;
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .root:focus {

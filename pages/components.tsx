@@ -5,7 +5,7 @@ import ComponentRenderer from '@components/ui/ComponentRenderer/ComponentRendere
 
 export const getStaticProps = getWpStaticProps
 
-export const getStaticPaths = getWpStaticPaths
+// export const getStaticPaths = getWpStaticPaths
 
 export default function Pages({
   page,
