@@ -1,7 +1,11 @@
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: 0.5;
-  border-bottom: 1px solid black;
+  a > span {
+    text-decoration: underline;
+    text-decoration-color: rgba(#000, 0);
+    @apply transition duration-500;
+  }
+
+  a:hover > span {
+    @apply decoration-black;
+  }
 }

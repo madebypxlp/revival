@@ -13,7 +13,7 @@ const ImageInfoSliderModule: FunctionComponent<{
       <Swiper slidesPerView={2} navigation>
         {module.slides.map((e) => (
           <SwiperSlide>
-            <ImageComponent width={1} height={1} image={e.image} />
+            <ImageComponent image={e.image} />
             {e.headline}
           </SwiperSlide>
         ))}
