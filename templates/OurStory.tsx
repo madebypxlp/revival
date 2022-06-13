@@ -2,6 +2,8 @@ import AccordionWithImageModule from '@components/modules/AccordionWithImage/Acc
 import AccordionWithImageFragment from '@components/modules/AccordionWithImage/AccordionWithImage.graphql'
 import ImageInfoSliderModule from '@components/modules/ImageInfoSlider/ImageInfoSlider'
 import ImageInfoSliderFragment from '@components/modules/ImageInfoSlider/ImageInfoSlider.graphql'
+import ImageWithInfosModule from '@components/modules/ImageWithInfos/ImageWithInfos'
+import ImageWithInfosFragment from '@components/modules/ImageWithInfos/ImageWithInfos.graphql'
 import InlineText from '@components/modules/InlineText/InlineText'
 import InlineTextFragment from '@components/modules/InlineText/InlineText.graphql'
 import TextImageHeroModule from '@components/modules/TextImageHero/TextImageHero'
@@ -23,6 +25,9 @@ const OurStory = (props: any) => {
       <AccordionWithImageModule
         module={props.template.pageOurStory.accordionWithImage}
       />
+      <ImageWithInfosModule
+        module={props.template.pageOurStory.imageWithInfos}
+      />
     </div>
   )
 }
@@ -36,6 +41,7 @@ export const fragment = `
   ${TextImageHeroFragment(TEMPLATE_PREFIX)}
   ${ImageInfoSliderFragment(TEMPLATE_PREFIX)}
   ${ThreeColumnCopyFragment(TEMPLATE_PREFIX)}
+  ${ImageWithInfosFragment(TEMPLATE_PREFIX)}
 
   fragment TemplateOurStory on Template_OurStory
   {
@@ -56,6 +62,9 @@ export const fragment = `
       }
       threeColumnCopy {
         ...ThreeColumnCopy_${TEMPLATE_PREFIX}
+      }
+      imageWithInfos {
+        ...ImageWithInfos_${TEMPLATE_PREFIX}
       }
     }
   }

@@ -4,8 +4,12 @@ import CustomerReviewSlider from '@components/modules/CustomerReviewSlider/Custo
 import CustomerReviewSliderFragment from '@components/modules/CustomerReviewSlider/CustomerReviewSlider.graphql'
 import FullwidthItemRowModule from '@components/modules/FullwidthItemRow/FullwidthItemRow'
 import FullwidthItemRowFragment from '@components/modules/FullwidthItemRow/FullwidthItemRow.graphql'
+import ShopByCategoryModule from '@components/modules/ShopByCategory/ShopByCategory'
+import ShopByCategoryFragment from '@components/modules/ShopByCategory/ShopByCategory.graphql'
 import TextImageHeroModule from '@components/modules/TextImageHero/TextImageHero'
 import TextImageHeroFragment from '@components/modules/TextImageHero/TextImageHero.graphql'
+import VideoGridModule from '@components/modules/VideoGrid/VideoGrid'
+import VideoGridFragment from '@components/modules/VideoGrid/VideoGrid.graphql'
 
 const VaccineExperts = (props: any) => {
   return (
@@ -19,6 +23,10 @@ const VaccineExperts = (props: any) => {
       <CustomerReviewSlider
         module={props.template.pageVaccineExperts.inlineText}
       />
+      <ShopByCategoryModule
+        module={props.template.pageVaccineExperts.shopByCategory}
+      />
+      <VideoGridModule module={props.template.pageVaccineExperts.videoGrid} />
       <ContentAccordionModule
         module={props.template.pageVaccineExperts.contentAccordion}
       />
@@ -34,6 +42,8 @@ export const fragment = `
   ${FullwidthItemRowFragment(TEMPLATE_PREFIX)}
   ${TextImageHeroFragment(TEMPLATE_PREFIX)}
   ${ContentAccordionFragment(TEMPLATE_PREFIX)}
+  ${ShopByCategoryFragment(TEMPLATE_PREFIX)}
+  ${VideoGridFragment(TEMPLATE_PREFIX)}
   fragment TemplateVaccineExperts on Template_VaccineExperts
   {
     templateName
@@ -50,6 +60,12 @@ export const fragment = `
       }
       contentAccordion {
         ...ContentAccordion_${TEMPLATE_PREFIX}
+      }
+      shopByCategory {
+        ...ShopByCategory_${TEMPLATE_PREFIX}
+      }
+      videoGrid {
+        ...VideoGrid_${TEMPLATE_PREFIX}
       }
     }
   }

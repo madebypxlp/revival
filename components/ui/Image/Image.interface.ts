@@ -15,8 +15,6 @@ export declare type IImage = {
       layout?: 'fill'
     }
   | {
-      width: number | string
-      height: number | string
       layout?: 'fixed' | 'intrinsic' | 'responsive' | undefined
     }
 )
