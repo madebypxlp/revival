@@ -1,3 +1,47 @@
 .root {
   // add your styles here
+
+  :global {
+    .select {
+      &__control {
+        @apply border-none outline-none shadow-none appearance-none;
+        @apply rounded-15 bg-black bg-opacity-5;
+        @apply font-bold text-black;
+        font-size: 2rem;
+        line-height: 1.5;
+        min-height: 6rem;
+      }
+
+      &__dropdown {
+        &-indicator {
+          @apply px-20;
+        }
+      }
+
+      &__value-container {
+        @apply px-20;
+      }
+
+      &__input-container {
+        @apply text-current;
+      }
+
+      &__placeholder {
+        @apply text-black text-opacity-30;
+      }
+
+      &__option {
+        font-size: 2rem;
+        line-height: 1.5;
+        @apply px-20;
+      }
+
+      &__menu {
+        @apply rounded-15 overflow-hidden;
+        &-list {
+          @apply p-0;
+        }
+      }
+    }
+  }
 }

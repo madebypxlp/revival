@@ -43,6 +43,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-merge-refs": "^1.1.0",
+    "react-select": "^5.3.2",
     "react-ticker": "^1.2.2",
     "shopify-buy": "^2.11.0",
     "swiper": "^6.8.1",

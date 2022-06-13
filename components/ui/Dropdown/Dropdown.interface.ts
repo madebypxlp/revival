@@ -1,3 +1,22 @@
+import {
+  OnChangeValue,
+  GroupBase,
+  OptionsOrGroups,
+  ActionMeta,
+} from 'react-select'
+
+export interface IDropdownOption {
+  value: string
+  label: string
+}
+
 export default interface IDropdown {
-  fieldGroupName: string
+  placeholder: string
+  defaultInputValue?: string
+  className?: string
+  onChange: (
+    newValue: OnChangeValue<IDropdownOption, boolean>,
+    actionMeta: ActionMeta<IDropdownOption>
+  ) => void
+  options: OptionsOrGroups<IDropdownOption, GroupBase<IDropdownOption>>
 }

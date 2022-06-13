@@ -30,6 +30,45 @@ module.exports = {
       ...generateSpacings(1, 20),
       ...generateSpacings(),
     },
+    borderRadius: {
+      none: '0',
+      DEFAULT: '1.5rem',
+      15: '1.5rem',
+      30: '3rem',
+      100: '10rem',
+      200: '20rem',
+      full: '9999px',
+    },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: '#000',
+      blue: {
+        DEFAULT: '#00338D',
+        default: '#00338D',
+        light: '#5096D9',
+      },
+      red: '#C30045',
+      cream: {
+        DEFAULT: '#F3F1E8',
+        dark: '#ECEAE1',
+      },
+      white: '#fff',
+      yellow: {
+        DEFAULT: '#FFD749',
+        default: '#FFD749',
+        light: '#FFF5D1',
+      },
+      greyscale: {
+        1: '#404040',
+        2: '#666666',
+        3: '#B3B3B3',
+        4: '#C4C4C4',
+        5: '#E6E6E6',
+        6: '#F5F5F5',
+      },
+      green: '#2E9775',
+    },
     extend: {
       aspectRatio: {
         '3120/1238': '3120 / 1238',
@@ -42,34 +81,6 @@ module.exports = {
       },
       gap: {
         20: '2rem',
-      },
-      colors: {
-        black: '#000',
-        blue: {
-          DEFAULT: '#00338D',
-          default: '#00338D',
-          light: '#5096D9',
-        },
-        red: '#C30045',
-        cream: {
-          DEFAULT: '#F3F1E8',
-          dark: '#ECEAE1',
-        },
-        white: '#fff',
-        yellow: {
-          DEFAULT: '#FFD749',
-          default: '#FFD749',
-          light: '#FFF5D1',
-        },
-        greyscale: {
-          1: '#404040',
-          2: '#666666',
-          3: '#B3B3B3',
-          4: '#C4C4C4',
-          5: '#E6E6E6',
-          6: '#F5F5F5',
-        },
-        green: '#2E9775',
       },
     },
   },

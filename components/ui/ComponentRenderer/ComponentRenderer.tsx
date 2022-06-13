@@ -6,6 +6,7 @@ import Button from '../Button/Button'
 import PlusCTA from '../PlusCTA/PlusCTA'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Link from '../Link/Link'
+import Dropdown from '../Dropdown/Dropdown'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   return (
@@ -13,8 +14,12 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       <div>
         <div style={{ background: 'orange' }}>
           <h1>Hyperlinks</h1>
-          <Link color="blue" href="/our-story">Hello World Hyperlink</Link>
-          <Link disabled color="blue" href="/our-story">Hello World Hyperlink</Link>
+          <Link color="blue" href="/our-story">
+            Hello World Hyperlink
+          </Link>
+          <Link disabled color="blue" href="/our-story">
+            Hello World Hyperlink
+          </Link>
         </div>
         <div style={{ background: 'orange' }}>
           <h1>Arrow CTA</h1>
@@ -108,6 +113,19 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         >
           internal link test
         </Button>
+      </div>
+
+      <div className="my-50 py-50">
+        <h1>Dropdown</h1>
+        <Dropdown
+          placeholder="Dropdown placeholder"
+          onChange={(e) => console.log('onChange: ', e)}
+          options={[
+            { label: 'Option 1', value: '1' },
+            { label: 'Option 2', value: '2' },
+            { label: 'Option 3', value: '3' },
+          ]}
+        />
       </div>
     </div>
   )
