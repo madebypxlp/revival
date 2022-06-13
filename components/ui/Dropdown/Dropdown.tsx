@@ -6,6 +6,7 @@ import DropdownIcon from '@components/icons/DropdownIcon'
 import c from 'classnames'
 
 const DropdownIndicator = (props: DropdownIndicatorProps<IDropdownOption>) => {
+  console.log(props)
   return (
     <components.DropdownIndicator {...props}>
       <DropdownIcon className="w-12 text-blue" />
@@ -21,6 +22,7 @@ const Dropdown: FunctionComponent<IDropdown> = (props) => {
       className={c(styles.root, className)}
       classNamePrefix={'select'}
       isSearchable={false}
+      hideSelectedOptions
       components={{
         IndicatorSeparator: () => null,
         DropdownIndicator,
