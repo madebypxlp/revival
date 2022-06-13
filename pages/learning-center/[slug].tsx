@@ -16,5 +16,6 @@ export const getStaticPaths = getWpStaticLearningCenterDetailPaths
 export default function Pages({
   learningCenter,
 }: InferGetStaticPropsType<PageInterface>) {
-  return <LearningCenterDetail {...learningCenter} />
+  if (!learningCenter) return null
+  return <LearningCenterDetail {...(learningCenter as any)} />
 }

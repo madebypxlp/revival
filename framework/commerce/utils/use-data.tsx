@@ -71,7 +71,7 @@ const useData: UseData = (options, input, fetcherFn, swrOptions) => {
     })
   }
 
-  return response
+  return response as any
 }
 
 export default useData
