@@ -1,13 +1,10 @@
 import type { InferGetStaticPropsType } from 'next'
-import { Layout } from '@components/common'
+import { PageInterface } from 'framework/wordpress/page-query'
+import LearningCenterDetail from 'templates/LearningCenterDetail'
 import {
   getLearningCenterDetailPageWpStaticProps,
   getWpStaticLearningCenterDetailPaths,
-  getWpStaticPaths,
-  getWpStaticProps,
-} from 'framework/wordpress/wp'
-import { PageInterface } from 'framework/wordpress/page-query'
-import LearningCenterDetail from 'templates/LearningCenterDetail'
+} from 'framework/wordpress/wp-learning-center'
 
 export const getStaticProps = getLearningCenterDetailPageWpStaticProps
 
