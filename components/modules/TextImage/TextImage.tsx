@@ -35,12 +35,7 @@ const ImageWrapper = ({
         <div className="flex md:grid default-grid w-full h-full">
           <div className={`md:col-span-10 ${styles.image_block}`}>
             <div className={`relative`}>
-              <ImageComponent
-                width={1}
-                height={1}
-                image={image}
-                className={styles.image_left}
-              />
+              <ImageComponent image={image} className={styles.image_left} />
               <div className={`${styles.image_left_pattern2_block}`}>
                 <div className={`${styles.image_left_pattern2_wrapper}`}>
                   <div className={styles.image_left_pattern2}></div>
@@ -73,12 +68,7 @@ const ImageWrapper = ({
                   <div className={styles.image_right_pattern2}></div>
                 </div>
               </div>
-              <ImageComponent
-                width={1}
-                height={1}
-                image={image}
-                className={styles.image_right}
-              />
+              <ImageComponent image={image} className={styles.image_right} />
             </div>
           </div>
         </div>

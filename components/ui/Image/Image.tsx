@@ -8,8 +8,6 @@ const ImageComponent: FunctionComponent<IImage> = ({
   image,
   className = '',
   imgClassName = '',
-  width = undefined,
-  height = undefined,
   layout = 'responsive',
 }) => {
   const isMobile = useIsMobile()
