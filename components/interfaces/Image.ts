@@ -16,3 +16,12 @@ export default interface Image {
     }
   }
 }
+
+export interface MediaItem {
+  sourceUrl: string
+  altText: string
+  mediaDetails: {
+    width: number
+    height: number
+  }
+}

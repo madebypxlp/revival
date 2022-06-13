@@ -1,3 +1,4 @@
+import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 
 export default interface IOurBrands {
@@ -8,10 +9,7 @@ export default interface IOurBrands {
       link: Link
       brands: [
         {
-          brandLogo: {
-            sourceUrl: string
-            altText: string
-          }
+          brandLogo: MediaItem
           url: string
         }
       ]
