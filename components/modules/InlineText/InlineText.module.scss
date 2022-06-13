@@ -1,6 +1,6 @@
 .root {
   // add your styles here
-  @apply py-55;
+  @apply py-55 text-center;
 
   @screen md {
     @apply py-95;
@@ -27,8 +27,8 @@
     z-index: -1;
 
     @screen md {
-      bottom: -35%;
-      top: unset;
+      bottom: 0;
+      top: -25%;
     }
 
     svg {
@@ -39,5 +39,9 @@
         height: unset;
       }
     }
+  }
+
+  .link {
+    @apply mt-45 mx-auto;
   }
 }

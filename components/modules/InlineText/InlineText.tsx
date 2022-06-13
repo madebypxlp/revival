@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import parse from 'html-react-parser'
 import styles from './InlineText.module.scss'
 import IInlineText from './InlineText.interface'
-import image from 'next/image'
+import Button from '@components/ui/Button/Button'
 
 const InlineTextModule: FunctionComponent<{ module: IInlineText }> = ({
   module,
@@ -28,6 +28,18 @@ const InlineTextModule: FunctionComponent<{ module: IInlineText }> = ({
               { className: styles.text },
               parse(module.text)
             )}
+          {module.link && (
+            <Button
+              href={module.link.url}
+              type="default"
+              variant="large"
+              color="yellow"
+              target={module.link.target}
+              className={styles.link}
+            >
+              {module.link.title}
+            </Button>
+          )}
         </div>
       </div>
       {module.backgroundPawImage && (
