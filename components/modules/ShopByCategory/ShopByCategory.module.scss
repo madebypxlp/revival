@@ -1,5 +1,11 @@
 .root {
-  a:hover span {
+  a > span {
     text-decoration: underline;
+    text-decoration-color: rgba(#000, 0);
+    @apply transition duration-500;
+  }
+
+  a:hover > span {
+    @apply decoration-black;
   }
 }
