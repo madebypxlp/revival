@@ -53,7 +53,7 @@ export const getWpStaticProps = async (
     }
   }
   const template = res.entry.template.__typename
-  const data = { brands: undefined }
+  const data = { brands: {} }
   if (template === 'Template_AllBrands') {
     const r = await fetch({ query: brandsQuery })
     if (r && r.brands) {
