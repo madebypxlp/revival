@@ -41,3 +41,14 @@ a, .underline-effect {
     text-decoration-color: inherit;
   }
 }
+
+.accordion {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+
+  &.visible {
+    max-height: 1000px;
+    transition: max-height 1s ease-in-out;
+  }
+}

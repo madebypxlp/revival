@@ -3,6 +3,9 @@ const CareerListingFragment = (t: string) => `
     fieldGroupName
     headline
     anchor
+    link {
+      ...Link
+    }
     jobs {
       ... on Job {
         title
