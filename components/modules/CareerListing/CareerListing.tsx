@@ -10,17 +10,27 @@ const CareerListingModule: FunctionComponent<{ module: ICareerListing }> = ({
   const { headline, jobs, link, anchor } = module
   return (
     <div className={`${styles.root} container`}>
-      {headline && <h3>{headline}</h3>}
+      {headline && (
+        <h3 className="w-full text-center text-blue mb-70">{headline}</h3>
+      )}
+
       {jobs &&
         jobs.map((job) => (
-          <div key={job.title} className={styles.accordion}>
-            <div>{job.title}</div>
-            <div className={`accordion`}>
-              {React.createElement(
-                'div',
-                { className: c(styles.text, '') },
-                parse(job.postTypeJob.description)
+          <div key={job.title} className={c(styles.wrapper, 'default-grid')}>
+            <div
+              className={c(
+                styles.accordion,
+                'col-span-2 md:col-span-10 md:col-start-2'
               )}
+            >
+              <h4>{job.title}</h4>
+              <div className={`accordion`}>
+                {React.createElement(
+                  'div',
+                  { className: c(styles.text, '') },
+                  parse(job.postTypeJob.description)
+                )}
+              </div>
             </div>
           </div>
         ))}
