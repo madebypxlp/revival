@@ -3,6 +3,14 @@ const CareerListingFragment = (t: string) => `
     fieldGroupName
     headline
     anchor
+    jobs {
+      ... on Job {
+        title
+        postTypeJob {
+          description
+        }
+      }
+    }
   }
 `
 export default CareerListingFragment
