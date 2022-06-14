@@ -42,7 +42,7 @@ export default function Cart() {
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
         {isLoading || isEmpty ? (
-          <div className="flex-1 px-12 py-54 flex flex-col justify-center items-center ">
+          <div className="flex-1 px-12 py-55 flex flex-col justify-center items-center ">
             <span className="border border-dashed  flex items-center justify-center w-16 h-16  p-10 rounded-lg ">
               <Bag className="absolute" />
             </span>
@@ -103,7 +103,7 @@ export default function Cart() {
         )}
       </div>
       <div className="lg:col-span-4">
-        <div className="flex-shrink-0 px-4 py-54 sm:px-5">
+        <div className="flex-shrink-0 px-4 py-55 sm:px-5">
           {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED && (
             <>
               {/* Shipping Address */}
@@ -160,7 +160,12 @@ export default function Cart() {
                   Continue Shopping
                 </Button>
               ) : (
-                <Button color="yellow" variant="large" type="default" href="/checkout">
+                <Button
+                  color="yellow"
+                  variant="large"
+                  type="default"
+                  href="/checkout"
+                >
                   Proceed to Checkout
                 </Button>
               )}

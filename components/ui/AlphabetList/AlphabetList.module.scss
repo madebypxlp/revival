@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  align-items: center;
+  height: 6rem;
+  color: #fff;
+  gap: 2rem;
+  overflow: scroll;
+  padding: 0 2rem;
+  @screen lg {
+    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+  }
+  button {
+    text-transform: uppercase;
+    font-size: 2rem;
+    @apply typo-large-paragraph;
+    text-decoration: underline 0.15rem rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms;
+    text-underline-offset: 0.2rem;
+
+    &:hover, &.active {
+      text-decoration-color: inherit;
+    }
+  }
+}

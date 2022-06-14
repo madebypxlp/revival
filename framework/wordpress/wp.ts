@@ -1,26 +1,12 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import pageQuery from './page-query'
-import learningCenterQuery from './learning-center-query'
 import globalsQuery from './globals'
+import brandsQuery from './brands'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
     pages {
-      edges {
-        node {
-          id
-          slug
-          uri
-        }
-      }
-    }
-  }
-`
-
-export const getAllLearningCenterDetailPagesQuery = /* GraphQL */ `
-  query getAllLearningCenterDetailPagesQuery {
-    allLearningCenter {
       edges {
         node {
           id
@@ -52,28 +38,6 @@ export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
   return res
 }
 
-export const getWpStaticLearningCenterDetailPaths = async (
-  ctx: GetStaticPropsContext
-) => {
-  const { allLearningCenter } = await fetch({
-    query: getAllLearningCenterDetailPagesQuery,
-  })
-  const res = {
-    paths: allLearningCenter.edges.map(
-      ({ node }: { node: { slug: string; uri: string; id: string } }) => ({
-        params: {
-          slug: node.uri
-            .substring(1)
-            .split('/')
-            .filter((i) => !!i),
-        },
-      })
-    ),
-    fallback: 'blocking',
-  }
-  return res
-}
-
 export const getWpStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
@@ -88,9 +52,21 @@ export const getWpStaticProps = async (
       notFound: true,
     }
   }
+  const template = res.entry.template.__typename
+  const data = { brands: {} }
+  if (template === 'Template_AllBrands') {
+    const r = await fetch({ query: brandsQuery })
+    if (r && r.brands) {
+      data.brands = r.brands
+    }
+  }
+
   return {
     props: {
-      page: res.entry,
+      page: {
+        ...res.entry,
+        ...data,
+      },
     },
     revalidate: undefined,
   }
@@ -105,28 +81,6 @@ export const getWpData = async (
   return {
     props: {
       ...res,
-    },
-    revalidate: undefined,
-  }
-}
-
-export const getLearningCenterDetailPageWpStaticProps = async (
-  ctx: GetStaticPropsContext
-): Promise<GetStaticPropsResult<any>> => {
-  const res = await fetch({
-    query: learningCenterQuery,
-    variables: {
-      uri: (ctx.params?.slug as string[])?.join('/') || '/',
-    },
-  })
-  if (!res) {
-    return {
-      notFound: true,
-    }
-  }
-  return {
-    props: {
-      learningCenter: res.entry,
     },
     revalidate: undefined,
   }

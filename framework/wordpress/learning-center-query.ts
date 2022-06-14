@@ -1,10 +1,13 @@
 import Link from '@components/interfaces/Link'
+import InlineVideoFragment from '@components/modules/InlineVideo/InlineVideo.graphql'
 import WYSIWYGFragment from '@components/modules/WYSIWYG/WYSIWYG.graphql'
 
+const TEMPLATE = 'Learning_center_Detailpagelearningcenter_PageBuilder'
 export default `
-  ${WYSIWYGFragment('Learning_center_Detailpagelearningcenter_PageBuilder')}
-  query learningCenter($uri: String) {
-    entry: learningCenterBy(uri: $uri) {
+  ${WYSIWYGFragment(TEMPLATE)}
+  ${InlineVideoFragment(TEMPLATE, true)}
+  query learningCenter($slug: String) {
+    entry: learningCenterBy(slug: $slug) {
       id
       title
       slug
@@ -23,7 +26,10 @@ export default `
       }
       detailPageLearningCenter {
         pageBuilder {
-          ...Wysiwyg_${'Learning_center_Detailpagelearningcenter_PageBuilder'}
+          ...Wysiwyg_${TEMPLATE}
+
+          ...InlineVideo_${TEMPLATE}
+
         }
         authorBioCopy
         authorName

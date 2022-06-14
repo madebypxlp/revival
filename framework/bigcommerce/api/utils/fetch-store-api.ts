@@ -19,7 +19,7 @@ export default async function fetchStoreApi<T>(
         'X-Auth-Token': config.storeApiToken,
         'X-Auth-Client': config.storeApiClientId,
       },
-    })
+    } as any)
   } catch (error) {
     const { message } = error as { message: string }
     throw new BigcommerceNetworkError(`Fetch to Bigcommerce failed: ${message}`)
