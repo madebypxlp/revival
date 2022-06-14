@@ -1,8 +1,8 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import pageQuery from './page-query'
-import learningCenterQuery from './learning-center-query'
 import globalsQuery from './globals'
+import brandsQuery from './brands'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
@@ -52,9 +52,21 @@ export const getWpStaticProps = async (
       notFound: true,
     }
   }
+  const template = res.entry.template.__typename
+  const data = { brands: undefined }
+  if (template === 'Template_AllBrands') {
+    const r = await fetch({ query: brandsQuery })
+    if (r && r.brands) {
+      data.brands = r.brands
+    }
+  }
+
   return {
     props: {
-      page: res.entry,
+      page: {
+        ...res.entry,
+        ...data,
+      },
     },
     revalidate: undefined,
   }
