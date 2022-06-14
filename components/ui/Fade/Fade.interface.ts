@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 export default interface IFade {
-  children: ReactNode
+  children: any
   threshold?: number
   delay?: number
   className?: string
