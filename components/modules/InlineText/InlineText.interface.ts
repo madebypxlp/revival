@@ -5,6 +5,6 @@ export default interface IInlineText {
   backgroundPawImage: boolean
   headline: string
   text: string
-  headlineColor: string
+  headlineColor: 'red' | 'blue'
   link: Link
 }
