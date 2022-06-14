@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import parse from 'html-react-parser'
+import c from 'classnames'
 import styles from './InlineText.module.scss'
 import IInlineText from './InlineText.interface'
 import Button from '@components/ui/Button/Button'
@@ -7,20 +8,14 @@ import Button from '@components/ui/Button/Button'
 const InlineTextModule: FunctionComponent<{ module: IInlineText }> = ({
   module,
 }) => {
-  console.log(module)
+  const { headlineColor } = module
+  const color = headlineColor === 'blue' ? 'text-blue' : 'text-red'
   return (
     <div className={`${styles.root} container relative`}>
       <div className="default-grid">
         <div className="col-span-2 md:col-span-10 md:col-start-2">
           {module.headline && (
-            <h3
-              style={{
-                color: module.headlineColor || 'blue',
-              }}
-              className={styles.headline}
-            >
-              {module.headline}
-            </h3>
+            <h3 className={c(styles.headline, color)}>{module.headline}</h3>
           )}
           {module.text &&
             React.createElement(
