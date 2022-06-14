@@ -42,41 +42,48 @@ const BrandListModule: FunctionComponent<IBrandList> = ({ brands }) => {
   const onFilter = (key: string) => {
     if (key === 'all') {
       setData(originalData)
-      return
+    } else {
+      const filtered = originalData?.filter(
+        (e) => e.letter.toLowerCase() === key.toLowerCase()
+      )
+      setData(filtered)
     }
-    const filtered = originalData?.filter(
-      (e) => e.letter.toLowerCase() === key.toLowerCase()
-    )
-    setData(filtered)
+    setTimeout(() => {
+      document
+        .getElementById('brandList')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 500)
   }
 
   return (
     <div className={`${styles.root} container py-70`}>
       <AlphabetList onSelect={(e) => onFilter(e)} />
-      {data &&
-        data.map((item: Sorted) => (
-          <Fade key={`${item.letter}-${data.length}`}>
-            <div className={c(styles.item)}>
-              <div className={c(styles.head, 'col-span-full uppercase')}>
-                {item.letter}
-              </div>
-              {item.children && (
-                <div className={c('default-grid gap-y-0')}>
-                  {item.children.map((i) => (
-                    <div
-                      className={c(
-                        styles.child,
-                        'col-span-2 sm:col-span-1 md:col-span-4'
-                      )}
-                    >
-                      <Link href="/">{i.title}</Link>
-                    </div>
-                  ))}
+      <div id="brandList">
+        {data &&
+          data.map((item: Sorted) => (
+            <Fade key={`${item.letter}-${data.length}`}>
+              <div className={c(styles.item)}>
+                <div className={c(styles.head, 'col-span-full uppercase')}>
+                  {item.letter}
                 </div>
-              )}
-            </div>
-          </Fade>
-        ))}
+                {item.children && (
+                  <div className={c('default-grid gap-y-0')}>
+                    {item.children.map((i) => (
+                      <div
+                        className={c(
+                          styles.child,
+                          'col-span-2 sm:col-span-1 md:col-span-4'
+                        )}
+                      >
+                        <Link href="/">{i.title}</Link>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Fade>
+          ))}
+      </div>
     </div>
   )
 }
