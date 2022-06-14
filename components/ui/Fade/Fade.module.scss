@@ -1,0 +1,10 @@
+.root {
+  opacity: 0;
+	transform: translateY(3rem);
+	transition: opacity 700ms ease, transform 700ms ease;
+
+	&.fade--in {
+		opacity: 1;
+		transform: translateY(0rem);
+	}
+}

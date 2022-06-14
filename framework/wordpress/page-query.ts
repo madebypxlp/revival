@@ -10,6 +10,7 @@ import { fragment as CareersFragment } from '../../templates/Careers'
 import { fragment as PawSquadFragment } from '../../templates/PawSquad'
 import { fragment as BlogFragment } from '../../templates/Blog'
 import { fragment as LearningCenterFragment } from '../../templates/LearningCenter'
+import { fragment as AllBrandsFragment } from '../../templates/AllBrands'
 
 export default `
   ${Link}
@@ -24,6 +25,8 @@ export default `
   ${PawSquadFragment}
   ${BlogFragment}
   ${LearningCenterFragment}
+  ${AllBrandsFragment}
+
   query page($uri: String) {
     entry: pageBy(uri: $uri) {
       id
@@ -61,6 +64,9 @@ export default `
         }
         ...on Template_LearningCenter {
           ...TemplateLearningCenter
+        }
+        ...on Template_AllBrands {
+          ...TemplateAllBrands
         }
       }
     }

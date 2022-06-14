@@ -12,6 +12,7 @@ import TemplateCareers from 'templates/Careers'
 import TemplatePawSquad from 'templates/PawSquad'
 import TemplateBlog from 'templates/Blog'
 import TemplateLearningCenter from 'templates/LearningCenter'
+import TemplateAllBrands from 'templates/AllBrands'
 
 export const getStaticProps = getWpStaticProps
 
@@ -28,6 +29,7 @@ const Templates: { [k: string]: any } = {
   Template_PawSquad: TemplatePawSquad,
   Template_Blog: TemplateBlog,
   Template_LearningCenter: TemplateLearningCenter,
+  Template_AllBrands: TemplateAllBrands,
   default: (t: string) => <div>TEMPLATE "{t}" NOT FOUND</div>,
 }
 

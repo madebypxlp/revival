@@ -29,3 +29,15 @@
     text-decoration: underline;
   }
 }
+
+
+
+a, .underline-effect {
+  text-decoration: underline 0.15rem rgba(0, 0, 0, 0);
+  transition: text-decoration-color 500ms;
+  text-underline-offset: 0.2rem;
+
+  &:hover, &.active {
+    text-decoration-color: inherit;
+  }
+}
