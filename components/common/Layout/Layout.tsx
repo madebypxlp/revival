@@ -70,7 +70,7 @@ const Layout: FC<any> = ({ children }) => {
 
         <main className="fit">{children}</main>
         {/* <Footer pages={} /> */}
-
+        <footer style={{ minHeight: '400px' }}>Footer</footer>
         <Modal open={displayModal} onClose={closeModal}>
           {modalView === 'LOGIN_VIEW' && <LoginView />}
           {modalView === 'SIGNUP_VIEW' && <SignUpView />}
@@ -85,7 +85,13 @@ const Layout: FC<any> = ({ children }) => {
           title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
           hide={acceptedCookies}
           action={
-            <Button color="white" type="default" variant="small" className="mx-5" onClick={() => onAcceptCookies()}>
+            <Button
+              color="white"
+              type="default"
+              variant="small"
+              className="mx-5"
+              onClick={() => onAcceptCookies()}
+            >
               Accept cookies
             </Button>
           }
