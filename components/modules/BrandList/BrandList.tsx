@@ -75,7 +75,9 @@ const BrandListModule: FunctionComponent<IBrandList> = ({ brands }) => {
                           'col-span-2 sm:col-span-1 md:col-span-4'
                         )}
                       >
-                        <Link href="/">{i.title}</Link>
+                        <Link href="/">
+                          <a className="underline-effect">{i.title}</a>
+                        </Link>
                       </div>
                     ))}
                   </div>

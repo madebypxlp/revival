@@ -1,3 +1,68 @@
 .root {
   // add your styles here
+
+  :global {
+    .select {
+      &__dropdown {
+        &-indicator {
+          @apply px-20 transition duration-300;
+        }
+      }
+
+      &__control {
+        @apply border-none outline-none shadow-none appearance-none cursor-pointer;
+        @apply rounded-15 bg-black bg-opacity-5;
+        &--menu-is-open {
+          @apply rounded-b-none;
+
+          .select__dropdown-indicator {
+            @apply -rotate-180;
+          }
+        }
+      }
+
+      &__option {
+        @apply relative flex flex-wrap items-center px-20 cursor-pointer;
+        background: unset;
+        font-size: 2rem;
+        line-height: 1.5;
+        &:hover {
+          @apply text-blue;
+        }
+
+        &::before {
+          @apply absolute top-0 inset-x-20 block border-t border-greyscale-3;
+          content: '';
+        }
+      }
+
+      &__control,
+      &__option {
+        @apply font-bold text-black;
+        font-size: 2rem;
+        line-height: 1.5;
+        min-height: 6rem;
+      }
+
+      &__value-container {
+        @apply px-20;
+      }
+
+      &__input-container {
+        @apply text-current;
+      }
+
+      &__placeholder {
+        @apply text-black text-opacity-30;
+      }
+
+      &__menu {
+        @apply my-0 rounded-t-none rounded-b-15 overflow-hidden bg-black bg-opacity-5;
+        @apply border-none shadow-none outline-none;
+        &-list {
+          @apply p-0;
+        }
+      }
+    }
+  }
 }
