@@ -28,6 +28,10 @@
   a {
     text-decoration: underline;
   }
+  ul > * {
+    list-style-type: disc;
+    margin-left: 19px;
+  }
 }
 
 .underline-effect {
@@ -47,7 +51,7 @@
   transition: max-height 1s cubic-bezier(0, 1, 0, 1);
 
   &.visible {
-    max-height: 1000px;
+    max-height: 3000px;
     transition: max-height 1s ease-in-out;
   }
 }
