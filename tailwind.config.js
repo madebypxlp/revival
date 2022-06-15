@@ -30,6 +30,10 @@ module.exports = {
       ...generateSpacings(1, 20),
       ...generateSpacings(),
     },
+    fontSize: {
+      ...generateSpacings(1, 50),
+      ...generateSpacings(),
+    },
     extend: {
       aspectRatio: {
         '3120/1238': '3120 / 1238',
