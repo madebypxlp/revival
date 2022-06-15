@@ -20,24 +20,20 @@ const Loading = () => (
   </div>
 )
 
-const dynamicProps = {
+const SignUpView = dynamic(() => import('@components/auth/SignUpView'), {
   loading: () => <Loading />,
-}
-
-const SignUpView = dynamic(
-  () => import('@components/auth/SignUpView'),
-  dynamicProps
-)
+})
 
 const ForgotPassword = dynamic(
   () => import('@components/auth/ForgotPassword'),
-  dynamicProps
+  {
+    loading: () => <Loading />,
+  }
 )
 
-const FeatureBar = dynamic(
-  () => import('@components/common/FeatureBar'),
-  dynamicProps
-)
+const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
+  loading: () => <Loading />,
+})
 
 const Layout: FC<any> = ({ children }) => {
   const { displaySidebar, displayModal, closeSidebar, closeModal, modalView } =
