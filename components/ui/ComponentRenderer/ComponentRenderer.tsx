@@ -66,6 +66,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         <Tag label="Hello World" variant="blue-outline" />
         <Tag label="Hello World" variant="red-filled" />
       </div>
+
       <div style={{ background: 'orange' }}>
         <h1>Buttons</h1>
         <Button color="yellow" variant="large" type="default">
