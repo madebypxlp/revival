@@ -1,18 +1,10 @@
 import cn from 'classnames'
 import styles from './Input.module.scss'
-import React, { InputHTMLAttributes, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { isEmailValid } from '../../../lib/utils'
+import IInput from './Input.interface'
 
-export interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  className?: string
-  placeholder?: string
-  type?: string
-  isDropdown?: boolean
-  variant?: string
-  onChange?: (...args: any[]) => any
-}
-
-const Input: React.FC<Props> = (props) => {
+const Input: FunctionComponent<IInput> = (props) => {
   const {
     className,
     placeholder,
