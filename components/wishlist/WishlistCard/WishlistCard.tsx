@@ -80,7 +80,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
           type="default"
           variant="large"
           color="yellow"
-          className={'py-1 px-5 border  rounded-md shadow-sm hover:-hover'}
+          className={'py-1 px-5 border  rounded-15 shadow-sm hover:-hover'}
           onClick={addToCart}
         >
           Add to Cart

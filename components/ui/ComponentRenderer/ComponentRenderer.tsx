@@ -7,6 +7,7 @@ import PlusCTA from '../PlusCTA/PlusCTA'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Link from '../Link/Link'
 import Input from '../Input/Input'
+import Dropdown from '../Dropdown/Dropdown'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -145,6 +146,19 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant="outline"
           />
         </form>
+
+        <div className="my-50 py-50">
+          <h1>Dropdown</h1>
+          <Dropdown
+            placeholder="Dropdown placeholder"
+            onChange={(e) => console.log('onChange: ', e)}
+            options={[
+              { label: 'Option 1', value: '1' },
+              { label: 'Option 2', value: '2' },
+              { label: 'Option 3', value: '3' },
+            ]}
+          />
+        </div>
       </div>
     </div>
   )

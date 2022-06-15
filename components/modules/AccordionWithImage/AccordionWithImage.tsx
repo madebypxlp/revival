@@ -27,15 +27,16 @@ const AccordionWithImageModule: FunctionComponent<{
                 <div
                   key={item.headline}
                   onClick={() => setVisibleIndex(index)}
-                  className={`${cn(
-                    styles.accordionRoot,
-                    visibleIndex === index ? styles.visible : ''
-                  )}`}
+                  className={`${cn(styles.accordionRoot)}`}
                 >
                   <h5 className="text-red font-bold">{item.headline}</h5>
                   {React.createElement(
                     'div',
-                    { className: 'typo-small-paragraph' },
+                    {
+                      className: `typo-small-paragraph accordion ${
+                        visibleIndex === index ? 'visible' : ''
+                      }`,
+                    },
                     item.copy
                   )}
                 </div>
