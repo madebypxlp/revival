@@ -30,6 +30,10 @@ module.exports = {
       ...generateSpacings(1, 20),
       ...generateSpacings(),
     },
+    fontSize: {
+      ...generateSpacings(1, 50),
+      ...generateSpacings(),
+    },
     borderRadius: {
       none: '0',
       DEFAULT: '1.5rem',

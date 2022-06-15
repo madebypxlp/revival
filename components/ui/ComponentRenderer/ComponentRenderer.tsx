@@ -6,9 +6,16 @@ import Button from '../Button/Button'
 import PlusCTA from '../PlusCTA/PlusCTA'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Link from '../Link/Link'
+import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
+  //test for inputfield
+  const handleChange = (value: string, error: string) => {
+    console.log(value)
+    console.log(error)
+  }
+
   return (
     <div className={`${styles.root} container`}>
       <div>
@@ -59,6 +66,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         <Tag label="Hello World" variant="blue-outline" />
         <Tag label="Hello World" variant="red-filled" />
       </div>
+
       <div style={{ background: 'orange' }}>
         <h1>Buttons</h1>
         <Button color="yellow" variant="large" type="default">
@@ -113,6 +121,33 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         >
           internal link test
         </Button>
+      </div>
+
+      <div>
+        <h1>Input</h1>
+        <form action="">
+          <Input
+            placeholder="emailTest"
+            type="email"
+            onChange={handleChange}
+            className=""
+            required
+          />
+          <Input
+            className=""
+            placeholder="TextTest"
+            type="text"
+            onChange={handleChange}
+            required
+          />
+          <Input
+            className=""
+            placeholder="TextTest2"
+            type="text"
+            onChange={handleChange}
+            variant="outline"
+          />
+        </form>
       </div>
 
       <div className="my-50 py-50">
