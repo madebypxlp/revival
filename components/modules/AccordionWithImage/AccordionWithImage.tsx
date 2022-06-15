@@ -13,7 +13,7 @@ const AccordionWithImageModule: FunctionComponent<{
   const [visibleIndex, setVisibleIndex] = useState(-1)
 
   return (
-    <div className={`${styles.root} container mb-40 md:mb-85`}>
+    <div className={`${styles.root} container mb-85`}>
       <div className="default-grid">
         <div className="col-span-2 md:col-span-7 mb-55 md:mb-0 md:flex md:items-center">
           <ImageComponent layout="fill" image={image} className="aspect-1" />

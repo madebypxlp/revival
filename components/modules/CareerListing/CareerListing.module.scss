@@ -1,9 +1,44 @@
 .root {
   .wrapper {
-    background: theme('colors.greyscale.6');
-    border-radius: 1.5rem;
-    .accordion {
-      padding: 3rem 0;
+    &:not(:first-of-type) {
+      margin-top: 3rem;
+    }
+    .parent {
+      background: theme('colors.greyscale.6');
+      border-radius: 1.5rem;
+
+      .accordion {
+        padding: 3rem 0 3rem 2rem;
+        @screen md {
+          padding: 3rem 0;
+        }
+
+        h4 {
+          color: theme('colors.blue.default');
+          letter-spacing: 0;
+          flex-grow: 1;
+          text-align: left;
+        }
+        svg {
+          transition: 400ms ease;
+          transform: rotate(90deg);
+          margin: 0 2rem;
+          width: 2rem;
+          height: auto;
+          flex-shrink: 0;
+          path {
+            stroke: #000;
+          }
+          @screen md {
+            margin: 0 4rem;
+          }
+        }
+        &.active {
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
     }
   }
 }
