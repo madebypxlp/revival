@@ -108,7 +108,7 @@ export default function Cart() {
             <>
               {/* Shipping Address */}
               {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-md border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
+              <div className="rounded-15 border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
                 <div className="mr-5">
                   <MapPin />
                 </div>
@@ -122,7 +122,7 @@ export default function Cart() {
               </div>
               {/* Payment Method */}
               {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-md border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
+              <div className="rounded-15 border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
                 <div className="mr-5">
                   <CreditCard />
                 </div>

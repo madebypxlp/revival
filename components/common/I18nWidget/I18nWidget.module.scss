@@ -3,11 +3,11 @@
 }
 
 .button {
-  @apply h-10 px-5 rounded-md border  flex items-center justify-center;
+  @apply h-10 px-5 rounded-15 border  flex items-center justify-center;
 }
 
 .button:hover {
-  @apply  shadow-sm;
+  @apply shadow-sm;
 }
 
 .button:focus {
