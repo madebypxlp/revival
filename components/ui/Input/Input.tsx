@@ -1,40 +1,73 @@
 import cn from 'classnames'
-import s from './Input.module.scss'
-import React, { InputHTMLAttributes } from 'react'
+import styles from './Input.module.scss'
+import React, { InputHTMLAttributes, useState } from 'react'
+import { isEmailValid } from '../../../lib/utils'
 
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   placeholder?: string
   type?: string
   isDropdown?: boolean
+  variant?: string
   onChange?: (...args: any[]) => any
 }
 
 const Input: React.FC<Props> = (props) => {
-  const { className, placeholder, type, children, onChange, ...rest } = props
+  const {
+    className,
+    placeholder,
+    type,
+    required,
+    children,
+    variant,
+    onChange,
+    ...rest
+  } = props
 
-  const rootClassName = cn(s.root, {}, className, 'typo-input')
+  const [inputError, setInputError] = useState<false | 'invalid' | 'required'>(
+    false
+  )
 
   const handleOnChange = (e: any) => {
-    if (onChange) {
-      onChange(e.target.value)
-    }
-    console.log(e.target.value)
+    const { type, required, value, id } = e.target
+    if (type === 'email' && value && !isEmailValid(value))
+      setInputError('invalid')
+    else if (required && !value) setInputError('required')
+    else setInputError(false)
+    if (onChange) onChange(value, inputError)
+
     return null
   }
+
+  const rootClassName = cn(
+    styles.root,
+    className,
+    'typo-input mb-10',
+    inputError === 'invalid' && 'text-red'
+  )
 
   return (
     <label>
       <input
         className={rootClassName}
         onChange={handleOnChange}
-        placeholder={placeholder}
+        placeholder={required ? placeholder + '*' : placeholder}
+        type={type}
+        required={required}
         autoComplete="off"
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
         {...rest}
       />
+      {inputError === 'invalid' && (
+        <span className={'block typo-input-error mt-5'}>
+          *Invalid Email Address
+        </span>
+      )}
+      {inputError === 'required' && (
+        <span className={'block typo-input-error mt-5'}>*Required</span>
+      )}
     </label>
   )
 }

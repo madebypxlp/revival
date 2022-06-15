@@ -9,6 +9,12 @@ import Link from '../Link/Link'
 import Input from '../Input/Input'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
+  //test for inputfield
+  const handleChange = (value: string, error: string) => {
+    console.log(value)
+    console.log(error)
+  }
+
   return (
     <div className={`${styles.root} container`}>
       <div>
@@ -117,7 +123,27 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       <div>
         <h1>Input</h1>
         <form action="">
-          <Input placeholder="Test"></Input>
+          <Input
+            placeholder="emailTest"
+            type="email"
+            onChange={handleChange}
+            className=""
+            required
+          />
+          <Input
+            className=""
+            placeholder="TextTest"
+            type="text"
+            onChange={handleChange}
+            required
+          />
+          <Input
+            className=""
+            placeholder="TextTest2"
+            type="text"
+            onChange={handleChange}
+            variant="outline"
+          />
         </form>
       </div>
     </div>

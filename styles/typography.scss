@@ -178,4 +178,11 @@
     line-height: 1.5;
   }
 
+  .typo-input-error {
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    @apply text-red;
+  }
+
 }
