@@ -1,8 +1,6 @@
 .root {
   .wrapper {
-    &:not(:first-of-type) {
-      margin-top: 3rem;
-    }
+
     .parent {
       background: theme('colors.greyscale.6');
       border-radius: 1.5rem;
