@@ -47,12 +47,13 @@ export const getWpStaticProps = async (
       uri: (ctx.params?.slug as string[])?.join('/') || '/',
     },
   })
-  if (!res || !res.entry) {
+  console.log(res)
+  if (!res || !res.entry || !res.entry?.template) {
     return {
       notFound: true,
     }
   }
-  const template = res.entry.template.__typename
+  const template = res?.entry?.template?.__typename
   const data = { brands: {} }
   if (template === 'Template_AllBrands') {
     const r = await fetch({ query: brandsQuery })
