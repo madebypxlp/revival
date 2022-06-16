@@ -1,7 +1,61 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  @apply container default-grid pb-25;
+  @apply md:pb-85;
+
+  .headline{
+    @apply text-blue col-start-1 col-span-2 text-center mb-55;
+    @apply md:col-start-1 md:col-span-12 md:mb-55;
+  }
+
+  .accordionsContainer{
+    @apply col-start-1 col-span-2;
+    @apply md:col-start-2 md:col-span-10;  
+  }
+
+  .accordionContainer{
+    @apply py-20 border-t-[1.5px] border-greyscale-4;
+    @apply md:py-40;
+  }
+
+  .accordionContainer:last-child{
+    @apply border-b-[1.5px];
+  }
+
+  .accordionHeadline{
+    @apply text-blue font-bold cursor-pointer flex flex-row justify-between;
+    font-size: 2.0rem;
+    line-height: 2.8rem;
+
+    .plusIcon{
+      @apply visible opacity-100 absolute top-0 right-0 transition-all duration-500;
+    }
+    
+    .minusIcon{
+      @apply invisible opacity-0 absolute top-0 right-0 transition-all duration-500;
+    }
+
+    > div{
+      @apply relative text-black; 
+    }
+
+    path{
+      @apply stroke-black stroke-[1.5px];
+    }
+
+    &.open{
+      .plusIcon{
+        @apply invisible opacity-0;
+      }
+
+      .minusIcon{
+        @apply visible opacity-100;
+      }
+    }
+  }
+
+  .accordionCopy{
+    @apply typo-large-paragraph pt-20;
+    @apply md:pt-30;
+  }
 }
