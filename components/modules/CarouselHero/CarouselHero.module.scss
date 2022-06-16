@@ -22,4 +22,36 @@
     @apply mb-10 col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-12;
   }
+
+  .imageSmall{
+    width: 25vw;
+    max-width: 39rem;
+  }
+
+  .imageLarge{
+    width: 33.3vw;
+    max-width: 45rem;
+  }
+ 
+  @keyframes hero-carousel-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .carouselGroup{
+    animation: hero-carousel-scroll 40s linear infinite;
+  }
+
+  .carousel{
+    @apply flex flex-row overflow-hidden;
+  }
+
+  .carouselGroup{
+    @apply flex flex-row gap-20 items-end flex-nowrap pr-20;
+  }
+
 }

@@ -9,7 +9,7 @@ export default interface IButton {
   disabled?: boolean
   children?: React.ReactNode
   className?: string
-  onClick?: () => void
+  onClick?: (event: Event) => void
   ariaLabel?: string
   href?: string
   target?: string
