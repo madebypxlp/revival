@@ -68,6 +68,11 @@
     font-size: 2.5rem;
     line-height: 3rem;
     letter-spacing: -0.02em;
+
+    @screen md {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
   }
 
   .typo-h5,
