@@ -20,7 +20,9 @@ const ContentAccordionModule: FunctionComponent<{
   }
   return (
     <div className={`${styles.root}`}>
-      <h4 className={c(styles.headline)}>{headline}</h4>
+      <h4 className={c(styles.headline)}>
+        {headline && <span>{headline}</span>}
+      </h4>
       <div className={c(styles.accordionsContainer)}>
         {accordion &&
           accordion.map((a, index) => {

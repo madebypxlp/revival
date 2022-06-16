@@ -23,7 +23,8 @@
   }
 
   .accordionHeadline{
-    @apply text-blue text-20 font-bold cursor-pointer flex flex-row justify-between;
+    @apply text-blue font-bold cursor-pointer flex flex-row justify-between;
+    font-size: 2.0rem;
     line-height: 2.8rem;
 
     .plusIcon{
@@ -54,8 +55,7 @@
   }
 
   .accordionCopy{
-    @apply pt-20 text-20 font-normal;
+    @apply typo-large-paragraph pt-20;
     @apply md:pt-30;
-    line-height: 3rem;
   }
 }
