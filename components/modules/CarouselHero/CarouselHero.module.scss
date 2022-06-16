@@ -1,7 +1,25 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  @apply pt-50 pb-25 relative;
+  @apply md:pt-100 md:pb-80;
+
+  .subline{
+    @apply text-blue pb-10 typo-eyebrow col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-12;
+  }
+
+  .headline{
+    @apply text-blue pb-10 col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-12;
+  }
+
+  .copy{
+    @apply text-black typo-large-paragraph col-start-1 col-span-2 mb-30;
+    @apply md:col-start-1 md:col-span-4;
+  }
+
+  .buttonContainer{
+    @apply mb-10 col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-12;
+  }
 }
