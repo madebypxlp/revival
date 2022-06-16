@@ -3,16 +3,14 @@
 
   @apply container default-grid bg-cream;
 
-  .headline{
+  .headlineContainer{
     @apply typo-h2 text-blue col-start-1 col-span-2 mt-50;
     @apply md:col-start-1 md:col-span-8 md:mt-120;
   }
 
-  .subline{
-    @apply text-black col-start-1 col-span-2 text-20 mb-25;
+  .sublineContainer{
+    @apply typo-large-paragraph text-black col-start-1 col-span-2 mb-25;
     @apply md:col-start-1 md:col-span-4 md:mb-120;
-    font-family: 'Foco';
-    line-height: 3rem;
   }
   
 }

@@ -9,8 +9,12 @@ const LightHeroModule: FunctionComponent<{ module: ILightHero }> = ({
   const { headline, subline } = module
   return (
     <div className={`${styles.root} container`}>
-      <div className={c(styles.headline)}>{headline}</div>
-      <div className={c(styles.subline)}>{subline}</div>
+      <div className={c(styles.headlineContainer)}>
+        {headline && <span>{headline}</span>}
+      </div>
+      <div className={c(styles.sublineContainer)}>
+        {subline && <span>{subline}</span>}
+      </div>
     </div>
   )
 }
