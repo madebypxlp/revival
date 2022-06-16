@@ -1,7 +1,8 @@
 .root {
   // add your styles here
 
-  @apply container default-grid bg-cream;
+  @apply container default-grid bg-cream pb-25;
+  @apply md:pb-120;
 
   .headlineContainer{
     @apply typo-h2 text-blue col-start-1 col-span-2 mt-50;
@@ -9,8 +10,8 @@
   }
 
   .sublineContainer{
-    @apply typo-large-paragraph text-black col-start-1 col-span-2 mb-25;
-    @apply md:col-start-1 md:col-span-4 md:mb-120;
+    @apply typo-large-paragraph text-black col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-4;
   }
   
 }
