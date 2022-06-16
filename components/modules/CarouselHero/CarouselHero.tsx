@@ -75,10 +75,14 @@ const CarouselHeroModule: FunctionComponent<{ module: ICarouselHero }> = ({
         style={{ zIndex: -1 }}
       >
         <div className={'container h-full relative default-grid'}>
-          <Ring className={'mt-255 col-start-6 col-span-3'} />
           <Ring
             className={
-              'absolute bottom-0 col-start-2 col-span-3 translate-x-50'
+              'mt-60 md:mt-255 col-start-2 col-span-1 md:col-start-6 md:col-span-3'
+            }
+          />
+          <Ring
+            className={
+              'absolute bottom-0 col-start-1 col-span-1 md:col-start-2 md:col-span-3 translate-x-50'
             }
           />
         </div>
