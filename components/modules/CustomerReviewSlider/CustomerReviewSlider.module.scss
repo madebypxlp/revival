@@ -1,7 +1,13 @@
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: 0.5;
-  border-bottom: 1px solid black;
+
+  @apply pt-50;
+  @apply md:pt-100;
+
+  .headlineContainer{
+    @apply typo-h4 text-blue mb-40 container;
+  }
+
+  .reviewCard{
+    @apply bg-red pt-100 pb-100 text-center text-white;
+  }
 }
