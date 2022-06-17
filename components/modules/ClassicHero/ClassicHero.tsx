@@ -1,14 +1,30 @@
 import React, { FunctionComponent } from 'react'
 import styles from './ClassicHero.module.scss'
 import IClassicHero from './ClassicHero.interface'
+import ImageComponent from '@components/ui/Image/Image'
 
-const ClassicHeroModule:FunctionComponent<{ module: IClassicHero }> = ({ module }) => {
+const ClassicHeroModule: FunctionComponent<{ module: IClassicHero }> = ({
+  module,
+}) => {
   console.log(module)
+
+  const { subline, headline, copy, image } = module
   return (
-    <div
-      className={`${styles.root} container`}
-    >
-      Classichero Module
+    <div className={`${styles.root}`}>
+      <div className={styles.backgroundContainer}>
+        <ImageComponent className={'h-full'} image={image} layout={'fill'} />
+      </div>
+      <div className={'container default-grid'}>
+        <div className={styles.sublineContainer}>
+          {subline && <span>{subline}</span>}
+        </div>
+        <div className={styles.headlineContainer}>
+          {headline && <h2>{headline}</h2>}
+        </div>
+        <div className={styles.copyContainer}>
+          {copy && <span>{copy}</span>}
+        </div>
+      </div>
     </div>
   )
 }
