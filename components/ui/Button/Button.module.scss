@@ -153,6 +153,38 @@
       }
     }
   }
+  &.chipWhite {
+    background: transparent;
+    text-decoration: none;
+    color: theme('colors.white');
+    &:hover {
+      @extend .yellow-default;
+    }
+    &.outline {
+      border: 1px solid theme('colors.white');
+      color: theme('colors.white');
+      background: transparent;
+      &:hover {
+        background: theme('colors.yellow.default');
+        color: theme('colors.blue.default');
+        border: 1px solid theme('colors.yellow.default');
+      }
+    }
+    &:active {
+      color: theme('colors.blue.default');
+      background: #fff;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        border: 1.5px solid theme('colors.blue.default');
+      }
+    }
+  }
   &.black {
     @extend .black-default;
     border: 1px solid theme('colors.black');
