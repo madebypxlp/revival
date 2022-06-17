@@ -6,8 +6,6 @@ import ImageComponent from '@components/ui/Image/Image'
 const ClassicHeroModule: FunctionComponent<{ module: IClassicHero }> = ({
   module,
 }) => {
-  console.log(module)
-
   const { subline, headline, copy, image } = module
   return (
     <div className={`${styles.root}`}>
