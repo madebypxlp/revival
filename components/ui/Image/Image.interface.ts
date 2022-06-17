@@ -17,4 +17,6 @@ export declare type IImage = {
   | {
       layout?: 'fixed' | 'intrinsic' | 'responsive' | undefined
     }
-)
+) & {
+    loading?: 'eager' | 'lazy' | undefined
+  }

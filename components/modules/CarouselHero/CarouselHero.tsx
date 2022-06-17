@@ -34,6 +34,7 @@ const CarouselHeroModule: FunctionComponent<{ module: ICarouselHero }> = ({
               <div>
                 <ImageComponent
                   image={image.image}
+                  loading={'eager'}
                   className={c({
                     [styles.imageSmall]: index % 3 !== 0,
                     [styles.imageLarge]: index % 3 === 0,
