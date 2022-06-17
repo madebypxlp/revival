@@ -44,10 +44,12 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
             )}
           </div>
 
-          {headline && <h3 className="typo-h3 text-white mb-20">{headline}</h3>}
+          {headline && (
+            <h3 className="typo-h3 text-white mb-20 text-center">{headline}</h3>
+          )}
 
           {copy && (
-            <p className="typo-fact text-white w-[45rem] max-w-full text-center mb-10">
+            <p className="typo-fact text-white md:w-[45rem] max-w-full text-center mb-10">
               {copy}
             </p>
           )}
