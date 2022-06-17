@@ -13,7 +13,7 @@ export default interface ITeamGrid {
           name: string
           title: string
           profileImage: MediaItem
-          links: [link: Link]
+          links: [{ link: Link }]
         }
       }
     }
