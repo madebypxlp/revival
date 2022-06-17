@@ -7,18 +7,20 @@ import IThreeColumnCopy from './ThreeColumnCopy.interface'
 const ThreeColumnCopyModule: FunctionComponent<{
   module: IThreeColumnCopy
 }> = ({ module }) => {
-  console.log(module)
   const { subline, headline, columns, backgroundColor } = module
 
+  // (!) columns variable contains paragraphs
   return (
     <div
       className={`${styles.root} container default-grid`}
       style={{ backgroundColor }}
     >
-      {subline && <div className={styles.subline}>{subline}</div>}
+      {subline && (
+        <div className={c(styles.subline, 'typo-eyebrow')}>{subline}</div>
+      )}
       {headline && <h3 className={styles.headline}>{headline}</h3>}
       {columns &&
-        columns.map((col, index) => {
+        columns.map((col) => {
           return <div className={styles.contentColumn}>{parse(col.copy)}</div>
         })}
     </div>
