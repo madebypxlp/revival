@@ -2,7 +2,9 @@
   // add your styles here
   @apply bg-blue pt-50 pb-25;
   @apply md:pt-100 md:pb-50;
-
+  background-image: url('/teamGridLines.svg');
+  background-size: cover;
+  
   .headlineContainer{
     @apply mb-60 text-white col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-6;
