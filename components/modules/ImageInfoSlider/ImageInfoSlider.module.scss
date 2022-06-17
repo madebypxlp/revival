@@ -1,7 +1,7 @@
 .root {
   @apply bg-blue pt-50 pb-25 overflow-hidden;
   @apply md:pt-100 md:pb-100;
-  // background-image: url('/background_with_lines.svg');
+  background-image: url('/background_with_lines.svg');
 
   :global(.swiper-button-prev), :global(.swiper-button-next){
     @apply transition-all duration-500 opacity-100;
