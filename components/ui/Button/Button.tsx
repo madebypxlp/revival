@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, MouseEventHandler } from 'react'
 import styles from './Button.module.scss'
 import cn from 'classnames'
 import IButton from './Button.interface'
@@ -24,8 +24,8 @@ const Button: FunctionComponent<IButton> = (props) => {
   /**
    * Handle button click if prop is set
    */
-  const handleClick = () => {
-    if (onClick) onClick()
+  const handleClick = (event: any) => {
+    if (onClick) onClick(event)
   }
 
   const hrefStripped = cleanHref(link?.url || href)
