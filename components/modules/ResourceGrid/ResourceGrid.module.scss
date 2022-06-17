@@ -1,7 +1,10 @@
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: 0.5;
-  border-bottom: 1px solid black;
+
+  @apply mt-50 mb-25;
+  @apply md:mt-100 md:mb-50;
+
+  .headlineContainer{
+    @apply mb-20 text-blue col-start-1 col-span-2;
+    @apply md:mb-60 md:col-start-1 md:col-span-6;
+  }
 }
