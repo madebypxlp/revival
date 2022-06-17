@@ -9,6 +9,7 @@ const ImageComponent: FunctionComponent<IImage> = ({
   className = '',
   imgClassName = '',
   layout = 'responsive',
+  loading = 'lazy',
 }) => {
   const isMobile = useIsMobile()
   const img = () => {
@@ -19,13 +20,19 @@ const ImageComponent: FunctionComponent<IImage> = ({
   return (
     <div className={`${styles.root} ${className}`}>
       {layout === 'fill' ? (
-        <Image className={imgClassName} layout="fill" src={img().sourceUrl} />
+        <Image
+          className={imgClassName}
+          layout="fill"
+          loading={loading}
+          src={img().sourceUrl}
+        />
       ) : (
         <Image
           className={imgClassName}
           width={img().mediaDetails.width}
           height={img().mediaDetails.height}
           layout={layout}
+          loading={loading}
           src={img().sourceUrl}
         />
       )}
