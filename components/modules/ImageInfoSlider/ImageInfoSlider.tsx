@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import styles from './ImageInfoSlider.module.scss'
 import IImageInfoSlider from './ImageInfoSlider.interface'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import ImageComponent from '@components/ui/Image/Image'
 import { useIsMobile } from '@commerce/utils/hooks'
+import styles from './ImageInfoSlider.module.scss'
 
 const ImageInfoSliderModule: FunctionComponent<{
   module: IImageInfoSlider
