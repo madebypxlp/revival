@@ -22,8 +22,6 @@ const TeamGridModule: FunctionComponent<{ module: ITeamGrid }> = ({
               <div className={styles.teamMemberContainer}>
                 <div className={styles.teamImageContainer}>
                   <Image
-                    width={tm.profileImage.mediaDetails.width}
-                    height={tm.profileImage.mediaDetails.height}
                     src={tm.profileImage.sourceUrl}
                     layout={'fill'}
                     objectFit={'contain'}
