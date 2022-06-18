@@ -1,7 +1,60 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  @apply bg-blue pt-50 pb-25;
+  @apply md:pt-100 md:pb-50;
+  background-image: url('/teamGridLines.svg');
+  background-size: cover;
+  
+  .headlineContainer{
+    @apply mb-60 text-white col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-6;
+  }
+
+  .teamGridContainer{
+    @apply col-start-1 col-span-2 default-grid;
+    @apply md:col-start-1 md:col-span-12;
+  }
+
+  .teamMemberContainer{
+    @apply col-span-2 grid grid-cols-2 gap-x-20;
+    @apply md:col-span-6 md:grid-cols-6;
+    align-self: self-start; // align content at top
+  }
+
+  .teamImageContainer{
+    @apply mb-20 col-start-1 col-span-2 relative;
+    @apply md:mb-30 md:col-start-1 md:col-span-4;  
+    aspect-ratio: 1.13;  
+
+    img{
+      border-radius: 2rem;
+    }
+  }
+
+  .teamMemberName{
+    @apply mb-10 text-white col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-3;
+  }
+
+  .teamMemberTitle{
+    @apply mb-10 text-white col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-5;
+    font-weight: normal;
+    font-size: 2.5rem;
+    line-height: 4rem;
+  }
+
+  .teamMemberCopy{
+    @apply mb-30 typo-large-paragraph text-white col-start-1 col-span-2;
+    @apply md:mb-50 md:col-start-1 md:col-span-6;
+  }
+
+  .teamMemberLinksContainer{
+    @apply mb-60 flex flex-row flex-wrap gap-20 col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-6;
+  }
+
+  .teamMemberLinksContainer a{
+    white-space: nowrap;
+  }
 }
