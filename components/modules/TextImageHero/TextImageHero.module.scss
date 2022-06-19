@@ -2,7 +2,7 @@
   // add your styles here
   .text_block {
     margin: 5rem 0;
-    @screen md {
+    @screen lg {
       margin: 12.7rem 0;
     }
   }
@@ -23,7 +23,7 @@
   .image {
     @apply bg-cream;
     border-radius: 1.5rem;
-    @screen md {
+    @screen lg {
       border-radius: 1.5rem 0 0 20rem;
     }
   }
