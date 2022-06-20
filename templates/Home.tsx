@@ -22,6 +22,7 @@ import ResourceGrid from '@components/modules/ResourceGrid/ResourceGrid'
 import ResourceGridFragment from '@components/modules/ResourceGrid/ResourceGrid.graphql'
 
 const TemplateHome = (props: any) => {
+  const { latestLearningCenterPosts = [] } = props
   return (
     <div>
       <HeroCarousel module={props.template.pageHome.heroCarousel} />
@@ -38,7 +39,12 @@ const TemplateHome = (props: any) => {
         module={props.template.pageHome.customerReviewSlider}
       />
       <ImageWithInfos module={props.template.pageHome.imageWithInfos} />
-      <ResourceGrid module={props.template.pageHome.resourceGrid} />
+      <ResourceGrid
+        module={{
+          ...props.template.pageHome.resourceGrid,
+          latestLearningCenterPosts,
+        }}
+      />
     </div>
   )
 }

@@ -6,6 +6,7 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
   module,
 }) => {
   console.log(module)
+  console.log(module.latestLearningCenterPosts.nodes)
 
   const { headline, link, featuredResource } = module
   return (

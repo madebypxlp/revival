@@ -37,6 +37,7 @@ const Templates: { [k: string]: any } = {
 
 export default function Pages({
   page,
+  footer,
 }: InferGetStaticPropsType<PageInterface>) {
   return null
 }
@@ -47,6 +48,7 @@ Pages.Layout = function getLayout(page: any) {
     return Templates['default'](page.pageProps.page.template.__typename)
   return (
     <Layout
+      footer={page.pageProps.footer}
       children={Templates[page.pageProps.page.template.__typename](
         page.pageProps.page
       )}
