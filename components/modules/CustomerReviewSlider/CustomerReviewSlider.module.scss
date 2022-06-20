@@ -1,13 +1,38 @@
 .root {
 
-  @apply pt-50;
-  @apply md:pt-100;
+  @apply py-40 container relative overflow-hidden;
+  @apply md:py-100;
+
+  :global(.swiper-container){
+    @apply overflow-visible;
+  }
+
+  :global(.swiper-button-prev){
+    @apply -translate-x-20;
+    @apply md:-translate-x-0;
+  }
+
+  :global(.swiper-button-next){
+    @apply translate-x-20;
+    @apply md:translate-x-0;
+  }
 
   .headlineContainer{
-    @apply typo-h4 text-blue mb-40 container;
+    @apply typo-h4 text-blue mb-40;
   }
 
   .reviewCard{
-    @apply bg-red pt-100 pb-100 text-center text-white;
+    @apply bg-red px-30 pt-95 pb-65 text-center text-white rounded-15;
+    @apply md:px-60 md:pt-105 md:pb-90;
+    @apply lg:px-100;
+  }
+
+  .reviewCopy{
+    @apply text-white mb-20 typo-h6;
+    @apply md:typo-h5;    
+  }
+
+  .reviewAuthor{
+    @apply text-white typo-eyebrow;
   }
 }

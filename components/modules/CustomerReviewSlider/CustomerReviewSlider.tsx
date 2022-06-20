@@ -1,33 +1,35 @@
 import React, { FunctionComponent } from 'react'
-import c from 'classnames'
 import styles from './CustomerReviewSlider.module.scss'
 import ICustomerReviewSlider from './CustomerReviewSlider.interface'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
+import { useIsMobile } from '@commerce/utils/hooks'
 
 const CustomerReviewSliderModule: FunctionComponent<{
   module: ICustomerReviewSlider
 }> = ({ module }) => {
-  console.log(module)
   const { headline, reviews } = module
-
+  const isMobile = useIsMobile()
+  const slidesPerView = isMobile ? 1.1 : 2
+  const spaceBetweenSlides = isMobile ? 10 : 20
   return (
-    <div className={`${styles.root}`}>
-      <div className={c(styles.headlineContainer)}>
+    <div className={styles.root}>
+      <div className={styles.headlineContainer}>
         {headline && <span>{headline}</span>}
       </div>
       {reviews && reviews.length > 0 && (
         <Swiper
           centeredSlides
-          centerInsufficientSlides
-          slidesPerView={2}
+          slidesPerView={slidesPerView}
+          spaceBetween={spaceBetweenSlides}
           navigation
           loop
+          allowTouchMove={false}
         >
           {reviews.map((r) => (
             <SwiperSlide>
-              <div className={c(styles.reviewCard)}>
-                <div>{r.reviewCopy}</div>
-                <div>{r.author}</div>
+              <div className={styles.reviewCard}>
+                <div className={styles.reviewCopy}>{r.reviewCopy}</div>
+                <div className={styles.reviewAuthor}>{r.author}</div>
               </div>
             </SwiperSlide>
           ))}
