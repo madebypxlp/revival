@@ -1,10 +1,108 @@
 .root {
 
-  @apply mt-50 mb-25;
+  @apply mt-50 mb-25 container default-grid;
   @apply md:mt-100 md:mb-50;
 
   .headlineContainer{
     @apply mb-20 text-blue col-start-1 col-span-2;
     @apply md:mb-60 md:col-start-1 md:col-span-6;
+  }
+
+  .allResourcesLink{
+    @apply text-right mb-40;
+    @apply md:mb-60 md:col-start-7 md:col-span-6 md:justify-self-end md:self-center;
+
+    a{
+      font-size: 1.7rem;
+      line-height: 2.15rem;
+      font-weight: 700;  
+    }
+  }
+
+  .resourcesContainer{
+    @apply col-start-1 col-span-2 default-grid gap-y-20;
+    @apply md:col-start-1 md:col-span-12;
+  }
+
+  .featuredResource{
+    @apply relative col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-6 md:row-start-1 md:row-span-3 md:grid md:grid-cols-6 md:gap-x-20;
+
+    .featuredImage{
+      @apply absolute top-0 left-0 w-full h-full;
+      border-radius: 2rem;
+      z-index: -1;
+    }
+
+    div{
+      @apply mx-20 mt-20 mb-50;
+      @apply md:mx-35 md:mt-35 md:col-start-1 md:col-span-5;
+    }
+
+    h3{
+      @apply mb-5 text-white;
+      @apply md:mb-20;
+    }    
+
+  }
+
+  .postContainer{
+    @apply grid grid-cols-2 gap-x-20 col-span-2;
+    @apply md:col-start-7 md:col-span-6 md:grid-cols-6;
+
+    .postLeftText{
+      @apply text-blue;
+      @apply md:col-start-1 md:col-span-4;
+      align-self: center;
+
+      h5{
+        @apply mb-10;
+        font-weight: 700;
+      }
+    }
+
+    .postImageContainer{
+      @apply relative self-center;
+      @apply md:col-start-5 md:col-span-2;
+      aspect-ratio: 1.55;
+
+      img{
+        border-radius: 1rem;
+
+        @screen md{
+          border-radius: 1.5rem;
+        }
+      }
+    }
+  }
+
+  &.mobile{
+    .featuredResource{
+      aspect-ratio: 1.49;
+
+      h3{
+        font-size: 2.5rem;
+        line-height: 3.0rem;
+      }
+
+      a{
+        padding: 1.25rem 2.4rem;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+      }
+    }
+
+    .postContainer{
+      .postLeftText{
+        h5{
+          font-size: 1.8rem;
+          line-height: 2.0rem;    
+        }
+
+        a{
+          line-height: 1.5rem;
+        }
+      }
+    }
   }
 }

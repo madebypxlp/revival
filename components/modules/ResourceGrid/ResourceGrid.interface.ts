@@ -7,6 +7,7 @@ interface ResourceItem {
     node: MediaItem
   }
   title: string
+  uri: string
 }
 
 export default interface IResourceGrid {
