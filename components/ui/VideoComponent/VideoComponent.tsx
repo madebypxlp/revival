@@ -5,7 +5,7 @@ import Plyr from 'plyr-react'
 import 'plyr-react/dist/plyr.css'
 
 const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
-  const { source = '', options } = props
+  const { source = '', options, className } = props
   const [mounted, setMounted] = useState<boolean>(false)
 
   const defaultOptions = {
@@ -27,7 +27,7 @@ const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
     : 'html5'
 
   return (
-    <div className={`${styles.root} ${styles.plyrCustom}`}>
+    <div className={`${styles.root} ${className}`}>
       {mounted ? (
         <Plyr
           source={{
