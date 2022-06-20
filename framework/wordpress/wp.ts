@@ -3,6 +3,7 @@ import fetch from './wp-client'
 import pageQuery from './page-query'
 import globalsQuery from './globals'
 import brandsQuery from './brands'
+import latestLearningCenterPosts from './learning-center-latest'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
@@ -54,11 +55,17 @@ export const getWpStaticProps = async (
     }
   }
   const template = res?.entry?.template?.__typename
-  const data = { brands: {} }
+  const data = { brands: {}, latestLearningCenterPosts: [] }
   if (template === 'Template_AllBrands') {
     const r = await fetch({ query: brandsQuery })
     if (r && r.brands) {
       data.brands = r.brands
+    }
+  }
+  if (template === 'Template_Home') {
+    const r = await fetch({ query: latestLearningCenterPosts })
+    if (r && r.latestLearningCenterPosts) {
+      data.latestLearningCenterPosts = r.latestLearningCenterPosts
     }
   }
 
