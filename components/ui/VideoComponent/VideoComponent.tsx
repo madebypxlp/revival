@@ -11,6 +11,7 @@ const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
   const defaultOptions = {
     autoplay: false,
     volume: 1,
+    controls: ['play-large'],
   }
 
   useEffect(() => {
