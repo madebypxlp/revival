@@ -7,3 +7,12 @@
     @apply scale-110;
   }
 }
+
+.root {
+  .actionLink {
+    @apply typo-small-paragraph md:typo-h5 font-normal inline-flex items-center mb-5 md:mr-40 md:no-underline;
+    > span {
+      @apply block mr-20 w-20 h-20 md:w-40 md:h-40;
+    }
+  }
+}

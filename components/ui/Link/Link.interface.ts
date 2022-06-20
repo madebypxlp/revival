@@ -1,8 +1,12 @@
 import { ReactNode } from 'react'
+import Link from '@components/interfaces/Link'
 
-export default interface ILink {
-  children: ReactNode
-  href: string
-  color: 'blue' | 'black'
+type ILink = {
+  color?: 'blue' | 'black'
   disabled?: boolean
-}
+  target?: string
+  children?: ReactNode
+  className?: string
+} & ({ href: string } | { link: Link })
+
+export default ILink
