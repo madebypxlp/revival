@@ -6,6 +6,13 @@ const LearningCenterDetail = (props: LearningCenterInterface) => {
   const {
     detailPageLearningCenter: { pageBuilder },
   } = props
-  return <div>{pageBuilder.map((e) => renderLearningCenterDetail(e))}</div>
+
+  return (
+    <div>
+      {pageBuilder.map((e) =>
+        renderLearningCenterDetail(e, props.detailPageLearningCenter)
+      )}
+    </div>
+  )
 }
 export default LearningCenterDetail
