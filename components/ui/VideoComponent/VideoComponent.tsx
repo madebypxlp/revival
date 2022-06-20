@@ -24,7 +24,7 @@ const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
     ? 'vimeo'
     : source.includes('youtu')
     ? 'youtube'
-    : 'html5'
+    : 'youtube'
 
   return (
     <div className={`${styles.root} ${styles.plyrCustom}`}>

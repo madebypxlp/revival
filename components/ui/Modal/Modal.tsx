@@ -2,21 +2,16 @@ import { FC, useRef, useEffect, useCallback } from 'react'
 import Portal from '@reach/portal'
 import s from './Modal.module.scss'
 import { Cross } from '@components/icons'
+import IModal from './Modal.interface'
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
 import FocusTrap from '@lib/focus-trap'
-interface Props {
-  className?: string
-  children?: any
-  open?: boolean
-  onClose: () => void
-  onEnter?: () => void | null
-}
 
-const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
+const Modal: FC<IModal> = (props) => {
+  const { title, className, children, open, onClose, onEnter = null } = props
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>
 
   const handleKey = useCallback(
@@ -47,15 +42,18 @@ const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
     <Portal>
       {open ? (
         <div className={s.root}>
-          <div className={s.modal} role="dialog" ref={ref}>
+          <div className={s.modal + ' ' + className} role="dialog" ref={ref}>
             <button
               onClick={() => onClose()}
               aria-label="Close panel"
-              className="hover:text-gray-500 transition ease-in-out duration-150 focus:outline-none absolute right-0 top-0 m-6"
+              className={s.close}
             >
-              <Cross className="h-6 w-6" />
+              <Cross className="h-24 w-24 md:w-30 md:h-30" />
             </button>
-            <FocusTrap focusFirst>{children}</FocusTrap>
+            {title && <div className={s.modalTitle}>{title}</div>}
+            <div className={s.modalContent}>
+              <FocusTrap focusFirst>{children}</FocusTrap>
+            </div>
           </div>
         </div>
       ) : null}

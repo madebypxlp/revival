@@ -5,5 +5,6 @@ export default interface IVideoHero {
   image: Image
   logo: MediaItem
   videoName: string
+  youtubeId: string
   vimeoId: string
 }
