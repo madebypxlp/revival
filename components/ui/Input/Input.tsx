@@ -3,6 +3,7 @@ import styles from './Input.module.scss'
 import React, { FunctionComponent, useState } from 'react'
 import { isEmailValid } from '../../../lib/utils'
 import IInput from './Input.interface'
+import { InputArrow } from '@components/icons'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -11,8 +12,9 @@ const Input: FunctionComponent<IInput> = (props) => {
     type,
     required,
     children,
-    variant,
+    variant = 'default',
     onChange,
+    onButtonChange,
     ...rest
   } = props
 
@@ -31,17 +33,23 @@ const Input: FunctionComponent<IInput> = (props) => {
     return null
   }
 
+  const handleButtonChange = (e: any) => {
+    if (onButtonChange) onButtonChange()
+    return null
+  }
+
   const rootClassName = cn(
     styles.root,
     className,
-    'typo-input mb-10',
+    styles[variant],
+    'typo-input inline-block',
     inputError === 'invalid' && 'text-red'
   )
 
   return (
-    <label>
+    <label className={rootClassName + ' relative inline-block'}>
       <input
-        className={rootClassName}
+        className={`${styles.root}`}
         onChange={handleOnChange}
         placeholder={required ? placeholder + '*' : placeholder}
         type={type}
@@ -52,6 +60,14 @@ const Input: FunctionComponent<IInput> = (props) => {
         spellCheck="false"
         {...rest}
       />
+      {variant === 'blue-outline' && (
+        <button
+          className="absolute right-25 top-1/2 -translate-y-1/2"
+          onChange={handleButtonChange}
+        >
+          <InputArrow />
+        </button>
+      )}
       {inputError === 'invalid' && (
         <span className={'block typo-input-error mt-5'}>
           *Invalid Email Address

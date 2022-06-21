@@ -5,7 +5,8 @@ export default interface IInput {
   placeholder?: string
   type?: string
   isDropdown?: boolean
-  variant?: string
+  variant?: 'default' | 'blue-outline'
   required?: boolean
   onChange?: (...args: any[]) => any
+  onButtonChange?: (...args: any[]) => any
 }

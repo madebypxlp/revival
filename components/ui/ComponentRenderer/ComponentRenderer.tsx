@@ -145,7 +145,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             placeholder="TextTest2"
             type="text"
             onChange={handleChange}
-            variant="outline"
+            variant="blue-outline"
           />
         </form>
 

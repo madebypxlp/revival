@@ -1,9 +1,25 @@
 .root {
-    @apply  py-15 px-20 w-full appearance-none transition duration-150 ease-in-out  focus:border-2 focus:border-blue-default ;
-    border-radius: 1.5rem;
-    background: rgba(0, 0, 0, 0.04);
+  input {
+    @apply bg-greyscale-6 rounded-15 appearance-none transition duration-150 ease-in-out;
+  }
 }
 
 .root:focus {
   @apply outline-none;
+}
+
+.default {
+  @apply w-full;
+  input {
+    @apply py-15 px-20 w-full border-greyscale-6 border-2 focus:border-blue;
+  }
+}
+
+.blue-outline {
+  input {
+    @apply border-blue border-2 appearance-none py-15 px-25 rounded-30 typo-small-paragraph;
+  }
+  ::placeholder {
+    @apply text-blue;
+  }
 }
