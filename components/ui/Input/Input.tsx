@@ -1,9 +1,15 @@
 import cn from 'classnames'
 import styles from './Input.module.scss'
-import React, { FunctionComponent, useState } from 'react'
+import React, {
+  FormEvent,
+  FunctionComponent,
+  MouseEvent,
+  MouseEventHandler,
+  useState,
+} from 'react'
 import { isEmailValid } from '../../../lib/utils'
-import IInput from './Input.interface'
-import { InputArrow } from '@components/icons'
+import IInput, { InputError } from './Input.interface'
+import InputArrow from '@components/icons/InputArrow'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -14,28 +20,23 @@ const Input: FunctionComponent<IInput> = (props) => {
     children,
     variant = 'default',
     onChange,
-    onButtonChange,
+    onIconClick,
     ...rest
   } = props
 
-  const [inputError, setInputError] = useState<false | 'invalid' | 'required'>(
-    false
-  )
+  const [inputError, setInputError] = useState<InputError>(false)
 
-  const handleOnChange = (e: any) => {
-    const { type, required, value, id } = e.target
+  const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
+    const { type, required, value, id } = e.target as HTMLInputElement
     if (type === 'email' && value && !isEmailValid(value))
       setInputError('invalid')
     else if (required && !value) setInputError('required')
     else setInputError(false)
-    if (onChange) onChange(value, inputError)
-
-    return null
+    if (typeof onChange === 'function') onChange(value, inputError)
   }
 
-  const handleButtonChange = (e: any) => {
-    if (onButtonChange) onButtonChange()
-    return null
+  const handleIconClick: MouseEventHandler = (e) => {
+    if (typeof onIconClick === 'function') onIconClick(e)
   }
 
   const rootClassName = cn(
@@ -49,7 +50,6 @@ const Input: FunctionComponent<IInput> = (props) => {
   return (
     <label className={rootClassName + ' relative inline-block group'}>
       <input
-        className={`${styles.root}`}
         onChange={handleOnChange}
         placeholder={required ? placeholder + '*' : placeholder}
         type={type}
@@ -62,8 +62,8 @@ const Input: FunctionComponent<IInput> = (props) => {
       />
       {variant === 'blue-outline' && (
         <button
-          className="absolute right-25 top-1/2 -translate-y-1/2 group-hover:translate-x-5 transition duration-150 ease-in-out"
-          onChange={handleButtonChange}
+          className="absolute right-15 top-30 -translate-y-1/2 p-10 group-hover:translate-x-5 transition duration-150 ease-in-out"
+          onClick={handleIconClick}
         >
           <InputArrow />
         </button>
