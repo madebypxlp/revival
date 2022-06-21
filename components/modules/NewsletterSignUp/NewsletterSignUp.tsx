@@ -3,6 +3,7 @@ import styles from './NewsletterSignUp.module.scss'
 import INewsletterSignUp from './NewsletterSignUp.interface'
 import Input from './../../ui/Input/Input'
 import Button from '@components/ui/Button/Button'
+import NewsletterForm from '@components/ui/NewsletterForm/NewsletterForm'
 
 const NewsletterSignUpModule: FunctionComponent<{
   module: INewsletterSignUp
@@ -14,19 +15,7 @@ const NewsletterSignUpModule: FunctionComponent<{
       <div className="bg-cream rounded-15 py-125 text-center">
         <h2 className="typo-h3 text-blue mb-20">{headline}</h2>
         <p className="typo-small-paragraph text-blue mb-50">{subline}</p>
-        <form action="">
-          <Input
-            placeholder="Email adress"
-            type="email"
-            variant="blue-outline"
-            className="mb-50"
-          />
-          <div>
-            <Button type="default" variant="large" color="yellow">
-              {buttonLabel}
-            </Button>
-          </div>
-        </form>
+        <NewsletterForm submitLabel={buttonLabel} />
       </div>
     </div>
   )

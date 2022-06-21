@@ -9,6 +9,7 @@ const Button: FunctionComponent<IButton> = (props) => {
   const {
     variant,
     type,
+    buttonType,
     children,
     ariaLabel = '',
     disabled = false,
@@ -28,8 +29,10 @@ const Button: FunctionComponent<IButton> = (props) => {
     if (onClick) onClick(event)
   }
 
+  const isLink = () => !!(link?.url || href)
+
   const hrefStripped = cleanHref(link?.url || href)
-  const Type = hrefStripped ? 'a' : 'button'
+  const Type = isLink() ? 'a' : 'button'
   const button = (
     <Type
       disabled={disabled}
@@ -44,12 +47,13 @@ const Button: FunctionComponent<IButton> = (props) => {
         styles[color],
         outline ? styles.outline : null
       )}`}
+      type={buttonType}
     >
       {children || link?.title}
     </Type>
   )
 
-  return hrefStripped ? <Link href={hrefStripped}>{button}</Link> : button
+  return isLink() ? <Link href={hrefStripped}>{button}</Link> : button
 }
 
 export default Button

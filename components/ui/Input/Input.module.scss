@@ -1,6 +1,6 @@
 .root {
   input {
-    @apply bg-greyscale-6 rounded-15 appearance-none transition duration-150 ease-in-out;
+    @apply bg-greyscale-6 rounded-15 appearance-none transition duration-150 ease-in-out w-full;
   }
 }
 
@@ -11,7 +11,7 @@
 .default {
   @apply w-full;
   input {
-    @apply py-15 px-20 w-full border-greyscale-6 border-2 focus:border-blue;
+    @apply py-15 px-20 border-greyscale-6 border-2 focus:border-blue;
   }
 }
 
