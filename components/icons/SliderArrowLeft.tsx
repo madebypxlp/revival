@@ -1,7 +1,7 @@
 const SliderArrowLeft = ({ ...props }) => {
   return (
     <svg
-      viewBox="0 0 100 100"
+      viewBox="15 15 70 70"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
