@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import styles from './NewsletterSignUp.module.scss'
 import INewsletterSignUp from './NewsletterSignUp.interface'
 import Input from './../../ui/Input/Input'
@@ -9,6 +9,10 @@ const NewsletterSignUpModule: FunctionComponent<{
 }> = ({ module }) => {
   const { buttonLabel, headline, subline } = module
   console.log(module)
+
+  const [email, setEmail] = useState()
+  const [error, setError] = useState()
+
   return (
     <div className={`${styles.root} container mt-80`}>
       <div className="bg-cream rounded-15 py-125 text-center">
