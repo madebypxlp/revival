@@ -5,7 +5,7 @@ import Input from '../Input/Input'
 import Button from '../Button/Button'
 
 const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
-  const { submitLabel } = props
+  const { submitLabel, inputClassName } = props
   const [email, setEmail] = useState<string>('')
   const [success, setSuccess] = useState<boolean>(false)
 
@@ -23,7 +23,7 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
         type="email"
         placeholder="Email address"
         required
-        className="inline-block mb-2 md:mb-20 w-340 max-w-full"
+        className={inputClassName + ' inline-block mb-2 md:mb-20 max-w-full'}
         variant="blue-outline"
         onChange={(v) => {
           setEmail(v)

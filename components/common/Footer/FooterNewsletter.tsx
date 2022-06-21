@@ -16,7 +16,7 @@ const FooterNewsletter = ({ data }: { data: Footer }) => {
           {copy}
         </p>
       )}
-      <NewsletterForm />
+      <NewsletterForm inputClassName="w-340" />
       {note && (
         <p className={styles.note}>
           <SpeechBubble className="w-10 h-auto inline-block align-middle mr-10 md:w-20" />

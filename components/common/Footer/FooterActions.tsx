@@ -26,7 +26,11 @@ const FooterActions = ({ data }: { data: Footer }) => {
             <div className="inline-block text-left col-span-8 md:flex flex-wrap items-center">
               {actions.actions.map((action) => {
                 return (
-                  <Link className={styles.actionLink} link={action.link}>
+                  <Link
+                    key={action.link.title}
+                    className={styles.actionLink + ' !flex md:!inline-flex'}
+                    link={action.link}
+                  >
                     {action?.icon?.sourceUrl && (
                       <span>
                         <Image
