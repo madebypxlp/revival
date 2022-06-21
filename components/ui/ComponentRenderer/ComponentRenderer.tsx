@@ -8,6 +8,7 @@ import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Link from '../Link/Link'
 import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
+import Video from '../VideoComponent/VideoComponent'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -159,6 +160,11 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
               { label: 'Option 3', value: '3' },
             ]}
           />
+        </div>
+
+        <div className="my-50 py-50">
+          <h1>Video</h1>
+          <Video source="https://vimeo.com/465534896" />
         </div>
       </div>
     </div>

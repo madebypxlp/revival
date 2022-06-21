@@ -35,7 +35,7 @@ const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
   loading: () => <Loading />,
 })
 
-const Layout: FC<any> = ({ children }) => {
+const Layout: FC<any> = ({ children, footer }) => {
   const { displaySidebar, displayModal, closeSidebar, closeModal, modalView } =
     useUI()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
@@ -63,10 +63,8 @@ const Layout: FC<any> = ({ children }) => {
       )}
       <div className={cn(s.root)}>
         <Navbar />
-
         <main className="fit">{children}</main>
-        {/* <Footer pages={} /> */}
-        <footer style={{ minHeight: '400px' }}>Footer</footer>
+        <Footer data={footer.footer} />
         <Modal open={displayModal} onClose={closeModal}>
           {modalView === 'LOGIN_VIEW' && <LoginView />}
           {modalView === 'SIGNUP_VIEW' && <SignUpView />}
