@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styles from './CustomerReviewSlider.module.scss'
 import ICustomerReviewSlider from './CustomerReviewSlider.interface'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import { useIsMobile } from '@commerce/utils/hooks'
+import styles from './CustomerReviewSlider.module.scss'
 
 const CustomerReviewSliderModule: FunctionComponent<{
   module: ICustomerReviewSlider
@@ -13,28 +13,30 @@ const CustomerReviewSliderModule: FunctionComponent<{
   const spaceBetweenSlides = isMobile ? 10 : 20
   return (
     <div className={styles.root}>
-      <div className={styles.headlineContainer}>
-        {headline && <span>{headline}</span>}
+      <div className="container">
+        <div className={styles.headlineContainer}>
+          {headline && <span>{headline}</span>}
+        </div>
+        {reviews && reviews.length > 0 && (
+          <Swiper
+            centeredSlides
+            slidesPerView={slidesPerView}
+            spaceBetween={spaceBetweenSlides}
+            navigation
+            loop
+            allowTouchMove={false}
+          >
+            {reviews.map((r) => (
+              <SwiperSlide>
+                <div className={styles.reviewCard}>
+                  <div className={styles.reviewCopy}>{r.reviewCopy}</div>
+                  <div className={styles.reviewAuthor}>{r.author}</div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
-      {reviews && reviews.length > 0 && (
-        <Swiper
-          centeredSlides
-          slidesPerView={slidesPerView}
-          spaceBetween={spaceBetweenSlides}
-          navigation
-          loop
-          allowTouchMove={false}
-        >
-          {reviews.map((r) => (
-            <SwiperSlide>
-              <div className={styles.reviewCard}>
-                <div className={styles.reviewCopy}>{r.reviewCopy}</div>
-                <div className={styles.reviewAuthor}>{r.author}</div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
     </div>
   )
 }

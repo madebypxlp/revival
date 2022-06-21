@@ -1,6 +1,6 @@
 .root {
 
-  @apply py-40 container relative overflow-hidden;
+  @apply py-40 relative overflow-hidden;
   @apply md:py-100;
 
   :global(.swiper-container){
@@ -29,7 +29,7 @@
 
   .reviewCopy{
     @apply text-white mb-20 typo-h6;
-    @apply md:typo-h5;    
+    @apply md:typo-h5;
   }
 
   .reviewAuthor{
