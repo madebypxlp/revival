@@ -15,6 +15,7 @@ const ResourceGridFragment = (t: string) => `
           }
         }
         title
+        uri
       }
     }
   }
