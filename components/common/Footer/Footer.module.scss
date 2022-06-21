@@ -10,9 +10,25 @@
 
 .root {
   .actionLink {
-    @apply typo-small-paragraph md:typo-h5 font-normal inline-flex items-center mb-5 md:mr-40 md:no-underline;
+    @apply typo-small-paragraph md:typo-h5 font-normal inline-flex items-center mb-5 mr-20 md:mb-20 md:mr-40 md:no-underline;
     > span {
       @apply block mr-20 w-20 h-20 md:w-40 md:h-40;
+    }
+  }
+
+  .navLink {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    @apply no-underline mb-13;
+  }
+
+  .note {
+    @apply text-center md:text-left;
+    font-size: 1.2rem;
+    line-height: 2;
+
+    @screen md {
+      font-size: 1.8rem;
     }
   }
 }

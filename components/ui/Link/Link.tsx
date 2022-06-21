@@ -35,7 +35,7 @@ const Link: FunctionComponent<ILink> = (props) => {
         )}
         {...rest}
       >
-        {children || title}
+        {children || link?.title}
       </a>
     </NextLink>
   )
