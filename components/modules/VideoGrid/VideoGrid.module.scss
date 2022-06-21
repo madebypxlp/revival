@@ -1,7 +1,8 @@
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  .title {
+    line-height: 1.6;
+    @screen md {
+      font-size: 2.5rem;
+    }
+  }
 }
