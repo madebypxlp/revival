@@ -19,7 +19,7 @@ const Footer = ({ data }: { data: Footer }) => {
       <FooterActions data={data} />
 
       <div className="container py-40 md:pt-90 md:pb-60 text-blue">
-        <div className="default-grid">
+        <div className="default-grid md:mb-30">
           <div className="col-span-2 md:col-span-4 md:row-span-2 mb-40 md:mb-0">
             <FooterNewsletter data={data} />
           </div>

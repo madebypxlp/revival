@@ -28,7 +28,7 @@ const FooterActions = ({ data }: { data: Footer }) => {
                 return (
                   <Link
                     key={action.link.title}
-                    className={styles.actionLink + ' !flex md:!inline-flex'}
+                    className={styles.actionLink}
                     link={action.link}
                   >
                     {action?.icon?.sourceUrl && (
