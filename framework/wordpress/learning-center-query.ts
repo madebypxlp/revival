@@ -1,13 +1,17 @@
 import Link from '@components/interfaces/Link'
+import Image from '@components/fragments/Image'
 import AuthorRowFragment from '@components/modules/AuthorRow/AuthorRow.graphql'
+import InlineImageFragment from '@components/modules/InlineImage/InlineImage.graphql'
 import InlineVideoFragment from '@components/modules/InlineVideo/InlineVideo.graphql'
 import WYSIWYGFragment from '@components/modules/WYSIWYG/WYSIWYG.graphql'
 
 const TEMPLATE = 'Learning_center_Detailpagelearningcenter_PageBuilder'
 export default `
+  ${Image}
   ${WYSIWYGFragment(TEMPLATE)}
   ${InlineVideoFragment(TEMPLATE, true)}
   ${AuthorRowFragment(TEMPLATE)}
+  ${InlineImageFragment(TEMPLATE, true)}
   query learningCenter($slug: String) {
     entry: learningCenterBy(slug: $slug) {
       id
@@ -31,6 +35,7 @@ export default `
           ...Wysiwyg_${TEMPLATE}
           ...InlineVideo_${TEMPLATE}
           ...AuthorRow_${TEMPLATE}
+          ...InlineImage_${TEMPLATE}
         }
         authorBioCopy
         authorName
