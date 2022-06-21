@@ -18,27 +18,29 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
   ]
 
   return (
-    <div className={`${styles.root} h-auto flex md:items-start md:flex-col`}>
-      <div className="pl-20 md:pl-80 py-45 md:py-85 bg-cream w-full">
-        <h1 className="typo-accountheadline mb-20 md:mb-0 text-blue max-w-[336px] md:max-w-full ">
-          {headline}
-        </h1>
-        <div className="flex md:hidden">
-          <Button
-            className="mr-20"
-            variant="large"
-            type="default"
-            color="yellow"
-          >
-            Logout
-          </Button>
-          <ArrowCTA color="blue" orientation="right">
-            <p className="typo-h6">Account Settings</p>
-          </ArrowCTA>
+    <div className={styles.root}>
+      <div className="py-45 md:py-80 bg-cream w-full">
+        <div className="container">
+          <h1 className="typo-accountheadline mb-20 md:mb-0 text-blue max-w-[336px] md:max-w-full ">
+            {headline}
+          </h1>
+          <div className="flex md:hidden">
+            <Button
+              className="mr-20"
+              variant="large"
+              type="default"
+              color="yellow"
+            >
+              Logout
+            </Button>
+            <ArrowCTA color="blue" orientation="right">
+              <p className="typo-h6">Account Settings</p>
+            </ArrowCTA>
+          </div>
         </div>
       </div>
-      <div className="hidden md:pl-80 md:flex items-baseline md:mt-25 md:w-full">
-        <div>
+      <div className="container">
+        <div className="hidden md:flex items-baseline md:mt-25 md:w-full">
           {buttonList.map((el) => {
             return (
               <ArrowCTA
@@ -49,16 +51,16 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
               />
             )
           })}
-        </div>
 
-        <Button
-          variant="large"
-          type="default"
-          color="yellow"
-          className="ml-auto mr-50"
-        >
-          Logout
-        </Button>
+          <Button
+            variant="large"
+            type="default"
+            color="yellow"
+            className="ml-auto"
+          >
+            Logout
+          </Button>
+        </div>
       </div>
     </div>
   )
