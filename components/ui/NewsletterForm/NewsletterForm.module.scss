@@ -1,0 +1,8 @@
+.root {
+  .input {
+    max-width: 34rem;
+    @screen lg {
+      min-width: 34rem;
+    }
+  }
+}

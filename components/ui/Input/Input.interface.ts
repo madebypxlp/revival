@@ -1,11 +1,14 @@
-export { default } from './Input'
+import { MouseEventHandler } from 'react'
+
+export type InputError = false | 'invalid' | 'required'
 
 export default interface IInput {
   className?: string
   placeholder?: string
   type?: string
   isDropdown?: boolean
-  variant?: string
+  variant?: 'default' | 'blue-outline'
   required?: boolean
-  onChange?: (...args: any[]) => any
+  onChange?: (arg0: string, arg1: InputError) => any
+  onIconClick?: MouseEventHandler
 }
