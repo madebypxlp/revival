@@ -197,15 +197,12 @@
   }
 
   .typo-accountheadline {
-    font-weight: 700;
     font-size: 5rem;
-    line-height: 5.5rem;
+    line-height: 1.2;
+    font-weight: 700;
     letter-spacing: -0.02em;
     @screen md {
-      font-weight: 700;
       font-size: 7rem;
-      line-height: 7.5rem;
-      letter-spacing: -0.02em;
     }
   }
 }
