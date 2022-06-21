@@ -18,12 +18,12 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
     setSuccess(true)
   }
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styles.root} onSubmit={onSubmit}>
       <Input
         type="email"
         placeholder="Email address"
         required
-        className="inline-block mb-2 md:mb-20 w-full md:w-auto"
+        className={`${styles.input} inline-block mb-2 md:mb-20 w-full md:w-auto`}
         variant="blue-outline"
         onChange={(v) => {
           setEmail(v)
