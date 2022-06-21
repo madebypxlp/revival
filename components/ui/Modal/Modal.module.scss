@@ -1,11 +1,30 @@
 .root {
   @apply fixed flex items-center inset-0 z-50 justify-center;
   background-color: rgba(0, 0, 0, 0.6);
+
+  button {
+    transition: 400ms ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@keyframes FADE_IN {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .modal {
   @apply relative bg-white border-greyscale-1 rounded-15 mx-20 md:mx-30 max-w-full;
   width: 104rem;
+  animation: 500ms FADE_IN forwards;
+  animation-delay: 250ms;
+  opacity: 0;
 }
 
 .modalContent {
