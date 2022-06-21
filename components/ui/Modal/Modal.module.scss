@@ -1,10 +1,51 @@
 .root {
-  @apply fixed   flex items-center inset-0 z-50 justify-center;
-  background-color: rgba(0, 0, 0, 0.35);
+  @apply fixed flex items-center inset-0 z-50 justify-center;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  button {
+    transition: 400ms ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@keyframes FADE_IN {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .modal {
-  @apply  p-10 border  relative;
+  @apply relative bg-white border-greyscale-1 rounded-15 mx-20 md:mx-30 max-w-full;
+  width: 104rem;
+  animation: 500ms FADE_IN forwards;
+  animation-delay: 250ms;
+  opacity: 0;
+}
+
+.modalContent {
+  @apply py-14 px-20 md:py-40 md:px-60;
+}
+
+.modalTitle {
+  @apply py-20 px-20 md:py-30 md:px-60 typo-h6 text-blue relative;
+  &::after {
+    content: '';
+    @apply bg-blend-multiply h-16 w-full absolute inset-x-0 bottom-0 translate-y-full;
+    background: linear-gradient(
+      180deg,
+      #e0e0e0 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}
+
+.close {
+  @apply text-blue absolute top-20 right-20 md:right-30 md:top-30 cursor-pointer z-10;
 }
 
 .modal:focus {

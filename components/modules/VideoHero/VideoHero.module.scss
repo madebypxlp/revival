@@ -1,7 +1,11 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  .heroImage {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw) 3rem;
+    @screen md {
+      width: calc(50vw - 1rem);
+      margin: 0 0 0 calc(100% - (50vw - 1rem));
+    }
+  }
 }
