@@ -23,7 +23,7 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
         type="email"
         placeholder="Email address"
         required
-        className="inline-block mb-2 md:mb-20 w-340 max-w-full"
+        className="inline-block mb-2 md:mb-20 w-full md:w-auto"
         variant="blue-outline"
         onChange={(v) => {
           setEmail(v)
@@ -40,7 +40,7 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
             buttonType="submit"
             variant="large"
             color="yellow"
-            className="md:mt-30"
+            className="md:mt-30 mt-20"
           >
             {submitLabel}
           </Button>

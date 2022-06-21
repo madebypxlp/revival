@@ -15,8 +15,8 @@ const NewsletterSignUpModule: FunctionComponent<{
   const [error, setError] = useState()
 
   return (
-    <div className={`${styles.root} container mt-80`}>
-      <div className="bg-cream rounded-15 py-125 text-center">
+    <div className={`${styles.root} container bg-cream md:bg-white`}>
+      <div className="bg-cream md:rounded-15 py-65 md:py-125 text-center">
         <h2 className="typo-h3 text-blue mb-20">{headline}</h2>
         <p className="typo-small-paragraph text-blue mb-50">{subline}</p>
         <NewsletterForm submitLabel={buttonLabel} />
