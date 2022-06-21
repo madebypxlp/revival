@@ -62,6 +62,7 @@
     }
   }
 
+
   .typo-h4,
   h4 {
     font-weight: 700;
@@ -188,6 +189,12 @@
     font-size: 1.3rem;
     line-height: 1.5;
     @apply text-red;
+  }
+
+  .typo-feedback {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
   }
 
 }

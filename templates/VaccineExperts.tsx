@@ -21,7 +21,7 @@ const VaccineExperts = (props: any) => {
         module={props.template.pageVaccineExperts.fullwidthItemRow}
       />
       <CustomerReviewSlider
-        module={props.template.pageVaccineExperts.inlineText}
+        module={props.template.pageVaccineExperts.customerReviewSlider}
       />
       <ShopByCategoryModule
         module={props.template.pageVaccineExperts.shopByCategory}

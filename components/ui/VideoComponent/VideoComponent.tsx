@@ -3,9 +3,10 @@ import styles from './VideoComponent.module.scss'
 import IVideoComponent from './VideoComponent.interface'
 import Plyr from 'plyr-react'
 import 'plyr-react/dist/plyr.css'
+import classNames from 'classnames'
 
 const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
-  const { source = '', options } = props
+  const { source = '', options, className } = props
   const [mounted, setMounted] = useState<boolean>(false)
 
   const defaultOptions = {
@@ -27,7 +28,7 @@ const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
     : 'youtube'
 
   return (
-    <div className={`${styles.root} ${styles.plyrCustom}`}>
+    <div className={`${styles.root} ${className}`}>
       {mounted ? (
         <Plyr
           source={{
