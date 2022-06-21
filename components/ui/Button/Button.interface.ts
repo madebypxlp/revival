@@ -14,4 +14,5 @@ export default interface IButton {
   href?: string
   target?: string
   link?: Link
+  buttonType?: 'submit'
 }

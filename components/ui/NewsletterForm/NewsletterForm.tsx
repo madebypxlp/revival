@@ -2,9 +2,10 @@ import React, { FormEvent, FunctionComponent, useState } from 'react'
 import styles from './NewsletterForm.module.scss'
 import INewsletterForm from './NewsletterForm.interface'
 import Input from '../Input/Input'
+import Button from '../Button/Button'
 
 const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
-  console.log(props)
+  const { submitLabel } = props
   const [email, setEmail] = useState<string>('')
   const [success, setSuccess] = useState<boolean>(false)
 
@@ -29,8 +30,22 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
           setSuccess(false)
         }}
       />
-      {success && <p className="typo-small-parapgraph text-green">Success!</p>}
+      {success && <p className="typo-small-paragraph text-green">Success!</p>}
       <input type="submit" hidden />
+      {submitLabel && (
+        <>
+          <br />
+          <Button
+            type="default"
+            buttonType="submit"
+            variant="large"
+            color="yellow"
+            className="md:mt-30"
+          >
+            {submitLabel}
+          </Button>
+        </>
+      )}
     </form>
   )
 }
