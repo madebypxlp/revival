@@ -25,6 +25,7 @@ const BlogFilterBar: FunctionComponent<{
           variant="blue-outline"
           type="search"
           icon="search"
+          size="small"
         />
 
         <div

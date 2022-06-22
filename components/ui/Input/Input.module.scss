@@ -1,24 +1,37 @@
 .root {
   input {
-    @apply appearance-none transition duration-150 ease-in-out w-full border-2 py-15;
+    @apply appearance-none transition duration-150 ease-in-out w-full border-2 py-14;
     &:focus {
       @apply outline-none;
     }
   }
 
-  &.default {
+  .icon {
+    @apply absolute right-15 top-30 -translate-y-1/2 p-10 text-blue;
+  }
+
+  &.variant-default {
     @apply w-full;
     input {
       @apply bg-greyscale-6 px-20 border-greyscale-6 rounded-15 focus:border-blue;
     }
   }
 
-  &.blue-outline {
+  &.variant-blue-outline {
     input {
       @apply typo-small-paragraph border-blue px-25 rounded-30;
     }
     ::placeholder {
       @apply text-blue;
+    }
+  }
+
+  &.size-small {
+    input {
+      @apply py-9 px-20;
+    }
+    .icon {
+      @apply top-25;
     }
   }
 }
