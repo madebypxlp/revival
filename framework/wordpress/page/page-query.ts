@@ -1,16 +1,16 @@
 import Link from '@components/fragments/Link'
 import Image from '@components/fragments/Image'
-import { fragment as HomeFragment } from '../../templates/Home'
-import { fragment as BrandListingFragment } from '../../templates/BrandListing'
-import { fragment as OurStoryFragment } from '../../templates/OurStory'
-import { fragment as VaccineExpertsFragment } from '../../templates/VaccineExperts'
-import { fragment as PrivacyPolicyFragment } from '../../templates/PrivacyPolicy'
-import { fragment as ContactUsFragment } from '../../templates/ContactUs'
-import { fragment as CareersFragment } from '../../templates/Careers'
-import { fragment as PawSquadFragment } from '../../templates/PawSquad'
-import { fragment as BlogFragment } from '../../templates/Blog'
-import { fragment as LearningCenterFragment } from '../../templates/LearningCenter'
-import { fragment as AllBrandsFragment } from '../../templates/AllBrands'
+import { fragment as HomeFragment } from '../../../templates/Home'
+import { fragment as BrandListingFragment } from '../../../templates/BrandListing'
+import { fragment as OurStoryFragment } from '../../../templates/OurStory'
+import { fragment as VaccineExpertsFragment } from '../../../templates/VaccineExperts'
+import { fragment as PrivacyPolicyFragment } from '../../../templates/PrivacyPolicy'
+import { fragment as ContactUsFragment } from '../../../templates/ContactUs'
+import { fragment as CareersFragment } from '../../../templates/Careers'
+import { fragment as PawSquadFragment } from '../../../templates/PawSquad'
+import { fragment as BlogFragment } from '../../../templates/Blog'
+import { fragment as LearningCenterFragment } from '../../../templates/LearningCenter'
+import { fragment as AllBrandsFragment } from '../../../templates/AllBrands'
 
 export default `
   ${Link}
@@ -72,10 +72,3 @@ export default `
     }
   }
 `
-
-export interface PageInterface {
-  id: string
-  title: string
-  slug: string
-  template: any
-}

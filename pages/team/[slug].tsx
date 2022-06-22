@@ -1,10 +1,10 @@
 import type { InferGetStaticPropsType } from 'next'
-import { PageInterface } from 'framework/wordpress/page-query'
 import TeamDetail from 'templates/TeamDetail'
 import {
   getTeamDetailPageWpStaticProps,
   getWpStaticTeamDetailPaths,
 } from 'framework/wordpress/wp-team'
+import { PageInterface } from 'framework/wordpress/interfaces/page'
 
 export const getStaticProps = getTeamDetailPageWpStaticProps
 
