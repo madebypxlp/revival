@@ -64,7 +64,7 @@ const Layout: FC<any> = ({ children, footer }) => {
       <div className={cn(s.root)}>
         <Navbar />
         <main className="fit">{children}</main>
-        <Footer data={footer.footer} />
+        <Footer data={footer?.footer} />
         <Modal open={displayModal} onClose={closeModal}>
           {modalView === 'LOGIN_VIEW' && <LoginView />}
           {modalView === 'SIGNUP_VIEW' && <SignUpView />}

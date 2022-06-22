@@ -1,7 +1,7 @@
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  .colSpan{
+    @apply col-span-2 md:col-span-10 md:col-start-2;
+  }
+  // border-top: 1px solid black;
+  // border-bottom: 1px solid black;
 }

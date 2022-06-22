@@ -1,25 +1,44 @@
 .root {
-
-  padding: 10rem 0rem;
-  h1,
-  h2,
-  h3,
-  p,
-  div,
-  span,
-  li {
+  padding-bottom: 5rem;
+  @screen md {
+    padding-bottom: 10rem;
+  }
+  .content {
+    position: relative;
     font-size: 2.5rem;
     line-height: 4rem;
-  }
-  p, div, span, li {
-    margin-bottom: 4rem;
-  }
-  a {
-    color: theme('colors.blue.default');
-    font-weight: 700;
-  }
+    h1,
+    h2,
+    h3,
+    p,
+    div,
+    span,
+    li {
+      font-size: 2.5rem;
+      line-height: 4rem;
+    }
 
-  ul {
-    list-style: circle;
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 4rem;
+    }
+
+    p,
+    div,
+    span,
+    li,
+    figure {
+      margin-bottom: 4rem;
+    }
+    a {
+      color: theme('colors.blue.default');
+      font-weight: 700;
+    }
+
+    ul {
+      list-style: circle;
+    }
   }
 }

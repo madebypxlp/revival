@@ -43,8 +43,11 @@
     }
     &.black {
       color: theme('colors.black');
+      &:hover {
+        color: theme('colors.blue.default');
+      }
       svg path {
-        stroke: theme('colors.black');
+        stroke: currentColor;
       }
     }
     &.white {

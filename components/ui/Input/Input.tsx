@@ -49,7 +49,7 @@ const Input: FunctionComponent<IInput> = (props) => {
   )
 
   return (
-    <label className={rootClassName + ' relative inline-block'}>
+    <label className={rootClassName + ' relative inline-block group'}>
       <input
         onChange={handleOnChange}
         placeholder={required ? placeholder + '*' : placeholder}
@@ -63,7 +63,7 @@ const Input: FunctionComponent<IInput> = (props) => {
       />
       {variant === 'blue-outline' && (
         <button
-          className="absolute right-15 top-30 -translate-y-1/2 p-10"
+          className="absolute right-15 top-30 -translate-y-1/2 p-10 group-hover:translate-x-5 transition duration-150 ease-in-out"
           onClick={handleIconClick}
         >
           <InputArrow />

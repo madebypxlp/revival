@@ -188,4 +188,20 @@
     line-height: 1.5;
     @apply text-red;
   }
+
+  .typo-feedback {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  .typo-accountheadline {
+    font-size: 5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    @screen md {
+      font-size: 7rem;
+    }
+  }
 }

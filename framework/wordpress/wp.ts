@@ -1,9 +1,10 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import pageQuery from './page-query'
+import pageQuery from './page/page-query'
 import globalsQuery from './globals'
 import brandsQuery from './brands'
-import latestLearningCenterPosts from './learning-center-latest'
+import blogQuery from './blog'
+import latestLearningCenterPosts from './pt-learning-center/learning-center-latest'
 import footerQuery from './footer'
 
 export const getAllPagesQuery = /* GraphQL */ `
@@ -49,14 +50,16 @@ export const getWpStaticProps = async (
       uri: (ctx.params?.slug as string[])?.join('/') || '/',
     },
   })
+
   if (!res || !res.entry || !res.entry?.template) {
     return {
       notFound: true,
     }
   }
   const template = res?.entry?.template?.__typename
-  const data = { brands: {}, latestLearningCenterPosts: [] }
+  const data = { brands: {}, latestLearningCenterPosts: [], blog: [] }
 
+  console.log(template)
   const footer = await fetch({ query: footerQuery })
 
   if (template === 'Template_AllBrands') {
@@ -69,6 +72,13 @@ export const getWpStaticProps = async (
     const r = await fetch({ query: latestLearningCenterPosts })
     if (r && r.latestLearningCenterPosts) {
       data.latestLearningCenterPosts = r.latestLearningCenterPosts
+    }
+  }
+
+  if (template === 'Template_Blog') {
+    const r = await fetch({ query: blogQuery })
+    if (r && r.data) {
+      data.blog = r.data
     }
   }
 

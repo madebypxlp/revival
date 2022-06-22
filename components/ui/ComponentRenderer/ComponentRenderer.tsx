@@ -10,6 +10,7 @@ import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
 import Video from '../VideoComponent/VideoComponent'
 import { InputError } from '../Input/Input.interface'
+import AccountHero from '../AccountHero/AccountHero'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -19,8 +20,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   }
 
   return (
-    <div className={`${styles.root} container`}>
-      <div>
+    <div className={`${styles.root} `}>
+      <div className="container">
         <div style={{ background: 'orange' }}>
           <h1>Hyperlinks</h1>
           <Link color="blue" href="/our-story">
@@ -146,27 +147,113 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             placeholder="TextTest2"
             type="text"
             onChange={handleChange}
-            variant="outline"
+            variant="blue-outline"
           />
         </form>
-
-        <div className="my-50 py-50">
-          <h1>Dropdown</h1>
-          <Dropdown
-            placeholder="Dropdown placeholder"
-            onChange={(e) => console.log('onChange: ', e)}
-            options={[
-              { label: 'Option 1', value: '1' },
-              { label: 'Option 2', value: '2' },
-              { label: 'Option 3', value: '3' },
-            ]}
-          />
+        <div style={{ background: 'orange' }}>
+          <h1>Buttons</h1>
+          <Button color="yellow" variant="large" type="default">
+            Hello World
+          </Button>
+          <Button color="red" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button color="blue" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button color="black" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button color="white" variant="small" type="default">
+            Hello World
+          </Button>
+          <br /> <br />
+          <Button outline color="yellow" variant="large" type="default">
+            Hello World
+          </Button>
+          <Button outline color="red" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button outline color="blue" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button outline color="black" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button outline color="white" variant="small" type="default">
+            Hello World
+          </Button>
+          <br /> <br />
+          <Button disabled color="white" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button disabled outline color="white" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button disabled outline color="blue" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button disabled color="red" variant="small" type="default">
+            Hello World
+          </Button>
+          <Button
+            type="default"
+            variant="large"
+            color="yellow"
+            href="https://revival-wp.weareenvoy.net/our-story"
+          >
+            internal link test
+          </Button>
         </div>
+        <div>
+          <h1>Input</h1>
+          <form action="">
+            <Input
+              placeholder="emailTest"
+              type="email"
+              onChange={handleChange}
+              className=""
+              required
+            />
+            <Input
+              className=""
+              placeholder="TextTest"
+              type="text"
+              onChange={handleChange}
+              required
+            />
+            <Input
+              className=""
+              placeholder="TextTest2"
+              type="text"
+              onChange={handleChange}
+              variant="outline"
+            />
+          </form>
 
-        <div className="my-50 py-50">
-          <h1>Video</h1>
-          <Video source="https://vimeo.com/465534896" />
+          <div className="my-50 py-50">
+            <h1>Dropdown</h1>
+            <Dropdown
+              placeholder="Dropdown placeholder"
+              onChange={(e) => console.log('onChange: ', e)}
+              options={[
+                { label: 'Option 1', value: '1' },
+                { label: 'Option 2', value: '2' },
+                { label: 'Option 3', value: '3' },
+              ]}
+            />
+          </div>
+
+          <div className="my-50 py-50">
+            <h1>Video</h1>
+            <Video source="https://vimeo.com/465534896" />
+          </div>
         </div>
+      </div>
+
+      <div className="my-50 py-50">
+        <h1>Account Hero</h1>
+        <AccountHero headline="Welcome Back, Marie" />
       </div>
     </div>
   )

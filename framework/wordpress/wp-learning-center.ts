@@ -1,8 +1,8 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import learningCenterQuery from './learning-center-query'
+import learningCenterQuery from './pt-learning-center/learning-center-query'
 
-export const getAllLearningCenterDetailPagesQuery = /* GraphQL */ `
+export const getAllLearningCenterDetailPagesQuery = `
   query getAllLearningCenterDetailPagesQuery {
     allLearningCenter {
       edges {
@@ -46,7 +46,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   const res = await fetch({
     query: learningCenterQuery,
     variables: {
-      slug: 'sample-article',
+      slug: ctx.params?.slug as string,
     },
   })
   if (!res) {
@@ -56,7 +56,8 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   }
   return {
     props: {
-      learningCenter: res.entry,
+      data: res.entry,
+      additionalData: res.additionalData,
     },
     revalidate: undefined,
   }

@@ -13,6 +13,7 @@ query Data {
         }
       }
       title
+      uri
     }
   }
 }
