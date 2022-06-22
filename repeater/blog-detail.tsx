@@ -2,6 +2,7 @@ import AuthorRowModule from '@components/modules/AuthorRow/AuthorRow'
 import InlineImageModule from '@components/modules/InlineImage/InlineImage'
 import InlineVideoModule from '@components/modules/InlineVideo/InlineVideo'
 import MoreArticlesModule from '@components/modules/MoreArticles/MoreArticles'
+import MorePostsModule from '@components/modules/MorePosts/MorePosts'
 import NewsletterSignUpModule from '@components/modules/NewsletterSignUp/NewsletterSignUp'
 import WYSIWYGModule from '@components/modules/WYSIWYG/WYSIWYG'
 import { PostDetailPage } from 'framework/wordpress/interfaces/post'
@@ -28,8 +29,8 @@ const renderBlogDetail = (layout: any, props: PostDetailPage) => {
       )
     case 'Post_Detailpagepost_PageBuilder_MoreArticles':
       return (
-        <MoreArticlesModule
-          key="MoreArticlesModule"
+        <MorePostsModule
+          key="MorePostsModule"
           data={props.additionalData?.nodes}
           currentId={props.data.id}
           module={layout}
