@@ -20,6 +20,7 @@ export default `
     additionalData: posts(last: 4) {
       nodes {
         title
+        id
         uri
         slug
         featuredImage {
