@@ -21,6 +21,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     variant = 'default',
     onChange,
     onIconClick,
+    status,
     ...rest
   } = props
 
@@ -68,14 +69,12 @@ const Input: FunctionComponent<IInput> = (props) => {
           <InputArrow />
         </button>
       )}
-      {inputError === 'invalid' && (
-        <span className={'block typo-input-error mt-5'}>
-          *Invalid Email Address
-        </span>
-      )}
-      {inputError === 'required' && (
-        <span className={'block typo-input-error mt-5'}>*Required</span>
-      )}
+      {status}
+      <span className={'block typo-input-error mt-5'}>
+        {inputError === 'invalid' && '*Invalid Email Address'}
+        {inputError === 'required' && '*Required'}
+        {!inputError && <>&nbsp;</>}
+      </span>
     </label>
   )
 }

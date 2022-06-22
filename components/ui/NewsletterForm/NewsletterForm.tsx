@@ -29,8 +29,12 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
           setEmail(v)
           setSuccess(false)
         }}
+        status={
+          success && (
+            <p className="absolute typo-small-paragraph text-green">Success!</p>
+          )
+        }
       />
-      {success && <p className="typo-small-paragraph text-green">Success!</p>}
       <input type="submit" hidden />
       {submitLabel && (
         <>

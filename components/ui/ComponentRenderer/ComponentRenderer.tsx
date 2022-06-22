@@ -9,10 +9,11 @@ import Link from '../Link/Link'
 import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
 import Video from '../VideoComponent/VideoComponent'
+import { InputError } from '../Input/Input.interface'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
-  const handleChange = (value: string, error: string) => {
+  const handleChange = (value: string, error: InputError) => {
     console.log(value)
     console.log(error)
   }
