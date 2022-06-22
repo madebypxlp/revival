@@ -46,7 +46,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   const res = await fetch({
     query: learningCenterQuery,
     variables: {
-      slug: 'sample-article',
+      slug: ctx.params?.slug as string,
     },
   })
   if (!res) {
@@ -57,6 +57,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   return {
     props: {
       learningCenter: res.entry,
+      morePosts: res.morePosts,
     },
     revalidate: undefined,
   }
