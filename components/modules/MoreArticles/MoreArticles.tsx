@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react'
 import styles from './MoreArticles.module.scss'
 import IMoreArticles from './MoreArticles.interface'
 import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
-import { PostInterface } from 'framework/wordpress/interfaces/post'
 
 const MoreArticlesModule: FunctionComponent<{
   module: IMoreArticles
-  data: LearningCenterInterface[] | PostInterface[]
+  data: LearningCenterInterface[]
   currentId: string
 }> = ({ module, data, currentId }) => {
   console.log(module, data, currentId)

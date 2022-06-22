@@ -16,20 +16,10 @@ export interface PostInterface {
     node: MediaItem
   }
   contentTypes: {
-    nodes: [
-      {
-        id: string
-        name: string
-      }
-    ]
+    nodes: Category[]
   }
   categories: {
-    nodes: [
-      {
-        id: string
-        name: string
-      }
-    ]
+    nodes: Category[]
   }
   detailPagePost: {
     authorBioCopy: string
@@ -44,4 +34,10 @@ export interface PostInterface {
     }
     pageBuilder: [any]
   }
+}
+
+export interface Category {
+  id: string
+  name: string
+  description: string
 }

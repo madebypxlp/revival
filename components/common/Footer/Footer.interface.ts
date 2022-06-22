@@ -33,16 +33,14 @@ export default interface Footer {
     ]
     text: string
   }
-  actions: [
-    {
-      copy: string
-      headline: string
-      actions: [
-        {
-          link: Link
-          icon: MediaItem
-        }
-      ]
-    }
-  ]
+  actions: {
+    headline: string
+    copy: string
+    actions: [
+      {
+        link: Link
+        icon: MediaItem
+      }
+    ]
+  }
 }
