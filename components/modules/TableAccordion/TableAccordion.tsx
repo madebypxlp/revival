@@ -6,6 +6,8 @@ import Accordion from '@components/ui/Accordion/Accordion'
 const TableAccordionModule: FunctionComponent<{ module: ITableAccordion }> = ({
   module,
 }) => {
+  const { accordion } = module
+
   console.log(module)
   return <div className={`${styles.root} container`}>Tableaccordion Module</div>
 }
