@@ -6,13 +6,13 @@ import NewsletterSignUpModule from '@components/modules/NewsletterSignUp/Newslet
 import NewsletterSignUpFragment from '@components/modules/NewsletterSignUp/NewsletterSignUp.graphql'
 
 const TemplateBlog = (props: any) => {
-  console.log(props)
   return (
     <div>
       <LightHeroModule module={props.template.pageBlog.lightHero} />
       <BlogFilterModule
         data={props.blog.nodes}
         module={props.template.pageBlog.blogFilter}
+        categories={props.categories}
       />
       <NewsletterSignUpModule
         module={props.template.pageBlog.newsletterSignUp}

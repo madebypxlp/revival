@@ -3,6 +3,12 @@ import Image from '@components/fragments/Image'
 export default `
   ${Image}
   query PostsByCategory($categoryId: Int) {
+    categories {
+      nodes {
+        name
+        uri
+      }
+    }
     posts(where: {categoryId: $categoryId}, last: 1000) {
       nodes {
         id
@@ -37,6 +43,8 @@ query getCategoryIdBySlug($slug: [String]) {
   categories(where: {slug: $slug}) {
     nodes {
       categoryId
+      name
+      description
     }
   }
 }

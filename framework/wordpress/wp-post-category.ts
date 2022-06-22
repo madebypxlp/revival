@@ -36,19 +36,22 @@ export const getWpStaticPostCategoryPaths = async (
 export const getPostCategoryWpStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
-  const test = await fetch({
+  const category = await fetch({
     query: getCategoryIdBySlug,
     variables: {
       slug: ctx.params?.slug as string,
     },
   })
-  const categoryId = test?.categories.nodes[0]?.categoryId
-  const res = await fetch({
-    query: postsByCategoryQuery,
-    variables: {
-      categoryId,
-    },
-  })
+  const categoryId = category?.categories?.nodes[0]?.categoryId
+  let res = undefined
+  if (categoryId) {
+    res = await fetch({
+      query: postsByCategoryQuery,
+      variables: {
+        categoryId,
+      },
+    })
+  }
 
   if (!res || !res?.posts) {
     return {
@@ -59,6 +62,8 @@ export const getPostCategoryWpStaticProps = async (
   return {
     props: {
       data: res.posts,
+      categories: res?.categories?.nodes,
+      category: category?.categories?.nodes[0],
     },
     revalidate: undefined,
   }
