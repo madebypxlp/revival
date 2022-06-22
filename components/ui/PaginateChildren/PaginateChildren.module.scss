@@ -1,0 +1,18 @@
+.pagination {
+  @apply relative col-span-full flex justify-center gap-20 text-white py-15;
+  @apply typo-large-paragraph mt-40 md:mt-80;
+
+  &::before {
+    content: '';
+    @apply absolute inset-y-0 w-screen bg-blue -z-10;
+    left: calc(50% - 50vw);
+  }
+
+  .button {
+    @apply transition duration-100 ease-out;
+  }
+
+  .buttonActive {
+    @apply underline;
+  }
+}
