@@ -12,6 +12,7 @@ export interface PostInterface {
   id: string
   title: string
   slug: string
+  uri: string
   featuredImage: {
     node: MediaItem
   }

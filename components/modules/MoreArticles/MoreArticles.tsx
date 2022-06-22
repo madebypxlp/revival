@@ -3,12 +3,13 @@ import styles from './MoreArticles.module.scss'
 import IMoreArticles from './MoreArticles.interface'
 import Image from 'next/image'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
+import { PostInterface } from 'framework/wordpress/interfaces/post'
 
-const MoreArticlesModule: FunctionComponent<IMoreArticles> = ({
-  module,
-  data,
-  currentId,
-}) => {
+const MoreArticlesModule: FunctionComponent<{
+  module: IMoreArticles
+  data: [PostInterface]
+  currentId: string
+}> = ({ module, data, currentId }) => {
   const { headline } = module
   // console.log('DATA' + module, currentId, data)
   return (
@@ -17,9 +18,7 @@ const MoreArticlesModule: FunctionComponent<IMoreArticles> = ({
       <div className="default-grid gap-y-40">
         {data &&
           data.map((data) => {
-            if (currentId === data.id) {
-              return
-            }
+            if (currentId === data.id) return null
             return (
               <div className="col-span-2 md:col-span-12 lg:col-span-6 grid grid-cols-6 gap-20">
                 <div className="col-span-6 md:col-span-4 order-2 md:order-1">
