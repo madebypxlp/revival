@@ -3,11 +3,11 @@ import styles from './MoreArticles.module.scss'
 import IMoreArticles from './MoreArticles.interface'
 import Image from 'next/image'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
-import { PostInterface } from 'framework/wordpress/interfaces/post'
+import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
 
 const MoreArticlesModule: FunctionComponent<{
   module: IMoreArticles
-  data: [PostInterface]
+  data: LearningCenterInterface[]
   currentId: string
 }> = ({ module, data, currentId }) => {
   const { headline } = module

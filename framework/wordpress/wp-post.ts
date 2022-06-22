@@ -22,6 +22,7 @@ export const getWpStaticPostDetailPaths = async (
   const { posts } = await fetch({
     query: getAllPostDetailPagesQuery,
   })
+  console.log('TEST1')
   const res = {
     paths: posts.edges.map(
       ({ node }: { node: { slug: string; uri: string; id: string } }) => {
@@ -43,14 +44,13 @@ export const getWpStaticPostDetailPaths = async (
 export const getPostDetailPageWpStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
-  console.log(ctx.params?.slug as string)
+  console.log('TEST2')
   const res = await fetch({
     query: postDetailQuery,
     variables: {
       slug: ctx.params?.slug as string,
     },
   })
-  console.log(res)
   if (!res) {
     return {
       notFound: true,

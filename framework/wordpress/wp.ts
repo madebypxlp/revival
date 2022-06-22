@@ -57,9 +57,13 @@ export const getWpStaticProps = async (
     }
   }
   const template = res?.entry?.template?.__typename
-  const data = { brands: {}, latestLearningCenterPosts: [], blog: [] }
+  const data = {
+    brands: {},
+    latestLearningCenterPosts: [],
+    blog: [],
+    categories: [],
+  }
 
-  console.log(template)
   const footer = await fetch({ query: footerQuery })
 
   if (template === 'Template_AllBrands') {
@@ -79,6 +83,7 @@ export const getWpStaticProps = async (
     const r = await fetch({ query: blogQuery })
     if (r && r.data) {
       data.blog = r.data
+      data.categories = r?.categories?.nodes
     }
   }
 
