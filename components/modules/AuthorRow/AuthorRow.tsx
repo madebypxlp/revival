@@ -3,6 +3,7 @@ import styles from './AuthorRow.module.scss'
 import IAuthorRow from './AuthorRow.interface'
 import Button from '../../ui/Button/Button'
 import Image from 'next/image'
+import Translations from 'constants/translations'
 
 const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
   const { authorName, authorPosition, authorBioCopy, authorLink, disclaimer } =
@@ -26,7 +27,7 @@ const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
       <div className=" col-span-2 md:col-span-8 md:col-start-4 lg:-ml-15">
         {authorName && (
           <h4 className={` typo-h4 text-blue-default mb-10`}>
-            Written by: {authorName}
+            {Translations.WRITTEN_BY} {authorName}
           </h4>
         )}
         {authorPosition && (
@@ -49,9 +50,7 @@ const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
       </div>
       {line}
       <div className={`${styles.colSpan} typo-feedback mb-60 `}>
-        <span className="mr-30">
-          Was this Helpful? We’d Love Your Feedback!
-        </span>
+        <span className="mr-30">{Translations.FEEDBACK}</span>
         <div className="inline-flex items-center">
           {point}
           <span className="mr-10">0</span>
