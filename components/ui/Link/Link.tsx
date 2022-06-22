@@ -3,22 +3,39 @@ import cn from 'classnames'
 import { FunctionComponent } from 'react'
 import ILink from './Link.interface'
 import styles from './Link.module.scss'
+import { link } from 'fs'
 
 const Link: FunctionComponent<ILink> = (props) => {
-  const { href, color, children, disabled = false } = props
+  const {
+    // @ts-expect-error
+    title,
+    // @ts-expect-error
+    href,
+    // @ts-expect-error
+    link,
+    color,
+    children,
+    className,
+    disabled = false,
+    ...rest
+  } = props
+
+  const url = link?.url || href
+
   return (
-    <NextLink href={href}>
+    <NextLink href={url}>
       <a
         className={cn(
           styles.root,
-          styles[color],
+          className,
+          color && styles[color],
           disabled ? styles.disabled : '',
           'typo-hyperlink',
-          'rounded-focus-box',
+          'rounded-focus-box'
         )}
-        {...props}
+        {...rest}
       >
-        {children}
+        {children || link?.title}
       </a>
     </NextLink>
   )
