@@ -11,24 +11,23 @@ const MoreArticlesModule: FunctionComponent<{
   currentId: string
 }> = ({ module, data, currentId }) => {
   const { headline } = module
-  // console.log('DATA' + module, currentId, data)
   return (
     <div className={`${styles.root} container`}>
       {headline && <h3 className="typo-h4 text-blue mb-35">{headline}</h3>}
       <div className="default-grid gap-y-40">
         {data &&
-          data.map((data) => {
-            if (currentId === data.id) return null
+          data.map((post) => {
+            if (currentId === post.id) return null
             return (
               <div className="col-span-2 md:col-span-12 lg:col-span-6 grid grid-cols-6 gap-20">
                 <div className="col-span-6 md:col-span-4 order-2 md:order-1">
-                  <h4 className="typo-h5 text-blue mb-10">{data.title}</h4>
+                  <h4 className="typo-h5 text-blue mb-10">{post.title}</h4>
                   <p className="typo-small-paragraph mb-10">
                     Grooming your own pets gives you control over the style and
                     cut, and bonding time with your furry friends. A little
                     dog...
                   </p>
-                  <ArrowCTA href={data.uri} orientation="right" color="blue">
+                  <ArrowCTA href={post.uri} orientation="right" color="blue">
                     Learn More
                   </ArrowCTA>
                 </div>
@@ -37,8 +36,8 @@ const MoreArticlesModule: FunctionComponent<{
                   <Image
                     width="217"
                     height="140"
-                    src={data.featuredImage.node.sourceUrl}
-                    alt={data.featuredImage.node.altText}
+                    src={post.featuredImage.node.sourceUrl}
+                    alt={post.featuredImage.node.altText}
                   />
                 </div>
               </div>
