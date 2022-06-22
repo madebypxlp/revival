@@ -8,7 +8,7 @@ const TemplateLearningCenter = (props: any) => {
     <div>
       <LightHeroModule module={props.template.pageLearningCenter.lightHero} />
       <NewsletterSignUpModule
-        module={props.template.pageBlog.newsletterSignUp}
+        module={props.template.pageLearningCenter.newsletterSignUp}
       />
     </div>
   )

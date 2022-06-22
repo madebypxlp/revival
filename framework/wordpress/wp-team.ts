@@ -46,7 +46,7 @@ export const getTeamDetailPageWpStaticProps = async (
   const res = await fetch({
     query: teamQuery,
     variables: {
-      slug: 'dr-greer',
+      slug: ctx.params?.slug as string,
     },
   })
   if (!res) {

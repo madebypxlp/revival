@@ -7,7 +7,6 @@ import Image from 'next/image'
 const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
   const { authorName, authorPosition, authorBioCopy, authorLink, disclaimer } =
     module
-  console.log('NAME' + authorLink)
 
   const line = <div className={`h-1 bg-greyscale-4 ${styles.colSpan} mb-50`} />
   const point = <div className="bg-black rounded-full w-15 h-15 mr-5" />

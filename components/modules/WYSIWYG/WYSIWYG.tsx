@@ -7,8 +7,11 @@ const WYSIWYGModule: FunctionComponent<IWYSIWYG> = (props) => {
   return (
     <div className={`${styles.root} container`}>
       <div className="default-grid">
-        <div className="col-span-8 col-start-3">
-          <div dangerouslySetInnerHTML={{ __html: text }} />
+        <div className="col-span-full md:col-span-8 md:col-start-3">
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
         </div>
       </div>
     </div>
