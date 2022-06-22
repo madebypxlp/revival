@@ -20,9 +20,23 @@ export default `
     additionalData: posts(last: 4) {
       nodes {
         title
+        uri
+        slug
         featuredImage {
           node {
             ...Image
+          }
+        }
+        categories {
+          nodes {
+            id
+            name
+          }
+        }
+        tags {
+          nodes {
+            id
+            name
           }
         }
       }
@@ -43,6 +57,7 @@ export default `
           name
         }
       }
+
       detailPagePost {
         pageBuilder {
           ...Wysiwyg_${TEMPLATE}
