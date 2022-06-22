@@ -5,6 +5,7 @@ import {
   getPostDetailPageWpStaticProps,
   getWpStaticPostDetailPaths,
 } from 'framework/wordpress/wp-post'
+import { Layout } from '@components/common'
 
 export const getStaticProps = getPostDetailPageWpStaticProps
 export const getStaticPaths = getWpStaticPostDetailPaths
@@ -12,10 +13,13 @@ export const getStaticPaths = getWpStaticPostDetailPaths
 export default function Pages({
   data,
   additionalData,
+  footer,
 }: InferGetStaticPropsType<PostDetailPage>) {
   if (!data) return null
 
   return (
-    <BlogDetail additionalData={additionalData} data={{ ...(data as any) }} />
+    <Layout footer={footer}>
+      <BlogDetail additionalData={additionalData} data={{ ...(data as any) }} />
+    </Layout>
   )
 }

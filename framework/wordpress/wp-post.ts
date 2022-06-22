@@ -1,5 +1,6 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
+import footerQuery from './footer'
 import postDetailQuery from './pt-post/post-query'
 
 export const getAllPostDetailPagesQuery = `
@@ -22,7 +23,6 @@ export const getWpStaticPostDetailPaths = async (
   const { posts } = await fetch({
     query: getAllPostDetailPagesQuery,
   })
-  console.log('TEST1')
   const res = {
     paths: posts.edges.map(
       ({ node }: { node: { slug: string; uri: string; id: string } }) => {
@@ -44,13 +44,13 @@ export const getWpStaticPostDetailPaths = async (
 export const getPostDetailPageWpStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
-  console.log('TEST2')
   const res = await fetch({
     query: postDetailQuery,
     variables: {
       slug: ctx.params?.slug as string,
     },
   })
+  const footer = await fetch({ query: footerQuery })
   if (!res) {
     return {
       notFound: true,
@@ -59,6 +59,7 @@ export const getPostDetailPageWpStaticProps = async (
   return {
     props: {
       data: res.entry,
+      footer: footer?.footer,
       additionalData: res.additionalData,
     },
     revalidate: undefined,

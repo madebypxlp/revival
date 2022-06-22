@@ -3,6 +3,7 @@ import fetch from './wp-client'
 import postsByCategoryQuery, {
   getCategoryIdBySlug,
 } from './pt-post/posts-by-category'
+import footerQuery from './footer'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -52,7 +53,7 @@ export const getPostCategoryWpStaticProps = async (
       },
     })
   }
-
+  const footer = await fetch({ query: footerQuery })
   if (!res || !res?.posts) {
     return {
       notFound: true,
@@ -62,6 +63,7 @@ export const getPostCategoryWpStaticProps = async (
   return {
     props: {
       data: res.posts,
+      footer: footer?.footer,
       categories: res?.categories?.nodes,
       category: category?.categories?.nodes[0],
     },

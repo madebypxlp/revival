@@ -1,5 +1,6 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
+import footerQuery from './footer'
 import learningCenterQuery from './pt-learning-center/learning-center-query'
 
 export const getAllLearningCenterDetailPagesQuery = `
@@ -49,6 +50,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
       slug: ctx.params?.slug as string,
     },
   })
+  const footer = await fetch({ query: footerQuery })
   if (!res) {
     return {
       notFound: true,
@@ -57,6 +59,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   return {
     props: {
       data: res.entry,
+      footer: footer?.footer,
       additionalData: res.additionalData,
     },
     revalidate: undefined,
