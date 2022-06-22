@@ -17,6 +17,7 @@ export default `
     additionalData: allLearningCenter(last: 5) {
       nodes {
         title
+        id
         uri
         featuredImage {
           node {

@@ -9,6 +9,7 @@ export default interface IMoreArticles {
     {
       title: string
       uri: string
+      id: string
       featuredImage: {
         node: MediaItem
       }
