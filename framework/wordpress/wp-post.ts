@@ -1,10 +1,10 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import teamQuery from './pt-team/team-query'
+import postDetailQuery from './pt-post/post-query'
 
-export const getAllTeamPagesQuery = /* GraphQL */ `
-  query getAllTeamEntries {
-    teams {
+export const getAllPostDetailPagesQuery = `
+  query getAllPostDetailPagesQuery {
+    posts {
       edges {
         node {
           id
@@ -16,14 +16,14 @@ export const getAllTeamPagesQuery = /* GraphQL */ `
   }
 `
 
-export const getWpStaticTeamDetailPaths = async (
+export const getWpStaticPostDetailPaths = async (
   ctx: GetStaticPropsContext
 ) => {
-  const { teams } = await fetch({
-    query: getAllTeamPagesQuery,
+  const { posts } = await fetch({
+    query: getAllPostDetailPagesQuery,
   })
   const res = {
-    paths: teams.edges.map(
+    paths: posts.edges.map(
       ({ node }: { node: { slug: string; uri: string; id: string } }) => {
         return {
           params: {
@@ -40,15 +40,17 @@ export const getWpStaticTeamDetailPaths = async (
   return res
 }
 
-export const getTeamDetailPageWpStaticProps = async (
+export const getPostDetailPageWpStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
+  console.log(ctx.params?.slug as string)
   const res = await fetch({
-    query: teamQuery,
+    query: postDetailQuery,
     variables: {
       slug: ctx.params?.slug as string,
     },
   })
+  console.log(res)
   if (!res) {
     return {
       notFound: true,
@@ -57,6 +59,7 @@ export const getTeamDetailPageWpStaticProps = async (
   return {
     props: {
       data: res.entry,
+      additionalData: res.additionalData,
     },
     revalidate: undefined,
   }

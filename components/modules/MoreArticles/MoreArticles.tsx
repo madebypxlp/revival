@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styles from './MoreArticles.module.scss'
 import IMoreArticles from './MoreArticles.interface'
-import { divide } from 'lodash'
 import Image from 'next/image'
-import Link from './../../ui/Link/Link'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 
 const MoreArticlesModule: FunctionComponent<IMoreArticles> = ({
@@ -13,7 +11,7 @@ const MoreArticlesModule: FunctionComponent<IMoreArticles> = ({
   const { headline } = module
 
   console.log('DATA' + module, data)
-
+  //  TODO: FILTER OUT CURRENT ARTICLE IF IN DATA
   return (
     <div className={`${styles.root} container`}>
       {headline && <h3 className="typo-h4 text-blue mb-35">{headline}</h3>}

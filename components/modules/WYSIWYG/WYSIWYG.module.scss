@@ -5,6 +5,8 @@
   }
   .content {
     position: relative;
+    font-size: 2.5rem;
+    line-height: 4rem;
     h1,
     h2,
     h3,
@@ -15,10 +17,19 @@
       font-size: 2.5rem;
       line-height: 4rem;
     }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 4rem;
+    }
+
     p,
     div,
     span,
-    li {
+    li,
+    figure {
       margin-bottom: 4rem;
     }
     a {

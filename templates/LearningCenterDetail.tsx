@@ -1,9 +1,11 @@
-import { LearningCenterInterface } from 'framework/wordpress/learning-center-query'
-import renderLearningCenterDetail from 'repeater/learningCenterDetail'
+import { LearningCenterDetailPage } from 'framework/wordpress/interfaces/learning-center'
+import renderLearningCenterDetail from 'repeater/learning-center'
 
-const LearningCenterDetail = (props: LearningCenterInterface) => {
+const LearningCenterDetail = (props: LearningCenterDetailPage) => {
   const {
-    detailPageLearningCenter: { pageBuilder },
+    data: {
+      detailPageLearningCenter: { pageBuilder },
+    },
   } = props
 
   return (

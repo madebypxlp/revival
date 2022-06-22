@@ -1,10 +1,10 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import pageQuery from './page-query'
+import pageQuery from './page/page-query'
 import globalsQuery from './globals'
 import brandsQuery from './brands'
 import blogQuery from './blog'
-import latestLearningCenterPosts from './learning-center-latest'
+import latestLearningCenterPosts from './pt-learning-center/learning-center-latest'
 import footerQuery from './footer'
 
 export const getAllPagesQuery = /* GraphQL */ `

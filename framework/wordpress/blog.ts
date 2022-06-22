@@ -27,26 +27,3 @@ query Data {
   }
 }
 `
-
-export interface BlogPostInterface {
-  id: string
-  title: string
-  uri: string
-  featuredImage: {
-    node: MediaItem
-  }
-  tags: {
-    nodes: [
-      {
-        name: string
-      }
-    ]
-  }
-  categories: {
-    nodes: [
-      {
-        name: string
-      }
-    ]
-  }
-}

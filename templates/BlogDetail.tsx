@@ -1,15 +1,13 @@
-import { LearningCenterInterface } from 'framework/wordpress/learning-center-query'
-import renderBlogDetail from 'repeater/blogDetail'
+import { PostDetailPage } from 'framework/wordpress/interfaces/post'
+import renderBlogDetail from 'repeater/blog-detail'
 
-const BlogDetail = (props: BlogInterface) => {
+const BlogDetail = (props: PostDetailPage) => {
   const {
-    detailPageBlog: { pageBuilder },
+    data: {
+      detailPagePost: { pageBuilder },
+    },
   } = props
 
-  return (
-    <div>
-      {pageBuilder.map((e) => renderBlogDetail(e, props.detailPageBlog))}
-    </div>
-  )
+  return <div>{pageBuilder.map((e: any) => renderBlogDetail(e, props))}</div>
 }
 export default BlogDetail

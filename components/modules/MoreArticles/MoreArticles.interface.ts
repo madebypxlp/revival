@@ -14,4 +14,5 @@ export default interface IMoreArticles {
       }
     }
   ]
+  currentId: string
 }
