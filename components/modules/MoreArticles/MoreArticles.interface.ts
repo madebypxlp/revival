@@ -1,7 +1,17 @@
+import { MediaItem } from '@components/interfaces/Image'
+
 export default interface IMoreArticles {
-  fieldGroupName: string
-  headline: string
-  data: {
-    nodes: any[]
+  module: {
+    fieldGroupName: string
+    headline: string
   }
+  data: [
+    {
+      title: string
+      uri: string
+      featuredImage: {
+        node: MediaItem
+      }
+    }
+  ]
 }

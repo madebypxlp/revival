@@ -19,6 +19,7 @@ export default `
     morePosts: allLearningCenter(last: 4) {
       nodes {
         title
+        uri
         featuredImage {
           node {
             ...Image
