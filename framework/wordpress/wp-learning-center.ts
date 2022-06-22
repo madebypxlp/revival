@@ -1,8 +1,8 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import learningCenterQuery from './learning-center-query'
+import learningCenterQuery from './pt-learning-center/learning-center-query'
 
-export const getAllLearningCenterDetailPagesQuery = /* GraphQL */ `
+export const getAllLearningCenterDetailPagesQuery = `
   query getAllLearningCenterDetailPagesQuery {
     allLearningCenter {
       edges {
@@ -56,8 +56,8 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   }
   return {
     props: {
-      learningCenter: res.entry,
-      morePosts: res.morePosts,
+      data: res.entry,
+      additionalData: res.additionalData,
     },
     revalidate: undefined,
   }

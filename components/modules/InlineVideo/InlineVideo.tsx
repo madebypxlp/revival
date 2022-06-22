@@ -7,8 +7,6 @@ const InlineVideoModule: FunctionComponent<{ module: IInlineVideo }> = ({
   module,
 }) => {
   const { title, youtubeId } = module
-
-  console.log(module)
   return (
     <div className={`${styles.root} container default-grid mb-80`}>
       {youtubeId && (

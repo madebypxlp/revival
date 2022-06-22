@@ -1,7 +1,6 @@
 import type { InferGetStaticPropsType } from 'next'
 import { Layout } from '@components/common'
 import { getWpStaticPaths, getWpStaticProps } from 'framework/wordpress/wp'
-import { PageInterface } from 'framework/wordpress/page-query'
 import TemplateHome from '../templates/Home'
 import TemplateBrandListing from '../templates/BrandListing'
 import TemplateOurStory from '../templates/OurStory'
@@ -14,6 +13,7 @@ import TemplateBlog from 'templates/Blog'
 import TemplateLearningCenter from 'templates/LearningCenter'
 import TemplateAllBrands from 'templates/AllBrands'
 import TemplateCareerApplicationForm from 'templates/CareerApplicationForm'
+import { PageInterface } from 'framework/wordpress/interfaces/page'
 
 export const getStaticProps = getWpStaticProps
 
