@@ -12,6 +12,7 @@ export interface PostInterface {
   id: string
   title: string
   slug: string
+  uri: string
   featuredImage: {
     node: MediaItem
   }
@@ -19,6 +20,9 @@ export interface PostInterface {
     nodes: Category[]
   }
   categories: {
+    nodes: Category[]
+  }
+  tags: {
     nodes: Category[]
   }
   detailPagePost: {

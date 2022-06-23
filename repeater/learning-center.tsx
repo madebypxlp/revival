@@ -3,6 +3,7 @@ import InlineImageModule from '@components/modules/InlineImage/InlineImage'
 import InlineVideoModule from '@components/modules/InlineVideo/InlineVideo'
 import MoreArticlesModule from '@components/modules/MoreArticles/MoreArticles'
 import NewsletterSignUpModule from '@components/modules/NewsletterSignUp/NewsletterSignUp'
+import ProductSliderWithBigImageModule from '@components/modules/ProductSliderWithBigImage/ProductSliderWithBigImage'
 import WYSIWYGModule from '@components/modules/WYSIWYG/WYSIWYG'
 import { LearningCenterDetailPage } from 'framework/wordpress/interfaces/learning-center'
 
@@ -52,6 +53,13 @@ const renderLearningCenterDetail = (
         <NewsletterSignUpModule
           key="NewsletterSignUpModule"
           module={layout.newsletterSignUp}
+        />
+      )
+    case 'Learning_center_Detailpagelearningcenter_PageBuilder_ProductSliderWithBigImage':
+      return (
+        <ProductSliderWithBigImageModule
+          key="ProductSliderWithBigImageModule"
+          module={layout.productSliderWithBigImageModule}
         />
       )
     default:
