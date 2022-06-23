@@ -73,7 +73,20 @@ export const getWpStaticProps = async (
     }
   }
   if (template === 'Template_Home') {
-    const r = await fetch({ query: latestLearningCenterPosts })
+    const r = await fetch({
+      query: latestLearningCenterPosts,
+      variables: { count: 4 },
+    })
+    if (r && r.latestLearningCenterPosts) {
+      data.latestLearningCenterPosts = r.latestLearningCenterPosts
+    }
+  }
+
+  if (template === 'Template_LearningCenter') {
+    const r = await fetch({
+      query: latestLearningCenterPosts,
+      variables: { count: 8 },
+    })
     if (r && r.latestLearningCenterPosts) {
       data.latestLearningCenterPosts = r.latestLearningCenterPosts
     }
