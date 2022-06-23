@@ -88,6 +88,9 @@ module.exports = {
       gap: {
         20: '2rem',
       },
+      lineHeight: {
+        28: '2.8rem',
+      },
     },
   },
   plugins: [
