@@ -8,7 +8,6 @@ const TableAccordionModule: FunctionComponent<{ module: ITableAccordion }> = ({
   module,
 }) => {
   const { accordion } = module
-
   const [openAccordion, setOpenAccordion] = useState(0)
 
   return (
@@ -24,32 +23,23 @@ const TableAccordionModule: FunctionComponent<{ module: ITableAccordion }> = ({
               >
                 {item.rows.map((row) => {
                   return (
-                    <div className="default-grid typo-accordion-copy">
-                      <div className="col-span-4 mb-10 md:mb-0">
-                        {row.firstColumn}
-                      </div>
-                      <div className="col-span-6 mb-10 md:mb-0">
-                        {row.secondColumn}
-                      </div>
-                      <div className="col-span-2 md:justify-self-end md:mb-0 mb-40">
+                    <div className="default-grid typo-accordion-copy mb-10">
+                      <div className="col-span-4">{row.firstColumn}</div>
+                      <div className="col-span-6">{row.secondColumn}</div>
+                      <div className="col-span-2 md:text-right">
                         {row.thirdColumn}
                       </div>
                     </div>
                   )
                 })}
                 {item.copy && (
-                  <div className="typo-accordion-copy md:mt-30">
+                  <div className="typo-accordion-copy mt-30">
                     {parse(item.copy)}
                   </div>
                 )}
               </Accordion>
             )
           })}
-        {/* <Accordion
-          headline="Education/Experience"
-          open={openAccordion === 1}
-          onOpen={() => setOpenAccordion(1)}
-        /> */}
       </div>
     </div>
   )
