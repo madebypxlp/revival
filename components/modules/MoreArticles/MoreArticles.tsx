@@ -9,7 +9,7 @@ const MoreArticlesModule: FunctionComponent<{
   currentId: string
 }> = ({ module, data, currentId }) => {
   console.log(module, data, currentId)
-
+  z
   //  TODO: FILTER OUT CURRENT ARTICLE IF IN DATA
   return <div className={`${styles.root} container`}>Morearticles Module</div>
 }

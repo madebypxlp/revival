@@ -5,6 +5,7 @@ import {
   getWpStaticPostCategoryPaths,
 } from 'framework/wordpress/wp-post-category'
 import TemplateBlogCategory from 'templates/BlogCategory'
+import { Layout } from '@components/common'
 
 export const getStaticProps = getPostCategoryWpStaticProps
 export const getStaticPaths = getWpStaticPostCategoryPaths
@@ -13,13 +14,16 @@ export default function Pages({
   data,
   category,
   categories,
+  footer,
 }: InferGetStaticPropsType<PostDetailPage>) {
   if (!data) return null
   return (
-    <TemplateBlogCategory
-      category={category}
-      categories={categories}
-      data={{ ...(data as any) }}
-    />
+    <Layout footer={footer}>
+      <TemplateBlogCategory
+        category={category}
+        categories={categories}
+        data={{ ...(data as any) }}
+      />
+    </Layout>
   )
 }
