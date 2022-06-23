@@ -10,7 +10,9 @@ const TemplateBlogCategory = ({
 }: {
   category: Category
   categories: Category[]
-  data: PostInterface[]
+  data: {
+    nodes: PostInterface[]
+  }
 }) => {
   const actionCta: Link = {
     title: 'Newsletter Signup',
@@ -26,7 +28,7 @@ const TemplateBlogCategory = ({
         }}
       />
       <BlogFilterModule
-        data={data}
+        data={data.nodes}
         activeCategory={category}
         categories={categories}
         module={{ fieldGroupName: 'blogFilterModule', actionCta }}

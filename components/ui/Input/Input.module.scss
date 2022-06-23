@@ -1,25 +1,37 @@
 .root {
   input {
-    @apply bg-greyscale-6 rounded-15 appearance-none transition duration-150 ease-in-out w-full;
+    @apply appearance-none transition duration-150 ease-in-out w-full border-2 py-14;
+    &:focus {
+      @apply outline-none;
+    }
   }
-}
 
-.root:focus {
-  @apply outline-none;
-}
-
-.default {
-  @apply w-full;
-  input {
-    @apply py-15 px-20 border-greyscale-6 border-2 focus:border-blue;
+  .icon {
+    @apply absolute right-15 top-30 -translate-y-1/2 p-10 text-blue;
   }
-}
 
-.blue-outline {
-  input {
-    @apply border-blue border-2 appearance-none py-15 px-25 rounded-30 typo-small-paragraph;
+  &.variant-default {
+    @apply w-full;
+    input {
+      @apply bg-greyscale-6 px-20 border-greyscale-6 rounded-15 focus:border-blue;
+    }
   }
-  ::placeholder {
-    @apply text-blue;
+
+  &.variant-blue-outline {
+    input {
+      @apply typo-small-paragraph border-blue px-25 rounded-30;
+    }
+    ::placeholder {
+      @apply text-blue;
+    }
+  }
+
+  &.size-small {
+    input {
+      @apply py-9 px-20;
+    }
+    .icon {
+      @apply top-25;
+    }
   }
 }
