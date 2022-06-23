@@ -12,22 +12,17 @@ import ThreeColumnCopyModule from '@components/modules/ThreeColumnCopy/ThreeColu
 import ThreeColumnCopyFragment from '@components/modules/ThreeColumnCopy/ThreeColumnCopy.graphql'
 
 const OurStory = (props: any) => {
+  const {
+    template: { pageOurStory },
+  } = props
   return (
     <div>
-      <TextImageHeroModule module={props.template.pageOurStory.textImageHero} />
-      <InlineText module={props.template.pageOurStory.inlineText} />
-      <ImageInfoSliderModule
-        module={props.template.pageOurStory.imageInfoSlider}
-      />
-      <ThreeColumnCopyModule
-        module={props.template.pageOurStory.threeColumnCopy}
-      />
-      <AccordionWithImageModule
-        module={props.template.pageOurStory.accordionWithImage}
-      />
-      <ImageWithInfosModule
-        module={props.template.pageOurStory.imageWithInfos}
-      />
+      <TextImageHeroModule module={pageOurStory.textImageHero} />
+      <InlineText module={pageOurStory.inlineText} />
+      <ImageInfoSliderModule module={pageOurStory.imageInfoSlider} />
+      <ThreeColumnCopyModule module={pageOurStory.threeColumnCopy} />
+      <AccordionWithImageModule module={pageOurStory.accordionWithImage} />
+      <ImageWithInfosModule module={pageOurStory.imageWithInfos} />
     </div>
   )
 }

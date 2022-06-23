@@ -5,6 +5,7 @@ import {
   getWpStaticTeamDetailPaths,
 } from 'framework/wordpress/wp-team'
 import { PageInterface } from 'framework/wordpress/interfaces/page'
+import { Layout } from '@components/common'
 
 export const getStaticProps = getTeamDetailPageWpStaticProps
 
@@ -12,7 +13,12 @@ export const getStaticPaths = getWpStaticTeamDetailPaths
 
 export default function Pages({
   data,
+  footer,
 }: InferGetStaticPropsType<PageInterface>) {
   if (!data) return null
-  return <TeamDetail {...(data as any)} />
+  return (
+    <Layout footer={footer}>
+      <TeamDetail {...(data as any)} />
+    </Layout>
+  )
 }
