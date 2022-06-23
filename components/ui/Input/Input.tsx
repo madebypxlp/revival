@@ -11,6 +11,7 @@ import { isEmailValid } from '../../../lib/utils'
 import IInput, { InputError } from './Input.interface'
 import InputArrow from '@components/icons/InputArrow'
 import InputSearch from '@components/icons/InputSearch'
+import Translations from 'constants/translations'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -22,6 +23,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     variant = 'default',
     icon = 'arrow',
     size = 'default',
+    weight = 'default',
     onChange,
     onIconClick,
     status,
@@ -48,6 +50,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     className,
     styles['variant-' + variant],
     styles['size-' + size],
+    styles['weight-' + weight],
     'typo-input inline-block',
     inputError === 'invalid' && 'text-red'
   )
@@ -72,9 +75,9 @@ const Input: FunctionComponent<IInput> = (props) => {
         </button>
       )}
       {status}
-      <span className={'block typo-input-error mt-5'}>
-        {inputError === 'invalid' && '*Invalid Email Address'}
-        {inputError === 'required' && '*Required'}
+      <span className={styles.error}>
+        {inputError === 'invalid' && Translations.FORM.INVALID_EMAIL}
+        {inputError === 'required' && Translations.FORM.REQUIRED}
         {!inputError && <>&nbsp;</>}
       </span>
     </label>
