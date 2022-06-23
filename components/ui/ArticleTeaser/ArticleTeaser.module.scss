@@ -1,0 +1,52 @@
+.root {
+  @apply flex flex-col;
+
+  .content {
+    @apply flex flex-col flex-grow;
+  }
+
+  .featuredImage {
+    @apply relative mb-25 rounded-15 overflow-hidden;
+    aspect-ratio: 1.5;
+  }
+
+  .eyebrow {
+    @apply typo-eyebrow;
+  }
+
+  .terms {
+    @apply typo-eyebrow mb-20;
+  }
+
+  .title {
+    @apply text-blue mb-10 mt-auto font-bold;
+  }
+
+  .copy {
+    @apply typo-small-paragraph mb-20;
+  }
+
+  &.variant-default {
+    @apply md:col-span-4;
+  }
+
+  &.variant-featured {
+    @apply col-span-full md:grid gap-20 grid-cols-2;
+
+    .content {
+      @apply justify-center md:px-20 lg:px-65;
+    }
+    .title {
+      @apply mt-40;
+    }
+    .copy {
+      @apply mb-10;
+    }
+    .terms {
+      @apply order-1 mb-30;
+    }
+    .cta {
+      @apply order-2;
+    }
+  }
+}

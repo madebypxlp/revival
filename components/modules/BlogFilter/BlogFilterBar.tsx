@@ -53,7 +53,7 @@ const BlogFilterBar: FunctionComponent<{
         {cta?.url && (
           <div
             className={cn(
-              'md:-ml-12 md:text-right',
+              'md:-ml-16 md:text-right',
               'row-start-1 col-span-6 col-start-7 xl:col-span-2 xl:col-start-11'
             )}
           >

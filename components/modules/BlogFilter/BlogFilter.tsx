@@ -2,12 +2,10 @@ import React, { FunctionComponent } from 'react'
 import styles from './BlogFilter.module.scss'
 import IBlogFilter from './BlogFilter.interface'
 import { Category, PostInterface } from 'framework/wordpress/interfaces/post'
-import Input from '@components/ui/Input/Input'
-import Link from '@components/ui/Link/Link'
 import cn from 'classnames'
-import Button from '@components/ui/Button/Button'
 import BlogFilterBar from './BlogFilterBar'
 import PaginateChildren from '@components/ui/PaginateChildren/PaginateChildren'
+import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
 
 const BlogFilterModule: FunctionComponent<{
   module: IBlogFilter
@@ -37,16 +35,16 @@ const BlogFilterModule: FunctionComponent<{
       />
 
       {!!data?.length && (
-        <div className="container default-grid grid-cols-3">
+        <div className="container default-grid">
           <PaginateChildren perPage={9}>
-            {data.map((post) => {
-              return (
-                <div>
-                  {/* replace with article teaser component */}
-                  {post.title}
-                </div>
-              )
-            })}
+            {data.map((post, index) => (
+              <ArticleTeaser
+                post={post}
+                key={post.id}
+                className={'mb-40 md:mb-80'}
+                variant={index === 0 ? 'featured' : 'default'}
+              />
+            ))}
           </PaginateChildren>
         </div>
       )}
