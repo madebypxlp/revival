@@ -12,6 +12,7 @@ export interface LearningCenterInterface {
   id: string
   title: string
   slug: string
+  uri: string
   featuredImage: {
     node: MediaItem
   }
