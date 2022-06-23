@@ -1,7 +1,7 @@
 import { ReactChild, ReactNode } from 'react'
 
 export default interface IAccordion {
-  open: boolean
+  open?: boolean
   onOpen?: () => any
   headline: String
   children?: ReactNode

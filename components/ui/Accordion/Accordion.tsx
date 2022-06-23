@@ -21,13 +21,15 @@ const Accordion: FunctionComponent<IAccordion> = (props) => {
   } = props
 
   return (
-    <div className={`${styles.root}`}>
+    <div className={`${styles.root} ${open && 'pt-40'}`}>
       <button
         type="button"
         className="flex justify-between items-center w-full mb-20"
         onClick={() => typeof onOpen === 'function' && onOpen()}
       >
-        <span className="typo-accordionheadline text-blue">{headline}</span>
+        <span className="typo-accordionheadline text-blue md:mb-10">
+          {headline}
+        </span>
         <AccordionPlus
           className={styles.icon + ' ' + (open && styles.iconActive)}
         />
@@ -37,7 +39,7 @@ const Accordion: FunctionComponent<IAccordion> = (props) => {
           open && 'max-h-[1000px]'
         }`}
       >
-        {children}
+        <div className="w-11/12 mb-40">{children}</div>
       </div>
     </div>
   )
