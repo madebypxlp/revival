@@ -13,12 +13,14 @@ const BlogFilterModule: FunctionComponent<{
   categories: Category[]
   activeCategory?: Category
 }> = ({ module, data, categories: _categories, activeCategory }) => {
-  const isDetail = () => !!activeCategory
   const { actionCta } = module
 
   const categories = _categories.filter(
     (cat) => !['Uncategorized'].includes(cat.name)
   )
+
+  const isDetail = () => !!activeCategory
+  const showFeatured = (index: number) => !isDetail() && index === 0
 
   return (
     <div
@@ -42,8 +44,8 @@ const BlogFilterModule: FunctionComponent<{
                 post={post}
                 key={post.id}
                 className={'mb-40 md:mb-80'}
-                variant={index === 0 ? 'featured' : 'default'}
-                textSize={index === 0 ? 'medium' : 'default'}
+                variant={showFeatured(index) ? 'featured' : 'default'}
+                textSize={showFeatured(index) ? 'medium' : 'default'}
               />
             ))}
           </PaginateChildren>

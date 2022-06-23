@@ -10,6 +10,13 @@
 
   .button {
     @apply transition duration-100 ease-out;
+    > svg {
+      @apply h-12 w-auto;
+    }
+    &:first-of-type,
+    &:last-of-type {
+      @apply px-5;
+    }
   }
 
   .buttonActive {

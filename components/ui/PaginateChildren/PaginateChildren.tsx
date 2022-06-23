@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from 'react'
 import styles from './PaginateChildren.module.scss'
 import IPaginateChildren from './PaginateChildren.interface'
 import cn from 'classnames'
+import ChevronRight from '@components/icons/ChevronRight'
 
 const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
   const { perPage, children, ...rest } = props
@@ -33,7 +34,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
             )}
             onClick={() => setPage((prev) => prev - 1)}
           >
-            Prev
+            <ChevronRight className="rotate-180" />
           </button>
 
           {getRange().map((p) => (
@@ -52,7 +53,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
             )}
             onClick={() => setPage((prev) => prev + 1)}
           >
-            Next
+            <ChevronRight />
           </button>
         </div>
       )}
