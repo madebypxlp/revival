@@ -5,9 +5,19 @@
     @apply flex flex-col flex-grow;
   }
 
+  .contentTypes {
+    @apply absolute top-0 right-0 text-right;
+    > span {
+      @apply inline-block w-60 md:w-115 ml-10;
+    }
+  }
+
   .featuredImage {
-    @apply relative mb-25 rounded-15 overflow-hidden;
+    @apply relative mb-10 md:mb-25;
     aspect-ratio: 1.5;
+    > span {
+      @apply rounded-15 overflow-hidden;
+    }
   }
 
   .eyebrow {
@@ -15,29 +25,72 @@
   }
 
   .terms {
-    @apply typo-eyebrow mb-20;
+    @apply typo-eyebrow mb-10 md:mb-20;
   }
 
   .title {
-    @apply text-blue mb-10 mt-auto font-bold;
+    @apply text-blue mb-10 md:mt-auto font-bold;
+    line-height: 1.2;
   }
 
   .copy {
-    @apply typo-small-paragraph mb-20;
+    @apply typo-small-paragraph mb-10 md:mb-20;
+  }
+
+  &.text-medium {
+    .title {
+      @apply typo-h4;
+    }
+
+    .copy {
+      @apply md:typo-h5;
+    }
+  }
+
+  &.text-large {
+    .title {
+      @apply typo-h3;
+    }
+
+    .copy {
+      @apply typo-h5 mb-20 md:mb-40;
+    }
+  }
+
+  &.hasContentTypes {
+    .featuredImage > span {
+      @apply rounded-30 rounded-tr-100 md:rounded-tr-200;
+    }
   }
 
   &.variant-default {
-    @apply md:col-span-4;
+    @apply col-span-full md:col-span-4;
+  }
+
+  &.variant-wide {
+    @apply col-span-full md:grid gap-20 grid-cols-2;
+    .content {
+      @apply justify-center;
+    }
+    .terms {
+      @apply mb-10;
+    }
+    .title {
+      @apply mt-0;
+    }
+    .copy {
+      @apply mb-20 md:mb-50;
+    }
   }
 
   &.variant-featured {
-    @apply col-span-full md:grid gap-20 grid-cols-2;
+    @apply col-span-full md:grid gap-x-20 grid-cols-2;
 
     .content {
       @apply justify-center md:px-20 lg:px-65;
     }
     .title {
-      @apply mt-40;
+      @apply md:mt-40;
     }
     .copy {
       @apply mb-10;

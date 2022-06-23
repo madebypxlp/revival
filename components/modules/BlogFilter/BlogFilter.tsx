@@ -43,6 +43,7 @@ const BlogFilterModule: FunctionComponent<{
                 key={post.id}
                 className={'mb-40 md:mb-80'}
                 variant={index === 0 ? 'featured' : 'default'}
+                textSize={index === 0 ? 'medium' : 'default'}
               />
             ))}
           </PaginateChildren>

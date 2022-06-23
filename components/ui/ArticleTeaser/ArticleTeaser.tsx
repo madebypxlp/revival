@@ -7,9 +7,17 @@ import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
 import Translations from '../../../constants/translations'
 import { Category } from 'framework/wordpress/interfaces/post'
+import { LearningCenterContentType } from 'framework/wordpress/interfaces/learning-center'
 
 const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
-  const { post, className, buttonLabel, variant = 'default', ...rest } = props
+  const {
+    post,
+    className,
+    buttonLabel,
+    variant = 'default',
+    textSize = 'default',
+    ...rest
+  } = props
   const { featuredImage, title, uri } = post
 
   // TODO: add copy field to post type
@@ -30,12 +38,19 @@ const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
     : []
   const terms = categories.concat(tags).join(' • ')
 
+  const contentTypes =
+    'contentTypes' in post
+      ? (post.contentTypes.nodes as LearningCenterContentType[])
+      : []
+
   return (
     <div
       className={cn(
         styles.root,
         className,
-        variant && styles['variant-' + variant]
+        styles['variant-' + variant],
+        styles['text-' + textSize],
+        !!contentTypes?.length && styles.hasContentTypes
       )}
       {...rest}
     >
@@ -46,6 +61,22 @@ const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
             layout={'fill'}
             objectFit={'cover'}
           />
+        )}
+        {!!contentTypes?.length && (
+          <div className={styles.contentTypes}>
+            {contentTypes.map((ct) => {
+              if (!ct?.learningCenterContentType?.image?.sourceUrl) return null
+              return (
+                <span key={ct.learningCenterContentType.image.sourceUrl}>
+                  <Image
+                    src={ct.learningCenterContentType.image.sourceUrl}
+                    width={116}
+                    height={116}
+                  />
+                </span>
+              )
+            })}
+          </div>
         )}
       </div>
       <div className={styles.content}>
