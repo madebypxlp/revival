@@ -1,12 +1,13 @@
 import LearningCenterFeaturedAndLatestModule from '@components/modules/LearningCenterFeaturedAndLatest/LearningCenterFeaturedAndLatest'
 import LearningCenterFeaturedAndLatestFragment from '@components/modules/LearningCenterFeaturedAndLatest/LearningCenterFeaturedAndLatest.graphql'
+import LearningCenterFilterModule from '@components/modules/LearningCenterFilter/LearningCenterFilter'
+import LearningCenterFilterFragment from '@components/modules/LearningCenterFilter/LearningCenterFilter.graphql'
 import LightHeroModule from '@components/modules/LightHero/LightHero'
 import LightHeroFragment from '@components/modules/LightHero/LightHero.graphql'
 import NewsletterSignUpModule from '@components/modules/NewsletterSignUp/NewsletterSignUp'
 import NewsletterSignUpFragment from '@components/modules/NewsletterSignUp/NewsletterSignUp.graphql'
 
 const TemplateLearningCenter = (props: any) => {
-  console.log(props)
   const {
     template: { pageLearningCenter },
     latestLearningCenterPosts: { nodes = [] },
@@ -17,6 +18,9 @@ const TemplateLearningCenter = (props: any) => {
       <LearningCenterFeaturedAndLatestModule
         latestPosts={nodes}
         module={pageLearningCenter.learningCenterFeaturedAndLatest}
+      />
+      <LearningCenterFilterModule
+        module={pageLearningCenter.learningCenterFilter}
       />
       <NewsletterSignUpModule module={pageLearningCenter.newsletterSignUp} />
     </div>
@@ -30,6 +34,7 @@ export const fragment = `
   ${LightHeroFragment(TEMPLATE_PREFIX)}
   ${NewsletterSignUpFragment(TEMPLATE_PREFIX)}
   ${LearningCenterFeaturedAndLatestFragment(TEMPLATE_PREFIX)}
+  ${LearningCenterFilterFragment(TEMPLATE_PREFIX)}
   fragment TemplateLearningCenter on Template_LearningCenter
   {
     templateName
@@ -40,6 +45,9 @@ export const fragment = `
       }
       learningCenterFeaturedAndLatest {
         ...LearningCenterFeaturedAndLatest_${TEMPLATE_PREFIX}
+      }
+      learningCenterFilter {
+        ...LearningCenterFilter_${TEMPLATE_PREFIX}
       }
       newsletterSignUp {
         ...NewsletterSignUp_${TEMPLATE_PREFIX}

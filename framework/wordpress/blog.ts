@@ -4,6 +4,7 @@ export default `
 query Data {
   categories {
     nodes {
+      categoryId
       name
       uri
     }

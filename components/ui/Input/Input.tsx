@@ -10,6 +10,7 @@ import React, {
 import { isEmailValid } from '../../../lib/utils'
 import IInput, { InputError } from './Input.interface'
 import InputArrow from '@components/icons/InputArrow'
+import InputSearch from '@components/icons/InputSearch'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -19,6 +20,8 @@ const Input: FunctionComponent<IInput> = (props) => {
     required,
     children,
     variant = 'default',
+    icon = 'arrow',
+    size = 'default',
     onChange,
     onIconClick,
     status,
@@ -43,7 +46,8 @@ const Input: FunctionComponent<IInput> = (props) => {
   const rootClassName = cn(
     styles.root,
     className,
-    styles[variant],
+    styles['variant-' + variant],
+    styles['size-' + size],
     'typo-input inline-block',
     inputError === 'invalid' && 'text-red'
   )
@@ -62,11 +66,9 @@ const Input: FunctionComponent<IInput> = (props) => {
         {...rest}
       />
       {variant === 'blue-outline' && (
-        <button
-          className="absolute right-15 top-30 -translate-y-1/2 p-10 group-hover:translate-x-5 transition duration-150 ease-in-out"
-          onClick={handleIconClick}
-        >
-          <InputArrow />
+        <button className={styles.icon} onClick={handleIconClick}>
+          {icon === 'arrow' && <InputArrow className="w-20 h-20" />}
+          {icon === 'search' && <InputSearch className="w-20 h-20" />}
         </button>
       )}
       {status}

@@ -12,19 +12,27 @@ const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
   const line = <div className={`h-1 bg-greyscale-4 ${styles.colSpan} mb-50`} />
   const point = <div className="bg-black rounded-full w-15 h-15 mr-5" />
 
+  const showImage = false
+
   return (
     <div className={`${styles.root} container md:default-grid mb-100`}>
       {line}
-      <div className="col-span-2 md:col-start-2 mb-20 md:mb-0 text-center md:text-left">
-        <Image
-          className="bg-blue-default rounded-full"
-          width="159"
-          height="157"
-          src="/pugFace.png"
-          alt=""
-        />
-      </div>
-      <div className=" col-span-2 md:col-span-8 md:col-start-4 lg:-ml-15">
+      {showImage && (
+        <div className="col-span-2 md:col-start-2 mb-20 md:mb-0 text-center md:text-left">
+          <Image
+            className="bg-blue-default rounded-full"
+            width="159"
+            height="157"
+            src="/pugFace.png"
+            alt=""
+          />
+        </div>
+      )}
+      <div
+        className={`col-span-2 md:col-span-8 lg:-ml-15 ${
+          showImage ? 'md:col-start-4' : 'md:col-start-3'
+        }`}
+      >
         {authorName && (
           <h4 className={` typo-h4 text-blue-default mb-10`}>
             {Translations.WRITTEN_BY} {authorName}
