@@ -12,6 +12,7 @@ import TemplatePawSquad from 'templates/PawSquad'
 import TemplateBlog from 'templates/Blog'
 import TemplateLearningCenter from 'templates/LearningCenter'
 import TemplateAllBrands from 'templates/AllBrands'
+import TemplateCalendarContest from 'templates/CalendarContest'
 import TemplateCareerApplicationForm from 'templates/CareerApplicationForm'
 import { PageInterface } from 'framework/wordpress/interfaces/page'
 
@@ -31,6 +32,7 @@ const Templates: { [k: string]: any } = {
   Template_LearningCenter: TemplateLearningCenter,
   Template_AllBrands: TemplateAllBrands,
   Template_CareerApplicationForm: TemplateCareerApplicationForm,
+  Template_CalendarContest: TemplateCalendarContest,
   default: (t: string) => <div>TEMPLATE "{t}" NOT FOUND</div>,
 }
 
