@@ -1,5 +1,5 @@
 export default interface INewsletterSignUp {
-  fieldGroupName: string
+  fieldGroupName?: string
   anchor: string
   buttonLabel: string
   headline: string
