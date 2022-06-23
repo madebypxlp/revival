@@ -16,7 +16,6 @@ import TemplateCareerApplicationForm from 'templates/CareerApplicationForm'
 import { PageInterface } from 'framework/wordpress/interfaces/page'
 
 export const getStaticProps = getWpStaticProps
-
 export const getStaticPaths = getWpStaticPaths
 
 const Templates: { [k: string]: any } = {

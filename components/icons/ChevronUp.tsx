@@ -11,9 +11,9 @@ const ChevronUp = ({ ...props }) => {
         fill="none"
         fill-rule="evenodd"
         stroke="#00338D"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="m1 6 5-5 5 5"
       />
     </svg>

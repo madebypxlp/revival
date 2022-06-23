@@ -5,26 +5,27 @@ import Button from '../Button/Button'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 
 const AccountHero: FunctionComponent<IAccountHero> = (props) => {
-  const { headline } = props
+  const { headline = 'Lorem Ipsum' } = props
 
-  const buttonList = [
-    { title: 'Overview', url: '#' },
-    { title: 'Orders', url: '#' },
-    { title: 'Buy Again', url: '#' },
-    { title: 'Prescriptions', url: '#' },
-    { title: 'My Pet', url: '#' },
-    { title: 'My Vet', url: '#' },
-    { title: 'My Favorties', url: '#' },
+  //change Links
+  const ButtonList = [
+    { title: 'Overview', link: '#' },
+    { title: 'Orders', link: '#' },
+    { title: 'Buy Again', link: '#' },
+    { title: 'Prescriptions', link: '#' },
+    { title: 'My Pet', link: '#' },
+    { title: 'My Vet', link: '#' },
+    { title: 'My Favorties', link: '#' },
   ]
 
   return (
-    <div className={styles.root}>
-      <div className="py-45 md:py-80 bg-cream w-full">
-        <div className="container">
+    <div className={`${styles.root} h-auto `}>
+      <div className=" flex items-center justify-center md:justify-start md:items-start md:flex-col bg-cream">
+        <div className="pl-20 md:pl-80 py-45 md:py-85  md:w-full">
           <h1 className="typo-accountheadline mb-20 md:mb-0 text-blue max-w-[336px] md:max-w-full ">
             {headline}
           </h1>
-          <div className="flex md:hidden">
+          <div className="flex lg:hidden">
             <Button
               className="mr-20"
               variant="large"
@@ -39,28 +40,25 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="hidden md:flex items-baseline md:mt-25 md:w-full">
-          {buttonList.map((el) => {
+      <div className="hidden lg:pl-80 lg:flex items-baseline lg:mt-25 lg:w-full">
+        <div className="nav-wrapper">
+          {ButtonList.map((el) => {
             return (
-              <ArrowCTA
-                link={el}
-                color={'black'}
-                orientation="down"
-                className="mr-55"
-              />
+              <ArrowCTA color={'black'} orientation="down">
+                <p className="text-18 leading-28">{el.title}</p>
+              </ArrowCTA>
             )
           })}
-
-          <Button
-            variant="large"
-            type="default"
-            color="yellow"
-            className="ml-auto"
-          >
-            Logout
-          </Button>
         </div>
+
+        <Button
+          variant="large"
+          type="default"
+          color="yellow"
+          className="ml-auto mr-50"
+        >
+          Logout
+        </Button>
       </div>
     </div>
   )

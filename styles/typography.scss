@@ -132,9 +132,8 @@
   }
 
   .typo-legal-text {
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.6rem;
+    font-size: 1.2rem;
+    line-height: 2.5rem;
     @screen md {
       font-size: 1.4rem;
       line-height: 2rem;
@@ -197,12 +196,33 @@
   }
 
   .typo-accountheadline {
-    font-size: 5rem;
-    line-height: 1.2;
     font-weight: 700;
+    font-size: 5rem;
+    line-height: 5.5rem;
     letter-spacing: -0.02em;
     @screen md {
+      font-weight: 700;
       font-size: 7rem;
+      line-height: 7.5rem;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  .typo-accordionheadline {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    @screen md {
+    }
+  }
+
+  .typo-accordion-copy {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    @screen md {
+      font-size: 2rem;
+      line-height: 2;
     }
   }
 }

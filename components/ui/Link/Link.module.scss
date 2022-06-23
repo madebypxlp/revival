@@ -9,9 +9,11 @@
   &.black {
     color: theme('colors.black');
   }
+  &.red {
+    @apply text-red;
+  }
   &.disabled {
     pointer-events: none;
     color: theme('colors.greyscale.4');
   }
-
 }

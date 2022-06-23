@@ -1,7 +1,7 @@
 export default `
-query Data {
+query Data ($count: Int) {
   latestLearningCenterPosts: allLearningCenter(
-    last: 4
+    last: $count
     where: {orderby: {field: DATE, order: DESC}}
   ) {
     nodes {

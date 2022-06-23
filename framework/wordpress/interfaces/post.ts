@@ -22,6 +22,9 @@ export interface PostInterface {
   categories: {
     nodes: Category[]
   }
+  tags: {
+    nodes: Category[]
+  }
   detailPagePost: {
     authorBioCopy: string
     authorName: string
