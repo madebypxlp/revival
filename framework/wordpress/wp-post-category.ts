@@ -2,9 +2,10 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import postsByCategoryQuery, {
   getCategoryIdBySlug,
-} from './pt-post/posts-by-category'
-import footerQuery from './footer'
-import globalsQuery from './globals'
+} from './queries/post-type-post/posts-by-category'
+import footerQuery from './queries/acfGlobalOptions/footer'
+import headerQuery from './queries/acfGlobalOptions/header'
+import globalsQuery from './queries/acfGlobalOptions/globals'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -58,7 +59,9 @@ export const getPostCategoryWpStaticProps = async (
     query: globalsQuery,
   })
 
+  const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+
   if (!res || !res?.posts) {
     return {
       notFound: true,
@@ -69,6 +72,7 @@ export const getPostCategoryWpStaticProps = async (
     props: {
       data: res.posts,
       globals: globalsData?.globals,
+      header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.footer,
       categories: res?.categories?.nodes,
       category: category?.categories?.nodes[0],

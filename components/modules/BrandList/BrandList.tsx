@@ -3,7 +3,7 @@ import styles from './BrandList.module.scss'
 import c from 'classnames'
 import IBrandList from './BrandList.interface'
 import AlphabetList from '@components/ui/AlphabetList/AlphabetList'
-import { Brand } from 'framework/wordpress/brands'
+import { Brand } from 'framework/wordpress/queries/post-type-brands/brands'
 import Link from 'next/link'
 import Fade from '@components/ui/Fade/Fade'
 

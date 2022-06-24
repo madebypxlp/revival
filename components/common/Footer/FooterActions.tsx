@@ -1,10 +1,10 @@
 import { useIsMobile } from '@commerce/utils/hooks'
 import Link from '@components/ui/Link/Link'
+import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
 import Image from 'next/image'
-import Footer from './Footer.interface'
 import styles from './Footer.module.scss'
 
-const FooterActions = ({ data }: { data: Footer }) => {
+const FooterActions = ({ data }: { data: AcfOptionsFooter }) => {
   const { actions } = data
   const isMobile = useIsMobile()
 

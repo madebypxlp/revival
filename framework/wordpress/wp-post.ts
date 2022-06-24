@@ -1,7 +1,8 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import footerQuery from './footer'
-import postDetailQuery from './pt-post/post-query'
+import footerQuery from './queries/acfGlobalOptions/footer'
+import headerQuery from './queries/acfGlobalOptions/header'
+import postDetailQuery from './queries/post-type-post/post-query'
 
 export const getAllPostDetailPagesQuery = `
   query getAllPostDetailPagesQuery {
@@ -50,7 +51,10 @@ export const getPostDetailPageWpStaticProps = async (
       slug: ctx.params?.slug as string,
     },
   })
+
+  const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+
   if (!res) {
     return {
       notFound: true,
@@ -58,6 +62,7 @@ export const getPostDetailPageWpStaticProps = async (
   }
   return {
     props: {
+      header: { ...header?.acfOptionsHeader?.header },
       data: res.entry,
       footer: footer?.footer,
       additionalData: res.additionalData,

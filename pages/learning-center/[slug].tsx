@@ -14,11 +14,12 @@ export default function Pages({
   data,
   additionalData,
   footer,
+  header,
 }: InferGetStaticPropsType<LearningCenterDetailPage>) {
   if (!data) return null
 
   return (
-    <Layout footer={footer}>
+    <Layout header={header} footer={footer}>
       <LearningCenterDetail
         additionalData={additionalData}
         data={{ ...(data as any) }}
