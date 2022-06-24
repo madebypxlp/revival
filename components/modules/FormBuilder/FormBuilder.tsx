@@ -5,12 +5,7 @@ import Input from '@components/ui/Input/Input'
 import cn from 'classnames'
 import Dropdown from '@components/ui/Dropdown/Dropdown'
 import { IDropdownOption } from '@components/ui/Dropdown/Dropdown.interface'
-import {
-  OnChangeValue,
-  SingleValue,
-  MultiValue,
-  ActionMeta,
-} from 'react-select'
+import { OnChangeValue } from 'react-select'
 import Button from '@components/ui/Button/Button'
 import Translations from 'constants/translations'
 import parse from 'html-react-parser'
