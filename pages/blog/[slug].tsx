@@ -12,13 +12,14 @@ export const getStaticPaths = getWpStaticPostDetailPaths
 
 export default function Pages({
   data,
+  header,
   additionalData,
   footer,
 }: InferGetStaticPropsType<PostDetailPage>) {
   if (!data) return null
 
   return (
-    <Layout footer={footer}>
+    <Layout header={header} footer={footer}>
       <BlogDetail additionalData={additionalData} data={{ ...(data as any) }} />
     </Layout>
   )

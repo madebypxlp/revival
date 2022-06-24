@@ -16,6 +16,7 @@ export interface LearningCenterInterface {
   featuredImage: {
     node: MediaItem
   }
+  date: string
   contentTypes: {
     nodes: LearningCenterContentType[]
   }

@@ -49,10 +49,9 @@ const Layout: FC<any> = ({
   const { displaySidebar, displayModal, closeSidebar, closeModal, modalView } =
     useUI()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter
   const isMobile = useIsMobile()
   return (
-    <CommerceProvider locale={locale}>
+    <CommerceProvider locale="en-U">
       {true && process.env.NODE_ENV === 'development' && (
         <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
           <div className="devGrid w-full h-full container">
@@ -85,7 +84,7 @@ const Layout: FC<any> = ({
         <Sidebar open={displaySidebar} onClose={closeSidebar}>
           <CartSidebarView />
         </Sidebar>
-
+        {/*
         <FeatureBar
           title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
           hide={acceptedCookies}
@@ -101,6 +100,7 @@ const Layout: FC<any> = ({
             </Button>
           }
         />
+        */}
       </div>
     </CommerceProvider>
   )

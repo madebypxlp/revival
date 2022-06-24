@@ -35,6 +35,7 @@ export default `
       title
       slug
       uri
+      date
       featuredImage {
         node {
           ...Image
