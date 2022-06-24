@@ -1,15 +1,13 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import postsByCategoryQuery, {
-  getCategoryIdBySlug,
-} from './queries/post-type-post/posts-by-category'
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
 import globalsQuery from './queries/acfGlobalOptions/globals'
+import learningCenterQuery from './queries/post-type-learning-center/learning-center-filter'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
-    categories {
+    categories: lcCategories {
       nodes {
         slug
       }
@@ -17,7 +15,7 @@ export const getAllPostCategories = `
   }
 `
 
-export const getWpStaticPostCategoryPaths = async (
+export const getWpStaticLearningCenterCategoryPaths = async (
   ctx: GetStaticPropsContext
 ) => {
   const { categories } = await fetch({
@@ -36,9 +34,10 @@ export const getWpStaticPostCategoryPaths = async (
   return res
 }
 
-export const getPostCategoryWpStaticProps = async (
+export const getLearningCenterCategoryWpStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
+  /*
   const category = await fetch({
     query: getCategoryIdBySlug,
     variables: {
@@ -46,13 +45,11 @@ export const getPostCategoryWpStaticProps = async (
     },
   })
   const categoryId = category?.categories?.nodes[0]?.categoryId
+  */
   let res = undefined
-  if (categoryId) {
+  if (true) {
     res = await fetch({
-      query: postsByCategoryQuery,
-      variables: {
-        categoryId,
-      },
+      query: learningCenterQuery,
     })
   }
   const globalsData = await fetch({
@@ -62,7 +59,7 @@ export const getPostCategoryWpStaticProps = async (
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
 
-  if (!res || !res?.posts) {
+  if (!res || !res?.data) {
     return {
       notFound: true,
     }
@@ -70,12 +67,12 @@ export const getPostCategoryWpStaticProps = async (
 
   return {
     props: {
-      data: res.posts,
+      posts: res.data,
       globals: globalsData?.globals,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
       categories: res?.categories?.nodes,
-      category: category?.categories?.nodes[0],
+      contentTypes: res?.contentTypes?.nodes,
     },
     revalidate: undefined,
   }

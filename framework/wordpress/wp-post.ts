@@ -64,7 +64,7 @@ export const getPostDetailPageWpStaticProps = async (
     props: {
       header: { ...header?.acfOptionsHeader?.header },
       data: res.entry,
-      footer: footer?.footer,
+      footer: footer?.acfOptionsFooter?.footer,
       additionalData: res.additionalData,
     },
     revalidate: undefined,

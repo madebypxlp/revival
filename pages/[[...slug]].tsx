@@ -49,7 +49,6 @@ Pages.Layout = function getLayout(page: any) {
   if (page?.pageProps?.page === null) return null
   if (!Templates[page?.pageProps?.page?.template.__typename])
     return Templates['default'](page.pageProps.page.template.__typename)
-  console.log(page.pageProps)
   return (
     <Layout
       header={page.pageProps.header}
