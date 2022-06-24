@@ -13,6 +13,8 @@ import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
 import Button from '@components/ui/Button/Button'
 import { useIsMobile } from '@commerce/utils/hooks'
+import AlertBar from '@components/ui/AlertBar/AlertBar'
+import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 
 const Loading = () => (
   <div className="w-100 h-80 flex items-center text-center justify-center p-3">
@@ -35,11 +37,19 @@ const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
   loading: () => <Loading />,
 })
 
-const Layout: FC<any> = ({ children, footer }) => {
+const Layout: FC<any> = ({
+  children,
+  footer,
+  header,
+}: {
+  children: any
+  footer: any
+  header: AcfOptionsHeader
+}) => {
   const { displaySidebar, displayModal, closeSidebar, closeModal, modalView } =
     useUI()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter()
+  const { locale = 'en-US' } = useRouter
   const isMobile = useIsMobile()
   return (
     <CommerceProvider locale={locale}>
@@ -62,7 +72,8 @@ const Layout: FC<any> = ({ children, footer }) => {
         </div>
       )}
       <div className={cn(s.root)}>
-        <Navbar />
+        <AlertBar {...header.alertBanner} />
+        {/* <Navbar />  */}
         <main className="fit">{children}</main>
         <Footer data={footer?.footer} />
         <Modal open={displayModal} onClose={closeModal}>
