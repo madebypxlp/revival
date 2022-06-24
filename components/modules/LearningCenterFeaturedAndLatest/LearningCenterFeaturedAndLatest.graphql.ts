@@ -21,7 +21,7 @@ const LearningCenterFeaturedAndLatestFragment = (t: string) => `
               }
             }
           }
-          categories {
+          categories: lcCategories {
             nodes {
               uri
               name

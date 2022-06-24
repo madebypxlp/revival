@@ -89,6 +89,7 @@ export const getWpStaticProps = async (
     })
     if (r && r.latestLearningCenterPosts) {
       data.latestLearningCenterPosts = r.latestLearningCenterPosts
+      data.categories = r.categories
     }
   }
 
