@@ -11,8 +11,10 @@ export default interface IInput {
   size?: 'default' | 'small'
   weight?: 'default' | 'bold'
   icon?: 'arrow' | 'search'
+  label?: string
   required?: boolean
-  onChange?: (arg0: string, arg1: InputError) => any
+  onChange?: (arg0: string | boolean | FileList, arg1: InputError) => any
   onIconClick?: MouseEventHandler
   status?: ReactNode
+  multiple?: boolean
 }

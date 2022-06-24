@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styles from './FormBuilder.module.scss'
 import IFormBuilder, { GeneralInput } from './FormBuilder.interface'
 import Input from '@components/ui/Input/Input'
@@ -9,6 +9,11 @@ import { OnChangeValue } from 'react-select'
 import Button from '@components/ui/Button/Button'
 import Translations from 'constants/translations'
 import parse from 'html-react-parser'
+import useSWR from 'swr'
+import states from './states'
+import { InputError } from '@components/ui/Input/Input.interface'
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const FormBuilderModule: FunctionComponent<IFormBuilder> = ({ module }) => {
   // strip fieldGroupName prefix vom fields
@@ -22,10 +27,21 @@ const FormBuilderModule: FunctionComponent<IFormBuilder> = ({ module }) => {
   })
   //
 
+  const { data: countries, error } = useSWR<any[]>(
+    'https://restcountries.com/v3.1/all?fields=name',
+    fetcher
+  )
+
   const handleChange = (
-    value: string | OnChangeValue<IDropdownOption, boolean>
+    value:
+      | string
+      | boolean
+      | FileList
+      | OnChangeValue<IDropdownOption, boolean>,
+    error: InputError | undefined
   ) => {
     console.log(value)
+    console.log(error)
   }
 
   return (
@@ -61,52 +77,84 @@ const FormBuilderModule: FunctionComponent<IFormBuilder> = ({ module }) => {
                 <Dropdown
                   options={formattedOptions}
                   color="light"
-                  {...defaultProps}
+                  className={defaultProps.className}
+                  onChange={(v) => handleChange(v, false)}
                   {...rest}
                 />
               )
             }
 
             case 'FormBuilder_AreaSelect': {
-              const { fieldGroupName, ...rest } = input
-              {
-                /* TODO: fetch options depending on type */
+              const { fieldGroupName, type, ...rest } = input
+              const options = []
+              if (type === 'state') {
+                options.push(
+                  ...Object.entries(states).map(([key, name]) => {
+                    return { label: name, value: key }
+                  })
+                )
+              } else if (countries?.length) {
+                options.push(
+                  ...countries.map((country) => {
+                    return {
+                      label: country.common,
+                      value: country.common,
+                    }
+                  })
+                )
               }
-              const options = [
-                { label: 'Area 1', value: 'area-1' },
-                { label: 'Area 2', value: 'area-2' },
-              ]
               return (
                 <Dropdown
                   options={options}
                   color="light"
-                  {...defaultProps}
+                  className={cn(defaultProps.className, 'mb-25 md:mb-50')}
+                  onChange={(v) => handleChange(v, false)}
                   {...rest}
                 />
               )
             }
 
             case 'FormBuilder_FileUpload': {
-              // TODO: add field type
-              return null
+              const { fieldGroupName, fullwidth, note, ...rest } = input
+              return (
+                <Input
+                  type="file"
+                  multiple
+                  {...defaultProps}
+                  weight="bold"
+                  {...rest}
+                  status={
+                    note && (
+                      <div className="typo-form-note font-normal my-10">
+                        {parse(note)}
+                      </div>
+                    )
+                  }
+                />
+              )
             }
 
             case 'FormBuilder_TermsAndConditions': {
-              const { note, ...rest } = input
+              const { fieldGroupName, note, ...rest } = input
 
               return (
                 <div className={defaultProps.className}>
                   {note && (
                     <div className="typo-form-note mb-25">{parse(note)}</div>
                   )}
-                  {/* TODO: add checkbox */}
+                  <Input
+                    type="checkbox"
+                    label={Translations.FORM.TERMS_AND_CONDITIONS}
+                    onChange={defaultProps.onChange}
+                    {...rest}
+                  />
                 </div>
               )
             }
           }
         })}
 
-        <div className="col-span-full my-70">
+        <div className="col-span-full mt-20 mb-70">
           <Button color="yellow" variant="large" buttonType="submit">
             {Translations.FORM.SUBMIT}
           </Button>

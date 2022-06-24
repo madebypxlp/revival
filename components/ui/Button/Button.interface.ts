@@ -15,4 +15,5 @@ export default interface IButton {
   target?: string
   link?: Link
   buttonType?: 'submit'
+  isFake?: boolean
 }
