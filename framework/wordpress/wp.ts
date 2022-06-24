@@ -6,6 +6,7 @@ import brandsQuery from './brands'
 import blogQuery from './blog'
 import latestLearningCenterPosts from './pt-learning-center/learning-center-latest'
 import footerQuery from './footer'
+import headerQuery from './header'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
@@ -64,6 +65,7 @@ export const getWpStaticProps = async (
     categories: [],
   }
 
+  const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
 
   if (template === 'Template_AllBrands') {
@@ -103,6 +105,7 @@ export const getWpStaticProps = async (
 
   return {
     props: {
+      header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.footer,
       page: {
         ...res.entry,

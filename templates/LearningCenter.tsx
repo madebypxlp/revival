@@ -1,3 +1,5 @@
+import ChipLinksModule from '@components/modules/ChipLinks/ChipLinks'
+import ChipLinksFragment from '@components/modules/ChipLinks/ChipLinks.graphql'
 import LearningCenterFeaturedAndLatestModule from '@components/modules/LearningCenterFeaturedAndLatest/LearningCenterFeaturedAndLatest'
 import LearningCenterFeaturedAndLatestFragment from '@components/modules/LearningCenterFeaturedAndLatest/LearningCenterFeaturedAndLatest.graphql'
 import LearningCenterFilterModule from '@components/modules/LearningCenterFilter/LearningCenterFilter'
@@ -21,6 +23,7 @@ const TemplateLearningCenter = (props: any) => {
         categories={categories?.nodes}
         module={pageLearningCenter.learningCenterFeaturedAndLatest}
       />
+      <ChipLinksModule module={pageLearningCenter.chipLinks} />
       <LearningCenterFilterModule
         module={pageLearningCenter.learningCenterFilter}
       />
@@ -37,6 +40,7 @@ export const fragment = `
   ${NewsletterSignUpFragment(TEMPLATE_PREFIX)}
   ${LearningCenterFeaturedAndLatestFragment(TEMPLATE_PREFIX)}
   ${LearningCenterFilterFragment(TEMPLATE_PREFIX)}
+  ${ChipLinksFragment(TEMPLATE_PREFIX)}
   fragment TemplateLearningCenter on Template_LearningCenter
   {
     templateName
@@ -53,6 +57,9 @@ export const fragment = `
       }
       newsletterSignUp {
         ...NewsletterSignUp_${TEMPLATE_PREFIX}
+      }
+      chipLinks {
+        ...ChipLinks_${TEMPLATE_PREFIX}
       }
     }
   }
