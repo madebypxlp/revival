@@ -1,3 +1,4 @@
+import BlogLearningCenterHero from '@components/ui/BlogLearningCenterHero/BlogLearningCenterHero'
 import { LearningCenterDetailPage } from 'framework/wordpress/interfaces/learning-center'
 import renderLearningCenterDetail from 'repeater/learning-center'
 
@@ -9,7 +10,10 @@ const LearningCenterDetail = (props: LearningCenterDetailPage) => {
   } = props
 
   return (
-    <div>{pageBuilder.map((e) => renderLearningCenterDetail(e, props))}</div>
+    <div>
+      <BlogLearningCenterHero {...props.data} />
+      {pageBuilder.map((e) => renderLearningCenterDetail(e, props))}
+    </div>
   )
 }
 export default LearningCenterDetail

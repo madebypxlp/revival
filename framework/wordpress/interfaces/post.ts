@@ -13,6 +13,7 @@ export interface PostInterface {
   title: string
   slug: string
   uri: string
+  date: string
   featuredImage: {
     node: MediaItem
   }

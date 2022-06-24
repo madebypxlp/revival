@@ -13,11 +13,12 @@ export const getStaticPaths = getWpStaticTeamDetailPaths
 
 export default function Pages({
   data,
+  header,
   footer,
 }: InferGetStaticPropsType<PageInterface>) {
   if (!data) return null
   return (
-    <Layout footer={footer}>
+    <Layout header={header} footer={footer}>
       <TeamDetail {...(data as any)} />
     </Layout>
   )

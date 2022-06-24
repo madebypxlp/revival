@@ -2,6 +2,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import teamQuery from './pt-team/team-query'
 import footerQuery from './footer'
+import headerQuery from './header'
 
 export const getAllTeamPagesQuery = /* GraphQL */ `
   query getAllTeamEntries {
@@ -50,7 +51,10 @@ export const getTeamDetailPageWpStaticProps = async (
       slug: ctx.params?.slug as string,
     },
   })
+
+  const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+
   if (!res) {
     return {
       notFound: true,
@@ -58,6 +62,7 @@ export const getTeamDetailPageWpStaticProps = async (
   }
   return {
     props: {
+      header: { ...header?.acfOptionsHeader?.header },
       data: res.entry,
       footer: footer?.footer,
     },

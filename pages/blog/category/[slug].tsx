@@ -15,11 +15,12 @@ export default function Pages({
   category,
   categories,
   footer,
+  header,
   globals,
 }: InferGetStaticPropsType<PostDetailPage>) {
   if (!data) return null
   return (
-    <Layout footer={footer}>
+    <Layout header={header} footer={footer}>
       <TemplateBlogCategory
         category={category}
         globals={globals}
