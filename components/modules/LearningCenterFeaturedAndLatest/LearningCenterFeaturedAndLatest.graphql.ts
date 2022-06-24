@@ -9,7 +9,7 @@ const LearningCenterFeaturedAndLatestFragment = (t: string) => `
           id
           title
           uri
-          categories {
+          categories: lcCategories {
             nodes {
               uri
               name

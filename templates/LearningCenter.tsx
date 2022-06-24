@@ -6,16 +6,17 @@ import NewsletterSignUpModule from '@components/modules/NewsletterSignUp/Newslet
 import NewsletterSignUpFragment from '@components/modules/NewsletterSignUp/NewsletterSignUp.graphql'
 
 const TemplateLearningCenter = (props: any) => {
-  console.log(props)
   const {
     template: { pageLearningCenter },
     latestLearningCenterPosts: { nodes = [] },
+    categories,
   } = props
   return (
     <div>
       <LightHeroModule module={pageLearningCenter.lightHero} />
       <LearningCenterFeaturedAndLatestModule
         latestPosts={nodes}
+        categories={categories?.nodes}
         module={pageLearningCenter.learningCenterFeaturedAndLatest}
       />
       <NewsletterSignUpModule module={pageLearningCenter.newsletterSignUp} />
