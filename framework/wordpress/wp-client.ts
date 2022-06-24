@@ -9,15 +9,17 @@ const wpFetcher = async ({
   query?: any
   variables?: any
 }) => {
-  const body = JSON.stringify({ variables, query })
+  const body =
+    method === 'POST' ? JSON.stringify({ variables, query }) : undefined
   const headers = { 'Content-Type': 'application/json' }
   const res = await fetch(url!, { method, body, headers })
   if (res.ok) {
-    const { data, errors } = await res.json()
+    const json = await res.json()
+    const { data, errors, ...rest } = json
     if (errors) {
       throw new Error(JSON.stringify(errors))
     }
-    return data
+    return data || json
   }
   console.error(await res.text())
   throw res.text()

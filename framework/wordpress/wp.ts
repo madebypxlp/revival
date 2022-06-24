@@ -62,6 +62,8 @@ export const getWpStaticProps = async (
     latestLearningCenterPosts: [],
     blog: [],
     categories: [],
+    countries: [],
+    states: [],
   }
 
   const footer = await fetch({ query: footerQuery })
@@ -98,6 +100,17 @@ export const getWpStaticProps = async (
     if (r && r.data) {
       data.blog = r.data
       data.categories = r?.categories?.nodes
+    }
+  }
+
+  if (template === 'Template_CalendarContest') {
+    const r = await fetch({
+      url: 'https://restcountries.com/v3.1/all',
+      method: 'GET',
+    })
+
+    if (r && r) {
+      data.countries = r
     }
   }
 
