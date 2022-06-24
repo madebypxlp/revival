@@ -40,7 +40,7 @@ export default `
           ...Image
         }
       }
-      categories {
+      categories: lcCategories {
         nodes {
           id
           name

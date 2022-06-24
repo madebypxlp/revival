@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import styles from './Swiper.module.scss'
 import ISwiper, { ISwiperSlide } from './Swiper.interface'
 import {
@@ -14,16 +14,28 @@ import SwiperCore, {
   SwiperOptions,
 } from 'swiper'
 import SliderArrowLeft from '@components/icons/SliderArrowLeft'
+import { NavigationOptions } from 'swiper/types/components/navigation'
 
 SwiperCore.use([Navigation, Pagination, Keyboard, A11y, Autoplay])
 
 export const Swiper: FunctionComponent<ISwiper> = (props) => {
   const { className, onSwiper, children, ...rest } = props
+  const navPrevRef = useRef<SVGSVGElement>(null)
+  const navNextRef = useRef<SVGSVGElement>(null)
 
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore>()
   const onSwiperHandler = (swiper: SwiperCore) => {
     setSwiperInstance(swiper)
-    console.log('on swiper')
+    console.log('onSwiper', navPrevRef.current)
+    if (
+      props?.navigation === true &&
+      (swiper.params.navigation as NavigationOptions)?.prevEl
+    ) {
+      // @ts-expect-error
+      swiper.params.navigation.prevEl = navPrevRef.current
+      // @ts-expect-error
+      swiper.params.navigation.nextEl = navNextRef.current
+    }
     if (typeof onSwiper === 'function') onSwiper(swiper)
   }
 
@@ -50,8 +62,8 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
   // augment default navigation props
   if (props?.navigation === true) {
     defaultProps.navigation = {
-      prevEl: '.swiper-button-prev',
-      nextEl: '.swiper-button-next',
+      prevEl: navPrevRef.current as any,
+      nextEl: navNextRef.current as any,
     }
   }
 
@@ -62,15 +74,24 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
   const mergedProps = { ...rest, ...defaultProps }
 
   return (
-    <PlainSwiper className={`${className} ${styles.swiper}`} {...mergedProps}>
-      {children}
+    <div className="relative">
+      <PlainSwiper
+        className={`${className} ${styles.swiper}`}
+        {...mergedProps}
+        onInit={onSwiperHandler}
+      >
+        {children}
+      </PlainSwiper>
       {props?.navigation && (
-        <>
-          <SliderArrowLeft className="swiper-button-prev" />
-          <SliderArrowLeft className="swiper-button-next rotate-180" />
-        </>
+        <div className="absolute inset-0">
+          <SliderArrowLeft ref={navPrevRef} className="swiper-button-prev" />
+          <SliderArrowLeft
+            ref={navNextRef}
+            className="swiper-button-next rotate-180"
+          />
+        </div>
       )}
-    </PlainSwiper>
+    </div>
   )
 }
 
