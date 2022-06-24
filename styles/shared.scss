@@ -55,3 +55,13 @@
     transition: max-height 1s ease-in-out;
   }
 }
+
+@layer utilities {
+  .light-border {
+    @apply border-greyscale-4;
+  }
+
+  .light-border-b {
+    @apply light-border border-b-[0.15rem];
+  }
+}
