@@ -1,5 +1,3 @@
-import { MediaItem } from '@components/interfaces/Image'
-
 export default `
 query Data {
   categories {

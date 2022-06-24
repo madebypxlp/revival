@@ -1,11 +1,13 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import pageQuery from './page/page-query'
-import globalsQuery from './globals'
-import brandsQuery from './brands'
-import blogQuery from './blog'
-import latestLearningCenterPosts from './pt-learning-center/learning-center-latest'
-import footerQuery from './footer'
+import pageQuery from './queries/page/page-query'
+import globalsQuery from './queries/acfGlobalOptions/globals'
+import brandsQuery from './queries/post-type-brands/brands'
+import blogQuery from './queries/post-type-post/blog'
+import latestLearningCenterPosts from './queries/post-type-learning-center/learning-center-latest'
+import footerQuery from './queries/acfGlobalOptions/footer'
+import headerQuery from './queries/acfGlobalOptions/header'
+import learningCenterFilterQuery from './queries/post-type-learning-center/learning-center-filter'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
@@ -62,8 +64,10 @@ export const getWpStaticProps = async (
     latestLearningCenterPosts: [],
     blog: [],
     categories: [],
+    filterData: {},
   }
 
+  const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
 
   if (template === 'Template_AllBrands') {
@@ -91,6 +95,15 @@ export const getWpStaticProps = async (
       data.latestLearningCenterPosts = r.latestLearningCenterPosts
       data.categories = r.categories
     }
+    const lcFilter = await fetch({
+      query: learningCenterFilterQuery,
+    })
+    const filterData = {
+      categories: lcFilter?.categories?.nodes,
+      contentTypes: lcFilter?.contentTypes?.nodes,
+      posts: lcFilter?.data.nodes,
+    }
+    data.filterData = filterData
   }
 
   if (template === 'Template_Blog') {
@@ -103,7 +116,8 @@ export const getWpStaticProps = async (
 
   return {
     props: {
-      footer: footer?.footer,
+      header: { ...header?.acfOptionsHeader?.header },
+      footer: footer?.acfOptionsFooter?.footer,
       page: {
         ...res.entry,
         ...data,

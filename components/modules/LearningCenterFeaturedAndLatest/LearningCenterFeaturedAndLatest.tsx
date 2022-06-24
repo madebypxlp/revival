@@ -9,8 +9,8 @@ const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
   module: ILearningCenterFeaturedAndLatest
   latestPosts: LearningCenterInterface[]
   categories: Category[]
-}> = ({ module, latestPosts }) => {
-  console.log(module, latestPosts)
+}> = ({ module, latestPosts, categories }) => {
+  console.log(module, latestPosts, categories)
   return (
     <div className={`${styles.root} container`}>
       Learningcenterfeaturedandlatest Module

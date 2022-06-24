@@ -1,7 +1,7 @@
 import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 
-export default interface Footer {
+export interface AcfOptionsFooter {
   nav: [
     {
       primaryHeadline: string

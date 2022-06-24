@@ -1,13 +1,20 @@
 export default `
-query Data ($count: Int) {
+query LearningCenterFilter {
   categories: lcCategories(last: 100) {
     nodes {
       name
       uri
     }
   }
-  latestLearningCenterPosts: allLearningCenter(
-    last: $count
+  contentTypes(last: 100) {
+    nodes {
+      name
+      uri
+    }
+  }
+
+  data: allLearningCenter(
+    last: 1000
     where: {orderby: {field: DATE, order: DESC}}
   ) {
     nodes {
@@ -20,6 +27,12 @@ query Data ($count: Int) {
       }
       title
       uri
+      categories: lcCategories {
+        nodes {
+          name
+          uri
+        }
+      }
     }
   }
 }

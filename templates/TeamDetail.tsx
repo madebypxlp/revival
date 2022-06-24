@@ -1,4 +1,4 @@
-import { TeamInterface } from 'framework/wordpress/pt-team/team-query'
+import { TeamInterface } from 'framework/wordpress/queries/post-type-team/team-query'
 import renderTeamDetail from 'repeater/team-detail'
 
 const TeamDetail = (props: TeamInterface) => {

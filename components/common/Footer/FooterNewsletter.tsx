@@ -1,11 +1,9 @@
-import Footer from './Footer.interface'
 import styles from './Footer.module.scss'
-import { FormEvent, useState } from 'react'
 import SpeechBubble from '@components/icons/SpeechBubble'
-import Input from '@components/ui/Input/Input'
 import NewsletterForm from '@components/ui/NewsletterForm/NewsletterForm'
+import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
 
-const FooterNewsletter = ({ data }: { data: Footer }) => {
+const FooterNewsletter = ({ data }: { data: AcfOptionsFooter }) => {
   const { headline, copy, note } = data.newsletter
 
   return (
