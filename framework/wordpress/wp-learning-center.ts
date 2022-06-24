@@ -1,8 +1,8 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import footerQuery from './footer'
-import headerQuery from './header'
-import learningCenterQuery from './pt-learning-center/learning-center-query'
+import footerQuery from './queries/acfGlobalOptions/footer'
+import headerQuery from './queries/acfGlobalOptions/header'
+import learningCenterQuery from './queries/post-type-learning-center/learning-center-query'
 
 export const getAllLearningCenterDetailPagesQuery = `
   query getAllLearningCenterDetailPagesQuery {

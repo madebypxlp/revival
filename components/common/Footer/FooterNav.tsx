@@ -1,9 +1,8 @@
-import { useIsMobile } from '@commerce/utils/hooks'
 import Link from '@components/ui/Link/Link'
-import Footer from './Footer.interface'
+import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
 import styles from './Footer.module.scss'
 
-const FooterNav = ({ data }: { data: Footer }) => {
+const FooterNav = ({ data }: { data: AcfOptionsFooter }) => {
   const { nav } = data
 
   if (!nav?.length) return null

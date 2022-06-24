@@ -1,12 +1,12 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import pageQuery from './page/page-query'
-import globalsQuery from './globals'
-import brandsQuery from './brands'
-import blogQuery from './blog'
-import latestLearningCenterPosts from './pt-learning-center/learning-center-latest'
-import footerQuery from './footer'
-import headerQuery from './header'
+import pageQuery from './queries/page/page-query'
+import globalsQuery from './queries/acfGlobalOptions/globals'
+import brandsQuery from './queries/post-type-brands/brands'
+import blogQuery from './queries/post-type-post/blog'
+import latestLearningCenterPosts from './queries/post-type-learning-center/learning-center-latest'
+import footerQuery from './queries/acfGlobalOptions/footer'
+import headerQuery from './queries/acfGlobalOptions/header'
 
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
@@ -106,7 +106,7 @@ export const getWpStaticProps = async (
   return {
     props: {
       header: { ...header?.acfOptionsHeader?.header },
-      footer: footer?.footer,
+      footer: footer?.acfOptionsFooter?.footer,
       page: {
         ...res.entry,
         ...data,
