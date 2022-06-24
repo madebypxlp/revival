@@ -74,7 +74,7 @@ const Layout: FC<any> = ({
         <AlertBar {...header.alertBanner} />
         {/* <Navbar />  */}
         <main className="fit">{children}</main>
-        <Footer data={footer?.footer} />
+        <Footer data={footer} />
         <Modal open={displayModal} onClose={closeModal}>
           {modalView === 'LOGIN_VIEW' && <LoginView />}
           {modalView === 'SIGNUP_VIEW' && <SignUpView />}

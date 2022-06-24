@@ -1,8 +1,8 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
-import footerQuery from './footer'
-import headerQuery from './header'
-import postDetailQuery from './pt-post/post-query'
+import footerQuery from './queries/acfGlobalOptions/footer'
+import headerQuery from './queries/acfGlobalOptions/header'
+import postDetailQuery from './queries/post-type-post/post-query'
 
 export const getAllPostDetailPagesQuery = `
   query getAllPostDetailPagesQuery {

@@ -2,10 +2,10 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import postsByCategoryQuery, {
   getCategoryIdBySlug,
-} from './pt-post/posts-by-category'
-import footerQuery from './footer'
-import headerQuery from './header'
-import globalsQuery from './globals'
+} from './queries/post-type-post/posts-by-category'
+import footerQuery from './queries/acfGlobalOptions/footer'
+import headerQuery from './queries/acfGlobalOptions/header'
+import globalsQuery from './queries/acfGlobalOptions/globals'
 
 export const getAllPostCategories = `
   query getAllPostCategories {

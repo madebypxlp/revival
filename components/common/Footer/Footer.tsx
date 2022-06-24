@@ -1,18 +1,16 @@
-import { useIsMobile } from '@commerce/utils/hooks'
 import Facebook from '@components/icons/Facebook'
 import Instagram from '@components/icons/Instagram'
 import YouTube from '@components/icons/YouTube'
-
 import Link from '@components/ui/Link/Link'
+import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
 import Image from 'next/image'
-import Footer from './Footer.interface'
 import styles from './Footer.module.scss'
 import FooterActions from './FooterActions'
 import FooterNav from './FooterNav'
 import FooterNewsletter from './FooterNewsletter'
 
-const Footer = ({ data }: { data: Footer }) => {
-  const { nav, copyright, logo, social } = data
+const Footer = ({ data }: { data: AcfOptionsFooter }) => {
+  const { copyright, logo, social } = data
 
   return (
     <footer className={styles.root}>
