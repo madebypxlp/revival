@@ -4,6 +4,7 @@ import postsByCategoryQuery, {
   getCategoryIdBySlug,
 } from './pt-post/posts-by-category'
 import footerQuery from './footer'
+import globalsQuery from './globals'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -53,6 +54,10 @@ export const getPostCategoryWpStaticProps = async (
       },
     })
   }
+  const globalsData = await fetch({
+    query: globalsQuery,
+  })
+
   const footer = await fetch({ query: footerQuery })
   if (!res || !res?.posts) {
     return {
@@ -63,6 +68,7 @@ export const getPostCategoryWpStaticProps = async (
   return {
     props: {
       data: res.posts,
+      globals: globalsData?.globals,
       footer: footer?.footer,
       categories: res?.categories?.nodes,
       category: category?.categories?.nodes[0],

@@ -11,6 +11,7 @@ import { fragment as PawSquadFragment } from '../../../templates/PawSquad'
 import { fragment as BlogFragment } from '../../../templates/Blog'
 import { fragment as LearningCenterFragment } from '../../../templates/LearningCenter'
 import { fragment as AllBrandsFragment } from '../../../templates/AllBrands'
+import { fragment as CalendarContestFragment } from '../../../templates/CalendarContest'
 
 export default `
   ${Link}
@@ -26,6 +27,7 @@ export default `
   ${BlogFragment}
   ${LearningCenterFragment}
   ${AllBrandsFragment}
+  ${CalendarContestFragment}
 
   query page($uri: String) {
     entry: pageBy(uri: $uri) {
@@ -67,6 +69,9 @@ export default `
         }
         ...on Template_AllBrands {
           ...TemplateAllBrands
+        }
+        ...on Template_CalendarContest {
+          ...TemplateCalendarContest
         }
       }
     }

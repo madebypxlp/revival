@@ -10,7 +10,7 @@ const NewsletterSignUpModule: FunctionComponent<{
   return (
     <div
       id={anchor}
-      className={`${styles.root} container bg-cream md:bg-white`}
+      className={`${styles.root} container bg-cream md:bg-white  mb-60 md:mb-80`}
     >
       <div className="bg-cream md:rounded-15 py-65 md:py-125 text-center">
         <h2 className="typo-h3 text-blue mb-20">{headline}</h2>

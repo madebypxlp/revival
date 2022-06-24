@@ -1,7 +1,7 @@
 import { getWpData } from 'framework/wordpress/wp'
-import { ACFGlobalData } from 'framework/wordpress/globals'
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
+import { ACFGlobalData } from 'framework/wordpress/interfaces/globals'
 
 export const getStaticProps = getWpData
 

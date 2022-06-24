@@ -41,7 +41,8 @@ export interface PostInterface {
 }
 
 export interface Category {
-  id: string
+  categoryId: string
   name: string
+  uri: string
   description: string
 }

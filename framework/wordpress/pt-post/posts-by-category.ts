@@ -5,6 +5,7 @@ export default `
   query PostsByCategory($categoryId: Int) {
     categories {
       nodes {
+        categoryId
         name
         uri
       }
