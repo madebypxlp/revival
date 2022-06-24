@@ -1,6 +1,7 @@
-const InlineTextFragment = (t: string) => `
+const InlineTextFragment = (t: string, flexible: boolean = false) => `
   fragment InlineText_${t} on ${t}_InlineText {
     fieldGroupName
+    ${flexible ? `inlineText {` : ''}
     backgroundPawImage
     headline
     text
@@ -8,6 +9,7 @@ const InlineTextFragment = (t: string) => `
     link {
       ...Link
     }
+    ${flexible ? `}` : ''}
   }
 `
 export default InlineTextFragment

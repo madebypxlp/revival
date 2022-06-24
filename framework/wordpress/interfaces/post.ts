@@ -13,6 +13,7 @@ export interface PostInterface {
   title: string
   slug: string
   uri: string
+  date: string
   featuredImage: {
     node: MediaItem
   }
@@ -45,4 +46,7 @@ export interface Category {
   name: string
   uri: string
   description: string
+  postTypeLearningCenterCategory?: {
+    featured: boolean
+  }
 }

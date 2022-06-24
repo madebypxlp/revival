@@ -5,7 +5,7 @@ export default `
 ${Link}
 ${Image}
 query Footer {
-  footer:acfOptionsFooter {
+  acfOptionsFooter {
     footer {
       nav:footerItems {
         primaryHeadline

@@ -1,3 +1,7 @@
+import ChipLinksModule from '@components/modules/ChipLinks/ChipLinks'
+import ChipLinksFragment from '@components/modules/ChipLinks/ChipLinks.graphql'
+import InlineTextModule from '@components/modules/InlineText/InlineText'
+import InlineTextFragment from '@components/modules/InlineText/InlineText.graphql'
 import LearningCenterFeaturedAndLatestModule from '@components/modules/LearningCenterFeaturedAndLatest/LearningCenterFeaturedAndLatest'
 import LearningCenterFeaturedAndLatestFragment from '@components/modules/LearningCenterFeaturedAndLatest/LearningCenterFeaturedAndLatest.graphql'
 import LearningCenterFilterModule from '@components/modules/LearningCenterFilter/LearningCenterFilter'
@@ -11,17 +15,20 @@ const TemplateLearningCenter = (props: any) => {
   const {
     template: { pageLearningCenter },
     latestLearningCenterPosts: { nodes = [] },
+    categories,
+    filterData,
   } = props
   return (
     <div>
       <LightHeroModule module={pageLearningCenter.lightHero} />
       <LearningCenterFeaturedAndLatestModule
         latestPosts={nodes}
+        categories={categories?.nodes}
         module={pageLearningCenter.learningCenterFeaturedAndLatest}
       />
-      <LearningCenterFilterModule
-        module={pageLearningCenter.learningCenterFilter}
-      />
+      <ChipLinksModule module={pageLearningCenter.chipLinks} />
+      <InlineTextModule module={pageLearningCenter.inlineText} />
+      <LearningCenterFilterModule {...filterData} />
       <NewsletterSignUpModule module={pageLearningCenter.newsletterSignUp} />
     </div>
   )
@@ -35,6 +42,8 @@ export const fragment = `
   ${NewsletterSignUpFragment(TEMPLATE_PREFIX)}
   ${LearningCenterFeaturedAndLatestFragment(TEMPLATE_PREFIX)}
   ${LearningCenterFilterFragment(TEMPLATE_PREFIX)}
+  ${ChipLinksFragment(TEMPLATE_PREFIX)}
+  ${InlineTextFragment(TEMPLATE_PREFIX)}
   fragment TemplateLearningCenter on Template_LearningCenter
   {
     templateName
@@ -51,6 +60,12 @@ export const fragment = `
       }
       newsletterSignUp {
         ...NewsletterSignUp_${TEMPLATE_PREFIX}
+      }
+      chipLinks {
+        ...ChipLinks_${TEMPLATE_PREFIX}
+      }
+      inlineText {
+        ...InlineText_${TEMPLATE_PREFIX}
       }
     }
   }

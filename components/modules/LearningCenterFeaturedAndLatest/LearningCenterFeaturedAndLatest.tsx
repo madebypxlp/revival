@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styles from './LearningCenterFeaturedAndLatest.module.scss'
 import ILearningCenterFeaturedAndLatest from './LearningCenterFeaturedAndLatest.interface'
 import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
+import { Category } from 'framework/wordpress/interfaces/post'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
 import { useIsMobile } from '@commerce/utils/hooks'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
@@ -10,7 +11,8 @@ import Translations from 'constants/translations'
 const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
   module: ILearningCenterFeaturedAndLatest
   latestPosts: LearningCenterInterface[]
-}> = ({ module, latestPosts }) => {
+  categories: Category[]
+}> = ({ module, latestPosts, categories }) => {
   console.log(module, latestPosts)
 
   const { featuredArticles, featuredStoriesHeadline, latestStoriesHeadline } =

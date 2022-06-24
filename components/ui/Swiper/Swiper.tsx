@@ -18,7 +18,7 @@ import SliderArrowLeft from '@components/icons/SliderArrowLeft'
 SwiperCore.use([Navigation, Pagination, Keyboard, A11y, Autoplay])
 
 export const Swiper: FunctionComponent<ISwiper> = (props) => {
-  const { className, onSwiper, children } = props
+  const { className, onSwiper, children, ...rest } = props
 
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore>()
   const onSwiperHandler = (swiper: SwiperCore) => {
@@ -59,7 +59,8 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
     return <div className={`${className}`}>{children}</div>
   }
 
-  const mergedProps = { ...props, ...defaultProps }
+  const mergedProps = { ...rest, ...defaultProps }
+
   return (
     <PlainSwiper className={`${className} ${styles.swiper}`} {...mergedProps}>
       {children}

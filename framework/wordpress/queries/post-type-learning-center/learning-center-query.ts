@@ -35,12 +35,13 @@ export default `
       title
       slug
       uri
+      date
       featuredImage {
         node {
           ...Image
         }
       }
-      categories {
+      categories: lcCategories {
         nodes {
           id
           name

@@ -8,6 +8,7 @@ const ChipLinksFragment = (t: string) => `
       }
       defaultYellow
     }
+    fullwidthVariant
   }
 `
 export default ChipLinksFragment

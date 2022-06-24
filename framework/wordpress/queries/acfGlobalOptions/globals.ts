@@ -5,6 +5,16 @@ import LinkInterface from '@components/interfaces/Link'
 export default `
   ${Link}
   query Data {
+  globals: globalSettings {
+    globals {
+      newsletterSignUp {
+        headline
+        subline
+        buttonLabel
+        anchor
+      }
+    }
+  }
   notFound: acfOptionsNotFoundPage {
     data: globalSettingsNotFoundPage {
       copy
@@ -17,16 +27,3 @@ export default `
   }
 }
 `
-
-export interface ACFGlobalData {
-  notFound: {
-    data: {
-      copy: string
-      quickLinks: [
-        {
-          link: LinkInterface
-        }
-      ]
-    }
-  }
-}
