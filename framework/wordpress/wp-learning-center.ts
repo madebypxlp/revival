@@ -53,6 +53,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   })
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+
   if (!res) {
     return {
       notFound: true,
@@ -62,7 +63,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
     props: {
       data: res.entry,
       header: { ...header?.acfOptionsHeader?.header },
-      footer: footer?.footer,
+      footer: footer?.acfOptionsFooter?.footer,
       additionalData: res.additionalData,
     },
     revalidate: undefined,

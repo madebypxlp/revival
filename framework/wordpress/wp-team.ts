@@ -64,7 +64,7 @@ export const getTeamDetailPageWpStaticProps = async (
     props: {
       header: { ...header?.acfOptionsHeader?.header },
       data: res.entry,
-      footer: footer?.footer,
+      footer: footer?.acfOptionsFooter?.footer,
     },
     revalidate: undefined,
   }

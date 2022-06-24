@@ -11,8 +11,8 @@ const ChipLinksModule: FunctionComponent<{ module: IChipLinks }> = ({
 
   return (
     <div
-      className={`${styles.root} mt-20 mb-40 lg:mt-60 lg:mb-100 relative ${
-        fullwidthVariant ? 'bg-blue-default' : ''
+      className={`${styles.root} mt-20 lg:mt-60 relative ${
+        fullwidthVariant ? 'bg-blue-default' : 'mb-40 lg:mb-100'
       }`}
     >
       <div className="container">
