@@ -3,7 +3,7 @@ import Link from '@components/interfaces/Link'
 
 export default interface IButton {
   variant: 'large' | 'small'
-  type: 'default' | 'arrow' | 'plus'
+  type?: 'default' | 'arrow' | 'plus'
   color: 'yellow' | 'blue' | 'red' | 'white' | 'black' | 'chipWhite'
   outline?: boolean
   disabled?: boolean

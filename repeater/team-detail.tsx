@@ -12,7 +12,7 @@ const renderTeamDetail = (layout: any) => {
     case 'Team_Posttypeteam_PageBuilder_InlineText':
       return <InlineTextModule module={{ ...layout.inlineText }} />
     case 'Team_Posttypeteam_PageBuilder_TableAccordion':
-      return <TableAccordionModule {...layout} />
+      return <TableAccordionModule module={layout.tableAccordion} />
     default:
       return `${layout.fieldGroupName} not found`
   }

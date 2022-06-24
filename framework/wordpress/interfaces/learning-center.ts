@@ -12,16 +12,12 @@ export interface LearningCenterInterface {
   id: string
   title: string
   slug: string
+  uri: string
   featuredImage: {
     node: MediaItem
   }
   contentTypes: {
-    nodes: [
-      {
-        id: string
-        name: string
-      }
-    ]
+    nodes: LearningCenterContentType[]
   }
   categories: {
     nodes: [
@@ -43,5 +39,14 @@ export interface LearningCenterInterface {
       twitter: string
     }
     pageBuilder: [any]
+  }
+}
+
+export interface LearningCenterContentType {
+  id: string
+  slug: string
+  name: string
+  learningCenterContentType: {
+    image: MediaItem
   }
 }

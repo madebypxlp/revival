@@ -8,7 +8,7 @@ import { cleanHref } from '@lib/utils'
 const Button: FunctionComponent<IButton> = (props) => {
   const {
     variant,
-    type,
+    type = 'default',
     buttonType,
     children,
     ariaLabel = '',

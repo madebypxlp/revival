@@ -42,7 +42,7 @@
   &.large {
     font-size: 1.8rem;
     line-height: 2.3rem;
-    padding: 1.35rem 4rem;
+    padding: 1.25rem 4rem;
     border-radius: 3rem;
     &:focus {
       &::after {
@@ -51,7 +51,7 @@
     }
   }
   &.small {
-    padding: 1.35rem 2.5rem;
+    padding: 1.25rem 2.5rem;
     border-radius: 2.5rem;
     font-size: 1.4rem;
     line-height: 1.8rem;

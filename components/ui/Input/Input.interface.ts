@@ -8,6 +8,8 @@ export default interface IInput {
   type?: string
   isDropdown?: boolean
   variant?: 'default' | 'blue-outline'
+  size?: 'default' | 'small'
+  icon?: 'arrow' | 'search'
   required?: boolean
   onChange?: (arg0: string, arg1: InputError) => any
   onIconClick?: MouseEventHandler

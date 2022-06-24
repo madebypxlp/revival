@@ -1,0 +1,21 @@
+.root {
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+  padding-top: 2rem;
+  margin-bottom: -1px;
+
+  .icon {
+    path:nth-of-type(2) {
+      transition: transform 0.5s ease;
+      transform-origin: center;
+    }
+  }
+
+  .iconActive {
+    path:nth-of-type(2) {
+      transform: rotate(90deg);
+      // TURBO MODE
+      // transform: rotate(3690deg);
+    }
+  }
+}

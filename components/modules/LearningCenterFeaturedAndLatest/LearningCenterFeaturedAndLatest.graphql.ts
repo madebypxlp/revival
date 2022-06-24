@@ -9,6 +9,18 @@ const LearningCenterFeaturedAndLatestFragment = (t: string) => `
           id
           title
           uri
+          contentTypes {
+            nodes {
+              id
+              slug
+              name
+              learningCenterContentType {
+                image {
+                  ...Image
+                }
+              }
+            }
+          }
           categories: lcCategories {
             nodes {
               uri
