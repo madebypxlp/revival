@@ -34,7 +34,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Hello World Hyperlink
           </Link>
         </div>
-
         <div style={{ background: 'orange' }}>
           <h1>Arrow CTA</h1>
           <ArrowCTA
@@ -58,7 +57,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           </ArrowCTA>
           <br /> <br />
         </div>
-
         <div>
           <h1>Plus CTA</h1>
           <PlusCTA href="/our-story">Add to cart</PlusCTA>
@@ -69,12 +67,10 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Add to cart
           </PlusCTA>
         </div>
-
         <h1>Tags</h1>
         <Tag label="Hello World" variant="blue-filled" />
         <Tag label="Hello World" variant="blue-outline" />
         <Tag label="Hello World" variant="red-filled" />
-
         <div>
           <div style={{ background: 'orange' }}>
             <h1>Buttons</h1>
@@ -170,7 +166,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             />
           </form>
         </div>
-
         <div className="my-50 py-50">
           <h1>Accordion</h1>
           <Accordion
