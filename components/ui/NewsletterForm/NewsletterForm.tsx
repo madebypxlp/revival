@@ -3,6 +3,7 @@ import styles from './NewsletterForm.module.scss'
 import INewsletterForm from './NewsletterForm.interface'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
+import Translations from 'constants/translations'
 
 const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
   const { submitLabel, inputClassName } = props
@@ -31,7 +32,9 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
         }}
         status={
           success && (
-            <p className="absolute typo-small-paragraph text-green">Success!</p>
+            <p className="absolute typo-small-paragraph text-green">
+              {Translations.FORM.SUCCESS}
+            </p>
           )
         }
       />

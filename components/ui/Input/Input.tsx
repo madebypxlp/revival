@@ -11,6 +11,8 @@ import { isEmailValid } from '../../../lib/utils'
 import IInput, { InputError } from './Input.interface'
 import InputArrow from '@components/icons/InputArrow'
 import InputSearch from '@components/icons/InputSearch'
+import Translations from 'constants/translations'
+import Button from '../Button/Button'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -19,9 +21,11 @@ const Input: FunctionComponent<IInput> = (props) => {
     type,
     required,
     children,
+    label,
     variant = 'default',
     icon = 'arrow',
     size = 'default',
+    weight = 'default',
     onChange,
     onIconClick,
     status,
@@ -29,14 +33,28 @@ const Input: FunctionComponent<IInput> = (props) => {
   } = props
 
   const [inputError, setInputError] = useState<InputError>(false)
+  const [inputFiles, setInputFiles] = useState<FileList | null>()
 
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
-    const { type, required, value, id } = e.target as HTMLInputElement
+    const { type, required, value, checked, files } =
+      e.target as HTMLInputElement
+
+    // validation
     if (type === 'email' && value && !isEmailValid(value))
       setInputError('invalid')
+    else if (type === 'checkbox' && required && !checked)
+      setInputError('required')
     else if (required && !value) setInputError('required')
     else setInputError(false)
-    if (typeof onChange === 'function') onChange(value, inputError)
+    // validation
+
+    if (typeof onChange === 'function') {
+      if (type === 'checkbox') onChange(checked, inputError)
+      if (type === 'file') {
+        setInputFiles(files)
+        onChange(files || false, inputError)
+      } else onChange(value, inputError)
+    }
   }
 
   const handleIconClick: MouseEventHandler = (e) => {
@@ -48,15 +66,26 @@ const Input: FunctionComponent<IInput> = (props) => {
     className,
     styles['variant-' + variant],
     styles['size-' + size],
+    styles['weight-' + weight],
     'typo-input inline-block',
     inputError === 'invalid' && 'text-red'
   )
 
   return (
-    <label className={rootClassName + ' relative inline-block group'}>
+    <label
+      className={cn(
+        rootClassName,
+        'relative inline-block group',
+        styles['type-' + type]
+      )}
+    >
+      {label && (
+        <span className={styles.label}>{label + (required ? '*' : '')}</span>
+      )}
+
       <input
         onChange={handleOnChange}
-        placeholder={required ? placeholder + '*' : placeholder}
+        placeholder={'' + placeholder + (required ? '*' : '')}
         type={type}
         required={required}
         autoComplete="off"
@@ -65,16 +94,34 @@ const Input: FunctionComponent<IInput> = (props) => {
         spellCheck="false"
         {...rest}
       />
+
+      {type === 'file' && (
+        <div className={styles.file}>
+          <Button isFake variant="large" color="yellow">
+            {Translations.FORM.CHOOSE_A_FILE}
+          </Button>
+          <span className="ml-20 font-normal">
+            {!inputFiles?.length
+              ? Translations.FORM.NO_FILE_CHOSEN
+              : Array.from(inputFiles)
+                  .map((file) => file.name)
+                  .join(', ')}
+          </span>
+        </div>
+      )}
+
       {variant === 'blue-outline' && (
         <button className={styles.icon} onClick={handleIconClick}>
           {icon === 'arrow' && <InputArrow className="w-20 h-20" />}
           {icon === 'search' && <InputSearch className="w-20 h-20" />}
         </button>
       )}
+
       {status}
-      <span className={'block typo-input-error mt-5'}>
-        {inputError === 'invalid' && '*Invalid Email Address'}
-        {inputError === 'required' && '*Required'}
+
+      <span className={styles.error}>
+        {inputError === 'invalid' && Translations.FORM.INVALID_EMAIL}
+        {inputError === 'required' && Translations.FORM.REQUIRED}
         {!inputError && <>&nbsp;</>}
       </span>
     </label>
