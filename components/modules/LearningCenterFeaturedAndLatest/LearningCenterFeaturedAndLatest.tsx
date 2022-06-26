@@ -7,14 +7,18 @@ import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
 import { useIsMobile } from '@commerce/utils/hooks'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import Translations from 'constants/translations'
+import BlogFilterBar from '../BlogFilter/BlogFilterBar'
+import Image from 'next/image'
+import ArticleTeaserSmall from '@components/ui/ArticleTeaserSmall/ArticleTeaserSmall'
 
 const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
   module: ILearningCenterFeaturedAndLatest
   latestPosts: LearningCenterInterface[]
   categories: Category[]
 }> = ({ module, latestPosts, categories }) => {
-  console.log(module, latestPosts)
-
+  const navCategories = categories.filter(
+    (c) => c.postTypeLearningCenterCategory?.featured
+  )
   const { featuredArticles, featuredStoriesHeadline, latestStoriesHeadline } =
     module
   const featuredIds = featuredArticles.map((a) => a.article.id)
@@ -27,12 +31,16 @@ const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
     .slice(0, latestPostsCount)
 
   const otherFeaturedArticles = featuredArticles.slice(1, 3)
-  // hardcoded article preview copy, need to replace when data is available
-  const copy =
-    'Grooming your own pets gives you control over the style and cut, and bonding time with your furry friends. A little dog...'
+
+  const articleTeaserFontSize = isMobile ? 'medium' : 'large'
   return (
-    <div className={`${styles.root} container`}>
-      <div className="default-grid">
+    <div className={`${styles.root}`}>
+      <BlogFilterBar
+        categories={navCategories}
+        searchInputPlaceholder={Translations.SEARCH_LEARNING_CENTER}
+        variant="learning-center"
+      />
+      <div className="default-grid container">
         {featuredStoriesHeadline && (
           <div className={styles.featuredStoriesHeadline}>
             <h4>{featuredStoriesHeadline}</h4>
@@ -40,22 +48,21 @@ const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
         )}
         <div className={styles.mainFeaturedArticleContainer}>
           <ArticleTeaser
-            className="mt-40 pb-45 light-border-b"
+            className="mt-40 pb-65 md:pb-45 md:light-border-b"
             post={module.featuredArticles[0].article}
-            textSize="large"
+            textSize={articleTeaserFontSize}
           />
         </div>
-        {otherFeaturedArticles.map((a) => {
-          return (
-            <div key={a.article.id} className={styles.otherFeaturedArticle}>
-              <div className={styles.postTitle}>{a.article.title}</div>
-              <div className={styles.postCopy}>{copy}</div>
-              <ArrowCTA orientation="right" color="blue" href={a.article.uri}>
-                {Translations.LEARN_MORE}
-              </ArrowCTA>
-            </div>
-          )
-        })}
+        <div className={styles.otherFeaturedArticlesContainer}>
+          {otherFeaturedArticles.map(({ article }) => {
+            return (
+              <ArticleTeaserSmall
+                article={article}
+                variant={'learning-center'}
+              />
+            )
+          })}
+        </div>
         <div className={styles.latestStoriesContainer}>
           {latestStoriesHeadline && (
             <div className={styles.latestStoriesHeadline}>
@@ -63,15 +70,7 @@ const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
             </div>
           )}
           {renderedLatestPosts.map((p) => {
-            return (
-              <div key={p.id} className={styles.latestPost}>
-                <div className={styles.postTitle}>{p.title}</div>
-                <div className={styles.postCopy}>{copy}</div>
-                <ArrowCTA orientation="right" color="blue" href={p.uri}>
-                  {Translations.LEARN_MORE}
-                </ArrowCTA>
-              </div>
-            )
+            return <ArticleTeaserSmall article={p} variant={'no-image'} />
           })}
         </div>
       </div>
