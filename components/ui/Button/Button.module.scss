@@ -37,11 +37,13 @@
   position: relative;
   font-weight: 700;
   transition: 400ms ease;
+  display: inline-block;
+  cursor: pointer;
 
   &.large {
     font-size: 1.8rem;
     line-height: 2.3rem;
-    padding: 1.35rem 4rem;
+    padding: 1.25rem 4rem;
     border-radius: 3rem;
     &:focus {
       &::after {
@@ -50,7 +52,7 @@
     }
   }
   &.small {
-    padding: 1.35rem 2.5rem;
+    padding: 1.25rem 2.5rem;
     border-radius: 2.5rem;
     font-size: 1.4rem;
     line-height: 1.8rem;
@@ -135,6 +137,38 @@
       &:hover {
         background: #fff;
         color: theme('colors.blue.default');
+      }
+    }
+    &:active {
+      color: theme('colors.blue.default');
+      background: #fff;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        border: 1.5px solid theme('colors.blue.default');
+      }
+    }
+  }
+  &.chipWhite {
+    background: transparent;
+    text-decoration: none;
+    color: theme('colors.white');
+    &:hover {
+      @extend .yellow-default;
+    }
+    &.outline {
+      border: 1px solid theme('colors.white');
+      color: theme('colors.white');
+      background: transparent;
+      &:hover {
+        background: theme('colors.yellow.default');
+        color: theme('colors.blue.default');
+        border: 1px solid theme('colors.yellow.default');
       }
     }
     &:active {

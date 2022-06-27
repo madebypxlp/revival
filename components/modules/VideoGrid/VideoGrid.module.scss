@@ -1,0 +1,8 @@
+.root {
+  .title {
+    line-height: 1.6;
+    @screen md {
+      font-size: 2.5rem;
+    }
+  }
+}

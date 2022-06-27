@@ -1,26 +1,39 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
-import IImage from './Image.interface'
+import { IImage } from './Image.interface'
 import styles from './Image.module.scss'
 import { useIsMobile } from '@commerce/utils/hooks'
 
-const ImageComponent: FunctionComponent<IImage> = ({ image }) => {
+const ImageComponent: FunctionComponent<IImage> = ({
+  image,
+  className = '',
+  imgClassName = '',
+  layout = 'responsive',
+  loading = 'lazy',
+}) => {
   const isMobile = useIsMobile()
+  const img = () => {
+    return isMobile && image.mobileImage
+      ? image.mobileImage
+      : image.desktopImage
+  }
   return (
-    <div className={`${styles.root}`}>
-      {isMobile && image.mobileImage ? (
+    <div className={`${styles.root} ${className}`}>
+      {layout === 'fill' ? (
         <Image
-          width={image.mobileImage.mediaDetails.width}
-          height={image.mobileImage.mediaDetails.height}
-          layout="responsive"
-          src={image.mobileImage.sourceUrl}
+          className={imgClassName}
+          layout="fill"
+          loading={loading}
+          src={img().sourceUrl}
         />
       ) : (
         <Image
-          width={image.desktopImage.mediaDetails.width}
-          height={image.desktopImage.mediaDetails.height}
-          layout="responsive"
-          src={image.desktopImage.sourceUrl}
+          className={imgClassName}
+          width={img().mediaDetails.width}
+          height={img().mediaDetails.height}
+          layout={layout}
+          loading={loading}
+          src={img().sourceUrl}
         />
       )}
     </div>

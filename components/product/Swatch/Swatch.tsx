@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import { FC } from 'react'
-import s from './Swatch.module.css'
+import s from './Swatch.module.scss'
 import { Check } from '@components/icons'
 import { isDark } from '@lib/colors'
 import Button from '@components/ui/Button/Button'
@@ -39,9 +39,10 @@ const Swatch: FC<Omit<IButton, 'variant'> & Props> = ({
   return (
     <Button
       className={rootClassName}
-      style={color ? { backgroundColor: color } : {}}
+      variant="small"
+      color="yellow"
       aria-label="Variant Swatch"
-      {...props}
+      type="default"
     >
       {variant === 'color' && active && (
         <span>

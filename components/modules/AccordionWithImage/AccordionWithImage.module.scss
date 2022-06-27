@@ -1,0 +1,20 @@
+.root {
+  position: relative;
+
+  .accordionRoot {
+    @apply py-20;
+    cursor: pointer;
+    border-top: 1.5px solid theme('colors.greyscale.4');
+    &:last-of-type {
+      border-bottom: 1.5px solid theme('colors.greyscale.4');
+    }
+  }
+
+  span {
+    text-transform: uppercase;
+  }
+  h3,
+  span {
+    color: theme('colors.blue.default');
+  }
+}

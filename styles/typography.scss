@@ -18,9 +18,232 @@
 
 @font-face {
   font-family: 'Foco';
-  font-weight: 500;
+  font-weight: 700;
   font-display: swap;
   src: url('./../assets/fonts/FOCOBOLD.TTF') format('ttf'),
     url('./../assets/fonts/FOCOBOLD.woff') format('woff'),
     url('./../assets/fonts/FOCOBOLD.woff2') format('woff2');
+}
+
+@layer utilities {
+  .typo-h1,
+  h1 {
+    font-weight: 700;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: -0.02em;
+    @screen md {
+      font-size: 8rem;
+      line-height: 8.5rem;
+    }
+  }
+
+  .typo-h2,
+  h2 {
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    letter-spacing: -0.02em;
+    @screen md {
+      font-size: 7rem;
+      line-height: 7.5rem;
+    }
+  }
+
+  .typo-h3,
+  h3 {
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    letter-spacing: -0.02em;
+    @screen md {
+      font-size: 5rem;
+      line-height: 5.5rem;
+    }
+  }
+
+  .typo-h4,
+  h4 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: -0.02em;
+
+    @screen md {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+  }
+
+  .typo-h5,
+  h5 {
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  .typo-h6,
+  h6 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    @screen md {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+  }
+
+  .typo-eyebrow {
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    letter-spacing: 0.1em;
+    @apply uppercase;
+  }
+
+  .typo-large-paragraph {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    @screen md {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+  }
+
+  .typo-small-paragraph {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+    }
+  }
+
+  .typo-nav-links {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+    @screen md {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  .typo-legal-text {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+    @screen md {
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+  }
+
+  .typo-form-note {
+    font-size: 1.1rem;
+    line-height: 1.33;
+  }
+
+  .typo-button-01 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  .typo-right-arrow-cta {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  .typo-hyperlink {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+    }
+  }
+
+  .typo-fact {
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+
+  .typo-input {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+
+  .typo-input-error {
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    @apply text-red;
+  }
+
+  .typo-feedback {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  .typo-accountheadline {
+    font-weight: 700;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: -0.02em;
+    @screen md {
+      font-weight: 700;
+      font-size: 7rem;
+      line-height: 7.5rem;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  .typo-accordionheadline {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    @screen md {
+    }
+  }
+
+  .typo-accordion-copy {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    @screen md {
+      font-size: 2rem;
+    }
+  }
+
+  .typo-hyperlink-modal {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    @apply underline;
+  }
+
+  .typo-alert-bar {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    @screen md {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+    }
+  }
 }

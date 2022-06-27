@@ -1,6 +1,7 @@
 html {
   font-family: 'Foco';
   font-size: 10px;
+  overflow-x: hidden;
 }
 
 /**
@@ -26,5 +27,18 @@ button {
     outline: none !important;
     box-shadow: none;
     -webkit-appearance: none;
+  }
+}
+
+.devGrid {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  .col {
+    background-color: rebeccapurple;
+    opacity: 0.1;
   }
 }

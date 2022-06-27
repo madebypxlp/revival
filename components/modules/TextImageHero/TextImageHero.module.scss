@@ -1,7 +1,30 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  .text_block {
+    margin: 5rem 0;
+    @screen lg {
+      margin: 12.7rem 0;
+    }
+  }
+
+  .subline {
+    @apply text-blue typo-eyebrow;
+  }
+
+  .headline {
+    @apply text-blue typo-h2 my-10;
+  }
+
+  .copy {
+    @apply text-black typo-large-paragraph ml-0;
+    width: 80%;
+  }
+
+  .image {
+    @apply bg-cream;
+    border-radius: 1.5rem;
+    @screen lg {
+      border-radius: 1.5rem 0 0 20rem;
+    }
+  }
 }

@@ -1,35 +1,129 @@
 import cn from 'classnames'
-import s from './Input.module.css'
-import React, { InputHTMLAttributes } from 'react'
+import styles from './Input.module.scss'
+import React, {
+  FormEvent,
+  FunctionComponent,
+  MouseEvent,
+  MouseEventHandler,
+  useState,
+} from 'react'
+import { isEmailValid } from '../../../lib/utils'
+import IInput, { InputError } from './Input.interface'
+import InputArrow from '@components/icons/InputArrow'
+import InputSearch from '@components/icons/InputSearch'
+import Translations from 'constants/translations'
+import Button from '../Button/Button'
 
-export interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  className?: string
-  onChange?: (...args: any[]) => any
-}
+const Input: FunctionComponent<IInput> = (props) => {
+  const {
+    className,
+    placeholder,
+    type,
+    required,
+    children,
+    label,
+    variant = 'default',
+    icon = 'arrow',
+    size = 'default',
+    weight = 'default',
+    onChange,
+    onIconClick,
+    status,
+    ...rest
+  } = props
 
-const Input: React.FC<Props> = (props) => {
-  const { className, children, onChange, ...rest } = props
+  const [inputError, setInputError] = useState<InputError>(false)
+  const [inputFiles, setInputFiles] = useState<FileList | null>()
 
-  const rootClassName = cn(s.root, {}, className)
+  const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
+    const { type, required, value, checked, files } =
+      e.target as HTMLInputElement
 
-  const handleOnChange = (e: any) => {
-    if (onChange) {
-      onChange(e.target.value)
+    // validation
+    if (type === 'email' && value && !isEmailValid(value))
+      setInputError('invalid')
+    else if (type === 'checkbox' && required && !checked)
+      setInputError('required')
+    else if (required && !value) setInputError('required')
+    else setInputError(false)
+    // validation
+
+    if (typeof onChange === 'function') {
+      if (type === 'checkbox') onChange(checked, inputError)
+      if (type === 'file') {
+        setInputFiles(files)
+        onChange(files || false, inputError)
+      } else onChange(value, inputError)
     }
-    return null
   }
 
+  const handleIconClick: MouseEventHandler = (e) => {
+    if (typeof onIconClick === 'function') onIconClick(e)
+  }
+
+  const rootClassName = cn(
+    styles.root,
+    className,
+    styles['variant-' + variant],
+    styles['size-' + size],
+    styles['weight-' + weight],
+    'typo-input inline-block',
+    inputError === 'invalid' && 'text-red'
+  )
+
   return (
-    <label>
+    <label
+      className={cn(
+        rootClassName,
+        'relative inline-block group',
+        styles['type-' + type]
+      )}
+    >
+      {label && (
+        <span className={styles.label}>{label + (required ? '*' : '')}</span>
+      )}
+
       <input
-        className={rootClassName}
         onChange={handleOnChange}
+        placeholder={'' + placeholder + (required ? '*' : '')}
+        type={type}
+        required={required}
         autoComplete="off"
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
         {...rest}
       />
+
+      {type === 'file' && (
+        <div className={styles.file}>
+          <Button isFake variant="large" color="yellow">
+            {Translations.FORM.CHOOSE_A_FILE}
+          </Button>
+          <span className="ml-20 font-normal">
+            {!inputFiles?.length
+              ? Translations.FORM.NO_FILE_CHOSEN
+              : Array.from(inputFiles)
+                  .map((file) => file.name)
+                  .join(', ')}
+          </span>
+        </div>
+      )}
+
+      {variant === 'blue-outline' && (
+        <button className={styles.icon} onClick={handleIconClick}>
+          {icon === 'arrow' && <InputArrow className="w-20 h-20" />}
+          {icon === 'search' && <InputSearch className="w-20 h-20" />}
+        </button>
+      )}
+
+      {status}
+
+      <span className={styles.error}>
+        {inputError === 'invalid' && Translations.FORM.INVALID_EMAIL}
+        {inputError === 'required' && Translations.FORM.REQUIRED}
+        {!inputError && <>&nbsp;</>}
+      </span>
     </label>
   )
 }

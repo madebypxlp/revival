@@ -98,7 +98,7 @@ export default function Search({
           {/* Categories */}
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
-              <span className="rounded-md shadow-sm">
+              <span className="rounded-15 shadow-sm">
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, 'categories')}
@@ -126,7 +126,7 @@ export default function Search({
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-15 shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'categories' || toggleFilter !== true
                   ? 'hidden'
                   : ''
@@ -197,7 +197,7 @@ export default function Search({
           {/* Designs */}
           <div className="relative inline-block w-full">
             <div className="lg:hidden mt-3">
-              <span className="rounded-md shadow-sm">
+              <span className="rounded-15 shadow-sm">
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, 'brands')}
@@ -225,7 +225,7 @@ export default function Search({
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-15 shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'brands' || toggleFilter !== true
                   ? 'hidden'
                   : ''
@@ -375,7 +375,7 @@ export default function Search({
         <div className="col-span-8 lg:col-span-2 order-2 lg:order-none">
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
-              <span className="rounded-md shadow-sm">
+              <span className="rounded-15 shadow-sm">
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, 'sort')}
@@ -401,7 +401,7 @@ export default function Search({
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-15 shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'sort' || toggleFilter !== true ? 'hidden' : ''
               }`}
             >

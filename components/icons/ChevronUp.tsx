@@ -1,18 +1,21 @@
 const ChevronUp = ({ ...props }) => {
   return (
     <svg
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 12 7"
       width="24"
       height="24"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      fill="none"
-      shapeRendering="geometricPrecision"
       {...props}
     >
-      <path d="M18 15l-6-6-6 6" />
+      <path
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#00338D"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="m1 6 5-5 5 5"
+      />
     </svg>
   )
 }

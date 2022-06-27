@@ -2,9 +2,10 @@ import { FC, useEffect, useState, useCallback } from 'react'
 import { validate } from 'email-validator'
 import { Info } from '@components/icons'
 import { useUI } from '@components/ui/context'
-import { Logo, Input } from '@components/ui'
+import { Logo } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
 import Button from '@components/ui/Button/Button'
+import Input from '@components/ui/Input/Input'
 
 interface Props {}
 
@@ -42,7 +43,7 @@ const SignUpView: FC<Props> = () => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
@@ -88,9 +89,9 @@ const SignUpView: FC<Props> = () => {
         </span>
         <div className="pt-2 w-full flex flex-col">
           <Button
-            variant="slim"
-            type="submit"
-            loading={loading}
+            color="yellow"
+            variant="small"
+            type="default"
             disabled={disabled}
           >
             Sign Up

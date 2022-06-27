@@ -2,7 +2,7 @@ import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import CartItem from '../CartItem'
-import s from './CartSidebarView.module.css'
+import s from './CartSidebarView.module.scss'
 import { UserNav } from '@components/common'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
@@ -96,7 +96,7 @@ const CartSidebarView: FC = () => {
                 My Cart
               </h2>
             </Link>
-            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t ">
+            <ul className="py-5 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t ">
               {data!.lineItems.map((item: any) => (
                 <CartItem
                   key={item.id}

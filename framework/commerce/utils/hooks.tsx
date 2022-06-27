@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-const { theme } = require('../../../tailwind.config');
+import { useEffect, useState } from 'react'
+const { theme } = require('../../../tailwind.config')
 
 /**
  * Returns true if current window width matches mobile breakpoint
@@ -7,7 +7,7 @@ const { theme } = require('../../../tailwind.config');
  * @param breakPoint - tailwind breakpoint to use as max width, default is md
  * @returns isMobile - boolean
  */
-export function useIsMobile(defaultState = false, breakPoint = 'lg') {
+export function useIsMobile(defaultState = false, breakPoint = 'md') {
   const [isMobile, setIsMobile] = useState(defaultState)
   const bpWidth = theme.screens[breakPoint].replace('px', '')
 

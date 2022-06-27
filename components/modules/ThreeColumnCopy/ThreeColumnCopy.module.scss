@@ -1,0 +1,27 @@
+.root {
+  // add your styles here
+  @apply pt-50 pb-25;
+  @apply md:pt-100 md:pb-30; 
+
+  .subline{
+    @apply text-blue mb-10 col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-10;
+  }
+
+  .headline{
+    @apply text-blue mb-50 col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-10;
+  }
+
+  .contentColumn{
+    @apply col-span-2;
+    @apply md:col-span-4;
+    font-size: 2.4rem;
+    line-height: 3.8rem;
+  }
+
+  .contentColumn p{
+    @apply mb-30;
+    @apply md:mb-60;
+  }
+}

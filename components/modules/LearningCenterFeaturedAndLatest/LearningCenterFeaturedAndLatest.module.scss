@@ -1,0 +1,57 @@
+.root {
+  @apply md:pt-60 pb-30;
+
+  :global(.blog-filter-bar) {
+    @apply pt-20 pb-40;
+    @apply md:pb-75 md:pt-0;
+
+    input::placeholder {
+      @apply text-black;
+    }
+  }
+
+  .featuredStoriesHeadline {
+    @apply col-start-1 col-span-2 light-border-b pb-10;
+    @apply md:col-start-1 md:col-span-7 md:pb-20;
+
+    h4 {
+      @apply text-blue;
+    }
+  }
+
+  .mainFeaturedArticleContainer {
+    @apply col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-7;
+  }
+
+  .latestStoriesHeadline {
+    @apply col-span-2 pb-10;
+    @apply light-border-b md:pb-20 md:mb-40;
+
+    h4 {
+      @apply text-blue;
+    }
+  }
+
+  .otherFeaturedArticlesContainer {
+    @apply col-span-2 hidden;
+    @apply md:col-span-7 md:block;
+  }
+
+  .otherFeaturedArticlesContainer :global(.article-teaser-small) {
+    @apply mt-40;
+  }
+
+  .latestStoriesContainer {
+    @apply col-span-2;
+    @apply md:col-start-9 md:col-span-4 md:row-start-1 md:row-span-6;
+  }
+
+  .latestStoriesContainer :global(.article-teaser-small) {
+    @apply mt-40;
+
+    &:not(:last-child) {
+      @apply md:mb-80;
+    }
+  }
+}

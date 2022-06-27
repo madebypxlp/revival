@@ -2,7 +2,7 @@ import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import type { Product } from '@commerce/types'
-import s from './ProductCard.module.css'
+import s from './ProductCard.module.scss'
 import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 
@@ -39,7 +39,7 @@ const ProductCard: FC<Props> = ({
               height={320}
               width={320}
               layout="fixed"
-              {...imgProps}
+              //  {...imgProps}
             />
           )}
         </div>
@@ -75,7 +75,7 @@ const ProductCard: FC<Props> = ({
                 width={540}
                 quality="85"
                 layout="responsive"
-                {...imgProps}
+                //  {...imgProps}
               />
             )}
           </div>

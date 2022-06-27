@@ -1,0 +1,18 @@
+.root {
+  :global {
+    .swiper-button-prev,
+    .swiper-button-next {
+      @apply w-50 md:w-70 h-auto;
+      &::before {
+        content: '';
+      }
+    }
+
+    .swiper-button-next {
+      right: -4rem;
+    }
+    .swiper-button-prev {
+      left: -4rem;
+    }
+  }
+}

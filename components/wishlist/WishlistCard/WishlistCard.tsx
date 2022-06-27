@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
-import s from './WishlistCard.module.css'
+import s from './WishlistCard.module.scss'
 import { Trash } from '@components/icons'
 import { Text } from '@components/ui'
 
@@ -77,10 +77,11 @@ const WishlistCard: FC<Props> = ({ product }) => {
         </div>
         <Button
           aria-label="Add to Cart"
-          type="button"
-          className={'py-1 px-5 border  rounded-md shadow-sm hover:-hover'}
+          type="default"
+          variant="large"
+          color="yellow"
+          className={'py-1 px-5 border  rounded-15 shadow-sm hover:-hover'}
           onClick={addToCart}
-          loading={loading}
         >
           Add to Cart
         </Button>

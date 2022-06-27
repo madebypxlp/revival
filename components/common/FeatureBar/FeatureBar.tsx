@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import s from './FeatureBar.module.css'
+import s from './FeatureBar.module.scss'
 
 interface FeatureBarProps {
   className?: string

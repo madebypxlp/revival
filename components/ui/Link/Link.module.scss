@@ -1,0 +1,19 @@
+.root {
+  position: relative;
+  display: block;
+  text-decoration: underline;
+
+  &.blue {
+    color: theme('colors.blue.default');
+  }
+  &.black {
+    color: theme('colors.black');
+  }
+  &.red {
+    @apply text-red;
+  }
+  &.disabled {
+    pointer-events: none;
+    color: theme('colors.greyscale.4');
+  }
+}

@@ -1,0 +1,67 @@
+.rounded-focus-box {
+  &::after {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: -1.3rem;
+    right: -1.3rem;
+    bottom: -1rem;
+    border: 1.5px solid #000;
+    border-radius: 2rem;
+    opacity: 0;
+    transition: 400ms ease;
+  }
+  &:focus {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.wysiwyg {
+  p {
+    margin-bottom: 3rem;
+  }
+  b {
+    font-weight: 700;
+  }
+  a {
+    text-decoration: underline;
+  }
+  ul > * {
+    list-style-type: disc;
+    margin-left: 19px;
+  }
+}
+
+.underline-effect {
+  text-decoration: underline 0.15rem rgba(0, 0, 0, 0);
+  transition: text-decoration-color 500ms;
+  text-underline-offset: 0.2rem;
+
+  &:hover,
+  &.active {
+    text-decoration-color: inherit;
+  }
+}
+
+.accordion {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+
+  &.visible {
+    max-height: 3000px;
+    transition: max-height 1s ease-in-out;
+  }
+}
+
+@layer utilities {
+  .light-border {
+    @apply border-greyscale-4;
+  }
+
+  .light-border-b {
+    @apply light-border border-b-[0.15rem];
+  }
+}

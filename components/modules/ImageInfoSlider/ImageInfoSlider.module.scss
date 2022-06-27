@@ -1,0 +1,56 @@
+.root {
+  @apply bg-blue pt-50 pb-25 overflow-hidden;
+  @apply md:pt-100 md:pb-100;
+  background-image: url('/background_with_lines.svg');
+  background-size: cover;
+  
+  :global(.swiper-button-prev), :global(.swiper-button-next){
+    @apply transition-all duration-500 opacity-100;
+  }
+
+  :global(.swiper-button-prev){
+    @apply -translate-x-25;
+    @apply md:translate-x-0;
+  }
+
+  :global(.swiper-button-next){
+    @apply translate-x-25;
+    @apply md:translate-x-0;
+  }
+
+  :global(.swiper-button-disabled){
+    @apply opacity-0;
+  }
+
+  :global(.swiper-container){
+    @apply overflow-visible;
+  }
+
+  .slideContainer{
+    @apply px-30;
+    @apply md:pl-0 md:pr-[25%];
+  }
+
+  .headlineContainer{
+    @apply mb-55 text-white col-start-1 col-span-2;
+    @apply md:col-start-1 md:col-span-8;
+  }
+
+  .slideImage{
+    aspect-ratio: 1;
+    @apply mb-20;
+  }
+
+  .slideImage > div > div{
+    @apply rounded-full;
+  }
+
+  .slideHeadlineContainer{
+    @apply text-white mb-20;
+  }
+
+  .slideCopyContainer{
+    @apply text-white typo-large-paragraph;
+  }
+
+}

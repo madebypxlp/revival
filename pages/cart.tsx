@@ -42,7 +42,7 @@ export default function Cart() {
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
         {isLoading || isEmpty ? (
-          <div className="flex-1 px-12 py-54 flex flex-col justify-center items-center ">
+          <div className="flex-1 px-12 py-55 flex flex-col justify-center items-center ">
             <span className="border border-dashed  flex items-center justify-center w-16 h-16  p-10 rounded-lg ">
               <Bag className="absolute" />
             </span>
@@ -76,7 +76,7 @@ export default function Cart() {
           <div className="px-4 sm:px-5 flex-1">
             <Text variant="pageHeading">My Cart</Text>
             <Text variant="sectionHeading">Review your Order</Text>
-            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-2 border-b ">
+            <ul className="py-5 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-2 border-b ">
               {data!.lineItems.map((item) => (
                 <CartItem
                   key={item.id}
@@ -90,7 +90,7 @@ export default function Cart() {
                 Before you leave, take a look at these items. We picked them
                 just for you
               </Text>
-              <div className="flex py-6 space-x-6">
+              <div className="flex py-5 space-x-6">
                 {[1, 2, 3, 4, 5, 6].map((x) => (
                   <div
                     key={x}
@@ -103,12 +103,12 @@ export default function Cart() {
         )}
       </div>
       <div className="lg:col-span-4">
-        <div className="flex-shrink-0 px-4 py-54 sm:px-5">
+        <div className="flex-shrink-0 px-4 py-55 sm:px-5">
           {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED && (
             <>
               {/* Shipping Address */}
               {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-md border  px-5 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
+              <div className="rounded-15 border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
                 <div className="mr-5">
                   <MapPin />
                 </div>
@@ -122,7 +122,7 @@ export default function Cart() {
               </div>
               {/* Payment Method */}
               {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-md border  px-5 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
+              <div className="rounded-15 border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
                 <div className="mr-5">
                   <CreditCard />
                 </div>
@@ -156,11 +156,16 @@ export default function Cart() {
           <div className="flex flex-row justify-end">
             <div className="w-full lg:w-72">
               {isEmpty ? (
-                <Button href="/">
+                <Button color="yellow" variant="large" type="default" href="/">
                   Continue Shopping
                 </Button>
               ) : (
-                <Button href="/checkout">
+                <Button
+                  color="yellow"
+                  variant="large"
+                  type="default"
+                  href="/checkout"
+                >
                   Proceed to Checkout
                 </Button>
               )}

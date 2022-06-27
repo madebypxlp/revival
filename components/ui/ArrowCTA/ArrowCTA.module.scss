@@ -1,0 +1,68 @@
+.root {
+  display: inline-flex;
+  a {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &.right:hover {
+      .icon {
+        transform: translateX(8px);
+      }
+    }
+    .icon {
+      transition: 500ms ease;
+      margin-left: 1rem;
+      @screen lg {
+        margin-left: 1.2rem;
+      }
+      svg {
+        width: auto;
+        height: 1rem;
+        @screen lg {
+          height: 1.5rem;
+        }
+      }
+    }
+    &.down {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    &.right {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    &.blue {
+      color: theme('colors.blue.default');
+      svg path {
+        stroke: theme('colors.blue.default');
+      }
+    }
+    &.black {
+      color: theme('colors.black');
+      &:hover {
+        color: theme('colors.blue.default');
+      }
+      svg path {
+        stroke: currentColor;
+      }
+    }
+    &.white {
+      color: theme('colors.white');
+      svg path {
+        stroke: theme('colors.white');
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      color: theme('colors.greyscale.4');
+      svg path {
+        stroke: theme('colors.greyscale.4');
+      }
+    }
+  }
+}

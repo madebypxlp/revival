@@ -1,0 +1,7 @@
+.root {
+  .colSpan{
+    @apply col-span-2 md:col-span-10 md:col-start-2;
+  }
+  // border-top: 1px solid black;
+  // border-bottom: 1px solid black;
+}

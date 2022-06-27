@@ -1,159 +1,76 @@
-import { FC } from 'react'
-import cn from 'classnames'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import type { Page } from '@framework/common/get-all-pages'
-import getSlug from '@lib/get-slug'
-import { Github, Vercel } from '@components/icons'
-import { Logo, Container } from '@components/ui'
-import { I18nWidget } from '@components/common'
-import s from './Footer.module.css'
+import Facebook from '@components/icons/Facebook'
+import Instagram from '@components/icons/Instagram'
+import YouTube from '@components/icons/YouTube'
+import Link from '@components/ui/Link/Link'
+import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
+import Image from 'next/image'
+import styles from './Footer.module.scss'
+import FooterActions from './FooterActions'
+import FooterNav from './FooterNav'
+import FooterNewsletter from './FooterNewsletter'
 
-interface Props {
-  className?: string
-  children?: any
-  pages?: Page[]
-}
-
-const LEGAL_PAGES = ['terms-of-use', 'shipping-returns', 'privacy-policy']
-
-const Footer: FC<Props> = ({ className, pages }) => {
-  const { sitePages, legalPages } = usePages(pages)
-  const rootClassName = cn(className)
+const Footer = ({ data }: { data: AcfOptionsFooter }) => {
+  const { copyright, logo, social } = data
 
   return (
-    <footer className={rootClassName}>
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 border-b  py-12   transition-colors duration-150">
-          <div className="col-span-1 lg:col-span-2">
-            <Link href="/">
-              <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-gray-700 mr-2">
-                  <Logo />
-                </span>
-                <span>ACME</span>
-              </a>
-            </Link>
+    <footer className={styles.root}>
+      <FooterActions data={data} />
+
+      <div className="container py-40 md:pt-90 md:pb-60 text-blue">
+        <div className="default-grid md:mb-30">
+          <div className="col-span-2 md:col-span-4 md:row-span-2 mb-40 md:mb-0">
+            <FooterNewsletter data={data} />
           </div>
-          <div className="col-span-1 lg:col-span-2">
-            <ul className="flex flex-initial flex-col md:flex-1">
-              <li className="py-5 md:py-0 md:pb-5">
-                <Link href="/">
-                  <a className=" hover: transition ease-in-out duration-150">
-                    Home
-                  </a>
+          <FooterNav data={data} />
+        </div>
+
+        <div className="default-grid">
+          <div className="col-span-2 md:col-span-6 mb-35">
+            <div className="flex gap-16 text-red justify-center md:justify-start">
+              {social?.facebook && (
+                <Link href={social.facebook} target="_blank">
+                  <Facebook className="w-35" />
                 </Link>
-              </li>
-              <li className="py-5 md:py-0 md:pb-5">
-                <Link href="/">
-                  <a className=" hover: transition ease-in-out duration-150">
-                    Careers
-                  </a>
+              )}
+              {social?.instagram && (
+                <Link href={social.instagram} target="_blank">
+                  <Instagram className="w-35" />
                 </Link>
-              </li>
-              <li className="py-5 md:py-0 md:pb-5">
-                <Link href="/blog">
-                  <a className=" hover: transition ease-in-out duration-150">
-                    Blog
-                  </a>
+              )}
+              {social?.youtube && (
+                <Link href={social.youtube} target="_blank">
+                  <YouTube className="w-35" />
                 </Link>
-              </li>
-              {sitePages.map((page) => (
-                <li key={page.url} className="py-5 md:py-0 md:pb-5">
-                  <Link href={page.url!}>
-                    <a className=" hover: transition ease-in-out duration-150">
-                      {page.name}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="col-span-1 lg:col-span-2">
-            <ul className="flex flex-initial flex-col md:flex-1">
-              {legalPages.map((page) => (
-                <li key={page.url} className="py-5 md:py-0 md:pb-5">
-                  <Link href={page.url!}>
-                    <a className=" hover: transition ease-in-out duration-150">
-                      {page.name}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="col-span-1 lg:col-span-6 flex items-start lg:justify-end ">
-            <div className="flex space-x-6 items-center h-10">
-              <a
-                aria-label="Github Repository"
-                href="https://github.com/vercel/commerce"
-                className={s.link}
-              >
-                <Github />
-              </a>
-              <I18nWidget />
+              )}
             </div>
           </div>
-        </div>
-        <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4">
-          <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
-          </div>
-          <div className="flex items-center ">
-            <span className="">Crafted by</span>
-            <a
-              rel="noopener"
-              href="https://vercel.com"
-              aria-label="Vercel.com Link"
-              target="_blank"
-              className=""
-            >
-              <Vercel
-                className="inline-block h-6 ml-4 "
-                alt="Vercel.com Logo"
+          <div className="col-span-2 mb-15 md:mb-0 md:col-span-3 md:col-start-11 md:row-span-2 text-center md:text-right">
+            {logo?.sourceUrl && (
+              <Image
+                alt={logo?.altText}
+                src={logo?.sourceUrl}
+                width={200}
+                height={65}
+                objectFit="contain"
               />
-            </a>
+            )}
+          </div>
+          <div className="col-span-2 md:col-span-6 typo-legal-text text-black text-center md:text-left">
+            <span>
+              &copy; {new Date().getFullYear()} {copyright?.text}
+            </span>
+            {!!copyright?.links?.length &&
+              copyright.links.map(({ link }) => (
+                <Link
+                  className="!typo-legal-text inline-block ml-10"
+                  link={link}
+                />
+              ))}
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   )
-}
-
-function usePages(pages?: Page[]) {
-  const { locale } = useRouter()
-  const sitePages: Page[] = []
-  const legalPages: Page[] = []
-
-  if (pages) {
-    pages.forEach((page) => {
-      const slug = page.url && getSlug(page.url)
-
-      if (!slug) return
-      if (locale && !slug.startsWith(`${locale}/`)) return
-
-      if (isLegalPage(slug, locale)) {
-        legalPages.push(page)
-      } else {
-        sitePages.push(page)
-      }
-    })
-  }
-
-  return {
-    sitePages: sitePages.sort(bySortOrder),
-    legalPages: legalPages.sort(bySortOrder),
-  }
-}
-
-const isLegalPage = (slug: string, locale?: string) =>
-  locale
-    ? LEGAL_PAGES.some((p) => `${locale}/${p}` === slug)
-    : LEGAL_PAGES.includes(slug)
-
-// Sort pages by the sort order assigned in the BC dashboard
-function bySortOrder(a: Page, b: Page) {
-  return (a.sort_order ?? 0) - (b.sort_order ?? 0)
 }
 
 export default Footer

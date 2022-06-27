@@ -1,12 +1,10 @@
-import Image from '@components/interfaces/Image'
+import Image, { MediaItem } from '@components/interfaces/Image'
 
 export default interface IVideoHero {
   fieldGroupName: string
   image: Image
-  logo: {
-    sourceUrl: string
-    altText: string
-  }
+  logo: MediaItem
   videoName: string
+  youtubeId: string
   vimeoId: string
 }

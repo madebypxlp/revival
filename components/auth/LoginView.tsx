@@ -1,9 +1,10 @@
 import { FC, useEffect, useState, useCallback } from 'react'
-import { Logo, Input } from '@components/ui'
+import { Logo } from '@components/ui'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
 import Button from '@components/ui/Button/Button'
+import Input from '@components/ui/Input/Input'
 
 interface Props {}
 
@@ -37,7 +38,7 @@ const LoginView: FC<Props> = () => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
@@ -80,9 +81,9 @@ const LoginView: FC<Props> = () => {
         <Input type="password" placeholder="Password" onChange={setPassword} />
 
         <Button
-          variant="slim"
-          type="submit"
-          loading={loading}
+          variant="small"
+          type="default"
+          color="yellow"
           disabled={disabled}
         >
           Log In

@@ -1,0 +1,7 @@
+.root {
+  @apply typo-alert-bar relative bg-blue-default text-white py-12;
+
+  a {
+    text-decoration: underline;
+  }
+}
