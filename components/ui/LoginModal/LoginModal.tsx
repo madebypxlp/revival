@@ -98,13 +98,13 @@ const LoginModal: FunctionComponent<ILoginModal> = (props) => {
 
           <div className={styles.links}>
             <button
-              className="typo-hyperlink-modal mb-10 md:mb-0"
+              className="typo-hyperlink-modal mb-10 md:mb-0 underline"
               onClick={() => setModalView('SIGNUP_VIEW')}
             >
               Create An Account
             </button>
             <button
-              className="typo-hyperlink-modal"
+              className="typo-hyperlink-modal underline"
               onClick={() => setModalView('FORGOT_VIEW')}
             >
               Forgot Your Password?
