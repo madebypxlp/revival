@@ -1,3 +1,13 @@
 .root {
-  // add your styles here
+  .circle {
+    background: url('/blog-hero-circle.svg') no-repeat;
+    background-size: contain;
+    width: 55%;
+    left: -15%;
+    bottom: -20%;
+    top: auto;
+    // z-index: 10;
+    // background-position: center;
+    // width: 100%;
+  }
 }

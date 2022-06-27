@@ -229,6 +229,7 @@
       font-size: 2rem;
     }
   }
+
   .typo-alert-bar {
     font-weight: 400;
     font-size: 1.2rem;
@@ -236,6 +237,18 @@
     @screen md {
       font-size: 1.5rem;
       line-height: 1.5rem;
+    }
+  }
+  .typo-category {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    letter-spacing: 0.1em;
+    @screen md {
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 3rem;
+      letter-spacing: 0.1em;
     }
   }
 }
