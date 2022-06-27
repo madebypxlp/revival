@@ -18,10 +18,12 @@ const FooterNewsletter = ({ data }: { data: AcfOptionsFooter }) => {
       )}
       <NewsletterForm inputClassName="w-340" />
       {note && (
-        <p className={styles.note}>
-          <SpeechBubble className="w-12 h-auto inline-block align-middle mr-10 md:w-24" />
-          {note}
-        </p>
+        <div className="text-center md:text-left">
+          <p className={`${styles.note} inline-flex items-center`}>
+            <SpeechBubble className="w-12 inline-block mr-10 md:w-20" />
+            {note}
+          </p>
+        </div>
       )}
     </>
   )
