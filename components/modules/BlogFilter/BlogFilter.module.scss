@@ -4,6 +4,7 @@
   &.variant-learning-center {
     .categoriesContainer {
       @apply hidden;
+      @apply md:block;
     }
 
     label {
