@@ -15,7 +15,7 @@
   .featuredImage {
     @apply relative mb-10 md:mb-25;
     aspect-ratio: 1.5;
-    > span {
+    :global(.gradient-overlay) {
       @apply rounded-15 overflow-hidden;
     }
   }
@@ -58,7 +58,7 @@
   }
 
   &.hasContentTypes {
-    .featuredImage > span {
+    .featuredImage :global(.gradient-overlay) {
       @apply rounded-30 rounded-tr-100 md:rounded-tr-200;
     }
   }
