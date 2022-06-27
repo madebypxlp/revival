@@ -9,9 +9,11 @@ import Link from '../Link/Link'
 import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
 import Video from '../VideoComponent/VideoComponent'
+
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
+import LoginModal from '../LoginModal/LoginModal'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -21,6 +23,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   }
 
   const [openAccordion, setOpenAccordion] = useState(0)
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <div className={`${styles.root} `}>
@@ -188,6 +191,22 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
+      </div>
+      <div className="my-50 py-50">
+        <h1>Login Modal</h1>
+        <Button
+          color="yellow"
+          variant="large"
+          type="default"
+          onClick={() => setModalOpen(true)}
+        >
+          Login
+        </Button>
+        <LoginModal
+          title={'Login to your Account'}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
       </div>
     </div>
   )

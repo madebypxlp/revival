@@ -23,6 +23,10 @@ const Modal: FC<IModal> = (props) => {
     [onClose]
   )
 
+  const onClickOutside = () => {
+    return onClose()
+  }
+
   useEffect(() => {
     if (ref.current) {
       if (open) {
@@ -42,6 +46,10 @@ const Modal: FC<IModal> = (props) => {
     <Portal>
       {open ? (
         <div className={s.root}>
+          <div
+            className="bg-none w-full h-full z-49 absolute"
+            onClick={onClickOutside}
+          />
           <div className={s.modal + ' ' + className} role="dialog" ref={ref}>
             <button
               onClick={() => onClose()}
@@ -51,9 +59,7 @@ const Modal: FC<IModal> = (props) => {
               <Cross className="h-24 w-24 md:w-30 md:h-30" />
             </button>
             {title && <div className={s.modalTitle}>{title}</div>}
-            <div className={s.modalContent}>
-              <FocusTrap focusFirst>{children}</FocusTrap>
-            </div>
+            <div className={s.modalContent}>{children}</div>
           </div>
         </div>
       ) : null}
