@@ -140,6 +140,11 @@
     }
   }
 
+  .typo-form-note {
+    font-size: 1.1rem;
+    line-height: 1.33;
+  }
+
   .typo-button-01 {
     font-weight: 700;
     font-size: 1.4rem;
@@ -222,6 +227,23 @@
     line-height: 1.5;
     @screen md {
       font-size: 2rem;
+    }
+  }
+
+  .typo-hyperlink-modal {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    @apply underline;
+  }
+
+  .typo-alert-bar {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    @screen md {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
     }
   }
 }

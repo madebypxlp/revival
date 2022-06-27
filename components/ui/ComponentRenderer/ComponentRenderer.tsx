@@ -9,9 +9,11 @@ import Link from '../Link/Link'
 import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
 import Video from '../VideoComponent/VideoComponent'
+
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
+import LoginModal from '../LoginModal/LoginModal'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -21,6 +23,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   }
 
   const [openAccordion, setOpenAccordion] = useState(0)
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <div className={`${styles.root} `}>
@@ -34,7 +37,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Hello World Hyperlink
           </Link>
         </div>
-
         <div style={{ background: 'orange' }}>
           <h1>Arrow CTA</h1>
           <ArrowCTA
@@ -58,7 +60,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           </ArrowCTA>
           <br /> <br />
         </div>
-
         <div>
           <h1>Plus CTA</h1>
           <PlusCTA href="/our-story">Add to cart</PlusCTA>
@@ -69,12 +70,10 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Add to cart
           </PlusCTA>
         </div>
-
         <h1>Tags</h1>
         <Tag label="Hello World" variant="blue-filled" />
         <Tag label="Hello World" variant="blue-outline" />
         <Tag label="Hello World" variant="red-filled" />
-
         <div>
           <div style={{ background: 'orange' }}>
             <h1>Buttons</h1>
@@ -170,7 +169,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             />
           </form>
         </div>
-
         <div className="my-50 py-50">
           <h1>Accordion</h1>
           <Accordion
@@ -193,6 +191,22 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
+      </div>
+      <div className="my-50 py-50">
+        <h1>Login Modal</h1>
+        <Button
+          color="yellow"
+          variant="large"
+          type="default"
+          onClick={() => setModalOpen(true)}
+        >
+          Login
+        </Button>
+        <LoginModal
+          title={'Login to your Account'}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
       </div>
     </div>
   )

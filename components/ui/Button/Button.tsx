@@ -20,6 +20,7 @@ const Button: FunctionComponent<IButton> = (props) => {
     href,
     target = '_self',
     link,
+    isFake = false,
   } = props
 
   /**
@@ -32,7 +33,7 @@ const Button: FunctionComponent<IButton> = (props) => {
   const isLink = () => !!(link?.url || href)
 
   const hrefStripped = cleanHref(link?.url || href)
-  const Type = isLink() ? 'a' : 'button'
+  const Type = isLink() ? 'a' : isFake ? 'span' : 'button'
   const button = (
     <Type
       disabled={disabled}
