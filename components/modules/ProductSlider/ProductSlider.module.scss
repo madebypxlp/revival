@@ -1,7 +1,11 @@
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  :global {
+    .swiper-button-prev,
+    .swiper-button-next {
+      @apply w-50 md:w-70 h-auto;
+      &::before {
+        content: '';
+      }
+    }
+  }
 }

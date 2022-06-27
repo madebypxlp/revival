@@ -1,9 +1,17 @@
 .root {
-  input {
+  input:not([type='checkbox']) {
     @apply appearance-none transition duration-150 ease-in-out w-full border-2 py-14;
     &:focus {
       @apply outline-none;
     }
+  }
+
+  .label {
+    @apply inline-block font-normal typo-large-paragraph align-middle cursor-pointer mb-8;
+  }
+
+  .error {
+    @apply block typo-input-error mt-5;
   }
 
   .icon {
@@ -11,27 +19,65 @@
   }
 
   &.variant-default {
-    @apply w-full;
-    input {
-      @apply bg-greyscale-6 px-20 border-greyscale-6 rounded-15 focus:border-blue;
+    @apply w-full font-bold;
+    input:not([type='checkbox']) {
+      @apply bg-greyscale-6 px-20 border-greyscale-6 rounded-15 focus:border-blue font-bold;
+      ::placeholder {
+        @apply text-greyscale-3;
+      }
+    }
+    .error {
+      @apply px-20 font-bold;
     }
   }
 
   &.variant-blue-outline {
-    input {
+    input:not([type='checkbox']) {
       @apply typo-small-paragraph border-blue px-25 rounded-30;
     }
     ::placeholder {
       @apply text-blue;
     }
+    .error {
+      @apply px-25;
+    }
   }
 
   &.size-small {
-    input {
+    input:not([type='checkbox']) {
       @apply py-9 px-20;
     }
     .icon {
       @apply top-25;
+    }
+  }
+
+  &.type-checkbox {
+    @apply flex flex-wrap cursor-pointer items-center;
+
+    input {
+      @apply appearance-none rounded-full border-blue;
+      @apply w-20 h-20 mr-16 order-1;
+      border-width: 1.5px;
+      &:checked {
+        @apply bg-blue;
+        box-shadow: inset 0px 0px 0px 0.4rem #fff;
+      }
+    }
+
+    .label {
+      @apply order-2 mb-0;
+    }
+
+    .error {
+      @apply px-35 order-3 w-full shrink-0;
+    }
+  }
+
+  &.type-file {
+    @apply cursor-pointer;
+    input {
+      @apply sr-only;
     }
   }
 }
