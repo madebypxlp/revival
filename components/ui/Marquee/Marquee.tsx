@@ -25,6 +25,7 @@ const Marquee: FC<Props> = ({
 
   return (
     <div className={rootClassName}>
+      {/* @ts-expect-error */}
       <Ticker offset={80}>
         {() => <div className={s.container}>{children}</div>}
       </Ticker>

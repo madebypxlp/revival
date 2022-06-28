@@ -2,10 +2,9 @@ import { MouseEventHandler, ReactNode } from 'react'
 
 export type InputError = false | 'invalid' | 'required'
 
-export default interface IInput {
+type IInput = {
   className?: string
   placeholder?: string
-  type?: HTMLInputElement['type']
   isDropdown?: boolean
   variant?: 'default' | 'blue-outline'
   size?: 'default' | 'small'
@@ -13,8 +12,32 @@ export default interface IInput {
   icon?: 'arrow' | 'search'
   label?: string
   required?: boolean
-  onChange?: (arg0: string | boolean | FileList, arg1: InputError) => any
   onIconClick?: MouseEventHandler
   status?: ReactNode
   multiple?: boolean
-}
+  type: string
+  onChange?: (arg0: string, arg1: InputError) => any
+} & (
+  | {
+      type: 'checkbox' | 'radio'
+      onChange?: (arg0: boolean, arg1: InputError) => any
+    }
+  | {
+      type: 'file'
+      onChange?: (arg0: FileList | false, arg1: InputError) => any
+    }
+  | {
+      type:
+        | 'text'
+        | 'textarea'
+        | 'number'
+        | 'email'
+        | 'password'
+        | 'date'
+        | 'search'
+        | 'tel'
+      onChange?: (arg0: string, arg1: InputError) => any
+    }
+)
+
+export default IInput
