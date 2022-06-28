@@ -74,8 +74,8 @@ const SignUpView: FC<Props> = () => {
         {message && (
           <div className="text-red border border-red p-3">{message}</div>
         )}
-        <Input placeholder="First Name" onChange={setFirstName} />
-        <Input placeholder="Last Name" onChange={setLastName} />
+        <Input type="text" placeholder="First Name" onChange={setFirstName} />
+        <Input type="text" placeholder="Last Name" onChange={setLastName} />
         <Input type="email" placeholder="Email" onChange={setEmail} />
         <Input type="password" placeholder="Password" onChange={setPassword} />
         <span className="">

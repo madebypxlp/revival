@@ -26,6 +26,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head />
       <ManagedUIContext>
         <Layout pageProps={pageProps}>
+          {/* @ts-expect-error */}
           <Component {...pageProps} />
         </Layout>
       </ManagedUIContext>

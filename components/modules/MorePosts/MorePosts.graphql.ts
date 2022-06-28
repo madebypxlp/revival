@@ -1,1 +1,3 @@
 //  IS A CHILD OF THE MORE_ARTICLES FIELDGROUP
+
+export default {}
