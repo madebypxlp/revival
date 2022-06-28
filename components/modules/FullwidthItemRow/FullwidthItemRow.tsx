@@ -27,7 +27,7 @@ const FullwidthItemRowModule: FunctionComponent<{
             {subline}
           </div>
           <h3 className="typo-h3 mb-50 w-[276px] mx-auto lg:w-auto">
-            <div dangerouslySetInnerHTML={{ __html: `${headline}` }} />
+            <div>{parse(headline)}</div>
           </h3>
         </div>
 

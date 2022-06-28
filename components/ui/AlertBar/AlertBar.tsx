@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styles from './AlertBar.module.scss'
 import { useIsMobile } from '@commerce/utils/hooks'
 import { AlertBar } from 'framework/wordpress/interfaces/header'
-import cn from 'classnames'
+import c from 'classnames'
 import parse from 'html-react-parser'
 
 const AlertBar: FunctionComponent<AlertBar> = (props) => {
@@ -12,7 +12,7 @@ const AlertBar: FunctionComponent<AlertBar> = (props) => {
   return (
     <div className={styles.root}>
       <div className="container flex justify-center md:justify-between">
-        <span className={isMobile && 'text-center w-full pt-30'}>
+        <span className={c({ 'text-center w-full pt-30': isMobile })}>
           {parse(leftCopy)}
         </span>
         {!isMobile && <span>{rightCopy}</span>}
