@@ -1,4 +1,4 @@
-import { ImageComponent } from "@components/fragments/Image"
+import { ImageComponent } from '@components/fragments/Image'
 
 const ProductCategoryContentTabsFragment = (t: string) => `
   fragment ProductCategoryContentTabs_${t} on ${t}_ProductCategoryContentTabs {
@@ -6,6 +6,7 @@ const ProductCategoryContentTabsFragment = (t: string) => `
     tabs {
       copy
       headline
+      ${ImageComponent('primaryImage')}
       ${ImageComponent()}
       link {
         ...Link
