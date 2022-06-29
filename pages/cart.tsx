@@ -11,6 +11,8 @@ import Button from '@components/ui/Button/Button'
 import fetch from './../framework/wordpress/wp-client'
 import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
+import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
+import Translations from 'constants/translations'
 
 export async function getStaticProps({
   preview,
@@ -52,6 +54,10 @@ export default function Cart({
 
   return (
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
+      <ProductCardGrid
+        products={[]}
+        headline={Translations.YOU_MAY_ALSO_LIKE}
+      />
       <div className="lg:col-span-8">
         {isLoading || isEmpty ? (
           <div className="flex-1 px-12 py-55 flex flex-col justify-center items-center ">
