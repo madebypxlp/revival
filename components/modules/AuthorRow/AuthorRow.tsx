@@ -57,16 +57,9 @@ const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
         )}
       </div>
       {line}
-      <div className={`${styles.colSpan} typo-feedback mb-60 `}>
-        <span className="mr-30">{Translations.FEEDBACK}</span>
-        <div className="inline-flex items-center">
-          {point}
-          <span className="mr-10">0</span>
-          {point}
-          <span>0</span>
-        </div>
+      <div className={`${styles.colSpan} typo-legal-text mt-60`}>
+        {disclaimer}
       </div>
-      <div className={`${styles.colSpan} typo-legal-text`}>{disclaimer}</div>
     </div>
   )
 }
