@@ -1,4 +1,9 @@
-import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import {
+  GetServerSideProps,
+  GetServerSidePropsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from 'next'
 import fetch from './wp-client'
 import postsByCategoryQuery, {
   getCategoryIdBySlug,
@@ -36,9 +41,11 @@ export const getWpStaticPostCategoryPaths = async (
   return res
 }
 
-export const getPostCategoryWpStaticProps = async (
-  ctx: GetStaticPropsContext
-): Promise<GetStaticPropsResult<any>> => {
+// export const getPostCategoryWpStaticProps = async (
+export const getPostCategoryWpServerSideProps: GetServerSideProps = async (
+  ctx
+): Promise<GetServerSidePropsResult<any>> => {
+  console.log('ctx.query:', ctx.query)
   const category = await fetch({
     query: getCategoryIdBySlug,
     variables: {
@@ -52,6 +59,7 @@ export const getPostCategoryWpStaticProps = async (
       query: postsByCategoryQuery,
       variables: {
         categoryId,
+        afterId: ctx.query?.after || '',
       },
     })
   }
@@ -71,12 +79,13 @@ export const getPostCategoryWpStaticProps = async (
   return {
     props: {
       data: res.posts,
+      postCursors: res?.postCursors?.edges,
       globals: globalsData?.globals,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
       categories: res?.categories?.nodes,
       category: category?.categories?.nodes[0],
     },
-    revalidate: undefined,
+    // revalidate: undefined,
   }
 }

@@ -2,7 +2,7 @@ import Image from '@components/fragments/Image'
 
 export default `
   ${Image}
-  query PostsByCategory($categoryId: Int) {
+  query PostsByCategory($categoryId: Int, $afterId: String) {
     categories {
       nodes {
         categoryId
@@ -10,7 +10,11 @@ export default `
         uri
       }
     }
-    posts(where: {categoryId: $categoryId}, last: 1000) {
+    posts(
+      where: { categoryId: $categoryId, orderby: {field: DATE, order: DESC} },
+      first: 9
+      after: $afterId
+    ) {
       nodes {
         id
         slug
@@ -34,6 +38,14 @@ export default `
             name
           }
         }
+      }
+    }
+    postCursors: posts(
+      where: { categoryId: $categoryId, orderby: {field: DATE, order: DESC} },
+      first: 10000,
+    ) {
+      edges {
+        cursor
       }
     }
   }

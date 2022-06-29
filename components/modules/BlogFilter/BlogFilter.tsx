@@ -6,13 +6,22 @@ import cn from 'classnames'
 import BlogFilterBar from './BlogFilterBar'
 import PaginateChildren from '@components/ui/PaginateChildren/PaginateChildren'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
+import { useRouter } from 'next/router'
+import pageQuery from 'framework/wordpress/queries/page/page-query'
 
 const BlogFilterModule: FunctionComponent<{
   module: IBlogFilter
   data: PostInterface[]
+  cursors?: [{ cursor: string }]
   categories: Category[]
   activeCategory?: Category
-}> = ({ module, data, categories: _categories, activeCategory }) => {
+}> = ({
+  module,
+  data,
+  cursors = [],
+  categories: _categories,
+  activeCategory,
+}) => {
   const { actionCta } = module
 
   const categories = _categories.filter(
@@ -21,6 +30,32 @@ const BlogFilterModule: FunctionComponent<{
 
   const isDetail = () => !!activeCategory
   const showFeatured = (index: number) => !isDetail() && index === 0
+
+  const router = useRouter()
+  const { pathname, query } = router
+
+  const paginationSettings = {
+    perPage: 9,
+    totalPages: isDetail() ? Math.ceil(cursors.length / 9) : 0,
+    currentPage: !!query?.after
+      ? Math.ceil(
+          (cursors.findIndex(({ cursor }) => cursor === query.after) + 1) / 9
+        )
+      : 1,
+    onChange: (page: number) => {
+      const index = page * 9 - 10
+      const cursor = cursors[index]?.cursor
+      var newQuery: { [key: string]: string } = {
+        ...query,
+        after: cursor,
+      }
+      if (!cursor || page <= 1 || index <= 9) delete newQuery.after
+      router.push({
+        pathname,
+        query: newQuery,
+      })
+    },
+  }
 
   return (
     <div
@@ -38,7 +73,7 @@ const BlogFilterModule: FunctionComponent<{
 
       {!!data?.length && (
         <div className="container default-grid">
-          <PaginateChildren perPage={9}>
+          <PaginateChildren {...paginationSettings}>
             {data.map((post, index) => (
               <ArticleTeaser
                 post={post}
