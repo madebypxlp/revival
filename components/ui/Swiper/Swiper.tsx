@@ -20,7 +20,8 @@ import { NavigationOptions } from 'swiper/types/components/navigation'
 SwiperCore.use([Navigation, Pagination, Keyboard, A11y, Autoplay])
 
 export const Swiper: FunctionComponent<ISwiper> = (props) => {
-  const { className, onSwiper, children, ...rest } = props
+  const { className, onSwiper, children, hideDisabledNavigation, ...rest } =
+    props
   const navPrevRef = useRef<SVGSVGElement>(null)
   const navNextRef = useRef<SVGSVGElement>(null)
 
@@ -83,7 +84,12 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
         {children}
       </PlainSwiper>
       {props?.navigation && (
-        <div className="absolute inset-0">
+        <div
+          className={c(
+            'absolute inset-0',
+            hideDisabledNavigation && styles.hideDisabledNavigation
+          )}
+        >
           <SliderArrowLeft ref={navPrevRef} className="swiper-button-prev" />
           <SliderArrowLeft
             ref={navNextRef}

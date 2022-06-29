@@ -1,16 +1,57 @@
 .root {
-  @apply bg-[#F3F1E8];
+  padding-top: 5rem;
+  position: relative;
+  overflow: hidden;
+
+  .background {
+    position: absolute;
+    left: 50%;
+    top: 0rem;
+    border-radius: 100%;
+    transform: translateX(-50%);
+    background-color: #f3f1e8;
+    width: 150rem;
+    height: 200%;
+
+    @screen md {
+      width: 218rem;
+      height: 280rem;
+    }
+  }
 
   .tabButtonsContainer {
-    @apply default-grid;
-    @apply md:mb-90;
+    @apply flex flex-col gap-y-20 mb-80;
+    @apply md:default-grid md:mb-90;
+  }
+
+  .mobileTabImageContainer {
+    aspect-ratio: 1.18;
+    position: relative;
+  }
+
+  .mobileTabImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 500ms linear all;
+    visibility: hidden;
+    opacity: 0;
+
+    &.selected {
+      visibility: visible;
+      opacity: 100;
+    }
   }
 
   .tabButtonContainer {
-    @apply col-span-2 relative;
+    @apply relative;
     @apply md:col-span-4;
 
     div {
+      @apply hidden;
+      @apply md:block;
       // image container
       aspect-ratio: 1.2711;
     }
@@ -23,16 +64,45 @@
     }
   }
 
+  .tabsContainer {
+    @apply relative;
+  }
+
   .tabContainer {
-    @apply hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    transition: 500ms linear all;
+    opacity: 0;
 
     &.selected {
-      @apply block;
+      position: relative;
+      visibility: visible;
+      opacity: 100;
     }
   }
 
   .swiperContainer {
-    @apply mb-55;
+    @apply mb-80;
+    @apply md:mb-90;
+  }
+
+  .cardHeader {
+    @apply flex gap-x-10 mb-30;
+
+    .cardHeaderNumber {
+      @apply flex items-center justify-center text-white typo-h5 rounded-full bg-red w-35 h-35;
+      min-width: 3.5rem;
+    }
+
+    h5 {
+      @apply text-blue;
+      align-self: center;
+      font-weight: bold;
+    }
   }
 
   .tabLeftColumn {
@@ -41,22 +111,46 @@
   }
 
   .tabRightColumn {
-    @apply col-start-1 col-span-2 row-start-1;
-    @apply md:col-start-8 md:col-span-5;
+    @apply col-start-1 col-span-2 row-start-1 mb-70;
+    @apply md:col-start-8 md:col-span-5 md:mb-0;
   }
 
   .primaryImageContainer {
-    @apply relative;
-    @apply md:mr-50;
-    aspect-ratio: 3.186;
+    @apply relative text-center pb-65;
+    @apply md:pb-80 md:mr-50;
+
+    > div:first-child {
+      aspect-ratio: 3.186;
+      @apply mb-30;
+      @apply md:mb-55;
+    }
+  }
+
+  .arrowCTA {
+  }
+
+  .smallCircle {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    bottom: -3rem;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background-color: #eceae1;
+
+    @screen md {
+      width: 36%;
+      bottom: -6.5rem;
+    }
   }
 
   .headlineContainer {
-    @apply text-blue mb-20;
+    @apply text-center;
+    @apply md:text-left text-blue mb-20;
   }
 
   .copyContainer {
-    @apply text-black typo-small-paragraph;
-    @apply md:typo-large-paragraph;
+    @apply text-center text-black typo-small-paragraph;
+    @apply md:text-center md:typo-large-paragraph md:pb-150;
   }
 }
