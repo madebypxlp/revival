@@ -16,7 +16,7 @@ export default interface IDropdown {
   className?: string
   color?: 'default' | 'light'
   onChange: (
-    newValue: OnChangeValue<IDropdownOption, boolean>,
+    newValue: OnChangeValue<IDropdownOption, false>,
     actionMeta: ActionMeta<IDropdownOption>
   ) => void
   options: OptionsOrGroups<IDropdownOption, GroupBase<IDropdownOption>>

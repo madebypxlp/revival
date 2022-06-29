@@ -26,6 +26,7 @@ const Dropdown: FunctionComponent<IDropdown> = (props) => {
         IndicatorSeparator: () => null,
         DropdownIndicator,
       }}
+      isMulti={false}
       // debug styling:
       // menuIsOpen={true}
       {...rest}

@@ -26,6 +26,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     icon = 'arrow',
     size = 'default',
     weight = 'default',
+    square = false,
     onChange,
     onIconClick,
     status,
@@ -48,7 +49,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     // validation
 
     if (typeof onChange === 'function') {
-      if (type === 'checkbox') onChange(checked, inputError)
+      if (type === 'checkbox' || type === 'radio') onChange(checked, inputError)
       if (type === 'file') {
         setInputFiles(files || undefined)
         onChange(files || false, inputError)
@@ -66,6 +67,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     styles['variant-' + variant],
     styles['size-' + size],
     styles['weight-' + weight],
+    square && styles.square,
     'typo-input inline-block',
     inputError === 'invalid' && 'text-red'
   )

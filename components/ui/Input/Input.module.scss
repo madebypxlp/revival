@@ -1,5 +1,5 @@
 .root {
-  input:not([type='checkbox']) {
+  input:not([type='checkbox']):not([type='radio']) {
     @apply appearance-none transition duration-150 ease-in-out w-full border-2 py-14;
     &:focus {
       @apply outline-none;
@@ -20,7 +20,7 @@
 
   &.variant-default {
     @apply w-full font-bold;
-    input:not([type='checkbox']) {
+    input:not([type='checkbox']):not([type='radio']) {
       @apply bg-greyscale-6 px-20 border-greyscale-6 rounded-15 focus:border-blue font-bold;
       ::placeholder {
         @apply text-greyscale-3;
@@ -32,7 +32,7 @@
   }
 
   &.variant-blue-outline {
-    input:not([type='checkbox']) {
+    input:not([type='checkbox']):not([type='radio']) {
       @apply typo-small-paragraph border-blue px-25 rounded-30;
     }
     ::placeholder {
@@ -52,17 +52,22 @@
     }
   }
 
-  &.type-checkbox {
+  &.type-checkbox,
+  &.type-radio {
     @apply flex flex-wrap cursor-pointer items-center;
 
     input {
-      @apply appearance-none rounded-full border-blue;
+      @apply appearance-none rounded-full border-blue py-14 px-14;
       @apply w-20 h-20 mr-16 order-1;
       border-width: 1.5px;
       &:checked {
         @apply bg-blue;
         box-shadow: inset 0px 0px 0px 0.4rem #fff;
       }
+    }
+
+    &.square input {
+      border-radius: 0;
     }
 
     .label {
@@ -80,4 +85,8 @@
       @apply sr-only;
     }
   }
+}
+
+.radio {
+  background-color: red;
 }

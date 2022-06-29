@@ -14,6 +14,7 @@ import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
 import LoginModal from '../LoginModal/LoginModal'
+import AddAPetModal from '../AddAPetModal/AddAPetModal'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -24,6 +25,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
 
   const [openAccordion, setOpenAccordion] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+  const [petModalOpen, setPetModalOpen] = useState(false)
 
   return (
     <div className={`${styles.root} `}>
@@ -187,26 +189,41 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             onOpen={() => setOpenAccordion(2)}
           />
         </div>
+        <div>
+          <h1>Modals</h1>
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setPetModalOpen(true)}
+          >
+            Add a Pet
+          </Button>
+          <AddAPetModal
+            title={'Add a Pet'}
+            open={petModalOpen}
+            onClose={() => setPetModalOpen(false)}
+          />
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setModalOpen(true)}
+          >
+            Login
+          </Button>
+          <LoginModal
+            title={'Login to your Account'}
+            open={modalOpen}
+            onClose={() => setModalOpen(false)}
+          />
+        </div>
       </div>
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
-      </div>
-      <div className="my-50 py-50">
-        <h1>Login Modal</h1>
-        <Button
-          color="yellow"
-          variant="large"
-          type="default"
-          onClick={() => setModalOpen(true)}
-        >
-          Login
-        </Button>
-        <LoginModal
-          title={'Login to your Account'}
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
-        />
       </div>
     </div>
   )
