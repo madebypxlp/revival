@@ -15,5 +15,6 @@ const Translations = {
     CHOOSE_A_FILE: 'Choose A File',
     NO_FILE_CHOSEN: 'No file chosen',
   },
+  YOU_MAY_ALSO_LIKE: 'You may also like',
 }
 export default Translations
