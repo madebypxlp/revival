@@ -4,17 +4,16 @@ import React, { FC } from 'react'
 interface Props {
   className?: string
   children?: any
-  el?: HTMLElement
+  el?: keyof JSX.IntrinsicElements
   clean?: boolean
 }
 
-const Container: FC<Props> = ({ children, className, el = 'div', clean }) => {
+const Container: FC<Props> = ({ children, className, el, clean }) => {
   const rootClassName = cn(className, {
     'mx-auto px-5': !clean,
   })
 
-  let Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> =
-    el as any
+  const Component = el || 'div'
 
   return <Component className={rootClassName}>{children}</Component>
 }

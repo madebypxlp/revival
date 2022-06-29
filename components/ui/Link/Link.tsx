@@ -7,12 +7,8 @@ import { link } from 'fs'
 
 const Link: FunctionComponent<ILink> = (props) => {
   const {
-    // @ts-expect-error
     title,
-    // @ts-expect-error
-    href,
-    // @ts-expect-error
-    link,
+    href = '',
     color,
     children,
     className,
@@ -20,7 +16,7 @@ const Link: FunctionComponent<ILink> = (props) => {
     ...rest
   } = props
 
-  const url = link?.url || href
+  const url = 'link' in props ? props.link.url : href
 
   return (
     <NextLink href={url}>
@@ -35,7 +31,7 @@ const Link: FunctionComponent<ILink> = (props) => {
         )}
         {...rest}
       >
-        {children || link?.title}
+        {children || ('link' in props && props.link.title)}
       </a>
     </NextLink>
   )
