@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
 import styles from './Swiper.module.scss'
+import c from 'classnames'
 import ISwiper, { ISwiperSlide } from './Swiper.interface'
 import {
   Swiper as PlainSwiper,
@@ -26,7 +27,6 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore>()
   const onSwiperHandler = (swiper: SwiperCore) => {
     setSwiperInstance(swiper)
-    console.log('onSwiper', navPrevRef.current)
     if (
       props?.navigation === true &&
       (swiper.params.navigation as NavigationOptions)?.prevEl
@@ -74,7 +74,7 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
   const mergedProps = { ...rest, ...defaultProps }
 
   return (
-    <div className="relative">
+    <div className={c('relative', styles.root)}>
       <PlainSwiper
         className={`${className} ${styles.swiper}`}
         {...mergedProps}

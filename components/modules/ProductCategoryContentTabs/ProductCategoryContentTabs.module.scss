@@ -1,7 +1,62 @@
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+  @apply bg-[#F3F1E8];
+
+  .tabButtonsContainer {
+    @apply default-grid;
+    @apply md:mb-90;
+  }
+
+  .tabButtonContainer {
+    @apply col-span-2 relative;
+    @apply md:col-span-4;
+
+    div {
+      // image container
+      aspect-ratio: 1.2711;
+    }
+    button {
+      @apply w-full;
+
+      &.selected {
+        pointer-events: none;
+      }
+    }
+  }
+
+  .tabContainer {
+    @apply hidden;
+
+    &.selected {
+      @apply block;
+    }
+  }
+
+  .swiperContainer {
+    @apply mb-55;
+  }
+
+  .tabLeftColumn {
+    @apply col-start-1 col-span-2 row-start-2;
+    @apply md:col-start-1 md:col-span-7 md:row-start-1;
+  }
+
+  .tabRightColumn {
+    @apply col-start-1 col-span-2 row-start-1;
+    @apply md:col-start-8 md:col-span-5;
+  }
+
+  .primaryImageContainer {
+    @apply relative;
+    @apply md:mr-50;
+    aspect-ratio: 3.186;
+  }
+
+  .headlineContainer {
+    @apply text-blue mb-20;
+  }
+
+  .copyContainer {
+    @apply text-black typo-small-paragraph;
+    @apply md:typo-large-paragraph;
+  }
 }

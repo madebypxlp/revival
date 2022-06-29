@@ -20,16 +20,22 @@
       @apply bg-transparent;
     }
 
+    .swiper-button-disabled {
+      opacity: 0;
+    }
+  }
+}
+
+.root {
+  :global {
     .swiper-button-prev,
     .swiper-button-next {
       @apply w-50 md:w-70 h-auto;
       &::before {
         content: '';
       }
-    }
-
-    .swiper-button-disabled {
-      opacity: 0;
+      border-radius: 5rem;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
     }
   }
 }
