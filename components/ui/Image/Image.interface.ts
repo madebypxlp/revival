@@ -13,6 +13,8 @@ export declare type IImage = {
       width?: never
       height?: never
       layout?: 'fill'
+      objectFit?: 'cover' | 'contain'
+      objectPosition?: string
     }
   | {
       layout?: 'fixed' | 'intrinsic' | 'responsive' | undefined

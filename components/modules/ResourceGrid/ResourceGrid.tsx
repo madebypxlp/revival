@@ -6,13 +6,11 @@ import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import { useIsMobile } from '@commerce/utils/hooks'
+import Translations from 'constants/translations'
 
 const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
   module,
 }) => {
-  console.log(module)
-  console.log(module.latestLearningCenterPosts.nodes)
-
   const { headline, link, featuredResource, latestLearningCenterPosts } = module
 
   const isMobile = useIsMobile()
@@ -22,7 +20,6 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
     .filter((p) => p.id !== featuredResource.id)
     .slice(0, 3)
 
-  console.log(styles)
   return (
     <div className={c(styles.root, { [styles.mobile]: isMobile })}>
       <div className={styles.headlineContainer}>
@@ -54,7 +51,7 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
               type="default"
               href={featuredResource.uri}
             >
-              Read More
+              {Translations.READ_MORE}
             </Button>
           </div>
         </div>
@@ -68,7 +65,7 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
                   color={`${isMobile ? 'black' : 'blue'}`}
                   href={post.uri}
                 >
-                  Read More
+                  {Translations.READ_MORE}
                 </ArrowCTA>
               </div>
               <div className={styles.postImageContainer}>

@@ -7,6 +7,7 @@ const ProductCategoryContentTabsFragment = (t: string) => `
       copy
       headline
       ${ImageComponent()}
+      ${ImageComponent('primaryImageImage')}
       link {
         ...Link
       }
