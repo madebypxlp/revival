@@ -11,7 +11,26 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
   const product = {
     id: '#80122-795-431',
     price: 25,
-    image: null,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
     name: "Doc Roy's Derma Coat Plus",
     oldPrice: 35,
     isNew: true,
@@ -42,10 +61,12 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
         >
           <h5>{headline}</h5>
         </div>
+      </div>
+      <div className={'container default-grid gap-y-85'}>
         {products.map((p) => {
           return (
-            <div className={'col-span-2 md:col-span-4'}>
-              {/* <ProductCard {...p} /> */}
+            <div className={'col-span-2 md:col-span-3'}>
+              <ProductCard {...p} />
             </div>
           )
         })}

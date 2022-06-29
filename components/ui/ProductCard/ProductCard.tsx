@@ -28,7 +28,7 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
     <div className={styles.root}>
       <div className={styles.imageTopSquare}>
         <div className={styles.imageContainer}>
-          <ImageComponent image={image} layout={'fill'} />
+          <ImageComponent image={image} layout={'fill'} objectFit={'contain'} />
         </div>
         <div className={'flex flex-col justify-between h-full'}>
           <div className={styles.row}>
