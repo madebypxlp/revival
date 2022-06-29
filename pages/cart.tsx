@@ -53,11 +53,7 @@ export default function Cart({
   )
 
   return (
-    <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
-      <ProductCardGrid
-        products={[]}
-        headline={Translations.YOU_MAY_ALSO_LIKE}
-      />
+    <div>
       <div className="lg:col-span-8">
         {isLoading || isEmpty ? (
           <div className="flex-1 px-12 py-55 flex flex-col justify-center items-center ">
@@ -68,7 +64,8 @@ export default function Cart({
               Your cart is empty
             </h2>
             <p className=" px-10 text-center pt-2">
-              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake
+              ea.
             </p>
           </div>
         ) : error ? (
@@ -120,6 +117,10 @@ export default function Cart({
           </div>
         )}
       </div>
+      <ProductCardGrid
+        products={[]}
+        headline={Translations.YOU_MAY_ALSO_LIKE}
+      />
       <div className="lg:col-span-4">
         <div className="flex-shrink-0 px-4 py-55 sm:px-5">
           {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED && (
