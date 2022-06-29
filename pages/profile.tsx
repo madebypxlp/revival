@@ -7,6 +7,7 @@ import { Container, Text } from '@components/ui'
 import fetch from './../framework/wordpress/wp-client'
 import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
+import AuthModal from '@components/ui/AuthModal/AuthModal'
 
 export async function getStaticProps({
   preview,
@@ -30,6 +31,8 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
+  console.log(data)
+
   return (
     <Container>
       <Text variant="pageHeading">My Profile</Text>
@@ -49,6 +52,7 @@ export default function Profile({
           </div>
         </div>
       )}
+      {!data && <AuthModal open />}
     </Container>
   )
 }
