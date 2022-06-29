@@ -23,6 +23,7 @@ export interface Input extends BaseInput {
 
 export interface Textarea extends BaseInput {
   fieldGroupName: 'FormBuilder_Textarea'
+  type: 'textarea'
 }
 
 export interface Dropdown extends BaseInput {

@@ -7,6 +7,8 @@ type ILink = {
   target?: string
   children?: ReactNode
   className?: string
+  title?: string
+  href?: string
 } & ({ href: string } | { link: Link })
 
 export default ILink

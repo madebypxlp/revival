@@ -1,4 +1,8 @@
-import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import {
+  GetServerSidePropsContext,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from 'next'
 import fetch from './wp-client'
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
@@ -15,27 +19,8 @@ export const getAllPostCategories = `
   }
 `
 
-export const getWpStaticLearningCenterCategoryPaths = async (
-  ctx: GetStaticPropsContext
-) => {
-  const { categories } = await fetch({
-    query: getAllPostCategories,
-  })
-  const res = {
-    paths: categories.nodes.map(({ slug }: { slug: string }) => {
-      return {
-        params: {
-          slug,
-        },
-      }
-    }),
-    fallback: 'blocking',
-  }
-  return res
-}
-
-export const getLearningCenterCategoryWpStaticProps = async (
-  ctx: GetStaticPropsContext
+export const getLearningCenterCategoryWpServerSideProps = async (
+  ctx: GetServerSidePropsContext
 ): Promise<GetStaticPropsResult<any>> => {
   /*
   const category = await fetch({

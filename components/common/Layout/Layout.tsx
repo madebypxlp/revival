@@ -76,9 +76,9 @@ const Layout: FC<any> = ({
         <main className="fit">{children}</main>
         <Footer data={footer} />
         <Modal open={displayModal} onClose={closeModal}>
-          {modalView === 'LOGIN_VIEW' && <LoginView />}
-          {modalView === 'SIGNUP_VIEW' && <SignUpView />}
-          {modalView === 'FORGOT_VIEW' && <ForgotPassword />}
+          {/* {modalView === 'LOGIN_VIEW' && <LoginView />} */}
+          {/* {modalView === 'SIGNUP_VIEW' && <SignUpView />} */}
+          {/* {modalView === 'FORGOT_VIEW' && <ForgotPassword />} */}
         </Modal>
 
         <Sidebar open={displaySidebar} onClose={closeSidebar}>
