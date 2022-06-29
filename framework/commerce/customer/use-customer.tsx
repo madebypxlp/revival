@@ -10,7 +10,7 @@ export type UseCustomer<
 
 export const fetcher: HookFetcherFn<Customer | null, any> = SWRFetcher
 
-const fn = (provider: Provider) => provider.customer?.useCustomer!
+const fn = (provider: Provider) => provider?.customer?.useCustomer!
 
 const useCustomer: UseCustomer = (input) => {
   const hook = useHook(fn)

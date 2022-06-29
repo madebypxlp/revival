@@ -1,10 +1,10 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { InferGetServerSidePropsType, InferGetStaticPropsType } from 'next'
 import { PostDetailPage } from 'framework/wordpress/interfaces/post'
 import { Layout } from '@components/common'
 import LearningCenterFilterModule from '@components/modules/LearningCenterFilter/LearningCenterFilter'
 import { getLearningCenterCategoryWpServerSideProps } from 'framework/wordpress/wp-learning-center-category'
 
-export const getStaticProps = getLearningCenterCategoryWpServerSideProps
+export const getServerSideProps = getLearningCenterCategoryWpServerSideProps
 
 export default function Pages({
   posts,
@@ -12,7 +12,7 @@ export default function Pages({
   footer,
   categories,
   contentTypes,
-}: InferGetStaticPropsType<PostDetailPage>) {
+}: InferGetServerSidePropsType<PostDetailPage>) {
   if (!posts) return null
 
   const filterData = {
