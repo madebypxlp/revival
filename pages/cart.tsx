@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext } from 'next'
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
@@ -8,6 +8,11 @@ import { Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import Button from '@components/ui/Button/Button'
+import fetch from './../framework/wordpress/wp-client'
+import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
+import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
+import Translations from 'constants/translations'
 
 export async function getStaticProps({
   preview,
@@ -15,12 +20,21 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
+  const header = await fetch({ query: headerQuery })
+  const footer = await fetch({ query: footerQuery })
   return {
-    props: { pages },
+    props: {
+      pages,
+      header: { ...header?.acfOptionsHeader?.header },
+      footer: footer?.acfOptionsFooter?.footer,
+    },
   }
 }
 
-export default function Cart() {
+export default function Cart({
+  header,
+  footer,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const error = null
   const success = null
   const { data, isLoading, isEmpty } = useCart()
@@ -40,6 +54,10 @@ export default function Cart() {
 
   return (
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
+      <ProductCardGrid
+        products={[]}
+        headline={Translations.YOU_MAY_ALSO_LIKE}
+      />
       <div className="lg:col-span-8">
         {isLoading || isEmpty ? (
           <div className="flex-1 px-12 py-55 flex flex-col justify-center items-center ">

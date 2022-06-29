@@ -13,7 +13,7 @@ import Video from '../VideoComponent/VideoComponent'
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
-import LoginModal from '../LoginModal/LoginModal'
+import LoginModal from '../AuthModal/AuthModal'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -202,11 +202,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         >
           Login
         </Button>
-        <LoginModal
-          title={'Login to your Account'}
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
-        />
       </div>
     </div>
   )

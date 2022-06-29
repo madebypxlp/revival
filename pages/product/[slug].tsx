@@ -12,6 +12,10 @@ import getProduct from '@framework/product/get-product'
 import getAllPages from '@framework/common/get-all-pages'
 import getAllProductPaths from '@framework/product/get-all-product-paths'
 
+import fetch from './../../framework/wordpress/wp-client'
+import footerQuery from './../../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from './../../framework/wordpress/queries/acfGlobalOptions/header'
+
 export async function getStaticProps({
   params,
   locale,
@@ -29,10 +33,15 @@ export async function getStaticProps({
     throw new Error(`Product with slug '${params!.slug}' not found`)
   }
 
+  const header = await fetch({ query: headerQuery })
+  const footer = await fetch({ query: footerQuery })
+
   return {
     props: {
       pages,
       product,
+      header: { ...header?.acfOptionsHeader?.header },
+      footer: footer?.acfOptionsFooter?.footer,
     },
     revalidate: 200,
   }
@@ -57,14 +66,18 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 
 export default function Slug({
   product,
+  header,
+  footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
 
-  return router.isFallback ? (
-    <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
-  ) : (
-    <ProductView product={product as any} />
+  return (
+    <Layout header={header} footer={footer}>
+      {router.isFallback ? (
+        <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
+      ) : (
+        <ProductView product={product as any} />
+      )}
+    </Layout>
   )
 }
-
-Slug.Layout = Layout

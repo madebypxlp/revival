@@ -20,5 +20,6 @@ const Translations = {
     NEW: 'NEW',
     OUR_BRANDS: 'OUR BRANDS',
   },
+  YOU_MAY_ALSO_LIKE: 'You may also like',
 }
 export default Translations
