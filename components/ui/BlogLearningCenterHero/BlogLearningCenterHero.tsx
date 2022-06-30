@@ -59,7 +59,7 @@ const BlogLearningCenterHero: FunctionComponent<
     if (!icon.href) return null
     return (
       <Link href={icon.href}>
-        <a className="inline-block w-[60px] h-[60px] md:w-[76px] md:h-[76px] flex-shrink-0">
+        <a className="inline-block w-60 h-60 md:w-75 md:h-75 flex-shrink-0">
           {icon.el}
         </a>
       </Link>
@@ -78,7 +78,7 @@ const BlogLearningCenterHero: FunctionComponent<
           alt={featuredImage.node.altText}
           layout="fill"
           objectFit="cover"
-          className="md:z-20 md:rounded-bl-[30px]"
+          className="md:z-20 md:rounded-bl-30"
         />
         <div className={`${styles.circle} hidden md:block`}>
           <BlogHeroCircle />
@@ -92,7 +92,7 @@ const BlogLearningCenterHero: FunctionComponent<
       className={`${styles.root} container default-grid gap-20 md:gap-0 md:pb-80`}
     >
       <div className="md:col-start-1 col-span-full pt-30 md:pt-0 md:col-span-6 md:row-span-1 md:row-start-3 md:mb-40">
-        <h6 className="uppercase typo-category text-blue max-w-[57rem]">
+        <h6 className="uppercase typo-category text-blue max-w-55">
           {categoriesArray.join(', ')}
         </h6>
         <h2 className="text-blue">{title}</h2>
@@ -106,13 +106,13 @@ const BlogLearningCenterHero: FunctionComponent<
       <div className="flex justify-center items-center md:block col-span-full md:col-span-6 md:row-span-1 md:row-start-4 md:-mx-14 ">
         {links}
         <button
-          className="inline-block w-[60px] h-[60px] md:w-[76px] md:h-[76px] flex-shrink-0"
+          className="inline-block w-60 h-60 md:w-75 md:h-75 flex-shrink-0"
           onClick={onClickCopy}
         >
           <CopyIconRound />
         </button>
         <button
-          className="inline-block w-[60px] h-[60px] md:w-[76px] md:h-[76px] flex-shrink-0 "
+          className="inline-block w-60 h-60 md:w-75 md:h-75 flex-shrink-0"
           onClick={() => window.print()}
         >
           <PrintIconRound />
