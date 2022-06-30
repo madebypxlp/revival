@@ -59,6 +59,6 @@ export const getLearningCenterCategoryWpServerSideProps = async (
       categories: res?.categories?.nodes,
       contentTypes: res?.contentTypes?.nodes,
     },
-    revalidate: undefined,
+    // revalidate: undefined,
   }
 }
