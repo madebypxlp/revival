@@ -10,14 +10,27 @@ export interface IDropdownOption {
   label: string
 }
 
-export default interface IDropdown {
+type IDropdown = {
   placeholder: string
   defaultInputValue?: string
   className?: string
   color?: 'default' | 'light'
-  onChange: (
-    newValue: OnChangeValue<IDropdownOption, false>,
-    actionMeta: ActionMeta<IDropdownOption>
-  ) => void
   options: OptionsOrGroups<IDropdownOption, GroupBase<IDropdownOption>>
-}
+} & (
+  | {
+      isMulti: true
+      onChange: (
+        newValue: OnChangeValue<IDropdownOption, true>,
+        actionMeta: ActionMeta<IDropdownOption>
+      ) => void
+    }
+  | {
+      isMulti?: false
+      onChange: (
+        newValue: OnChangeValue<IDropdownOption, false>,
+        actionMeta: ActionMeta<IDropdownOption>
+      ) => void
+    }
+)
+
+export default IDropdown

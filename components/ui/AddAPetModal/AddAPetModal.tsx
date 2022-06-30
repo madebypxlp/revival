@@ -55,7 +55,18 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
           ]}
           className="mb-30 col-span-6"
         />
-        <Input placeholder="PLATZHALTER" type="text" className="col-span-6" />
+
+        <Dropdown
+          color="light"
+          isMulti={true}
+          onChange={console.log}
+          placeholder={'Breed'}
+          options={[
+            { label: 'Husky', value: 'husky' },
+            { label: 'Aussie', value: 'aussie' },
+          ]}
+          className="mb-30 col-span-6"
+        />
 
         <div className="col-span-12 typo-large-paragraph mb-10">Gender</div>
         <div className="col-span-4 flex mb-60">
