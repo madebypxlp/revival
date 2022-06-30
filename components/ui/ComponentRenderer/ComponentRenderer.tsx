@@ -13,8 +13,9 @@ import Video from '../VideoComponent/VideoComponent'
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
-import LoginModal from '../LoginModal/LoginModal'
+
 import AddAPetModal from '../AddAPetModal/AddAPetModal'
+import LoginModal from '../AuthModal/AuthModal'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
