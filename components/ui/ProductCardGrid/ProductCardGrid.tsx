@@ -5,50 +5,7 @@ import IProductCardGrid from './ProductCardGrid.interface'
 import ProductCard from '../ProductCard/ProductCard'
 
 const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
-  console.log(props)
-  const { headline } = props
-
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
-  const products = [
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-  ]
+  const { headline, products } = props
 
   return (
     <div className={`${styles.root}`}>
@@ -62,10 +19,10 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
           <h5>{headline}</h5>
         </div>
       </div>
-      <div className={'container default-grid gap-y-85'}>
+      <div className={c('container default-grid', styles.productGridContainer)}>
         {products.map((p) => {
           return (
-            <div className={'col-span-2 md:col-span-3'}>
+            <div className={'col-span-1 md:col-span-4 lg:col-span-3'}>
               <ProductCard {...p} />
             </div>
           )

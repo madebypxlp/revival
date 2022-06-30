@@ -2,21 +2,6 @@
   // add your styles here
   @apply w-full;
 
-  .imageTopSquare {
-    @apply w-full mb-15 p-10 relative;
-    aspect-ratio: 1;
-  }
-
-  .imageContainer {
-    @apply absolute top-0 left-0 w-full h-full rounded-15 bg-white p-50;
-    z-index: -1;
-    border: 1.5px solid #c4c4c4;
-
-    div {
-      aspect-ratio: 1;
-    }
-  }
-
   .row {
     @apply flex justify-between;
   }
@@ -45,31 +30,15 @@
     text-decoration: line-through;
   }
 
-  .newButtonContainer button {
-    padding: 0.6rem 1rem;
-    font-size: 1rem;
-    line-height: 1rem;
-    pointer-events: none;
-    border-radius: 1.25rem;
-    @screen md {
-      padding: 0.7rem 1.7rem;
-    }
-  }
-
-  .prescriptionIconContainer svg {
-    width: 2.2rem;
-    height: 2.2rem;
+  .addToCartButton {
+    padding: 1.35rem 2.5rem;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
 
     @screen md {
-      width: 3.6rem;
-      height: 3.6rem;
+      padding: 1.35rem 4rem;
+      font-size: 1.8rem;
+      line-height: 2.3rem;
     }
-  }
-
-  .productLabel {
-    padding: 0.7rem 1.8rem;
-    line-height: 1rem;
-    font-size: 1rem;
-    pointer-events: none;
   }
 }

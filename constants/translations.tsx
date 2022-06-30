@@ -20,6 +20,13 @@ const Translations = {
     NEW: 'NEW',
     OUR_BRANDS: 'OUR BRANDS',
   },
+  CART: {
+    YOUR_CART_IS_EMPTY: 'Your Cart Is Empty',
+    YOUR_CART: 'Your Cart',
+    SHOP_NOW: 'Shop Now',
+    PROCEED_TO_CHECKOUT: 'Proceed To Checkout',
+    SUBTOTAL: 'Subtotal',
+  },
   YOU_MAY_ALSO_LIKE: 'You may also like',
 }
 export default Translations

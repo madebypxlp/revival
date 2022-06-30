@@ -7,4 +7,13 @@
       color: #00338d;
     }
   }
+
+  .productGridContainer {
+    row-gap: 4rem;
+    margin-bottom: 8.5rem;
+
+    @screen md {
+      row-gap: 8.5rem;
+    }
+  }
 }

@@ -6,6 +6,7 @@ import ImageComponent from '../Image/Image'
 import Button from '../Button/Button'
 import Translations from 'constants/translations'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
+import ProductCardImage from '../ProductCardImage/ProductCardImage'
 
 const ProductCard: FunctionComponent<IProductCard> = (props) => {
   const {
@@ -26,47 +27,13 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
   }
   return (
     <div className={styles.root}>
-      <div className={styles.imageTopSquare}>
-        <div className={styles.imageContainer}>
-          <ImageComponent image={image} layout={'fill'} objectFit={'contain'} />
-        </div>
-        <div className={'flex flex-col justify-between h-full'}>
-          <div className={styles.row}>
-            <div className={styles.newButtonContainer}>
-              {isNew && (
-                <Button outline color="blue" variant="small" type="default">
-                  {Translations.PRODUCT.NEW}
-                </Button>
-              )}
-            </div>
-            <div className={styles.prescriptionIconContainer}>
-              {isPrescription && <PrescriptionIcon />}
-            </div>
-          </div>
-          <div className={'flex flex-col items-start gap-5'}>
-            {isOurBrand && (
-              <Button
-                color="blue"
-                variant="small"
-                type="default"
-                className={c(styles.productLabel)}
-              >
-                {Translations.PRODUCT.OUR_BRANDS}
-              </Button>
-            )}
-            {label && (
-              <Button
-                color="red"
-                variant="small"
-                type="default"
-                className={c(styles.productLabel)}
-              >
-                {label}
-              </Button>
-            )}
-          </div>
-        </div>
-      </div>
+      <ProductCardImage
+        isNew={isNew}
+        isPrescription={isPrescription}
+        label={label}
+        image={image}
+        isOurBrand={isOurBrand}
+      />
       <div className={c(styles.row, 'mb-15 gap-x-15')}>
         <div>
           <div className={styles.productName}>{name}</div>
@@ -80,7 +47,12 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
           </div>
         </div>
       </div>
-      <Button color="yellow" variant="large" type="default">
+      <Button
+        className={styles.addToCartButton}
+        color="yellow"
+        variant="large"
+        type="default"
+      >
         {Translations.PRODUCT.ADD_TO_CART}
       </Button>
     </div>

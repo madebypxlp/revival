@@ -1,0 +1,39 @@
+.root {
+  .row {
+    @apply flex justify-between;
+  }
+
+  .productImageContainer {
+    @apply col-span-2;
+  }
+
+  .productName {
+    @apply typo-h5;
+    font-weight: 700;
+  }
+
+  .productPrice {
+    @apply typo-h5;
+    font-weight: bold;
+    color: theme('colors.red');
+  }
+
+  .productId {
+    @apply typo-large-paragraph;
+  }
+
+  .productOldPrice {
+    @apply typo-large-paragraph;
+    text-decoration: line-through;
+  }
+
+  &.variant--cart {
+    .imageContainer {
+      @apply col-span-2;
+    }
+
+    .infoContainer {
+      @apply col-span-6;
+    }
+  }
+}
