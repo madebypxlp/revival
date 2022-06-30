@@ -215,11 +215,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           >
             Login
           </Button>
-          <LoginModal
-            title={'Login to your Account'}
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-          />
         </div>
       </div>
       <div className="my-50 py-50">

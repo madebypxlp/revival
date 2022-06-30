@@ -1,4 +1,24 @@
 .root {
+  /* clears the 'X' from Internet Explorer */
+  input[type='search']::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  input[type='search']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* clears the 'X' from Chrome */
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+
   input:not([type='checkbox']):not([type='radio']) {
     @apply appearance-none transition duration-150 ease-in-out w-full border-2 py-14;
     &:focus {
@@ -68,6 +88,8 @@
 
     &.square input {
       border-radius: 0;
+      @apply border-greyscale-3;
+      transform: scale(0.7);
     }
 
     .label {
@@ -85,8 +107,4 @@
       @apply sr-only;
     }
   }
-}
-
-.radio {
-  background-color: red;
 }

@@ -83,6 +83,20 @@
     }
   }
 
-  .isMulti {
+  &.isMulti {
+    :global {
+      .select__multi-value {
+        @apply bg-blue rounded-full text-white overflow-hidden py-5 px-10;
+        .select__multi-value__label {
+          @apply typo-multiselect-label text-white;
+        }
+      }
+      .select__multi-value__remove {
+        &:hover {
+          @apply bg-blue;
+          color: currentColor;
+        }
+      }
+    }
   }
 }
