@@ -5,6 +5,7 @@ const Translations = {
   READ_MORE: 'Read More',
   LATEST_POST: 'Latest Post',
   WATCH_VIDEO: 'Watch Video',
+  SEARCH_LEARNING_CENTER: 'Search Learning Center',
   FORM: {
     SUBMIT: 'Submit',
     SUCCESS: 'Success',
