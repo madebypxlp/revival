@@ -1,0 +1,54 @@
+.root {
+  @apply col-span-2 grid gap-20 grid-cols-2;
+
+  &.variant-article-grid {
+    @apply md:grid-cols-6 md:col-span-12;
+    @apply lg:col-span-6;
+
+    .leftColumnContainer {
+      @apply col-span-6 order-2 self-center;
+      @apply md:col-span-4 md:order-1;
+    }
+
+    .imageContainer {
+      @apply col-span-6 order-1 self-center;
+      @apply md:col-span-2 md:order-2;
+    }
+  }
+
+  &.variant-learning-center {
+    @apply md:col-span-7 md:grid-cols-7;
+
+    .leftColumnContainer {
+      @apply col-span-2 order-2 self-center;
+      @apply md:col-span-5 md:order-1;
+    }
+
+    .imageContainer {
+      @apply col-span-6 order-1 self-center;
+      @apply md:col-span-2 md:order-2;
+    }
+  }
+
+  &.variant-no-image {
+    @apply col-span-2 grid-cols-2;
+    @apply md:col-span-4 md:grid-cols-4;
+
+    .leftColumnContainer {
+      @apply col-span-2;
+      @apply md:col-span-4;
+
+      title {
+        line-height: 2rem;
+
+        @screen md {
+          line-height: 2.3rem;
+        }
+      }
+    }
+
+    .imageContainer {
+      @apply hidden;
+    }
+  }
+}
