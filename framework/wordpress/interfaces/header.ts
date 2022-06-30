@@ -38,14 +38,14 @@ export type NavigationLayouts =
 
 export interface NavigationLayoutsDogs {
   fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Dogs'
-  links: { link: string }[]
+  links: { link: Link }[]
   quickLinks: { link: Link }[]
   marketingBox: NavigationMarketingBox
 }
 
 export interface NavigationLayoutsCats {
   fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Cats'
-  links: { link: string }[]
+  links: { link: Link }[]
   quickLinks: { link: Link }[]
   marketingBox: NavigationMarketingBox
 }

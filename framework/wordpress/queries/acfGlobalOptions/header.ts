@@ -118,7 +118,9 @@ export default `
             ... on AcfOptionsHeader_Header_navigation_NavigationLayouts_Cats {
               fieldGroupName
               links {
-                link
+                link  {
+                  ...Link
+                }
               }
               marketingBox {
                 title
@@ -140,7 +142,9 @@ export default `
             ... on AcfOptionsHeader_Header_navigation_NavigationLayouts_Dogs {
               fieldGroupName
               links {
-                link
+                link {
+                  ...Link
+                }
               }
               marketingBox {
                 title

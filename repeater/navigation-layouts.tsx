@@ -24,8 +24,9 @@ const renderNavigationLayouts = (layout: NavigationLayouts) => {
       return <NavigationLayoutsBrands module={layout} />
     case 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Help':
       return <NavigationLayoutsHelp module={layout} />
-    // default:
-    //   return `${layout.fieldGroupName} not found`
+    default:
+      // @ts-expect-error
+      return `${layout.fieldGroupName} not found`
   }
 }
 
