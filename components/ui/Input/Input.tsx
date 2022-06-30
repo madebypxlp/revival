@@ -33,11 +33,10 @@ const Input: FunctionComponent<IInput> = (props) => {
   } = props
 
   const [inputError, setInputError] = useState<InputError>(false)
-  const [inputFiles, setInputFiles] = useState<FileList | null>()
+  const [inputFiles, setInputFiles] = useState<FileList>()
 
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
-    const { type, required, value, checked, files } =
-      e.target as HTMLInputElement
+    const { required, value, checked, files } = e.target as HTMLInputElement
 
     // validation
     if (type === 'email' && value && !isEmailValid(value))
@@ -51,7 +50,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     if (typeof onChange === 'function') {
       if (type === 'checkbox') onChange(checked, inputError)
       if (type === 'file') {
-        setInputFiles(files)
+        setInputFiles(files || undefined)
         onChange(files || false, inputError)
       } else onChange(value, inputError)
     }

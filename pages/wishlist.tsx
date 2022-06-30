@@ -1,13 +1,15 @@
-import type { GetStaticPropsContext } from 'next'
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { Heart } from '@components/icons'
 import { Layout } from '@components/common'
 import { Text, Container } from '@components/ui'
-import { defaultPageProps } from '@lib/defaults'
 import { getConfig } from '@framework/api'
 import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import getAllPages from '@framework/common/get-all-pages'
+import fetch from './../framework/wordpress/wp-client'
+import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
 
 export async function getStaticProps({
   preview,
@@ -22,15 +24,21 @@ export async function getStaticProps({
 
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
+  const header = await fetch({ query: headerQuery })
+  const footer = await fetch({ query: footerQuery })
   return {
     props: {
       pages,
-      ...defaultPageProps,
+      header: { ...header?.acfOptionsHeader?.header },
+      footer: footer?.acfOptionsFooter?.footer,
     },
   }
 }
 
-export default function Wishlist() {
+export default function Wishlist({
+  header,
+  footer,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data: customer } = useCustomer()
   // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })

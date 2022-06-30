@@ -4,6 +4,7 @@ const Translations = {
   WRITTEN_BY: 'Written by: ',
   READ_MORE: 'Read More',
   LATEST_POST: 'Latest Post',
+  SEARCH_LEARNING_CENTER: 'Search Learning Center',
   FORM: {
     SUBMIT: 'Submit',
     SUCCESS: 'Success',
@@ -14,5 +15,6 @@ const Translations = {
     CHOOSE_A_FILE: 'Choose A File',
     NO_FILE_CHOSEN: 'No file chosen',
   },
+  YOU_MAY_ALSO_LIKE: 'You may also like',
 }
 export default Translations

@@ -8,6 +8,7 @@ import Button from '@components/ui/Button/Button'
 import Translations from '../../../constants/translations'
 import { Category } from 'framework/wordpress/interfaces/post'
 import { LearningCenterContentType } from 'framework/wordpress/interfaces/learning-center'
+import GradientOverlay from '../GradientOverlay/GradientOverlay'
 
 const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
   const {
@@ -56,11 +57,13 @@ const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
     >
       <div className={styles.featuredImage}>
         {featuredImage?.node?.sourceUrl && (
-          <Image
-            src={featuredImage.node.sourceUrl}
-            layout={'fill'}
-            objectFit={'cover'}
-          />
+          <GradientOverlay>
+            <Image
+              src={featuredImage.node.sourceUrl}
+              layout={'fill'}
+              objectFit={'cover'}
+            />
+          </GradientOverlay>
         )}
         {!!contentTypes?.length && (
           <div className={styles.contentTypes}>

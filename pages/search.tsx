@@ -13,6 +13,10 @@ import useSearch from '@framework/product/use-search'
 import getAllPages from '@framework/common/get-all-pages'
 import getSiteInfo from '@framework/common/get-site-info'
 
+import fetch from './../framework/wordpress/wp-client'
+import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
+
 import rangeMap from '@lib/range-map'
 
 // TODO(bc) Remove this. This should come from the API
@@ -41,11 +45,15 @@ export async function getStaticProps({
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
   const { categories, brands } = await getSiteInfo({ config, preview })
+  const header = await fetch({ query: headerQuery })
+  const footer = await fetch({ query: footerQuery })
   return {
     props: {
       pages,
       categories,
       brands,
+      header: { ...header?.acfOptionsHeader?.header },
+      footer: footer?.acfOptionsFooter?.footer,
     },
   }
 }
@@ -53,6 +61,8 @@ export async function getStaticProps({
 export default function Search({
   categories,
   brands,
+  header,
+  footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [activeFilter, setActiveFilter] = useState('')
   const [toggleFilter, setToggleFilter] = useState(false)
