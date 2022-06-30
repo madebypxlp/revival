@@ -3,9 +3,11 @@ import styles from './CartProduct.module.scss'
 import c from 'classnames'
 import ICartProduct from './CartProduct.interface'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
+import Link from '../Link/Link'
+import { Minus, Plus } from '@components/icons'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
-  const { product, showCartControls, variant } = props
+  const { product, showCartControls, variant, quantity } = props
 
   const formatPrice = (price: number): string => {
     return '$' + price.toFixed(2)
@@ -39,8 +41,21 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         </div>
         {showCartControls && (
           <div className={styles.row}>
-            <div></div>
-            <div></div>
+            <div>
+              <div className={styles.cartProductQuantityControls}>
+                <div>-</div>
+                <div>{quantity}</div>
+                <div>+</div>
+              </div>
+            </div>
+            <div className={'flex flex-col justify-end'}>
+              <Link color={'black'} href={'/'}>
+                Remove
+              </Link>
+              <Link color={'black'} href={'/'}>
+                Edit
+              </Link>
+            </div>
           </div>
         )}
       </div>

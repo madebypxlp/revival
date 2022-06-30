@@ -27,6 +27,24 @@
     text-decoration: line-through;
   }
 
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cartProductQuantityControls {
+    color: theme('colors.black');
+    background-color: #f5f5f5;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 3rem;
+    padding: 2rem 2.5rem;
+  }
+
   &.variant--cart {
     .imageContainer {
       @apply col-span-2;

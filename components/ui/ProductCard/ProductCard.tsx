@@ -34,7 +34,7 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
         image={image}
         isOurBrand={isOurBrand}
       />
-      <div className={c(styles.row, 'mb-15 gap-x-15')}>
+      <div className={c(styles.row, 'my-15 gap-x-15')}>
         <div>
           <div className={styles.productName}>{name}</div>
           <div className={styles.productId}>{id}</div>

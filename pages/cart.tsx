@@ -14,6 +14,7 @@ import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/heade
 import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 import Translations from 'constants/translations'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
+import { useIsMobile } from '@commerce/utils/hooks'
 
 export async function getStaticProps({
   preview,
@@ -39,6 +40,7 @@ export default function Cart({
   const error = null
   const success = null
   const { data, isLoading, isEmpty } = useCart()
+  const isMobile = useIsMobile()
 
   console.log(data)
   const { price: subTotal } = usePrice(
@@ -133,17 +135,18 @@ export default function Cart({
             </div>
           ) : (
             <div>
-              {!isEmpty && (
-                <div>
-                  {products.slice(0, 2).map((item) => (
+              {!isEmpty &&
+                products.slice(0, 2).map((item) => (
+                  <div className={'mb-20'}>
                     <CartProduct
                       key={item.id}
                       product={item}
                       variant={'cart'}
+                      quantity={2}
+                      showCartControls
                     />
-                  ))}
-                </div>
-              )}
+                  </div>
+                ))}
             </div>
           )}
         </div>
