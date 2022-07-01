@@ -8,11 +8,15 @@ export declare type IImage = {
   image: Image
   className?: string
   imgClassName?: string
+  objectFit?: 'cover' | 'contain'
+  objectPosition?: string
 } & (
   | {
       width?: never
       height?: never
       layout?: 'fill'
+      objectFit?: 'cover' | 'contain'
+      objectPosition?: string
     }
   | {
       layout?: 'fixed' | 'intrinsic' | 'responsive' | undefined

@@ -8,6 +8,7 @@ export default interface IProductCategoryContentTabs {
       copy: string
       headline: string
       image: Image
+      primaryImageImage: Image
       link: Link
       primaryName: string
       productCarousel: [
