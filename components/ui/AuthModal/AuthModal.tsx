@@ -45,7 +45,7 @@ const AuthModal: FunctionComponent<IAuthModal> = ({ open }) => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }

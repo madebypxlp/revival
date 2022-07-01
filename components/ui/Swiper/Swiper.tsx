@@ -31,9 +31,9 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
       props?.navigation === true &&
       (swiper.params.navigation as NavigationOptions)?.prevEl
     ) {
-      // @ts-expect-error
+      // @ts-ignore
       swiper.params.navigation.prevEl = navPrevRef.current
-      // @ts-expect-error
+      // @ts-ignore
       swiper.params.navigation.nextEl = navNextRef.current
     }
     if (typeof onSwiper === 'function') onSwiper(swiper)
