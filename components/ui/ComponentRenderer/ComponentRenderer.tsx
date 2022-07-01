@@ -13,7 +13,7 @@ import Video from '../VideoComponent/VideoComponent'
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
-import LoginModal from '../AuthModal/AuthModal'
+import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -193,15 +193,20 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         <AccountHero headline="Welcome Back, Marie" />
       </div>
       <div className="my-50 py-50">
-        <h1>Login Modal</h1>
+        <h1>Search For Vet Clinic</h1>
         <Button
           color="yellow"
           variant="large"
           type="default"
           onClick={() => setModalOpen(true)}
         >
-          Login
+          Search
         </Button>
+        <SearchForVetClinicDialog
+          title={'Search for Your Veterinary Clinic'}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
       </div>
     </div>
   )

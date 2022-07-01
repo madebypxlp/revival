@@ -109,7 +109,7 @@ const Input: FunctionComponent<IInput> = (props) => {
         </div>
       )}
 
-      {variant === 'blue-outline' && (
+      {!!icon && (
         <button className={styles.icon} onClick={handleIconClick}>
           {icon === 'arrow' && <InputArrow className="w-20 h-20" />}
           {icon === 'search' && <InputSearch className="w-20 h-20" />}

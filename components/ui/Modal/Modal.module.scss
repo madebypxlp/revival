@@ -1,13 +1,6 @@
 .root {
   @apply fixed flex items-center inset-0 z-50 justify-center;
   background-color: rgba(0, 0, 0, 0.6);
-
-  button {
-    transition: 400ms ease;
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
 }
 
 @keyframes FADE_IN {
@@ -50,4 +43,19 @@
 
 .modal:focus {
   @apply outline-none;
+}
+
+.modalActions {
+  @apply relative py-20 md:py-30 px-20 md:px-60;
+
+  &::before {
+    content: '';
+    @apply bg-blend-multiply h-16 w-full absolute inset-x-0 -top-16;
+    background: linear-gradient(
+      180deg,
+      #e0e0e0 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    rotate: 180deg;
+  }
 }

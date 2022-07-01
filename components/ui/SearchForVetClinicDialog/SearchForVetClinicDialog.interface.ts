@@ -1,8 +1,5 @@
-import React from 'react'
-
-export default interface IModal {
+export default interface ISearchForVetClinicDialog {
   title?: string
-  styleAction?: string
   className?: string
   children?: React.ReactNode
   open?: boolean

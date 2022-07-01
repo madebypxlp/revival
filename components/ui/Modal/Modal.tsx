@@ -10,6 +10,14 @@ import {
 } from 'body-scroll-lock'
 import FocusTrap from '@lib/focus-trap'
 
+export const ModalContent: FC = ({ children }) => (
+  <div className={s.modalContent}>{children}</div>
+)
+
+export const ModalActions: FC = ({ children }) => (
+  <div className={s.modalActions}>{children}</div>
+)
+
 const Modal: FC<IModal> = (props) => {
   const { title, className, children, open, onClose, onEnter = null } = props
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>
@@ -47,7 +55,7 @@ const Modal: FC<IModal> = (props) => {
       {open ? (
         <div className={s.root}>
           <div
-            className="bg-none w-full h-full z-49 absolute"
+            className="bg-none w-full h-full z-0 absolute"
             onClick={onClickOutside}
           />
           <div className={s.modal + ' ' + className} role="dialog" ref={ref}>
@@ -59,7 +67,7 @@ const Modal: FC<IModal> = (props) => {
               <Cross className="h-24 w-24 md:w-30 md:h-30" />
             </button>
             {title && <div className={s.modalTitle}>{title}</div>}
-            <div className={s.modalContent}>{children}</div>
+            {children}
           </div>
         </div>
       ) : null}
