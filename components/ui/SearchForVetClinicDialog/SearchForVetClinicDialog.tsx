@@ -46,27 +46,24 @@ const SearchForVetClinicDialog: FunctionComponent<ISearchForVetClinicDialog> = (
         </div>
       </ModalContent>
       <ModalActions>
-        <div className="flex justify-center items-center flex-col md:flex-row md:justify-start">
-          <Button
-            className="mb-20 md:mb-0 md:mr-20"
-            color="yellow"
-            variant="large"
-            type="default"
-            onClick={handleSubmit}
-          >
-            <span className="px-30">Search</span>
-          </Button>
-          <ArrowCTA
-            orientation="right"
-            color="blue"
-            onClick={(e) => {
-              e.preventDefault()
-              onClose()
-            }}
-          >
-            <span className="text-17">Cancel</span>
-          </ArrowCTA>
-        </div>
+        <Button
+          color="yellow"
+          variant="large"
+          type="default"
+          onClick={handleSubmit}
+        >
+          <span className="px-30">Search</span>
+        </Button>
+        <ArrowCTA
+          orientation="right"
+          color="blue"
+          onClick={(e) => {
+            e.preventDefault()
+            onClose()
+          }}
+        >
+          <span className="text-17">Cancel</span>
+        </ArrowCTA>
       </ModalActions>
     </Modal>
   )

@@ -38,27 +38,33 @@ const Modal: FC<IModal> = (props) => {
   useEffect(() => {
     if (ref.current) {
       if (open) {
-        disableBodyScroll(ref.current)
+        console.log('locking scroll')
+        disableBodyScroll(ref.current, {
+          reserveScrollBarGap: true,
+        })
+        document.documentElement.style.overflow = 'hidden'
         window.addEventListener('keydown', handleKey)
       } else {
         enableBodyScroll(ref.current)
+        document.documentElement.style.removeProperty('overflow')
       }
     }
     return () => {
       window.removeEventListener('keydown', handleKey)
       clearAllBodyScrollLocks()
+      document.documentElement.style.removeProperty('overflow')
     }
   }, [open, handleKey])
 
   return (
     <Portal>
       {open ? (
-        <div className={s.root}>
+        <div className={s.root} ref={ref}>
           <div
             className="bg-none w-full h-full z-0 absolute"
             onClick={onClickOutside}
           />
-          <div className={s.modal + ' ' + className} role="dialog" ref={ref}>
+          <div className={s.modal + ' ' + className} role="dialog">
             <button
               onClick={() => onClose()}
               aria-label="Close panel"
