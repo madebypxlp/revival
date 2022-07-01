@@ -20,6 +20,9 @@ export default () => {
   function Hit({ hit }: any) {
     return (
       <article className="hit">
+        <div className="hit-image">
+          <img src={hit.primaryPicture} alt={hit.name} />
+        </div>
         <h5>{hit.itemName}</h5>
       </article>
     )
