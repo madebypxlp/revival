@@ -4,5 +4,5 @@ export default interface ICartProduct {
   product: IProductCard
   quantity: number
   showCartControls?: boolean
-  variant: 'cart' | 'other'
+  variant: 'cart' | 'sidebar'
 }

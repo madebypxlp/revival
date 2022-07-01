@@ -6,28 +6,57 @@
     @apply flex justify-between;
   }
 
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+
+    @screen md {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
   .productName {
-    font-size: 1.8rem;
-    line-height: 2.4rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
     letter-spacing: -1%;
     font-weight: 400;
+    margin-bottom: 1rem;
+    @screen md {
+      margin-bottom: 0;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+    }
   }
 
   .productPrice {
-    @apply text-red;
     font-size: 1.8rem;
     line-height: 2.4rem;
     letter-spacing: -1%;
     font-weight: 700;
+
+    @screen md {
+      color: theme('colors.red');
+    }
   }
 
   .productId {
-    @apply typo-nav-links;
+    display: none;
+
+    @screen md {
+      @apply typo-nav-links;
+      display: block;
+    }
   }
 
   .productOldPrice {
-    @apply typo-nav-links;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
     text-decoration: line-through;
+
+    @screen md {
+      @apply typo-nav-links;
+    }
   }
 
   .addToCartButton {

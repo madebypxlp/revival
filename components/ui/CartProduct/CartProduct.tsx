@@ -5,42 +5,51 @@ import ICartProduct from './CartProduct.interface'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
 import Link from '../Link/Link'
 import { Minus, Plus } from '@components/icons'
+import { useIsMobile } from '@commerce/utils/hooks'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const { product, showCartControls, variant, quantity } = props
-
   const formatPrice = (price: number): string => {
     return '$' + price.toFixed(2)
   }
+
+  const isMobile = useIsMobile()
   return (
-    <div
-      className={c(
-        styles.root,
-        styles[`variant--${variant}`],
-        'grid grid-cols-8 gap-x-20'
-      )}
-    >
+    <div className={c(styles.root, styles[`variant--${variant}`], 'grid')}>
       <div className={styles.productImageContainer}>
         <ProductCardImage image={product.image} variant={'cart'} />
       </div>
+      {isMobile && (
+        <div className={styles.mobilePriceContainer}>
+          <div className={styles.productPrice}>
+            {formatPrice(product.price)}
+          </div>
+
+          <div className={styles.productOldPrice}>
+            {product.oldPrice && formatPrice(product.oldPrice)}
+          </div>
+        </div>
+      )}
       <div className={styles.infoContainer}>
         <div className={styles.row}>
           <div>
             <div className={styles.productName}>{product.name}</div>
             <div className={styles.productId}>{product.id}</div>
           </div>
-          <div>
-            <div className={styles.productPrice}>
-              {formatPrice(product.price)}
-            </div>
+          {!isMobile && (
+            <div>
+              <div className={styles.productPrice}>
+                {formatPrice(product.price)}
+              </div>
 
-            <div className={styles.productOldPrice}>
-              {product.oldPrice && formatPrice(product.oldPrice)}
+              <div className={styles.productOldPrice}>
+                {product.oldPrice && formatPrice(product.oldPrice)}
+              </div>
             </div>
-          </div>
+          )}
         </div>
         {showCartControls && (
-          <div className={styles.row}>
+          <div className={c(styles.row, 'items-center')}>
             <div>
               <div className={styles.cartProductQuantityControls}>
                 <div>-</div>
@@ -48,7 +57,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
                 <div>+</div>
               </div>
             </div>
-            <div className={'flex flex-col justify-end'}>
+            <div className={styles.controlLinksContainer}>
               <Link color={'black'} href={'/'}>
                 Remove
               </Link>

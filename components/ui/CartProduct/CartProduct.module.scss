@@ -4,12 +4,27 @@
   }
 
   .productImageContainer {
-    @apply col-span-2;
+    @apply row-start-1;
+    @apply md:col-span-2;
+
+    margin-bottom: 1rem;
+    width: 50%;
+
+    @screen md {
+      margin-bottom: 0rem;
+      width: 100%;
+    }
   }
 
   .productName {
-    @apply typo-h5;
+    @apply typo-h6;
+    @apply md:typo-h5;
     font-weight: 700;
+    margin-bottom: 1rem;
+
+    @screen md {
+      margin-bottom: 0;
+    }
   }
 
   .productPrice {
@@ -20,6 +35,11 @@
 
   .productId {
     @apply typo-large-paragraph;
+
+    margin-bottom: 2rem;
+    @screen md {
+      margin-bottom: 0;
+    }
   }
 
   .productOldPrice {
@@ -31,6 +51,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @apply col-start-1 col-span-2 row-start-2;
+    @apply md:col-start-3 md:col-span-6 md:row-start-1;
   }
 
   .cartProductQuantityControls {
@@ -42,16 +65,61 @@
     justify-content: space-between;
     align-items: center;
     column-gap: 3rem;
-    padding: 2rem 2.5rem;
+    padding: 1.4rem 2.5rem;
+
+    div {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+      font-weight: 700;
+    }
+  }
+
+  .controlLinksContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+
+    a {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
+  }
+
+  .mobilePriceContainer {
+    text-align: right;
+
+    .productPrice {
+      @apply typo-h6;
+    }
+
+    .productOldPrice {
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+    }
   }
 
   &.variant--cart {
+    @apply grid-cols-2 md:grid-cols-8 gap-x-20;
+
     .imageContainer {
-      @apply col-span-2;
+      @apply md:col-span-2;
     }
 
     .infoContainer {
-      @apply col-span-6;
+      @apply md:col-span-6;
+    }
+  }
+
+  &.variant--sidebar {
+    @apply grid-cols-2 md:grid-cols-4 gap-x-20;
+
+    .productImageContainer {
+      @apply md:col-span-1;
+    }
+
+    .infoContainer {
+      @apply md:col-span-3;
     }
   }
 }

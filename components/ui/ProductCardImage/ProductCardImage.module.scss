@@ -2,6 +2,10 @@
   @apply w-full p-10 relative;
   aspect-ratio: 1;
 
+  .row {
+    @apply flex justify-between;
+  }
+
   .imageContainer {
     position: absolute;
     top: 0;
@@ -11,8 +15,12 @@
     border: 1.5px solid #c4c4c4;
     border-radius: 1.5rem;
     background-color: white;
-    padding: 5rem;
     z-index: -1;
+    padding: 1.9rem;
+
+    @screen md {
+      padding: 5rem;
+    }
 
     div {
       aspect-ratio: 1;
@@ -25,6 +33,7 @@
     line-height: 1rem;
     pointer-events: none;
     border-radius: 1.25rem;
+    z-index: 2;
     @screen md {
       padding: 0.7rem 1.7rem;
     }
@@ -49,7 +58,13 @@
 
   &.variant--cart {
     .imageContainer {
-      padding: 2.2rem;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+
+      @screen md {
+        padding: 2.2rem;
+        border-radius: 1.5rem;
+      }
     }
   }
 }

@@ -1,12 +1,11 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import c from 'classnames'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import { Layout } from '@components/common'
-import { Text } from '@components/ui'
-import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
-import { CartItem } from '@components/cart'
+import { Cross, Check } from '@components/icons'
 import Button from '@components/ui/Button/Button'
 import fetch from './../framework/wordpress/wp-client'
 import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
@@ -15,6 +14,7 @@ import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 import Translations from 'constants/translations'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 import { useIsMobile } from '@commerce/utils/hooks'
+import styles from './cart.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -104,7 +104,7 @@ export default function Cart({
   ]
 
   return (
-    <div className={'pt-40 md:pt-80'}>
+    <div className={styles.root}>
       <div className={'container default-grid'}>
         <div
           className={
@@ -137,7 +137,7 @@ export default function Cart({
             <div>
               {!isEmpty &&
                 products.slice(0, 2).map((item) => (
-                  <div className={'mb-20'}>
+                  <div className={styles.cartProductContainer}>
                     <CartProduct
                       key={item.id}
                       product={item}
@@ -150,24 +150,24 @@ export default function Cart({
             </div>
           )}
         </div>
-        <div className="col-span-2 md:col-span-4 bg-[#F3F1E8] rounded-15 px-20 py-60">
-          <div
-            className={'text-center typo-large-paragraph mb-30'}
-          >{`You are $XX away from FREE economy Ground Shipping`}</div>
-          <div
-            className={'border-b-[1rem] border-white rounded-full mb-30'}
-          ></div>
-          <div
-            className={
-              'text-center underline font-bold typo-small-paragraph mb-40'
-            }
-          >
-            {Translations.LEARN_MORE}
-          </div>
-          <div className={'border-b-[0.1rem] border-[#C4C4C4] mb-40'}></div>
+        <div className={c(styles.informationBox, 'col-span-2 md:col-span-4')}>
+          {!isMobile && (
+            <div>
+              <div
+                className={'text-center typo-large-paragraph mb-30'}
+              >{`You are $XX away from FREE economy Ground Shipping`}</div>
+              <div
+                className={'border-b-[1rem] border-white rounded-full mb-30'}
+              ></div>
+              <div className={styles.learnMoreText}>
+                {Translations.LEARN_MORE}
+              </div>
+              <div className={'border-b-[0.1rem] border-[#C4C4C4] mb-40'}></div>
+            </div>
+          )}
 
-          <div className="flex flex-row justify-between mb-35">
-            <h5 className={'font-bold'}>{`${Translations.CART.SUBTOTAL}:`}</h5>
+          <div className={styles.subtotalContainer}>
+            <h5>{`${Translations.CART.SUBTOTAL}:`}</h5>
             <span>{subTotal}</span>
           </div>
           <div>

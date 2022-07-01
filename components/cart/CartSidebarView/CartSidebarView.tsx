@@ -2,13 +2,14 @@ import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import CartItem from '../CartItem'
-import s from './CartSidebarView.module.scss'
+import styles from './CartSidebarView.module.scss'
 import { UserNav } from '@components/common'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import Button from '@components/ui/Button/Button'
+import CartProduct from '@components/ui/CartProduct/CartProduct'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()
@@ -31,29 +32,55 @@ const CartSidebarView: FC = () => {
   const error = null
   const success = null
 
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
+
+  const products = [
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+  ]
+
   return (
     <div
-      className={cn(s.root, {
-        [s.empty]: error || success || isLoading || isEmpty,
+      className={cn(styles.root, {
+        [styles.empty]: error || success || isLoading || isEmpty,
       })}
     >
-      <header className="px-4 pt-6 pb-5 sm:px-5">
-        <div className="flex items-start justify-between space-x-3">
-          <div className="h-7 flex items-center">
-            <button
-              onClick={handleClose}
-              aria-label="Close panel"
-              className="hover:text-gray-500 transition ease-in-out duration-150"
-            >
-              <Cross className="h-6 w-6" />
-            </button>
-          </div>
-          <div className="space-y-1">
-            <UserNav />
-          </div>
-        </div>
-      </header>
-
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
           <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10  ">
@@ -62,9 +89,6 @@ const CartSidebarView: FC = () => {
           <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
             Your cart is empty
           </h2>
-          <p className="text-accents-3 px-10 text-center pt-2">
-            Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-          </p>
         </div>
       ) : error ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
@@ -89,22 +113,19 @@ const CartSidebarView: FC = () => {
         <>
           <div className="px-4 sm:px-5 flex-1">
             <Link href="/cart">
-              <h2
-                className="pt-0 pb-5 text-2xl leading-7 font-bold text-base tracking-wide cursor-pointer inline-block"
-                onClick={handleClose}
-              >
-                My Cart
-              </h2>
+              <h5 className={styles.headline} onClick={handleClose}>
+                {`Your Cart (${products.length})`}
+              </h5>
             </Link>
-            <ul className="py-5 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t ">
-              {data!.lineItems.map((item: any) => (
-                <CartItem
-                  key={item.id}
-                  item={item}
-                  currencyCode={data!.currency.code}
-                />
-              ))}
-            </ul>
+            {products.map((item) => (
+              <CartProduct
+                key={item.id}
+                product={item}
+                variant={'sidebar'}
+                quantity={2}
+                showCartControls
+              />
+            ))}
           </div>
 
           <div className="flex-shrink-0 px-4  py-5 sm:px-5">

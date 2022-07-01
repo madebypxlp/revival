@@ -1,5 +1,14 @@
 .root {
   @apply h-full flex flex-col;
+  background-color: white;
+  width: 60rem;
+  padding: 3rem 5rem 5rem 6rem;
+
+  .headline {
+    font-weight: bold;
+    color: theme('colors.blue.default');
+    margin-bottom: 2.5rem;
+  }
 }
 
 .root.success {
