@@ -53,6 +53,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
 
           {getRange().map((p) => (
             <button
+              data-p={p}
               onClick={() => setPage(p)}
               className={cn(styles.button, page === p && styles.buttonActive)}
             >

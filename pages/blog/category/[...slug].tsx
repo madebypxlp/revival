@@ -14,7 +14,7 @@ export const getServerSideProps = getPostCategoryWpServerSideProps
 
 export default function Pages({
   data,
-  postCursors,
+  totalPosts,
   category,
   categories,
   footer,
@@ -27,7 +27,7 @@ export default function Pages({
       <TemplateBlogCategory
         category={category}
         globals={globals}
-        postCursors={postCursors}
+        totalPosts={totalPosts}
         categories={categories}
         data={{ ...(data as any) }}
       />

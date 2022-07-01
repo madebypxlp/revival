@@ -8,7 +8,7 @@ import { Category, PostInterface } from 'framework/wordpress/interfaces/post'
 const TemplateBlogCategory = ({
   category,
   data,
-  postCursors,
+  totalPosts,
   categories,
   globals,
 }: {
@@ -18,13 +18,12 @@ const TemplateBlogCategory = ({
   data: {
     nodes: PostInterface[]
   }
-  postCursors: [{ cursor: string }]
+  totalPosts: number
 }) => {
   const actionCta: Link = {
     title: 'Newsletter Signup',
     url: '#newsletter',
   }
-  console.log(globals.globals.newsletterSignUp)
   return (
     <div>
       <LightHeroModule
@@ -36,7 +35,7 @@ const TemplateBlogCategory = ({
       />
       <BlogFilterModule
         data={data.nodes}
-        cursors={postCursors}
+        totalPosts={totalPosts}
         activeCategory={category}
         categories={categories}
         module={{ fieldGroupName: 'blogFilterModule', actionCta }}

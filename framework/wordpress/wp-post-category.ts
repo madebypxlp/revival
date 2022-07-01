@@ -11,16 +11,20 @@ import postsByCategoryQuery, {
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
 import globalsQuery from './queries/acfGlobalOptions/globals'
+import { getBlogSlugAndPage } from '@lib/utils'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
     categories {
       nodes {
         slug
+        count
       }
     }
   }
 `
+
+const postsPerPage = 9
 
 export const getWpStaticPostCategoryPaths = async (
   ctx: GetStaticPropsContext
@@ -45,24 +49,26 @@ export const getWpStaticPostCategoryPaths = async (
 export const getPostCategoryWpServerSideProps: GetServerSideProps = async (
   ctx
 ): Promise<GetServerSidePropsResult<any>> => {
-  console.log('ctx.query:', ctx.query)
+  const slug: string = Array.isArray(ctx.params?.slug)
+    ? ctx.params?.slug[0] || ''
+    : ctx.params?.slug || ''
+  const page: number = getBlogSlugAndPage(ctx.params?.slug).page
+  const size = postsPerPage
+  const offset = (page - 1) * size
+
   const category = await fetch({
     query: getCategoryIdBySlug,
-    variables: {
-      slug: ctx.params?.slug as string,
-    },
+    variables: { slug },
   })
   const categoryId = category?.categories?.nodes[0]?.categoryId
   let res = undefined
   if (categoryId) {
     res = await fetch({
       query: postsByCategoryQuery,
-      variables: {
-        categoryId,
-        afterId: ctx.query?.after || '',
-      },
+      variables: { categoryId, size, offset },
     })
   }
+
   const globalsData = await fetch({
     query: globalsQuery,
   })
@@ -79,7 +85,7 @@ export const getPostCategoryWpServerSideProps: GetServerSideProps = async (
   return {
     props: {
       data: res.posts,
-      postCursors: res?.postCursors?.edges,
+      totalPosts: res.posts.pageInfo.offsetPagination.total,
       globals: globalsData?.globals,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,

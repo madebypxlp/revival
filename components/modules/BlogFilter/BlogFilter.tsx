@@ -8,17 +8,18 @@ import PaginateChildren from '@components/ui/PaginateChildren/PaginateChildren'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
 import { useRouter } from 'next/router'
 import pageQuery from 'framework/wordpress/queries/page/page-query'
+import { getBlogSlugAndPage } from '@lib/utils'
 
 const BlogFilterModule: FunctionComponent<{
   module: IBlogFilter
   data: PostInterface[]
-  cursors?: [{ cursor: string }]
+  totalPosts: number
   categories: Category[]
   activeCategory?: Category
 }> = ({
   module,
   data,
-  cursors = [],
+  totalPosts,
   categories: _categories,
   activeCategory,
 }) => {
@@ -34,25 +35,17 @@ const BlogFilterModule: FunctionComponent<{
   const router = useRouter()
   const { pathname, query } = router
 
+  const blogSlugAndPage = getBlogSlugAndPage(query?.slug)
   const paginationSettings = {
     perPage: 9,
-    totalPages: isDetail() ? Math.ceil(cursors.length / 9) : 0,
-    currentPage: !!query?.after
-      ? Math.ceil(
-          (cursors.findIndex(({ cursor }) => cursor === query.after) + 1) / 9
-        )
-      : 1,
+    totalPages: Math.ceil(totalPosts / 9),
+    currentPage: blogSlugAndPage.page,
     onChange: (page: number) => {
-      const index = page * 9 - 10
-      const cursor = cursors[index]?.cursor
-      var newQuery: { [key: string]: string } = {
-        ...query,
-        after: cursor,
-      }
-      if (!cursor || page <= 1 || index <= 9) delete newQuery.after
       router.push({
         pathname,
-        query: newQuery,
+        query: {
+          slug: [blogSlugAndPage.slug, `page-${page}`],
+        },
       })
     },
   }
