@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
 import styles from './Swiper.module.scss'
+import c from 'classnames'
 import ISwiper, { ISwiperSlide } from './Swiper.interface'
 import {
   Swiper as PlainSwiper,
@@ -19,14 +20,14 @@ import { NavigationOptions } from 'swiper/types/components/navigation'
 SwiperCore.use([Navigation, Pagination, Keyboard, A11y, Autoplay])
 
 export const Swiper: FunctionComponent<ISwiper> = (props) => {
-  const { className, onSwiper, children, ...rest } = props
+  const { className, onSwiper, children, hideDisabledNavigation, ...rest } =
+    props
   const navPrevRef = useRef<SVGSVGElement>(null)
   const navNextRef = useRef<SVGSVGElement>(null)
 
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore>()
   const onSwiperHandler = (swiper: SwiperCore) => {
     setSwiperInstance(swiper)
-    console.log('onSwiper', navPrevRef.current)
     if (
       props?.navigation === true &&
       (swiper.params.navigation as NavigationOptions)?.prevEl
@@ -74,7 +75,7 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
   const mergedProps = { ...rest, ...defaultProps }
 
   return (
-    <div className="relative">
+    <div className={c('relative', styles.root)}>
       <PlainSwiper
         className={`${className} ${styles.swiper}`}
         {...mergedProps}
@@ -83,7 +84,12 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
         {children}
       </PlainSwiper>
       {props?.navigation && (
-        <div className="absolute inset-0">
+        <div
+          className={c(
+            'absolute inset-0',
+            hideDisabledNavigation && styles.hideDisabledNavigation
+          )}
+        >
           <SliderArrowLeft ref={navPrevRef} className="swiper-button-prev" />
           <SliderArrowLeft
             ref={navNextRef}

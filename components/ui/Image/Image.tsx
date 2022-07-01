@@ -10,6 +10,8 @@ const ImageComponent: FunctionComponent<IImage> = ({
   imgClassName = '',
   layout = 'responsive',
   loading = 'lazy',
+  objectFit,
+  objectPosition,
 }) => {
   const isMobile = useIsMobile()
   const img = () => {
@@ -25,6 +27,8 @@ const ImageComponent: FunctionComponent<IImage> = ({
           layout="fill"
           loading={loading}
           src={img().sourceUrl}
+          objectFit={objectFit}
+          objectPosition={objectPosition}
         />
       ) : (
         <Image
