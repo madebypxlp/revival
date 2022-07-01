@@ -1,6 +1,7 @@
 .root {
   // add your styles here
   @apply py-55 text-center;
+  z-index: 2;
 
   @screen md {
     @apply py-95;

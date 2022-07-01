@@ -1,20 +1,24 @@
 .root {
-  margin-top: -2.5rem;
   padding-top: 5rem;
   position: relative;
   overflow: hidden;
 
+  @screen md {
+    margin-top: -12.5rem;
+  }
+
   .background {
     position: absolute;
     left: 50%;
-    top: 0rem;
+    top: 5rem;
     border-radius: 100%;
     transform: translateX(-50%);
     background-color: #f3f1e8;
     width: 150rem;
-    height: 200%;
+    height: 150%;
 
     @screen md {
+      top: 0;
       width: 218rem;
       height: auto;
       aspect-ratio: 1;
