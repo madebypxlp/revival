@@ -1,14 +1,11 @@
 import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
-import CartItem from '../CartItem'
 import styles from './CartSidebarView.module.scss'
-import { UserNav } from '@components/common'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
-import Button from '@components/ui/Button/Button'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 
 const CartSidebarView: FC = () => {
@@ -111,21 +108,23 @@ const CartSidebarView: FC = () => {
         </div>
       ) : (
         <>
-          <div className="px-4 sm:px-5 flex-1">
+          <div>
             <Link href="/cart">
               <h5 className={styles.headline} onClick={handleClose}>
                 {`Your Cart (${products.length})`}
               </h5>
             </Link>
-            {products.map((item) => (
-              <CartProduct
-                key={item.id}
-                product={item}
-                variant={'sidebar'}
-                quantity={2}
-                showCartControls
-              />
-            ))}
+            <div className={styles.productsContainer}>
+              {products.map((item) => (
+                <CartProduct
+                  key={item.id}
+                  product={item}
+                  variant={'sidebar'}
+                  quantity={2}
+                  showCartControls
+                />
+              ))}
+            </div>
           </div>
 
           <div className="flex-shrink-0 px-4  py-5 sm:px-5">

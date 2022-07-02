@@ -9,6 +9,12 @@
     color: theme('colors.blue.default');
     margin-bottom: 2.5rem;
   }
+
+  .productsContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
 }
 
 .root.success {

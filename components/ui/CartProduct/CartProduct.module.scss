@@ -113,13 +113,34 @@
 
   &.variant--sidebar {
     @apply grid-cols-2 md:grid-cols-4 gap-x-20;
-
+    z-index: 2;
     .productImageContainer {
       @apply md:col-span-1;
     }
 
     .infoContainer {
       @apply md:col-span-3;
+    }
+
+    .productName,
+    .productPrice {
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .productId,
+    .productOldPrice {
+      @apply typo-legal-text;
+    }
+
+    .cartProductQuantityControls {
+      padding: 0.9rem 1.1rem;
+
+      div {
+        font-size: 1rem;
+        line-height: 1.3rem;
+      }
     }
   }
 }
