@@ -3,19 +3,25 @@
   position: relative;
   overflow: hidden;
 
+  @screen md {
+    margin-top: -12.5rem;
+  }
+
   .background {
     position: absolute;
     left: 50%;
-    top: 0rem;
+    top: 5rem;
     border-radius: 100%;
     transform: translateX(-50%);
     background-color: #f3f1e8;
     width: 150rem;
-    height: 200%;
+    height: 150%;
 
     @screen md {
+      top: 0;
       width: 218rem;
-      height: 280rem;
+      height: auto;
+      aspect-ratio: 1;
     }
   }
 
@@ -113,6 +119,7 @@
   .tabRightColumn {
     @apply col-start-1 col-span-2 row-start-1 mb-70;
     @apply md:col-start-8 md:col-span-5 md:mb-0;
+    z-index: 2;
   }
 
   .primaryImageContainer {
@@ -151,6 +158,6 @@
 
   .copyContainer {
     @apply text-center text-black typo-small-paragraph;
-    @apply md:text-center md:typo-large-paragraph md:pb-150;
+    @apply md:text-left md:typo-large-paragraph md:pb-150;
   }
 }

@@ -36,7 +36,7 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
   return (
     <div className={styles.root}>
       <div className={styles.background} />
-      <div className={'container overflow-hidden'}>
+      <div className={'container'}>
         <div className={styles.tabButtonsContainer}>
           {isMobile && (
             <div className={styles.mobileTabImageContainer}>
