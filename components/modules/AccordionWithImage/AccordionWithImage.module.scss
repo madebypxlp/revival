@@ -8,6 +8,15 @@
     &:last-of-type {
       border-bottom: 1.5px solid theme('colors.greyscale.4');
     }
+
+    h5 {
+      transition: 200ms linear color;
+    }
+    &:global(.selected) {
+      h5 {
+        color: theme('colors.red');
+      }
+    }
   }
 
   span {
