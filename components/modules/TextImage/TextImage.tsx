@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styles from './TextImage.module.scss'
 import ITextImage from './TextImage.interface'
-import { builtinModules } from 'module'
 import ImageComponent from '@components/ui/Image/Image'
 import Image from '@components/interfaces/Image'
 import Button from '@components/ui/Button/Button'
@@ -80,6 +79,7 @@ const ImageWrapper = ({
 const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
   module,
 }) => {
+  console.log(module)
   return (
     <div className={`${styles.root} container`}>
       {module.rows.map((row) => (
