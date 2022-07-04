@@ -14,6 +14,8 @@ import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
 import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
+import AddAPetModal from '../AddAPetModal/AddAPetModal'
+import LoginModal from '../AuthModal/AuthModal'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -24,6 +26,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
 
   const [openAccordion, setOpenAccordion] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+  const [petModalOpen, setPetModalOpen] = useState(false)
 
   return (
     <div className={`${styles.root} `}>
@@ -186,6 +189,32 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             open={openAccordion === 2}
             onOpen={() => setOpenAccordion(2)}
           />
+        </div>
+        <div>
+          <h1>Modals</h1>
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setPetModalOpen(true)}
+          >
+            Add a Pet
+          </Button>
+          <AddAPetModal
+            title={'Add a Pet'}
+            open={petModalOpen}
+            onClose={() => setPetModalOpen(false)}
+          />
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setModalOpen(true)}
+          >
+            Login
+          </Button>
         </div>
       </div>
       <div className="my-50 py-50">

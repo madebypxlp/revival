@@ -9,7 +9,6 @@ const ThreeColumnCopyModule: FunctionComponent<{
 }> = ({ module }) => {
   const { subline, headline, columns, backgroundColor } = module
 
-  // (!) columns variable contains paragraphs
   return (
     <div
       className={`${styles.root} container default-grid`}
