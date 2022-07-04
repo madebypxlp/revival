@@ -13,7 +13,7 @@ import { getBlogSlugAndPage } from '@lib/utils'
 const BlogFilterModule: FunctionComponent<{
   module: IBlogFilter
   data: PostInterface[]
-  totalPosts: number
+  totalPosts?: number
   categories: Category[]
   activeCategory?: Category
 }> = ({
@@ -38,7 +38,7 @@ const BlogFilterModule: FunctionComponent<{
   const blogSlugAndPage = getBlogSlugAndPage(query?.slug)
   const paginationSettings = {
     perPage: 9,
-    totalPages: Math.ceil(totalPosts / 9),
+    totalPages: totalPosts ? Math.ceil(totalPosts / 9) : 1,
     currentPage: blogSlugAndPage.page,
     onChange: (page: number) => {
       router.push({

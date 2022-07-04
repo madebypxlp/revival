@@ -45,6 +45,8 @@ export interface Category {
   categoryId: string
   name: string
   uri: string
+  slug: string
+  count: number
   description: string
   postTypeLearningCenterCategory?: {
     featured: boolean
