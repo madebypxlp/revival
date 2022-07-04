@@ -8,6 +8,6 @@
   }
 
   .openSubNav {
-    @apply opacity-100;
+    @apply opacity-100 relative md:absolute;
   }
 }

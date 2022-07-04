@@ -5,6 +5,7 @@ import { Brand } from '../queries/post-type-brands/brands'
 export interface AcfOptionsHeader {
   alertBanner: AlertBar
   navigation: NavigationItem[]
+  navigationLayouts: NavigationLayouts[]
 }
 
 export interface AlertBar {
@@ -37,21 +38,27 @@ export type NavigationLayouts =
   | NavigationLayoutsHelp
 
 export interface NavigationLayoutsDogs {
-  fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Dogs'
+  fieldGroupName:
+    | 'AcfOptionsHeader_Header_NavigationLayouts_Dogs'
+    | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Dogs'
   links: { link: Link }[]
   quickLinks: { link: Link }[]
   marketingBox: NavigationMarketingBox
 }
 
 export interface NavigationLayoutsCats {
-  fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Cats'
+  fieldGroupName:
+    | 'AcfOptionsHeader_Header_NavigationLayouts_Cats'
+    | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Cats'
   links: { link: Link }[]
   quickLinks: { link: Link }[]
   marketingBox: NavigationMarketingBox
 }
 
 export interface NavigationLayoutsVaccines {
-  fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Vaccines'
+  fieldGroupName:
+    | 'AcfOptionsHeader_Header_NavigationLayouts_Vaccines'
+    | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Vaccines'
   columns: [
     {
       cta: Link
@@ -64,7 +71,9 @@ export interface NavigationLayoutsVaccines {
 }
 
 export interface NavigationLayoutsPharmacy {
-  fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Pharmacy'
+  fieldGroupName:
+    | 'AcfOptionsHeader_Header_NavigationLayouts_Pharmacy'
+    | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Pharmacy'
   cta: Link
   listOfLinks: { link: Link }[]
   quickLinks: { link: Link }[]
@@ -77,21 +86,27 @@ export interface NavigationLayoutsPharmacy {
 }
 
 export interface NavigationLayoutsNeed {
-  fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Need'
+  fieldGroupName:
+    | 'AcfOptionsHeader_Header_NavigationLayouts_Need'
+    | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Need'
   chipLinks: { highlighted: boolean; link: Link }[]
   ctaLink: Link
   quickLinks: { link: Link }[]
 }
 
 export interface NavigationLayoutsBrands {
-  fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Brands'
+  fieldGroupName:
+    | 'AcfOptionsHeader_Header_NavigationLayouts_Brands'
+    | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Brands'
   headline: string
   link: Link
   featuredBrands: Brand[]
 }
 
 export interface NavigationLayoutsHelp {
-  fieldGroupName: 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Help'
+  fieldGroupName:
+    | 'AcfOptionsHeader_Header_NavigationLayouts_Help'
+    | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Help'
   headline: string
   copy: string
   link: Link
