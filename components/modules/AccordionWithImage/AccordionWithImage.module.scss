@@ -2,11 +2,20 @@
   position: relative;
 
   .accordionRoot {
-    @apply py-20;
+    padding: 2rem;
     cursor: pointer;
     border-top: 1.5px solid theme('colors.greyscale.4');
     &:last-of-type {
       border-bottom: 1.5px solid theme('colors.greyscale.4');
+    }
+
+    h5 {
+      transition: 200ms linear color;
+    }
+    &:global(.selected) {
+      h5 {
+        color: theme('colors.red');
+      }
     }
   }
 
