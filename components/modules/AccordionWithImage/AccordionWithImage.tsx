@@ -15,7 +15,7 @@ const AccordionWithImageModule: FunctionComponent<{
   return (
     <div className={`${styles.root} container mb-85`}>
       <div className="default-grid">
-        <div className="col-span-2 md:col-span-7 mb-55 md:mb-0 md:flex md:items-center">
+        <div className="col-span-2 md:col-span-7 mb-55 md:mb-0 md:flex md:items-start">
           <ImageComponent layout="fill" image={image} className="aspect-1" />
         </div>
         <div className="col-span-2 md:col-span-5">
@@ -27,9 +27,12 @@ const AccordionWithImageModule: FunctionComponent<{
                 <div
                   key={item.headline}
                   onClick={() => setVisibleIndex(index)}
-                  className={`${cn(styles.accordionRoot)}`}
+                  className={cn(
+                    styles.accordionRoot,
+                    visibleIndex === index && 'selected'
+                  )}
                 >
-                  <h5 className="text-red font-bold">{item.headline}</h5>
+                  <h5 className="text-blue font-bold">{item.headline}</h5>
                   {React.createElement(
                     'div',
                     {

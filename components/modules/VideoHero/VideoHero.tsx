@@ -6,6 +6,7 @@ import Modal from '@components/ui/Modal'
 import RImage from '@components/ui/Image/Image'
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
+import { ModalContent } from '@components/ui/Modal/Modal'
 
 const VideoHeroModule: FunctionComponent<{ module: IVideoHero }> = ({
   module,
@@ -57,7 +58,9 @@ const VideoHeroModule: FunctionComponent<{ module: IVideoHero }> = ({
           open={modalOpen}
           onClose={() => setModalOpen(false)}
         >
-          <Video source={youtubeId} />
+          <ModalContent>
+            <Video source={youtubeId} />
+          </ModalContent>
         </Modal>
       )}
     </div>

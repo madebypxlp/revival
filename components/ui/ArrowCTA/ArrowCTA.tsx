@@ -16,6 +16,7 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
     target,
     link,
     className,
+    ...rest
   } = props
 
   return (
@@ -30,6 +31,7 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
             'rounded-focus-box'
           )}
           target={link?.target || target}
+          {...rest}
         >
           <div>{children || link?.title}</div>
           <div className={styles.icon}>

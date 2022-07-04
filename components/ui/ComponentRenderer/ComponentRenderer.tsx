@@ -13,6 +13,8 @@ import Video from '../VideoComponent/VideoComponent'
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
+import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
+import AddAPetModal from '../AddAPetModal/AddAPetModal'
 import LoginModal from '../AuthModal/AuthModal'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
@@ -24,6 +26,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
 
   const [openAccordion, setOpenAccordion] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+  const [petModalOpen, setPetModalOpen] = useState(false)
 
   return (
     <div className={`${styles.root} `}>
@@ -187,21 +190,52 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             onOpen={() => setOpenAccordion(2)}
           />
         </div>
+        <div>
+          <h1>Modals</h1>
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setPetModalOpen(true)}
+          >
+            Add a Pet
+          </Button>
+          <AddAPetModal
+            title={'Add a Pet'}
+            open={petModalOpen}
+            onClose={() => setPetModalOpen(false)}
+          />
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setModalOpen(true)}
+          >
+            Login
+          </Button>
+        </div>
       </div>
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
       </div>
       <div className="my-50 py-50">
-        <h1>Login Modal</h1>
+        <h1>Search For Vet Clinic</h1>
         <Button
           color="yellow"
           variant="large"
           type="default"
           onClick={() => setModalOpen(true)}
         >
-          Login
+          Search
         </Button>
+        <SearchForVetClinicDialog
+          title={'Search for Your Veterinary Clinic'}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
       </div>
     </div>
   )
