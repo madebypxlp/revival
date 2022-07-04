@@ -1,5 +1,5 @@
 import Link from '@components/interfaces/Link'
-import { ReactNode } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 
 export default interface IArrowCTA {
   children?: ReactNode
@@ -9,5 +9,6 @@ export default interface IArrowCTA {
   orientation: 'up' | 'down' | 'right'
   disabled?: boolean
   link?: Link
+  onClick?: MouseEventHandler<HTMLAnchorElement>
   className?: string
 }
