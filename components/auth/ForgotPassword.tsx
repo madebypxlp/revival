@@ -1,9 +1,39 @@
 import { FC, useEffect, useState, useCallback } from 'react'
 import { validate } from 'email-validator'
 import { useUI } from '@components/ui/context'
-import { Logo } from '@components/ui'
 import Button from '@components/ui/Button/Button'
 import Input from '@components/ui/Input/Input'
+import styles from './AuthStyle.module.scss'
+
+type ForgotPasswordSuccessProps = {
+  email: string
+}
+
+const ForgotPasswordSuccess: FC<ForgotPasswordSuccessProps> = (props) => {
+  const { setModalView, closeModal } = useUI()
+
+  return (
+    <div className={`${styles.root} `}>
+      <div className="flex justify-center items-center flex-col py-40 md:py-80">
+        <h4 className="text-blue mb-10">We’ve sent you something!</h4>
+        <p className="typo-modal-text md:w-680 text-center mb-30">
+          We'll check for an account with the email address {`${props.email} `}
+          and send an email to reset your password. If you don't receive an
+          email within a couple of minutes, please check your spam folder.
+        </p>
+        <Button
+          className="w-full md:w-450"
+          color="yellow"
+          variant="small"
+          type="default"
+          onClick={() => setModalView('LOGIN_VIEW')}
+        >
+          Back To Sign In
+        </Button>
+      </div>
+    </div>
+  )
+}
 
 interface Props {}
 
@@ -37,44 +67,54 @@ const ForgotPassword: FC<Props> = () => {
     handleValidation()
   }, [handleValidation])
 
-  return (
-    <form
-      onSubmit={handleResetPassword}
-      className="w-full flex flex-col justify-between p-3"
-    >
-      <div className="flex justify-center pb-12 ">
-        <Logo width="64px" height="64px" />
-      </div>
-      <div className="flex flex-col space-y-4">
-        {message && (
-          <div className="text-red border border-red p-3">{message}</div>
-        )}
+  const returnValue = disabled ? (
+    <ForgotPasswordSuccess email={email} />
+  ) : (
+    <div className={`${styles.root}`}>
+      <form
+        onSubmit={handleResetPassword}
+        className="w-full flex flex-col justify-between p-3"
+      >
+        <div className="flex flex-col ">
+          {message && (
+            <div className="text-red border border-red p-3">{message}</div>
+          )}
 
-        <Input placeholder="Email" onChange={setEmail} type="email" />
-        <div className="pt-2 w-full flex flex-col">
+          <Input
+            className="mb-10"
+            placeholder="Email"
+            onChange={setEmail}
+            type="email"
+          />
+
           <Button
+            className="mb-10"
             color="yellow"
             variant="small"
             type="default"
             disabled={disabled}
+            onClick={() => setDisabled(true)}
           >
             Recover Password
           </Button>
-        </div>
 
-        <span className="pt-3 text-center ">
-          <span className="text-accents-7">Do you have an account?</span>
-          {` `}
-          <a
-            className="text-accent-9 font-bold hover:underline cursor-pointer"
-            onClick={() => setModalView('LOGIN_VIEW')}
-          >
-            Log In
-          </a>
-        </span>
-      </div>
-    </form>
+          <span className="pt-3 text-center md:text-left ">
+            <span className="typo-hyperlink-text mr-5">
+              Do you have an account?
+            </span>
+            <button
+              className="typo-hyperlink-modal inline-block"
+              onClick={() => setModalView('LOGIN_VIEW')}
+            >
+              Log In
+            </button>
+          </span>
+        </div>
+      </form>
+    </div>
   )
+
+  return returnValue
 }
 
 export default ForgotPassword

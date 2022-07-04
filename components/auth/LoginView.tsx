@@ -1,5 +1,6 @@
 import { FC, useEffect, useState, useCallback } from 'react'
 import { Logo } from '@components/ui'
+import styles from './AuthStyle.module.scss'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
@@ -18,6 +19,7 @@ const LoginView: FC<Props> = () => {
   const [disabled, setDisabled] = useState(false)
   const { setModalView, closeModal } = useUI()
 
+  /*
   const login = useLogin()
 
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
@@ -42,7 +44,7 @@ const LoginView: FC<Props> = () => {
       setLoading(false)
     }
   }
-
+ */
   const handleValidation = useCallback(() => {
     // Test for Alphanumeric password
     const validPassword = /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)
@@ -58,48 +60,49 @@ const LoginView: FC<Props> = () => {
   }, [handleValidation])
 
   return (
-    <form
-      onSubmit={handleLogin}
-      className="w-100 flex flex-col justify-between p-3"
-    >
-      <div className="flex justify-center pb-12 ">
-        <Logo width="64px" height="64px" />
-      </div>
-      <div className="flex flex-col space-y-3">
-        {message && (
-          <div className="text-red border border-red p-3">
-            {message}. Did you {` `}
-            <a
-              className="text-accent-9 inline font-bold hover:underline cursor-pointer"
-              onClick={() => setModalView('FORGOT_VIEW')}
-            >
-              forgot your password?
-            </a>
-          </div>
-        )}
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
-
+    <div className={styles.root}>
+      {/* onSubmit={handleLogin} */}
+      <form className={styles.form}>
+        <Input
+          placeholder="Email"
+          type="email"
+          onChange={setEmail}
+          className="mb-5"
+          required
+        />
+        <Input
+          placeholder="Password"
+          type="password"
+          onChange={setPassword}
+          className="mb-10"
+          required
+        />
         <Button
-          variant="small"
-          type="default"
+          className="w-full mb-10"
           color="yellow"
-          disabled={disabled}
+          variant="large"
+          type="default"
+          buttonType="submit"
         >
-          Log In
+          Sign In
         </Button>
-        <div className="pt-0 text-center ">
-          <span className="text-accents-7">Don't have an account?</span>
-          {` `}
-          <a
-            className="text-accent-9 font-bold hover:underline cursor-pointer"
+
+        <div className={styles.links}>
+          <button
+            className="typo-hyperlink-modal mb-10 md:mb-0"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
-            Sign Up
-          </a>
+            Create An Account
+          </button>
+          <button
+            className="typo-hyperlink-modal"
+            onClick={() => setModalView('FORGOT_VIEW')}
+          >
+            Forgot Your Password?
+          </button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   )
 }
 
