@@ -1,0 +1,16 @@
+.root {
+  @apply relative w-full h-full;
+
+  // todo: consider passing height or aspect ratio as property
+  &:after {
+    @apply absolute top-0 left-0 w-full;
+    height: 72%;
+    content: '';
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    // blend with background
+  }
+}

@@ -1,3 +1,14 @@
 .root {
-  // add your styles here
+  @apply py-30 md:py-60;
+
+  &.variant-learning-center {
+    .categoriesContainer {
+      @apply hidden;
+      @apply md:block;
+    }
+
+    label {
+      @apply w-full;
+    }
+  }
 }

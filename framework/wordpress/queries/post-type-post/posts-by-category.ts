@@ -2,7 +2,7 @@ import Image from '@components/fragments/Image'
 
 export default `
   ${Image}
-  query PostsByCategory($categoryId: Int) {
+  query PostsByCategory($categoryId: Int, $size: Int!, $offset: Int!) {
     categories {
       nodes {
         categoryId
@@ -10,7 +10,13 @@ export default `
         uri
       }
     }
-    posts(where: {categoryId: $categoryId}, last: 1000) {
+    posts(
+      where: {
+        categoryId: $categoryId,
+        orderby: {field: DATE, order: DESC}
+        offsetPagination: { size: $size,offset: $offset }
+      },
+    ) {
       nodes {
         id
         slug
@@ -33,6 +39,14 @@ export default `
             id
             name
           }
+        }
+      }
+      pageInfo {
+        offsetPagination {
+          # Get the total node count in the connection. Using this
+          # field activates total calculations which will make your
+          # queries slower. Use with caution.
+          total
         }
       }
     }

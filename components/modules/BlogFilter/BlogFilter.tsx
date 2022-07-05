@@ -6,13 +6,23 @@ import cn from 'classnames'
 import BlogFilterBar from './BlogFilterBar'
 import PaginateChildren from '@components/ui/PaginateChildren/PaginateChildren'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
+import { useRouter } from 'next/router'
+import pageQuery from 'framework/wordpress/queries/page/page-query'
+import { getBlogSlugAndPage } from '@lib/utils'
 
 const BlogFilterModule: FunctionComponent<{
   module: IBlogFilter
   data: PostInterface[]
+  totalPosts?: number
   categories: Category[]
   activeCategory?: Category
-}> = ({ module, data, categories: _categories, activeCategory }) => {
+}> = ({
+  module,
+  data,
+  totalPosts,
+  categories: _categories,
+  activeCategory,
+}) => {
   const { actionCta } = module
 
   const categories = _categories.filter(
@@ -21,6 +31,25 @@ const BlogFilterModule: FunctionComponent<{
 
   const isDetail = () => !!activeCategory
   const showFeatured = (index: number) => !isDetail() && index === 0
+
+  const router = useRouter()
+  const { pathname, query } = router
+
+  const blogSlugAndPage = getBlogSlugAndPage(query?.slug)
+  const paginationSettings = {
+    perPage: 9,
+    totalPages: totalPosts ? Math.ceil(totalPosts / 9) : 1,
+    currentPage: blogSlugAndPage.page,
+    onChange: (page: number) => {
+      if (!isDetail()) return
+      router.push({
+        pathname,
+        query: {
+          slug: [blogSlugAndPage.slug, `page-${page}`],
+        },
+      })
+    },
+  }
 
   return (
     <div
@@ -38,7 +67,7 @@ const BlogFilterModule: FunctionComponent<{
 
       {!!data?.length && (
         <div className="container default-grid">
-          <PaginateChildren perPage={9}>
+          <PaginateChildren {...paginationSettings}>
             {data.map((post, index) => (
               <ArticleTeaser
                 post={post}

@@ -12,7 +12,7 @@ import Modal from '@components/ui/Modal'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
-import { ForgotPassword, SignUpView } from '@components/auth'
+import { ForgotPassword, LoginView, SignUpView } from '@components/auth'
 
 const AuthModal: FunctionComponent<IAuthModal> = ({ open }) => {
   // Form State
@@ -25,30 +25,30 @@ const AuthModal: FunctionComponent<IAuthModal> = ({ open }) => {
   const { setModalView, displayModal, closeModal, modalView, openModal } =
     useUI()
 
-  const login = useLogin()
+  // const login = useLogin()
 
-  const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
-    e.preventDefault()
+  // const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
+  //   e.preventDefault()
 
-    if (!dirty && !disabled) {
-      setDirty(true)
-      handleValidation()
-    }
+  //   if (!dirty && !disabled) {
+  //     setDirty(true)
+  //     handleValidation()
+  //   }
 
-    try {
-      setLoading(true)
-      setMessage('')
-      await login({
-        email,
-        password,
-      })
-      setLoading(false)
-      closeModal()
-    } catch ({ errors }) {
-      setMessage(errors[0].message)
-      setLoading(false)
-    }
-  }
+  //   try {
+  //     setLoading(true)
+  //     setMessage('')
+  //     await login({
+  //       email,
+  //       password,
+  //     })
+  //     setLoading(false)
+  //     closeModal()
+  //   } catch ({ errors }) {
+  //     setMessage(errors[0].message)
+  //     setLoading(false)
+  //   }
+  // }
 
   const handleValidation = useCallback(() => {
     // Test for Alphanumeric password
@@ -76,50 +76,7 @@ const AuthModal: FunctionComponent<IAuthModal> = ({ open }) => {
       open={displayModal}
       onClose={closeModal}
     >
-      {modalView === 'LOGIN_VIEW' && (
-        <div className={styles.root}>
-          <form onSubmit={handleLogin} className={styles.form}>
-            <Input
-              placeholder="Email"
-              type="email"
-              onChange={setEmail}
-              className="mb-5"
-              required
-            />
-            <Input
-              placeholder="Password"
-              type="password"
-              onChange={setPassword}
-              className="mb-10"
-              required
-            />
-            <Button
-              className="w-full mb-10 md:mb-30"
-              color="yellow"
-              variant="large"
-              type="default"
-              buttonType="submit"
-            >
-              Sign In
-            </Button>
-
-            <div className={styles.links}>
-              <button
-                className="typo-hyperlink-modal mb-10 md:mb-0"
-                onClick={() => setModalView('SIGNUP_VIEW')}
-              >
-                Create An Account
-              </button>
-              <button
-                className="typo-hyperlink-modal"
-                onClick={() => setModalView('FORGOT_VIEW')}
-              >
-                Forgot Your Password?
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+      {modalView === 'LOGIN_VIEW' && <LoginView />}
       {modalView === 'SIGNUP_VIEW' && <SignUpView />}
       {modalView === 'FORGOT_VIEW' && <ForgotPassword />}
     </Modal>

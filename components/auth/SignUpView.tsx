@@ -6,6 +6,8 @@ import { Logo } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
 import Button from '@components/ui/Button/Button'
 import Input from '@components/ui/Input/Input'
+import styles from './AuthStyle.module.scss'
+import Link from 'next/link'
 
 interface Props {}
 
@@ -20,34 +22,34 @@ const SignUpView: FC<Props> = () => {
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
 
-  const signup = useSignup()
+  //const signup = useSignup()
   const { setModalView, closeModal } = useUI()
 
-  const handleSignup = async (e: React.SyntheticEvent<EventTarget>) => {
-    e.preventDefault()
+  // const handleSignup = async (e: React.SyntheticEvent<EventTarget>) => {
+  //   e.preventDefault()
 
-    if (!dirty && !disabled) {
-      setDirty(true)
-      handleValidation()
-    }
+  //   if (!dirty && !disabled) {
+  //     setDirty(true)
+  //     handleValidation()
+  //   }
 
-    try {
-      setLoading(true)
-      setMessage('')
-      await signup({
-        email,
-        firstName,
-        lastName,
-        password,
-      })
-      setLoading(false)
-      closeModal()
-    } catch ({ errors }) {
-      console.log(errors)
-      //  setMessage(errors[0].message)
-      setLoading(false)
-    }
-  }
+  //   try {
+  //     setLoading(true)
+  //     setMessage('')
+  //     await signup({
+  //       email,
+  //       firstName,
+  //       lastName,
+  //       password,
+  //     })
+  //     setLoading(false)
+  //     closeModal()
+  //   } catch ({ errors }) {
+  //     console.log(errors)
+  //     //  setMessage(errors[0].message)
+  //     setLoading(false)
+  //   }
+  // }
 
   const handleValidation = useCallback(() => {
     // Test for Alphanumeric password
@@ -64,53 +66,59 @@ const SignUpView: FC<Props> = () => {
   }, [handleValidation])
 
   return (
-    <form
-      onSubmit={handleSignup}
-      className="w-full flex flex-col justify-between p-3"
-    >
-      <div className="flex justify-center pb-12 ">
-        <Logo width="64px" height="64px" />
-      </div>
-      <div className="flex flex-col space-y-4">
-        {message && (
-          <div className="text-red border border-red p-3">{message}</div>
-        )}
-        <Input type="text" placeholder="First Name" onChange={setFirstName} />
-        <Input type="text" placeholder="Last Name" onChange={setLastName} />
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
-        <span className="">
-          <span className="inline-block align-middle ">
-            <Info width="15" height="15" />
-          </span>{' '}
-          <span className="leading-6 ">
-            <strong>Info</strong>: Passwords must be longer than 7 chars and
-            include numbers.{' '}
-          </span>
-        </span>
-        <div className="pt-2 w-full flex flex-col">
+    <div className={`${styles.root}`}>
+      <form
+        // onSubmit={handleSignup}
+        className={`w-full flex flex-col justify-between p-3 `}
+      >
+        <div className="flex flex-col ">
+          {message && (
+            <div className="text-red border border-red p-3">{message}</div>
+          )}
+          <Input type="text" placeholder="First Name" onChange={setFirstName} />
+          <Input type="text" placeholder="Last Name" onChange={setLastName} />
+          <Input type="email" placeholder="Email" onChange={setEmail} />
+          <Input
+            type="password"
+            placeholder="Password"
+            onChange={setPassword}
+          />
+          <div className="!mb-30 ">
+            <span className="typo-hyperlink-text align-middle inline-block">
+              <Info
+                className="mr-5 align-middle inline-block"
+                width="15"
+                height="15"
+              />
+              <strong>Info</strong>: Passwords must be longer than 7 chars and
+              include numbers.
+            </span>
+          </div>
+
           <Button
+            className="w-full mb-10 "
             color="yellow"
-            variant="small"
+            variant="large"
             type="default"
             disabled={disabled}
           >
             Sign Up
           </Button>
-        </div>
 
-        <span className="pt-0 text-center ">
-          <span className="text-accents-7">Do you have an account?</span>
-          {` `}
-          <a
-            className="text-accent-9 font-bold hover:underline cursor-pointer"
-            onClick={() => setModalView('LOGIN_VIEW')}
-          >
-            Log In
-          </a>
-        </span>
-      </div>
-    </form>
+          <span className="pt-0 text-center md:text-left">
+            <span className="typo-hyperlink-text mr-5">
+              Do you have an account?
+            </span>
+            <button
+              className="typo-hyperlink-modal inline-block"
+              onClick={() => setModalView('LOGIN_VIEW')}
+            >
+              Log In
+            </button>
+          </span>
+        </div>
+      </form>
+    </div>
   )
 }
 
