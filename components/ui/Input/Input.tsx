@@ -23,7 +23,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     children,
     label,
     variant = 'default',
-    icon = 'arrow',
+    icon,
     size = 'default',
     weight = 'default',
     square = false,

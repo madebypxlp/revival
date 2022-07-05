@@ -234,7 +234,19 @@
     font-weight: 700;
     font-size: 1.4rem;
     line-height: 2rem;
-    @apply underline;
+    @apply underline cursor-pointer;
+  }
+
+  .typo-hyperlink-text {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+  .typo-modal-text {
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 3rem;
   }
 
   .typo-alert-bar {
