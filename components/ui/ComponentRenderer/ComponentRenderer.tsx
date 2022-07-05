@@ -15,6 +15,7 @@ import Accordion from '../Accordion/Accordion'
 import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
 import AddAPetModal from '../AddAPetModal/AddAPetModal'
 import LoginModal from '../AuthModal/AuthModal'
+import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
@@ -27,6 +28,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const { setModalView, openModal } = useUI()
   const [openAccordion, setOpenAccordion] = useState(0)
   const [petModalOpen, setPetModalOpen] = useState(false)
+  const [addClinicModalOpen, setAddClinicModalOpen] = useState(false)
   const [modalOpenSearch, setModalOpenSearch] = useState(false)
 
   return (
@@ -193,6 +195,21 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         </div>
         <div>
           <h1>Modals</h1>
+          <h3>Search Vet Clinic</h3>
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setAddClinicModalOpen(true)}
+          >
+            Add Custom Vet Clinic
+          </Button>
+          <AddCustomVetClinic
+            title={'Add Custom Vet Clinic'}
+            open={addClinicModalOpen}
+            onClose={() => setAddClinicModalOpen(false)}
+          />
+
           <h3>Add a Pet</h3>
           <Button
             color="yellow"
@@ -202,6 +219,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           >
             Add a Pet
           </Button>
+
           <AddAPetModal
             title={'Add a Pet'}
             open={petModalOpen}
