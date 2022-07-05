@@ -7,7 +7,9 @@ import fetch from './wp-client'
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
 import globalsQuery from './queries/acfGlobalOptions/globals'
-import learningCenterQuery from './queries/post-type-learning-center/learning-center-filter'
+import learningCenterByCategory, {
+  getLcCategoryIdBySlug,
+} from './queries/post-type-learning-center/learning-center-by-category'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -22,19 +24,20 @@ export const getAllPostCategories = `
 export const getLearningCenterCategoryWpServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<GetStaticPropsResult<any>> => {
-  /*
   const category = await fetch({
-    query: getCategoryIdBySlug,
+    query: getLcCategoryIdBySlug,
     variables: {
       slug: ctx.params?.slug as string,
     },
   })
-  const categoryId = category?.categories?.nodes[0]?.categoryId
-  */
+  const categoryId = category?.categories?.nodes[0]?.lcCategoryId
   let res = undefined
   if (true) {
     res = await fetch({
-      query: learningCenterQuery,
+      query: learningCenterByCategory,
+      variables: {
+        id: categoryId,
+      },
     })
   }
   const globalsData = await fetch({
@@ -56,6 +59,7 @@ export const getLearningCenterCategoryWpServerSideProps = async (
       globals: globalsData?.globals,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
+      category: category?.categories?.nodes[0],
       categories: res?.categories?.nodes,
       contentTypes: res?.contentTypes?.nodes,
     },

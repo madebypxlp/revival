@@ -1,5 +1,6 @@
 import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
+import { Category } from './post'
 
 export interface LearningCenterDetailPage {
   data: LearningCenterInterface
@@ -20,13 +21,9 @@ export interface LearningCenterInterface {
   contentTypes: {
     nodes: LearningCenterContentType[]
   }
+  category: Category
   categories: {
-    nodes: [
-      {
-        id: string
-        name: string
-      }
-    ]
+    nodes: Category[]
   }
   detailPageLearningCenter: {
     authorBioCopy: string

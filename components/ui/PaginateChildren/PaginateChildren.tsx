@@ -19,7 +19,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
 
   const getCurrentChildren = () => {
     if (childrenArray.length <= perPage) return childrenArray
-    childrenArray.slice((page - 1) * perPage, page * perPage)
+    return childrenArray.slice((page - 1) * perPage, page * perPage)
   }
 
   const getTotalPages = () =>

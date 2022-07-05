@@ -1,7 +1,19 @@
 .root {
   // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
-  border-bottom: 1px solid black;
+
+  .checkbox {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    span {
+      padding-right: 0.5rem;
+    }
+    input {
+      order: 2;
+      margin: 0 0 0 auto;
+      + span {
+        display: none;
+      }
+    }
+  }
 }

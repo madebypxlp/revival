@@ -50,7 +50,7 @@ const Input: FunctionComponent<IInput> = (props) => {
 
     if (typeof onChange === 'function') {
       if (type === 'checkbox' || type === 'radio') onChange(checked, inputError)
-      if (type === 'file') {
+      else if (type === 'file') {
         setInputFiles(files || undefined)
         onChange(files || false, inputError)
       } else onChange(value, inputError)
