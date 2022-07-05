@@ -24,7 +24,7 @@ const ForgotPasswordSuccess: FC<ForgotPasswordSuccessProps> = (props) => {
         <Button
           className="w-full md:w-450"
           color="yellow"
-          variant="small"
+          variant="large"
           type="default"
           onClick={() => setModalView('LOGIN_VIEW')}
         >
@@ -90,7 +90,7 @@ const ForgotPassword: FC<Props> = () => {
           <Button
             className="mb-10"
             color="yellow"
-            variant="small"
+            variant="large"
             type="default"
             disabled={disabled}
             onClick={() => setDisabled(true)}

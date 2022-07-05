@@ -98,7 +98,7 @@ const SignUpView: FC<Props> = () => {
           <Button
             className="w-full mb-10 "
             color="yellow"
-            variant="small"
+            variant="large"
             type="default"
             disabled={disabled}
           >
