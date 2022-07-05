@@ -4,6 +4,7 @@ export type InputError = false | 'invalid' | 'required'
 
 type IInput = {
   className?: string
+  incrementerButtons?: boolean
   placeholder?: string
   variant?: 'default' | 'blue-outline'
   size?: 'default' | 'small'

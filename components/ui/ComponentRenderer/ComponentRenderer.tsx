@@ -14,6 +14,7 @@ import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
 import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
 import AddAPetModal from '../AddAPetModal/AddAPetModal'
+import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
 import LoginModal from '../AuthModal/AuthModal'
 import { useUI } from '../context'
 
@@ -28,6 +29,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const [openAccordion, setOpenAccordion] = useState(0)
   const [petModalOpen, setPetModalOpen] = useState(false)
   const [modalOpenSearch, setModalOpenSearch] = useState(false)
+  const [petVetSummary, setPetVetSummary] = useState(false)
 
   return (
     <div className={`${styles.root} `}>
@@ -193,6 +195,21 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         </div>
         <div>
           <h1>Modals</h1>
+          <h3>Pet Vet Clinic Summary</h3>
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setPetVetSummary(true)}
+          >
+            Summary
+          </Button>
+          <PetAndVetClinicSummary
+            title={'Summary'}
+            open={petVetSummary}
+            onClose={() => setPetVetSummary(false)}
+          />
+
           <h3>Add a Pet</h3>
           <Button
             color="yellow"
