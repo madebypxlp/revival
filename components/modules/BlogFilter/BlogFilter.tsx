@@ -41,6 +41,7 @@ const BlogFilterModule: FunctionComponent<{
     totalPages: totalPosts ? Math.ceil(totalPosts / 9) : 1,
     currentPage: blogSlugAndPage.page,
     onChange: (page: number) => {
+      if (!isDetail()) return
       router.push({
         pathname,
         query: {

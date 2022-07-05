@@ -32,6 +32,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
   }
 
   useEffect(() => {
+    if (page === currentPage) return
     if (typeof onChange === 'function') onChange(page)
   }, [page])
 
