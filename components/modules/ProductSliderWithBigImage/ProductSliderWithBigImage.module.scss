@@ -9,10 +9,21 @@
     }
 
     .swiper-button-next {
-      right: -4rem;
+      top: 25%;
+
+      @screen md {
+        right: -4rem;
+      }
     }
     .swiper-button-prev {
-      left: -4rem;
+      top: 25%;
+      @screen md {
+        left: -9rem;
+      }
+    }
+
+    .swiper-container {
+      @apply pb-120;
     }
   }
 }
