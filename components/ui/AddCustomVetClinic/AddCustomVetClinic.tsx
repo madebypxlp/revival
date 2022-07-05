@@ -20,7 +20,7 @@ const AddCustomVetClinic: FunctionComponent<IAddCustomVetClinic> = (props) => {
       onClose={() => onClose()}
     >
       <ModalContent>
-        <div className={`${styles.root} default-grid pt-30`}>
+        <div className={`${styles.root} default-grid pt-30 -mb-20`}>
           <Input
             placeholder="Enter Clinic Name"
             type="text"
