@@ -1,0 +1,12 @@
+.root {
+  @apply flex justify-center items-center flex-col;
+
+  form {
+    @apply w-full md:w-[45rem] py-40 md:py-80;
+  }
+
+  .links {
+    @apply flex flex-col justify-center items-center;
+    @apply md:flex-row md:justify-between md:w-full;
+  }
+}

@@ -9,7 +9,6 @@ import Link from '../Link/Link'
 import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
 import Video from '../VideoComponent/VideoComponent'
-
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
@@ -17,6 +16,7 @@ import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetCl
 import AddAPetModal from '../AddAPetModal/AddAPetModal'
 import LoginModal from '../AuthModal/AuthModal'
 import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
+import { useUI } from '../context'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -25,10 +25,11 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
     console.log(error)
   }
 
+  const { setModalView, openModal } = useUI()
   const [openAccordion, setOpenAccordion] = useState(0)
-  const [modalOpen, setModalOpen] = useState(false)
   const [petModalOpen, setPetModalOpen] = useState(false)
   const [addClinicModalOpen, setAddClinicModalOpen] = useState(false)
+  const [modalOpenSearch, setModalOpenSearch] = useState(false)
 
   return (
     <div className={`${styles.root} `}>
@@ -194,6 +195,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         </div>
         <div>
           <h1>Modals</h1>
+          <h3>Search Vet Clinic</h3>
           <Button
             color="yellow"
             variant="large"
@@ -208,6 +210,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             onClose={() => setAddClinicModalOpen(false)}
           />
 
+          <h3>Add a Pet</h3>
           <Button
             color="yellow"
             variant="large"
@@ -223,35 +226,40 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             onClose={() => setPetModalOpen(false)}
           />
 
+          <h3>Search For Vet Clinic</h3>
           <Button
             color="yellow"
             variant="large"
             type="default"
-            onClick={() => setModalOpen(true)}
+            onClick={() => setModalOpenSearch(true)}
+          >
+            Search
+          </Button>
+          <SearchForVetClinicDialog
+            title={'Search for Your Veterinary Clinic'}
+            open={modalOpenSearch}
+            onClose={() => setModalOpenSearch(false)}
+          />
+
+          <h3>Login</h3>
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => {
+              setModalView('LOGIN_VIEW')
+              openModal()
+            }}
           >
             Login
           </Button>
+
+          <LoginModal title="Title" modalView={'LOGIN_VIEW'} />
         </div>
       </div>
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
-      </div>
-      <div className="my-50 py-50">
-        <h1>Search For Vet Clinic</h1>
-        <Button
-          color="yellow"
-          variant="large"
-          type="default"
-          onClick={() => setModalOpen(true)}
-        >
-          Search
-        </Button>
-        <SearchForVetClinicDialog
-          title={'Search for Your Veterinary Clinic'}
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
-        />
       </div>
     </div>
   )
