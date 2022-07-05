@@ -174,7 +174,7 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
             type="checkbox"
             className="col-span-4 self-center"
             label="none"
-            onChange={(checked) => checked && setPetMedication('none')}
+            onChange={(checked) => checked && setPetMedication([])}
           />
 
           <Dropdown

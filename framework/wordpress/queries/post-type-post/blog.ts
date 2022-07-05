@@ -7,7 +7,7 @@ query Data {
       uri
     }
   }
-  data: posts(last: 7, where: {orderby: {field: DATE, order: DESC}}) {
+  data: posts(first: 7, where: {orderby: {field: DATE, order: DESC}}) {
     nodes {
       id
       featuredImage {
