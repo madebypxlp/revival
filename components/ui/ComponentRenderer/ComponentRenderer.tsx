@@ -254,7 +254,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Login
           </Button>
 
-          <LoginModal title="Title" modalView={'LOGIN_VIEW'} />
+          <LoginModal title="Title" />
         </div>
       </div>
       <div className="my-50 py-50">
