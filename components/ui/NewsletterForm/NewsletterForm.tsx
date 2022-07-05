@@ -24,6 +24,7 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
         type="email"
         placeholder="Email address"
         required
+        icon="arrow"
         className={`${styles.input} ${inputClassName} inline-block mb-2 md:mb-20 w-full md:w-auto`}
         variant="blue-outline"
         onChange={(v) => {

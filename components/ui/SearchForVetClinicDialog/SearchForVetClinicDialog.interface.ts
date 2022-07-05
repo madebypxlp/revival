@@ -1,8 +1,8 @@
-export default interface IAuthModal {
+export default interface ISearchForVetClinicDialog {
   title?: string
   className?: string
   children?: React.ReactNode
   open?: boolean
-  onClose?: () => void
+  onClose: () => void
   onEnter?: () => void | null
 }

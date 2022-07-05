@@ -1,4 +1,4 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { InferGetServerSidePropsType, InferGetStaticPropsType } from 'next'
 import { PostDetailPage } from 'framework/wordpress/interfaces/post'
 import {
   getPostCategoryWpStaticProps,
@@ -12,18 +12,20 @@ export const getStaticPaths = getWpStaticPostCategoryPaths
 
 export default function Pages({
   data,
+  totalPosts,
   category,
   categories,
   footer,
   header,
   globals,
-}: InferGetStaticPropsType<PostDetailPage>) {
+}: InferGetServerSidePropsType<PostDetailPage>) {
   if (!data) return null
   return (
     <Layout header={header} footer={footer}>
       <TemplateBlogCategory
         category={category}
         globals={globals}
+        totalPosts={totalPosts}
         categories={categories}
         data={{ ...(data as any) }}
       />

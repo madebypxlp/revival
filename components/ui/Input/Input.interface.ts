@@ -5,17 +5,18 @@ export type InputError = false | 'invalid' | 'required'
 type IInput = {
   className?: string
   placeholder?: string
-  isDropdown?: boolean
   variant?: 'default' | 'blue-outline'
   size?: 'default' | 'small'
   weight?: 'default' | 'bold'
   icon?: 'arrow' | 'search'
   label?: string
+  name?: string
   required?: boolean
   onIconClick?: MouseEventHandler
   status?: ReactNode
   multiple?: boolean
   type: string
+  square?: boolean
   onChange?: (arg0: string, arg1: InputError) => any
 } & (
   | {
