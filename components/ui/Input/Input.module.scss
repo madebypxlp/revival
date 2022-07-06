@@ -107,4 +107,35 @@
       @apply sr-only;
     }
   }
+
+  &.type-number {
+    &.incrementer {
+      @apply w-150;
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+      ::placeholder {
+        @apply text-black text-center;
+      }
+
+      input {
+        @apply p-10 text-center;
+        border-radius: 9999px !important;
+      }
+      .button {
+        height: 3rem;
+        top: calc(50% - 25px);
+      }
+      svg {
+        path {
+          @apply stroke-black;
+        }
+      }
+    }
+  }
 }

@@ -10,6 +10,9 @@ const Translations = {
     SUBMIT: 'Submit',
     SUCCESS: 'Success',
     INVALID_EMAIL: 'Invalid Email Address',
+    INVALID_EXP_DATE: 'Invalid Expiration Date',
+    INVALID_CVV: 'Invalid CVV',
+    INVALID_CARD_NUMBER: 'Invalid Card Number',
     REQUIRED: 'Required',
     REQUIRED_EXPLANATION: '* Indicates a required field',
     TERMS_AND_CONDITIONS: 'I agree to the terms & conditions.',
@@ -20,6 +23,26 @@ const Translations = {
     ADD_TO_CART: 'Add To Cart',
     NEW: 'NEW',
     OUR_BRANDS: 'OUR BRANDS',
+  },
+  PRESCRIPTIONS: {
+    PRESCRIPTION_ITEM: 'Prescription Item',
+    AVAILABILITY: 'This product is available by prescription only.',
+    RETURNS:
+      'Due to federal and state law, we cannot accept returns on prescription items.',
+  },
+  CART: {
+    YOUR_CART_IS_EMPTY: 'Your Cart Is Empty',
+    YOUR_CART: 'Your Cart',
+    SHOP_NOW: 'Shop Now',
+    PROCEED_TO_CHECKOUT: 'Proceed To Checkout',
+    SUBTOTAL: 'Subtotal',
+  },
+  PET_AND_VET: {
+    PET: 'Pet',
+    VET: 'Vet',
+    QTY: 'Qty',
+    APPROVAL_METHOD: 'Approval Method',
+    EDIT_DETAILS: 'Edit Details',
   },
   YOU_MAY_ALSO_LIKE: 'You may also like',
 }

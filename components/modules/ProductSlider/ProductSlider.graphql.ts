@@ -1,6 +1,7 @@
-const ProductSliderFragment = (t: string) => `
+const ProductSliderFragment = (t: string, flexible: boolean = false) => `
   fragment ProductSlider_${t} on ${t}_ProductSlider {
     fieldGroupName
+    ${flexible ? 'productSlider {' : ''}
     headline
     link {
      ...Link
@@ -8,6 +9,7 @@ const ProductSliderFragment = (t: string) => `
     products {
       productId
     }
+    ${flexible ? '}' : ''}
   }
 `
 export default ProductSliderFragment
