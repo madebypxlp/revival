@@ -39,7 +39,7 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
             ]}
             className="col-span-2 md:col-span-6 md:col-start-1 pb-25"
           />
-          <div className="col-span-2 ml-30 self-center">
+          <div className="col-span-3 ml-30 self-center">
             <Input
               incrementerButtons
               placeholder="0"
@@ -48,10 +48,25 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
             />
           </div>
 
+          <Button
+            variant="large"
+            color="yellow"
+            className="col-span-2 col-start-1"
+          >
+            Add A New Pet
+          </Button>
+
           <div className={`${styles.border} my-40 col-span-2 md:col-span-12`} />
           <h3 className="typo-h6 text-blue col-span-2 md:col-span-6">
             2. Select Your Vet Clinic(s)
           </h3>
+          <Button
+            variant="large"
+            color="yellow"
+            className="col-span-2 col-start-1"
+          >
+            Add A Vet Clinic
+          </Button>
 
           <div className={`${styles.border} my-40 col-span-2 md:col-span-12`} />
           <h3 className="typo-h6 text-blue col-span-2 md:col-span-6">
@@ -63,13 +78,6 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
         <Button variant="large" color="yellow">
           Update
         </Button>
-        {/* <ArrowCTA
-          orientation="right"
-          color="blue"
-          onClick={() => typeof onClose === 'function' && onClose()}
-        >
-          Cancel
-        </ArrowCTA> */}
       </ModalActions>
     </Modal>
   )
