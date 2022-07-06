@@ -57,6 +57,7 @@ const CartSidebarView: FC = () => {
     isNew: true,
     isPrescription: true,
     isOurBrand: true,
+    isFavorite: false,
     label: 'STAFF PICK',
     headline: 'Get her healthy first',
   }
