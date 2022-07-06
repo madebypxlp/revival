@@ -6,13 +6,12 @@ import { ACFGlobalData } from 'framework/wordpress/interfaces/globals'
 export const getStaticProps = getWpData
 
 export default function Pages({ notFound }: ACFGlobalData) {
-  console.log(notFound.data)
-  const { copy, quickLinks } = notFound.data
+  const { copy, quickLinks, image } = notFound.data
   return (
     <div className="flex flex-col justify-center items-center container default-grid ">
       <div className="mt-50 relative w-[350px] h-[216px] md:w-[372px]">
         <Image
-          src={'/logo_404.png'}
+          src={image.sourceUrl}
           layout="fill"
           alt="404"
           objectFit="cover"
