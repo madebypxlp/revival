@@ -2,74 +2,72 @@
   // add your styles here
   @apply w-full;
 
-  .imageTopSquare {
-    @apply w-full mb-15 p-10 relative;
-    aspect-ratio: 1;
-  }
-
-  .imageContainer {
-    @apply absolute top-0 left-0 w-full h-full rounded-15 bg-white p-50;
-    z-index: -1;
-    border: 1.5px solid #c4c4c4;
-
-    div {
-      aspect-ratio: 1;
-    }
-  }
-
   .row {
     @apply flex justify-between;
   }
 
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+
+    @screen md {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
   .productName {
-    font-size: 1.8rem;
-    line-height: 2.4rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
     letter-spacing: -1%;
     font-weight: 400;
+    margin-bottom: 1rem;
+    @screen md {
+      margin-bottom: 0;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+    }
   }
 
   .productPrice {
-    @apply text-red;
     font-size: 1.8rem;
     line-height: 2.4rem;
     letter-spacing: -1%;
     font-weight: 700;
+
+    @screen md {
+      color: theme('colors.red');
+    }
   }
 
   .productId {
-    @apply typo-nav-links;
+    display: none;
+
+    @screen md {
+      @apply typo-nav-links;
+      display: block;
+    }
   }
 
   .productOldPrice {
-    @apply typo-nav-links;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
     text-decoration: line-through;
-  }
 
-  .newButtonContainer button {
-    padding: 0.6rem 1rem;
-    font-size: 1rem;
-    line-height: 1rem;
-    pointer-events: none;
-    border-radius: 1.25rem;
     @screen md {
-      padding: 0.7rem 1.7rem;
+      @apply typo-nav-links;
     }
   }
 
-  .prescriptionIconContainer svg {
-    width: 2.2rem;
-    height: 2.2rem;
+  .addToCartButton {
+    padding: 1.35rem 2.5rem;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
 
     @screen md {
-      width: 3.6rem;
-      height: 3.6rem;
+      padding: 1.35rem 4rem;
+      font-size: 1.8rem;
+      line-height: 2.3rem;
     }
-  }
-
-  .productLabel {
-    padding: 0.7rem 1.8rem;
-    line-height: 1rem;
-    font-size: 1rem;
-    pointer-events: none;
   }
 }
