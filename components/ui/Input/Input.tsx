@@ -70,7 +70,6 @@ const Input: FunctionComponent<IInput> = (props) => {
     setInputNumber((prev) => {
       return prev + 1
     })
-    console.log(inputNumber)
   }
 
   const buttonDecrement = () => {
