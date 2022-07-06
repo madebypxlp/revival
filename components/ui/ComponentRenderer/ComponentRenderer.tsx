@@ -32,6 +32,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const [petModalOpen, setPetModalOpen] = useState(false)
   const [addClinicModalOpen, setAddClinicModalOpen] = useState(false)
   const [modalOpenSearch, setModalOpenSearch] = useState(false)
+  const [searchModalOpen, setSearchModalOpen] = useState(false)
 
   const product = {
     id: '#80122-795-431',
