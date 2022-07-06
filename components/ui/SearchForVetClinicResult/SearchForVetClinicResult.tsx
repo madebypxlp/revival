@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import styles from './SearchResultCard.module.scss'
-import ISearchResultCard from './SearchResultCard.interface'
+import styles from './SearchForVetClinicResult.module.scss'
+import ISearchResultCard from './SearchForVetClinicResult.interface'
 import Button from '../Button/Button'
 import Input from '../Input/Input'
 

@@ -9,7 +9,7 @@ import { ModalActions, ModalContent } from '../Modal/Modal'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import { useIsMobile } from '@commerce/utils/hooks'
 import Link from '@components/ui/Link/Link'
-import SearchResultCard from '../SearchResultCard/SearchResultCard'
+import SearchResultCard from '../SearchForVetClinicResult/SearchForVetClinicResult'
 
 type IClinic = {
   clinic: string
