@@ -14,9 +14,11 @@ import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
 import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
 import AddAPetModal from '../AddAPetModal/AddAPetModal'
-import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
 import LoginModal from '../AuthModal/AuthModal'
+import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
+import CartProduct from '../CartProduct/CartProduct'
+import Translations from 'constants/translations'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -28,8 +30,58 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const { setModalView, openModal } = useUI()
   const [openAccordion, setOpenAccordion] = useState(0)
   const [petModalOpen, setPetModalOpen] = useState(false)
+  const [addClinicModalOpen, setAddClinicModalOpen] = useState(false)
   const [modalOpenSearch, setModalOpenSearch] = useState(false)
-  const [petVetSummary, setPetVetSummary] = useState(false)
+  const [searchModalOpen, setSearchModalOpen] = useState(false)
+
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    isFavorite: false,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
+  const petAndVetInfo = {
+    approvalMethod:
+      'I will mail the prescription to Revival Animal Health myself.',
+    info: [
+      {
+        vet: 'Arbor Animal Hospital - Irvive',
+        pet: 'Ellie',
+        quantity: 2,
+      },
+      {
+        vet: 'Arbor Animal Hospital - Irvive',
+        pet: 'Ellie',
+        quantity: 2,
+      },
+    ],
+  }
 
   return (
     <div className={`${styles.root} `}>
@@ -195,19 +247,19 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         </div>
         <div>
           <h1>Modals</h1>
-          <h3>Pet Vet Clinic Summary</h3>
+          <h3>Search Vet Clinic</h3>
           <Button
             color="yellow"
             variant="large"
             type="default"
-            onClick={() => setPetVetSummary(true)}
+            onClick={() => setAddClinicModalOpen(true)}
           >
-            Summary
+            Add Custom Vet Clinic
           </Button>
-          <PetAndVetClinicSummary
-            title={'Summary'}
-            open={petVetSummary}
-            onClose={() => setPetVetSummary(false)}
+          <AddCustomVetClinic
+            title={'Add Custom Vet Clinic'}
+            open={addClinicModalOpen}
+            onClose={() => setAddClinicModalOpen(false)}
           />
 
           <h3>Add a Pet</h3>
@@ -219,6 +271,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           >
             Add a Pet
           </Button>
+
           <AddAPetModal
             title={'Add a Pet'}
             open={petModalOpen}
@@ -253,12 +306,94 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Login
           </Button>
 
-          <LoginModal title="Title" modalView={'LOGIN_VIEW'} />
+          <LoginModal title="Title" />
         </div>
       </div>
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
+      </div>
+      <div className="my-50 py-50 container">
+        <h1>Product components</h1>
+        <div className={'default-grid'}>
+          {/* 1) Cart (your cart) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showCartControls
+          />
+          {/* 2) Cart (checkout 01A) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+          />
+          {/* 3) RX Cart flow */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showPrescriptionIcon
+            showCartControls
+          />
+          {/* 4) RX (checkout 01A)  */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            showPrescriptionLabel
+          />
+          {/* 5) RX Flow (info needed) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'empty'}
+            showPrescriptionIcon
+            showPrescriptionLabel
+            showPrescriptionExtraInfo
+          />
+          {/* 6) RX Flow (pet and vet clinic info) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'edit-details'}
+            showPrescriptionIcon
+            vetInfo={petAndVetInfo}
+          />
+          {/* 7) Splitting shipments cart */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            showCartControls
+          />
+          {/* 8) Splitting shipments (checkout) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+          />
+          {/* 9) Account (not finished, do not use yet) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'account'}
+          />
+        </div>
       </div>
     </div>
   )

@@ -22,6 +22,7 @@ type IInput = {
 } & (
   | {
       type: 'checkbox' | 'radio'
+      checked?: boolean
       onChange?: (arg0: boolean, arg1: InputError) => any
     }
   | {

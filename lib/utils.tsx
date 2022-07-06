@@ -22,3 +22,12 @@ export const isEmailValid = (email: string) => {
     /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
   return email.match(regex)
 }
+
+export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
+  const slug = (Array.isArray(_slug) ? _slug[0] : _slug) || ''
+  const page = +(Array.isArray(slug) ? slug[1] || 'page-1' : 'page-1').replace(
+    'page-',
+    ''
+  )
+  return { slug, page }
+}
