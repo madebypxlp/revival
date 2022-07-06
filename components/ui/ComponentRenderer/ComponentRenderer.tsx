@@ -315,7 +315,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       <div className="my-50 py-50 container">
         <h1>Product components</h1>
         <div className={'default-grid'}>
-          {/* 1) Cart (your cart) placement: wrapped in a 8-col container*/}
+          {/* 1) Cart (your cart) */}
           <CartProduct
             className={'my-20 md:col-start-1'}
             product={product}
@@ -323,14 +323,14 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant={'cart'}
             showCartControls
           />
-          {/* 2) Cart (checkout 01A) placement: wrapped in a 8-col container*/}
+          {/* 2) Cart (checkout 01A) */}
           <CartProduct
             className={'my-20 md:col-start-1'}
             product={product}
             quantity={3}
             variant={'checkout'}
           />
-          {/* 3) RX Cart flow: same as 1) */}
+          {/* 3) RX Cart flow */}
           <CartProduct
             className={'my-20 md:col-start-1'}
             product={product}
@@ -339,7 +339,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             showPrescriptionIcon
             showCartControls
           />
-          {/* 4) RX (checkout 01A): same as 2) */}
+          {/* 4) RX (checkout 01A)  */}
           <CartProduct
             className={'my-20 md:col-start-1'}
             product={product}
@@ -385,7 +385,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant={'checkout'}
             shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
           />
-          {/* 9) Account */}
+          {/* 9) Account (not finished, do not use yet) */}
           <CartProduct
             className={'my-20'}
             product={product}
