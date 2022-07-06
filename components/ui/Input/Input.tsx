@@ -3,7 +3,6 @@ import styles from './Input.module.scss'
 import React, {
   FormEvent,
   FunctionComponent,
-  MouseEvent,
   MouseEventHandler,
   useState,
 } from 'react'
@@ -13,6 +12,8 @@ import InputArrow from '@components/icons/InputArrow'
 import InputSearch from '@components/icons/InputSearch'
 import Translations from 'constants/translations'
 import Button from '../Button/Button'
+import Plus from '@components/icons/Plus'
+import Minus from '@components/icons/MinusBold'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -27,6 +28,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     size = 'default',
     weight = 'default',
     square = false,
+    incrementerButtons = false,
     onChange,
     onIconClick,
     status,
@@ -35,9 +37,12 @@ const Input: FunctionComponent<IInput> = (props) => {
 
   const [inputError, setInputError] = useState<InputError>(false)
   const [inputFiles, setInputFiles] = useState<FileList>()
+  const [inputNumber, setInputNumber] = useState<number>(0)
 
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
     const { required, value, checked, files } = e.target as HTMLInputElement
+
+    if (incrementerButtons) setInputNumber(+value)
 
     // validation
     if (type === 'email' && value && !isEmailValid(value))
@@ -61,6 +66,20 @@ const Input: FunctionComponent<IInput> = (props) => {
     if (typeof onIconClick === 'function') onIconClick(e)
   }
 
+  const buttonIncrement = () => {
+    setInputNumber((prev) => {
+      return prev + 1
+    })
+    console.log(inputNumber)
+  }
+
+  const buttonDecrement = () => {
+    setInputNumber((prev) => {
+      return prev - 1
+    })
+    console.log(inputNumber)
+  }
+
   const rootClassName = cn(
     styles.root,
     className,
@@ -68,6 +87,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     styles['size-' + size],
     styles['weight-' + weight],
     square && styles.square,
+    incrementerButtons && styles.incrementer,
     'typo-input inline-block',
     inputError === 'invalid' && 'text-red'
   )
@@ -84,6 +104,23 @@ const Input: FunctionComponent<IInput> = (props) => {
         <span className={styles.label}>{label + (required ? '*' : '')}</span>
       )}
 
+      {incrementerButtons && (
+        <button
+          onClick={buttonDecrement}
+          className={cn(styles.button, 'absolute left-20 w-15')}
+        >
+          <Minus />
+        </button>
+      )}
+      {incrementerButtons && (
+        <button
+          onClick={buttonIncrement}
+          className={cn(styles.button, 'absolute right-20 w-15')}
+        >
+          <Plus className="fill-black" />
+        </button>
+      )}
+
       <input
         onChange={handleOnChange}
         placeholder={'' + placeholder + (required ? '*' : '')}
@@ -93,6 +130,7 @@ const Input: FunctionComponent<IInput> = (props) => {
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
+        {...(incrementerButtons ? { value: inputNumber } : {})}
         {...rest}
       />
 
