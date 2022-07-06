@@ -1,8 +1,4 @@
 .root {
-  .row {
-    @apply flex justify-between;
-  }
-
   .productImageContainer {
     @apply row-start-1;
     @apply md:col-span-2;
@@ -47,25 +43,30 @@
     text-decoration: line-through;
   }
 
-  .infoContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .rightColumnContainer {
+    text-align: right;
+  }
 
-    @apply col-start-1 col-span-2 row-start-2;
+  .infoContainer {
+    @apply col-start-1 col-span-2 row-start-2 grid gap-x-20;
     @apply md:col-start-3 md:col-span-6 md:row-start-1;
   }
 
   .cartProductQuantityControls {
     color: theme('colors.black');
-    background-color: #f5f5f5;
-    border-radius: 3rem;
+    align-self: end;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 3rem;
-    padding: 1.4rem 2.5rem;
+    > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 3rem;
+      padding: 1.4rem 2.5rem;
+      background-color: #f5f5f5;
+      border-radius: 3rem;
+      width: auto;
+    }
 
     div {
       font-size: 1.8rem;
@@ -75,10 +76,13 @@
   }
 
   .controlLinksContainer {
+    @apply col-span-1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: flex-end;
     text-align: right;
+    gap: 0.3rem;
 
     a {
       font-size: 1.4rem;
@@ -99,20 +103,147 @@
     }
   }
 
+  .alertTextContainer {
+    display: flex;
+    align-items: center;
+    align-self: end;
+
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-right: 0.7rem;
+    }
+    span {
+      @apply typo-legal-text;
+    }
+
+    &.extraInfo {
+      align-items: start;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .prescriptionInfoList {
+        padding-left: 1rem;
+        width: 34rem;
+      }
+
+      li:first-child {
+        font-weight: 700;
+        color: theme('colors.blue.light');
+      }
+
+      li {
+        position: relative;
+        margin-left: 1rem;
+      }
+      li:before {
+        content: '*';
+        position: absolute;
+        left: -1rem;
+      }
+    }
+  }
+
+  .vetAndPetInfo {
+    @apply col-span-2;
+    @apply md:col-span-6;
+    align-self: end;
+
+    @screen md {
+      margin-top: 1.5rem;
+    }
+
+    .vetAndPetRow {
+      @apply grid grid-cols-6 gap-x-20 typo-large-paragraph;
+
+      &:not(:last-child) {
+        padding-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        @apply light-border-b;
+      }
+    }
+
+    .title {
+      font-size: 1.8rem;
+      line-height: 3.8rem;
+      font-weight: 700;
+    }
+
+    .vet {
+      @apply col-span-3;
+      @apply md:col-span-3;
+    }
+    .pet {
+      @apply col-span-2;
+      @apply md:col-span-1;
+    }
+    .qty {
+      @apply col-span-1;
+      @apply md:col-span-2;
+    }
+  }
+
+  .approvalMethodContainer {
+    @apply typo-large-paragraph;
+    @apply col-span-2 md:col-span-8;
+
+    margin-top: 3rem;
+    padding: 1rem 4rem;
+    background-color: theme('colors.greyscale.6');
+    font-weight: 700;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
+
+    @screen md {
+      flex-direction: row;
+    }
+
+    div {
+      color: theme('colors.blue.default');
+    }
+  }
+
   &.variant--cart {
-    @apply grid-cols-2 md:grid-cols-8 gap-x-20;
+    @apply col-span-2 grid-cols-2 md:col-start-1 md:col-span-8 md:grid-cols-8 gap-x-20;
 
     .imageContainer {
       @apply md:col-span-2;
     }
 
     .infoContainer {
+      @apply col-span-2 grid-cols-2 gap-y-10;
+      @apply md:col-span-6 md:grid-cols-6;
+    }
+
+    .productNameContainer {
+      @apply col-span-2;
+      @apply md:col-span-4;
+    }
+
+    .rightColumnContainer {
+      @apply md:col-span-2;
+    }
+
+    .alertTextContainer {
+      @apply col-span-2;
       @apply md:col-span-6;
+    }
+
+    .controlLinksContainer {
+      @apply col-span-1;
+    }
+
+    .cartProductQuantityControls {
+      @apply md:col-span-5;
     }
   }
 
   &.variant--sidebar {
-    @apply grid-cols-2 md:grid-cols-4 gap-x-20;
+    @apply col-span-2 grid-cols-2 md:col-start-1 md:col-span-4 md:grid-cols-4 gap-x-20;
     z-index: 2;
     .productImageContainer {
       @apply md:col-span-1;
@@ -134,7 +265,7 @@
       @apply typo-legal-text;
     }
 
-    .cartProductQuantityControls {
+    .cartProductQuantityControls > div {
       padding: 0.9rem 1.1rem;
 
       div {
@@ -142,5 +273,63 @@
         line-height: 1.3rem;
       }
     }
+
+    .productNameContainer {
+      @apply md:col-span-5;
+    }
+  }
+
+  &.variant--checkout {
+    @apply col-span-2 grid-cols-2 md:col-start-1 md:col-span-4 md:grid-cols-4 gap-x-20;
+
+    .productImageContainer {
+      @apply md:col-span-1;
+    }
+
+    .infoContainer {
+      @apply col-span-2;
+      @apply md:col-span-3 md:grid-cols-3;
+    }
+
+    .productName {
+      @screen md {
+        font-weight: 400;
+      }
+    }
+
+    .productNameContainer {
+      @apply col-span-2;
+      @apply md:col-span-2;
+    }
+
+    .alertTextContainer {
+      @apply col-span-2;
+      @apply md:col-span-3;
+    }
+
+    .productName,
+    .productPrice {
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .productId,
+    .productOldPrice {
+      @apply typo-legal-text;
+    }
+  }
+
+  &.variant--account {
+    @apply col-start-1 col-span-2 md:col-start-1 md:col-span-12 default-grid;
+  }
+
+  .productImageContainer {
+    @apply md:col-span-2;
+  }
+
+  .infoContainer {
+    @apply col-span-2;
+    @apply md:col-span-10;
   }
 }

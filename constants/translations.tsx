@@ -21,12 +21,25 @@ const Translations = {
     NEW: 'NEW',
     OUR_BRANDS: 'OUR BRANDS',
   },
+  PRESCRIPTIONS: {
+    PRESCRIPTION_ITEM: 'Prescription Item',
+    AVAILABILITY: 'This product is available by prescription only.',
+    RETURNS:
+      'Due to federal and state law, we cannot accept returns on prescription items.',
+  },
   CART: {
     YOUR_CART_IS_EMPTY: 'Your Cart Is Empty',
     YOUR_CART: 'Your Cart',
     SHOP_NOW: 'Shop Now',
     PROCEED_TO_CHECKOUT: 'Proceed To Checkout',
     SUBTOTAL: 'Subtotal',
+  },
+  PET_AND_VET: {
+    PET: 'Pet',
+    VET: 'Vet',
+    QTY: 'Qty',
+    APPROVAL_METHOD: 'Approval Method',
+    EDIT_DETAILS: 'Edit Details',
   },
   YOU_MAY_ALSO_LIKE: 'You may also like',
 }

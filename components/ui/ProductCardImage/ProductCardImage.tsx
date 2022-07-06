@@ -6,9 +6,20 @@ import ImageComponent from '../Image/Image'
 import Translations from 'constants/translations'
 import Button from '../Button/Button'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
+import { Heart } from '@components/icons'
 
 const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
-  const { isNew, isPrescription, isOurBrand, label, image, variant } = props
+  const {
+    isNew,
+    isPrescription,
+    isOurBrand,
+    label,
+    image,
+    variant,
+    isFavorite,
+    showFavoriteIcon,
+  } = props
+
   return (
     <div className={c(styles.root, variant && styles[`variant--${variant}`])}>
       <div className={styles.imageContainer}>
@@ -24,7 +35,10 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
             )}
           </div>
           <div className={styles.prescriptionIconContainer}>
-            {isPrescription && <PrescriptionIcon />}
+            {showFavoriteIcon && (
+              <Heart selected={isFavorite} onClick={(event: any) => {}} />
+            )}
+            {!showFavoriteIcon && isPrescription && <PrescriptionIcon />}
           </div>
         </div>
         <div className={'flex flex-col items-start gap-5'}>

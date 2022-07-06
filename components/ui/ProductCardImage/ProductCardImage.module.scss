@@ -56,13 +56,27 @@
     pointer-events: none;
   }
 
-  &.variant--cart {
+  &.variant--cart,
+  &.variant--sidebar,
+  &.variant--account {
     .imageContainer {
       padding: 0.8rem;
       border-radius: 0.5rem;
 
       @screen md {
         padding: 2.2rem;
+        border-radius: 1.5rem;
+      }
+    }
+  }
+
+  &.variant--checkout {
+    .imageContainer {
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+
+      @screen md {
+        padding: 1rem;
         border-radius: 1.5rem;
       }
     }

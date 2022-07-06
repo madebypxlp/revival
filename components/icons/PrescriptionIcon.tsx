@@ -6,6 +6,7 @@ const PrescriptionIcon = ({ ...props }) => {
       viewBox="0 0 73 72"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={'prescriptionIcon'}
     >
       <circle cx="36.998" cy="36" r="36" fill="#5096D9" />
       <path

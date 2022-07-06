@@ -17,6 +17,8 @@ import AddAPetModal from '../AddAPetModal/AddAPetModal'
 import LoginModal from '../AuthModal/AuthModal'
 import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
+import CartProduct from '../CartProduct/CartProduct'
+import Translations from 'constants/translations'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -30,6 +32,55 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const [petModalOpen, setPetModalOpen] = useState(false)
   const [addClinicModalOpen, setAddClinicModalOpen] = useState(false)
   const [modalOpenSearch, setModalOpenSearch] = useState(false)
+
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    isFavorite: false,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
+  const petAndVetInfo = {
+    approvalMethod:
+      'I will mail the prescription to Revival Animal Health myself.',
+    info: [
+      {
+        vet: 'Arbor Animal Hospital - Irvive',
+        pet: 'Ellie',
+        quantity: 2,
+      },
+      {
+        vet: 'Arbor Animal Hospital - Irvive',
+        pet: 'Ellie',
+        quantity: 2,
+      },
+    ],
+  }
 
   return (
     <div className={`${styles.root} `}>
@@ -260,6 +311,88 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
+      </div>
+      <div className="my-50 py-50 container">
+        <h1>Product components</h1>
+        <div className={'default-grid'}>
+          {/* 1) Cart (your cart) placement: wrapped in a 8-col container*/}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showCartControls
+          />
+          {/* 2) Cart (checkout 01A) placement: wrapped in a 8-col container*/}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+          />
+          {/* 3) RX Cart flow: same as 1) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showPrescriptionIcon
+            showCartControls
+          />
+          {/* 4) RX (checkout 01A): same as 2) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            showPrescriptionLabel
+          />
+          {/* 5) RX Flow (info needed) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'empty'}
+            showPrescriptionIcon
+            showPrescriptionLabel
+            showPrescriptionExtraInfo
+          />
+          {/* 6) RX Flow (pet and vet clinic info) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'edit-details'}
+            showPrescriptionIcon
+            vetInfo={petAndVetInfo}
+          />
+          {/* 7) Splitting shipments cart */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            showCartControls
+          />
+          {/* 8) Splitting shipments (checkout) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+          />
+          {/* 9) Account */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'account'}
+          />
+        </div>
       </div>
     </div>
   )

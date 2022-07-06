@@ -6,5 +6,7 @@ export default interface IProductCardImage {
   isPrescription?: boolean
   isOurBrand?: boolean
   label?: string
-  variant?: 'cart'
+  variant?: 'cart' | 'checkout' | 'sidebar' | 'account'
+  isFavorite?: boolean
+  showFavoriteIcon?: boolean
 }

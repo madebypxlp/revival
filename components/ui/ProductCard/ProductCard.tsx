@@ -19,6 +19,8 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
     oldPrice,
     isNew,
     isPrescription,
+    isFavorite,
+    showFavoriteIcon,
   } = props
 
   // todo: move to utils
@@ -33,6 +35,8 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
         label={label}
         image={image}
         isOurBrand={isOurBrand}
+        isFavorite={isFavorite}
+        showFavoriteIcon={showFavoriteIcon}
       />
       <div className={c(styles.infoContainer, 'my-15 gap-x-15')}>
         <div>
