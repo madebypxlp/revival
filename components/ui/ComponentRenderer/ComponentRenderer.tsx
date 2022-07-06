@@ -83,39 +83,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       },
     ],
   }
-  const [accountSettingsModalOpen, setAccountSettingsModalOpen] =
-    useState(false)
-
-  const [profileData, setProfileData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-  })
-
-  const [shippingData, setShippingData] = useState({
-    adress1: '',
-    adress2: '',
-    city: '',
-    state: '',
-    postalCode: 0,
-    country: '',
-    phoneNumber: 0,
-    email: '',
-  })
-
-  const [paymentData, setPaymentData] = useState({
-    name: '',
-    cardNumber: 0,
-    expDate: 0,
-    cvv: 0,
-  })
-
-  const [giftCardData, setGiftCardData] = useState({
-    name: '',
-    expDate: 0,
-    cvv: 0,
-  })
 
   return (
     <div className={`${styles.root}`}>
@@ -341,6 +308,88 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
         <AccountSettings />
+      </div>
+      <div className="my-50 py-50 container">
+        <h1>Product components</h1>
+        <div className={'default-grid'}>
+          {/* 1) Cart (your cart) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showCartControls
+          />
+          {/* 2) Cart (checkout 01A) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+          />
+          {/* 3) RX Cart flow */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showPrescriptionIcon
+            showCartControls
+          />
+          {/* 4) RX (checkout 01A)  */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            showPrescriptionLabel
+          />
+          {/* 5) RX Flow (info needed) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'empty'}
+            showPrescriptionIcon
+            showPrescriptionLabel
+            showPrescriptionExtraInfo
+          />
+          {/* 6) RX Flow (pet and vet clinic info) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'edit-details'}
+            showPrescriptionIcon
+            vetInfo={petAndVetInfo}
+          />
+          {/* 7) Splitting shipments cart */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            showCartControls
+          />
+          {/* 8) Splitting shipments (checkout) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+          />
+          {/* 9) Account (not finished, do not use yet) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'account'}
+          />
+        </div>
       </div>
       <div className="my-50 py-50 container">
         <h1>Product components</h1>
