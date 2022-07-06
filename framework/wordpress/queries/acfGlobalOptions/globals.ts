@@ -1,9 +1,9 @@
+import Image from '@components/fragments/Image'
 import Link from '@components/fragments/Link'
-//  import Image from '@components/fragments/Image'
-import LinkInterface from '@components/interfaces/Link'
 
 export default `
   ${Link}
+  ${Image}
   query Data {
   globals: globalSettings {
     globals {
@@ -13,11 +13,15 @@ export default `
         buttonLabel
         anchor
       }
+      stickyHelpBox
     }
   }
   notFound: acfOptionsNotFoundPage {
     data: globalSettingsNotFoundPage {
       copy
+      image {
+        ...Image
+      }
       quickLinks {
         link {
           ...Link

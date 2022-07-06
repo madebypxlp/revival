@@ -4,6 +4,7 @@ export type InputError = false | 'invalid' | 'required'
 
 type IInput = {
   className?: string
+  incrementerButtons?: boolean
   placeholder?: string
   variant?: 'default' | 'blue-outline'
   size?: 'default' | 'small'
@@ -21,6 +22,7 @@ type IInput = {
 } & (
   | {
       type: 'checkbox' | 'radio'
+      checked?: boolean
       onChange?: (arg0: boolean, arg1: InputError) => any
     }
   | {

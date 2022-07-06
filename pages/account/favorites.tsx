@@ -7,9 +7,9 @@ import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import getAllPages from '@framework/common/get-all-pages'
-import fetch from './../framework/wordpress/wp-client'
-import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
+import fetch from './../../framework/wordpress/wp-client'
+import footerQuery from './../../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from './../../framework/wordpress/queries/acfGlobalOptions/header'
 
 export async function getStaticProps({
   preview,
