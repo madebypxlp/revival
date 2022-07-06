@@ -9,6 +9,7 @@ import NavigationLayoutsVaccines from '@components/common/Navbar/layouts/Navigat
 import { NavigationLayouts } from 'framework/wordpress/interfaces/header'
 
 const renderNavigationLayouts = (layout: NavigationLayouts) => {
+  if (!layout?.fieldGroupName) return null
   switch (layout.fieldGroupName) {
     case 'AcfOptionsHeader_Header_NavigationLayouts_Dogs':
     case 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Dogs':

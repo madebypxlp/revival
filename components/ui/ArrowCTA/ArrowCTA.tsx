@@ -16,10 +16,11 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
     target,
     link,
     className,
+    ...rest
   } = props
 
   return (
-    <div className={cn(styles.root, className)}>
+    <div className={cn(styles.root, className)} {...rest}>
       <Link href={cleanHref(link?.url || href)}>
         <a
           className={cn(

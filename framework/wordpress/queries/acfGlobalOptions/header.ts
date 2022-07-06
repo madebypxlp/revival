@@ -25,9 +25,26 @@ fragment NavigationLayouts_${t} on ${t}_NavigationLayouts {
     link {
       ...Link
     }
+    ourBrands {
+      ... on Brand {
+        id
+        uri
+        featuredImage {
+          node {
+            ...Image
+          }
+        }
+      }
+    }
     featuredBrands {
       ... on Brand {
         id
+        uri
+        featuredImage {
+          node {
+            ...Image
+          }
+        }
       }
     }
   }
@@ -167,6 +184,10 @@ export default `
           active
           leftCopy
           rightCopy
+        }
+        yourAccount {
+          copy
+          headline
         }
         navigationLayouts {
           ...NavigationLayouts_AcfOptionsHeader_Header

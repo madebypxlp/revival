@@ -10,4 +10,5 @@ export default interface IArrowCTA {
   disabled?: boolean
   link?: Link
   className?: string
+  onClick?: any
 }

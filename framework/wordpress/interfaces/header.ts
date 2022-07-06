@@ -1,9 +1,13 @@
-import Image from '@components/interfaces/Image'
+import Image, { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 import { Brand } from '../queries/post-type-brands/brands'
 
 export interface AcfOptionsHeader {
   alertBanner: AlertBar
+  yourAccount: {
+    headline: string
+    copy: string
+  }
   navigation: NavigationItem[]
   navigationLayouts: NavigationLayouts[]
 }
@@ -25,7 +29,7 @@ export interface NavigationMarketingBox {
   title: string
   link: Link
   alignment: 'topLeft' | 'bottomLeft'
-  image: Image
+  image: MediaItem
 }
 
 export type NavigationLayouts =
@@ -81,7 +85,7 @@ export interface NavigationLayoutsPharmacy {
     copy: string
     headline: string
     link: Link
-    thumbnail: Image
+    thumbnail: MediaItem
   }
 }
 
@@ -100,6 +104,7 @@ export interface NavigationLayoutsBrands {
     | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Brands'
   headline: string
   link: Link
+  ourBrands: Brand[]
   featuredBrands: Brand[]
 }
 
@@ -110,5 +115,5 @@ export interface NavigationLayoutsHelp {
   headline: string
   copy: string
   link: Link
-  actions: { icon: Image; link: Link }[]
+  actions: { icon: MediaItem; link: Link }[]
 }

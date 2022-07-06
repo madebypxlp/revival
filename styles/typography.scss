@@ -246,4 +246,46 @@
       line-height: 1.5rem;
     }
   }
+
+  .typo-nav-quicklink {
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 4.2rem;
+    }
+  }
+  .typo-nav-link {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 44rem;
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 4.2rem;
+    }
+  }
+  .typo-pharmacy-nav-link {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 44rem;
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 1.8rem;
+    }
+  }
+
+  .typo-quicklink {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 4.2rem;
+  }
+  .typo-help-contact-info {
+    font-weight: 700;
+    font-size: 3.5rem;
+  }
+  .typo-cart-items {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
 }
