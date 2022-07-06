@@ -1,11 +1,12 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styles from './LearningCenterFilter.module.scss'
-import { useRouter } from 'next/router'
+import router, { useRouter } from 'next/router'
 import { Category } from 'framework/wordpress/interfaces/post'
 import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
 import PaginateChildren from '@components/ui/PaginateChildren/PaginateChildren'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
 import Input from '@components/ui/Input/Input'
+import { useDebounce } from '@lib/hooks/useDebounce'
 
 const LearningCenterFilterModule: FunctionComponent<{
   categories: Category[]
@@ -19,8 +20,42 @@ const LearningCenterFilterModule: FunctionComponent<{
   const isDetail = () => !!activeCategory
   const articleCount = isDetail() ? posts?.length : 6
 
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [selectedContentTypes, setSelectedContentTypes] = useState<string[]>([])
+  const router = useRouter()
+  const { pathname, query } = router
+
+  const defaultCategories = Array.isArray(query.categories)
+    ? query.categories
+    : []
+  if (activeCategory?.slug) defaultCategories.push(activeCategory.slug)
+  const defaultTypes = Array.isArray(query.types) ? query.types : []
+
+  const [selectedCategories, setSelectedCategories] =
+    useState<string[]>(defaultCategories)
+  const [selectedContentTypes, setSelectedContentTypes] =
+    useState<string[]>(defaultTypes)
+  const debouncedState = useDebounce(
+    { selectedCategories, selectedContentTypes },
+    750
+  )
+
+  useEffect(() => {
+    const {
+      selectedCategories: _selectedCategories,
+      selectedContentTypes: _selectedContentTypes,
+    } = debouncedState
+
+    if (!_selectedCategories?.length && !_selectedContentTypes?.length) return
+    router.push({
+      pathname,
+      query: {
+        ...query,
+        categories: _selectedCategories.filter(
+          (cs: string) => cs !== activeCategory?.slug
+        ),
+        types: _selectedContentTypes,
+      },
+    })
+  }, [debouncedState.selectedCategories, debouncedState.selectedContentTypes])
 
   const paginationSettings = {
     perPage: 6,
@@ -37,16 +72,16 @@ const LearningCenterFilterModule: FunctionComponent<{
     },
   }
 
-  const handleCategoryChange = (checked: boolean | string, id: string) => {
+  const handleCategoryChange = (checked: boolean | string, slug: string) => {
     !!checked
-      ? setSelectedCategories((prev) => [...prev, id])
-      : setSelectedCategories((prev) => prev.filter((i) => i !== id))
+      ? setSelectedCategories((prev) => [...prev, slug])
+      : setSelectedCategories((prev) => prev.filter((s) => s !== slug))
   }
 
-  const handleContentTypeChange = (checked: boolean | string, id: string) => {
+  const handleContentTypeChange = (checked: boolean | string, slug: string) => {
     !!checked
-      ? setSelectedContentTypes((prev) => [...prev, id])
-      : setSelectedContentTypes((prev) => prev.filter((i) => i !== id))
+      ? setSelectedContentTypes((prev) => [...prev, slug])
+      : setSelectedContentTypes((prev) => prev.filter((s) => s !== slug))
   }
 
   return (
@@ -56,15 +91,16 @@ const LearningCenterFilterModule: FunctionComponent<{
           <p className="typo-eyebrow mb-25">Filter by Categories</p>
           {!!categories?.length &&
             categories.map((cat) => {
-              const { id, name } = cat
+              const { slug, name } = cat
               return (
                 <Input
                   className={styles.checkbox}
                   type="checkbox"
-                  key={id}
+                  key={slug}
                   label={name}
+                  checked={selectedCategories.includes(slug)}
                   square
-                  onChange={(v) => handleCategoryChange(v, id)}
+                  onChange={(v) => handleCategoryChange(v, slug)}
                 />
               )
             })}
@@ -72,15 +108,16 @@ const LearningCenterFilterModule: FunctionComponent<{
           <p className="typo-eyebrow mb-25">Filter by Content Type</p>
           {!!contentTypes?.length &&
             contentTypes.map((type) => {
-              const { id, name } = type
+              const { slug, name } = type
               return (
                 <Input
                   className={styles.checkbox}
                   type="checkbox"
-                  key={id}
+                  key={slug}
                   label={name}
+                  checked={selectedContentTypes.includes(slug)}
                   square
-                  onChange={(v) => handleContentTypeChange(v, id)}
+                  onChange={(v) => handleContentTypeChange(v, slug)}
                 />
               )
             })}

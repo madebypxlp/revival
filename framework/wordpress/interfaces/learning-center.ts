@@ -1,6 +1,19 @@
 import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
+import { AcfOptionsFooter } from './footer'
+import { AcfOptionsHeader } from './header'
 import { Category } from './post'
+
+export interface LearningCenterCategoryPage {
+  posts: {
+    nodes: LearningCenterInterface[]
+  }
+  header: AcfOptionsHeader
+  footer: AcfOptionsFooter
+  activeCategory: Category
+  categories: Category[]
+  contentTypes: Category[]
+}
 
 export interface LearningCenterDetailPage {
   data: LearningCenterInterface

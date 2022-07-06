@@ -21,22 +21,42 @@ export const getAllPostCategories = `
   }
 `
 
+const postsPerPage = 6
+
 export const getLearningCenterCategoryWpServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<GetStaticPropsResult<any>> => {
+  const page: number = parseInt(ctx.params?.page as string) || 1
+  const size = postsPerPage
+  const offset = (page - 1) * size
+
+  console.log('ctx params:', ctx.query)
+
   const category = await fetch({
     query: getLcCategoryIdBySlug,
     variables: {
       slug: ctx.params?.slug as string,
     },
   })
-  const categoryId = category?.categories?.nodes[0]?.lcCategoryId
+
+  const categorySlugs = [
+    ctx.params?.slug,
+    ...(Array.isArray(ctx.query?.categories)
+      ? ctx.query?.categories
+      : [ctx.query?.categories]),
+  ].filter((v) => !!v) as string[]
+
+  const contentTypeSlugs = (
+    Array.isArray(ctx.query?.types) ? ctx.query?.types : [ctx.query?.types]
+  ).filter((v) => !!v) as string[]
+
   let res = undefined
   if (true) {
     res = await fetch({
-      query: learningCenterByCategory,
+      query: learningCenterByCategory(categorySlugs, contentTypeSlugs),
       variables: {
-        id: categoryId,
+        size,
+        offset,
       },
     })
   }
@@ -59,7 +79,7 @@ export const getLearningCenterCategoryWpServerSideProps = async (
       globals: globalsData?.globals,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
-      category: category?.categories?.nodes[0],
+      activeCategory: category?.categories?.nodes[0],
       categories: res?.categories?.nodes,
       contentTypes: res?.contentTypes?.nodes,
     },

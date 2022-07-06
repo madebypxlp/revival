@@ -1,11 +1,15 @@
 import Image from '@components/fragments/Image'
 
-export default `
+export const query = (
+  categorySlugs?: string[],
+  contentTypeSlugs?: string[]
+) => `
   ${Image}
-  query LearningCenterByCategory($categoryId: Int, $size: Int!, $offset: Int!) {
+  query LearningCenterByCategory($size: Int!, $offset: Int!) {
     categories: lcCategories(last: 100) {
       nodes {
         id
+        slug
         name
         uri
       }
@@ -13,17 +17,45 @@ export default `
     contentTypes(last: 100) {
       nodes {
         id
+        slug
         name
         uri
       }
     }
   
     data: allLearningCenter(
-      first: 6
       where: {
-        lcCategoryId: $categoryId,
         orderby: {field: DATE, order: DESC}
         offsetPagination: { size: $size, offset: $offset }
+        taxQuery: {
+          relation: AND,
+          taxArray: [
+            ${
+              !!categorySlugs?.length
+                ? `
+              {
+                taxonomy: LCCATEGORY,
+                field: SLUG
+                operator: IN,
+                terms: ${JSON.stringify(categorySlugs)},
+              },
+            `
+                : ''
+            }
+            ${
+              !!contentTypeSlugs?.length
+                ? `
+              {
+                taxonomy: CONTENT_TYPE,
+                field: SLUG
+                operator: IN,
+                terms: ${JSON.stringify(contentTypeSlugs)},
+              },
+            `
+                : ''
+            }
+          ]
+        }
       }
     ) {
       nodes {
@@ -52,8 +84,11 @@ export const getLcCategoryIdBySlug = `
       nodes {
         lcCategoryId
         name
+        slug
         description
       }
     }
   }
 `
+
+export default query

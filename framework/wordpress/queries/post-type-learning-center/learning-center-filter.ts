@@ -3,6 +3,7 @@ query LearningCenterFilter {
   categories: lcCategories(last: 100) {
     nodes {
       id
+      slug
       name
       uri
     }
@@ -10,6 +11,7 @@ query LearningCenterFilter {
   contentTypes(last: 100) {
     nodes {
       id
+      slug
       name
       uri
     }
