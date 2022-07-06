@@ -6,7 +6,12 @@ import React, {
   MouseEventHandler,
   useState,
 } from 'react'
-import { isEmailValid } from '../../../lib/utils'
+import {
+  isCvvValid,
+  isEmailValid,
+  isExpDateValid,
+  isCardValid,
+} from '../../../lib/utils'
 import IInput, { InputError } from './Input.interface'
 import InputArrow from '@components/icons/InputArrow'
 import InputSearch from '@components/icons/InputSearch'
@@ -23,6 +28,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     required,
     children,
     label,
+    validationType,
     variant = 'default',
     icon,
     size = 'default',
@@ -45,13 +51,30 @@ const Input: FunctionComponent<IInput> = (props) => {
     if (incrementerButtons) setInputNumber(+value)
 
     // validation
-    if (type === 'email' && value && !isEmailValid(value))
-      setInputError('invalid')
-    else if (type === 'checkbox' && required && !checked)
+    if (type === 'checkbox' && required && !checked) setInputError('required')
+    else if (required && !value) {
       setInputError('required')
-    else if (required && !value) setInputError('required')
-    else setInputError(false)
-    // validation
+    } else if (type === 'email' && value && !isEmailValid(value)) {
+      setInputError('invalid_email')
+    } else if (validationType) {
+      switch (validationType) {
+        case 'card_exp_date':
+          setInputError(
+            value && !isExpDateValid(value) ? 'invalid_exp_date' : false
+          )
+          break
+        case 'card_cvv':
+          setInputError(value && !isCvvValid(value) ? 'invalid_cvv' : false)
+          break
+
+        case 'card_number':
+          setInputError(
+            value && !isCardValid(value) ? 'invalid_card_number' : false
+          )
+          break
+      }
+    } else setInputError(false)
+    // end validation
 
     if (typeof onChange === 'function') {
       if (type === 'checkbox' || type === 'radio') onChange(checked, inputError)
@@ -70,14 +93,12 @@ const Input: FunctionComponent<IInput> = (props) => {
     setInputNumber((prev) => {
       return prev + 1
     })
-    console.log(inputNumber)
   }
 
   const buttonDecrement = () => {
     setInputNumber((prev) => {
       return prev - 1
     })
-    console.log(inputNumber)
   }
 
   const rootClassName = cn(
@@ -89,8 +110,20 @@ const Input: FunctionComponent<IInput> = (props) => {
     square && styles.square,
     incrementerButtons && styles.incrementer,
     'typo-input inline-block',
-    inputError === 'invalid' && 'text-red'
+    inputError && 'text-red'
   )
+
+  const getErrorMessage = () => {
+    const errorMessages = {
+      invalid_email: Translations.FORM.INVALID_EMAIL,
+      invalid_cvv: Translations.FORM.INVALID_CVV,
+      invalid_exp_date: Translations.FORM.INVALID_EXP_DATE,
+      invalid_card_number: Translations.FORM.INVALID_CARD_NUMBER,
+      required: Translations.FORM.REQUIRED,
+      false: '',
+    }
+    return errorMessages[String(inputError) as keyof typeof errorMessages]
+  }
 
   return (
     <label
@@ -158,11 +191,7 @@ const Input: FunctionComponent<IInput> = (props) => {
 
       {status}
 
-      <span className={styles.error}>
-        {inputError === 'invalid' && Translations.FORM.INVALID_EMAIL}
-        {inputError === 'required' && Translations.FORM.REQUIRED}
-        {!inputError && <>&nbsp;</>}
-      </span>
+      <span className={styles.error}>{getErrorMessage()}</span>
     </label>
   )
 }

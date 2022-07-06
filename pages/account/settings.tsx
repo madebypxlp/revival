@@ -8,18 +8,20 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import AuthModal from '@components/ui/AuthModal/AuthModal'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
+import AccountSettings from '@components/ui/AccountSettings/AccountSettings'
 
 export async function getStaticProps({
   preview,
   locale,
 }: GetStaticPropsContext) {
-  const config = getConfig({ locale })
-  const { pages } = await getAllPages({ config, preview })
+  // const config = getConfig({ locale })
+  // const { pages } = await getAllPages({ config, preview })
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
   return {
     props: {
-      pages,
+      // pages,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
     },
@@ -30,12 +32,12 @@ export default function Profile({
   header,
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { data } = useCustomer()
-  console.log(data)
+  // const { data } = useCustomer()
 
   return (
     <div>
-      <h6>Orders</h6>
+      <AccountHero headline="Account Settings" />
+      <AccountSettings />
     </div>
   )
 }

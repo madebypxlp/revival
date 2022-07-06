@@ -1,3 +1,5 @@
+import { toInteger } from 'lodash'
+
 /**
  * check if the link contains the basic wp url and clean it
  * @returns string - link
@@ -30,4 +32,30 @@ export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
     ''
   )
   return { slug, page }
+}
+
+export const isExpDateValid = (date: string) => {
+  const regex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/
+
+  if (date.match(regex)) {
+    //check if expiration date is in the future
+    let month = toInteger(date.slice(0, 2))
+    let year = toInteger(date.slice(3, 5)) + 2000
+    let inputDate = new Date(year, month, 1)
+    let currentDate = new Date()
+    if (inputDate.getTime() >= currentDate.getTime()) return true
+    else return false
+  }
+
+  return false
+}
+
+export const isCvvValid = (cvv: string) => {
+  const regex = /^\d{3}$/
+  return cvv.match(regex)
+}
+
+export const isCardValid = (card_nr: string) => {
+  const regex = /^\d{13,19}$/
+  return card_nr.match(regex)
 }
