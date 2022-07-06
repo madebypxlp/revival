@@ -20,6 +20,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     showPrescriptionIcon,
     showPrescriptionLabel,
     showPrescriptionExtraInfo,
+    showBuyItAgain,
     rightColumn = 'price',
     shippingRestrictionsMessage,
     vetInfo,
@@ -64,6 +65,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     'grid',
     className
   )
+
   return (
     <div className={rootClasses}>
       <div className={styles.productImageContainer}>
@@ -104,6 +106,13 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             ) : (
               <span>{Translations.PRESCRIPTIONS.PRESCRIPTION_ITEM}</span>
             )}
+          </div>
+        )}
+        {showBuyItAgain && (
+          <div className={styles.buyItAgainContainer}>
+            <Button color="yellow" variant="large" type="default">
+              {Translations.BUY_ITEM_AGAIN}
+            </Button>
           </div>
         )}
         {vetInfo && (

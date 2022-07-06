@@ -41,6 +41,7 @@ const Translations = {
     APPROVAL_METHOD: 'Approval Method',
     EDIT_DETAILS: 'Edit Details',
   },
+  BUY_ITEM_AGAIN: 'Buy Item Again',
   YOU_MAY_ALSO_LIKE: 'You may also like',
 }
 export default Translations

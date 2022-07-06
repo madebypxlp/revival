@@ -15,6 +15,7 @@ export default interface ICartProduct {
   showPrescriptionIcon?: boolean
   showPrescriptionLabel?: boolean
   showPrescriptionExtraInfo?: boolean
+  showBuyItAgain: boolean
   rightColumn?: 'price' | 'empty' | 'edit-details'
   shippingRestrictionsMessage?: string
   vetInfo?: {
