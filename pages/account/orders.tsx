@@ -8,6 +8,7 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import AuthModal from '@components/ui/AuthModal/AuthModal'
+import { useRouter } from 'next/router'
 
 export async function getStaticProps({
   preview,
@@ -17,6 +18,7 @@ export async function getStaticProps({
   const { pages } = await getAllPages({ config, preview })
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+
   return {
     props: {
       pages,
@@ -30,9 +32,10 @@ export default function Profile({
   header,
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter()
+  console.log(router.query.id)
   const { data } = useCustomer()
   console.log(data)
-
   return (
     <div>
       <h6>Orders</h6>
