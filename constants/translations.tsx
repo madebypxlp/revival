@@ -10,6 +10,9 @@ const Translations = {
     SUBMIT: 'Submit',
     SUCCESS: 'Success',
     INVALID_EMAIL: 'Invalid Email Address',
+    INVALID_EXP_DATE: 'Invalid Expiration Date',
+    INVALID_CVV: 'Invalid CVV',
+    INVALID_CARD_NUMBER: 'Invalid Card Number',
     REQUIRED: 'Required',
     REQUIRED_EXPLANATION: '* Indicates a required field',
     TERMS_AND_CONDITIONS: 'I agree to the terms & conditions.',
@@ -20,6 +23,7 @@ const Translations = {
     ADD_TO_CART: 'Add To Cart',
     NEW: 'NEW',
     OUR_BRANDS: 'OUR BRANDS',
+    PLACE_NEW_ORDER: 'Place New Order',
   },
   PRESCRIPTIONS: {
     PRESCRIPTION_ITEM: 'Prescription Item',
@@ -34,6 +38,21 @@ const Translations = {
     PROCEED_TO_CHECKOUT: 'Proceed To Checkout',
     SUBTOTAL: 'Subtotal',
   },
+  ACCOUNT: {
+    ACCOUNT: 'Account',
+    ORDERS: 'Orders',
+    BUY_AGAIN: 'Buy Again',
+    PRESCRIPTIONS: 'Prescriptions',
+    MY_PETS: 'My Pet(s)',
+    MY_FAVORITES: 'My Favorites',
+    ORDER_NUMBER: 'Order #',
+    PLACED: 'Placed',
+    SENT_TO: 'Sent To',
+    TOTAL: 'Total',
+    STATUS: 'Status',
+    ADD_NEW_PET: 'Add New Pet',
+    REMOVE_PET: 'Remove Pet',
+  },
   PET_AND_VET: {
     PET: 'Pet',
     VET: 'Vet',
@@ -41,6 +60,7 @@ const Translations = {
     APPROVAL_METHOD: 'Approval Method',
     EDIT_DETAILS: 'Edit Details',
   },
+  BUY_ITEM_AGAIN: 'Buy Item Again',
   YOU_MAY_ALSO_LIKE: 'You may also like',
 }
 export default Translations

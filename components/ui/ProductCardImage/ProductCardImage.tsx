@@ -28,7 +28,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
       <div className={'flex flex-col justify-between h-full'}>
         <div className={styles.row}>
           <div className={styles.newButtonContainer}>
-            {isNew && (
+            {!showFavoriteIcon && isNew && (
               <Button outline color="blue" variant="small" type="default">
                 {Translations.PRODUCT.NEW}
               </Button>
@@ -42,7 +42,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
           </div>
         </div>
         <div className={'flex flex-col items-start gap-5'}>
-          {isOurBrand && (
+          {isOurBrand && !showFavoriteIcon && (
             <Button
               color="blue"
               variant="small"
@@ -52,7 +52,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
               {Translations.PRODUCT.OUR_BRANDS}
             </Button>
           )}
-          {label && (
+          {label && !showFavoriteIcon && (
             <Button
               color="red"
               variant="small"

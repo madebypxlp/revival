@@ -5,9 +5,9 @@ import Button from '../Button/Button'
 import Input from '../Input/Input'
 
 const SearchResultCard: FunctionComponent<ISearchResultCard> = (props) => {
-  console.log(props)
+  // console.log(props)
 
-  const { clinic, address, phone } = props
+  const { clinic, address, phone, noButton } = props
 
   return (
     <div className={`${styles.root} relative my-10`}>
@@ -27,9 +27,16 @@ const SearchResultCard: FunctionComponent<ISearchResultCard> = (props) => {
             <p>{phone}</p>
           </div>
         </div>
-        <Button className="w-220" color="yellow" variant="large" type="default">
-          Save
-        </Button>
+        {!noButton && (
+          <Button
+            className="w-220"
+            color="yellow"
+            variant="large"
+            type="default"
+          >
+            Save
+          </Button>
+        )}
       </div>
     </div>
   )

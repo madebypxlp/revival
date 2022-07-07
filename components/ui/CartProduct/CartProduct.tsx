@@ -9,6 +9,7 @@ import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import Translations from 'constants/translations'
 import AlertIcon from '@components/icons/AlertIcon'
 import Button from '../Button/Button'
+import { formatPrice } from '@lib/utils'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const {
@@ -20,14 +21,13 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     showPrescriptionIcon,
     showPrescriptionLabel,
     showPrescriptionExtraInfo,
+    showBuyItAgain,
+    showAddToCart,
+    showPlaceNewOrder,
     rightColumn = 'price',
     shippingRestrictionsMessage,
     vetInfo,
   } = props
-
-  const formatPrice = (price: number): string => {
-    return '$' + price.toFixed(2)
-  }
 
   const isMobile = useIsMobile()
 
@@ -64,6 +64,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     'grid',
     className
   )
+
   return (
     <div className={rootClasses}>
       <div className={styles.productImageContainer}>
@@ -104,6 +105,20 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             ) : (
               <span>{Translations.PRESCRIPTIONS.PRESCRIPTION_ITEM}</span>
             )}
+          </div>
+        )}
+        {showAddToCart && (
+          <div className={styles.addToCartContainer}>
+            <Button color="yellow" variant="large" type="default">
+              {Translations.PRODUCT.ADD_TO_CART}
+            </Button>
+          </div>
+        )}
+        {showBuyItAgain && (
+          <div className={styles.buyItAgainContainer}>
+            <Button color="yellow" variant="large" type="default">
+              {Translations.BUY_ITEM_AGAIN}
+            </Button>
           </div>
         )}
         {vetInfo && (
@@ -150,6 +165,13 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         <div className={styles.approvalMethodContainer}>
           <span>{`${Translations.PET_AND_VET.APPROVAL_METHOD}: `}</span>
           <div>{vetInfo.approvalMethod}</div>
+        </div>
+      )}
+      {showPlaceNewOrder && (
+        <div className={styles.placeNewOrderContainer}>
+          <Button color="yellow" variant="large" type="default">
+            {Translations.PRODUCT.PLACE_NEW_ORDER}
+          </Button>
         </div>
       )}
     </div>

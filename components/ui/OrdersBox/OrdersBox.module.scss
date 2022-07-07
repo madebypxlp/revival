@@ -1,0 +1,42 @@
+.root {
+  border: 0.15rem solid theme('colors.greyscale.4');
+  border-radius: 1.5rem;
+  padding: 3rem 6.5rem;
+  margin-bottom: 30rem;
+
+  .orderContainer:not(:last-child) {
+    @apply light-border-b;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    font-family: 3.8rem;
+    font-weight: 700;
+  }
+
+  .regular {
+    @apply typo-large-paragraph;
+  }
+
+  .orderId {
+    @apply md:col-span-2;
+  }
+
+  .placed {
+    @apply md:col-span-2;
+  }
+
+  .sentTo {
+    @apply md:col-span-3;
+  }
+
+  .total {
+    @apply md:col-span-2;
+  }
+
+  .status {
+    @apply md:col-span-2;
+  }
+}

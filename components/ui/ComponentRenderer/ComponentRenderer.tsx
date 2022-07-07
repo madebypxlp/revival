@@ -19,6 +19,8 @@ import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
 import CartProduct from '../CartProduct/CartProduct'
 import Translations from 'constants/translations'
+import AccountSettings from '../AccountSettings/AccountSettings'
+import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -33,6 +35,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const [addClinicModalOpen, setAddClinicModalOpen] = useState(false)
   const [modalOpenSearch, setModalOpenSearch] = useState(false)
   const [searchModalOpen, setSearchModalOpen] = useState(false)
+  const [petVetSummaryOpen, setPetVetSummaryOpen] = useState(false)
 
   const product = {
     id: '#80122-795-431',
@@ -84,7 +87,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   }
 
   return (
-    <div className={`${styles.root} `}>
+    <div className={`${styles.root}`}>
       <div className="container">
         <div style={{ background: 'orange' }}>
           <h1>Hyperlinks</h1>
@@ -247,7 +250,21 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         </div>
         <div>
           <h1>Modals</h1>
-          <h3>Search Vet Clinic</h3>
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setPetVetSummaryOpen(true)}
+          >
+            Pet Vet Summary
+          </Button>
+          <PetAndVetClinicSummary
+            title={'Add Custom Vet Clinic'}
+            open={petVetSummaryOpen}
+            onClose={() => setPetVetSummaryOpen(false)}
+          />
+
           <Button
             color="yellow"
             variant="large"
@@ -262,7 +279,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             onClose={() => setAddClinicModalOpen(false)}
           />
 
-          <h3>Add a Pet</h3>
           <Button
             color="yellow"
             variant="large"
@@ -271,21 +287,19 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           >
             Add a Pet
           </Button>
-
           <AddAPetModal
             title={'Add a Pet'}
             open={petModalOpen}
             onClose={() => setPetModalOpen(false)}
           />
 
-          <h3>Search For Vet Clinic</h3>
           <Button
             color="yellow"
             variant="large"
             type="default"
             onClick={() => setModalOpenSearch(true)}
           >
-            Search
+            Search Vet Clinic
           </Button>
           <SearchForVetClinicDialog
             title={'Search for Your Veterinary Clinic'}
@@ -293,7 +307,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             onClose={() => setModalOpenSearch(false)}
           />
 
-          <h3>Login</h3>
           <Button
             color="yellow"
             variant="large"
@@ -305,13 +318,13 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           >
             Login
           </Button>
-
           <LoginModal title="Title" />
         </div>
       </div>
       <div className="my-50 py-50">
         <h1>Account Hero</h1>
         <AccountHero headline="Welcome Back, Marie" />
+        <AccountSettings />
       </div>
       <div className="my-50 py-50 container">
         <h1>Product components</h1>
@@ -392,6 +405,100 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             product={product}
             quantity={3}
             variant={'account'}
+          />
+        </div>
+      </div>
+      <div className="my-50 py-50 container">
+        <h1>Product components</h1>
+        <div className={'default-grid'}>
+          {/* 1) Cart (your cart) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showCartControls
+          />
+          {/* 2) Cart (checkout 01A) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+          />
+          {/* 3) RX Cart flow */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            showPrescriptionIcon
+            showCartControls
+          />
+          {/* 4) RX (checkout 01A)  */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            showPrescriptionLabel
+          />
+          {/* 5) RX Flow (info needed) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'empty'}
+            showPrescriptionIcon
+            showPrescriptionLabel
+            showPrescriptionExtraInfo
+          />
+          {/* 6) RX Flow (pet and vet clinic info) */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'edit-details'}
+            showPrescriptionIcon
+            vetInfo={petAndVetInfo}
+          />
+          {/* 7) Splitting shipments cart */}
+          <CartProduct
+            className={'my-20 md:col-start-1'}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            showCartControls
+          />
+          {/* 8) Splitting shipments (checkout) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'checkout'}
+            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+          />
+          {/* 9) Account (order detail) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'account'}
+            showBuyItAgain
+          />
+          {/* 10) Account (order detail RX) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'account'}
+            showPrescriptionIcon
+            showPrescriptionLabel
+            showPrescriptionExtraInfo
+            showBuyItAgain
           />
         </div>
       </div>

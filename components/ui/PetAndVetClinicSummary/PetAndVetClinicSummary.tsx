@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { Fragment, FunctionComponent, useState } from 'react'
 import styles from './PetAndVetClinicSummary.module.scss'
 import IPetAndVetClinicSummary from './PetAndVetClinicSummary.interface'
 import Modal from '@components/ui/Modal'
@@ -8,19 +8,84 @@ import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Input from '../Input/Input'
 import Dropdown from '@components/ui/Dropdown/Dropdown'
 import { IDropdownOption } from '@components/ui/Dropdown/Dropdown.interface'
+import PlusCTA from '../PlusCTA/PlusCTA'
+import SearchResultCard from '../SearchForVetClinicResult/SearchForVetClinicResult'
+import CartProduct from '../CartProduct/CartProduct'
+import cn from 'classnames'
 
 const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
   props
 ) => {
   const { title, open, onClose } = props
 
-  const [petType, setPetType] = useState<string>()
-  const [petCount, setPetCount] = useState<number>()
+  const [petType, setPetType] = useState<Object>()
+  const [petCount, setPetCount] = useState<Object>({ 0: 0 })
+  const [addPetCount, setAddPetCount] = useState(1)
+
+  console.log(petType)
+  console.log(petCount)
+
+  const handleAddPet = () => {
+    setAddPetCount((prev) => {
+      return prev + 1
+    })
+  }
+
+  const dummyClinic = {
+    clinic: 'Beach City Animal Hospital - Redondo Beach',
+    address: '2147 Warner Ave, Redondo Beach, CA 90277',
+    phone: '(949) 500-1000',
+  }
+  const clinics = [dummyClinic, dummyClinic]
+
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    isFavorite: false,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
 
   return (
     <Modal title={title || 'Add a Pet'} open={open} onClose={() => onClose()}>
       <ModalContent>
-        <div className={`${styles.root} pt-10 pb-20 default-grid`}>
+        <div className={`${styles.root} pt-10 default-grid`}>
+          <CartProduct
+            className={cn(styles.product, 'mb-30')}
+            product={product}
+            quantity={3}
+            variant={'cart'}
+            rightColumn={'empty'}
+            showPrescriptionIcon
+            showPrescriptionLabel
+            showPrescriptionExtraInfo
+          />
+
           <div className={`${styles.border} mb-40 col-span-2 md:col-span-12`} />
           <h3 className="typo-h6 text-blue mb-5 col-span-2 md:col-span-6">
             1. Which pet(s) is this prescription for?
@@ -29,47 +94,99 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
             You can add multiple pets and adjust quantities for each pet as
             needed
           </p>
-          <Dropdown
-            color="light"
-            onChange={(o) => setPetType(o?.value)}
-            placeholder={'Pet Type'}
-            options={[
-              { label: 'Cat', value: 'cat' },
-              { label: 'Dog', value: 'dog' },
-            ]}
-            className="col-span-2 md:col-span-6 md:col-start-1 pb-25"
-          />
-          <div className="col-span-2 ml-30 self-center">
-            <Input
-              incrementerButtons
-              placeholder="0"
-              type="number"
-              onChange={(value) => setPetCount(+value)}
-            />
-          </div>
 
+          {new Array(addPetCount).fill('').map((v, index) => {
+            return (
+              <Fragment key={index}>
+                <Dropdown
+                  color="light"
+                  onChange={(o) =>
+                    setPetType((prevState) => {
+                      return { ...prevState, [index]: o?.value }
+                    })
+                  }
+                  placeholder={'Pet Type'}
+                  options={[
+                    { label: 'Cat', value: 'cat' },
+                    { label: 'Dog', value: 'dog' },
+                  ]}
+                  className="col-span-2 md:col-span-6 md:col-start-1 mb-25"
+                />
+                <div className="col-span-2 md:col-span-3 md:ml-30 ml-0 self-center">
+                  <Input
+                    incrementerButtons
+                    placeholder="0"
+                    type="number"
+                    onChange={(value) =>
+                      setPetCount((prevState) => {
+                        return { ...prevState, [index]: +value }
+                      })
+                    }
+                  />
+                </div>
+              </Fragment>
+            )
+          })}
+
+          <div className="col-span-2 md:col-span-12 flex justify-between flex-col md:flex-row">
+            <div className="mb-20 md:mb-0">
+              <PlusCTA onClick={handleAddPet}>Add Another Pet</PlusCTA>
+            </div>
+
+            <Button variant="large" color="yellow" className="">
+              Add A New Pet
+            </Button>
+          </div>
           <div className={`${styles.border} my-40 col-span-2 md:col-span-12`} />
-          <h3 className="typo-h6 text-blue col-span-2 md:col-span-6">
+          <h3 className="typo-h6 text-blue col-span-2 md:col-span-6 mb-35">
             2. Select Your Vet Clinic(s)
           </h3>
+          <div className="col-span-2 md:col-span-9 -mr-10">
+            {clinics &&
+              clinics.map((clinic) => {
+                return (
+                  <SearchResultCard
+                    noButton
+                    clinic={clinic.clinic}
+                    address={clinic.address}
+                    phone={clinic.phone}
+                  />
+                )
+              })}
+          </div>
 
+          <div className="col-span-2 md:col-span-12 flex justify-center md:justify-end ">
+            <Button variant="large" color="yellow" className="mt-10 mb:mt-0">
+              Add A Vet Clinic
+            </Button>
+          </div>
           <div className={`${styles.border} my-40 col-span-2 md:col-span-12`} />
-          <h3 className="typo-h6 text-blue col-span-2 md:col-span-6">
+          <h3 className="typo-h6 text-blue col-span-2 md:col-span-6 mb-35">
             3. What’s your preferred approval method?
           </h3>
+          <div className="col-span-2 md:col-span-12">
+            <div className="flex items-start mb-20 md:mb-0">
+              <Input name="method" className="basis-20" type="radio" square />
+              <div className="typo-fact">Contact my vet clinic for me</div>
+            </div>
+            <div className="flex items-start">
+              <Input
+                name="method"
+                className="md:-mb-30 basis-20"
+                type="radio"
+                square
+              />
+              <div className="typo-fact">
+                I will mail the prescription to Revival Animal Health myself.
+              </div>
+            </div>
+          </div>
         </div>
       </ModalContent>
       <ModalActions>
         <Button variant="large" color="yellow">
-          Update
+          Done
         </Button>
-        {/* <ArrowCTA
-          orientation="right"
-          color="blue"
-          onClick={() => typeof onClose === 'function' && onClose()}
-        >
-          Cancel
-        </ArrowCTA> */}
       </ModalActions>
     </Modal>
   )
