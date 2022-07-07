@@ -1,6 +1,10 @@
+.paginationSpacer {
+  @apply mt-40 md:mt-80;
+}
+
 .pagination {
   @apply relative col-span-full flex justify-center gap-20 text-white py-15;
-  @apply typo-large-paragraph mt-40 md:mt-80;
+  @apply typo-large-paragraph mt-auto;
 
   &::before {
     content: '';

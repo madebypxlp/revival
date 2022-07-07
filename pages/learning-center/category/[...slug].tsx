@@ -22,6 +22,7 @@ export default function Pages({
 
   const filterData = {
     posts: posts.nodes,
+    totalPosts: posts.pageInfo.offsetPagination.total,
     activeCategory,
     categories,
     contentTypes,

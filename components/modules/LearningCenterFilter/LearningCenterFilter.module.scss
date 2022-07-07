@@ -16,4 +16,15 @@
       }
     }
   }
+
+  hr {
+    @apply my-20;
+    border-bottom-width: 0.2rem;
+  }
+
+  @screen md {
+    [class^='PaginateChildren_pagination'] {
+      margin-left: calc(-25% - 30px);
+    }
+  }
 }

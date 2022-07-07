@@ -25,9 +25,8 @@ export const isEmailValid = (email: string) => {
 
 export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
   const slug = (Array.isArray(_slug) ? _slug[0] : _slug) || ''
-  const page = +(Array.isArray(slug) ? slug[1] || 'page-1' : 'page-1').replace(
-    'page-',
-    ''
-  )
+  const page = +(
+    Array.isArray(_slug) ? _slug[1] || 'page-1' : 'page-1'
+  ).replace('page-', '')
   return { slug, page }
 }

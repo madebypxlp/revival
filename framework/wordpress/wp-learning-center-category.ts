@@ -10,6 +10,7 @@ import globalsQuery from './queries/acfGlobalOptions/globals'
 import learningCenterByCategory, {
   getLcCategoryIdBySlug,
 } from './queries/post-type-learning-center/learning-center-by-category'
+import { getBlogSlugAndPage } from '@lib/utils'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -26,21 +27,20 @@ const postsPerPage = 6
 export const getLearningCenterCategoryWpServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<GetStaticPropsResult<any>> => {
-  const page: number = parseInt(ctx.params?.page as string) || 1
+  const slugAndPage = getBlogSlugAndPage(ctx.params?.slug)
+  const page: number = slugAndPage.page || 1
   const size = postsPerPage
   const offset = (page - 1) * size
-
-  console.log('ctx params:', ctx.query)
 
   const category = await fetch({
     query: getLcCategoryIdBySlug,
     variables: {
-      slug: ctx.params?.slug as string,
+      slug: slugAndPage.slug,
     },
   })
 
   const categorySlugs = [
-    ctx.params?.slug,
+    slugAndPage.slug,
     ...(Array.isArray(ctx.query?.categories)
       ? ctx.query?.categories
       : [ctx.query?.categories]),
@@ -51,15 +51,13 @@ export const getLearningCenterCategoryWpServerSideProps = async (
   ).filter((v) => !!v) as string[]
 
   let res = undefined
-  if (true) {
-    res = await fetch({
-      query: learningCenterByCategory(categorySlugs, contentTypeSlugs),
-      variables: {
-        size,
-        offset,
-      },
-    })
-  }
+  res = await fetch({
+    query: learningCenterByCategory(categorySlugs, contentTypeSlugs),
+    variables: {
+      size,
+      offset,
+    },
+  })
   const globalsData = await fetch({
     query: globalsQuery,
   })

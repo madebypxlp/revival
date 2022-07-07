@@ -74,6 +74,14 @@ export const query = (
           }
         }
       }
+      pageInfo {
+        offsetPagination {
+          # Get the total node count in the connection. Using this
+          # field activates total calculations which will make your
+          # queries slower. Use with caution.
+          total
+        }
+      }
     }
   }
 `

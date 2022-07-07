@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 import Link from '@components/interfaces/Link'
 
 type ILink = {
@@ -9,6 +9,7 @@ type ILink = {
   className?: string
   title?: string
   href?: string
-} & ({ href: string } | { link: Link })
+  onClick?: MouseEventHandler<HTMLAnchorElement>
+} & ({ href: string } | { link: Link } | { fakeLink: boolean })
 
 export default ILink

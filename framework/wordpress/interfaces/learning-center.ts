@@ -7,6 +7,7 @@ import { Category } from './post'
 export interface LearningCenterCategoryPage {
   posts: {
     nodes: LearningCenterInterface[]
+    pageInfo: { offsetPagination: { total: number } }
   }
   header: AcfOptionsHeader
   footer: AcfOptionsFooter
