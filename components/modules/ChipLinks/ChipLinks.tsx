@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import c from 'classnames'
 import parse from 'html-react-parser'
 import styles from './ChipLinks.module.scss'
 import IChipLinks from './ChipLinks.interface'
@@ -19,20 +20,20 @@ const ChipLinksModule: FunctionComponent<{ module: IChipLinks }> = ({
         <div
           className={`${
             fullwidthVariant ? '' : 'rounded-[15px] bg-blue-default'
-          } default-grid-lg md:pl-45 md:py-75 py-45 overflow-hidden relative`}
+          } default-grid-lg px-30 md:px-45 md:py-75 py-45 overflow-hidden relative`}
         >
           {!fullwidthVariant && (
             <div className={`${styles.backgroundImage}`}></div>
           )}
-          <h3 className="typo-h3 pl-30 md:pl-0 col-span-full text-white md:mb-55 mb-30 ">
+          <h3 className="typo-h3 col-span-full text-white md:mb-55 mb-30 ">
             {parse(headline)}
           </h3>
-          <div className="flex md:flex-wrap md:gap-15 md:w-[1015px] col-span-full flex-wrap md:justify-start justify-center">
+          <div className="flex md:flex-wrap md:gap-15 lg:max-w-[1015px] col-span-full flex-wrap md:justify-start justify-center">
             {links.map((link) => {
               return (
                 <Button
                   variant="small"
-                  className="no-underline m-5"
+                  className={c('no-underline m-5', styles.buttons)}
                   outline={!link.defaultYellow}
                   color={link.defaultYellow ? 'yellow' : 'chipWhite'}
                   type="default"

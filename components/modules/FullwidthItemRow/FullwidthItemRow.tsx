@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import c from 'classnames'
 import styles from './FullwidthItemRow.module.scss'
 import IFullwidthItemRow from './FullwidthItemRow.interface'
 import Image from 'next/image'
@@ -26,23 +27,25 @@ const FullwidthItemRowModule: FunctionComponent<{
           <div className="typo-eyebrow font-bold mb-10 tracking-widest">
             {subline}
           </div>
-          <h3 className="typo-h3 mb-50 w-[276px] mx-auto lg:w-auto">
+          <h3 className="typo-h3 mb-50 lg:w-[276px] mx-30 lg:mx-auto lg:w-auto">
             <div>{parse(headline)}</div>
           </h3>
         </div>
 
         <span className="hidden lg:block col-span-1"></span>
 
-        {items &&
-          items.map((item, idx) => {
-            return (
-              <div
-                key={item?.link?.title || item?.label}
-                className="text-white col-span-2 mb-20 pl-20 pr-30 lg:px-0 lg:mb-0 lg:pt-50 lg:flex flex-row"
-              >
-                <div className="relative flex items-center lg:flex-col">
+        <div
+          className={c(
+            styles.imageGridContainer,
+            'col-span-2 lg:col-span-6 grid lg:gap-x-20 gap-y-20 lg:gap-y-0'
+          )}
+        >
+          {items &&
+            items.map((item, idx) => {
+              return (
+                <>
                   {item?.icon?.sourceUrl && (
-                    <div className="mr-20 lg:mr-0 lg:mb-15">
+                    <div className="mr-20 lg:mr-0 lg:mb-15 relative">
                       <Image
                         src={item.icon.sourceUrl}
                         alt={item.icon.altText}
@@ -51,7 +54,7 @@ const FullwidthItemRowModule: FunctionComponent<{
                       />
                     </div>
                   )}
-                  <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:mt-auto">
+                  <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:self-start">
                     {parse(item.label)}
                   </h4>
                   {item?.link?.title && (
@@ -63,10 +66,11 @@ const FullwidthItemRowModule: FunctionComponent<{
                       color="white"
                     />
                   )}
-                </div>
-              </div>
-            )
-          })}
+                  <div className={styles.lgonly}></div>
+                </>
+              )
+            })}
+        </div>
       </div>
     </div>
   )

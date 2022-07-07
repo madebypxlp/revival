@@ -1,16 +1,4 @@
 .root {
-  // add your styles here
-  &::before {
-    content: '';
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    z-index: 1;
-    @apply absolute inset-0;
-  }
-
   .fact {
     @screen md {
       &:not(:last-of-type)::after {
@@ -18,6 +6,25 @@
         display: inline-block;
         margin-left: 0.7rem;
       }
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .backgroundImage {
+    img {
+      @screen md {
+        border-radius: 1.5rem;
+      }
+    }
+  }
+
+  :global(.gradient-overlay)::after {
+    @screen md {
+      border-radius: 1.5rem;
     }
   }
 }

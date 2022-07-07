@@ -83,7 +83,10 @@ const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
   return (
     <div className={`${styles.root} container`}>
       {module.rows.map((row) => (
-        <div key={row.subline} className={`default-grid ${styles.row}`}>
+        <div
+          key={row.subline}
+          className={`default-grid items-center ${styles.row}`}
+        >
           {row.flipOrientation && (
             <ImageWrapper
               flipOrientation={row.flipOrientation}
@@ -94,9 +97,9 @@ const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
           <div
             className={`${
               row.flipOrientation
-                ? 'md:col-span-5 md:col-start-8'
-                : 'md:col-span-4 md:col-start-2'
-            } col-span-12 md:pt-140 pt-0`}
+                ? 'md:col-span-6 md:col-start-7 lg:col-span-4 lg:col-start-8'
+                : 'md:col-span-6 md:col-start-1 lg:col-span-4 lg:col-start-2'
+            } col-span-12 pt-0`}
           >
             {row.subline && (
               <p className="typo-eyebrow text-blue uppercase">{row.subline}</p>

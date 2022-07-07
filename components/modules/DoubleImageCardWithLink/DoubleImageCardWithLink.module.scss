@@ -10,7 +10,7 @@
   }
 
   .card {
-    &+ .card {
+    & + .card {
       @apply mt-20;
       @screen md {
         @apply mt-0;
@@ -23,11 +23,16 @@
     bottom: 6rem;
     left: 2.5rem;
     right: 4rem;
+
     @screen md {
-      @apply typo-h3;
-      bottom: 14rem;
+      bottom: 12rem;
       right: 10rem;
       left: 6rem;
+    }
+
+    @screen lg {
+      bottom: 14rem;
+      @apply typo-h3;
     }
   }
 
@@ -48,6 +53,7 @@
     line-height: 1.5rem;
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
+
     @screen md {
       height: 5rem;
       bottom: 6rem;

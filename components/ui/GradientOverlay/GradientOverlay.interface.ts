@@ -1,1 +1,3 @@
-export default interface IGradientOverlay {}
+export default interface IGradientOverlay {
+  className?: string
+}

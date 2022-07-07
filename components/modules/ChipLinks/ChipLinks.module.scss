@@ -5,4 +5,11 @@
     width: 100%;
     @apply inset-0 absolute;
   }
+
+  .buttons {
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+    }
+  }
 }

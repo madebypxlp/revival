@@ -7,7 +7,6 @@ import Button from '@components/ui/Button/Button'
 const DoubleImageCardWithLinkModule: FunctionComponent<{
   module: IDoubleImageCardWithLink
 }> = ({ module }) => {
-  console.log(module)
   return (
     <div className={`${styles.root} container`}>
       <div className={`default-grid`}>

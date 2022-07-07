@@ -3,4 +3,37 @@
     content: '';
     @apply absolute inset-0;
   }
+
+  .cta {
+    a {
+      @apply typo-large-paragraph;
+
+      @screen lg {
+        text-align: center;
+      }
+    }
+  }
+  .imageGridContainer {
+    color: white;
+    grid-template-columns: auto 1fr auto;
+    padding: 0 3rem 2rem 2rem;
+    align-items: center;
+
+    @screen lg {
+      padding: 0;
+      padding-top: 4rem;
+      grid-auto-flow: column;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto auto 1fr;
+      justify-items: center;
+    }
+  }
+
+  .lgonly {
+    display: none;
+
+    @screen lg {
+      display: block;
+    }
+  }
 }
