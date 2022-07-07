@@ -3,11 +3,12 @@ import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import AuthModal from '@components/ui/AuthModal/AuthModal'
+import styles from './index.module.scss'
+import Translations from 'constants/translations'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
 
 export async function getStaticProps({
   preview,
@@ -33,27 +34,20 @@ export default function Profile({
   const { data } = useCustomer()
   console.log(data)
 
+  const username = 'Marie'
+  const headlineText = `${Translations.ACCOUNT.WELCOME_BACK}, ${username}`
   return (
-    <Container>
-      <Text variant="pageHeading">My Profile</Text>
-      {data && (
-        <div className="grid lg:grid-cols-12">
-          <div className="lg:col-span-8 pr-4">
-            <div>
-              <Text variant="sectionHeading">Full Name</Text>
-              <span>
-                {data.firstName} {data.lastName}
-              </span>
-            </div>
-            <div className="mt-5">
-              <Text variant="sectionHeading">Email</Text>
-              <span>{data.email}</span>
-            </div>
+    <div className={styles.root}>
+      <AccountHero headline={headlineText} className={'mb-155'} />
+      <div className={'container default-grid'}>
+        <div className={'col-span-2 md:col-span-9'}>
+          <div className={styles.headerContainer}>
+            <h5>{Translations.ACCOUNT.RECENT_ORDERS}</h5>
           </div>
         </div>
-      )}
-      {false && !data && <AuthModal open />}
-    </Container>
+        <div className={'col-span-2 md:col-start-11'}></div>
+      </div>
+    </div>
   )
 }
 

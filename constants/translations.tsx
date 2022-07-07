@@ -39,6 +39,7 @@ const Translations = {
     SUBTOTAL: 'Subtotal',
   },
   ACCOUNT: {
+    WELCOME_BACK: 'Welcome Back',
     ACCOUNT: 'Account',
     ORDERS: 'Orders',
     BUY_AGAIN: 'Buy Again',
@@ -52,6 +53,14 @@ const Translations = {
     STATUS: 'Status',
     ADD_NEW_PET: 'Add New Pet',
     REMOVE_PET: 'Remove Pet',
+    RECENT_ORDERS: 'Recent Orders',
+    VIEW_ALL_ORDERS: 'View All Orders',
+    SETTINGS: 'Settings',
+    MY_PET_HEALTH: 'My Pet Health',
+    YOUR_PROFILE: 'Your Profile',
+    SHIPPING_ADDRESS: 'Shipping Address',
+    PAYMENT_METHOD: 'Payment Method',
+    GIFT_CARD: 'Gift Card',
   },
   PET_AND_VET: {
     PET: 'Pet',
