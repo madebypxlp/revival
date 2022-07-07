@@ -44,7 +44,7 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
                 <div className="h-full">
                   <Image
                     className="!absolute inset-0"
-                    imgClassName="object-cover object-right-top"
+                    imgClassName="object-cover object-right-bottom lg:object-right"
                     layout={'fill'}
                     image={image}
                   />
