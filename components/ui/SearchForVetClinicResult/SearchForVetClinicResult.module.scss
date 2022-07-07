@@ -1,0 +1,14 @@
+.root {
+  border: 1.5px solid #c4c4c4;
+  border-radius: 15px;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+
+  label {
+    position: static;
+    &::before {
+      content: '';
+      @apply absolute inset-0;
+    }
+  }
+}

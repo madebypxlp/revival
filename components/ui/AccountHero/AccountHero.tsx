@@ -6,7 +6,7 @@ import Button from '../Button/Button'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 
 const AccountHero: FunctionComponent<IAccountHero> = (props) => {
-  const { headline = 'Lorem Ipsum', className } = props
+  const { headline, className } = props
 
   //change Links
   const ButtonList = [
@@ -20,7 +20,7 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
   ]
 
   return (
-    <div className={c(`${styles.root} h-auto `, className)}>
+    <div className={c(styles.root, 'h-auto mb-40 md:mb-80', className)}>
       <div className=" flex items-center justify-center md:justify-start md:items-start md:flex-col bg-cream">
         <div className="pl-20 md:pl-80 py-45 md:py-85  md:w-full">
           <h1 className="typo-accountheadline mb-20 md:mb-0 text-blue max-w-[336px] md:max-w-full ">
