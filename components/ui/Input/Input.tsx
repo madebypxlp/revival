@@ -112,7 +112,9 @@ const Input: FunctionComponent<IInput> = (props) => {
       {variant === 'blue-outline' && (
         <button className={styles.icon} onClick={handleIconClick}>
           {icon === 'arrow' && <InputArrow className="w-20 h-20" />}
-          {icon === 'search' && <InputSearch className="w-20 h-20" />}
+          {icon === 'search' && (
+            <InputSearch className="md:w-20 md:h-20 w-15 h-15" />
+          )}
         </button>
       )}
 

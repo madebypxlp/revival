@@ -11,4 +11,5 @@ export default interface IArrowCTA {
   link?: Link
   className?: string
   onClick?: any
+  subnav?: boolean
 }

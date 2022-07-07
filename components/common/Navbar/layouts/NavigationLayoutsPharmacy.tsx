@@ -15,12 +15,15 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsPharmacy }> = ({
     <div
       className={cn(
         styles.NavigationLayoutsPharmacy,
-        'container overflow-hidden'
+        'container md:px-20 px-0 overflow-hidden md:pb-0 pb-10'
       )}
     >
-      <div className="default-grid py-60 relative">
+      <div className="default-grid md:py-60 py-20 relative">
         <div
-          className={cn(styles.quicklinkContainer, 'flex flex-col col-span-2')}
+          className={cn(
+            styles.quicklinkContainer,
+            'md:flex flex-col col-span-2 hidden'
+          )}
         >
           {quickLinks.map((link, index) => {
             return (
@@ -31,7 +34,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsPharmacy }> = ({
           })}
           <ArrowCTA color="blue" orientation="right" link={cta} />
         </div>
-        <div className="col-start-3 col-span-4 grid grid-rows-9 grid-flow-col gap-x-20 grid-auto-row-min">
+        <div className="md:col-start-3 col-span-2 col-start-1 md:col-span-4 grid grid-rows-9 grid-flow-col gap-x-20 grid-auto-row-min">
           {listOfLinks.map((link) => {
             return (
               <a
@@ -43,16 +46,16 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsPharmacy }> = ({
             )
           })}
         </div>
-        <div className="col-start-7 col-span-4">
+        <div className="md:col-start-7 md:col-span-4 col-span-2 col-start-1 hidden md:block">
           <Image
             src={video.thumbnail.sourceUrl}
             width={video.thumbnail.mediaDetails.width}
             height={video.thumbnail.mediaDetails.height}
           />
         </div>
-        <div className="col-start-11 col-span-2 flex flex-col h-full pr-15 pt-35">
+        <div className="md:col-start-11 col-span-2 flex flex-col h-full pr-15 md:pt-35">
           <h5 className="mb-10">{video.headline}</h5>
-          <p className={cn(styles.videoText, 'mb-30')}>{video.copy}</p>
+          <p className={cn(styles.videoText, 'md:mb-30 mb-10')}>{video.copy}</p>
           <ArrowCTA link={video.link} color="blue" orientation="right" />
         </div>
       </div>

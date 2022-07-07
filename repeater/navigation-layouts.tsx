@@ -13,10 +13,9 @@ const renderNavigationLayouts = (layout: NavigationLayouts) => {
   switch (layout.fieldGroupName) {
     case 'AcfOptionsHeader_Header_NavigationLayouts_Dogs':
     case 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Dogs':
-      return <NavigationLayoutsDogs module={layout} />
     case 'AcfOptionsHeader_Header_NavigationLayouts_Cats':
     case 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Cats':
-      return <NavigationLayoutsCats module={layout} />
+      return <NavigationLayoutsDogs module={layout} />
     case 'AcfOptionsHeader_Header_NavigationLayouts_Vaccines':
     case 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Vaccines':
       return <NavigationLayoutsVaccines module={layout} />

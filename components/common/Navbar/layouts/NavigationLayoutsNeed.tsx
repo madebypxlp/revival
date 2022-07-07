@@ -4,13 +4,15 @@ import cn from 'classnames'
 import { NavigationLayoutsNeed } from 'framework/wordpress/interfaces/header'
 import Link from 'next/link'
 import Button from '@components/ui/Button/Button'
+import { useIsMobile } from '@commerce/utils/hooks'
 
 const Navbar: FunctionComponent<{ module: NavigationLayoutsNeed }> = ({
   module,
 }) => {
   const { quickLinks, ctaLink, chipLinks } = module
+  const isMobile = useIsMobile()
   return (
-    <div className={cn(styles.NavigationLayoutsNeed, ' ')}>
+    <div className={cn(styles.NavigationLayoutsNeed, 'pt-10 md:pt-0 ')}>
       <div className="container default-grid bg-blue py-30 md:py-70">
         <div
           className={cn(
@@ -34,7 +36,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsNeed }> = ({
                 key={clink.link.title + idx}
                 outline={!clink.highlighted}
                 color={clink.highlighted ? 'yellow' : 'white'}
-                variant="large"
+                variant={isMobile ? 'small' : 'large'}
                 type="default"
                 href={clink.link.url}
               >

@@ -26,7 +26,7 @@ export interface NavigationItem {
 }
 
 export interface NavigationMarketingBox {
-  title: string
+  title?: string
   link: Link
   alignment: 'topLeft' | 'bottomLeft'
   image: MediaItem
@@ -34,7 +34,6 @@ export interface NavigationMarketingBox {
 
 export type NavigationLayouts =
   | NavigationLayoutsDogs
-  | NavigationLayoutsCats
   | NavigationLayoutsVaccines
   | NavigationLayoutsPharmacy
   | NavigationLayoutsNeed
@@ -45,13 +44,6 @@ export interface NavigationLayoutsDogs {
   fieldGroupName:
     | 'AcfOptionsHeader_Header_NavigationLayouts_Dogs'
     | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Dogs'
-  links: { link: Link }[]
-  quickLinks: { link: Link }[]
-  marketingBox: NavigationMarketingBox
-}
-
-export interface NavigationLayoutsCats {
-  fieldGroupName:
     | 'AcfOptionsHeader_Header_NavigationLayouts_Cats'
     | 'AcfOptionsHeader_Header_navigation_NavigationLayouts_Cats'
   links: { link: Link }[]
@@ -87,6 +79,7 @@ export interface NavigationLayoutsPharmacy {
     link: Link
     thumbnail: MediaItem
   }
+  marketingBox?: NavigationMarketingBox
 }
 
 export interface NavigationLayoutsNeed {
@@ -96,6 +89,7 @@ export interface NavigationLayoutsNeed {
   chipLinks: { highlighted: boolean; link: Link }[]
   ctaLink: Link
   quickLinks: { link: Link }[]
+  marketingBox?: NavigationMarketingBox
 }
 
 export interface NavigationLayoutsBrands {
@@ -106,6 +100,7 @@ export interface NavigationLayoutsBrands {
   link: Link
   ourBrands: Brand[]
   featuredBrands: Brand[]
+  marketingBox?: NavigationMarketingBox
 }
 
 export interface NavigationLayoutsHelp {
@@ -116,4 +111,5 @@ export interface NavigationLayoutsHelp {
   copy: string
   link: Link
   actions: { icon: MediaItem; link: Link }[]
+  marketingBox?: NavigationMarketingBox
 }

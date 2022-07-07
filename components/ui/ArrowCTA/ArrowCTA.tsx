@@ -16,6 +16,7 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
     target,
     link,
     className,
+    subnav = false,
     ...rest
   } = props
 
@@ -27,8 +28,9 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
             styles[color],
             styles[orientation],
             disabled ? styles.disabled : '',
-            'typo-right-arrow-cta',
-            'rounded-focus-box'
+            !subnav && 'typo-right-arrow-cta',
+            !subnav && 'rounded-focus-box',
+            subnav && 'typo-right-arrow-cta-subnav flex justify-between w-full'
           )}
           target={link?.target || target}
         >

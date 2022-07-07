@@ -45,10 +45,10 @@
 
   &.size-small {
     input:not([type='checkbox']) {
-      @apply py-9 px-20;
+      @apply py-2 md:py-9 px-20;
     }
     .icon {
-      @apply top-25;
+      @apply md:top-25 top-17;
     }
   }
 

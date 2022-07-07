@@ -14,14 +14,14 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsVaccines }> = ({
     <div
       className={cn(
         styles.NavigationLayoutsVaccines,
-        'container overflow-hidden'
+        'container py-0 md:px-20 xl:px-85 overflow-hidden'
       )}
     >
-      <div className="default-grid py-60 relative">
+      <div className="default-grid md:py-60 py-20 relative">
         <div
           className={cn(
             styles.quicklinkContainer,
-            'flex flex-col col-span-2 pt-10'
+            'md:flex flex-col col-span-2 pt-10 hidden'
           )}
         >
           {quickLinks.map((link) => {
@@ -39,7 +39,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsVaccines }> = ({
           return (
             <div
               className={cn(
-                'col-span-2 flex flex-col',
+                'col-span-1 md:col-span-2 flex flex-col',
                 !column.title && 'pt-40'
               )}
             >
@@ -59,7 +59,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsVaccines }> = ({
             </div>
           )
         })}
-        <div className="absolute top-0 -right-85 bottom-0 overflow-hidden">
+        <div className={styles.marketingBoxContainer}>
           <NavigationMarketingBox module={marketingBox} />
         </div>
       </div>

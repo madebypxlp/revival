@@ -9,8 +9,6 @@ import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
 import learningCenterFilterQuery from './queries/post-type-learning-center/learning-center-filter'
 
-console.log('headerQuery', headerQuery)
-
 export const getAllPagesQuery = /* GraphQL */ `
   query getAllPages {
     pages {
