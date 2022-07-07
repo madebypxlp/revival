@@ -1,9 +1,9 @@
 .root {
   // add your styles here
-  @apply py-50;
+  @apply pb-50;
 
   @screen md {
-    @apply py-80;
+    @apply pb-80;
   }
 
   .row + .row {
@@ -48,7 +48,7 @@
 
   .image_right_pattern1 {
     border-radius: 50%;
-    border: 1rem solid #FFF5D1;
+    border: 1rem solid #fff5d1;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -56,7 +56,7 @@
     left: 0;
 
     @screen md {
-      border: 2rem solid #FFF5D1;
+      border: 2rem solid #fff5d1;
     }
   }
 
@@ -77,7 +77,7 @@
   .image_right_pattern2 {
     border-radius: 50%;
     overflow: hidden;
-    background-color: #FFF5D1;
+    background-color: #fff5d1;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -111,7 +111,7 @@
 
   .image_left_pattern1 {
     border-radius: 50%;
-    background: #FFF5D1;
+    background: #fff5d1;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -146,7 +146,7 @@
   .image_left_pattern2 {
     border-radius: 50%;
     overflow: hidden;
-    border: 1rem solid #FFF5D1;
+    border: 1rem solid #fff5d1;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -154,7 +154,7 @@
     left: 0;
 
     @screen md {
-      border: 2rem solid #FFF5D1;
+      border: 2rem solid #fff5d1;
     }
   }
 }
