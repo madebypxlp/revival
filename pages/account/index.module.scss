@@ -1,4 +1,19 @@
 .root {
   .headerContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3.5rem;
+    color: theme('colors.blue.default');
+
+    h5 {
+      font-weight: 700;
+    }
+
+    @screen md {
+      margin-bottom: 3rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
   }
 }
