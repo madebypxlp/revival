@@ -20,6 +20,7 @@ import { useUI } from '../context'
 import CartProduct from '../CartProduct/CartProduct'
 import Translations from 'constants/translations'
 import AccountSettings from '../AccountSettings/AccountSettings'
+import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   //test for inputfield
@@ -34,6 +35,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const [addClinicModalOpen, setAddClinicModalOpen] = useState(false)
   const [modalOpenSearch, setModalOpenSearch] = useState(false)
   const [searchModalOpen, setSearchModalOpen] = useState(false)
+  const [petVetSummaryOpen, setPetVetSummaryOpen] = useState(false)
 
   const product = {
     id: '#80122-795-431',
@@ -248,6 +250,21 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         </div>
         <div>
           <h1>Modals</h1>
+
+          <Button
+            color="yellow"
+            variant="large"
+            type="default"
+            onClick={() => setPetVetSummaryOpen(true)}
+          >
+            Pet Vet Summary
+          </Button>
+          <PetAndVetClinicSummary
+            title={'Add Custom Vet Clinic'}
+            open={petVetSummaryOpen}
+            onClose={() => setPetVetSummaryOpen(false)}
+          />
+
           <Button
             color="yellow"
             variant="large"
