@@ -39,6 +39,7 @@ const OurBrandsModule: FunctionComponent<{ module: IOurBrands }> = ({
                   layout={'responsive'}
                   width={452}
                   height={230}
+                  objectFit="contain"
                 />
               </a>
             </div>
