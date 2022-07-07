@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react'
 import c from 'classnames'
 import styles from './ProductCard.module.scss'
 import IProductCard from './ProductCard.interface'
-import ImageComponent from '../Image/Image'
 import Button from '../Button/Button'
 import Translations from 'constants/translations'
-import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
+import { formatPrice } from '@lib/utils'
 
 const ProductCard: FunctionComponent<IProductCard> = (props) => {
   const {
@@ -23,10 +22,6 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
     showFavoriteIcon,
   } = props
 
-  // todo: move to utils
-  const formatPrice = (price: number): string => {
-    return '$' + price.toFixed(2)
-  }
   return (
     <div className={styles.root}>
       <ProductCardImage

@@ -1,13 +1,16 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import c from 'classnames'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import AuthModal from '@components/ui/AuthModal/AuthModal'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
+import Translations from 'constants/translations'
+import styles from './orders.module.scss'
+import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
 
 export async function getStaticProps({
   preview,
@@ -31,11 +34,26 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
-  console.log(data)
 
+  const order = {
+    id: '000000',
+    placed: new Date(),
+    sentTo: '24 Tesla, Ste 100 Irvine CA, 92618',
+    total: 45,
+    status: 'Shipped',
+  }
+
+  const orders = [order, order, order, order]
   return (
-    <div>
-      <h6>Orders</h6>
+    <div className={styles.root}>
+      <AccountHero
+        headline={Translations.ACCOUNT.ORDERS}
+        className={'mb-190'}
+      />
+
+      <div className={'container'}>
+        <OrdersBox orders={orders} variant={'orders'} />
+      </div>
     </div>
   )
 }

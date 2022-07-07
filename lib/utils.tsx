@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 /**
  * check if the link contains the basic wp url and clean it
  * @returns string - link
@@ -30,4 +32,13 @@ export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
     ''
   )
   return { slug, page }
+}
+
+// todo: at some point there might be a date format cno
+export const formatDate = (d: Date): string => {
+  return dayjs(d).format('MMM DD, YYYY')
+}
+
+export const formatPrice = (price: number): string => {
+  return '$' + price.toFixed(2)
 }

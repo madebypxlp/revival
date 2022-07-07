@@ -10,6 +10,10 @@ import getAllPages from '@framework/common/get-all-pages'
 import fetch from './../../framework/wordpress/wp-client'
 import footerQuery from './../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from './../../framework/wordpress/queries/acfGlobalOptions/header'
+import styles from './favorites.module.scss'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
+import Translations from 'constants/translations'
+import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 
 export async function getStaticProps({
   preview,
@@ -43,33 +47,62 @@ export default function Wishlist({
   // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
 
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    isFavorite: true,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
+
+  const products = [
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+  ]
+
   return (
-    <Container>
-      <div className="mt-3 mb-20">
-        <Text variant="pageHeading">My Wishlist</Text>
-        <div className="group flex flex-col">
-          {isLoading || isEmpty ? (
-            <div className="flex-1 px-12 py-55 flex flex-col justify-center items-center ">
-              <span className="border border-dashed  flex items-center justify-center w-16 h-16  p-10 rounded-lg ">
-                <Heart className="absolute" />
-              </span>
-              <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-                Your wishlist is empty
-              </h2>
-              <p className=" px-10 text-center pt-2">
-                Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-              </p>
-            </div>
-          ) : (
-            data &&
-            // @ts-ignore Shopify - Fix this types
-            data.items?.map((item) => (
-              <WishlistCard key={item.id} product={item.product! as any} />
-            ))
-          )}
-        </div>
-      </div>
-    </Container>
+    <div className={styles.root}>
+      <AccountHero
+        headline={Translations.ACCOUNT.MY_FAVORITES}
+        className={'mb-70'}
+      />
+      <ProductCardGrid
+        variant={'favorites'}
+        products={products}
+        className={'mb-200'}
+      ></ProductCardGrid>
+    </div>
   )
 }
 
