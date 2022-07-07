@@ -2,19 +2,49 @@ import React, { FunctionComponent } from 'react'
 import styles from './ProductSlider.module.scss'
 import IProductSlider from './ProductSlider.interface'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
+import ProductCard from '@components/ui/ProductCard/ProductCard'
+import { useIsMobile } from '@commerce/utils/hooks'
 
 const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
   module,
 }) => {
   console.log(module)
 
-  const Slide = (
-    <SwiperSlide>
-      <div className="h-500 border-2">
-        <div className="h-330 border-2"></div>
-      </div>
-    </SwiperSlide>
-  )
+  const isMobile = useIsMobile()
+
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    isFavorite: false,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
+  const products = [product, product, product, product, product, product]
 
   return (
     <div
@@ -24,7 +54,7 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
         <h2 className="typo-h4 text-blue mb-35">Shop The Article</h2>
         <Swiper
           className="overflow-visible"
-          slidesPerView={1.2}
+          slidesPerView={isMobile ? 1.3 : 2.1}
           spaceBetween={20}
           navigation
           breakpoints={{
@@ -39,11 +69,13 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
             },
           }}
         >
-          {Slide}
-          {Slide}
-          {Slide}
-          {Slide}
-          {Slide}
+          {products.map((p, index) => {
+            return (
+              <SwiperSlide>
+                <ProductCard {...p} key={index} />
+              </SwiperSlide>
+            )
+          })}
         </Swiper>
       </div>
     </div>

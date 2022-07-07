@@ -9,7 +9,6 @@ const ThreeColumnCopyModule: FunctionComponent<{
 }> = ({ module }) => {
   const { subline, headline, columns, backgroundColor } = module
 
-  // (!) columns variable contains paragraphs
   return (
     <div
       className={`${styles.root} container default-grid`}
@@ -18,7 +17,7 @@ const ThreeColumnCopyModule: FunctionComponent<{
       {subline && (
         <div className={c(styles.subline, 'typo-eyebrow')}>{subline}</div>
       )}
-      {headline && <h3 className={styles.headline}>{headline}</h3>}
+      {headline && <h3 className={styles.headline}>{parse(headline)}</h3>}
       {columns &&
         columns.map((col) => {
           return <div className={styles.contentColumn}>{parse(col.copy)}</div>

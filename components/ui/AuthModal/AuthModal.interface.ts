@@ -3,4 +3,6 @@ export default interface IAuthModal {
   className?: string
   children?: React.ReactNode
   open?: boolean
+  onClose?: () => void
+  onEnter?: () => void | null
 }

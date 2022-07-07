@@ -1,5 +1,25 @@
 .root {
-  input:not([type='checkbox']) {
+  /* clears the 'X' from Internet Explorer */
+  input[type='search']::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  input[type='search']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* clears the 'X' from Chrome */
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  input:not([type='checkbox']):not([type='radio']) {
     @apply appearance-none transition duration-150 ease-in-out w-full border-2 py-14;
     &:focus {
       @apply outline-none;
@@ -20,7 +40,7 @@
 
   &.variant-default {
     @apply w-full font-bold;
-    input:not([type='checkbox']) {
+    input:not([type='checkbox']):not([type='radio']) {
       @apply bg-greyscale-6 px-20 border-greyscale-6 rounded-15 focus:border-blue font-bold;
       ::placeholder {
         @apply text-greyscale-3;
@@ -32,7 +52,7 @@
   }
 
   &.variant-blue-outline {
-    input:not([type='checkbox']) {
+    input:not([type='checkbox']):not([type='radio']) {
       @apply typo-small-paragraph border-blue px-25 rounded-30;
     }
     ::placeholder {
@@ -52,17 +72,24 @@
     }
   }
 
-  &.type-checkbox {
+  &.type-checkbox,
+  &.type-radio {
     @apply flex flex-wrap cursor-pointer items-center;
 
     input {
-      @apply appearance-none rounded-full border-blue;
+      @apply appearance-none rounded-full border-blue py-14 px-14;
       @apply w-20 h-20 mr-16 order-1;
       border-width: 1.5px;
       &:checked {
         @apply bg-blue;
         box-shadow: inset 0px 0px 0px 0.4rem #fff;
       }
+    }
+
+    &.square input {
+      border-radius: 0;
+      @apply border-greyscale-3;
+      transform: scale(0.7);
     }
 
     .label {
@@ -78,6 +105,37 @@
     @apply cursor-pointer;
     input {
       @apply sr-only;
+    }
+  }
+
+  &.type-number {
+    &.incrementer {
+      @apply w-150;
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+      ::placeholder {
+        @apply text-black text-center;
+      }
+
+      input {
+        @apply p-10 text-center;
+        border-radius: 9999px !important;
+      }
+      .button {
+        height: 3rem;
+        top: calc(50% - 25px);
+      }
+      svg {
+        path {
+          @apply stroke-black;
+        }
+      }
     }
   }
 }

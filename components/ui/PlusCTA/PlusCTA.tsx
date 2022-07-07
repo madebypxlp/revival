@@ -14,7 +14,11 @@ const PlusCTA: FunctionComponent<IPlusCTA> = (props) => {
   }
 
   return (
-    <button disabled={disabled} onClick={handleClick} className={`${styles.root} rounded-focus-box`}>
+    <button
+      disabled={disabled}
+      onClick={handleClick}
+      className={`${styles.root} rounded-focus-box`}
+    >
       <div className={styles.icon}>
         <Plus />
       </div>

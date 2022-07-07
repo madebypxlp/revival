@@ -8,6 +8,7 @@ import { Category, PostInterface } from 'framework/wordpress/interfaces/post'
 const TemplateBlogCategory = ({
   category,
   data,
+  totalPosts,
   categories,
   globals,
 }: {
@@ -17,12 +18,12 @@ const TemplateBlogCategory = ({
   data: {
     nodes: PostInterface[]
   }
+  totalPosts: number
 }) => {
   const actionCta: Link = {
     title: 'Newsletter Signup',
     url: '#newsletter',
   }
-  console.log(globals.globals.newsletterSignUp)
   return (
     <div>
       <LightHeroModule
@@ -34,6 +35,7 @@ const TemplateBlogCategory = ({
       />
       <BlogFilterModule
         data={data.nodes}
+        totalPosts={totalPosts}
         activeCategory={category}
         categories={categories}
         module={{ fieldGroupName: 'blogFilterModule', actionCta }}

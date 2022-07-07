@@ -21,7 +21,7 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
   } = props
 
   return (
-    <div className={cn(styles.root, className)} {...rest}>
+    <div className={cn(styles.root, className)}>
       <Link href={cleanHref(link?.url || href)}>
         <a
           className={cn(
@@ -33,6 +33,7 @@ const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
             subnav && 'typo-right-arrow-cta-subnav flex justify-between w-full'
           )}
           target={link?.target || target}
+          {...rest}
         >
           <div>{children || link?.title}</div>
           <div className={styles.icon}>

@@ -1,18 +1,20 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import c from 'classnames'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import { Layout } from '@components/common'
-import { Text } from '@components/ui'
-import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
-import { CartItem } from '@components/cart'
+import { Cross, Check } from '@components/icons'
 import Button from '@components/ui/Button/Button'
 import fetch from './../framework/wordpress/wp-client'
 import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
 import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 import Translations from 'constants/translations'
+import CartProduct from '@components/ui/CartProduct/CartProduct'
+import { useIsMobile } from '@commerce/utils/hooks'
+import styles from './cart.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -38,7 +40,9 @@ export default function Cart({
   const error = null
   const success = null
   const { data, isLoading, isEmpty } = useCart()
+  const isMobile = useIsMobile()
 
+  console.log(data)
   const { price: subTotal } = usePrice(
     data && {
       amount: Number(data.subtotalPrice),
@@ -52,145 +56,140 @@ export default function Cart({
     }
   )
 
+  const headline = isEmpty
+    ? Translations.CART.YOUR_CART_IS_EMPTY
+    : Translations.CART.YOUR_CART
+
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    isFavorite: false,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
+
+  const products = [
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+  ]
+
   return (
-    <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
-      <ProductCardGrid
-        products={[]}
-        headline={Translations.YOU_MAY_ALSO_LIKE}
-      />
-      <div className="lg:col-span-8">
-        {isLoading || isEmpty ? (
-          <div className="flex-1 px-12 py-55 flex flex-col justify-center items-center ">
-            <span className="border border-dashed  flex items-center justify-center w-16 h-16  p-10 rounded-lg ">
-              <Bag className="absolute" />
-            </span>
-            <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-              Your cart is empty
-            </h2>
-            <p className=" px-10 text-center pt-2">
-              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-            </p>
-          </div>
-        ) : error ? (
-          <div className="flex-1 px-4 flex flex-col justify-center items-center">
-            <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
-              <Cross width={24} height={24} />
-            </span>
-            <h2 className="pt-6 text-xl font-light text-center">
-              We couldn’t process the purchase. Please check your card
-              information and try again.
-            </h2>
-          </div>
-        ) : success ? (
-          <div className="flex-1 px-4 flex flex-col justify-center items-center">
-            <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
-              <Check />
-            </span>
-            <h2 className="pt-6 text-xl font-light text-center">
-              Thank you for your order.
-            </h2>
-          </div>
-        ) : (
-          <div className="px-4 sm:px-5 flex-1">
-            <Text variant="pageHeading">My Cart</Text>
-            <Text variant="sectionHeading">Review your Order</Text>
-            <ul className="py-5 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-2 border-b ">
-              {data!.lineItems.map((item) => (
-                <CartItem
-                  key={item.id}
-                  item={item}
-                  currencyCode={data?.currency.code!}
-                />
-              ))}
-            </ul>
-            <div className="my-6">
-              <Text>
-                Before you leave, take a look at these items. We picked them
-                just for you
-              </Text>
-              <div className="flex py-5 space-x-6">
-                {[1, 2, 3, 4, 5, 6].map((x) => (
-                  <div
-                    key={x}
-                    className="border  w-full h-24  bg-opacity-50 transform cursor-pointer hover:scale-110 duration-75"
-                  />
+    <div className={styles.root}>
+      <div className={'container default-grid'}>
+        <div
+          className={
+            'col-start-1 col-span-2 md:col-start-1 md:col-span-8 text-blue mb-65 md:mb-85'
+          }
+        >
+          <h2>{headline}</h2>
+        </div>
+        <div className="col-span-2 md:col-span-8">
+          {error ? (
+            <div className="flex-1 px-4 flex flex-col justify-center items-center">
+              <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
+                <Cross width={24} height={24} />
+              </span>
+              <h2 className="pt-6 text-xl font-light text-center">
+                We couldn’t process the purchase. Please check your card
+                information and try again.
+              </h2>
+            </div>
+          ) : success ? (
+            <div className="flex-1 px-4 flex flex-col justify-center items-center">
+              <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
+                <Check />
+              </span>
+              <h2 className="pt-6 text-xl font-light text-center">
+                Thank you for your order.
+              </h2>
+            </div>
+          ) : (
+            <div>
+              {!isEmpty &&
+                products.slice(0, 2).map((item) => (
+                  <div className={styles.cartProductContainer}>
+                    <CartProduct
+                      key={item.id}
+                      product={item}
+                      variant={'cart'}
+                      quantity={2}
+                      showCartControls
+                    />
+                  </div>
                 ))}
-              </div>
             </div>
-          </div>
-        )}
-      </div>
-      <div className="lg:col-span-4">
-        <div className="flex-shrink-0 px-4 py-55 sm:px-5">
-          {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED && (
-            <>
-              {/* Shipping Address */}
-              {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-15 border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
-                <div className="mr-5">
-                  <MapPin />
-                </div>
-                <div className=" text-center font-medium">
-                  <span className="uppercase">+ Add Shipping Address</span>
-                  {/* <span>
-                    1046 Kearny Street.<br/>
-                    San Franssisco, California
-                  </span> */}
-                </div>
-              </div>
-              {/* Payment Method */}
-              {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
-              <div className="rounded-15 border  px-5 py-5 mb-4 text-center flex items-center justify-center cursor-pointer hover:">
-                <div className="mr-5">
-                  <CreditCard />
-                </div>
-                <div className=" text-center font-medium">
-                  <span className="uppercase">+ Add Payment Method</span>
-                  {/* <span>VISA #### #### #### 2345</span> */}
-                </div>
-              </div>
-            </>
           )}
-          <div className="border-t ">
-            <ul className="py-5">
-              <li className="flex justify-between py-1">
-                <span>Subtotal</span>
-                <span>{subTotal}</span>
-              </li>
-              <li className="flex justify-between py-1">
-                <span>Taxes</span>
-                <span>Calculated at checkout</span>
-              </li>
-              <li className="flex justify-between py-1">
-                <span>Estimated Shipping</span>
-                <span className="font-bold tracking-wide">FREE</span>
-              </li>
-            </ul>
-            <div className="flex justify-between border-t  py-5 font-bold mb-10">
-              <span>Total</span>
-              <span>{total}</span>
+        </div>
+        <div className={c(styles.informationBox, 'col-span-2 md:col-span-4')}>
+          {!isMobile && (
+            <div>
+              <div
+                className={'text-center typo-large-paragraph mb-30'}
+              >{`You are $XX away from FREE economy Ground Shipping`}</div>
+              <div
+                className={'border-b-[1rem] border-white rounded-full mb-30'}
+              ></div>
+              <div className={styles.learnMoreText}>
+                {Translations.LEARN_MORE}
+              </div>
+              <div className={'border-b-[0.1rem] border-[#C4C4C4] mb-40'}></div>
             </div>
+          )}
+
+          <div className={styles.subtotalContainer}>
+            <h5>{`${Translations.CART.SUBTOTAL}:`}</h5>
+            <span>{subTotal}</span>
           </div>
-          <div className="flex flex-row justify-end">
-            <div className="w-full lg:w-72">
-              {isEmpty ? (
-                <Button color="yellow" variant="large" type="default" href="/">
-                  Continue Shopping
-                </Button>
-              ) : (
-                <Button
-                  color="yellow"
-                  variant="large"
-                  type="default"
-                  href="/checkout"
-                >
-                  Proceed to Checkout
-                </Button>
-              )}
-            </div>
+          <div>
+            <Button
+              color="yellow"
+              variant="large"
+              type="default"
+              href={isEmpty ? '/' : '/checkout'}
+              className={'w-full text-center'}
+            >
+              {isEmpty
+                ? Translations.CART.SHOP_NOW
+                : Translations.CART.PROCEED_TO_CHECKOUT}
+            </Button>
           </div>
         </div>
       </div>
+      <ProductCardGrid
+        products={products}
+        headline={Translations.YOU_MAY_ALSO_LIKE}
+      />
     </div>
   )
 }

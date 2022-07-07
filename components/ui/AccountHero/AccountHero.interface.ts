@@ -1,3 +1,4 @@
 export default interface IAccountHero {
-  headline?: string
+  headline: string
+  className?: string
 }

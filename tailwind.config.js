@@ -29,7 +29,7 @@ module.exports = {
     spacing: {
       ...generateSpacings(1, 20),
       ...generateSpacings(),
-      ...generateSpacings(10, 500),
+      ...generateSpacings(10, 700),
     },
     fontSize: {
       ...generateSpacings(1, 50),
