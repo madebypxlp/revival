@@ -11,8 +11,12 @@
 
   .categoryImageContainer {
     margin-bottom: 1rem;
-    width: 15.7rem;
     aspect-ratio: 1;
     position: relative;
+    width: 12.8rem;
+
+    @screen md {
+      width: 15.7rem;
+    }
   }
 }
