@@ -4,6 +4,7 @@ import React, {
   FormEvent,
   FunctionComponent,
   MouseEventHandler,
+  useEffect,
   useState,
 } from 'react'
 import {
@@ -19,6 +20,7 @@ import Translations from 'constants/translations'
 import Button from '../Button/Button'
 import Plus from '@components/icons/Plus'
 import Minus from '@components/icons/MinusBold'
+import parse from 'html-react-parser'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -44,6 +46,10 @@ const Input: FunctionComponent<IInput> = (props) => {
   const [inputError, setInputError] = useState<InputError>(false)
   const [inputFiles, setInputFiles] = useState<FileList>()
   const [inputNumber, setInputNumber] = useState<number>(0)
+
+  useEffect(() => {
+    if (typeof onChange === 'function') onChange(String(inputNumber), false)
+  }, [inputNumber])
 
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
     const { required, value, checked, files } = e.target as HTMLInputElement
@@ -120,7 +126,7 @@ const Input: FunctionComponent<IInput> = (props) => {
       invalid_exp_date: Translations.FORM.INVALID_EXP_DATE,
       invalid_card_number: Translations.FORM.INVALID_CARD_NUMBER,
       required: Translations.FORM.REQUIRED,
-      false: '',
+      false: '&nbsp;',
     }
     return errorMessages[String(inputError) as keyof typeof errorMessages]
   }
@@ -191,7 +197,7 @@ const Input: FunctionComponent<IInput> = (props) => {
 
       {status}
 
-      <span className={styles.error}>{getErrorMessage()}</span>
+      <span className={styles.error}>{parse(getErrorMessage())}</span>
     </label>
   )
 }
