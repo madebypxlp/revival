@@ -79,30 +79,12 @@ const Layout: FC<any> = ({
       )}
       <div className={cn(s.root)}>
         {headerObj?.alertBanner && <AlertBar {...headerObj.alertBanner} />}
-        {/* <Navbar />  */}
         <main className="fit">{children}</main>
         {footerObj && <Footer data={footerObj} />}
 
         <Sidebar open={displaySidebar} onClose={closeSidebar}>
           <CartSidebarView />
         </Sidebar>
-        {/*
-        <FeatureBar
-          title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
-          hide={acceptedCookies}
-          action={
-            <Button
-              color="white"
-              type="default"
-              variant="small"
-              className="mx-5"
-              onClick={() => onAcceptCookies()}
-            >
-              Accept cookies
-            </Button>
-          }
-        />
-        */}
       </div>
     </CommerceProvider>
   )

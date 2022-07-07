@@ -6,10 +6,13 @@ import WYSIWYGFragment from '@components/modules/WYSIWYG/WYSIWYG.graphql'
 import MoreArticlesFragment from '@components/modules/MoreArticles/MoreArticles.graphql'
 import NewsletterSignUpFragment from '@components/modules/NewsletterSignUp/NewsletterSignUp.graphql'
 import ProductSliderWithBigImageFragment from '@components/modules/ProductSliderWithBigImage/ProductSliderWithBigImage.graphql'
+import ProductSliderFragment from '@components/modules/ProductSlider/ProductSlider.graphql'
+import Link from '@components/fragments/Link'
 
 const TEMPLATE = 'Learning_center_Detailpagelearningcenter_PageBuilder'
 export default `
   ${Image}
+  ${Link}
   ${WYSIWYGFragment(TEMPLATE)}
   ${InlineVideoFragment(TEMPLATE, true)}
   ${AuthorRowFragment(TEMPLATE)}
@@ -17,6 +20,7 @@ export default `
   ${MoreArticlesFragment(TEMPLATE)}
   ${NewsletterSignUpFragment(TEMPLATE, true)}
   ${ProductSliderWithBigImageFragment(TEMPLATE)}
+  ${ProductSliderFragment(TEMPLATE, true)}
   query learningCenter($slug: String) {
     additionalData: allLearningCenter(last: 5) {
       nodes {
@@ -62,6 +66,7 @@ export default `
           ...MoreArticles_${TEMPLATE}
           ...NewsletterSignUp_${TEMPLATE}
           ...ProductSliderWithBigImage_${TEMPLATE}
+          ...ProductSlider_${TEMPLATE}
         }
         authorBioCopy
         authorName

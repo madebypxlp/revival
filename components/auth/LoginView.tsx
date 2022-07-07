@@ -19,7 +19,6 @@ const LoginView: FC<Props> = () => {
   const [disabled, setDisabled] = useState(false)
   const { setModalView, closeModal } = useUI()
 
-  /*
   const login = useLogin()
 
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
@@ -40,11 +39,12 @@ const LoginView: FC<Props> = () => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
+      console.log(errors)
       //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
- */
+
   const handleValidation = useCallback(() => {
     // Test for Alphanumeric password
     const validPassword = /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)
@@ -61,8 +61,7 @@ const LoginView: FC<Props> = () => {
 
   return (
     <div className={styles.root}>
-      {/* onSubmit={handleLogin} */}
-      <form className={styles.form}>
+      <form onSubmit={handleLogin} className={styles.form}>
         <Input
           placeholder="Email"
           type="email"

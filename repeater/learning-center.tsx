@@ -3,8 +3,10 @@ import InlineImageModule from '@components/modules/InlineImage/InlineImage'
 import InlineVideoModule from '@components/modules/InlineVideo/InlineVideo'
 import MoreArticlesModule from '@components/modules/MoreArticles/MoreArticles'
 import NewsletterSignUpModule from '@components/modules/NewsletterSignUp/NewsletterSignUp'
+import ProductSliderModule from '@components/modules/ProductSlider/ProductSlider'
 import ProductSliderWithBigImageModule from '@components/modules/ProductSliderWithBigImage/ProductSliderWithBigImage'
 import WYSIWYGModule from '@components/modules/WYSIWYG/WYSIWYG'
+import { ProductSlider } from '@components/product'
 import { LearningCenterDetailPage } from 'framework/wordpress/interfaces/learning-center'
 
 const renderLearningCenterDetail = (
@@ -37,6 +39,13 @@ const renderLearningCenterDetail = (
         <InlineImageModule
           key="InlineImageModule"
           module={layout.inlineImage}
+        />
+      )
+    case 'Learning_center_Detailpagelearningcenter_PageBuilder_ProductSlider':
+      return (
+        <ProductSliderModule
+          key="ProductSlider"
+          module={layout.productSlider}
         />
       )
     case 'Learning_center_Detailpagelearningcenter_PageBuilder_MoreArticles':
