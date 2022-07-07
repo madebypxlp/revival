@@ -1,0 +1,30 @@
+.root {
+  .addNewPetContainer {
+    margin-bottom: 4rem;
+  }
+
+  .petCard {
+    background-color: theme('colors.greyscale.6');
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 7rem;
+
+    @screen lg {
+      padding: 11rem;
+    }
+    h3 {
+      color: theme('colors.blue.default');
+    }
+  }
+
+  .petContainer {
+  }
+
+  .removePetLinkContainer {
+    text-align: right;
+  }
+}

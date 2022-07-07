@@ -3,11 +3,13 @@ import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import AuthModal from '@components/ui/AuthModal/AuthModal'
+import styles from './buy-again.module.scss'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
+import Translations from 'constants/translations'
+import CartProduct from '@components/ui/CartProduct/CartProduct'
 
 export async function getStaticProps({
   preview,
@@ -33,9 +35,56 @@ export default function Profile({
   const { data } = useCustomer()
   console.log(data)
 
+  const product = {
+    id: '#80122-795-431',
+    price: 25,
+    image: {
+      desktopImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+      mobileImage: {
+        sourceUrl:
+          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
+        altText: '',
+        mediaDetails: {
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    name: "Doc Roy's Derma Coat Plus",
+    oldPrice: 35,
+    isNew: true,
+    isPrescription: true,
+    isOurBrand: true,
+    isFavorite: false,
+    label: 'STAFF PICK',
+    headline: 'Get her healthy first',
+  }
+  const products = [product, product, product, product]
   return (
-    <div>
-      <h6>Prescriptions</h6>
+    <div className={styles.root}>
+      <AccountHero
+        headline={Translations.ACCOUNT.BUY_AGAIN}
+        className={'mb-190'}
+      />
+      <div className={'container default-grid mb-150'}>
+        {products.map((p) => (
+          <CartProduct
+            className={'pb-40 light-border-b mb-40'}
+            product={product}
+            quantity={3}
+            variant={'account'}
+            showAddToCart
+          />
+        ))}
+      </div>
     </div>
   )
 }

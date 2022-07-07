@@ -464,12 +464,24 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant={'checkout'}
             shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
           />
-          {/* 9) Account (not finished, do not use yet) */}
+          {/* 9) Account (order detail) */}
           <CartProduct
             className={'my-20'}
             product={product}
             quantity={3}
             variant={'account'}
+            showBuyItAgain
+          />
+          {/* 10) Account (order detail RX) */}
+          <CartProduct
+            className={'my-20'}
+            product={product}
+            quantity={3}
+            variant={'account'}
+            showPrescriptionIcon
+            showPrescriptionLabel
+            showPrescriptionExtraInfo
+            showBuyItAgain
           />
         </div>
       </div>

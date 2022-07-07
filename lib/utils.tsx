@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { toInteger } from 'lodash'
 
 /**
@@ -32,6 +33,15 @@ export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
     ''
   )
   return { slug, page }
+}
+
+// todo: at some point there might be a date format cno
+export const formatDate = (d: Date): string => {
+  return dayjs(d).format('MMM DD, YYYY')
+}
+
+export const formatPrice = (price: number): string => {
+  return '$' + price.toFixed(2)
 }
 
 export const isExpDateValid = (date: string) => {
