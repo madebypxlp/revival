@@ -11,7 +11,7 @@ const ShopByCategoryModule: FunctionComponent<{ module: IShopByCategory }> = ({
 }) => {
   const { headline, categories, fieldGroupName } = module
   const isMobile = useIsMobile()
-
+  //height={isMobile ? 128 : 157}
   return (
     <div className={`${styles.root} container mb-20 md:mb-70`}>
       <div className="default-grid">
@@ -23,13 +23,13 @@ const ShopByCategoryModule: FunctionComponent<{ module: IShopByCategory }> = ({
             <div className="col-span-1 md:col-span-2">
               <Link href={category.link.url}>
                 <a className="flex flex-col items-center justify-center">
-                  <div className="mb-10">
+                  <div className={styles.categoryImageContainer}>
                     {category?.image?.sourceUrl && (
                       <Image
                         src={category.image.sourceUrl}
                         alt={category.image.altText}
-                        width={isMobile ? 128 : 157}
-                        height={isMobile ? 128 : 157}
+                        layout={'fill'}
+                        objectFit={'cover'}
                       />
                     )}
                   </div>

@@ -8,4 +8,11 @@
   a:hover > span {
     @apply decoration-black;
   }
+
+  .categoryImageContainer {
+    margin-bottom: 1rem;
+    width: 15.7rem;
+    aspect-ratio: 1;
+    position: relative;
+  }
 }
