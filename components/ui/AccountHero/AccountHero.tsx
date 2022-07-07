@@ -21,27 +21,29 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
 
   return (
     <div className={c(styles.root, 'h-auto mb-40 md:mb-80', className)}>
-      <div className=" flex items-center justify-center md:justify-start md:items-start md:flex-col bg-cream">
-        <div className="pl-20 md:pl-80 py-45 md:py-85  md:w-full">
-          <h1 className="typo-accountheadline mb-20 md:mb-0 text-blue max-w-[336px] md:max-w-full ">
-            {headline}
-          </h1>
-          <div className="flex lg:hidden">
-            <Button
-              className="mr-20"
-              variant="large"
-              type="default"
-              color="yellow"
-            >
-              Logout
-            </Button>
-            <ArrowCTA color="blue" orientation="right">
-              <p className="typo-h6">Account Settings</p>
-            </ArrowCTA>
+      <div className={'bg-cream'}>
+        <div className="container flex items-center justify-center md:justify-start md:items-start md:flex-col">
+          <div className="py-45 md:py-80 md:w-full">
+            <h1 className="typo-accountheadline mb-20 md:mb-0 text-blue max-w-[336px] md:max-w-full ">
+              {headline}
+            </h1>
+            <div className="flex lg:hidden">
+              <Button
+                className="mr-20"
+                variant="large"
+                type="default"
+                color="yellow"
+              >
+                Logout
+              </Button>
+              <ArrowCTA color="blue" orientation="right">
+                <p className="typo-h6">Account Settings</p>
+              </ArrowCTA>
+            </div>
           </div>
         </div>
       </div>
-      <div className="hidden lg:pl-80 lg:flex items-baseline lg:mt-25 lg:w-full">
+      <div className="container hidden lg:flex items-baseline lg:mt-25 lg:w-full">
         <div className="nav-wrapper">
           {ButtonList.map((el) => {
             return (
@@ -56,7 +58,7 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
           variant="large"
           type="default"
           color="yellow"
-          className="ml-auto mr-50"
+          className="ml-auto"
         >
           Logout
         </Button>
