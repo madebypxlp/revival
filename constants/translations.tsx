@@ -61,6 +61,9 @@ const Translations = {
     SHIPPING_ADDRESS: 'Shipping Address',
     PAYMENT_METHOD: 'Payment Method',
     GIFT_CARD: 'Gift Card',
+    PASSWORD: 'Password',
+    PHONE: 'Phone',
+    EXPIRE: 'Expire',
   },
   PET_AND_VET: {
     PET: 'Pet',

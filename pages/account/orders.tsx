@@ -52,11 +52,11 @@ export default function Profile({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.ORDERS}
-        className={'mb-190'}
+        className={'mb-70 md:mb-190'}
       />
 
       <div className={'container'}>
-        <OrdersBox orders={orders} variant={'orders'} />
+        <OrdersBox orders={orders} variant={'orders'} className={'mb-300'} />
       </div>
     </div>
   )
