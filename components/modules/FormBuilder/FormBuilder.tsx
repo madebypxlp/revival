@@ -16,7 +16,7 @@ import { InputError } from '@components/ui/Input/Input.interface'
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const FormBuilderModule: FunctionComponent<IFormBuilder> = ({ module }) => {
-  // strip fieldGroupName prefix vom fields
+  // strip fieldGroupName prefix from fields
   // in order to make type deductible from it
   module = module.map((el) => {
     el.fieldGroupName = el.fieldGroupName

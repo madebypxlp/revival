@@ -13,7 +13,6 @@ import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
 import Button from '@components/ui/Button/Button'
 import { useIsMobile } from '@commerce/utils/hooks'
-import AlertBar from '@components/ui/AlertBar/AlertBar'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
 
@@ -78,7 +77,7 @@ const Layout: FC<any> = ({
         </div>
       )}
       <div className={cn(s.root)}>
-        {headerObj?.alertBanner && <AlertBar {...headerObj.alertBanner} />}
+        {headerObj && <Navbar data={headerObj} />}
         <main className="fit">{children}</main>
         {footerObj && <Footer data={footerObj} />}
 

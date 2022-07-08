@@ -135,8 +135,9 @@
       color: theme('colors.white');
       background: transparent;
       &:hover {
-        background: #fff;
+        background: theme('colors.yellow.default');
         color: theme('colors.blue.default');
+        border: 1px solid theme('colors.yellow.default');
       }
     }
     &:active {

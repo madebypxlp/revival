@@ -1,20 +1,117 @@
 .root {
   @apply sticky top-0  z-40 transition-all duration-150;
-}
 
-.link {
-  @apply inline-flex items-center  leading-6 font-medium transition ease-in-out duration-75 cursor-pointer ;
-}
+  .subNav {
+    @apply bg-white md:w-screen;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ease;
 
-.link:focus {
-  @apply outline-none ;
-}
+    @screen md {
+      border-top: 0.5px solid #b3b3b3;
+      @apply absolute right-0 top-full;
+      @apply opacity-0;
+      overflow: visible;
+      max-height: auto;
+      transition: none;
+      left: -300vw;
+    }
+  }
 
-.logo {
-  @apply cursor-pointer rounded-full border transform duration-100 ease-in-out;
+  .openSubNav {
+    max-height: 200vh;
+    @screen md {
+      @apply opacity-100;
+      left: 0;
+    }
+  }
 
-  &:hover {
-    @apply shadow-md;
-    transform: scale(1.05);
+  .quicklink {
+    @apply typo-nav-quicklink;
+  }
+  .quicklinkContainer > *:last-child {
+    margin-top: 50px;
+    color: #00338d;
+  }
+  .pharmacyLink {
+    @apply typo-pharmacy-nav-link;
+  }
+
+  .link {
+    //column-span: 2;
+    @apply typo-nav-link;
+  }
+
+  .marketingBoxContainer {
+    @apply absolute top-0 -right-85 bottom-0 overflow-hidden hidden md:block;
+    // 2 columns + 85px to the right - 20px gap to the left
+    width: calc((100% / 12 * 2) + 8.5rem - 2rem);
+  }
+
+  .marketingBoxHeading {
+    @apply typo-h6;
+  }
+  .marketingBoxLink,
+  .videoText {
+    @apply typo-small-paragraph;
+  }
+
+  .LinkContainer {
+    a:nth-child(2) {
+      @apply mb-40;
+    }
+  }
+
+  .helpInfoText {
+    @apply typo-help-contact-info;
+    line-height: 1.1;
+  }
+  .helpInfoUnderlined {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+  .helpCopy,
+  .accountCopy {
+    @apply typo-large-paragraph;
+  }
+  .helpHeadline,
+  .accountHeadline {
+    @apply typo-h4 text-blue-default;
+  }
+  .blueBackground {
+    background: url('../../../assets/svg/helpBg.svg') no-repeat center bottom;
+    background-size: cover;
+    background-position: 100% 5%;
+    z-index: 10;
+  }
+  .navButton {
+    @apply typo-right-arrow-cta text-blue-default;
+  }
+
+  .search {
+    > span:last-child {
+      display: none;
+    }
+  }
+  .cartItems {
+    @apply typo-cart-items;
+  }
+
+  .specialsLink {
+    @apply typo-right-arrow-cta-subnav text-red cursor-pointer;
+  }
+  .specialsLink:hover {
+    .icon {
+      transform: translateX(8px);
+    }
+  }
+  .icon {
+    transition: 500ms ease;
+    margin-left: 1rem;
+    svg {
+      width: auto;
+      height: 1rem;
+      transform: rotate(90deg);
+    }
   }
 }

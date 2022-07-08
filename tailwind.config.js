@@ -75,6 +75,9 @@ module.exports = {
       green: '#2E9775',
     },
     extend: {
+      gridTemplateRows: {
+        9: 'repeat(9, minmax(0, 1fr))',
+      },
       aspectRatio: {
         '3120/1238': '3120 / 1238',
         '3120/700': '3120 / 700',

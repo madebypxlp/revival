@@ -11,4 +11,5 @@ export default interface IArrowCTA {
   link?: Link
   onClick?: MouseEventHandler<HTMLAnchorElement>
   className?: string
+  subnav?: boolean
 }
