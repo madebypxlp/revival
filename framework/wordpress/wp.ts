@@ -130,12 +130,15 @@ export const getWpStaticProps = async (
 export const getWpData = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<any>> => {
-  const res = await fetch({
-    query: globalsQuery,
-  })
+  const globals = await fetch({ query: globalsQuery })
+  const header = await fetch({ query: headerQuery })
+  const footer = await fetch({ query: footerQuery })
+
   return {
     props: {
-      ...res,
+      header: { ...header?.acfOptionsHeader?.header },
+      footer: footer?.acfOptionsFooter?.footer,
+      globals: globals,
     },
     revalidate: undefined,
   }
