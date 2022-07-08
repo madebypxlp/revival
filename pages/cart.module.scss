@@ -11,21 +11,24 @@
   }
 
   .learnMoreText {
-    @apply text-center underline font-bold typo-small-paragraph mb-40;
+    @apply text-center underline font-bold mb-40;
+    // typo-small-paragraph;
   }
 
   .subtotalContainer {
-    @apply typo-h5 flex flex-row justify-between items-center mb-35;
+    @apply flex flex-row justify-between items-center mb-35;
+    // typo-h5
 
     h5 {
       @apply font-bold;
     }
     span {
-      @apply font-bold md:typo-large-paragraph;
+      @apply font-bold;
+      // md:typo-large-paragraph
     }
   }
 
   .cartProductContainer {
-    @apply pb-40 mb-40 light-border-b;
+    @apply pb-40 mb-40 border-greyscale-4 border-b-[0.15rem];
   }
 }

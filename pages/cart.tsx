@@ -160,16 +160,16 @@ export default function Cart({
               <div
                 className={'border-b-[1rem] border-white rounded-full mb-30'}
               ></div>
-              <div className={styles.learnMoreText}>
+              <div className={c(styles.learnMoreText, 'typo-small-paragraph')}>
                 {Translations.LEARN_MORE}
               </div>
               <div className={'border-b-[0.1rem] border-[#C4C4C4] mb-40'}></div>
             </div>
           )}
 
-          <div className={styles.subtotalContainer}>
-            <h5>{`${Translations.CART.SUBTOTAL}:`}</h5>
-            <span>{subTotal}</span>
+          <div className={c(styles.subtotalContainer, 'typo-h5')}>
+            <h5 className="font-bold">{`${Translations.CART.SUBTOTAL}:`}</h5>
+            <span className="md:typo-large-paragraph">{subTotal}</span>
           </div>
           <div>
             <Button
