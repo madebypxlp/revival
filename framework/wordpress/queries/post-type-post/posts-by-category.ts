@@ -14,7 +14,7 @@ export default `
       where: {
         categoryId: $categoryId,
         orderby: {field: DATE, order: DESC}
-        offsetPagination: { size: $size,offset: $offset }
+        offsetPagination: { size: $size, offset: $offset }
       },
     ) {
       nodes {
@@ -22,21 +22,20 @@ export default `
         slug
         uri
         title
-        title
         featuredImage {
           node {
             ...Image
           }
         }
-        categories {
+        lcCategories {
           nodes {
             id
             name
           }
         }
-        tags {
+        contentTypes {
           nodes {
-            id
+            slug
             name
           }
         }

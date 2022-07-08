@@ -7,7 +7,10 @@ import fetch from './wp-client'
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
 import globalsQuery from './queries/acfGlobalOptions/globals'
-import learningCenterQuery from './queries/post-type-learning-center/learning-center-filter'
+import learningCenterByCategory, {
+  getLcCategoryIdBySlug,
+} from './queries/post-type-learning-center/learning-center-by-category'
+import { getBlogSlugAndPage } from '@lib/utils'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -19,24 +22,42 @@ export const getAllPostCategories = `
   }
 `
 
+const postsPerPage = 6
+
 export const getLearningCenterCategoryWpServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<GetStaticPropsResult<any>> => {
-  /*
+  const slugAndPage = getBlogSlugAndPage(ctx.params?.slug)
+  const page: number = slugAndPage.page || 1
+  const size = postsPerPage
+  const offset = (page - 1) * size
+
   const category = await fetch({
-    query: getCategoryIdBySlug,
+    query: getLcCategoryIdBySlug,
     variables: {
-      slug: ctx.params?.slug as string,
+      slug: slugAndPage.slug,
     },
   })
-  const categoryId = category?.categories?.nodes[0]?.categoryId
-  */
+
+  const categorySlugs = [
+    slugAndPage.slug,
+    ...(Array.isArray(ctx.query?.categories)
+      ? ctx.query?.categories
+      : [ctx.query?.categories]),
+  ].filter((v) => !!v) as string[]
+
+  const contentTypeSlugs = (
+    Array.isArray(ctx.query?.types) ? ctx.query?.types : [ctx.query?.types]
+  ).filter((v) => !!v) as string[]
+
   let res = undefined
-  if (true) {
-    res = await fetch({
-      query: learningCenterQuery,
-    })
-  }
+  res = await fetch({
+    query: learningCenterByCategory(categorySlugs, contentTypeSlugs),
+    variables: {
+      size,
+      offset,
+    },
+  })
   const globalsData = await fetch({
     query: globalsQuery,
   })
@@ -56,9 +77,10 @@ export const getLearningCenterCategoryWpServerSideProps = async (
       globals: globalsData?.globals,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
+      activeCategory: category?.categories?.nodes[0],
       categories: res?.categories?.nodes,
       contentTypes: res?.contentTypes?.nodes,
     },
-    revalidate: undefined,
+    // revalidate: undefined,
   }
 }

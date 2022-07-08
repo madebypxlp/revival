@@ -19,7 +19,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
 
   const getCurrentChildren = () => {
     if (childrenArray.length <= perPage) return childrenArray
-    childrenArray.slice((page - 1) * perPage, page * perPage)
+    return childrenArray.slice((page - 1) * perPage, page * perPage)
   }
 
   const getTotalPages = () =>
@@ -41,37 +41,40 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
       {getCurrentChildren()}
 
       {getTotalPages() > 1 && (
-        <div className={styles.pagination}>
-          <button
-            className={cn(
-              styles.button,
-              page === 1 && 'opacity-0 pointer-events-none'
-            )}
-            onClick={() => setPage((prev) => prev - 1)}
-          >
-            <ChevronRight className="rotate-180" />
-          </button>
-
-          {getRange().map((p) => (
+        <>
+          <span className={styles.paginationSpacer}></span>
+          <div className={styles.pagination}>
             <button
-              data-p={p}
-              onClick={() => setPage(p)}
-              className={cn(styles.button, page === p && styles.buttonActive)}
+              className={cn(
+                styles.button,
+                page === 1 && 'opacity-0 pointer-events-none'
+              )}
+              onClick={() => setPage((prev) => prev - 1)}
             >
-              {p}
+              <ChevronRight className="rotate-180" />
             </button>
-          ))}
 
-          <button
-            className={cn(
-              styles.button,
-              page === getTotalPages() && 'opacity-0 pointer-events-none'
-            )}
-            onClick={() => setPage((prev) => prev + 1)}
-          >
-            <ChevronRight />
-          </button>
-        </div>
+            {getRange().map((p) => (
+              <button
+                data-p={p}
+                onClick={() => setPage(p)}
+                className={cn(styles.button, page === p && styles.buttonActive)}
+              >
+                {p}
+              </button>
+            ))}
+
+            <button
+              className={cn(
+                styles.button,
+                page === getTotalPages() && 'opacity-0 pointer-events-none'
+              )}
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              <ChevronRight />
+            </button>
+          </div>
+        </>
       )}
     </>
   )

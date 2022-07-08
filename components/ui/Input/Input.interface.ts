@@ -25,6 +25,7 @@ type IInput = {
   multiple?: boolean
   type: string
   square?: boolean
+  disabled?: boolean
   onChange?: (arg0: string, arg1: InputError) => any
 } & (
   | {

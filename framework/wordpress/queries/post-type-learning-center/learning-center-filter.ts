@@ -2,12 +2,16 @@ export default `
 query LearningCenterFilter {
   categories: lcCategories(last: 100) {
     nodes {
+      id
+      slug
       name
       uri
     }
   }
   contentTypes(last: 100) {
     nodes {
+      id
+      slug
       name
       uri
     }
