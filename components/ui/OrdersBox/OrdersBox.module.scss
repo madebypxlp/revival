@@ -1,23 +1,41 @@
 .root {
   border: 0.15rem solid theme('colors.greyscale.4');
   border-radius: 1.5rem;
-  padding: 3rem 6.5rem;
-  margin-bottom: 30rem;
+  padding: 4.2rem 2.1rem;
+
+  @screen md {
+    padding: 3rem 6.5rem;
+  }
 
   .orderContainer:not(:last-child) {
     @apply light-border-b;
-    padding-bottom: 3rem;
-    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    margin-bottom: 5.5rem;
+
+    @screen md {
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+    }
   }
 
   .title {
     font-size: 1.8rem;
     font-family: 3.8rem;
     font-weight: 700;
+
+    margin-bottom: 1rem;
+    @screen md {
+      margin-bottom: 0;
+    }
   }
 
   .regular {
     @apply typo-large-paragraph;
+
+    margin-bottom: 2rem;
+    @screen md {
+      margin-bottom: 0;
+    }
   }
 
   .orderId {
@@ -29,6 +47,7 @@
   }
 
   .sentTo {
+    @apply col-span-2;
     @apply md:col-span-3;
   }
 
@@ -38,5 +57,63 @@
 
   .status {
     @apply md:col-span-2;
+
+    @screen md {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  svg {
+    cursor: pointer;
+    transform: translateY(-1rem) rotate(90deg) scale(0.5);
+  }
+
+  .ctaArrow {
+    @apply md:col-span-2 md:row-span-2;
+  }
+
+  &.variant--orders {
+    .status {
+    }
+
+    .placed {
+      .title {
+        display: flex;
+        justify-content: space-between;
+
+        svg {
+          transform: rotate(90deg) scale(0.5);
+        }
+      }
+    }
+  }
+
+  &.variant--account {
+    .placed {
+      .regular {
+        display: none;
+      }
+
+      .title {
+        display: flex;
+        justify-content: flex-end;
+
+        svg {
+          transform: rotate(90deg) scale(0.5);
+        }
+        span {
+          display: none;
+        }
+      }
+
+      @screen md {
+        display: none;
+      }
+    }
+
+    .orderContainer {
+      @apply md:grid-cols-8;
+    }
   }
 }

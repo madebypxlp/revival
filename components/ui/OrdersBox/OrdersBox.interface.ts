@@ -7,6 +7,7 @@ export interface Order {
 }
 
 export default interface IOrdersBox {
-  variant: string
+  variant: 'orders' | 'account'
+  className?: string
   orders: Order[]
 }

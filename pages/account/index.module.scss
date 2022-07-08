@@ -1,0 +1,94 @@
+.root {
+  .headerContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3.5rem;
+    color: theme('colors.blue.default');
+
+    h5 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+
+      @screen md {
+        margin-bottom: 0rem;
+      }
+    }
+
+    a {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+    }
+
+    @screen md {
+      margin-bottom: 3rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+  }
+
+  .myPetHealthLink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: theme('colors.greyscale.6');
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 2.1rem;
+
+    @screen md {
+      margin-bottom: 2rem;
+      padding: 2.5rem 6.5rem;
+    }
+
+    span {
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+
+      @screen md {
+        font-size: 1.8rem;
+        line-height: 3.8rem;
+      }
+    }
+
+    &.mobileOnly {
+      @screen md {
+        display: none;
+      }
+    }
+  }
+
+  .infoGroup {
+    padding-bottom: 2.5rem;
+    border-bottom: 0.15rem solid black;
+    margin-bottom: 2rem;
+
+    font-size: 1.8rem;
+    line-height: 3.8rem;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &.title {
+        color: theme('colors.blue.default');
+        font-weight: 700;
+      }
+    }
+  }
+
+  .rightChevron {
+    cursor: pointer;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  .settingsColumn {
+    @apply col-span-2;
+    @apply md:col-span-3 md:col-start-10;
+    @apply lg:col-start-11;
+
+    @apply hidden md:block;
+  }
+}

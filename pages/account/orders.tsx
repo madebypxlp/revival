@@ -10,9 +10,8 @@ import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/head
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import styles from './orders.module.scss'
-import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
-import AuthModal from '@components/ui/AuthModal/AuthModal'
 import { useRouter } from 'next/router'
+import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
 
 export async function getStaticProps({
   preview,
@@ -53,11 +52,11 @@ export default function Profile({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.ORDERS}
-        className={'mb-190'}
+        className={'mb-70 md:mb-190'}
       />
 
       <div className={'container'}>
-        <OrdersBox orders={orders} variant={'orders'} />
+        <OrdersBox orders={orders} variant={'orders'} className={'mb-300'} />
       </div>
     </div>
   )
