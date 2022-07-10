@@ -3,6 +3,9 @@ ${key} {
   mobileImage {
     ...Image
   }
+  tabletImage {
+    ...Image
+    }
   desktopImage {
    ...Image
    }
