@@ -7,7 +7,7 @@ export default interface Image {
       height: number
     }
   }
-  tabletImage: {
+  tabletImage: null | {
     sourceUrl: string
     altText: string
     mediaDetails: {

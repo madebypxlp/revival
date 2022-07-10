@@ -50,6 +50,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           height: 0,
         },
       },
+      tabletImage: null,
       mobileImage: {
         sourceUrl:
           'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',

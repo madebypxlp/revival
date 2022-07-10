@@ -7,7 +7,7 @@ ${key} {
     ...Image
     }
   desktopImage {
-   ...Image
+    ...Image
    }
  }`
 
