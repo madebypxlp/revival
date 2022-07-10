@@ -8,10 +8,7 @@ import { useIsMobile } from '@commerce/utils/hooks'
 const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
   module,
 }) => {
-  console.log(module)
-
   const isMobile = useIsMobile()
-
   const product = {
     id: '#80122-795-431',
     price: 25,
@@ -25,6 +22,7 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
           height: 0,
         },
       },
+      tabletImage: null,
       mobileImage: {
         sourceUrl:
           'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
