@@ -7,6 +7,14 @@ export default interface Image {
       height: number
     }
   }
+  tabletImage: {
+    sourceUrl: string
+    altText: string
+    mediaDetails: {
+      width: number
+      height: number
+    }
+  }
   mobileImage: {
     sourceUrl: string
     altText: string
