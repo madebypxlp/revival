@@ -27,15 +27,9 @@ export default `
             ...Image
           }
         }
-        lcCategories {
+        categories {
           nodes {
             id
-            name
-          }
-        }
-        contentTypes {
-          nodes {
-            slug
             name
           }
         }
