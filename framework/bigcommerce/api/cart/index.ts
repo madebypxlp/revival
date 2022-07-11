@@ -41,25 +41,25 @@ const cartApi: BigcommerceApiHandler<BigcommerceCart, CartHandlers> = async (
     // Return current cart info
     if (req.method === 'GET') {
       const body = { cartId }
-      return await handlers['getCart']({ req, res, config, body })
+      return await handlers.getCart({ req, res, config, body })
     }
 
     // Create or add an item to the cart
     if (req.method === 'POST') {
       const body = { ...req.body, cartId }
-      return await handlers['addItem']({ req, res, config, body })
+      return await handlers.addItem({ req, res, config, body })
     }
 
     // Update item in cart
     if (req.method === 'PUT') {
       const body = { ...req.body, cartId }
-      return await handlers['updateItem']({ req, res, config, body })
+      return await handlers.updateItem({ req, res, config, body })
     }
 
     // Remove an item from the cart
     if (req.method === 'DELETE') {
       const body = { ...req.body, cartId }
-      return await handlers['removeItem']({ req, res, config, body })
+      return await handlers.removeItem({ req, res, config, body })
     }
   } catch (error) {
     console.error(error)

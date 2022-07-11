@@ -1,7 +1,7 @@
 import { FC, useEffect, useMemo } from 'react'
 import cn from 'classnames'
-import s from './Searchbar.module.scss'
 import { useRouter } from 'next/router'
+import s from './Searchbar.module.scss'
 
 interface Props {
   className?: string

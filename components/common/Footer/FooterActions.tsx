@@ -24,29 +24,27 @@ const FooterActions = ({ data }: { data: AcfOptionsFooter }) => {
           </div>
           {!!actions?.actions?.length && (
             <div className="inline-block text-left col-span-8 md:flex flex-wrap items-center">
-              {actions.actions.map((action) => {
-                return (
-                  <Link
-                    key={action.link.title}
-                    className={styles.actionLink}
-                    link={action.link}
-                  >
-                    {action?.icon?.sourceUrl && (
-                      <span>
-                        <Image
-                          alt={action.icon.altText}
-                          width={isMobile ? 20 : 40}
-                          height={isMobile ? 20 : 40}
-                          objectFit="contain"
-                          objectPosition="center center"
-                          src={action.icon.sourceUrl}
-                        />
-                      </span>
-                    )}
-                    {action.link.title}
-                  </Link>
-                )
-              })}
+              {actions.actions.map((action) => (
+                <Link
+                  key={action.link.title}
+                  className={styles.actionLink}
+                  link={action.link}
+                >
+                  {action?.icon?.sourceUrl && (
+                    <span>
+                      <Image
+                        alt={action.icon.altText}
+                        width={isMobile ? 20 : 40}
+                        height={isMobile ? 20 : 40}
+                        objectFit="contain"
+                        objectPosition="center center"
+                        src={action.icon.sourceUrl}
+                      />
+                    </span>
+                  )}
+                  {action.link.title}
+                </Link>
+              ))}
             </div>
           )}
         </div>

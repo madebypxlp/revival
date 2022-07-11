@@ -15,14 +15,18 @@ type BCCartItemBody = {
 
 export const parseWishlistItem = (
   item: WishlistItemBody
-): BCWishlistItemBody => ({
-  product_id: Number(item.productId),
-  variant_id: Number(item.variantId),
-})
+): BCWishlistItemBody => {
+  return {
+    product_id: Number(item.productId),
+    variant_id: Number(item.variantId),
+  }
+}
 
-export const parseCartItem = (item: CartItemBody): BCCartItemBody => ({
-  quantity: item.quantity,
-  product_id: Number(item.productId),
-  variant_id: Number(item.variantId),
-  option_selections: item.optionSelections,
-})
+export const parseCartItem = (item: CartItemBody): BCCartItemBody => {
+  return {
+    quantity: item.quantity,
+    product_id: Number(item.productId),
+    variant_id: Number(item.variantId),
+    option_selections: item.optionSelections,
+  }
+}

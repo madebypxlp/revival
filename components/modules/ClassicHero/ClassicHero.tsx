@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
+import ImageComponent from '@components/ui/Image/Image'
 import styles from './ClassicHero.module.scss'
 import IClassicHero from './ClassicHero.interface'
-import ImageComponent from '@components/ui/Image/Image'
 
 const ClassicHeroModule: FunctionComponent<{ module: IClassicHero }> = ({
   module,
@@ -10,9 +10,9 @@ const ClassicHeroModule: FunctionComponent<{ module: IClassicHero }> = ({
   return (
     <div className={`${styles.root}`}>
       <div className={styles.backgroundContainer}>
-        <ImageComponent className={'h-full'} image={image} layout={'fill'} />
+        <ImageComponent className="h-full" image={image} layout="fill" />
       </div>
-      <div className={'container default-grid'}>
+      <div className="container default-grid">
         <div className={styles.sublineContainer}>
           {subline && <span>{subline}</span>}
         </div>

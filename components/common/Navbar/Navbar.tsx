@@ -1,14 +1,11 @@
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Searchbar, UserNav } from '@components/common'
-import NavbarRoot from './NavbarRoot'
-import styles from './Navbar.module.scss'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import AlertBar from '@components/ui/AlertBar/AlertBar'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import cn from 'classnames'
 import renderNavigationLayouts from 'repeater/navigation-layouts'
-import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import Input from '@components/ui/Input/Input'
 import { Account, Cart, Logo, Hamburger, ChevronUp } from '@components/icons'
 import { useIsMobile } from '@commerce/utils/hooks'
@@ -17,6 +14,9 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock'
+import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
+import styles from './Navbar.module.scss'
+import NavbarRoot from './NavbarRoot'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
 
 const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
@@ -89,10 +89,10 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     className="md:mr-60 mr-15 whitespace-nowrap"
                     color="blue"
                     subnav
-                    orientation={isMobile && openSubNav == 100 ? 'up' : 'down'}
-                    onClick={() => {
+                    orientation={isMobile && openSubNav === 100 ? 'up' : 'down'}
+                    onClick={() =>
                       openSubNav !== 100 ? setOpenSubNav(100) : handleClick()
-                    }}
+                    }
                   >
                     Expert Help
                   </ArrowCTA>
@@ -107,20 +107,20 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   </div>
                 </div>
                 <div>
-                  <div
+                  <button
                     className={cn(
                       styles.navButton,
                       'flex justify-center items-center cursor-pointer mr-5 md:mr-50'
                     )}
-                    onClick={() => {
+                    onClick={() =>
                       openSubNav !== 101 ? setOpenSubNav(101) : handleClick()
-                    }}
+                    }
                   >
                     <span className="mr-10 whitespace-nowrap hidden md:block">
                       Your Account
                     </span>
                     <Account />
-                  </div>
+                  </button>
 
                   <div
                     className={cn(
@@ -185,7 +185,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
         >
           <ul className="md:flex justify-around">
             {navigation.map((nav, index) => {
-              const {} = nav
               if (nav?.link) {
                 return (
                   <li
@@ -216,11 +215,11 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     orientation={
                       isMobile && !(openSubNav === index) ? 'right' : 'down'
                     }
-                    onClick={() => {
+                    onClick={() =>
                       openSubNav !== index
                         ? setOpenSubNav(index)
                         : setOpenSubNav(false)
-                    }}
+                    }
                   >
                     {nav.title}
                   </ArrowCTA>
@@ -244,9 +243,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                 index === openSubNav &&
                 isMobile
               ) {
-                if (!nav.navigationLayouts[0].marketingBox) {
-                  return
-                }
+                if (!nav.navigationLayouts[0].marketingBox) return null
                 return (
                   <NavigationMarketingBox
                     key={nav.title}
@@ -254,6 +251,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   />
                 )
               }
+              return null
             })}
           </div>
         </nav>

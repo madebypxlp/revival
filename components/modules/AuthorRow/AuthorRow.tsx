@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
+import Image from 'next/image'
+import Translations from 'constants/translations'
 import styles from './AuthorRow.module.scss'
 import IAuthorRow from './AuthorRow.interface'
 import Button from '../../ui/Button/Button'
-import Image from 'next/image'
-import Translations from 'constants/translations'
 
 const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
   const { authorName, authorPosition, authorBioCopy, authorLink, disclaimer } =
@@ -52,7 +52,7 @@ const AuthorRowModule: FunctionComponent<any> = ({ module }) => {
               color="yellow"
               type="default"
               link={authorLink}
-            ></Button>
+            />
           </div>
         )}
       </div>

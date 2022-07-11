@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
+import Translations from 'constants/translations'
 import styles from './ComponentRenderer.module.scss'
 import IComponentRenderer from './ComponentRenderer.interface'
 import Tag from '../Tag/Tag'
@@ -18,12 +19,11 @@ import LoginModal from '../AuthModal/AuthModal'
 import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
 import CartProduct from '../CartProduct/CartProduct'
-import Translations from 'constants/translations'
 import AccountSettings from '../AccountSettings/AccountSettings'
 import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
-  //test for inputfield
+  // test for inputfield
   const handleChange = (value: string, error: InputError) => {
     console.log(value)
     console.log(error)
@@ -261,7 +261,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Pet Vet Summary
           </Button>
           <PetAndVetClinicSummary
-            title={'Add Custom Vet Clinic'}
+            title="Add Custom Vet Clinic"
             open={petVetSummaryOpen}
             onClose={() => setPetVetSummaryOpen(false)}
           />
@@ -275,7 +275,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Add Custom Vet Clinic
           </Button>
           <AddCustomVetClinic
-            title={'Add Custom Vet Clinic'}
+            title="Add Custom Vet Clinic"
             open={addClinicModalOpen}
             onClose={() => setAddClinicModalOpen(false)}
           />
@@ -289,7 +289,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Add a Pet
           </Button>
           <AddAPetModal
-            title={'Add a Pet'}
+            title="Add a Pet"
             open={petModalOpen}
             onClose={() => setPetModalOpen(false)}
           />
@@ -303,7 +303,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Search Vet Clinic
           </Button>
           <SearchForVetClinicDialog
-            title={'Search for Your Veterinary Clinic'}
+            title="Search for Your Veterinary Clinic"
             open={modalOpenSearch}
             onClose={() => setModalOpenSearch(false)}
           />
@@ -329,173 +329,173 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       </div>
       <div className="my-50 py-50 container">
         <h1>Product components</h1>
-        <div className={'default-grid'}>
+        <div className="default-grid">
           {/* 1) Cart (your cart) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
+            variant="cart"
             showCartControls
           />
           {/* 2) Cart (checkout 01A) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'checkout'}
+            variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
+            variant="cart"
             showPrescriptionIcon
             showCartControls
           />
           {/* 4) RX (checkout 01A)  */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'checkout'}
+            variant="checkout"
             showPrescriptionLabel
           />
           {/* 5) RX Flow (info needed) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
-            rightColumn={'empty'}
+            variant="cart"
+            rightColumn="empty"
             showPrescriptionIcon
             showPrescriptionLabel
             showPrescriptionExtraInfo
           />
           {/* 6) RX Flow (pet and vet clinic info) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
-            rightColumn={'edit-details'}
+            variant="cart"
+            rightColumn="edit-details"
             showPrescriptionIcon
             vetInfo={petAndVetInfo}
           />
           {/* 7) Splitting shipments cart */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
-            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            variant="cart"
+            shippingRestrictionsMessage="1-Day Shipping Delay for this item"
             showCartControls
           />
           {/* 8) Splitting shipments (checkout) */}
           <CartProduct
-            className={'my-20'}
+            className="my-20"
             product={product}
             quantity={3}
-            variant={'checkout'}
-            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            variant="checkout"
+            shippingRestrictionsMessage="1-Day Shipping Delay for this item"
           />
           {/* 9) Account (not finished, do not use yet) */}
           <CartProduct
-            className={'my-20'}
+            className="my-20"
             product={product}
             quantity={3}
-            variant={'account'}
+            variant="account"
           />
         </div>
       </div>
       <div className="my-50 py-50 container">
         <h1>Product components</h1>
-        <div className={'default-grid'}>
+        <div className="default-grid">
           {/* 1) Cart (your cart) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
+            variant="cart"
             showCartControls
           />
           {/* 2) Cart (checkout 01A) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'checkout'}
+            variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
+            variant="cart"
             showPrescriptionIcon
             showCartControls
           />
           {/* 4) RX (checkout 01A)  */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'checkout'}
+            variant="checkout"
             showPrescriptionLabel
           />
           {/* 5) RX Flow (info needed) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
-            rightColumn={'empty'}
+            variant="cart"
+            rightColumn="empty"
             showPrescriptionIcon
             showPrescriptionLabel
             showPrescriptionExtraInfo
           />
           {/* 6) RX Flow (pet and vet clinic info) */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
-            rightColumn={'edit-details'}
+            variant="cart"
+            rightColumn="edit-details"
             showPrescriptionIcon
             vetInfo={petAndVetInfo}
           />
           {/* 7) Splitting shipments cart */}
           <CartProduct
-            className={'my-20 md:col-start-1'}
+            className="my-20 md:col-start-1"
             product={product}
             quantity={3}
-            variant={'cart'}
-            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            variant="cart"
+            shippingRestrictionsMessage="1-Day Shipping Delay for this item"
             showCartControls
           />
           {/* 8) Splitting shipments (checkout) */}
           <CartProduct
-            className={'my-20'}
+            className="my-20"
             product={product}
             quantity={3}
-            variant={'checkout'}
-            shippingRestrictionsMessage={'1-Day Shipping Delay for this item'}
+            variant="checkout"
+            shippingRestrictionsMessage="1-Day Shipping Delay for this item"
           />
           {/* 9) Account (order detail) */}
           <CartProduct
-            className={'my-20'}
+            className="my-20"
             product={product}
             quantity={3}
-            variant={'account'}
+            variant="account"
             showBuyItAgain
           />
           {/* 10) Account (order detail RX) */}
           <CartProduct
-            className={'my-20'}
+            className="my-20"
             product={product}
             quantity={3}
-            variant={'account'}
+            variant="account"
             showPrescriptionIcon
             showPrescriptionLabel
             showPrescriptionExtraInfo

@@ -32,21 +32,25 @@ export function normalizeProduct(productNode: any): Product {
     id: { $set: String(id) },
     images: {
       $apply: ({ edges }: any) =>
-        edges?.map(({ node: { urlOriginal, altText, ...rest } }: any) => ({
-          url: urlOriginal,
-          alt: altText,
-          ...rest,
-        })),
+        edges?.map(({ node: { urlOriginal, altText, ...rest } }: any) => {
+          return {
+            url: urlOriginal,
+            alt: altText,
+            ...rest,
+          }
+        }),
     },
     variants: {
       $apply: ({ edges }: any) =>
-        edges?.map(({ node: { entityId, productOptions, ...rest } }: any) => ({
-          id: entityId,
-          options: productOptions?.edges
-            ? productOptions.edges.map(normalizeProductOption)
-            : [],
-          ...rest,
-        })),
+        edges?.map(({ node: { entityId, productOptions, ...rest } }: any) => {
+          return {
+            id: entityId,
+            options: productOptions?.edges
+              ? productOptions.edges.map(normalizeProductOption)
+              : [],
+            ...rest,
+          }
+        }),
     },
     options: {
       $set: productOptions.edges
@@ -81,9 +85,11 @@ export function normalizeCart(data: BigcommerceCart): Cart {
     lineItemsSubtotalPrice: data.base_amount,
     subtotalPrice: data.base_amount + data.discount_amount,
     totalPrice: data.cart_amount,
-    discounts: data.discounts?.map((discount) => ({
-      value: discount.discounted_amount,
-    })),
+    discounts: data.discounts?.map((discount) => {
+      return {
+        value: discount.discounted_amount,
+      }
+    }),
   }
 }
 
@@ -106,8 +112,10 @@ function normalizeLineItem(item: any): LineItem {
       listPrice: item.list_price,
     },
     path: item.url.split('/')[3],
-    discounts: item.discounts.map((discount: any) => ({
-      value: discount.discounted_amount,
-    })),
+    discounts: item.discounts.map((discount: any) => {
+      return {
+        value: discount.discounted_amount,
+      }
+    }),
   }
 }

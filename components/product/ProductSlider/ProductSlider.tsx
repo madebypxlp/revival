@@ -20,8 +20,8 @@ const ProductSlider: FC = ({ children }) => {
     loop: true,
     slidesPerView: 1,
     mounted: () => setIsMounted(true),
-    slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide)
+    slideChanged(slide) {
+      setCurrentSlide(slide.details().relativeSlide)
     },
   })
 
@@ -94,22 +94,20 @@ const ProductSlider: FC = ({ children }) => {
       </div>
       {slider && (
         <div className={cn(s.positionIndicatorsContainer)}>
-          {[...Array(slider.details().size).keys()].map((idx) => {
-            return (
-              <button
-                aria-label="Position indicator"
-                key={idx}
-                className={cn(s.positionIndicator, {
-                  [s.positionIndicatorActive]: currentSlide === idx,
-                })}
-                onClick={() => {
-                  slider.moveToSlideRelative(idx)
-                }}
-              >
-                <div className={s.dot} />
-              </button>
-            )
-          })}
+          {[...Array(slider.details().size).keys()].map((idx) => (
+            <button
+              aria-label="Position indicator"
+              key={idx}
+              className={cn(s.positionIndicator, {
+                [s.positionIndicatorActive]: currentSlide === idx,
+              })}
+              onClick={() => {
+                slider.moveToSlideRelative(idx)
+              }}
+            >
+              <div className={s.dot} />
+            </button>
+          ))}
         </div>
       )}
     </div>

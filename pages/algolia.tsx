@@ -3,7 +3,7 @@ import { PageInterface } from 'framework/wordpress/interfaces/page'
 import algoliasearch from 'algoliasearch'
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom'
 
-export default () => {
+export default function () {
   const searchClient = algoliasearch(
     'YourApplicationID',
     'YourSearchOnlyAPIKey'

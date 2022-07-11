@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
-import ITextImageHero from './TextImageHero.interface'
 import Text from '@components/ui/Text/Text'
 import ImageComponent from '@components/ui/Image/Image'
 import parse from 'html-react-parser'
+import ITextImageHero from './TextImageHero.interface'
 import styles from './TextImageHero.module.scss'
 
 const TextImageHeroModule: FunctionComponent<{ module: ITextImageHero }> = ({
@@ -22,7 +22,7 @@ const TextImageHeroModule: FunctionComponent<{ module: ITextImageHero }> = ({
     ;(imageRef.current as any).style.width = width
   }
   useEffect(() => {
-    if (typeof window != 'undefined' && imageRef.current && gridRef.current) {
+    if (typeof window !== 'undefined' && imageRef.current && gridRef.current) {
       setWidth()
       window.addEventListener('resize', setWidth)
     }
@@ -32,7 +32,7 @@ const TextImageHeroModule: FunctionComponent<{ module: ITextImageHero }> = ({
   }, [imageRef.current, gridRef.current])
   return (
     <div className={`${styles.root} container`}>
-      <div className={`default-grid-lg`} ref={gridRef}>
+      <div className="default-grid-lg" ref={gridRef}>
         <div className={`col-span-2 lg:col-span-5 ${styles.text_block}`}>
           <h3 className={styles.subline}>{subline}</h3>
           <h2 className={styles.headline}>{headline}</h2>

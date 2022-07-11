@@ -1,10 +1,6 @@
 import type { InferGetStaticPropsType } from 'next'
 import { Layout } from '@components/common'
 import { getWpStaticPaths, getWpStaticProps } from 'framework/wordpress/wp'
-import TemplateHome from '../templates/Home'
-import TemplateBrandListing from '../templates/BrandListing'
-import TemplateOurStory from '../templates/OurStory'
-import TemplateVaccineExperts from '../templates/VaccineExperts'
 import TemplatePrivacyPolicy from 'templates/PrivacyPolicy'
 import TemplateContactUs from 'templates/ContactUs'
 import TemplateCareers from 'templates/Careers'
@@ -15,6 +11,10 @@ import TemplateAllBrands from 'templates/AllBrands'
 import TemplateCalendarContest from 'templates/CalendarContest'
 import TemplateCareerApplicationForm from 'templates/CareerApplicationForm'
 import { PageInterface } from 'framework/wordpress/interfaces/page'
+import TemplateVaccineExperts from '../templates/VaccineExperts'
+import TemplateOurStory from '../templates/OurStory'
+import TemplateBrandListing from '../templates/BrandListing'
+import TemplateHome from '../templates/Home'
 
 export const getStaticProps = getWpStaticProps
 export const getStaticPaths = getWpStaticPaths
@@ -33,7 +33,7 @@ const Templates: { [k: string]: any } = {
   Template_AllBrands: TemplateAllBrands,
   Template_CareerApplicationForm: TemplateCareerApplicationForm,
   Template_CalendarContest: TemplateCalendarContest,
-  default: (t: string) => <div>TEMPLATE "{t}" NOT FOUND</div>,
+  default: (t: string) => <div>TEMPLATE &quot;{t}&quot; NOT FOUND</div>,
 }
 
 export default function Pages({
@@ -48,12 +48,13 @@ export default function Pages({
 Pages.Layout = function getLayout(page: any) {
   if (page?.pageProps?.page === null) return null
   if (!Templates[page?.pageProps?.page?.template.__typename])
-    return Templates['default'](page.pageProps.page.template.__typename)
+    return Templates.default(page.pageProps.page.template.__typename)
   return (
     <Layout
       header={page.pageProps.header}
       globals={page.pageProps.globals}
       footer={page.pageProps.footer}
+      // eslint-disable-next-line react/no-children-prop
       children={Templates[page.pageProps.page.template.__typename](
         page.pageProps.page
       )}

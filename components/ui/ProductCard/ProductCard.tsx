@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import c from 'classnames'
+import Translations from 'constants/translations'
+import { formatPrice } from '@lib/utils'
 import styles from './ProductCard.module.scss'
 import IProductCard from './ProductCard.interface'
 import Button from '../Button/Button'
-import Translations from 'constants/translations'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
-import { formatPrice } from '@lib/utils'
 
 const ProductCard: FunctionComponent<IProductCard> = (props) => {
   const {

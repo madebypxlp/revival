@@ -12,7 +12,7 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
   return (
     <div className={c(styles.root, className)}>
       {headline && (
-        <div className={'container default-grid'}>
+        <div className="container default-grid">
           <div
             className={c(
               'col-start-1 col-span-2 md:col-span-3',
@@ -24,13 +24,11 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
         </div>
       )}
       <div className={c('container default-grid', styles.productGridContainer)}>
-        {products.map((p) => {
-          return (
-            <div className={'col-span-1 md:col-span-4 lg:col-span-3'}>
-              <ProductCard {...p} {...productCardProps} />
-            </div>
-          )
-        })}
+        {products.map((p) => (
+          <div className="col-span-1 md:col-span-4 lg:col-span-3" key={p.id}>
+            <ProductCard {...p} {...productCardProps} />
+          </div>
+        ))}
       </div>
     </div>
   )

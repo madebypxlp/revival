@@ -4,6 +4,7 @@ import HeaderWithWysiwygModule from '@components/modules/HeaderWithWysiwyg/Heade
 import HeaderWithWysiwygFragment from '@components/modules/HeaderWithWysiwyg/HeaderWithWysiwyg.graphql'
 import OurBrandsModule from '@components/modules/OurBrands/OurBrands'
 import OurBrandsFragment from '@components/modules/OurBrands/OurBrands.graphql'
+
 const TemplateAllBrands = (props: any) => {
   const { brands } = props
   return (

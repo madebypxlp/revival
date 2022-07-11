@@ -4,12 +4,12 @@ import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
-import fetch from '../../framework/wordpress/wp-client'
-import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import AuthModal from '@components/ui/AuthModal/AuthModal'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import AccountSettings from '@components/ui/AccountSettings/AccountSettings'
+import fetch from '../../framework/wordpress/wp-client'
+import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 
 export async function getStaticProps({
   preview,

@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState } from 'react'
-import styles from './VideoHero.module.scss'
-import IVideoHero from './VideoHero.interface'
 import Video from '@components/ui/VideoComponent/VideoComponent'
 import Modal from '@components/ui/Modal'
 import RImage from '@components/ui/Image/Image'
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
 import { ModalContent } from '@components/ui/Modal/Modal'
+import IVideoHero from './VideoHero.interface'
+import styles from './VideoHero.module.scss'
 
 const VideoHeroModule: FunctionComponent<{ module: IVideoHero }> = ({
   module,
@@ -22,7 +22,7 @@ const VideoHeroModule: FunctionComponent<{ module: IVideoHero }> = ({
           <div className="col-span-6">
             <RImage
               image={image}
-              className={styles.heroImage + ' overflow-hidden rounded-br-200'}
+              className={`${styles.heroImage} overflow-hidden rounded-br-200`}
             />
           </div>
           <div className="col-span-6 flex flex-col justify-center items-center">

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import ICustomerReviewSlider from './CustomerReviewSlider.interface'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import { useIsMobile } from '@commerce/utils/hooks'
+import ICustomerReviewSlider from './CustomerReviewSlider.interface'
 import styles from './CustomerReviewSlider.module.scss'
 
 const CustomerReviewSliderModule: FunctionComponent<{

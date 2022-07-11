@@ -4,15 +4,15 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import styles from './AuthModal.module.scss'
-import IAuthModal from './AuthModal.interface'
-import Input from '../Input/Input'
-import Button from '../Button/Button'
 import Modal from '@components/ui/Modal'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
 import { ForgotPassword, LoginView, SignUpView } from '@components/auth'
+import Button from '../Button/Button'
+import Input from '../Input/Input'
+import IAuthModal from './AuthModal.interface'
+import styles from './AuthModal.module.scss'
 
 const AuthModal: FunctionComponent<IAuthModal> = ({ open }) => {
   // Form State
@@ -72,7 +72,7 @@ const AuthModal: FunctionComponent<IAuthModal> = ({ open }) => {
 
   return (
     <Modal
-      title={'Login to your Account'}
+      title="Login to your Account"
       open={displayModal}
       onClose={closeModal}
     >

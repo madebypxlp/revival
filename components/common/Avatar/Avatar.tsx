@@ -1,14 +1,11 @@
 import { FC, useRef, useEffect } from 'react'
 import { useUserAvatar } from '@lib/hooks/useUserAvatar'
 
-interface Props {
-  className?: string
-  children?: any
-}
+interface Props {}
 
-const Avatar: FC<Props> = ({}) => {
-  let ref = useRef() as React.MutableRefObject<HTMLInputElement>
-  let { userAvatar } = useUserAvatar()
+const Avatar: FC<Props> = (props) => {
+  const ref = useRef() as React.MutableRefObject<HTMLInputElement>
+  const { userAvatar } = useUserAvatar()
 
   return (
     <div

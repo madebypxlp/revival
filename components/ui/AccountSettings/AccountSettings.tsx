@@ -139,7 +139,7 @@ const AccountSettings: FunctionComponent<IAccountSettings> = (props) => {
                 return { ...prevState, state: value?.value ?? '' }
               })
             }}
-            placeholder={'State'}
+            placeholder="State"
             options={[
               { label: 'State One', value: 'state one' },
               { label: 'State Two', value: 'state two' },
@@ -164,7 +164,7 @@ const AccountSettings: FunctionComponent<IAccountSettings> = (props) => {
                 return { ...prevState, state: value?.value ?? '' }
               })
             }}
-            placeholder={'Country'}
+            placeholder="Country"
             options={[
               { label: 'Austria', value: 'austria' },
               { label: 'USA', value: 'usa' },

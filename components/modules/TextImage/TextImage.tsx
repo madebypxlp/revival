@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import styles from './TextImage.module.scss'
-import ITextImage from './TextImage.interface'
 import ImageComponent from '@components/ui/Image/Image'
 import Image from '@components/interfaces/Image'
 import Button from '@components/ui/Button/Button'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
+import ITextImage from './TextImage.interface'
+import styles from './TextImage.module.scss'
 
 interface ImageWrapperInterface {
   flipOrientation: boolean
@@ -23,57 +23,52 @@ const ImageWrapper = ({
         className={`${className} md:col-span-6 col-span-12 relative mt-30 md:mt-0`}
       >
         <div className="default-grid w-full h-full absolute">
-          <div
-            className={`col-span-1 col-start-2 md:col-span-8 md:col-start-5 relative`}
-          >
+          <div className="col-span-1 col-start-2 md:col-span-8 md:col-start-5 relative">
             <div className={`${styles.image_left_pattern1_wrapper}`}>
-              <div className={styles.image_left_pattern1}></div>
+              <div className={styles.image_left_pattern1} />
             </div>
           </div>
         </div>
         <div className="flex md:grid default-grid w-full h-full">
           <div className={`md:col-span-10 ${styles.image_block}`}>
-            <div className={`relative`}>
+            <div className="relative">
               <ImageComponent image={image} className={styles.image_left} />
               <div className={`${styles.image_left_pattern2_block}`}>
                 <div className={`${styles.image_left_pattern2_wrapper}`}>
-                  <div className={styles.image_left_pattern2}></div>
+                  <div className={styles.image_left_pattern2} />
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div
-        className={`${className} md:col-span-6 md:col-start-7 col-span-12 relative mt-30 md:mt-0`}
-      >
-        <div className="default-grid w-full h-full absolute">
-          <div className={`col-span-1 md:col-span-6`}>
-            <div className={`${styles.image_right_pattern1_wrapper}`}>
-              <div className={styles.image_right_pattern1}></div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-end md:grid default-grid w-full h-full">
-          <div
-            className={`${styles.image_block} md:col-span-10 md:col-start-3`}
-          >
-            <div className={`${styles.image_wrapper} relative`}>
-              <div className="flex justify-end items-end w-full h-full absolute">
-                <div className={`${styles.image_right_pattern2_wrapper}`}>
-                  <div className={styles.image_right_pattern2}></div>
-                </div>
-              </div>
-              <ImageComponent image={image} className={styles.image_right} />
             </div>
           </div>
         </div>
       </div>
     )
   }
+  return (
+    <div
+      className={`${className} md:col-span-6 md:col-start-7 col-span-12 relative mt-30 md:mt-0`}
+    >
+      <div className="default-grid w-full h-full absolute">
+        <div className="col-span-1 md:col-span-6">
+          <div className={`${styles.image_right_pattern1_wrapper}`}>
+            <div className={styles.image_right_pattern1} />
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-end md:grid default-grid w-full h-full">
+        <div className={`${styles.image_block} md:col-span-10 md:col-start-3`}>
+          <div className={`${styles.image_wrapper} relative`}>
+            <div className="flex justify-end items-end w-full h-full absolute">
+              <div className={`${styles.image_right_pattern2_wrapper}`}>
+                <div className={styles.image_right_pattern2} />
+              </div>
+            </div>
+            <ImageComponent image={image} className={styles.image_right} />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({

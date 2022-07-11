@@ -42,7 +42,7 @@ const WishlistButton: FC<Props> = ({
     // A login is required before adding an item to the wishlist
     if (!customer) {
       setModalView('LOGIN_VIEW')
-      return openModal()
+      openModal()
     }
 
     setLoading(true)

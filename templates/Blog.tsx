@@ -5,21 +5,17 @@ import LightHeroFragment from '@components/modules/LightHero/LightHero.graphql'
 import NewsletterSignUpModule from '@components/modules/NewsletterSignUp/NewsletterSignUp'
 import NewsletterSignUpFragment from '@components/modules/NewsletterSignUp/NewsletterSignUp.graphql'
 
-const TemplateBlog = (props: any) => {
-  return (
-    <div>
-      <LightHeroModule module={props.template.pageBlog.lightHero} />
-      <BlogFilterModule
-        data={props.blog.nodes}
-        module={props.template.pageBlog.blogFilter}
-        categories={props.categories}
-      />
-      <NewsletterSignUpModule
-        module={props.template.pageBlog.newsletterSignUp}
-      />
-    </div>
-  )
-}
+const TemplateBlog = (props: any) => (
+  <div>
+    <LightHeroModule module={props.template.pageBlog.lightHero} />
+    <BlogFilterModule
+      data={props.blog.nodes}
+      module={props.template.pageBlog.blogFilter}
+      categories={props.categories}
+    />
+    <NewsletterSignUpModule module={props.template.pageBlog.newsletterSignUp} />
+  </div>
+)
 export default TemplateBlog
 
 const TEMPLATE_PREFIX = 'Template_Blog_Pageblog'

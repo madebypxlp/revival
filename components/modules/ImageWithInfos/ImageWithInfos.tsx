@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import styles from './ImageWithInfos.module.scss'
-import IImageWithInfos from './ImageWithInfos.interface'
 import UIImage from '@components/ui/Image/Image'
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
 import cn from 'classnames'
 import GradientOverlay from '@components/ui/GradientOverlay/GradientOverlay'
+import IImageWithInfos from './ImageWithInfos.interface'
+import styles from './ImageWithInfos.module.scss'
 
 const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
   module,
@@ -14,9 +14,9 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
 
   return (
     <div className={`${styles.root} relative`}>
-      <div className={'container'}>
+      <div className="container">
         <div className="flex justify-center items-center min-h-[55.5rem] md:relative">
-          <GradientOverlay className={'absolute inset-0'}>
+          <GradientOverlay className="absolute inset-0">
             <UIImage
               image={image}
               layout="fill"
@@ -27,14 +27,14 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
             <div
               className={cn([
                 'flex flex-row items-center',
-                !!facts?.length ? 'mb-50' : 'mb-10',
+                facts?.length ? 'mb-50' : 'mb-10',
               ])}
             >
               {subline && (
                 <div
                   className={cn([
                     'text-white',
-                    !!facts?.length ? 'typo-h6' : 'typo-eyebrow',
+                    facts?.length ? 'typo-h6' : 'typo-eyebrow',
                   ])}
                 >
                   {subline}
@@ -66,26 +66,24 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
 
             {!!facts?.length && (
               <div className="mt-10 mb-30 hidden lg:flex">
-                {facts.map((fact) => {
-                  return (
-                    <div
-                      key={fact.text}
-                      className={`${styles.fact} flex items-center md:mx-7 typo-fact text-white`}
-                    >
-                      {fact?.icon?.sourceUrl && (
-                        <div className="relative mr-15">
-                          <Image
-                            src={fact.icon.sourceUrl}
-                            alt={fact.icon.altText}
-                            width={22}
-                            height={22}
-                          />
-                        </div>
-                      )}
-                      {fact.text}
-                    </div>
-                  )
-                })}
+                {facts.map((fact) => (
+                  <div
+                    key={fact.text}
+                    className={`${styles.fact} flex items-center md:mx-7 typo-fact text-white`}
+                  >
+                    {fact?.icon?.sourceUrl && (
+                      <div className="relative mr-15">
+                        <Image
+                          src={fact.icon.sourceUrl}
+                          alt={fact.icon.altText}
+                          width={22}
+                          height={22}
+                        />
+                      </div>
+                    )}
+                    {fact.text}
+                  </div>
+                ))}
               </div>
             )}
 

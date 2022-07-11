@@ -1,15 +1,10 @@
 import React, { FunctionComponent, useState } from 'react'
-import styles from './AddAPetModal.module.scss'
-import IAddAPetModal from './AddAPetModal.interface'
 import Modal from '@components/ui/Modal'
-import Input from '../Input/Input'
-import { InputError } from '../Input/Input.interface'
 import Dropdown from '@components/ui/Dropdown/Dropdown'
-import { IDropdownOption } from '@components/ui/Dropdown/Dropdown.interface'
 
-import { handleInputChange } from 'react-select/dist/declarations/src/utils'
-import { OnChangeValue } from 'react-select'
-import ContentAccordionModule from '@components/modules/ContentAccordion/ContentAccordion'
+import Input from '../Input/Input'
+import IAddAPetModal from './AddAPetModal.interface'
+import styles from './AddAPetModal.module.scss'
 import { ModalActions, ModalContent } from '../Modal/Modal'
 import Button from '../Button/Button'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
@@ -31,29 +26,33 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
 
   const handleChange = () => {}
 
-  let months = new Array()
-  for (let i = 0; i < 12; i++) {
-    months[i] = { value: i + 1, label: i + 1 }
+  const months = []
+  for (let i = 1; i <= 12; i += 1) {
+    months[i] = { value: String(i), label: String(i) }
   }
 
-  let days = new Array()
-  for (let i = 0; i < 31; i++) {
-    days[i] = { value: i + 1, label: i + 1 }
+  const days = []
+  for (let i = 1; i <= 31; i += 1) {
+    days[i] = { value: String(i), label: String(i) }
   }
 
   const unformattedYears = Array.from(
     { length: 51 },
     (_, i) => new Date().getFullYear() - i
   )
-  const years = new Array()
-  for (let i = 0; i < 51; i++) {
-    years[i] = { value: unformattedYears[i], label: unformattedYears[i] }
+
+  const years = []
+  for (let i = 1; i <= 51; i += 1) {
+    years[i] = {
+      value: String(unformattedYears[i]),
+      label: String(unformattedYears[i]),
+    }
   }
 
   return (
     <Modal title={title || 'Add a Pet'} open={open} onClose={() => onClose()}>
       <ModalContent>
-        <div className={`${styles.root} pt-10 pb-20`}></div>
+        <div className={`${styles.root} pt-10 pb-20`} />
         <div className="default-grid">
           <Input
             placeholder="Pet Name"
@@ -65,7 +64,7 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
           <Dropdown
             color="light"
             onChange={(o) => setPetType(o?.value)}
-            placeholder={'Pet Type'}
+            placeholder="Pet Type"
             options={[
               { label: 'Cat', value: 'cat' },
               { label: 'Dog', value: 'dog' },
@@ -75,15 +74,9 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
 
           <Dropdown
             color="light"
-            isMulti={true}
-            onChange={(a) => {
-              return setPetBreed(
-                a.map((a) => {
-                  return a.value
-                })
-              )
-            }}
-            placeholder={'Breed'}
+            isMulti
+            onChange={(a) => setPetBreed(a.map((v) => v.value))}
+            placeholder="Breed"
             options={[
               { label: 'Husky', value: 'husky' },
               { label: 'Aussie', value: 'aussie' },
@@ -117,7 +110,7 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
           <Dropdown
             color="light"
             onChange={(o) => setPetBirthMonth(o?.value)}
-            placeholder={'Month'}
+            placeholder="Month"
             options={months}
             className="col-span-2 md:col-span-4 lg:col-span-2 mb-10 md:mb-0"
           />
@@ -125,7 +118,7 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
           <Dropdown
             color="light"
             onChange={(o) => setPetBirthDay(o?.value)}
-            placeholder={'Day'}
+            placeholder="Day"
             options={days}
             className="col-span-2 md:col-span-4  lg:col-span-2 mb-10 md:mb-0"
           />
@@ -133,7 +126,7 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
           <Dropdown
             color="light"
             onChange={(o) => setPetBirthYear(o?.value)}
-            placeholder={'Year'}
+            placeholder="Year"
             options={years}
             className="col-span-2 md:col-span-4 lg:col-span-2"
           />
@@ -153,15 +146,9 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
         <div className="default-grid items-center">
           <Dropdown
             color="light"
-            isMulti={true}
-            onChange={(a) => {
-              return setPetMedication(
-                a.map((a) => {
-                  return a.value
-                })
-              )
-            }}
-            placeholder={'Medication'}
+            isMulti
+            onChange={(a) => setPetMedication(a.map((v) => v.value))}
+            placeholder="Medication"
             options={[
               { label: 'Adeaquan', value: 'Adeaquan' },
               { label: 'SecondOption', value: 'SecondOption' },
@@ -179,15 +166,9 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
 
           <Dropdown
             color="light"
-            isMulti={true}
-            onChange={(a) => {
-              return setPetAllergies(
-                a.map((a) => {
-                  return a.value
-                })
-              )
-            }}
-            placeholder={'Allergies'}
+            isMulti
+            onChange={(a) => setPetAllergies(a.map((v) => v.value))}
+            placeholder="Allergies"
             options={[
               { label: 'Allergie1', value: 'Allergie1' },
               { label: 'Allergie2', value: 'Allergie2' },
@@ -204,15 +185,9 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
 
           <Dropdown
             color="light"
-            isMulti={true}
-            onChange={(a) => {
-              return setPetExistingCondition(
-                a.map((a) => {
-                  return a.value
-                })
-              )
-            }}
-            placeholder={'Pre-Existing Conditions'}
+            isMulti
+            onChange={(a) => setPetExistingCondition(a.map((v) => v.value))}
+            placeholder="Pre-Existing Conditions"
             options={[
               { label: 'Condition1', value: 'Condition1' },
               { label: 'Condition2', value: 'Condition2' },

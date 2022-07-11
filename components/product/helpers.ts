@@ -6,8 +6,8 @@ export type SelectedOptions = {
 }
 
 export function getVariant(product: Product, opts: SelectedOptions) {
-  const variant = product.variants.find((variant) => {
-    return Object.entries(opts).every(([key, value]) =>
+  const _variant = product.variants.find((variant) =>
+    Object.entries(opts).every(([key, value]) =>
       variant.options.find((option) => {
         if (
           option.__typename === 'MultipleChoiceOption' &&
@@ -15,8 +15,9 @@ export function getVariant(product: Product, opts: SelectedOptions) {
         ) {
           return option.values.find((v) => v.label.toLowerCase() === value)
         }
+        return false
       })
     )
-  })
-  return variant
+  )
+  return _variant
 }

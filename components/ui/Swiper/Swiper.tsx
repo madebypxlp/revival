@@ -1,7 +1,5 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
-import styles from './Swiper.module.scss'
 import c from 'classnames'
-import ISwiper, { ISwiperSlide } from './Swiper.interface'
 import {
   Swiper as PlainSwiper,
   SwiperSlide as PlainSwiperSlide,
@@ -16,6 +14,8 @@ import SwiperCore, {
 } from 'swiper'
 import SliderArrowLeft from '@components/icons/SliderArrowLeft'
 import { NavigationOptions } from 'swiper/types/components/navigation'
+import ISwiper, { ISwiperSlide } from './Swiper.interface'
+import styles from './Swiper.module.scss'
 
 SwiperCore.use([Navigation, Pagination, Keyboard, A11y, Autoplay])
 
@@ -41,7 +41,7 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
   }
 
   // general default swiper props
-  let defaultProps = {
+  const defaultProps = {
     a11y: true,
     keyboard: true,
   } as SwiperOptions

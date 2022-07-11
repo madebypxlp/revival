@@ -8,7 +8,7 @@ import ArrowCTA from '../ArrowCTA/ArrowCTA'
 const AccountHero: FunctionComponent<IAccountHero> = (props) => {
   const { headline, className } = props
 
-  //change Links
+  // change Links
   const ButtonList = [
     { title: 'Overview', link: '#' },
     { title: 'Orders', link: '#' },
@@ -21,7 +21,7 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
 
   return (
     <div className={c(styles.root, 'h-auto mb-40 md:mb-80', className)}>
-      <div className={'bg-cream'}>
+      <div className="bg-cream">
         <div className="container flex items-center justify-center md:justify-start md:items-start md:flex-col">
           <div className="py-45 md:py-80 md:w-full">
             <h1 className="typo-accountheadline mb-20 md:mb-0 text-blue max-w-[336px] md:max-w-full ">
@@ -45,13 +45,11 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
       </div>
       <div className="container hidden lg:flex items-baseline lg:mt-25 lg:w-full">
         <div className="nav-wrapper">
-          {ButtonList.map((el) => {
-            return (
-              <ArrowCTA color={'black'} orientation="down">
-                <p className="text-18 leading-28">{el.title}</p>
-              </ArrowCTA>
-            )
-          })}
+          {ButtonList.map((el) => (
+            <ArrowCTA color="black" orientation="down" key={el.title}>
+              <p className="text-18 leading-28">{el.title}</p>
+            </ArrowCTA>
+          ))}
         </div>
 
         <Button

@@ -1,9 +1,10 @@
+/* eslint-disable no-bitwise */
 import random from 'lodash.random'
 
 export function getRandomPairOfColors() {
   const colors = ['#37B679', '#DA3C3C', '#3291FF', '#7928CA', '#79FFE1']
   const getRandomIdx = () => random(0, colors.length - 1)
-  let idx = getRandomIdx()
+  const idx = getRandomIdx()
   let idx2 = getRandomIdx()
 
   // Has to be a different color
@@ -28,9 +29,7 @@ function hexToRgb(hex: string = '') {
   if (match[0].length === 3) {
     colorString = colorString
       .split('')
-      .map((char: string) => {
-        return char + char
-      })
+      .map((char: string) => char + char)
       .join('')
   }
 
@@ -196,7 +195,7 @@ const colorMap: Record<string, string> = {
 export function isDark(color: string = ''): boolean {
   color = color.toLowerCase()
   // Equation from http://24ways.org/2010/calculating-color-contrast
-  let rgb = colorMap[color] ? hexToRgb(colorMap[color]) : hexToRgb(color)
+  const rgb = colorMap[color] ? hexToRgb(colorMap[color]) : hexToRgb(color)
   const res = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
   return res < 128
 }

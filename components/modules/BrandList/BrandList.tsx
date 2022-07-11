@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import styles from './BrandList.module.scss'
 import c from 'classnames'
-import IBrandList from './BrandList.interface'
 import AlphabetList from '@components/ui/AlphabetList/AlphabetList'
 import { Brand } from 'framework/wordpress/queries/post-type-brands/brands'
 import Link from 'next/link'
 import Fade from '@components/ui/Fade/Fade'
+import IBrandList from './BrandList.interface'
+import styles from './BrandList.module.scss'
 
 interface Sorted {
   letter: string
@@ -70,6 +70,7 @@ const BrandListModule: FunctionComponent<IBrandList> = ({ brands }) => {
                   <div className={c('default-grid gap-y-0')}>
                     {item.children.map((i) => (
                       <div
+                        key={i.title}
                         className={c(
                           styles.child,
                           'col-span-2 sm:col-span-1 md:col-span-4'

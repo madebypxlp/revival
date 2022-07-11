@@ -2,7 +2,6 @@ import { FC, useState } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
-import s from './WishlistCard.module.scss'
 import { Trash } from '@components/icons'
 import { Text } from '@components/ui'
 
@@ -12,6 +11,7 @@ import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/cart/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
 import Button from '@components/ui/Button/Button'
+import s from './WishlistCard.module.scss'
 
 interface Props {
   product: Product
@@ -80,7 +80,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
           type="default"
           variant="large"
           color="yellow"
-          className={'py-1 px-5 border  rounded-15 shadow-sm hover:-hover'}
+          className="py-1 px-5 border  rounded-15 shadow-sm hover:-hover"
           onClick={addToCart}
         >
           Add to Cart

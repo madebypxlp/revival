@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
+import Video from '@components/ui/VideoComponent/VideoComponent'
 import styles from './VideoGrid.module.scss'
 import IVideoGrid from './VideoGrid.interface'
-import Video from '@components/ui/VideoComponent/VideoComponent'
 
 const VideoGridModule: FunctionComponent<{ module: IVideoGrid }> = ({
   module,
@@ -18,7 +18,7 @@ const VideoGridModule: FunctionComponent<{ module: IVideoGrid }> = ({
           videos.map((video) => {
             const { youtubeId, name, title } = video
             return (
-              <div className="col-span-6 mb-30 md:mb-0">
+              <div className="col-span-6 mb-30 md:mb-0" key={title}>
                 <Video
                   source={youtubeId}
                   className="mb-10 md:mb-30 rounded-15 overflow-hidden"

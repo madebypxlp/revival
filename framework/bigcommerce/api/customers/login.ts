@@ -27,7 +27,7 @@ const loginApi: BigcommerceApiHandler<null, LoginHandlers> = async (
 
   try {
     const body = req.body ?? {}
-    return await handlers['login']({ req, res, config, body })
+    return await handlers.login({ req, res, config, body })
   } catch (error) {
     console.error(error)
 

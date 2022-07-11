@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import styles from './ArticleTeaserSmall.module.scss'
-import IArticleTeaserSmall from './ArticleTeaserSmall.interface'
-import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import c from 'classnames'
 import Translations from 'constants/translations'
 import Image from 'next/image'
+import styles from './ArticleTeaserSmall.module.scss'
+import IArticleTeaserSmall from './ArticleTeaserSmall.interface'
+import ArrowCTA from '../ArrowCTA/ArrowCTA'
 
 const ArticleTeaserSmall: FunctionComponent<IArticleTeaserSmall> = (props) => {
   const { article, variant } = props
@@ -15,7 +15,7 @@ const ArticleTeaserSmall: FunctionComponent<IArticleTeaserSmall> = (props) => {
     <div
       className={c(
         styles.root,
-        styles['variant-' + variant],
+        styles[`variant-${variant}`],
         'article-teaser-small'
       )}
     >

@@ -1,10 +1,11 @@
 import cn from 'classnames'
 import { FC } from 'react'
-import s from './Swatch.module.scss'
 import { Check } from '@components/icons'
 import { isDark } from '@lib/colors'
 import Button from '@components/ui/Button/Button'
 import IButton from '@components/ui/Button/Button.interface'
+import s from './Swatch.module.scss'
+
 interface Props {
   active?: boolean
   children?: any

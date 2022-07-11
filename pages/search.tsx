@@ -13,22 +13,10 @@ import useSearch from '@framework/product/use-search'
 import getAllPages from '@framework/common/get-all-pages'
 import getSiteInfo from '@framework/common/get-site-info'
 
-import fetch from './../framework/wordpress/wp-client'
-import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
-
 import rangeMap from '@lib/range-map'
 
 // TODO(bc) Remove this. This should come from the API
 import getSlug from '@lib/get-slug'
-
-// TODO (bc) : Remove or standarize this.
-const SORT = Object.entries({
-  'latest-desc': 'Latest arrivals',
-  'trending-desc': 'Trending',
-  'price-asc': 'Price: Low to high',
-  'price-desc': 'Price: High to low',
-})
 
 import {
   filterQuery,
@@ -37,6 +25,17 @@ import {
   useSearchMeta,
 } from '@lib/search'
 import { Product } from '@commerce/types'
+import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
+import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
+import fetch from '../framework/wordpress/wp-client'
+
+// TODO (bc) : Remove or standarize this.
+const SORT = Object.entries({
+  'latest-desc': 'Latest arrivals',
+  'trending-desc': 'Trending',
+  'price-asc': 'Price: Low to high',
+  'price-desc': 'Price: High to low',
+})
 
 export async function getStaticProps({
   preview,
@@ -110,7 +109,6 @@ export default function Search({
             <div className="lg:hidden">
               <span className="rounded-15 shadow-sm">
                 <button
-                  type="button"
                   onClick={(e) => handleClick(e, 'categories')}
                   className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-5 bg-white  leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
                   id="options-menu"
@@ -160,14 +158,12 @@ export default function Search({
                       <Link
                         href={{ pathname: getCategoryPath('', brand), query }}
                       >
-                        <a
+                        <button
                           onClick={(e) => handleClick(e, 'categories')}
-                          className={
-                            'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
-                          }
+                          className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
                         >
                           All Categories
-                        </a>
+                        </button>
                       </Link>
                     </li>
                     {categories.map((cat) => (
@@ -187,14 +183,12 @@ export default function Search({
                             query,
                           }}
                         >
-                          <a
+                          <button
                             onClick={(e) => handleClick(e, 'categories')}
-                            className={
-                              'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
-                            }
+                            className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
                           >
                             {cat.name}
-                          </a>
+                          </button>
                         </Link>
                       </li>
                     ))}
@@ -209,7 +203,6 @@ export default function Search({
             <div className="lg:hidden mt-3">
               <span className="rounded-15 shadow-sm">
                 <button
-                  type="button"
                   onClick={(e) => handleClick(e, 'brands')}
                   className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-5 bg-white  leading-5 font-medium text-gray-900 hover:text-gray-500 focus:outline-none focus:border-blue-300 active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
                   id="options-menu"
@@ -262,14 +255,12 @@ export default function Search({
                           query,
                         }}
                       >
-                        <a
+                        <button
                           onClick={(e) => handleClick(e, 'brands')}
-                          className={
-                            'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
-                          }
+                          className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
                         >
                           All Designers
-                        </a>
+                        </button>
                       </Link>
                     </li>
                     {brands.flatMap(({ node }) => (
@@ -289,14 +280,12 @@ export default function Search({
                             query,
                           }}
                         >
-                          <a
+                          <button
                             onClick={(e) => handleClick(e, 'brands')}
-                            className={
-                              'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
-                            }
+                            className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
                           >
                             {node.name}
-                          </a>
+                          </button>
                         </Link>
                       </li>
                     ))}
@@ -310,6 +299,7 @@ export default function Search({
         <div className="col-span-8 order-3 lg:order-none">
           {(q || activeCategory || activeBrand) && (
             <div className="mb-10 transition ease-in duration-75">
+              {/* eslint-disable-next-line no-nested-ternary */}
               {data ? (
                 <>
                   <span
@@ -321,7 +311,7 @@ export default function Search({
                     Showing {data.products.length} results{' '}
                     {q && (
                       <>
-                        for "<strong>{q}</strong>"
+                        for &quot;<strong>{q}</strong>&quot;
                       </>
                     )}
                   </span>
@@ -333,7 +323,8 @@ export default function Search({
                   >
                     {q ? (
                       <>
-                        There are no products that match "<strong>{q}</strong>"
+                        There are no products that match &quot;
+                        <strong>{q}</strong>&quot;
                       </>
                     ) : (
                       <>
@@ -345,7 +336,7 @@ export default function Search({
                 </>
               ) : q ? (
                 <>
-                  Searching for: "<strong>{q}</strong>"
+                  Searching for: &quot;<strong>{q}</strong>&quot;
                 </>
               ) : (
                 <>Searching...</>
@@ -387,7 +378,6 @@ export default function Search({
             <div className="lg:hidden">
               <span className="rounded-15 shadow-sm">
                 <button
-                  type="button"
                   onClick={(e) => handleClick(e, 'sort')}
                   className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-5 bg-white  leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
                   id="options-menu"
@@ -431,14 +421,12 @@ export default function Search({
                       )}
                     >
                       <Link href={{ pathname, query: filterQuery({ q }) }}>
-                        <a
+                        <button
                           onClick={(e) => handleClick(e, 'sort')}
-                          className={
-                            'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
-                          }
+                          className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
                         >
                           Relevance
-                        </a>
+                        </button>
                       </Link>
                     </li>
                     {SORT.map(([key, text]) => (
@@ -457,14 +445,12 @@ export default function Search({
                             query: filterQuery({ q, sort: key }),
                           }}
                         >
-                          <a
+                          <button
                             onClick={(e) => handleClick(e, 'sort')}
-                            className={
-                              'block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4'
-                            }
+                            className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
                           >
                             {text}
-                          </a>
+                          </button>
                         </Link>
                       </li>
                     ))}

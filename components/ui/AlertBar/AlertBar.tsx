@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import styles from './AlertBar.module.scss'
 import { useIsMobile } from '@commerce/utils/hooks'
-import { AlertBar } from 'framework/wordpress/interfaces/header'
+import { AlertBar as IAlertBar } from 'framework/wordpress/interfaces/header'
 import c from 'classnames'
 import parse from 'html-react-parser'
+import styles from './AlertBar.module.scss'
 
-const AlertBar: FunctionComponent<AlertBar> = (props) => {
+const AlertBar: FunctionComponent<IAlertBar> = (props) => {
   const { leftCopy, rightCopy, active } = props
   const isMobile = useIsMobile()
   if (!active) return null

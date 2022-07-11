@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState } from 'react'
 import cn from 'classnames'
+import ImageComponent from '@components/ui/Image/Image'
 import styles from './AccordionWithImage.module.scss'
 import IAccordionWithImage from './AccordionWithImage.interface'
-import ImageComponent from '@components/ui/Image/Image'
 
 const parse = require('html-react-parser')
 
@@ -24,7 +24,7 @@ const AccordionWithImageModule: FunctionComponent<{
           <div className="mt-55">
             {accordion &&
               accordion.map((item, index) => (
-                <div
+                <button
                   key={item.headline}
                   onClick={() => setVisibleIndex(index)}
                   className={cn(
@@ -42,7 +42,7 @@ const AccordionWithImageModule: FunctionComponent<{
                     },
                     item.copy
                   )}
-                </div>
+                </button>
               ))}
           </div>
         </div>

@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react'
-import styles from './ArticleTeaser.module.scss'
-import IArticleTeaser from './ArticleTeaser.interface'
 import cn from 'classnames'
 
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
-import Translations from '../../../constants/translations'
 import { Category } from 'framework/wordpress/interfaces/post'
 import { LearningCenterContentType } from 'framework/wordpress/interfaces/learning-center'
+import Translations from '../../../constants/translations'
+import IArticleTeaser from './ArticleTeaser.interface'
+import styles from './ArticleTeaser.module.scss'
 import GradientOverlay from '../GradientOverlay/GradientOverlay'
 
 const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
@@ -49,8 +49,8 @@ const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
       className={cn(
         styles.root,
         className,
-        styles['variant-' + variant],
-        styles['text-' + textSize],
+        styles[`variant-${variant}`],
+        styles[`text-${textSize}`],
         !!contentTypes?.length && styles.hasContentTypes
       )}
       {...rest}
@@ -60,8 +60,8 @@ const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
           <GradientOverlay>
             <Image
               src={featuredImage.node.sourceUrl}
-              layout={'fill'}
-              objectFit={'cover'}
+              layout="fill"
+              objectFit="cover"
             />
           </GradientOverlay>
         )}

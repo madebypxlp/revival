@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import c from 'classnames'
-import styles from './ResourceGrid.module.scss'
-import IResourceGrid from './ResourceGrid.interface'
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import { useIsMobile } from '@commerce/utils/hooks'
 import Translations from 'constants/translations'
+import IResourceGrid from './ResourceGrid.interface'
+import styles from './ResourceGrid.module.scss'
 
 const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
   module,
@@ -39,8 +39,8 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
         <div className={styles.featuredResource}>
           <Image
             className={styles.featuredImage}
-            layout={'fill'}
-            objectFit={'cover'}
+            layout="fill"
+            objectFit="cover"
             src={featuredResource.featuredImage.node.sourceUrl}
           />
           <div>
@@ -55,29 +55,27 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
             </Button>
           </div>
         </div>
-        {renderedPosts.map((post) => {
-          return (
-            <div key={post.id} className={styles.postContainer}>
-              <div className={styles.postLeftText}>
-                <h5>{post.title}</h5>
-                <ArrowCTA
-                  orientation="right"
-                  color={`${isMobile ? 'black' : 'blue'}`}
-                  href={post.uri}
-                >
-                  {Translations.READ_MORE}
-                </ArrowCTA>
-              </div>
-              <div className={styles.postImageContainer}>
-                <Image
-                  layout={'fill'}
-                  objectFit={'cover'}
-                  src={post.featuredImage.node.sourceUrl}
-                />
-              </div>
+        {renderedPosts.map((post) => (
+          <div key={post.id} className={styles.postContainer}>
+            <div className={styles.postLeftText}>
+              <h5>{post.title}</h5>
+              <ArrowCTA
+                orientation="right"
+                color={`${isMobile ? 'black' : 'blue'}`}
+                href={post.uri}
+              >
+                {Translations.READ_MORE}
+              </ArrowCTA>
             </div>
-          )
-        })}
+            <div className={styles.postImageContainer}>
+              <Image
+                layout="fill"
+                objectFit="cover"
+                src={post.featuredImage.node.sourceUrl}
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )

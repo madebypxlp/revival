@@ -7,13 +7,13 @@ import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import getAllPages from '@framework/common/get-all-pages'
-import fetch from './../../framework/wordpress/wp-client'
-import footerQuery from './../../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from './../../framework/wordpress/queries/acfGlobalOptions/header'
-import styles from './favorites.module.scss'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
+import fetch from '../../framework/wordpress/wp-client'
+import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
+import styles from './favorites.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -96,13 +96,13 @@ export default function Wishlist({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.MY_FAVORITES}
-        className={'mb-70'}
+        className="mb-70"
       />
       <ProductCardGrid
-        variant={'favorites'}
+        variant="favorites"
         products={products}
-        className={'mb-200'}
-      ></ProductCardGrid>
+        className="mb-200"
+      />
     </div>
   )
 }

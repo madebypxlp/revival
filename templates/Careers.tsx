@@ -7,20 +7,18 @@ import CarouselHeroFragment from '@components/modules/CarouselHero/CarouselHero.
 import ThreeColumnCopyModule from '@components/modules/ThreeColumnCopy/ThreeColumnCopy'
 import ThreeColumnCopyFragment from '@components/modules/ThreeColumnCopy/ThreeColumnCopy.graphql'
 
-const TemplateCareers = (props: any) => {
-  return (
-    <div>
-      <CarouselHeroModule module={props.template.pageCareers.carouselHero} />
-      <ThreeColumnCopyModule
-        module={props.template.pageCareers.threeColumnCopy}
-      />
-      <AccordionWithImageModule
-        module={props.template.pageCareers.accordionWithImage}
-      />
-      <CareerListingModule module={props.template.pageCareers.careerListing} />
-    </div>
-  )
-}
+const TemplateCareers = (props: any) => (
+  <div>
+    <CarouselHeroModule module={props.template.pageCareers.carouselHero} />
+    <ThreeColumnCopyModule
+      module={props.template.pageCareers.threeColumnCopy}
+    />
+    <AccordionWithImageModule
+      module={props.template.pageCareers.accordionWithImage}
+    />
+    <CareerListingModule module={props.template.pageCareers.careerListing} />
+  </div>
+)
 export default TemplateCareers
 
 const TEMPLATE_PREFIX = 'Template_Careers_Pagecareers'

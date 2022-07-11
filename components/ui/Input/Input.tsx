@@ -1,5 +1,4 @@
 import cn from 'classnames'
-import styles from './Input.module.scss'
 import React, {
   FormEvent,
   FunctionComponent,
@@ -7,20 +6,21 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import InputArrow from '@components/icons/InputArrow'
+import InputSearch from '@components/icons/InputSearch'
+import Translations from 'constants/translations'
+import Plus from '@components/icons/Plus'
+import Minus from '@components/icons/MinusBold'
+import parse from 'html-react-parser'
+import Button from '../Button/Button'
+import IInput, { InputError } from './Input.interface'
 import {
   isCvvValid,
   isEmailValid,
   isExpDateValid,
   isCardValid,
 } from '../../../lib/utils'
-import IInput, { InputError } from './Input.interface'
-import InputArrow from '@components/icons/InputArrow'
-import InputSearch from '@components/icons/InputSearch'
-import Translations from 'constants/translations'
-import Button from '../Button/Button'
-import Plus from '@components/icons/Plus'
-import Minus from '@components/icons/MinusBold'
-import parse from 'html-react-parser'
+import styles from './Input.module.scss'
 
 const Input: FunctionComponent<IInput> = (props) => {
   const {
@@ -52,7 +52,7 @@ const Input: FunctionComponent<IInput> = (props) => {
   }, [inputNumber])
 
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
-    const { required, value, checked, files } = e.target as HTMLInputElement
+    const { value, checked, files } = e.target as HTMLInputElement
 
     if (incrementerButtons) setInputNumber(+value)
 
@@ -78,6 +78,8 @@ const Input: FunctionComponent<IInput> = (props) => {
             value && !isCardValid(value) ? 'invalid_card_number' : false
           )
           break
+        default:
+          break
       }
     } else setInputError(false)
     // end validation
@@ -96,23 +98,19 @@ const Input: FunctionComponent<IInput> = (props) => {
   }
 
   const buttonIncrement = () => {
-    setInputNumber((prev) => {
-      return prev + 1
-    })
+    setInputNumber((prev) => prev + 1)
   }
 
   const buttonDecrement = () => {
-    setInputNumber((prev) => {
-      return prev - 1
-    })
+    setInputNumber((prev) => prev - 1)
   }
 
   const rootClassName = cn(
     styles.root,
     className,
-    styles['variant-' + variant],
-    styles['size-' + size],
-    styles['weight-' + weight],
+    styles[`variant-${variant}`],
+    styles[`size-${size}`],
+    styles[`weight-${weight}`],
     square && styles.square,
     incrementerButtons && styles.incrementer,
     'typo-input inline-block',
@@ -132,11 +130,12 @@ const Input: FunctionComponent<IInput> = (props) => {
   }
 
   return (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label
       className={cn(
         rootClassName,
         'relative inline-block group',
-        styles['type-' + type]
+        styles[`type-${type}`]
       )}
     >
       {label && (
@@ -162,7 +161,7 @@ const Input: FunctionComponent<IInput> = (props) => {
 
       <input
         onChange={handleOnChange}
-        placeholder={'' + placeholder + (required ? '*' : '')}
+        placeholder={`${placeholder}${required ? '*' : ''}`}
         type={type}
         required={required}
         autoComplete="off"

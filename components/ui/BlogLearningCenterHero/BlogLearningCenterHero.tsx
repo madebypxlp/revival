@@ -1,6 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import styles from './BlogLearningCenterHero.module.scss'
-import IBlogLearningCenterHero from './BlogLearningCenterHero.interface'
 import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
 import { PostInterface } from 'framework/wordpress/interfaces/post'
 import FacebookIconRound from '@components/icons/FacebookIconRound'
@@ -12,6 +10,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useIsMobile } from '@commerce/utils/hooks'
 import BlogHeroCircle from '@components/icons/BlogHeroCircle'
+import IBlogLearningCenterHero from './BlogLearningCenterHero.interface'
+import styles from './BlogLearningCenterHero.module.scss'
 
 const formatDate = (dateObject: string) => {
   const date = new Date(dateObject).toLocaleString('en-us', {
@@ -39,8 +39,8 @@ const BlogLearningCenterHero: FunctionComponent<
     data = props.detailPagePost
   }
 
-  var categoriesArray: string[] = []
-  categories.nodes.map((el) => {
+  const categoriesArray: string[] = []
+  categories.nodes.forEach((el) => {
     categoriesArray.push(el.name)
   })
 
@@ -58,7 +58,7 @@ const BlogLearningCenterHero: FunctionComponent<
   const links = icons.map((icon) => {
     if (!icon.href) return null
     return (
-      <Link href={icon.href}>
+      <Link href={icon.href} key={icon.href}>
         <a className="inline-block w-60 h-60 md:w-75 md:h-75 flex-shrink-0">
           {icon.el}
         </a>

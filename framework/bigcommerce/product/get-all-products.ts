@@ -1,8 +1,8 @@
+import type { Product } from '@commerce/types'
 import type {
   GetAllProductsQuery,
   GetAllProductsQueryVariables,
 } from '../schema'
-import type { Product } from '@commerce/types'
 import type { RecursivePartial, RecursiveRequired } from '../api/utils/types'
 import filterEdges from '../api/utils/filter-edges'
 import setProductLocaleMeta from '../api/utils/set-product-locale-meta'

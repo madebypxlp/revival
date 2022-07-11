@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react'
-import styles from './BlogFilter.module.scss'
-import IBlogFilter from './BlogFilter.interface'
 import { Category, PostInterface } from 'framework/wordpress/interfaces/post'
 import cn from 'classnames'
-import BlogFilterBar from './BlogFilterBar'
 import PaginateChildren from '@components/ui/PaginateChildren/PaginateChildren'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
 import { useRouter } from 'next/router'
 import pageQuery from 'framework/wordpress/queries/page/page-query'
 import { getBlogSlugAndPage } from '@lib/utils'
+import BlogFilterBar from './BlogFilterBar'
+import IBlogFilter from './BlogFilter.interface'
+import styles from './BlogFilter.module.scss'
 
 const BlogFilterModule: FunctionComponent<{
   module: IBlogFilter
@@ -72,7 +72,7 @@ const BlogFilterModule: FunctionComponent<{
               <ArticleTeaser
                 post={post}
                 key={post.id}
-                className={'mb-40 md:mb-80'}
+                className="mb-40 md:mb-80"
                 variant={showFeatured(index) ? 'featured' : 'default'}
                 textSize={showFeatured(index) ? 'medium' : 'default'}
               />

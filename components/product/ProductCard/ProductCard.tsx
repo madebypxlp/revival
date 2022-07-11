@@ -2,9 +2,9 @@ import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import type { Product } from '@commerce/types'
-import s from './ProductCard.module.scss'
 import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
+import s from './ProductCard.module.scss'
 
 interface Props {
   className?: string

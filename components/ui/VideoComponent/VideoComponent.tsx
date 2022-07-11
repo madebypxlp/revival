@@ -1,9 +1,8 @@
-import React, { FunctionComponent, Component, useState, useEffect } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
+import Plyr from 'plyr-react'
 import styles from './VideoComponent.module.scss'
 import IVideoComponent from './VideoComponent.interface'
-import Plyr from 'plyr-react'
 import 'plyr-react/dist/plyr.css'
-import classNames from 'classnames'
 
 const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
   const { source = '', options, className } = props
@@ -21,11 +20,7 @@ const VideoComponent: FunctionComponent<IVideoComponent> = (props) => {
     }, 100)
   }, [mounted])
 
-  const provider = source.includes('vimeo')
-    ? 'vimeo'
-    : source.includes('youtu')
-    ? 'youtube'
-    : 'youtube'
+  const provider = source.includes('vimeo') ? 'vimeo' : 'youtube'
 
   return (
     <div className={`${styles.root} ${className}`}>

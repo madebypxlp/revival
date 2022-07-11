@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styles from './MorePosts.module.scss'
-import IMoreArticles from '../MoreArticles/MoreArticles.interface'
 import { PostInterface } from 'framework/wordpress/interfaces/post'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
+import styles from './MorePosts.module.scss'
+import IMoreArticles from '../MoreArticles/MoreArticles.interface'
 
 const MorePostsModule: FunctionComponent<{
   module: IMoreArticles
@@ -23,15 +23,13 @@ const MorePostsModule: FunctionComponent<{
       </div>
 
       <div className="default-grid">
-        {morePosts.map((p) => {
-          return (
-            <ArticleTeaser
-              post={p}
-              key={p.id}
-              className="col-span-4 mb-40 md:mb-80"
-            />
-          )
-        })}
+        {morePosts.map((p) => (
+          <ArticleTeaser
+            post={p}
+            key={p.id}
+            className="col-span-4 mb-40 md:mb-80"
+          />
+        ))}
       </div>
     </div>
   )

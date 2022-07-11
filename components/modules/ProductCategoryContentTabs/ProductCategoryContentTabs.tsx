@@ -1,7 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
 import c from 'classnames'
-import styles from './ProductCategoryContentTabs.module.scss'
-import IProductCategoryContentTabs from './ProductCategoryContentTabs.interface'
 import ImageComponent from '@components/ui/Image/Image'
 import Button from '@components/ui/Button/Button'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
@@ -9,6 +7,8 @@ import ProductCard from '@components/ui/ProductCard/ProductCard'
 import { useIsMobile } from '@commerce/utils/hooks'
 import Translations from 'constants/translations'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
+import IProductCategoryContentTabs from './ProductCategoryContentTabs.interface'
+import styles from './ProductCategoryContentTabs.module.scss'
 
 const ProductCategoryContentTabsModule: FunctionComponent<{
   module: IProductCategoryContentTabs
@@ -37,7 +37,7 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
   return (
     <div className={styles.root}>
       <div className={styles.background} />
-      <div className={'container'}>
+      <div className="container">
         <div className={styles.tabButtonsContainer}>
           {isMobile && (
             <div className={styles.mobileTabImageContainer}>
@@ -46,11 +46,12 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
                   const selected = index === selectedTab
                   return (
                     <ImageComponent
+                      key={t.image?.desktopImage?.sourceUrl}
                       className={c(styles.mobileTabImage, {
                         [styles.selected]: selected,
                       })}
                       layout="fill"
-                      objectFit={'contain'}
+                      objectFit="contain"
                       image={t.image}
                     />
                   )
@@ -65,7 +66,7 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
                   {!isMobile && (
                     <ImageComponent
                       layout="fill"
-                      objectFit={'contain'}
+                      objectFit="contain"
                       image={t.image}
                     />
                   )}
@@ -87,69 +88,65 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
         </div>
         <div className={styles.tabsContainer}>
           {tabs &&
-            tabs.map((t, index) => {
-              return (
-                <div
-                  key={t.primaryName}
-                  className={c(
-                    styles.tabContainer,
-                    index === selectedTab && styles.selected
-                  )}
-                >
-                  <div className={c(styles.swiperContainer)}>
-                    <Swiper
-                      hideDisabledNavigation
-                      className="overflow-visible"
-                      slidesPerView={slidesPerView}
-                      spaceBetween={18}
-                      navigation
-                    >
-                      {products.map((p, index) => {
-                        return (
-                          <SwiperSlide>
-                            <div className={styles.cardHeader}>
-                              <div className={styles.cardHeaderNumber}>
-                                {index + 1}
-                              </div>
-                              <h5>{p.headline}</h5>
-                            </div>
-                            <ProductCard {...p} />
-                          </SwiperSlide>
-                        )
-                      })}
-                    </Swiper>
+            tabs.map((t, index) => (
+              <div
+                key={t.primaryName}
+                className={c(
+                  styles.tabContainer,
+                  index === selectedTab && styles.selected
+                )}
+              >
+                <div className={c(styles.swiperContainer)}>
+                  <Swiper
+                    hideDisabledNavigation
+                    className="overflow-visible"
+                    slidesPerView={slidesPerView}
+                    spaceBetween={18}
+                    navigation
+                  >
+                    {products.map((p, pIndex) => (
+                      <SwiperSlide key={p.id}>
+                        <div className={styles.cardHeader}>
+                          <div className={styles.cardHeaderNumber}>
+                            {pIndex + 1}
+                          </div>
+                          <h5>{p.headline}</h5>
+                        </div>
+                        <ProductCard {...p} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+                <div className="default-grid relative">
+                  <div className={styles.tabLeftColumn}>
+                    <div className={styles.smallCircle} />
+                    <div className={styles.primaryImageContainer}>
+                      <ImageComponent
+                        image={t.primaryImageImage}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      {t.link && (
+                        <ArrowCTA
+                          orientation="right"
+                          color="blue"
+                          href={t.link.url}
+                          className={styles.arrowCTA}
+                        >
+                          {Translations.WATCH_VIDEO}
+                        </ArrowCTA>
+                      )}
+                    </div>
                   </div>
-                  <div className={'default-grid relative'}>
-                    <div className={styles.tabLeftColumn}>
-                      <div className={styles.smallCircle}></div>
-                      <div className={styles.primaryImageContainer}>
-                        <ImageComponent
-                          image={t.primaryImageImage}
-                          layout={'fill'}
-                          objectFit={'cover'}
-                        />
-                        {t.link && (
-                          <ArrowCTA
-                            orientation="right"
-                            color="blue"
-                            href={t.link.url}
-                            className={styles.arrowCTA}
-                          >
-                            {Translations.WATCH_VIDEO}
-                          </ArrowCTA>
-                        )}
-                      </div>
+                  <div className={styles.tabRightColumn}>
+                    <div className={styles.headlineContainer}>
+                      <h4>{t.headline}</h4>
                     </div>
-                    <div className={styles.tabRightColumn}>
-                      <div className={styles.headlineContainer}>
-                        <h4>{t.headline}</h4>
-                      </div>
-                      <div className={styles.copyContainer}>{t.copy}</div>
-                    </div>
+                    <div className={styles.copyContainer}>{t.copy}</div>
                   </div>
                 </div>
-              )
-            })}
+              </div>
+            ))}
         </div>
       </div>
     </div>

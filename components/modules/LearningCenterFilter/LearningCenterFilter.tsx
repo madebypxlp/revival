@@ -1,11 +1,13 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-nested-ternary */
 import React, {
   FunctionComponent,
   MouseEventHandler,
   useEffect,
   useState,
 } from 'react'
-import styles from './LearningCenterFilter.module.scss'
-import router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { Category } from 'framework/wordpress/interfaces/post'
 import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
 import PaginateChildren from '@components/ui/PaginateChildren/PaginateChildren'
@@ -14,6 +16,7 @@ import Input from '@components/ui/Input/Input'
 import { useDebounce } from '@lib/hooks/useDebounce'
 import { getBlogSlugAndPage } from '@lib/utils'
 import Link from '@components/ui/Link/Link'
+import styles from './LearningCenterFilter.module.scss'
 
 const LearningCenterFilterModule: FunctionComponent<{
   categories: Category[]
@@ -67,19 +70,19 @@ const LearningCenterFilterModule: FunctionComponent<{
 
     // use current slug on detail page otherwise get slug of first selected category
     const _slug = isDetail() ? slugAndPage.slug : debouncedCategories[0]
-    const _categories = [
+    const __categories = [
       ...new Set(
         debouncedCategories.filter((s: string) => s !== activeCategory?.slug)
       ),
     ].sort() as string[]
-    if (!isDetail()) _categories.shift()
+    if (!isDetail()) __categories.shift()
 
     router.push({
       pathname: '/learning-center/category/[slug]',
       query: {
         ...query,
         slug: _slug,
-        categories: _categories,
+        categories: __categories,
         types: debouncedTypes,
       },
     })
@@ -103,7 +106,7 @@ const LearningCenterFilterModule: FunctionComponent<{
   }
 
   const handleCategoryChange = (checked: boolean | string, slug: string) => {
-    !!checked
+    checked
       ? setSelectedCategories((prev) =>
           Array.from(new Set([...prev, slug])).sort()
         )
@@ -113,7 +116,7 @@ const LearningCenterFilterModule: FunctionComponent<{
   }
 
   const handleContentTypeChange = (checked: boolean | string, slug: string) => {
-    !!checked
+    checked
       ? setSelectedContentTypes((prev) => [...new Set([...prev, slug])].sort())
       : setSelectedContentTypes((prev) =>
           [...new Set(prev.filter((s) => s !== slug))].sort()
@@ -194,7 +197,7 @@ const LearningCenterFilterModule: FunctionComponent<{
             <div className="md:h-full md:pl-65 md:flex flex-col">
               <p className="typo-eyebrow mb-20">{articleCount} Articles</p>
               <PaginateChildren {...paginationSettings}>
-                {posts.map((post, index) => (
+                {posts.map((post) => (
                   <ArticleTeaser
                     post={post}
                     key={post.id}

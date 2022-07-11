@@ -1,19 +1,17 @@
 import React, { FunctionComponent } from 'react'
-import styles from './Dropdown.module.scss'
-import IDropdown, { IDropdownOption } from './Dropdown.interface'
 import Select, { components, DropdownIndicatorProps } from 'react-select'
 import DropdownIcon from '@components/icons/DropdownIcon'
 import c from 'classnames'
+import IDropdown, { IDropdownOption } from './Dropdown.interface'
+import styles from './Dropdown.module.scss'
 
 const DropdownIndicator = (
   props: DropdownIndicatorProps<IDropdownOption, boolean>
-) => {
-  return (
-    <components.DropdownIndicator {...props}>
-      <DropdownIcon className="w-12 text-blue" />
-    </components.DropdownIndicator>
-  )
-}
+) => (
+  <components.DropdownIndicator {...props}>
+    <DropdownIcon className="w-12 text-blue" />
+  </components.DropdownIndicator>
+)
 
 const Dropdown: FunctionComponent<IDropdown> = (props) => {
   const { className, color = 'default', isMulti = false, ...rest } = props
@@ -24,10 +22,10 @@ const Dropdown: FunctionComponent<IDropdown> = (props) => {
       className={c(
         styles.root,
         className,
-        styles['color-' + color],
+        styles[`color-${color}`],
         isMulti && styles.isMulti
       )}
-      classNamePrefix={'select'}
+      classNamePrefix="select"
       hideSelectedOptions
       isSearchable={isMulti}
       isMulti={isMulti}

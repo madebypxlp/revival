@@ -17,8 +17,9 @@ const ForgotPasswordSuccess: FC<ForgotPasswordSuccessProps> = (props) => {
       <div className="flex justify-center items-center flex-col py-40 md:py-80">
         <h4 className="text-blue mb-10">We’ve sent you something!</h4>
         <p className="typo-modal-text md:w-680 text-center mb-30">
-          We'll check for an account with the email address {`${props.email} `}
-          and send an email to reset your password. If you don't receive an
+          We&apos;ll check for an account with the email address{' '}
+          {`${props.email} `}
+          and send an email to reset your password. If you don&apos;t receive an
           email within a couple of minutes, please check your spam folder.
         </p>
         <Button
@@ -47,21 +48,20 @@ const ForgotPassword: FC<Props> = () => {
 
   const { setModalView, closeModal } = useUI()
 
-  const handleResetPassword = async (e: React.SyntheticEvent<EventTarget>) => {
-    e.preventDefault()
-
-    if (!dirty && !disabled) {
-      setDirty(true)
-      handleValidation()
-    }
-  }
-
   const handleValidation = useCallback(() => {
     // Unable to send form unless fields are valid.
     if (dirty) {
       setDisabled(!validate(email))
     }
   }, [email, dirty])
+
+  const handleResetPassword = async (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault()
+    if (!dirty && !disabled) {
+      setDirty(true)
+      handleValidation()
+    }
+  }
 
   useEffect(() => {
     handleValidation()

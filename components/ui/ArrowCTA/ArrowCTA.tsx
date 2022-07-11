@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import styles from './ArrowCTA.module.scss'
 import cn from 'classnames'
-import IArrowCTA from './ArrowCTA.interface'
 import { ChevronUp } from '@components/icons'
 import Link from 'next/link'
 import { cleanHref } from '@lib/utils'
+import IArrowCTA from './ArrowCTA.interface'
+import styles from './ArrowCTA.module.scss'
 
 const ArrowCTA: FunctionComponent<IArrowCTA> = (props) => {
   const {

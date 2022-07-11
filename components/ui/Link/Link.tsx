@@ -1,9 +1,9 @@
 import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 import cn from 'classnames'
 import { FunctionComponent } from 'react'
+import { link } from 'fs'
 import ILink from './Link.interface'
 import styles from './Link.module.scss'
-import { link } from 'fs'
 
 const Link: FunctionComponent<ILink> = (props) => {
   const {

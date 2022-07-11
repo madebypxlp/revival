@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import styles from './ProductSlider.module.scss'
-import IProductSlider from './ProductSlider.interface'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import ProductCard from '@components/ui/ProductCard/ProductCard'
 import { useIsMobile } from '@commerce/utils/hooks'
+import IProductSlider from './ProductSlider.interface'
+import styles from './ProductSlider.module.scss'
 
 const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
   module,
@@ -67,13 +67,11 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
             },
           }}
         >
-          {products.map((p, index) => {
-            return (
-              <SwiperSlide key={p.id}>
-                <ProductCard {...p} key={index} />
-              </SwiperSlide>
-            )
-          })}
+          {products.map((p, index) => (
+            <SwiperSlide key={p.id}>
+              <ProductCard {...p} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
