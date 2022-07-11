@@ -14,10 +14,11 @@ const ImageComponent: FunctionComponent<IImage> = ({
   objectPosition,
 }) => {
   const isMobile = useIsMobile()
+  const isTablet = useIsMobile(false, 'lg')
   const img = () => {
-    return isMobile && image.mobileImage
-      ? image.mobileImage
-      : image.desktopImage
+    if (isMobile && image?.mobileImage) return image.mobileImage
+    if (isTablet && image?.tabletImage) return image.tabletImage
+    return image.desktopImage
   }
   return (
     <div className={`${styles.root} ${className}`}>
