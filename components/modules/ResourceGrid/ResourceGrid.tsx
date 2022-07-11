@@ -57,7 +57,7 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
         </div>
         {renderedPosts.map((post) => {
           return (
-            <div className={styles.postContainer}>
+            <div key={post.id} className={styles.postContainer}>
               <div className={styles.postLeftText}>
                 <h5>{post.title}</h5>
                 <ArrowCTA

@@ -22,34 +22,34 @@ const SignUpView: FC<Props> = () => {
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
 
-  //const signup = useSignup()
+  const signup = useSignup()
   const { setModalView, closeModal } = useUI()
 
-  // const handleSignup = async (e: React.SyntheticEvent<EventTarget>) => {
-  //   e.preventDefault()
+  const handleSignup = async (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault()
 
-  //   if (!dirty && !disabled) {
-  //     setDirty(true)
-  //     handleValidation()
-  //   }
+    if (!dirty && !disabled) {
+      setDirty(true)
+      handleValidation()
+    }
 
-  //   try {
-  //     setLoading(true)
-  //     setMessage('')
-  //     await signup({
-  //       email,
-  //       firstName,
-  //       lastName,
-  //       password,
-  //     })
-  //     setLoading(false)
-  //     closeModal()
-  //   } catch ({ errors }) {
-  //     console.log(errors)
-  //     //  setMessage(errors[0].message)
-  //     setLoading(false)
-  //   }
-  // }
+    try {
+      setLoading(true)
+      setMessage('')
+      await signup({
+        email,
+        firstName,
+        lastName,
+        password,
+      })
+      setLoading(false)
+      closeModal()
+    } catch ({ errors }) {
+      console.log(errors)
+      //  setMessage(errors[0].message)
+      setLoading(false)
+    }
+  }
 
   const handleValidation = useCallback(() => {
     // Test for Alphanumeric password
@@ -68,7 +68,7 @@ const SignUpView: FC<Props> = () => {
   return (
     <div className={`${styles.root}`}>
       <form
-        // onSubmit={handleSignup}
+        onSubmit={handleSignup}
         className={`w-full flex flex-col justify-between p-3 `}
       >
         <div className="flex flex-col ">

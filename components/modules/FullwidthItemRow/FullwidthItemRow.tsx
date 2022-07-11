@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import c from 'classnames'
 import styles from './FullwidthItemRow.module.scss'
 import IFullwidthItemRow from './FullwidthItemRow.interface'
@@ -41,9 +41,9 @@ const FullwidthItemRowModule: FunctionComponent<{
           )}
         >
           {items &&
-            items.map((item, idx) => {
+            items.map((item) => {
               return (
-                <>
+                <Fragment key={item.label}>
                   {item?.icon?.sourceUrl && (
                     <div className="mr-20 lg:mr-0 lg:mb-15 relative">
                       <Image
@@ -67,7 +67,7 @@ const FullwidthItemRowModule: FunctionComponent<{
                     />
                   )}
                   <div className={styles.lgonly}></div>
-                </>
+                </Fragment>
               )
             })}
         </div>

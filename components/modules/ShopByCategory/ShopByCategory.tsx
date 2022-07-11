@@ -18,7 +18,10 @@ const ShopByCategoryModule: FunctionComponent<{ module: IShopByCategory }> = ({
         </h4>
         {categories.map((category, idx) => {
           return (
-            <div className="col-span-1 md:col-span-3 lg:col-span-2">
+            <div
+              key={`${category.link.url}-${category.image.sourceUrl}`}
+              className="col-span-1 md:col-span-3 lg:col-span-2"
+            >
               <Link href={category.link.url}>
                 <a className="flex flex-col items-center justify-center">
                   <div className={styles.categoryImageContainer}>

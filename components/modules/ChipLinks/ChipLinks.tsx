@@ -32,6 +32,7 @@ const ChipLinksModule: FunctionComponent<{ module: IChipLinks }> = ({
             {links.map((link) => {
               return (
                 <Button
+                  key={`${link.link.title}`}
                   variant="small"
                   className={c('no-underline m-5', styles.buttons)}
                   outline={!link.defaultYellow}

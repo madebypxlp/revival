@@ -1,10 +1,21 @@
 import cn from 'classnames'
 
 const Hamburger = ({ ...props }) => {
-  const { isClosed } = props
+  const { isClosed, className, onClick } = props
+
+  const p1 = cn(
+    { '-rotate-45 translate-y-15': isClosed },
+    'duration-300 ease-in-out'
+  )
+  const p2 = cn({ hidden: isClosed }, 'duration-300 ease-in-out')
+  const p3 = cn(
+    { 'rotate-45 -translate-y-13 translate-x-13': isClosed },
+    'duration-300 ease-in-out'
+  )
   return (
     <svg
-      {...props}
+      className={className}
+      onClick={onClick}
       width="25"
       height="25"
       viewBox="0 0 25 18"
@@ -16,10 +27,7 @@ const Hamburger = ({ ...props }) => {
         stroke="black"
         strokeWidth="1.5"
         strokeLinecap="round"
-        className={cn(
-          { '-rotate-45 translate-y-15': isClosed },
-          'duration-300 ease-in-out'
-        )}
+        className={p1}
       />
 
       <path
@@ -27,7 +35,7 @@ const Hamburger = ({ ...props }) => {
         stroke="black"
         strokeWidth="1.5"
         strokeLinecap="round"
-        className={cn({ hidden: isClosed }, 'duration-300 ease-in-out')}
+        className={p2}
       />
 
       <path
@@ -35,10 +43,7 @@ const Hamburger = ({ ...props }) => {
         stroke="black"
         strokeWidth="1.5"
         strokeLinecap="round"
-        className={cn(
-          { 'rotate-45 -translate-y-13 translate-x-13': isClosed },
-          'duration-300 ease-in-out'
-        )}
+        className={p3}
       />
     </svg>
   )

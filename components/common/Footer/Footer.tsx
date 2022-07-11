@@ -62,6 +62,7 @@ const Footer = ({ data }: { data: AcfOptionsFooter }) => {
             {!!copyright?.links?.length &&
               copyright.links.map(({ link }) => (
                 <Link
+                  key={link.url}
                   className="!typo-legal-text inline-block ml-10"
                   link={link}
                 />

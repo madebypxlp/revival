@@ -69,6 +69,7 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
                 {facts.map((fact) => {
                   return (
                     <div
+                      key={fact.text}
                       className={`${styles.fact} flex items-center md:mx-7 typo-fact text-white`}
                     >
                       {fact?.icon?.sourceUrl && (
