@@ -1,5 +1,5 @@
 export default interface ILightHero {
-  fieldGroupName: string
+  fieldGroupName?: string
   headline: string
   subline: string
 }

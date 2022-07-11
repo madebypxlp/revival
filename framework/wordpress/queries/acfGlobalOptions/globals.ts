@@ -14,6 +14,10 @@ export default `
         anchor
       }
       stickyHelpBox
+      shop {
+        shopPageHeroTitle
+        shopPageHeroDescription
+      }
     }
   }
   notFound: acfOptionsNotFoundPage {

@@ -10,7 +10,7 @@
   }
 
   .sublineContainer {
-    @apply typo-large-paragraph text-black col-start-1 col-span-2;
+    @apply typo-large-paragraph text-black col-start-1 col-span-2 mt-20;
     @apply md:col-start-1 md:col-span-6;
     @apply xl:col-start-1 xl:col-span-4;
   }

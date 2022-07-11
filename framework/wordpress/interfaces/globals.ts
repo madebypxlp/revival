@@ -15,6 +15,10 @@ export interface ACFGlobalData {
   }
   globals: {
     stickyHelpBox: string
+    shop: {
+      shopPageHeroTitle: string
+      shopPageHeroDescription: string
+    }
     newsletterSignUp: {
       headline: string
       subline: string
