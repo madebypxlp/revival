@@ -11,7 +11,7 @@ const Ring = ({ ...props }) => {
         cy="166.5"
         r="156.5"
         stroke="#FFF5D1"
-        stroke-width="20"
+        strokeWidth="20"
       />
     </svg>
   )

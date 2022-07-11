@@ -9,7 +9,7 @@ const ChevronUp = ({ ...props }) => {
     >
       <path
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke="#00338D"
         strokeLinecap="round"
         strokeLinejoin="round"

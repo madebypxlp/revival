@@ -4,17 +4,17 @@ const MinusBold = ({ ...props }) => {
       <path
         d="M1.5 1.5L13.5 1.5"
         stroke="black"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M1.5 1.5L13.5 1.5"
         stroke="black"
-        stroke-opacity="0.2"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeOpacity="0.2"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
