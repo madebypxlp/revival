@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from 'react'
-import styles from './LearningCenterFeaturedAndLatest.module.scss'
-import ILearningCenterFeaturedAndLatest from './LearningCenterFeaturedAndLatest.interface'
 import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
 import { Category } from 'framework/wordpress/interfaces/post'
 import ArticleTeaser from '@components/ui/ArticleTeaser/ArticleTeaser'
 import { useIsMobile } from '@commerce/utils/hooks'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import Translations from 'constants/translations'
-import BlogFilterBar from '../BlogFilter/BlogFilterBar'
 import Image from 'next/image'
 import ArticleTeaserSmall from '@components/ui/ArticleTeaserSmall/ArticleTeaserSmall'
+import BlogFilterBar from '../BlogFilter/BlogFilterBar'
+import ILearningCenterFeaturedAndLatest from './LearningCenterFeaturedAndLatest.interface'
+import styles from './LearningCenterFeaturedAndLatest.module.scss'
 
 const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
   module: ILearningCenterFeaturedAndLatest
@@ -54,14 +54,13 @@ const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
           />
         </div>
         <div className={styles.otherFeaturedArticlesContainer}>
-          {otherFeaturedArticles.map(({ article }) => {
-            return (
-              <ArticleTeaserSmall
-                article={article}
-                variant={'learning-center'}
-              />
-            )
-          })}
+          {otherFeaturedArticles.map(({ article }) => (
+            <ArticleTeaserSmall
+              key={article.title}
+              article={article}
+              variant="learning-center"
+            />
+          ))}
         </div>
         <div className={styles.latestStoriesContainer}>
           {latestStoriesHeadline && (
@@ -69,9 +68,9 @@ const LearningCenterFeaturedAndLatestModule: FunctionComponent<{
               <h4>{latestStoriesHeadline}</h4>
             </div>
           )}
-          {renderedLatestPosts.map((p) => {
-            return <ArticleTeaserSmall article={p} variant={'no-image'} />
-          })}
+          {renderedLatestPosts.map((p) => (
+            <ArticleTeaserSmall key={p.title} article={p} variant="no-image" />
+          ))}
         </div>
       </div>
     </div>

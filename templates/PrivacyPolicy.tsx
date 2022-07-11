@@ -1,15 +1,13 @@
 import HeaderWithWysiwygFragment from '@components/modules/HeaderWithWysiwyg/HeaderWithWysiwyg.graphql'
 import HeaderWithWysiwygModule from '@components/modules/HeaderWithWysiwyg/HeaderWithWysiwyg'
 
-const TemplatePrivacyPolicy = (props: any) => {
-  return (
-    <div>
-      <HeaderWithWysiwygModule
-        module={props.template.pagePrivacyPolicy.headerWithWysiwyg}
-      />
-    </div>
-  )
-}
+const TemplatePrivacyPolicy = (props: any) => (
+  <div>
+    <HeaderWithWysiwygModule
+      module={props.template.pagePrivacyPolicy.headerWithWysiwyg}
+    />
+  </div>
+)
 export default TemplatePrivacyPolicy
 
 const TEMPLATE_PREFIX = 'Template_PrivacyPolicy_Pageprivacypolicy'

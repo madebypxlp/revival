@@ -22,28 +22,24 @@ const ChipLinksModule: FunctionComponent<{ module: IChipLinks }> = ({
             fullwidthVariant ? '' : 'rounded-[15px] bg-blue-default'
           } default-grid-lg px-30 md:px-45 md:py-75 py-45 overflow-hidden relative`}
         >
-          {!fullwidthVariant && (
-            <div className={`${styles.backgroundImage}`}></div>
-          )}
+          {!fullwidthVariant && <div className={`${styles.backgroundImage}`} />}
           <h3 className="typo-h3 col-span-full text-white md:mb-55 mb-30 ">
             {parse(headline)}
           </h3>
           <div className="flex md:flex-wrap md:gap-15 lg:max-w-[1015px] col-span-full flex-wrap md:justify-start justify-center">
-            {links.map((link) => {
-              return (
-                <Button
-                  key={`${link.link.title}`}
-                  variant="small"
-                  className={c('no-underline m-5', styles.buttons)}
-                  outline={!link.defaultYellow}
-                  color={link.defaultYellow ? 'yellow' : 'chipWhite'}
-                  type="default"
-                  href={link.link.url}
-                >
-                  {link.link.title}
-                </Button>
-              )
-            })}
+            {links.map((link) => (
+              <Button
+                key={`${link.link.title}`}
+                variant="small"
+                className={c('no-underline m-5', styles.buttons)}
+                outline={!link.defaultYellow}
+                color={link.defaultYellow ? 'yellow' : 'chipWhite'}
+                type="default"
+                href={link.link.url}
+              >
+                {link.link.title}
+              </Button>
+            ))}
           </div>
         </div>
       </div>

@@ -1,12 +1,13 @@
+/* eslint-disable no-nested-ternary */
 import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
-import styles from './CartSidebarView.module.scss'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
+import styles from './CartSidebarView.module.scss'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()
@@ -120,6 +121,7 @@ const CartSidebarView: FC = () => {
         <>
           <div>
             <Link href="/cart">
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
               <h5 className={styles.headline} onClick={handleClose}>
                 {`Your Cart (${products.length})`}
               </h5>
@@ -129,7 +131,7 @@ const CartSidebarView: FC = () => {
                 <CartProduct
                   key={item.id}
                   product={item}
-                  variant={'sidebar'}
+                  variant="sidebar"
                   quantity={2}
                   showCartControls
                 />

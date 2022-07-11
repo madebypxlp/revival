@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'react'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
-import styles from '../Navbar.module.scss'
 import cn from 'classnames'
 import { NavigationLayoutsBrands } from 'framework/wordpress/interfaces/header'
 import Image from 'next/image'
 import { useIsMobile } from '@commerce/utils/hooks'
+import styles from '../Navbar.module.scss'
 
 const Navbar: FunctionComponent<{ module: NavigationLayoutsBrands }> = ({
   module,
@@ -26,46 +26,44 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsBrands }> = ({
             {headline}
           </h4>
 
-          {ourBrands.map((brand) => {
-            return (
-              <a
-                href={brand.uri}
-                className="bg-white py-21 px-18 mb-20 relative w-250 h-105 flex justify-center items-center rounded-15 overflow-hidden"
-              >
-                {
-                  <Image
-                    src={brand.featuredImage.node.sourceUrl}
-                    width={brand.featuredImage.node.mediaDetails.width}
-                    height={brand.featuredImage.node.mediaDetails.height}
-                  />
-                }
-              </a>
-            )
-          })}
+          {ourBrands.map((brand) => (
+            <a
+              key={brand.uri}
+              href={brand.uri}
+              className="bg-white py-21 px-18 mb-20 relative w-250 h-105 flex justify-center items-center rounded-15 overflow-hidden"
+            >
+              <Image
+                src={brand.featuredImage.node.sourceUrl}
+                width={brand.featuredImage.node.mediaDetails.width}
+                height={brand.featuredImage.node.mediaDetails.height}
+                alt=""
+              />
+            </a>
+          ))}
         </div>
         <div className="md:col-start-5 md:col-span-8 col-span-full grid grid-cols-8 gap-x-18 gap-y-20 md:py-40 py-30">
-          {featuredBrands.map((brand) => {
-            return (
-              <a
-                href={brand.uri}
-                className="border-[1.5px] border-[#000000] border-opacity-30 rounded-15 col-span-4 md:col-span-2 flex justify-center items-center md:h-90 h-65"
-              >
-                {brand.featuredImage?.node && (
-                  <Image
-                    src={brand.featuredImage.node.sourceUrl}
-                    width={
-                      brand.featuredImage.node.mediaDetails.width /
-                      (isMobile ? 1.711 : 1)
-                    }
-                    height={
-                      brand.featuredImage.node.mediaDetails.height /
-                      (isMobile ? 1.711 : 1)
-                    }
-                  />
-                )}
-              </a>
-            )
-          })}
+          {featuredBrands.map((brand) => (
+            <a
+              key={brand.uri}
+              href={brand.uri}
+              className="border-[1.5px] border-[#000000] border-opacity-30 rounded-15 col-span-4 md:col-span-2 flex justify-center items-center md:h-90 h-65"
+            >
+              {brand.featuredImage?.node && (
+                <Image
+                  src={brand.featuredImage.node.sourceUrl}
+                  width={
+                    brand.featuredImage.node.mediaDetails.width /
+                    (isMobile ? 1.711 : 1)
+                  }
+                  height={
+                    brand.featuredImage.node.mediaDetails.height /
+                    (isMobile ? 1.711 : 1)
+                  }
+                  alt=""
+                />
+              )}
+            </a>
+          ))}
           <div className="flex justify-center items-center md:col-span-2 col-span-4 md:h-90 h-65">
             <ArrowCTA
               className="h-full p-0"

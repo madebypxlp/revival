@@ -37,13 +37,12 @@ export function useMutationHook<H extends MutationHook<any, any, any>>(
 
   return hook.useHook({
     fetch: useCallback(
-      ({ input } = {}) => {
-        return hook.fetcher({
+      ({ input } = {}) =>
+        hook.fetcher({
           input,
           options: hook.fetchOptions,
           fetch: fetcher,
-        })
-      },
+        }),
       [fetcher, hook.fetchOptions]
     ),
   })

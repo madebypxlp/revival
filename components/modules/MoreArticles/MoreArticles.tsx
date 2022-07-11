@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import styles from './MoreArticles.module.scss'
-import IMoreArticles from './MoreArticles.interface'
 import Image from 'next/image'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import { LearningCenterInterface } from 'framework/wordpress/interfaces/learning-center'
+import IMoreArticles from './MoreArticles.interface'
+import styles from './MoreArticles.module.scss'
 
 const MoreArticlesModule: FunctionComponent<{
   module: IMoreArticles
@@ -19,7 +19,10 @@ const MoreArticlesModule: FunctionComponent<{
           data.map((post) => {
             if (currentId === post.id) return null
             return (
-              <div className="col-span-2 md:col-span-12 lg:col-span-6 grid grid-cols-6 gap-20">
+              <div
+                key={post.title}
+                className="col-span-2 md:col-span-12 lg:col-span-6 grid grid-cols-6 gap-20"
+              >
                 <div className="col-span-6 md:col-span-4 order-2 md:order-1">
                   <h4 className="typo-h6 text-blue mb-10">{post.title}</h4>
                   <p className="typo-small-paragraph mb-10">

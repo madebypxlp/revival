@@ -7,13 +7,13 @@ import usePrice from '@framework/product/use-price'
 import { Layout } from '@components/common'
 import { Cross, Check } from '@components/icons'
 import Button from '@components/ui/Button/Button'
-import fetch from './../framework/wordpress/wp-client'
-import footerQuery from './../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from './../framework/wordpress/queries/acfGlobalOptions/header'
 import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 import Translations from 'constants/translations'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 import { useIsMobile } from '@commerce/utils/hooks'
+import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
+import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
+import fetch from '../framework/wordpress/wp-client'
 import styles from './cart.module.scss'
 
 export async function getStaticProps({
@@ -107,15 +107,12 @@ export default function Cart({
 
   return (
     <div className={styles.root}>
-      <div className={'container default-grid'}>
-        <div
-          className={
-            'col-start-1 col-span-2 md:col-start-1 md:col-span-8 text-blue mb-65 md:mb-85'
-          }
-        >
+      <div className="container default-grid">
+        <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-8 text-blue mb-65 md:mb-85">
           <h2>{headline}</h2>
         </div>
         <div className="col-span-2 md:col-span-8">
+          {/* eslint-disable-next-line no-nested-ternary */}
           {error ? (
             <div className="flex-1 px-4 flex flex-col justify-center items-center">
               <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
@@ -139,11 +136,10 @@ export default function Cart({
             <div>
               {!isEmpty &&
                 products.slice(0, 2).map((item) => (
-                  <div className={styles.cartProductContainer}>
+                  <div className={styles.cartProductContainer} key={item.id}>
                     <CartProduct
-                      key={item.id}
                       product={item}
-                      variant={'cart'}
+                      variant="cart"
                       quantity={2}
                       showCartControls
                     />
@@ -155,16 +151,14 @@ export default function Cart({
         <div className={c(styles.informationBox, 'col-span-2 md:col-span-4')}>
           {!isMobile && (
             <div>
-              <div
-                className={'text-center typo-large-paragraph mb-30'}
-              >{`You are $XX away from FREE economy Ground Shipping`}</div>
-              <div
-                className={'border-b-[1rem] border-white rounded-full mb-30'}
-              ></div>
+              <div className="text-center typo-large-paragraph mb-30">
+                You are $XX away from FREE economy Ground Shipping
+              </div>
+              <div className="border-b-[1rem] border-white rounded-full mb-30" />
               <div className={c(styles.learnMoreText, 'typo-small-paragraph')}>
                 {Translations.LEARN_MORE}
               </div>
-              <div className={'border-b-[0.1rem] border-[#C4C4C4] mb-40'}></div>
+              <div className="border-b-[0.1rem] border-[#C4C4C4] mb-40" />
             </div>
           )}
 
@@ -178,7 +172,7 @@ export default function Cart({
               variant="large"
               type="default"
               href={isEmpty ? '/' : '/checkout'}
-              className={'w-full text-center'}
+              className="w-full text-center"
             >
               {isEmpty
                 ? Translations.CART.SHOP_NOW

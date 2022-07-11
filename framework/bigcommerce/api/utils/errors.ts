@@ -5,7 +5,9 @@ export class BigcommerceGraphQLError extends Error {}
 
 export class BigcommerceApiError extends Error {
   status: number
+
   res: Response
+
   data: any
 
   constructor(msg: string, res: Response, data?: any) {

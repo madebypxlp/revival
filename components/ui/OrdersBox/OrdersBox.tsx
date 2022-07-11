@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
-import styles from './OrdersBox.module.scss'
 import c from 'classnames'
-import IOrdersBox from './OrdersBox.interface'
 import Translations from 'constants/translations'
 import { formatDate, formatPrice } from '@lib/utils'
 import { ChevronUp } from '@components/icons'
 import NextLink from 'next/link'
 import { useIsMobile } from '@commerce/utils/hooks'
+import IOrdersBox from './OrdersBox.interface'
+import styles from './OrdersBox.module.scss'
 
 const OrdersBox: FunctionComponent<IOrdersBox> = (props) => {
   const { orders, variant, className } = props

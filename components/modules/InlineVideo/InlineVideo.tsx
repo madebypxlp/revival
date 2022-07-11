@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styles from './InlineVideo.module.scss'
 import IInlineVideo from './InlineVideo.interface'
-import Video from './../../ui/VideoComponent/VideoComponent'
+import Video from '../../ui/VideoComponent/VideoComponent'
 
 const InlineVideoModule: FunctionComponent<{ module: IInlineVideo }> = ({
   module,

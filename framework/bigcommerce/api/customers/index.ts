@@ -28,7 +28,7 @@ const customersApi: BigcommerceApiHandler<
 
   try {
     const body = null
-    return await handlers['getLoggedInCustomer']({ req, res, config, body })
+    return await handlers.getLoggedInCustomer({ req, res, config, body })
   } catch (error) {
     console.error(error)
 

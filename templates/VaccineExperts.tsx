@@ -11,28 +11,26 @@ import TextImageHeroFragment from '@components/modules/TextImageHero/TextImageHe
 import VideoGridModule from '@components/modules/VideoGrid/VideoGrid'
 import VideoGridFragment from '@components/modules/VideoGrid/VideoGrid.graphql'
 
-const VaccineExperts = (props: any) => {
-  return (
-    <div>
-      <TextImageHeroModule
-        module={props.template.pageVaccineExperts.textImageHero}
-      />
-      <FullwidthItemRowModule
-        module={props.template.pageVaccineExperts.fullwidthItemRow}
-      />
-      <CustomerReviewSlider
-        module={props.template.pageVaccineExperts.customerReviewSlider}
-      />
-      <ShopByCategoryModule
-        module={props.template.pageVaccineExperts.shopByCategory}
-      />
-      <VideoGridModule module={props.template.pageVaccineExperts.videoGrid} />
-      <ContentAccordionModule
-        module={props.template.pageVaccineExperts.contentAccordion}
-      />
-    </div>
-  )
-}
+const VaccineExperts = (props: any) => (
+  <div>
+    <TextImageHeroModule
+      module={props.template.pageVaccineExperts.textImageHero}
+    />
+    <FullwidthItemRowModule
+      module={props.template.pageVaccineExperts.fullwidthItemRow}
+    />
+    <CustomerReviewSlider
+      module={props.template.pageVaccineExperts.customerReviewSlider}
+    />
+    <ShopByCategoryModule
+      module={props.template.pageVaccineExperts.shopByCategory}
+    />
+    <VideoGridModule module={props.template.pageVaccineExperts.videoGrid} />
+    <ContentAccordionModule
+      module={props.template.pageVaccineExperts.contentAccordion}
+    />
+  </div>
+)
 export default VaccineExperts
 
 const TEMPLATE_PREFIX = 'Template_VaccineExperts_Pagevaccineexperts'

@@ -1,17 +1,17 @@
 import React, { Fragment, FunctionComponent, useState } from 'react'
+import Modal from '@components/ui/Modal'
+import Dropdown from '@components/ui/Dropdown/Dropdown'
+import { IDropdownOption } from '@components/ui/Dropdown/Dropdown.interface'
+import cn from 'classnames'
 import styles from './PetAndVetClinicSummary.module.scss'
 import IPetAndVetClinicSummary from './PetAndVetClinicSummary.interface'
-import Modal from '@components/ui/Modal'
 import { ModalActions, ModalContent } from '../Modal/Modal'
 import Button from '../Button/Button'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Input from '../Input/Input'
-import Dropdown from '@components/ui/Dropdown/Dropdown'
-import { IDropdownOption } from '@components/ui/Dropdown/Dropdown.interface'
 import PlusCTA from '../PlusCTA/PlusCTA'
 import SearchResultCard from '../SearchForVetClinicResult/SearchForVetClinicResult'
 import CartProduct from '../CartProduct/CartProduct'
-import cn from 'classnames'
 
 const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
   props
@@ -22,13 +22,8 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
   const [petCount, setPetCount] = useState<Object>({ 0: 0 })
   const [addPetCount, setAddPetCount] = useState(1)
 
-  console.log(petType)
-  console.log(petCount)
-
   const handleAddPet = () => {
-    setAddPetCount((prev) => {
-      return prev + 1
-    })
+    setAddPetCount((prev) => prev + 1)
   }
 
   const dummyClinic = {
@@ -80,8 +75,8 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
             className={cn(styles.product, 'mb-30')}
             product={product}
             quantity={3}
-            variant={'cart'}
-            rightColumn={'empty'}
+            variant="cart"
+            rightColumn="empty"
             showPrescriptionIcon
             showPrescriptionLabel
             showPrescriptionExtraInfo
@@ -96,38 +91,37 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
             needed
           </p>
 
-          {new Array(addPetCount).fill('').map((v, index) => {
-            return (
-              <Fragment key={index}>
-                <Dropdown
-                  color="light"
-                  onChange={(o) =>
-                    setPetType((prevState) => {
-                      return { ...prevState, [index]: o?.value }
+          {new Array(addPetCount).fill('').map((v, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={index}>
+              <Dropdown
+                color="light"
+                onChange={(o) =>
+                  setPetType((prevState) => {
+                    return { ...prevState, [index]: o?.value }
+                  })
+                }
+                placeholder="Pet Type"
+                options={[
+                  { label: 'Cat', value: 'cat' },
+                  { label: 'Dog', value: 'dog' },
+                ]}
+                className="col-span-2 md:col-span-6 md:col-start-1 mb-25"
+              />
+              <div className="col-span-2 md:col-span-3 md:ml-30 ml-0 self-center">
+                <Input
+                  incrementerButtons
+                  placeholder="0"
+                  type="number"
+                  onChange={(value) =>
+                    setPetCount((prevState) => {
+                      return { ...prevState, [index]: +value }
                     })
                   }
-                  placeholder={'Pet Type'}
-                  options={[
-                    { label: 'Cat', value: 'cat' },
-                    { label: 'Dog', value: 'dog' },
-                  ]}
-                  className="col-span-2 md:col-span-6 md:col-start-1 mb-25"
                 />
-                <div className="col-span-2 md:col-span-3 md:ml-30 ml-0 self-center">
-                  <Input
-                    incrementerButtons
-                    placeholder="0"
-                    type="number"
-                    onChange={(value) =>
-                      setPetCount((prevState) => {
-                        return { ...prevState, [index]: +value }
-                      })
-                    }
-                  />
-                </div>
-              </Fragment>
-            )
-          })}
+              </div>
+            </Fragment>
+          ))}
 
           <div className="col-span-2 md:col-span-12 flex justify-between flex-col md:flex-row">
             <div className="mb-20 md:mb-0">
@@ -144,16 +138,15 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
           </h3>
           <div className="col-span-2 md:col-span-9 -mr-10">
             {clinics &&
-              clinics.map((clinic) => {
-                return (
-                  <SearchResultCard
-                    noButton
-                    clinic={clinic.clinic}
-                    address={clinic.address}
-                    phone={clinic.phone}
-                  />
-                )
-              })}
+              clinics.map((clinic) => (
+                <SearchResultCard
+                  noButton
+                  key={clinic.clinic}
+                  clinic={clinic.clinic}
+                  address={clinic.address}
+                  phone={clinic.phone}
+                />
+              ))}
           </div>
 
           <div className="col-span-2 md:col-span-12 flex justify-center md:justify-end ">

@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import parse from 'html-react-parser'
 import c from 'classnames'
+import Button from '@components/ui/Button/Button'
 import styles from './InlineText.module.scss'
 import IInlineText from './InlineText.interface'
-import Button from '@components/ui/Button/Button'
 
 const InlineTextModule: FunctionComponent<{ module: IInlineText }> = ({
   module,

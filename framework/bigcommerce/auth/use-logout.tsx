@@ -10,16 +10,15 @@ export const handler: MutationHook<null> = {
     url: '/api/bigcommerce/customers/logout',
     method: 'GET',
   },
-  useHook: ({ fetch }) => () => {
-    const { mutate } = useCustomer()
+  useHook:
+    ({ fetch }) =>
+    () => {
+      const { mutate } = useCustomer()
 
-    return useCallback(
-      async function logout() {
+      return useCallback(async () => {
         const data = await fetch()
         await mutate(null, false)
         return data
-      },
-      [fetch, mutate]
-    )
-  },
+      }, [fetch, mutate])
+    },
 }

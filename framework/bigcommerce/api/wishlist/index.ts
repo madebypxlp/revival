@@ -1,3 +1,4 @@
+import type { Product, ProductVariant, Customer } from '@commerce/types'
 import isAllowedMethod from '../utils/is-allowed-method'
 import createApiHandler, {
   BigcommerceApiHandler,
@@ -11,7 +12,6 @@ import type {
 import getWishlist from './handlers/get-wishlist'
 import addItem from './handlers/add-item'
 import removeItem from './handlers/remove-item'
-import type { Product, ProductVariant, Customer } from '@commerce/types'
 
 export type { Wishlist, WishlistItem }
 
@@ -69,19 +69,19 @@ const wishlistApi: BigcommerceApiHandler<Wishlist, WishlistHandlers> = async (
         customerToken,
         includeProducts: req.query.products === '1',
       }
-      return await handlers['getWishlist']({ req, res, config, body })
+      return await handlers.getWishlist({ req, res, config, body })
     }
 
     // Add an item to the wishlist
     if (req.method === 'POST') {
       const body = { ...req.body, customerToken }
-      return await handlers['addItem']({ req, res, config, body })
+      return await handlers.addItem({ req, res, config, body })
     }
 
     // Remove an item from the wishlist
     if (req.method === 'DELETE') {
       const body = { ...req.body, customerToken }
-      return await handlers['removeItem']({ req, res, config, body })
+      return await handlers.removeItem({ req, res, config, body })
     }
   } catch (error) {
     console.error(error)

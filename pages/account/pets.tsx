@@ -4,14 +4,14 @@ import c from 'classnames'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
+import Translations from 'constants/translations'
+import Button from '@components/ui/Button/Button'
+import Link from '@components/ui/Link/Link'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import AccountHero from '@components/ui/AccountHero/AccountHero'
-import Translations from 'constants/translations'
 import styles from './pets.module.scss'
-import Button from '@components/ui/Button/Button'
-import Link from '@components/ui/Link/Link'
 
 export async function getStaticProps({
   preview,
@@ -40,17 +40,14 @@ export default function Profile({
   const pets = [{ name: 'Billie Ellie' }, { name: 'Piper' }, { name: 'Bella' }]
   return (
     <div className={styles.root}>
-      <AccountHero
-        headline={Translations.ACCOUNT.MY_PETS}
-        className={'mb-190'}
-      />
-      <div className={'container'}>
+      <AccountHero headline={Translations.ACCOUNT.MY_PETS} className="mb-190" />
+      <div className="container">
         <div className={styles.addNewPetContainer}>
           <Button color="yellow" variant="large" type="default">
             {Translations.ACCOUNT.ADD_NEW_PET}
           </Button>
         </div>
-        <div className={'default-grid gap-y-40 mb-500'}>
+        <div className="default-grid gap-y-40 mb-500">
           {pets.map((p) => (
             <div
               key={p.name}

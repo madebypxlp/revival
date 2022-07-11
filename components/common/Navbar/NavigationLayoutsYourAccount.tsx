@@ -28,6 +28,16 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
   const { setModalView, displayModal, closeModal, modalView, openModal } =
     useUI()
 
+  const handleValidation = useCallback(() => {
+    // Test for Alphanumeric password
+    const validPassword = /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)
+
+    // Unable to send form unless fields are valid.
+    if (dirty) {
+      setDisabled(!validate(email) || password.length < 7 || !validPassword)
+    }
+  }, [email, password, dirty])
+
   // const login = useLogin()
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
@@ -51,16 +61,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
     //   setLoading(false)
     // }
   }
-
-  const handleValidation = useCallback(() => {
-    // Test for Alphanumeric password
-    const validPassword = /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)
-
-    // Unable to send form unless fields are valid.
-    if (dirty) {
-      setDisabled(!validate(email) || password.length < 7 || !validPassword)
-    }
-  }, [email, password, dirty])
 
   useEffect(() => {
     handleValidation()

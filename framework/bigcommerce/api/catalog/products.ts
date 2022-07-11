@@ -30,7 +30,7 @@ const productsApi: BigcommerceApiHandler<
 
   try {
     const body = req.query
-    return await handlers['getProducts']({ req, res, config, body })
+    return await handlers.getProducts({ req, res, config, body })
   } catch (error) {
     console.error(error)
 

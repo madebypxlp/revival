@@ -1,5 +1,4 @@
 import dayjs from 'dayjs'
-import { toInteger } from 'lodash'
 
 /**
  * check if the link contains the basic wp url and clean it
@@ -22,7 +21,7 @@ export const isEmailValid = (email: string) => {
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#basic_validation
   // eslint-disable-next-line
   const regex =
-    /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
   return email.match(regex)
 }
 
@@ -35,25 +34,21 @@ export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
 }
 
 // todo: at some point there might be a date format cno
-export const formatDate = (d: Date): string => {
-  return dayjs(d).format('MMM DD, YYYY')
-}
+export const formatDate = (d: Date): string => dayjs(d).format('MMM DD, YYYY')
 
-export const formatPrice = (price: number): string => {
-  return '$' + price.toFixed(2)
-}
+export const formatPrice = (price: number): string => `$${price.toFixed(2)}`
 
 export const isExpDateValid = (date: string) => {
   const regex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/
 
   if (date.match(regex)) {
-    //check if expiration date is in the future
-    let month = toInteger(date.slice(0, 2))
-    let year = toInteger(date.slice(3, 5)) + 2000
-    let inputDate = new Date(year, month, 1)
-    let currentDate = new Date()
+    // check if expiration date is in the future
+    const month = parseInt(date.slice(0, 2), 10)
+    const year = parseInt(date.slice(3, 5), 10) + 2000
+    const inputDate = new Date(year, month, 1)
+    const currentDate = new Date()
     if (inputDate.getTime() >= currentDate.getTime()) return true
-    else return false
+    return false
   }
 
   return false

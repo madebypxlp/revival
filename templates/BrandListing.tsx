@@ -7,20 +7,18 @@ import CustomerReviewSliderFragment from '@components/modules/CustomerReviewSlid
 import ProductCategoryContentTabs from '@components/modules/ProductCategoryContentTabs/ProductCategoryContentTabs'
 import ProductCategoryContentTabsFragment from '@components/modules/ProductCategoryContentTabs/ProductCategoryContentTabs.graphql'
 
-const TemplateBrandListing = (props: any) => {
-  return (
-    <div>
-      <VideoHero module={props.template.pageBrandListing.videoHero} />
-      <InlineText module={props.template.pageBrandListing.inlineText} />
-      <ProductCategoryContentTabs
-        module={props.template.pageBrandListing.productCategoryContentTabs}
-      />
-      <CustomerReviewSlider
-        module={props.template.pageBrandListing.customerReviewSlider}
-      />
-    </div>
-  )
-}
+const TemplateBrandListing = (props: any) => (
+  <div>
+    <VideoHero module={props.template.pageBrandListing.videoHero} />
+    <InlineText module={props.template.pageBrandListing.inlineText} />
+    <ProductCategoryContentTabs
+      module={props.template.pageBrandListing.productCategoryContentTabs}
+    />
+    <CustomerReviewSlider
+      module={props.template.pageBrandListing.customerReviewSlider}
+    />
+  </div>
+)
 export default TemplateBrandListing
 
 const TEMPLATE_PREFIX = 'Template_BrandListing_Pagebrandlisting'

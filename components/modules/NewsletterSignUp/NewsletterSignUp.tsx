@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
+import NewsletterForm from '@components/ui/NewsletterForm/NewsletterForm'
 import styles from './NewsletterSignUp.module.scss'
 import INewsletterSignUp from './NewsletterSignUp.interface'
-import NewsletterForm from '@components/ui/NewsletterForm/NewsletterForm'
 
 const NewsletterSignUpModule: FunctionComponent<{
   module: INewsletterSignUp

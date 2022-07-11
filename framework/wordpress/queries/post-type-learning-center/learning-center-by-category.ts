@@ -31,7 +31,7 @@ export const query = (
           relation: AND,
           taxArray: [
             ${
-              !!categorySlugs?.length
+              categorySlugs?.length
                 ? `
               {
                 taxonomy: LCCATEGORY,
@@ -43,7 +43,7 @@ export const query = (
                 : ''
             }
             ${
-              !!contentTypeSlugs?.length
+              contentTypeSlugs?.length
                 ? `
               {
                 taxonomy: CONTENT_TYPE,

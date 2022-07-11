@@ -4,10 +4,6 @@ import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
-import fetch from '../../framework/wordpress/wp-client'
-import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import styles from './index.module.scss'
 import Translations from 'constants/translations'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
@@ -19,6 +15,10 @@ import { LoginView } from '@components/auth'
 import AuthModal from '@components/ui/AuthModal/AuthModal'
 import { useEffect } from 'react'
 import { useUI } from '@components/ui'
+import styles from './index.module.scss'
+import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
+import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
+import fetch from '../../framework/wordpress/wp-client'
 
 export async function getStaticProps({
   preview,
@@ -94,25 +94,21 @@ export default function Profile({
   return (
     <div className={styles.root}>
       <AuthModal />
-      <AccountHero headline={headlineText} className={'mb-155'} />
-      <div className={'container default-grid mb-70'}>
-        <div className={'col-span-2 md:col-span-9'}>
+      <AccountHero headline={headlineText} className="mb-155" />
+      <div className="container default-grid mb-70">
+        <div className="col-span-2 md:col-span-9">
           <div className={styles.headerContainer}>
             <h5>{Translations.ACCOUNT.RECENT_ORDERS}</h5>
             <ArrowCTA orientation="right" color="blue" href="/account/orders">
               {Translations.ACCOUNT.VIEW_ALL_ORDERS}
             </ArrowCTA>
           </div>
-          <OrdersBox
-            orders={orders}
-            variant={'account'}
-            className={'mb-85'}
-          ></OrdersBox>
+          <OrdersBox orders={orders} variant="account" className="mb-85" />
           <div className={styles.headerContainer}>
             <h5>{Translations.ACCOUNT.MY_PET_HEALTH}</h5>
           </div>
           {linkList.map((l) => (
-            <NextLink href={l.link}>
+            <NextLink href={l.link} key={l.title}>
               <div
                 className={c(
                   styles.myPetHealthLink,
@@ -120,7 +116,7 @@ export default function Profile({
                 )}
               >
                 <span>{l.title}</span>
-                <ChevronUp className={styles.rightChevron}></ChevronUp>
+                <ChevronUp className={styles.rightChevron} />
               </div>
             </NextLink>
           ))}
@@ -128,15 +124,13 @@ export default function Profile({
 
         <div className={styles.settingsColumn}>
           <div className={styles.infoGroup}>
-            <div className={'typo-eyebrow'}>
-              {Translations.ACCOUNT.SETTINGS}
-            </div>
+            <div className="typo-eyebrow">{Translations.ACCOUNT.SETTINGS}</div>
           </div>
           <div className={styles.infoGroup}>
-            <NextLink href={'#'}>
+            <NextLink href="#">
               <div className={styles.title}>
                 {Translations.ACCOUNT.YOUR_PROFILE}
-                <ChevronUp className={styles.rightChevron}></ChevronUp>
+                <ChevronUp className={styles.rightChevron} />
               </div>
             </NextLink>
             <div>{accountInfo.name}</div>
@@ -144,10 +138,10 @@ export default function Profile({
             <div>{`${Translations.ACCOUNT.PASSWORD} ${accountInfo.password}`}</div>
           </div>
           <div className={styles.infoGroup}>
-            <NextLink href={'#'}>
+            <NextLink href="#">
               <div className={styles.title}>
                 {Translations.ACCOUNT.SHIPPING_ADDRESS}
-                <ChevronUp className={styles.rightChevron}></ChevronUp>
+                <ChevronUp className={styles.rightChevron} />
               </div>
             </NextLink>
             <div>{shippingInfo.name}</div>
@@ -156,10 +150,10 @@ export default function Profile({
             <div>{`${Translations.ACCOUNT.PHONE} ${shippingInfo.phone}`}</div>
           </div>
           <div className={styles.infoGroup}>
-            <NextLink href={'#'}>
+            <NextLink href="#">
               <div className={styles.title}>
                 {Translations.ACCOUNT.PAYMENT_METHOD}
-                <ChevronUp className={styles.rightChevron}></ChevronUp>
+                <ChevronUp className={styles.rightChevron} />
               </div>
             </NextLink>
             <div>{paymentMethod.name}</div>
@@ -167,10 +161,10 @@ export default function Profile({
             <div>${paymentMethod.name}</div>
           </div>
           <div className={styles.infoGroup}>
-            <NextLink href={'#'}>
+            <NextLink href="#">
               <div className={styles.title}>
                 {Translations.ACCOUNT.GIFT_CARD}
-                <ChevronUp className={styles.rightChevron}></ChevronUp>
+                <ChevronUp className={styles.rightChevron} />
               </div>
             </NextLink>
             <div>{paymentMethod.name}</div>

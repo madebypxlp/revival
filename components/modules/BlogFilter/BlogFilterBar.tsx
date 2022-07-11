@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import IBlogFilter from './BlogFilter.interface'
-import styles from './BlogFilter.module.scss'
 import { Category, PostInterface } from 'framework/wordpress/interfaces/post'
 import Input from '@components/ui/Input/Input'
 import Link from '@components/ui/Link/Link'
 import cn from 'classnames'
 import Button from '@components/ui/Button/Button'
+import styles from './BlogFilter.module.scss'
+import IBlogFilter from './BlogFilter.interface'
 
 const BlogFilterBar: FunctionComponent<{
   categories: Category[]
@@ -34,7 +34,7 @@ const BlogFilterBar: FunctionComponent<{
     >
       <div className="md:default-grid">
         <Input
-          className={'col-span-6 row-start-1 lg:col-span-4 xl:col-span-3'}
+          className="col-span-6 row-start-1 lg:col-span-4 xl:col-span-3"
           placeholder={searchInputPlaceholder}
           variant="blue-outline"
           type="search"
@@ -53,6 +53,7 @@ const BlogFilterBar: FunctionComponent<{
           {!!categories?.length &&
             categories.map((cat) => (
               <Link
+                key={cat.uri}
                 href={cat.uri}
                 className={cn([
                   'inline-block text-blue mr-16 md:mr-40',

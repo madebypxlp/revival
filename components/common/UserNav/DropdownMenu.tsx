@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { FC, useRef, useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
-import s from './DropdownMenu.module.scss'
 import { Avatar } from '@components/common'
 import { Moon, Sun } from '@components/icons'
 import { useUI } from '@components/ui/context'
@@ -15,6 +14,7 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
+import s from './DropdownMenu.module.scss'
 
 interface DropdownMenuProps {
   open?: boolean

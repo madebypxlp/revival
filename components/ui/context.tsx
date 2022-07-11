@@ -71,7 +71,9 @@ export const UIContext = React.createContext<State | any>(initialState)
 
 UIContext.displayName = 'UIContext'
 
+// eslint-disable-next-line consistent-return
 function uiReducer(state: State, action: Action) {
+  // eslint-disable-next-line default-case
   switch (action.type) {
     case 'OPEN_SIDEBAR': {
       return {
@@ -170,8 +172,8 @@ export const UIProvider: FC = (props) => {
   const setModalView = (view: MODAL_VIEWS) =>
     dispatch({ type: 'SET_MODAL_VIEW', view })
 
-  const value = useMemo(
-    () => ({
+  const value = useMemo(() => {
+    return {
       ...state,
       openSidebar,
       closeSidebar,
@@ -185,9 +187,8 @@ export const UIProvider: FC = (props) => {
       openToast,
       closeToast,
       setUserAvatar,
-    }),
-    [state]
-  )
+    }
+  }, [state])
 
   return <UIContext.Provider value={value} {...props} />
 }

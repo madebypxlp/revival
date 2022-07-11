@@ -12,7 +12,7 @@ const FooterNav = ({ data }: { data: AcfOptionsFooter }) => {
       {nav.map((group) => {
         const { primaryHeadline, primaryElementLink, items } = group
         const primaryProps = {
-          className: styles.navLink + ' inline-block font-bold',
+          className: `${styles.navLink} inline-block font-bold`,
         }
 
         return (
@@ -32,7 +32,7 @@ const FooterNav = ({ data }: { data: AcfOptionsFooter }) => {
                   <Link
                     key={link?.title}
                     link={link}
-                    className={styles.navLink + ' !font-normal'}
+                    className={`${styles.navLink} !font-normal`}
                     color={highlight ? 'red' : undefined}
                   />
                 )

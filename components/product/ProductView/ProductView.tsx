@@ -2,7 +2,6 @@ import cn from 'classnames'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import { FC, useState } from 'react'
-import s from './ProductView.module.scss'
 
 import { Swatch, ProductSlider } from '@components/product'
 import { Container, Text, useUI } from '@components/ui'
@@ -11,13 +10,12 @@ import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
 import { useAddItem } from '@framework/cart'
 
-import { getVariant, SelectedOptions } from '../helpers'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import Button from '@components/ui/Button/Button'
+import { getVariant, SelectedOptions } from '../helpers'
+import s from './ProductView.module.scss'
 
 interface Props {
-  className?: string
-  children?: any
   product: Product
 }
 

@@ -29,14 +29,16 @@ export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
   })
   const res = {
     paths: pages.edges.map(
-      ({ node }: { node: { slug: string; uri: string; id: string } }) => ({
-        params: {
-          slug: node.uri
-            .substring(1)
-            .split('/')
-            .filter((i) => !!i),
-        },
-      })
+      ({ node }: { node: { slug: string; uri: string; id: string } }) => {
+        return {
+          params: {
+            slug: node.uri
+              .substring(1)
+              .split('/')
+              .filter((i) => !!i),
+          },
+        }
+      }
     ),
     fallback: 'blocking',
   }
@@ -138,7 +140,7 @@ export const getWpData = async (
     props: {
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
-      globals: globals,
+      globals,
     },
     revalidate: undefined,
   }

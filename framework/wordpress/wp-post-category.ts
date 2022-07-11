@@ -1,4 +1,6 @@
 import { GetStaticProps, GetStaticPaths, GetStaticPathsResult } from 'next'
+import { getBlogSlugAndPage } from '@lib/utils'
+import { ParsedUrlQuery } from 'querystring'
 import fetch from './wp-client'
 import postsByCategoryQuery, {
   getCategoryIdBySlug,
@@ -6,9 +8,7 @@ import postsByCategoryQuery, {
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
 import globalsQuery from './queries/acfGlobalOptions/globals'
-import { getBlogSlugAndPage } from '@lib/utils'
 import { Category } from './interfaces/post'
-import { ParsedUrlQuery } from 'querystring'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -54,7 +54,7 @@ export const getPostCategoryWpStaticProps: GetStaticProps = async (ctx) => {
   const slug: string = Array.isArray(ctx.params?.slug)
     ? ctx.params?.slug[0] || ''
     : ctx.params?.slug || ''
-  const page: number = getBlogSlugAndPage(ctx.params?.slug).page
+  const { page } = getBlogSlugAndPage(ctx.params?.slug)
   const size = postsPerPage
   const offset = (page - 1) * size
 
@@ -63,7 +63,7 @@ export const getPostCategoryWpStaticProps: GetStaticProps = async (ctx) => {
     variables: { slug },
   })
   const categoryId = category?.categories?.nodes[0]?.categoryId
-  let res = undefined
+  let res
   if (categoryId) {
     res = await fetch({
       query: postsByCategoryQuery,

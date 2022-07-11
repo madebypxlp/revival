@@ -1,7 +1,7 @@
 import cn from 'classnames'
-import s from './Marquee.module.scss'
 import { FC, ReactNode, Component } from 'react'
 import Ticker from 'react-ticker'
+import s from './Marquee.module.scss'
 
 interface Props {
   className?: string

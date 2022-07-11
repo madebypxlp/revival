@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styles from './HeaderWithWysiwyg.module.scss'
-import IHeaderWithWysiwyg from './HeaderWithWysiwyg.interface'
-
 import parse from 'html-react-parser'
 import Button from '@components/ui/Button/Button'
+import styles from './HeaderWithWysiwyg.module.scss'
+import IHeaderWithWysiwyg from './HeaderWithWysiwyg.interface'
 
 const HeaderWithWysiwygModule: FunctionComponent<{
   module: IHeaderWithWysiwyg

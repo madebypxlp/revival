@@ -3,13 +3,13 @@ import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
+import Translations from 'constants/translations'
+import CartProduct from '@components/ui/CartProduct/CartProduct'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import AccountHero from '@components/ui/AccountHero/AccountHero'
-import Translations from 'constants/translations'
 import styles from './prescriptions.module.scss'
-import CartProduct from '@components/ui/CartProduct/CartProduct'
 
 export async function getStaticProps({
   preview,
@@ -84,15 +84,16 @@ export default function Profile({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.PRESCRIPTIONS}
-        className={'mb-190'}
+        className="mb-190"
       />
-      <div className={'container default-grid mb-200'}>
+      <div className="container default-grid mb-200">
         {products.map((p) => (
           <CartProduct
-            className={'pb-40 light-border-b mb-40'}
+            key={product.id}
+            className="pb-40 light-border-b mb-40"
             product={product}
             quantity={3}
-            variant={'account'}
+            variant="account"
             showPrescriptionIcon
             showPlaceNewOrder
             vetInfo={petAndVetInfo}

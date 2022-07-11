@@ -1,6 +1,4 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import styles from './FormBuilder.module.scss'
-import IFormBuilder, { GeneralInput } from './FormBuilder.interface'
 import Input from '@components/ui/Input/Input'
 import cn from 'classnames'
 import Dropdown from '@components/ui/Dropdown/Dropdown'
@@ -10,8 +8,10 @@ import Button from '@components/ui/Button/Button'
 import Translations from 'constants/translations'
 import parse from 'html-react-parser'
 import useSWR from 'swr'
-import states from './states'
 import { InputError } from '@components/ui/Input/Input.interface'
+import states from './states'
+import IFormBuilder, { GeneralInput } from './FormBuilder.interface'
+import styles from './FormBuilder.module.scss'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -27,7 +27,7 @@ const FormBuilderModule: FunctionComponent<IFormBuilder> = ({ module }) => {
   })
   //
 
-  const { data: countries, error } = useSWR<any[]>(
+  const { data: countries, error: countriesError } = useSWR<any[]>(
     'https://restcountries.com/v3.1/all?fields=name',
     fetcher
   )
@@ -150,6 +150,10 @@ const FormBuilderModule: FunctionComponent<IFormBuilder> = ({ module }) => {
                   />
                 </div>
               )
+            }
+
+            default: {
+              return null
             }
           }
         })}

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import styles from './ThreeColumnCopy.module.scss'
 import c from 'classnames'
 import parse from 'html-react-parser'
+import styles from './ThreeColumnCopy.module.scss'
 import IThreeColumnCopy from './ThreeColumnCopy.interface'
 
 const ThreeColumnCopyModule: FunctionComponent<{
@@ -19,9 +19,11 @@ const ThreeColumnCopyModule: FunctionComponent<{
       )}
       {headline && <h3 className={styles.headline}>{parse(headline)}</h3>}
       {columns &&
-        columns.map((col) => {
-          return <div className={styles.contentColumn}>{parse(col.copy)}</div>
-        })}
+        columns.map((col) => (
+          <div key={col.copy} className={styles.contentColumn}>
+            {parse(col.copy)}
+          </div>
+        ))}
     </div>
   )
 }

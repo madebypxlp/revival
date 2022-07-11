@@ -24,7 +24,7 @@ const logoutApi: BigcommerceApiHandler<null, LogoutHandlers> = async (
     const redirectTo = req.query.redirect_to
     const body = typeof redirectTo === 'string' ? { redirectTo } : {}
 
-    return await handlers['logout']({ req, res, config, body })
+    return await handlers.logout({ req, res, config, body })
   } catch (error) {
     console.error(error)
 

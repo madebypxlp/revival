@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
+import { Plus } from '@components/icons'
 import styles from './PlusCTA.module.scss'
 import IPlusCTA from './PlusCTA.interface'
-import { Plus } from '@components/icons'
 
 const PlusCTA: FunctionComponent<IPlusCTA> = (props) => {
-  const { href, onClick, children, disabled = false } = props
+  const { onClick, children, disabled = false } = props
 
   /**
    * Handle button click if prop is set

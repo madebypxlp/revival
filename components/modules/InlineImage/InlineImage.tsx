@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styles from './InlineImage.module.scss'
-import IInlineImage from './InlineImage.interface'
 import Image from '@components/ui/Image/Image'
 import c from 'classnames'
+import styles from './InlineImage.module.scss'
+import IInlineImage from './InlineImage.interface'
 
 const InlineImageModule: FunctionComponent<{ module: IInlineImage }> = ({
   module,

@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import IImageInfoSlider from './ImageInfoSlider.interface'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import ImageComponent from '@components/ui/Image/Image'
 import { useIsMobile } from '@commerce/utils/hooks'
+import IImageInfoSlider from './ImageInfoSlider.interface'
 import styles from './ImageInfoSlider.module.scss'
 
 const ImageInfoSliderModule: FunctionComponent<{
@@ -14,20 +14,20 @@ const ImageInfoSliderModule: FunctionComponent<{
   const slidesPerView = isMobile ? 1 : 3
   return (
     <div className={`${styles.root}`}>
-      <div className={'container'}>
-        <div className={'default-grid'}>
+      <div className="container">
+        <div className="default-grid">
           <div className={styles.headlineContainer}>
             {headline && <h4>{headline}</h4>}
           </div>
         </div>
         <Swiper slidesPerView={slidesPerView} allowTouchMove={false} navigation>
           {slides.map((e) => (
-            <SwiperSlide>
+            <SwiperSlide key={e.headline}>
               <div className={styles.slideContainer}>
                 <div className={styles.slideImage}>
                   <ImageComponent
-                    layout={'fill'}
-                    className={'aspect-1'}
+                    layout="fill"
+                    className="aspect-1"
                     image={e.image}
                   />
                 </div>

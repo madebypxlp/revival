@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
+import parse from 'html-react-parser'
 import styles from './WYSIWYG.module.scss'
 import IWYSIWYG from './WYSIWYG.interface'
-import parse from 'html-react-parser'
 
 const WYSIWYGModule: FunctionComponent<IWYSIWYG> = (props) => {
   const { text } = props

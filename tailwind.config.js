@@ -1,6 +1,6 @@
 const generateSpacings = (interval = 5, max = 300) => {
   const array = {}
-  for (var x = 0; x <= max; x += interval) {
+  for (let x = 0; x <= max; x += interval) {
     array[x] = `${x / 10}rem`
   }
   return array
@@ -97,6 +97,7 @@ module.exports = {
     },
   },
   plugins: [
+    // eslint-disable-next-line global-require
     require('@tailwindcss/aspect-ratio'),
     // eslint-disable-next-line
     function ({ addComponents }) {

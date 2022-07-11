@@ -1,14 +1,14 @@
 import { FC, useRef, useEffect, useCallback } from 'react'
 import Portal from '@reach/portal'
-import s from './Modal.module.scss'
 import { Cross } from '@components/icons'
-import IModal from './Modal.interface'
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
 import FocusTrap from '@lib/focus-trap'
+import IModal from './Modal.interface'
+import s from './Modal.module.scss'
 
 export const ModalContent: FC = ({ children }) => (
   <div className={s.modalContent}>{children}</div>
@@ -27,13 +27,12 @@ const Modal: FC<IModal> = (props) => {
       if (e.key === 'Escape') {
         return onClose()
       }
+      return () => {}
     },
     [onClose]
   )
 
-  const onClickOutside = () => {
-    return onClose()
-  }
+  const onClickOutside = () => onClose()
 
   useEffect(() => {
     if (ref.current) {
@@ -60,11 +59,12 @@ const Modal: FC<IModal> = (props) => {
     <Portal>
       {open ? (
         <div className={s.root} ref={ref}>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
             className="bg-none w-full h-full z-0 absolute"
             onClick={onClickOutside}
           />
-          <div className={s.modal + ' ' + className} role="dialog">
+          <div className={`${s.modal} ${className}`} role="dialog">
             <button
               onClick={() => onClose()}
               aria-label="Close panel"

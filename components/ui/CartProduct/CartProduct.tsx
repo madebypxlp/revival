@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from 'react'
-import styles from './CartProduct.module.scss'
 import c from 'classnames'
-import ICartProduct from './CartProduct.interface'
-import ProductCardImage from '../ProductCardImage/ProductCardImage'
-import Link from '../Link/Link'
 import { useIsMobile } from '@commerce/utils/hooks'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import Translations from 'constants/translations'
 import AlertIcon from '@components/icons/AlertIcon'
-import Button from '../Button/Button'
 import { formatPrice } from '@lib/utils'
+import Button from '../Button/Button'
+import Link from '../Link/Link'
+import ProductCardImage from '../ProductCardImage/ProductCardImage'
+import ICartProduct from './CartProduct.interface'
+import styles from './CartProduct.module.scss'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const {
@@ -124,7 +124,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         {vetInfo && (
           <div className={styles.vetAndPetInfo}>
             {vetInfo.info.map((v) => (
-              <div className={styles.vetAndPetRow}>
+              <div className={styles.vetAndPetRow} key={v.vet + v.pet}>
                 <div
                   className={c(styles.title, styles.vet)}
                 >{`${Translations.PET_AND_VET.VET}`}</div>
@@ -151,10 +151,10 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
               </div>
             </div>
             <div className={styles.controlLinksContainer}>
-              <Link color={'black'} href={'/'}>
+              <Link color="black" href="/">
                 Remove
               </Link>
-              <Link color={'black'} href={'/'}>
+              <Link color="black" href="/">
                 Edit
               </Link>
             </div>

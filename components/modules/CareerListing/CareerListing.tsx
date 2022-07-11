@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import parse from 'html-react-parser'
 import c from 'classnames'
-import styles from './CareerListing.module.scss'
-import ICareerListing from './CareerListing.interface'
 import { ChevronUp } from '@components/icons'
 import Button from '@components/ui/Button/Button'
 import Fade from '@components/ui/Fade/Fade'
+import ICareerListing from './CareerListing.interface'
+import styles from './CareerListing.module.scss'
 
 const CareerListingModule: FunctionComponent<{ module: ICareerListing }> = ({
   module,
@@ -31,11 +31,8 @@ const CareerListingModule: FunctionComponent<{ module: ICareerListing }> = ({
 
       {jobs &&
         jobs.map((job, index) => (
-          <Fade delay={index * 200}>
-            <div
-              key={job.title}
-              className={c(styles.wrapper, 'default-grid mt-30')}
-            >
+          <Fade delay={index * 200} key={job.title}>
+            <div className={c(styles.wrapper, 'default-grid mt-30')}>
               <button
                 onClick={() => setIndex(activeIndex === index ? -1 : index)}
                 className={c(styles.parent, 'default-grid col-span-full')}

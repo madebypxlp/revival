@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState } from 'react'
-import styles from './ProductSliderWithBigImage.module.scss'
-import IProductSliderWithBigImage from './ProductSliderWithBigImage.interface'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import ProductCard from '@components/ui/ProductCard/ProductCard'
 import { useIsMobile } from '@commerce/utils/hooks'
+import IProductSliderWithBigImage from './ProductSliderWithBigImage.interface'
+import styles from './ProductSliderWithBigImage.module.scss'
 
 const ProductSliderWithBigImageModule: FunctionComponent<{
   module: IProductSliderWithBigImage
@@ -47,7 +47,7 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
     headline: 'Get her healthy first',
   }
   const products = [product, product, product, product, product, product]
-  /////////////////
+  /// //////////////
 
   return (
     <div
@@ -58,15 +58,13 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
           slidesPerView={isMobile ? 1.3 : 1}
           spaceBetween={20}
           navigation
-          pagination={isMobile ? false : true}
+          pagination={!isMobile}
         >
-          {products.map((p, index) => {
-            return (
-              <SwiperSlide>
-                <ProductCard {...p} key={index} />
-              </SwiperSlide>
-            )
-          })}
+          {products.map((p) => (
+            <SwiperSlide key={p.id}>
+              <ProductCard {...p} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 

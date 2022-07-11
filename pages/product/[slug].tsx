@@ -12,9 +12,9 @@ import getProduct from '@framework/product/get-product'
 import getAllPages from '@framework/common/get-all-pages'
 import getAllProductPaths from '@framework/product/get-all-product-paths'
 
-import fetch from './../../framework/wordpress/wp-client'
-import footerQuery from './../../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from './../../framework/wordpress/queries/acfGlobalOptions/header'
+import fetch from '../../framework/wordpress/wp-client'
+import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 
 export async function getStaticProps({
   params,

@@ -1,7 +1,7 @@
-import styles from './Footer.module.scss'
 import SpeechBubble from '@components/icons/SpeechBubble'
 import NewsletterForm from '@components/ui/NewsletterForm/NewsletterForm'
 import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
+import styles from './Footer.module.scss'
 
 const FooterNewsletter = ({ data }: { data: AcfOptionsFooter }) => {
   const { headline, copy, note } = data.newsletter

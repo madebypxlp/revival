@@ -56,11 +56,11 @@ export type CommerceContextValue<P extends Provider> = {
   cartCookie: string
 }
 
-export function CommerceProvider<P extends Provider>({
+export const CommerceProvider = <P extends Provider>({
   provider,
   children,
   config,
-}: CommerceProps<P>) {
+}: CommerceProps<P>) => {
   if (!config) {
     throw new Error('CommerceProvider requires a valid config object')
   }
@@ -70,15 +70,14 @@ export function CommerceProvider<P extends Provider>({
   const fetcherRef = useRef(provider.fetcher)
   // Because the config is an object, if the parent re-renders this provider
   // will re-render every consumer unless we memoize the config
-  const cfg = useMemo(
-    () => ({
+  const cfg = useMemo(() => {
+    return {
       providerRef,
       fetcherRef,
       locale: config.locale,
       cartCookie: config.cartCookie,
-    }),
-    [config.locale, config.cartCookie]
-  )
+    }
+  }, [config.locale, config.cartCookie])
 
   return <Commerce.Provider value={cfg}>{children}</Commerce.Provider>
 }

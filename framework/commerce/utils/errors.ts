@@ -12,6 +12,7 @@ export type ErrorProps = {
 
 export class CommerceError extends Error {
   code?: string
+
   errors: ErrorData[]
 
   constructor({ message, code, errors }: ErrorProps) {

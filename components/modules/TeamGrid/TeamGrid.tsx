@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import ITeamGrid from './TeamGrid.interface'
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
+import ITeamGrid from './TeamGrid.interface'
 import styles from './TeamGrid.module.scss'
 
 const TeamGridModule: FunctionComponent<{ module: ITeamGrid }> = ({
@@ -18,14 +18,15 @@ const TeamGridModule: FunctionComponent<{ module: ITeamGrid }> = ({
           {team &&
             team.map(({ member }) => {
               const tm = member.postTypeTeam
-              const links = tm.links
+              const { links } = tm
               return (
-                <div className={styles.teamMemberContainer}>
+                <div key={tm.name} className={styles.teamMemberContainer}>
                   <div className={styles.teamImageContainer}>
                     <Image
+                      alt=""
                       src={tm.profileImage.sourceUrl}
-                      layout={'fill'}
-                      objectFit={'contain'}
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                   <div className={styles.teamMemberName}>
@@ -39,18 +40,15 @@ const TeamGridModule: FunctionComponent<{ module: ITeamGrid }> = ({
                   </div>
                   {links && links.length > 0 && (
                     <div className={styles.teamMemberLinksContainer}>
-                      {links.map((l) => {
-                        return (
-                          <Button
-                            href={l.link.url}
-                            color="yellow"
-                            variant="large"
-                            type="default"
-                          >
-                            {l.link.title}
-                          </Button>
-                        )
-                      })}
+                      {links.map(({ link }) => (
+                        <Button
+                          key={link.title}
+                          color="yellow"
+                          variant="large"
+                          type="default"
+                          link={link}
+                        />
+                      ))}
                     </div>
                   )}
                 </div>

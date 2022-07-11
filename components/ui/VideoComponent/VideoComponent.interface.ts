@@ -1,7 +1,7 @@
-import { Options } from 'plyr'
+import { PlyrOptions } from 'plyr-react'
 
 export default interface IVideoComponent {
   source: string
-  options?: Options
+  options?: PlyrOptions
   className?: string
 }

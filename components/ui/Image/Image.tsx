@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
+import { useIsMobile } from '@commerce/utils/hooks'
 import { IImage } from './Image.interface'
 import styles from './Image.module.scss'
-import { useIsMobile } from '@commerce/utils/hooks'
 
 const ImageComponent: FunctionComponent<IImage> = ({
   image,
@@ -30,6 +30,7 @@ const ImageComponent: FunctionComponent<IImage> = ({
           src={img().sourceUrl}
           objectFit={objectFit}
           objectPosition={objectPosition}
+          alt={img().altText}
         />
       ) : (
         <Image
@@ -39,6 +40,7 @@ const ImageComponent: FunctionComponent<IImage> = ({
           layout={layout}
           loading={loading}
           src={img().sourceUrl}
+          alt={img().altText}
         />
       )}
     </div>

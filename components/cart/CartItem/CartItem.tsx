@@ -2,13 +2,13 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import s from './CartItem.module.scss'
 import { Trash, Plus, Minus } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import type { LineItem } from '@framework/types'
 import usePrice from '@framework/product/use-price'
 import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
+import s from './CartItem.module.scss'
 
 type ItemOption = {
   name: string
@@ -76,7 +76,7 @@ const CartItem = ({
     }
   }
   // TODO: Add a type for this
-  const options = (item as any).options
+  const { options } = item as any
 
   useEffect(() => {
     // Reset the quantity state if the item quantity changes
@@ -104,6 +104,7 @@ const CartItem = ({
       </div>
       <div className="flex-1 flex flex-col text-base">
         <Link href={`/product/${item.path}`}>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <span
             className="font-bold cursor-pointer leading-6"
             onClick={() => closeSidebarIfPresent()}
@@ -125,7 +126,7 @@ const CartItem = ({
           </div>
         ) : null}
         <div className="flex items-center mt-3">
-          <button type="button" onClick={() => increaseQuantity(-1)}>
+          <button onClick={() => increaseQuantity(-1)}>
             <Minus width={18} height={18} />
           </button>
           <label>
@@ -139,7 +140,7 @@ const CartItem = ({
               onBlur={handleBlur}
             />
           </label>
-          <button type="button" onClick={() => increaseQuantity(1)}>
+          <button onClick={() => increaseQuantity(1)}>
             <Plus width={18} height={18} />
           </button>
         </div>

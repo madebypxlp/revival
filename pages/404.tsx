@@ -31,24 +31,21 @@ export default function Pages(pageProps: {
         </p>
         <div className="flex flex-col justify-center items-center lg:flex-row">
           {quickLinks &&
-            quickLinks.map((link_, idx) => {
-              return (
-                <Button
-                  className="mb-10 lg:mb-0 md:mr-20"
-                  variant="large"
-                  type="default"
-                  color="yellow"
-                  key={link_.link.title}
-                  ariaLabel={link_.link.title}
-                  href={link_.link.url}
-                >
-                  {link_.link.title}
-                </Button>
-              )
-            })}
+            quickLinks.map((link_, idx) => (
+              <Button
+                className="mb-10 lg:mb-0 md:mr-20"
+                variant="large"
+                type="default"
+                color="yellow"
+                key={link_.link.title}
+                ariaLabel={link_.link.title}
+                href={link_.link.url}
+              >
+                {link_.link.title}
+              </Button>
+            ))}
         </div>
       </div>
-      //{' '}
     </Layout>
   )
 }

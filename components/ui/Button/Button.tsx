@@ -1,9 +1,9 @@
 import React, { FunctionComponent, MouseEventHandler } from 'react'
-import styles from './Button.module.scss'
 import cn from 'classnames'
-import IButton from './Button.interface'
 import Link from 'next/link'
 import { cleanHref } from '@lib/utils'
+import IButton from './Button.interface'
+import styles from './Button.module.scss'
 
 const Button: FunctionComponent<IButton> = (props) => {
   const {
@@ -33,6 +33,7 @@ const Button: FunctionComponent<IButton> = (props) => {
   const isLink = () => !!(link?.url || href)
 
   const hrefStripped = cleanHref(link?.url || href)
+  // eslint-disable-next-line no-nested-ternary
   const Type = isLink() ? 'a' : isFake ? 'span' : 'button'
   const button = (
     <Type

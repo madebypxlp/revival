@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
+import AccordionPlus from '@components/icons/AccordionPlus'
 import styles from './Accordion.module.scss'
 import IAccordion from './Accordion.interface'
-import AccordionMinus from '@components/icons/AccordionMinus'
-import AccordionPlus from '@components/icons/AccordionPlus'
 
 const Accordion: FunctionComponent<IAccordion> = (props) => {
   const {
@@ -11,11 +10,11 @@ const Accordion: FunctionComponent<IAccordion> = (props) => {
     headline = 'default',
     children = (
       <p className="text-30">
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        &quot;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
         sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
         rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-        ipsum dolor sit amet."
+        ipsum dolor sit amet.&quot;
       </p>
     ),
   } = props
@@ -23,7 +22,6 @@ const Accordion: FunctionComponent<IAccordion> = (props) => {
   return (
     <div className={`${styles.root} ${open && 'pt-40'}`}>
       <button
-        type="button"
         className="flex justify-between items-center w-full mb-20"
         onClick={() => typeof onOpen === 'function' && onOpen()}
       >
@@ -31,7 +29,7 @@ const Accordion: FunctionComponent<IAccordion> = (props) => {
           {headline}
         </span>
         <AccordionPlus
-          className={styles.icon + ' ' + (open && styles.iconActive)}
+          className={`${styles.icon} ${open && styles.iconActive}`}
         />
       </button>
       <div

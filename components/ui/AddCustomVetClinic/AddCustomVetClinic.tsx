@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
+import Modal from '@components/ui/Modal'
 import styles from './AddCustomVetClinic.module.scss'
 import IAddCustomVetClinic from './AddCustomVetClinic.interface'
-import Modal from '@components/ui/Modal'
 import { ModalActions, ModalContent } from '../Modal/Modal'
 import Button from '../Button/Button'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'

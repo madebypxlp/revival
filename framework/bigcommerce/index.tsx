@@ -21,15 +21,13 @@ export type BigcommerceProps = {
   locale: string
 } & BigcommerceConfig
 
-export function CommerceProvider({ children, ...config }: BigcommerceProps) {
-  return (
-    <CoreCommerceProvider
-      provider={bigcommerceProvider}
-      config={{ ...bigcommerceConfig, ...config }}
-    >
-      {children}
-    </CoreCommerceProvider>
-  )
-}
+export const CommerceProvider = ({ children, ...config }: BigcommerceProps) => (
+  <CoreCommerceProvider
+    provider={bigcommerceProvider}
+    config={{ ...bigcommerceConfig, ...config }}
+  >
+    {children}
+  </CoreCommerceProvider>
+)
 
 export const useCommerce = () => useCoreCommerce<BigcommerceProvider>()

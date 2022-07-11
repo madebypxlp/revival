@@ -1,6 +1,4 @@
 import React, { FunctionComponent, useState } from 'react'
-import styles from './HeroCarousel.module.scss'
-import IHeroCarousel from './HeroCarousel.interface'
 import Image from '@components/ui/Image/Image'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import { useIsMobile } from '@commerce/utils/hooks'
@@ -9,6 +7,8 @@ import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import parse from 'html-react-parser'
 import SwiperCore from 'swiper'
 import PlayPause from '@components/icons/PlayPause'
+import IHeroCarousel from './HeroCarousel.interface'
+import styles from './HeroCarousel.module.scss'
 
 const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
   module,
@@ -20,7 +20,7 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
 
   const toggleSwiper = () => {
     if (!swiperInstance?.autoplay) return false
-    swiperInstance.autoplay.running
+    return swiperInstance.autoplay.running
       ? swiperInstance.autoplay.stop()
       : swiperInstance.autoplay.start()
   }
@@ -45,7 +45,7 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
                   <Image
                     className="!absolute inset-0"
                     imgClassName="object-cover object-right-bottom lg:object-center md:object-center-bottom"
-                    layout={'fill'}
+                    layout="fill"
                     image={image}
                   />
                   <div className="container py-50 md:flex items-center h-full min-h-screen md:min-h-[62rem] relative z-10 ">

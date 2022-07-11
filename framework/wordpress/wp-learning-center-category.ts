@@ -3,6 +3,7 @@ import {
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next'
+import { getBlogSlugAndPage } from '@lib/utils'
 import fetch from './wp-client'
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
@@ -10,7 +11,6 @@ import globalsQuery from './queries/acfGlobalOptions/globals'
 import learningCenterByCategory, {
   getLcCategoryIdBySlug,
 } from './queries/post-type-learning-center/learning-center-by-category'
-import { getBlogSlugAndPage } from '@lib/utils'
 
 export const getAllPostCategories = `
   query getAllPostCategories {
@@ -42,16 +42,17 @@ export const getLearningCenterCategoryWpServerSideProps = async (
   const categorySlugs = [
     slugAndPage.slug,
     ...(Array.isArray(ctx.query?.categories)
-      ? ctx.query?.categories
+      ? ctx.query?.categories || []
       : [ctx.query?.categories]),
   ].filter((v) => !!v) as string[]
 
   const contentTypeSlugs = (
-    Array.isArray(ctx.query?.types) ? ctx.query?.types : [ctx.query?.types]
+    Array.isArray(ctx.query?.types)
+      ? ctx.query?.types || []
+      : [ctx.query?.types]
   ).filter((v) => !!v) as string[]
 
-  let res = undefined
-  res = await fetch({
+  const res = await fetch({
     query: learningCenterByCategory(categorySlugs, contentTypeSlugs),
     variables: {
       size,

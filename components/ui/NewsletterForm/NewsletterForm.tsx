@@ -1,9 +1,9 @@
 import React, { FormEvent, FunctionComponent, useState } from 'react'
+import Translations from 'constants/translations'
 import styles from './NewsletterForm.module.scss'
 import INewsletterForm from './NewsletterForm.interface'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
-import Translations from 'constants/translations'
 
 const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
   const { submitLabel, inputClassName } = props

@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import styles from './PaginateChildren.module.scss'
-import IPaginateChildren from './PaginateChildren.interface'
 import cn from 'classnames'
 import ChevronRight from '@components/icons/ChevronRight'
+import styles from './PaginateChildren.module.scss'
+import IPaginateChildren from './PaginateChildren.interface'
 
 const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
   const {
@@ -42,7 +42,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
 
       {getTotalPages() > 1 && (
         <>
-          <span className={styles.paginationSpacer}></span>
+          <span className={styles.paginationSpacer} />
           <div className={styles.pagination}>
             <button
               className={cn(
@@ -56,6 +56,7 @@ const PaginateChildren: FunctionComponent<IPaginateChildren> = (props) => {
 
             {getRange().map((p) => (
               <button
+                key={p}
                 data-p={p}
                 onClick={() => setPage(p)}
                 className={cn(styles.button, page === p && styles.buttonActive)}

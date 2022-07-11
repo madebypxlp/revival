@@ -4,14 +4,14 @@ import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
+import AccountHero from '@components/ui/AccountHero/AccountHero'
+import Translations from 'constants/translations'
+import { useRouter } from 'next/router'
+import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import AccountHero from '@components/ui/AccountHero/AccountHero'
-import Translations from 'constants/translations'
 import styles from './orders.module.scss'
-import { useRouter } from 'next/router'
-import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
 
 export async function getStaticProps({
   preview,
@@ -52,11 +52,11 @@ export default function Profile({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.ORDERS}
-        className={'mb-70 md:mb-190'}
+        className="mb-70 md:mb-190"
       />
 
-      <div className={'container'}>
-        <OrdersBox orders={orders} variant={'orders'} className={'mb-300'} />
+      <div className="container">
+        <OrdersBox orders={orders} variant="orders" className="mb-300" />
       </div>
     </div>
   )
