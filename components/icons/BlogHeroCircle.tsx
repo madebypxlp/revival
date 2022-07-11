@@ -6,7 +6,7 @@ const BlogHeroCircle = ({ ...props }) => {
         cy="224.5"
         r="214.5"
         stroke="#FFF5D1"
-        stroke-width="20"
+        strokeWidth="20"
       />
     </svg>
   )

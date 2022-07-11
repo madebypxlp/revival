@@ -14,10 +14,10 @@ const Hamburger = ({ ...props }) => {
       <path
         d="M1 2H24"
         stroke="black"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
         className={cn(
-          isClosed && '-rotate-45 translate-y-15',
+          { '-rotate-45 translate-y-15': isClosed },
           'duration-300 ease-in-out'
         )}
       />
@@ -25,18 +25,18 @@ const Hamburger = ({ ...props }) => {
       <path
         d="M1 9H24"
         stroke="black"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        className={cn(isClosed && 'hidden', 'duration-300 ease-in-out')}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        className={cn({ hidden: isClosed }, 'duration-300 ease-in-out')}
       />
 
       <path
         d="M1 16H24"
         stroke="black"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
         className={cn(
-          isClosed && 'rotate-45 -translate-y-13 translate-x-13',
+          { 'rotate-45 -translate-y-13 translate-x-13': isClosed },
           'duration-300 ease-in-out'
         )}
       />

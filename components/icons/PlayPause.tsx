@@ -24,7 +24,7 @@ const PlayPause: FunctionComponent<PlayPauseProps> = ({ state, ...props }) => {
             cy="25"
             r="24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </>
       ) : (
@@ -47,7 +47,7 @@ const PlayPause: FunctionComponent<PlayPauseProps> = ({ state, ...props }) => {
             cy="25"
             r="24"
             stroke="#00338D"
-            stroke-width="2"
+            strokeWidth="2"
           />
           <defs>
             <clipPath id="clip0_596_112664">
