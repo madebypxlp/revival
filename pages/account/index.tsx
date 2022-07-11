@@ -15,6 +15,10 @@ import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import NextLink from 'next/link'
 import { ChevronUp } from '@components/icons'
 import { useIsMobile } from '@commerce/utils/hooks'
+import { LoginView } from '@components/auth'
+import AuthModal from '@components/ui/AuthModal/AuthModal'
+import { useEffect } from 'react'
+import { useUI } from '@components/ui'
 
 export async function getStaticProps({
   preview,
@@ -38,6 +42,13 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
+  const { setModalView, openModal } = useUI()
+  console.log(data)
+
+  useEffect(() => {
+    openModal()
+    setModalView('LOGIN_VIEW')
+  }, [data])
 
   const order = {
     id: '000000',
@@ -82,6 +93,7 @@ export default function Profile({
 
   return (
     <div className={styles.root}>
+      <AuthModal />
       <AccountHero headline={headlineText} className={'mb-155'} />
       <div className={'container default-grid mb-70'}>
         <div className={'col-span-2 md:col-span-9'}>

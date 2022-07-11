@@ -69,7 +69,7 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
         >
           {products.map((p, index) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={p.id}>
                 <ProductCard {...p} key={index} />
               </SwiperSlide>
             )

@@ -249,6 +249,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                 }
                 return (
                   <NavigationMarketingBox
+                    key={nav.title}
                     module={nav.navigationLayouts[0].marketingBox}
                   />
                 )

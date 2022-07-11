@@ -27,7 +27,7 @@ const CustomerReviewSliderModule: FunctionComponent<{
             allowTouchMove={false}
           >
             {reviews.map((r) => (
-              <SwiperSlide>
+              <SwiperSlide key={`${r.reviewCopy}-${r.author}`}>
                 <div className={styles.reviewCard}>
                   <div className={styles.reviewCopy}>{r.reviewCopy}</div>
                   <div className={styles.reviewAuthor}>{r.author}</div>
