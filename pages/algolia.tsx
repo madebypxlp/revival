@@ -10,10 +10,12 @@ export default function () {
   )
   return (
     <div className="container">
+      {/*
       <InstantSearch searchClient={searchClient} indexName="demo_ecommerce">
         <SearchBox />
         <Hits />
       </InstantSearch>
+  */}
     </div>
   )
 }

@@ -116,11 +116,13 @@ async function getAllProducts({
 
   // RecursivePartial forces the method to check for every prop in the data, which is
   // required in case there's a custom `query`
+  console.log(query)
   const { data } = await config.fetch<RecursivePartial<GetAllProductsQuery>>(
     query,
     { variables }
   )
   const edges = data.site?.[field]?.edges
+  console.log(data.site)
   const products = filterEdges(edges as RecursiveRequired<typeof edges>)
 
   if (locale && config.applyLocale) {
