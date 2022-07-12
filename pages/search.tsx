@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Layout } from '@components/common'
@@ -18,12 +18,7 @@ import rangeMap from '@lib/range-map'
 // TODO(bc) Remove this. This should come from the API
 import getSlug from '@lib/get-slug'
 
-import {
-  filterQuery,
-  getCategoryPath,
-  getDesignerPath,
-  useSearchMeta,
-} from '@lib/search'
+import { filterQuery, getCategoryPath, useSearchMeta } from '@lib/search'
 import { Product } from '@commerce/types'
 import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
@@ -43,14 +38,13 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
-  const { categories, brands } = await getSiteInfo({ config, preview })
+  const { categories } = await getSiteInfo({ config, preview })
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
   return {
     props: {
       pages,
       categories,
-      brands,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
     },
@@ -59,7 +53,6 @@ export async function getStaticProps({
 
 export default function Search({
   categories,
-  brands,
   header,
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -74,20 +67,17 @@ export default function Search({
   // of those is selected
   const query = filterQuery({ sort })
 
-  const { pathname, category, brand } = useSearchMeta(asPath)
+  const { pathname, category } = useSearchMeta(asPath)
   const activeCategory = categories.find(
     (cat) => getSlug(cat.path) === category
   )
-  const activeBrand = brands.find(
-    (b) => getSlug(b.node.path) === `brands/${brand}`
-  )?.node
 
+  console.log(activeCategory, categories)
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
     // TODO: Shopify - Fix this type
     categoryId: activeCategory?.entityId as any,
     // TODO: Shopify - Fix this type
-    brandId: (activeBrand as any)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
   })
 
@@ -155,9 +145,7 @@ export default function Search({
                         }
                       )}
                     >
-                      <Link
-                        href={{ pathname: getCategoryPath('', brand), query }}
-                      >
+                      <Link href={{ pathname: getCategoryPath(''), query }}>
                         <button
                           onClick={(e) => handleClick(e, 'categories')}
                           className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
@@ -179,7 +167,7 @@ export default function Search({
                       >
                         <Link
                           href={{
-                            pathname: getCategoryPath(cat.path, brand),
+                            pathname: getCategoryPath(cat.path),
                             query,
                           }}
                         >
@@ -200,33 +188,7 @@ export default function Search({
 
           {/* Designs */}
           <div className="relative inline-block w-full">
-            <div className="lg:hidden mt-3">
-              <span className="rounded-15 shadow-sm">
-                <button
-                  onClick={(e) => handleClick(e, 'brands')}
-                  className="flex justify-between w-full rounded-sm border border-gray-300 px-4 py-5 bg-white  leading-5 font-medium text-gray-900 hover:text-gray-500 focus:outline-none focus:border-blue-300 active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
-                  id="options-menu"
-                  aria-haspopup="true"
-                  aria-expanded="true"
-                >
-                  {activeBrand?.name
-                    ? `Design: ${activeBrand?.name}`
-                    : 'All Designs'}
-                  <svg
-                    className="-mr-1 ml-2 h-5 w-5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </span>
-            </div>
+            <div className="lg:hidden mt-3"></div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-15 shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'brands' || toggleFilter !== true
@@ -239,65 +201,14 @@ export default function Search({
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
-                >
-                  <ul>
-                    <li
-                      className={cn(
-                        'block  leading-5 text-gray-700 lg:text-base lg:no-underline lg:font-bold lg:tracking-wide hover:bg-gray-100 lg:hover:bg-transparent hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900',
-                        {
-                          underline: !activeBrand?.name,
-                        }
-                      )}
-                    >
-                      <Link
-                        href={{
-                          pathname: getDesignerPath('', category),
-                          query,
-                        }}
-                      >
-                        <button
-                          onClick={(e) => handleClick(e, 'brands')}
-                          className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
-                        >
-                          All Designers
-                        </button>
-                      </Link>
-                    </li>
-                    {brands.flatMap(({ node }) => (
-                      <li
-                        key={node.path}
-                        className={cn(
-                          'block  leading-5 text-gray-700 hover:bg-gray-100 lg:hover:bg-transparent hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900',
-                          {
-                            // @ts-ignore Shopify - Fix this types
-                            underline: activeBrand?.entityId === node.entityId,
-                          }
-                        )}
-                      >
-                        <Link
-                          href={{
-                            pathname: getDesignerPath(node.path, category),
-                            query,
-                          }}
-                        >
-                          <button
-                            onClick={(e) => handleClick(e, 'brands')}
-                            className="block lg:inline-block px-4 py-5 lg:p-0 lg:my-2 lg:mx-4"
-                          >
-                            {node.name}
-                          </button>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                ></div>
               </div>
             </div>
           </div>
         </div>
         {/* Products */}
         <div className="col-span-8 order-3 lg:order-none">
-          {(q || activeCategory || activeBrand) && (
+          {(q || activeCategory) && (
             <div className="mb-10 transition ease-in duration-75">
               {/* eslint-disable-next-line no-nested-ternary */}
               {data ? (

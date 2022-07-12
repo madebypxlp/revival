@@ -1144,8 +1144,6 @@ export type Settings = {
 export type Site = {
   __typename?: 'Site'
   categoryTree: Array<CategoryTreeItem>
-  /** Details of the brand. */
-  brands: BrandConnection
   /** Details of the products. */
   products: ProductConnection
   /** Details of the newest products. */
@@ -1160,15 +1158,6 @@ export type Site = {
   route: Route
   /** Store settings. */
   settings?: Maybe<Settings>
-}
-
-/** A site */
-export type SiteBrandsArgs = {
-  before?: Maybe<Scalars['String']>
-  after?: Maybe<Scalars['String']>
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  productEntityIds?: Maybe<Array<Scalars['Int']>>
 }
 
 /** A site */
@@ -2020,37 +2009,6 @@ export type GetSiteInfoQuery = { __typename?: 'Query' } & {
         >
       } & CategoryTreeItemFragment
     >
-    brands: { __typename?: 'BrandConnection' } & {
-      pageInfo: { __typename?: 'PageInfo' } & Pick<
-        PageInfo,
-        'startCursor' | 'endCursor'
-      >
-      edges?: Maybe<
-        Array<
-          Maybe<
-            { __typename?: 'BrandEdge' } & Pick<BrandEdge, 'cursor'> & {
-                node: { __typename?: 'Brand' } & Pick<
-                  Brand,
-                  | 'entityId'
-                  | 'name'
-                  | 'pageTitle'
-                  | 'metaDesc'
-                  | 'metaKeywords'
-                  | 'searchKeywords'
-                  | 'path'
-                > & {
-                    defaultImage?: Maybe<
-                      { __typename?: 'Image' } & Pick<
-                        Image,
-                        'urlOriginal' | 'altText'
-                      >
-                    >
-                  }
-              }
-          >
-        >
-      >
-    }
   }
 }
 

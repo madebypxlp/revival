@@ -14,17 +14,17 @@ export function useSearchMeta(asPath: string) {
     let c = parts[2]
     const b = parts[3]
 
-    if (c === 'designers') {
-      // eslint-disable-next-line prefer-destructuring
-      c = parts[4]
-    }
+    //if (c === 'designers') {
+    // eslint-disable-next-line prefer-destructuring
+    // c = parts[4]
+    //  }
 
     setPathname(path)
     if (c !== category) setCategory(c)
-    if (b !== brand) setBrand(b)
+    //  if (b !== brand) setBrand(b)
   }, [asPath])
 
-  return { pathname, category, brand }
+  return { pathname, category }
 }
 
 // Removes empty query parameters from the query object
@@ -36,18 +36,8 @@ export const filterQuery = (query: any) =>
     return obj
   }, {})
 
-export const getCategoryPath = (path: string, brand?: string) => {
+export const getCategoryPath = (path: string) => {
   const category = getSlug(path)
 
-  return `/search${brand ? `/designers/${brand}` : ''}${
-    category ? `/${category}` : ''
-  }`
-}
-
-export const getDesignerPath = (path: string, category?: string) => {
-  const designer = getSlug(path).replace(/^brands/, 'designers')
-
-  return `/search${designer ? `/${designer}` : ''}${
-    category ? `/${category}` : ''
-  }`
+  return `/search/}${category ? `/${category}` : ''}`
 }

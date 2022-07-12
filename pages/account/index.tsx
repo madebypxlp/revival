@@ -43,11 +43,12 @@ export default function Profile({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
   const { setModalView, openModal } = useUI()
-  console.log(data)
 
   useEffect(() => {
-    openModal()
-    setModalView('LOGIN_VIEW')
+    if (!data) {
+      openModal()
+      setModalView('LOGIN_VIEW')
+    }
   }, [data])
 
   const order = {
@@ -71,17 +72,18 @@ export default function Profile({
   ]
 
   const accountInfo = {
-    username: 'Marie',
-    name: 'Jane Doe',
-    email: 'jdoe@gmail.com',
+    username: data?.firstName,
+    name: `${data?.firstName} ${data?.lastName}`,
+    email: data?.email,
     password: '••••••••',
-    giftCardBalance: 0,
+    giftCardBalance: data?.storeCredit[0]?.value,
   }
+
   const shippingInfo = {
-    name: 'Jane Doe',
+    name: `${data?.firstName} ${data?.lastName}`,
     addressLine1: '34 Tesla, Ste 100',
     addressLine2: 'Irvine, CA 92618-4655',
-    phone: '949-500-5000',
+    phone: data?.phone,
   }
   const paymentMethod = {
     card: 'Amex **** 3009',

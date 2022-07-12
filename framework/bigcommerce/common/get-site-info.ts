@@ -17,28 +17,6 @@ export const getSiteInfoQuery = /* GraphQL */ `
           }
         }
       }
-      brands {
-        pageInfo {
-          startCursor
-          endCursor
-        }
-        edges {
-          cursor
-          node {
-            entityId
-            name
-            defaultImage {
-              urlOriginal
-              altText
-            }
-            pageTitle
-            metaDesc
-            metaKeywords
-            searchKeywords
-            path
-          }
-        }
-      }
     }
   }
   ${categoryTreeItemFragment}
@@ -48,16 +26,9 @@ export type CategoriesTree = NonNullable<
   GetSiteInfoQuery['site']['categoryTree']
 >
 
-export type BrandEdge = NonNullable<
-  NonNullable<GetSiteInfoQuery['site']['brands']['edges']>[0]
->
-
-export type Brands = BrandEdge[]
-
 export type GetSiteInfoResult<
-  T extends { categories: any[]; brands: any[] } = {
+  T extends { categories: any[] } = {
     categories: CategoriesTree
-    brands: Brands
   }
 > = T
 
@@ -67,10 +38,7 @@ async function getSiteInfo(opts?: {
   preview?: boolean
 }): Promise<GetSiteInfoResult>
 
-async function getSiteInfo<
-  T extends { categories: any[]; brands: any[] },
-  V = any
->(opts: {
+async function getSiteInfo<T extends { categories: any[] }, V = any>(opts: {
   query: string
   variables?: V
   config?: BigcommerceConfig
@@ -95,11 +63,9 @@ async function getSiteInfo({
     { variables }
   )
   const categories = data.site?.categoryTree
-  const brands = data.site?.brands?.edges
 
   return {
     categories: (categories as RecursiveRequired<typeof categories>) ?? [],
-    brands: filterEdges(brands as RecursiveRequired<typeof brands>),
   }
 }
 

@@ -1,6 +1,5 @@
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { Searchbar, UserNav } from '@components/common'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import AlertBar from '@components/ui/AlertBar/AlertBar'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
@@ -18,6 +17,7 @@ import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import styles from './Navbar.module.scss'
 import NavbarRoot from './NavbarRoot'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
+import useCustomer from '@commerce/customer/use-customer'
 
 const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const {
@@ -28,6 +28,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const [navOpen, setNavOpen] = useState<boolean>(false)
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
   const isMobile = useIsMobile()
+  const customer = useCustomer()
 
   useEffect(() => {
     if (ref.current && isMobile) {
@@ -81,7 +82,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   variant="blue-outline"
                   placeholder="What do your pets need today?"
                 />
-                {/* <Searchbar /> */}
               </div>
               <div className="flex justify-end items-center flex-1 md:space-x-8 w-full">
                 <div>
@@ -149,7 +149,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     15
                   </div>
                 </div>
-                {/* <UserNav /> */}
               </div>
             </div>
             <div className="flex-1 md:hidden flex justify-between pb-10">
