@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import parse from 'html-react-parser'
 import c from 'classnames'
-import { ChevronUp } from '@components/icons'
+import ChevronRightThin from '@components/icons/ChevronRightThin'
 import Button from '@components/ui/Button/Button'
 import Fade from '@components/ui/Fade/Fade'
 import ICareerListing from './CareerListing.interface'
@@ -24,7 +24,7 @@ const CareerListingModule: FunctionComponent<{ module: ICareerListing }> = ({
     }
   }, [activeIndex])
   return (
-    <div id={anchor} className={`${styles.root} container`}>
+    <div id={anchor} className={`${styles.root} container md:mb-85 mb-40`}>
       {headline && (
         <h3 className="w-full text-center text-blue mb-40">{headline}</h3>
       )}
@@ -45,8 +45,8 @@ const CareerListingModule: FunctionComponent<{ module: ICareerListing }> = ({
                     'col-span-2 md:col-span-11 md:col-start-2 flex items-center'
                   )}
                 >
-                  <h4 className="typo-h6 md:typo-h4">{job.title}</h4>
-                  <ChevronUp />
+                  <h4 className="typo-h6 md:font-bold">{job.title}</h4>
+                  <ChevronRightThin />
                 </div>
               </button>
               <div

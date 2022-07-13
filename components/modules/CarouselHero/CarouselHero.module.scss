@@ -3,36 +3,50 @@
   @apply pt-50 pb-25 relative;
   @apply md:pt-100 md:pb-80;
 
-  .subline{
+  .subline {
     @apply text-blue pb-10 typo-eyebrow col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-12;
   }
 
-  .headline{
+  .headline {
     @apply text-blue pb-10 col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-12;
   }
 
-  .copy{
+  .copy {
     @apply text-black typo-large-paragraph col-start-1 col-span-2 mb-30;
     @apply md:col-start-1 md:col-span-4;
   }
 
-  .buttonContainer{
+  .buttonContainer {
     @apply mb-10 col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-12;
   }
 
-  .imageSmall{
-    width: 25vw;
-    max-width: 39rem;
+  .imageSmallRound {
+    width: 33rem;
+    height: auto;
+    max-width: 70vw;
+    border-radius: 9999rem;
+    @apply overflow-hidden;
   }
 
-  .imageLarge{
-    width: 33.3vw;
-    max-width: 45rem;
+  .imageSmall {
+    width: 33rem;
+    height: auto;
+    max-width: 70vw;
+    border-radius: 3rem;
+    @apply overflow-hidden;
   }
- 
+
+  .imageLarge {
+    width: 45rem;
+    height: auto;
+    max-width: 95vw;
+    border-radius: 3rem 20rem;
+    @apply overflow-hidden;
+  }
+
   @keyframes hero-carousel-scroll {
     0% {
       transform: translateX(0);
@@ -42,16 +56,15 @@
     }
   }
 
-  .carouselGroup{
+  .carouselGroup {
     animation: hero-carousel-scroll 40s linear infinite;
   }
 
-  .carousel{
+  .carousel {
     @apply flex flex-row overflow-hidden;
   }
 
-  .carouselGroup{
+  .carouselGroup {
     @apply flex flex-row gap-20 items-end flex-nowrap pr-20;
   }
-
 }
