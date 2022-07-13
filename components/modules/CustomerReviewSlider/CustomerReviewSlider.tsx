@@ -13,7 +13,7 @@ const CustomerReviewSliderModule: FunctionComponent<{
   const spaceBetweenSlides = isMobile ? 10 : 20
   return (
     <div className={styles.root}>
-      <div className="container">
+      <div className="container ">
         <div className={styles.headlineContainer}>
           {headline && <span>{headline}</span>}
         </div>

@@ -8,9 +8,11 @@ const InlineVideoModule: FunctionComponent<{ module: IInlineVideo }> = ({
 }) => {
   const { title, youtubeId } = module
   return (
-    <div className={`${styles.root} container default-grid mb-80`}>
+    <div
+      className={`${styles.root} container default-grid mb-80 md:mt-80 mt-50`}
+    >
       {youtubeId && (
-        <div className="rounded-15 overflow-hidden col-span-2 md:col-span-8 md:col-start-3 mb-45 ">
+        <div className="rounded-15 overflow-hidden col-span-2 md:col-span-8 md:col-start-3">
           <Video source={youtubeId} className="" />
         </div>
       )}

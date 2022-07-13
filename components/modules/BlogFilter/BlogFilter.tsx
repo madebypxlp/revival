@@ -55,7 +55,7 @@ const BlogFilterModule: FunctionComponent<{
     <div
       className={cn(
         styles.root,
-        isDetail() ? 'mb-50 md:mb-100' : 'mb-40 md:mb-80',
+        isDetail() ? 'mb-50 md:mb-100' : 'mb-40 md:mb-0',
         'overflow-hidden'
       )}
     >
@@ -72,7 +72,7 @@ const BlogFilterModule: FunctionComponent<{
               <ArticleTeaser
                 post={post}
                 key={post.id}
-                className="mb-40 md:mb-80"
+                className={'mb-40 md:mb-80'}
                 variant={showFeatured(index) ? 'featured' : 'default'}
                 textSize={showFeatured(index) ? 'medium' : 'default'}
               />

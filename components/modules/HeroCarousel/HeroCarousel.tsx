@@ -48,7 +48,7 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
                     layout="fill"
                     image={image}
                   />
-                  <div className="container py-50 md:flex items-center h-full min-h-screen md:min-h-[62rem] relative z-10 ">
+                  <div className="container py-50 md:flex items-center h-full min-h-screen md:min-h-[62rem] relative z-10">
                     <div className="default-grid">
                       {subline && (
                         <span className="col-span-full md:col-span-5 md:col-start-1 mb-5 md:mb-10 typo-eyebrow text-blue">
@@ -78,6 +78,8 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
                         {defaultLink?.title && (
                           <ArrowCTA
                             link={defaultLink}
+                            className=""
+                            subnav
                             orientation="right"
                             color="blue"
                           />
@@ -93,7 +95,7 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
             <button className="cursor-pointer" onClick={toggleSwiper}>
               <PlayPause
                 state={swiperAutoplaying ? 'pause' : 'play'}
-                className="hidden md:block w-50 absolute right-20 bottom-35 z-20 text-blue"
+                className="hidden md:block w-50 absolute right-85 bottom-35 z-20 text-blue"
               />
             </button>
           </div>
