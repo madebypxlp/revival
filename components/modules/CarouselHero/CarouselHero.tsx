@@ -11,6 +11,7 @@ const CarouselHeroModule: FunctionComponent<{ module: ICarouselHero }> = ({
 }) => {
   const { headline, copy, images, link, subline } = module
 
+  console.log(link)
   const ctaButtonClick = (event: Event) => {
     const anchorIndex = link.url.indexOf('#')
     if (anchorIndex > -1) {
@@ -35,7 +36,8 @@ const CarouselHeroModule: FunctionComponent<{ module: ICarouselHero }> = ({
                 image={image.image}
                 loading="eager"
                 className={c({
-                  [styles.imageSmall]: index % 3 !== 0,
+                  [styles.imageSmallRound]: index % 3 == 1,
+                  [styles.imageSmall]: index % 3 == 2,
                   [styles.imageLarge]: index % 3 === 0,
                 })}
               />

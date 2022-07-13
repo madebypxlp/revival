@@ -1,38 +1,37 @@
 .root {
-
   @apply py-40 relative overflow-hidden;
-  @apply md:py-100;
+  @apply md:py-10;
 
-  :global(.swiper-container){
+  :global(.swiper-container) {
     @apply overflow-visible;
   }
 
-  :global(.swiper-button-prev){
+  :global(.swiper-button-prev) {
     @apply -translate-x-20;
-    @apply md:-translate-x-0;
+    @apply md:-translate-x-0 md:-translate-y-15;
   }
 
-  :global(.swiper-button-next){
+  :global(.swiper-button-next) {
     @apply translate-x-20;
-    @apply md:translate-x-0;
+    @apply md:translate-x-0 md:-translate-y-15;
   }
 
-  .headlineContainer{
+  .headlineContainer {
     @apply typo-h4 text-blue mb-40;
   }
 
-  .reviewCard{
+  .reviewCard {
     @apply bg-red px-30 pt-95 pb-65 text-center text-white rounded-15;
     @apply md:px-60 md:pt-105 md:pb-90;
     @apply lg:px-100;
   }
 
-  .reviewCopy{
+  .reviewCopy {
     @apply text-white mb-20 typo-h6;
     @apply md:typo-h5;
   }
 
-  .reviewAuthor{
-    @apply text-white typo-eyebrow;
+  .reviewAuthor {
+    @apply text-white typo-eyebrow-author;
   }
 }

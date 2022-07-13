@@ -33,6 +33,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     validationType,
     variant = 'default',
     icon,
+    newsletter,
     size = 'default',
     weight = 'default',
     square = false,
@@ -161,7 +162,7 @@ const Input: FunctionComponent<IInput> = (props) => {
 
       <input
         onChange={handleOnChange}
-        placeholder={`${placeholder}${required ? '*' : ''}`}
+        placeholder={`${placeholder}${required && !newsletter ? '*' : ''}`}
         type={type}
         required={required}
         autoComplete="off"

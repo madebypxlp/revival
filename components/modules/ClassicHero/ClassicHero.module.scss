@@ -1,26 +1,25 @@
 .root {
   @apply pt-70 pb-80 relative;
-  @apply md:pt-140 md:pb-160;
+  @apply md:pt-140 md:pb-160 min-h-[450px];
 
-  .backgroundContainer{
+  .backgroundContainer {
     @apply absolute left-0 top-0 w-full h-full;
     z-index: -1;
     background-color: #f3f3f3;
   }
 
-  .sublineContainer{
+  .sublineContainer {
     @apply text-blue typo-eyebrow mb-10 col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-5;
   }
 
-  .headlineContainer{
+  .headlineContainer {
     @apply text-blue mb-10 col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-5;
   }
 
-  .copyContainer{
+  .copyContainer {
     @apply text-black typo-large-paragraph col-start-1 col-span-2;
     @apply md:col-start-1 md:col-span-4;
   }
-
 }

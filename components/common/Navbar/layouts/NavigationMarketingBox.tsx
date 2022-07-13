@@ -1,13 +1,13 @@
 import { FunctionComponent } from 'react'
+import styles from '../Navbar.module.scss'
 import cn from 'classnames'
-import { NavigationMarketingBox as INavigationMarketingBox } from 'framework/wordpress/interfaces/header'
+import { NavigationMarketingBox } from 'framework/wordpress/interfaces/header'
 import UIImage from 'next/image'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import { useIsMobile } from '@commerce/utils/hooks'
-import styles from '../Navbar.module.scss'
 
 const NavigationMarketingBox: FunctionComponent<{
-  module: INavigationMarketingBox
+  module: NavigationMarketingBox
 }> = ({ module }) => {
   const { title, image, link, alignment } = module
   const isMobile = useIsMobile()

@@ -61,12 +61,10 @@
 
   .addToCartButton {
     padding: 1.35rem 2.5rem;
-    font-size: 1.4rem;
     line-height: 1.7rem;
-
+    padding: 1.35rem 4rem;
+    font-size: 1.8rem;
     @screen md {
-      padding: 1.35rem 4rem;
-      font-size: 1.8rem;
       line-height: 2.3rem;
     }
   }

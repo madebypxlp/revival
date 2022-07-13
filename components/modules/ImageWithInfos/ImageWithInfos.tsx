@@ -27,7 +27,7 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
             <div
               className={cn([
                 'flex flex-row items-center',
-                facts?.length ? 'mb-50' : 'mb-10',
+                !!facts?.length ? 'md:mb-50 mb-10' : 'mb-10',
               ])}
             >
               {subline && (
