@@ -5,6 +5,7 @@ import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
+import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
 import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
@@ -37,39 +38,6 @@ export default function Profile({
   const { data } = useCustomer()
   console.log(data)
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
   const petAndVetInfo = {
     approvalMethod: 'We have authorization from your vet.',
     info: [
@@ -80,7 +48,12 @@ export default function Profile({
       },
     ],
   }
-  const products = [product, product, product, product]
+  const products = [
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+  ]
 
   return (
     <div className={styles.root}>
@@ -93,9 +66,9 @@ export default function Profile({
         <div className="default-grid mb-85">
           {products.map((p) => (
             <CartProduct
-              key={product.id}
+              key={p.id}
               className="pb-40 light-border-b mb-40"
-              product={product}
+              product={p}
               quantity={3}
               variant="account"
               showPrescriptionIcon

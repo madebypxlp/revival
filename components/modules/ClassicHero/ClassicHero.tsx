@@ -11,10 +11,10 @@ const ClassicHeroModule: FunctionComponent<{ module: IClassicHero }> = ({
     <div className={`${styles.root}`}>
       <div className={styles.backgroundContainer}>
         <ImageComponent
-          className={'h-full'}
+          className="h-full"
           image={image}
           imgClassName="object-cover object-right-bottom lg:object-right"
-          layout={'fill'}
+          layout="fill"
         />
       </div>
       <div className="container default-grid">

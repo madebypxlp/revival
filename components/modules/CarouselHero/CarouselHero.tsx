@@ -10,8 +10,6 @@ const CarouselHeroModule: FunctionComponent<{ module: ICarouselHero }> = ({
   module,
 }) => {
   const { headline, copy, images, link, subline } = module
-
-  console.log(link)
   const ctaButtonClick = (event: Event) => {
     const anchorIndex = link.url.indexOf('#')
     if (anchorIndex > -1) {
@@ -22,7 +20,6 @@ const CarouselHeroModule: FunctionComponent<{ module: ICarouselHero }> = ({
       }
     }
   }
-
   // images need to be duplicated for the infinite scrolling marquee to work correctly
   const carouselGroups = []
   for (let i = 0; i < 2; i += 1) {
@@ -36,8 +33,8 @@ const CarouselHeroModule: FunctionComponent<{ module: ICarouselHero }> = ({
                 image={image.image}
                 loading="eager"
                 className={c({
-                  [styles.imageSmallRound]: index % 3 == 1,
-                  [styles.imageSmall]: index % 3 == 2,
+                  [styles.imageSmallRound]: index % 3 === 1,
+                  [styles.imageSmall]: index % 3 === 2,
                   [styles.imageLarge]: index % 3 === 0,
                 })}
               />

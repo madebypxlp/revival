@@ -1,5 +1,8 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { Layout } from '@components/common'
+import getAllProducts from '@framework/product/get-all-products'
+import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
+import getSiteInfo from '@framework/common/get-site-info'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import LightHeroModule from '@components/modules/LightHero/LightHero'
@@ -8,9 +11,6 @@ import { ACFGlobalData } from 'framework/wordpress/interfaces/globals'
 import fetch from '../framework/wordpress/wp-client'
 import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
-import getAllProducts from '@framework/product/get-all-products'
-import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
-import getSiteInfo from '@framework/common/get-site-info'
 
 export async function getStaticProps({
   preview,

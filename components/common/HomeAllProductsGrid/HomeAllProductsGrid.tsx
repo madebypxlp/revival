@@ -8,7 +8,6 @@ import s from './HomeAllProductsGrid.module.scss'
 
 interface Props {
   categories?: any
-  brands?: any
   products?: Product[]
 }
 

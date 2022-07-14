@@ -29,8 +29,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     vetInfo,
   } = props
 
-  console.log(quantity)
-
   const isMobile = useIsMobile()
 
   let rightColumnComponent
@@ -45,7 +43,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         <div className={styles.productPrice}>{formatPrice(product.price)}</div>
 
         <div className={styles.productOldPrice}>
-          {product.oldPrice && formatPrice(product.oldPrice)}
+          {product && formatPrice(product.price)}
         </div>
       </div>
     )
@@ -70,11 +68,13 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   return (
     <div className={rootClasses}>
       <div className={styles.productImageContainer}>
-        <ProductCardImage
-          isPrescription={showPrescriptionIcon && product.isPrescription}
-          imageUrl={product.image.url}
-          variant={variant}
-        />
+        {product.image?.url && (
+          <ProductCardImage
+            isPrescription={showPrescriptionIcon}
+            imageUrl={product.image?.url}
+            variant={variant}
+          />
+        )}
       </div>
       {isMobile && rightColumn !== 'empty' && rightColumnComponent}
       <div className={styles.infoContainer}>
@@ -89,7 +89,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             <span>{shippingRestrictionsMessage}</span>
           </div>
         )}
-        {showPrescriptionLabel && product.isPrescription && (
+        {showPrescriptionLabel && true && (
           <div
             className={c(
               styles.alertTextContainer,

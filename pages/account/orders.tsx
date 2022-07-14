@@ -2,12 +2,14 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import c from 'classnames'
 import { getConfig } from '@framework/api'
 import { formatPrice } from '@commerce/product/use-price'
+import { formatDate } from '@lib/utils'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import { useRouter } from 'next/router'
+import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
 import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
 import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
@@ -47,40 +49,6 @@ export default function Profile({
 
   const orderId = router.query.id
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
-
   const order = {
     id: '000000',
     placed: new Date(),
@@ -89,7 +57,7 @@ export default function Profile({
     status: 'Shipped',
     paidWith: 'Amex **** 3009 Expire: 5/2022 Jane Doe',
     tracking: '#XXXXXXXXXXXXXXXXXXXXXX',
-    products: [product, product],
+    products: [SAMPLE_PRODUCT, SAMPLE_PRODUCT],
     summary: {
       subtotal: 175.99,
       shipping: 'FREE',
@@ -143,9 +111,9 @@ export default function Profile({
           </div>
           {order.products.map((p) => (
             <CartProduct
-              key={product.id}
+              key={p.id}
               className={styles.product}
-              product={product}
+              product={p}
               quantity={3}
               variant="account"
               showBuyItAgain
@@ -158,7 +126,7 @@ export default function Profile({
               </div>
               <div className={styles.row}>
                 {Translations.ACCOUNT.SUBTOTAL}
-                <span>{formatPrice(order.summary.subtotal)}</span>
+                <span>order subtotal</span>
               </div>
               <div className={styles.row}>
                 {Translations.ACCOUNT.SHIPPING}
@@ -166,11 +134,11 @@ export default function Profile({
               </div>
               <div className={styles.row}>
                 {Translations.ACCOUNT.ESTIMATED_SALES_TAX}
-                <span>{formatPrice(order.summary.estimatedTax)}</span>
+                <span>estimated tax</span>
               </div>
               <div className={c(styles.totalRow, styles.row, styles.title)}>
                 {Translations.ACCOUNT.ORDER_TOTAL}
-                <span>{formatPrice(order.summary.total)}</span>
+                <span>order total</span>
               </div>
             </div>
           </div>

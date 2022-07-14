@@ -72,7 +72,7 @@ const BlogFilterModule: FunctionComponent<{
               <ArticleTeaser
                 post={post}
                 key={post.id}
-                className={'mb-40 md:mb-80'}
+                className="mb-40 md:mb-80"
                 variant={showFeatured(index) ? 'featured' : 'default'}
                 textSize={showFeatured(index) ? 'medium' : 'default'}
               />

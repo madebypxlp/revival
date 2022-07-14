@@ -5,6 +5,7 @@ import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import { Layout } from '@components/common'
+import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
 import { Cross, Check } from '@components/icons'
 import Button from '@components/ui/Button/Button'
 import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
@@ -60,49 +61,15 @@ export default function Cart({
     ? Translations.CART.YOUR_CART_IS_EMPTY
     : Translations.CART.YOUR_CART
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
-
   const products = [
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
   ]
 
   return (

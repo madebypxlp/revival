@@ -36,7 +36,12 @@ export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
 // todo: at some point there might be a date format cno
 export const formatDate = (d: Date): string => dayjs(d).format('MMM DD, YYYY')
 
-export const formatPrice = (price: number): string => `$${price.toFixed(2)}`
+export const formatPrice = (price: number) => {
+  if (price) {
+    return `$${price.toFixed(2)}`
+  }
+  return ':('
+}
 
 export const isExpDateValid = (date: string) => {
   const regex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/
