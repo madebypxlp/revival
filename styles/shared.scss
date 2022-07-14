@@ -1,3 +1,4 @@
+/*
 .rounded-focus-box {
   &::after {
     content: '';
@@ -17,20 +18,28 @@
     }
   }
 }
+*/
 
 .wysiwyg {
-  p {
-    margin-bottom: 3rem;
-  }
   b {
     font-weight: 700;
   }
+
+  b:first-child {
+    display: block;
+    margin-top: 3rem;
+  }
+
   a {
     text-decoration: underline;
   }
   ul > * {
     list-style-type: disc;
     margin-left: 19px;
+  }
+
+  ul {
+    margin-bottom: 3rem;
   }
 }
 

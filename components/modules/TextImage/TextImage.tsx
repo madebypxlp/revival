@@ -94,7 +94,7 @@ const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
               row.flipOrientation
                 ? 'md:col-span-6 md:col-start-7 lg:col-span-4 lg:col-start-8'
                 : 'md:col-span-6 md:col-start-1 lg:col-span-4 lg:col-start-2'
-            } col-span-12 pt-0`}
+            } col-span-12 pt-0 `}
           >
             {row.subline && (
               <p className="typo-eyebrow text-blue uppercase">{row.subline}</p>
@@ -103,15 +103,17 @@ const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
               <h3 className="mt-10 text-blue">{row.headline}</h3>
             )}
             {row.copy && (
-              <p className="typo-large-paragraph mt-20">{row.copy}</p>
+              <p className="typo-large-paragraph-text-image mt-20">
+                {row.copy}
+              </p>
             )}
-            <div className="flex items-center mt-25">
+            <div className="flex items-center mt-25 ">
               {row.buttonLink && (
                 <Button
                   variant="large"
                   color="yellow"
                   type="default"
-                  className="mr-30"
+                  className="mr-20"
                   href={row.buttonLink.url}
                 >
                   {row.buttonLink.title}
@@ -122,6 +124,7 @@ const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
                   orientation="right"
                   color="blue"
                   href={row.classicLink.url}
+                  subnav
                 >
                   {row.classicLink.title}
                 </ArrowCTA>

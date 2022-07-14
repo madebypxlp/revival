@@ -1,5 +1,5 @@
 .root {
-  @apply py-30 md:py-60;
+  @apply py-30 md:pt-60 md:pb-20 md:mb-20;
 
   &.variant-learning-center {
     .categoriesContainer {

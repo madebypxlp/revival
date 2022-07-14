@@ -13,7 +13,7 @@
   }
 
   .brandLink {
-    @apply w-full relative block;
+    @apply w-full relative block md:mb-0;
 
     &::before {
       content: ' ';
