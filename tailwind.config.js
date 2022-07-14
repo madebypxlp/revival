@@ -35,6 +35,9 @@ module.exports = {
       ...generateSpacings(1, 50),
       ...generateSpacings(),
     },
+    minWidth: {
+      480: '48rem',
+    },
     borderRadius: {
       none: '0',
       DEFAULT: '1.5rem',

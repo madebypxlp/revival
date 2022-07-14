@@ -1,5 +1,14 @@
 import React, { FC, useMemo } from 'react'
 import { ThemeProvider } from 'next-themes'
+import {
+  FlowAction,
+  initialStateFlow,
+  FlowState,
+  FlowReducer,
+  MODAL_FLOW_VIEWS,
+  IPet,
+  IClinic,
+} from './ModalFlowComponent/ModalFlowContext'
 
 export interface State {
   displaySidebar: boolean
@@ -146,16 +155,19 @@ function uiReducer(state: State, action: Action) {
 }
 
 export const UIProvider: FC = (props) => {
-  const [state, dispatch] = React.useReducer(uiReducer, initialState)
-
+  const [authState, dispatch] = React.useReducer(uiReducer, initialState)
+  const [flowState, flowDispatch] = React.useReducer(
+    FlowReducer,
+    initialStateFlow
+  )
   const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' })
   const closeSidebar = () => dispatch({ type: 'CLOSE_SIDEBAR' })
   const toggleSidebar = () =>
-    state.displaySidebar
+    authState.displaySidebar
       ? dispatch({ type: 'CLOSE_SIDEBAR' })
       : dispatch({ type: 'OPEN_SIDEBAR' })
   const closeSidebarIfPresent = () =>
-    state.displaySidebar && dispatch({ type: 'CLOSE_SIDEBAR' })
+    authState.displaySidebar && dispatch({ type: 'CLOSE_SIDEBAR' })
 
   const openDropdown = () => dispatch({ type: 'OPEN_DROPDOWN' })
   const closeDropdown = () => dispatch({ type: 'CLOSE_DROPDOWN' })
@@ -172,9 +184,35 @@ export const UIProvider: FC = (props) => {
   const setModalView = (view: MODAL_VIEWS) =>
     dispatch({ type: 'SET_MODAL_VIEW', view })
 
+  // Flow Dispatches
+  const openModalFlow = () => flowDispatch({ flowType: 'OPEN_FLOW_MODAL' })
+  const closeModalFlow = () => flowDispatch({ flowType: 'CLOSE_FLOW_MODAL' })
+  const setModalFlowView = (flowView: MODAL_FLOW_VIEWS) =>
+    flowDispatch({ flowType: 'SET_FLOW_MODAL_VIEW', flowView })
+  const addPetData = (petData: IPet) =>
+    flowDispatch({ flowType: 'ADD_PET_DATA', petData })
+  const addClinicData = (clinicData: IClinic) =>
+    flowDispatch({ flowType: 'ADD_CLINIC_DATA', clinicData })
+  const setContactClinicBoolean = () =>
+    flowDispatch({ flowType: 'SET_CONTACT_VET' })
+  const setEmailMyselfBoolean = () =>
+    flowDispatch({ flowType: 'SET_EMAIL_MYSELF' })
+  //
+
+  const state = { ...authState, ...flowState }
+
   const value = useMemo(() => {
     return {
       ...state,
+      // ModalFlow
+      openModalFlow,
+      closeModalFlow,
+      setModalFlowView,
+      addPetData,
+      addClinicData,
+      setContactClinicBoolean,
+      setEmailMyselfBoolean,
+      // UI
       openSidebar,
       closeSidebar,
       toggleSidebar,

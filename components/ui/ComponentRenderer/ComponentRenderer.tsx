@@ -16,6 +16,7 @@ import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
 import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
 import AddAPetModal from '../AddAPetModal/AddAPetModal'
+import ModalFlowComponent from '../ModalFlowComponent/ModalFlowComponent'
 import LoginModal from '../AuthModal/AuthModal'
 import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
@@ -289,6 +290,14 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           >
             Login
           </Button>
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <h3>ModalFlow</h3>
+          <ModalFlowComponent />
+
           <LoginModal title="Title" />
         </div>
       </div>
