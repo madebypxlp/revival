@@ -29,6 +29,8 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     vetInfo,
   } = props
 
+  console.log(quantity)
+
   const isMobile = useIsMobile()
 
   let rightColumnComponent
@@ -70,7 +72,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
       <div className={styles.productImageContainer}>
         <ProductCardImage
           isPrescription={showPrescriptionIcon && product.isPrescription}
-          image={product.image}
+          imageUrl={product.image.url}
           variant={variant}
         />
       </div>

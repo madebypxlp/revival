@@ -5,8 +5,8 @@ import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import { Heart } from '@components/icons'
 import styles from './ProductCardImage.module.scss'
 import IProductCardImage from './ProductCardImage.interface'
-import ImageComponent from '../Image/Image'
 import Button from '../Button/Button'
+import Image from 'next/image'
 
 const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
   const {
@@ -14,7 +14,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
     isPrescription,
     isOurBrand,
     label,
-    image,
+    imageUrl,
     variant,
     isFavorite,
     showFavoriteIcon,
@@ -23,7 +23,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
   return (
     <div className={c(styles.root, variant && styles[`variant--${variant}`])}>
       <div className={styles.imageContainer}>
-        <ImageComponent image={image} layout="fill" objectFit="contain" />
+        {imageUrl && <Image src={imageUrl} layout="fill" objectFit="contain" />}
       </div>
       <div className="flex flex-col justify-between h-full">
         <div className={styles.row}>

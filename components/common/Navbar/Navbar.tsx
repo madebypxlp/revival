@@ -18,6 +18,7 @@ import {
   enableBodyScroll,
 } from 'body-scroll-lock'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
+import { useUI } from '@components/ui'
 
 const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const {
@@ -28,6 +29,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const [navOpen, setNavOpen] = useState<boolean>(false)
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
   const isMobile = useIsMobile()
+  const { openSidebar } = useUI()
 
   useEffect(() => {
     if (ref.current && isMobile) {
@@ -50,6 +52,10 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
     } else {
       setNavOpen((prev) => !prev)
     }
+  }
+
+  const openCart = () => {
+    openSidebar()
   }
 
   return (
@@ -137,6 +143,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     styles.navButton,
                     'flex justify-center items-center cursor-pointer relative'
                   )}
+                  onClick={openCart}
                 >
                   <span className="mr-10 hidden md:block">Cart</span>
                   <Cart />

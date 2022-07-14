@@ -8,9 +8,11 @@ import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 import styles from './CartSidebarView.module.scss'
+import Button from '@components/ui/Button/Button'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()
+
   const { data, isLoading, isEmpty } = useCart()
 
   const { price: subTotal } = usePrice(
@@ -30,58 +32,8 @@ const CartSidebarView: FC = () => {
   const error = null
   const success = null
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
-
-  const products = [
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-  ]
+  const products = data?.lineItems || []
+  console.log(data)
 
   return (
     <div
@@ -121,7 +73,6 @@ const CartSidebarView: FC = () => {
         <>
           <div>
             <Link href="/cart">
-              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
               <h5 className={styles.headline} onClick={handleClose}>
                 {`Your Cart (${products.length})`}
               </h5>
@@ -130,9 +81,9 @@ const CartSidebarView: FC = () => {
               {products.map((item) => (
                 <CartProduct
                   key={item.id}
-                  product={item}
+                  product={item?.variant}
                   variant="sidebar"
-                  quantity={2}
+                  quantity={item.quantity}
                   showCartControls
                 />
               ))}
@@ -160,11 +111,7 @@ const CartSidebarView: FC = () => {
                 <span>{total}</span>
               </div>
             </div>
-            {/*
-            <Button href="/checkout" Component="a" width="100%">
-              Proceed to Checkout
-            </Button>
-              */}
+            <a href="/checkout">Proceed to Checkout</a>
           </div>
         </>
       )}
