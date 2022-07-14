@@ -9,8 +9,9 @@ import { createQuerySuggestionsPlugin } from '@algolia/autocomplete-plugin-query
 import type { SearchClient } from 'algoliasearch/lite'
 
 export const INSTANT_SEARCH_INDEX_NAME = 'product-data-test'
-export const INSTANT_SEARCH_QUERY_SUGGESTIONS =
-  'product-data-test_query_suggestions'
+// export const INSTANT_SEARCH_QUERY_SUGGESTIONS =
+//   'product-data-test_query_suggestions'
+export const INSTANT_SEARCH_QUERY_SUGGESTIONS = INSTANT_SEARCH_INDEX_NAME
 
 type AutocompleteProps = Partial<AutocompleteOptions<BaseItem>> & {
   className?: string
@@ -37,21 +38,40 @@ export function Autocomplete({
   const plugins = useMemo(() => {
     const querySuggestions = createQuerySuggestionsPlugin({
       searchClient,
-      indexName: INSTANT_SEARCH_QUERY_SUGGESTIONS,
-
+      indexName: INSTANT_SEARCH_INDEX_NAME,
+      // categoryAttribute: [
+      //   // 'instant_search',
+      //   // 'facets',
+      //   // 'exact_matches',
+      //   'manufacturerName',
+      // ],
+      // itemsWithCategories: 1,
+      // categoriesPerItem: 1,
       transformSource({ source }) {
         return {
           ...source,
           sourceId: 'querySuggestionsPlugin',
           onSelect({ item }) {
-            setInstantSearchUiState({ query: item.query })
+            setInstantSearchUiState({ query: item.itemName as any as string })
           },
           getItems(params) {
             if (!params.state.query) {
               return []
             }
-
-            return source.getItems(params)
+            const res = source.getItems(params)
+            return res
+          },
+          templates: {
+            ...source.templates,
+            item(item) {
+              return (
+                <Fragment>
+                  <span className="aa-SourceItemTitle">
+                    {item.item.itemName as any as string}
+                  </span>
+                </Fragment>
+              )
+            },
           },
         }
       },

@@ -48,26 +48,22 @@ export default () => {
             searchClient={searchClient}
             indexName="product-data-test"
           >
-            <header className="header">
-              <div className="header-wrapper wrapper">
-                <nav className="header-nav">
-                  <a href="/">Home</a>
-                </nav>
-                <Autocomplete
-                  searchClient={searchClient}
-                  placeholder="Search products"
-                  detachedMediaQuery="none"
-                  openOnFocus
-                />
-              </div>
-            </header>
-
+            {/* <SearchBox /> */}
+            <Autocomplete
+              searchClient={searchClient}
+              placeholder="Search products"
+              detachedMediaQuery="none"
+              openOnFocus
+            />
             <Configure
               attributesToSnippet={['itemName:7', 'description:15']}
               snippetEllipsisText="…"
             />
 
             <Hits hitComponent={Hit} />
+            <Panel header="Categories">
+              <HierarchicalMenu attributes={['manufacturerName']} />
+            </Panel>
             <Pagination />
           </InstantSearch>
         )}
