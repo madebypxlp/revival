@@ -2,12 +2,14 @@ import React, { FunctionComponent } from 'react'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import ProductCard from '@components/ui/ProductCard/ProductCard'
 import { useIsMobile } from '@commerce/utils/hooks'
+import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import IProductSlider from './ProductSlider.interface'
 import styles from './ProductSlider.module.scss'
 
 const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
   module,
 }) => {
+  const { link } = module
   const isMobile = useIsMobile()
   const product = {
     id: '#80122-795-431',
@@ -49,7 +51,16 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
       className={`${styles.root} bg-cream pt-60 pb-80 mb-60 md:mb-80 overflow-hidden`}
     >
       <div className="container">
-        <h2 className="typo-h4 text-blue mb-35">Shop The Article</h2>
+        <div className="w-full mb-35 flex flex-col md:flex-row md:justify-between md:items-center">
+          <h2 className="typo-h4 text-blue mb-10 md:mb-0">Shop The Article</h2>
+          <ArrowCTA
+            link={link}
+            className="max-w-min whitespace-nowrap"
+            subnav
+            orientation="right"
+            color="blue"
+          />
+        </div>
         <Swiper
           className="overflow-visible"
           slidesPerView={isMobile ? 1.3 : 2.1}

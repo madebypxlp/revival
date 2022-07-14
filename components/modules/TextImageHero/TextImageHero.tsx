@@ -17,7 +17,7 @@ const TextImageHeroModule: FunctionComponent<{ module: ITextImageHero }> = ({
     const containerWidth = (gridRef.current as any).clientWidth
     let width = '100%'
     if (window.innerWidth >= 1024) {
-      width = `calc(100% + ${(layoutWidth - containerWidth) / 2}px)`
+      width = `calc(100% + ${layoutWidth - containerWidth}px)`
     }
     ;(imageRef.current as any).style.width = width
   }

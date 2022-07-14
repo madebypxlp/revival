@@ -19,15 +19,15 @@ const FullwidthItemRowModule: FunctionComponent<{
   const isMobile = useIsMobile()
 
   return (
-    <div className={`${styles.root} container mt-20 mb-40 lg:mt-60 lg:mb-100`}>
+    <div className={`${styles.root} container mt-20 mb-40 lg:mt-80 lg:mb-100`}>
       <div
-        className={`${backgroundColors[backgroundColor]} rounded-[15px] default-grid-lg pt-30 pb-20 lg:pt-50 lg:pb-60`}
+        className={`${backgroundColors[backgroundColor]} rounded-[15px] default-grid-lg pt-30 md:pb-20 lg:pt-50 lg:pb-60`}
       >
         <div className="col-span-2 text-white lg:col-span-4 lg:pl-35 text-center lg:text-left">
           <div className="typo-eyebrow font-bold mb-10 tracking-widest">
             {subline}
           </div>
-          <h3 className="typo-h3 mb-50 lg:w-[276px] mx-30 lg:mx-auto lg:w-auto">
+          <h3 className="typo-h3 mb-50 mx-30 lg:mx-auto">
             <div>{parse(headline)}</div>
           </h3>
         </div>
@@ -37,36 +37,38 @@ const FullwidthItemRowModule: FunctionComponent<{
         <div
           className={c(
             styles.imageGridContainer,
-            'col-span-2 lg:col-span-6 grid lg:gap-x-20 gap-y-20 lg:gap-y-0'
+            'col-span-2 lg:col-span-6 md:grid lg:gap-x-20 gap-y-20 lg:gap-y-0'
           )}
         >
           {items &&
             items.map((item) => (
-              <Fragment key={item.label}>
-                {item?.icon?.sourceUrl && (
-                  <div className="mr-20 lg:mr-0 lg:mb-15 relative">
-                    <Image
-                      src={item.icon.sourceUrl}
-                      alt={item.icon.altText}
-                      width={isMobile ? 50 : 84}
-                      height={isMobile ? 50 : 84}
+              <div key={item.label}>
+                <div className="flex md:flex-col md:justify-center md:items-center justify-between col-span-1 mb-20 md:mb-0">
+                  {item?.icon?.sourceUrl && (
+                    <div className="mr-20 lg:mr-0 lg:mb-15 relative">
+                      <Image
+                        src={item.icon.sourceUrl}
+                        alt={item.icon.altText}
+                        width={isMobile ? 50 : 84}
+                        height={isMobile ? 50 : 84}
+                      />
+                    </div>
+                  )}
+                  <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:self-start ">
+                    {parse(item.label)}
+                  </h4>
+                  {item?.link?.title && (
+                    <ArrowCTA
+                      className={`${styles.cta} ml-auto lg:ml-0`}
+                      link={item.link}
+                      children={isMobile && ' '}
+                      orientation="right"
+                      color="white"
                     />
-                  </div>
-                )}
-                <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:self-start">
-                  {parse(item.label)}
-                </h4>
-                {item?.link?.title && (
-                  <ArrowCTA
-                    className={`${styles.cta} ml-auto lg:ml-0`}
-                    link={item.link}
-                    children={isMobile && ' '}
-                    orientation="right"
-                    color="white"
-                  />
-                )}
+                  )}
+                </div>
                 <div className={styles.lgonly} />
-              </Fragment>
+              </div>
             ))}
         </div>
       </div>

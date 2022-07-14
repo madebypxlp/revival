@@ -35,7 +35,7 @@ const ContentAccordionModule: FunctionComponent<{
                   toggleAccordion(index)
                 }}
               >
-                {a.headline}
+                <span className="">{a.headline}</span>
                 <div>
                   <PlusLight className={c(styles.plusIcon)} color="black" />
                   <Minus

@@ -8,10 +8,12 @@
       }
     }
     .swiper-button-next {
-      top: 35%;
+      top: 25%;
+      @apply md:top-[35%];
     }
     .swiper-button-prev {
-      top: 35%;
+      top: 25%;
+      @apply md:top-[35%];
     }
   }
 }

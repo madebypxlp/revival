@@ -74,5 +74,10 @@ const Translations = {
   },
   BUY_ITEM_AGAIN: 'Buy Item Again',
   YOU_MAY_ALSO_LIKE: 'You may also like',
+  NAVBAR: {
+    EXPERT_HELP: 'Expert Help',
+    YOUR_ACCOUNT: 'Your Account',
+    CART: 'Cart',
+  },
 }
 export default Translations

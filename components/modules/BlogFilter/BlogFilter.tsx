@@ -55,7 +55,7 @@ const BlogFilterModule: FunctionComponent<{
     <div
       className={cn(
         styles.root,
-        isDetail() ? 'mb-50 md:mb-100' : 'mb-40 md:mb-80',
+        isDetail() ? 'mb-50 md:mb-100' : 'mb-40 md:mb-0',
         'overflow-hidden'
       )}
     >

@@ -1831,18 +1831,6 @@ A site
 """
 type Site {
   categoryTree: [CategoryTreeItem!]!
-
-  """
-  Details of the brand.
-  """
-  brands(
-    before: String
-    after: String
-    first: Int
-    last: Int
-    productEntityIds: [Int!] = []
-  ): BrandConnection!
-
   """
   Details of the products.
   """

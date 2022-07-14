@@ -44,4 +44,10 @@ button {
     background-color: rebeccapurple;
     opacity: 0.1;
   }
+  :global {
+    .trademark {
+      background-color: red;
+      font-size: 10px;
+    }
+  }
 }

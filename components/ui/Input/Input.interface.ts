@@ -20,6 +20,7 @@ type IInput = {
   validationType?: 'card_cvv' | 'card_exp_date' | 'card_number'
   name?: string
   required?: boolean
+  newsletter?: boolean
   onIconClick?: MouseEventHandler
   status?: ReactNode
   multiple?: boolean

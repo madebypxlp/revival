@@ -32,6 +32,7 @@ const signupApi: BigcommerceApiHandler<null, SignupHandlers> = async (
 
   try {
     const body = { ...req.body, cartId }
+    console.log(req, body, config)
     return await handlers.signup({ req, res, config, body })
   } catch (error) {
     console.error(error)

@@ -20,10 +20,10 @@ const ChipLinksModule: FunctionComponent<{ module: IChipLinks }> = ({
         <div
           className={`${
             fullwidthVariant ? '' : 'rounded-[15px] bg-blue-default'
-          } default-grid-lg px-30 md:px-45 md:py-75 py-45 overflow-hidden relative`}
+          } default-grid-lg px-30 md:px-45 md:pb-75 md:pt-65 pt-45 pb-30 overflow-hidden relative`}
         >
           {!fullwidthVariant && <div className={`${styles.backgroundImage}`} />}
-          <h3 className="typo-h3 col-span-full text-white md:mb-55 mb-30 ">
+          <h3 className="typo-h3-chiplinks col-span-full text-white md:mb-40 mb-30 ">
             {parse(headline)}
           </h3>
           <div className="flex md:flex-wrap md:gap-15 lg:max-w-[1015px] col-span-full flex-wrap md:justify-start justify-center">

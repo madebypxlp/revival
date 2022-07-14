@@ -20,14 +20,18 @@ const ImageInfoSliderModule: FunctionComponent<{
             {headline && <h4>{headline}</h4>}
           </div>
         </div>
-        <Swiper slidesPerView={slidesPerView} allowTouchMove={false} navigation>
+        <Swiper
+          slidesPerView={slidesPerView}
+          navigation
+          className={styles.swiper}
+        >
           {slides.map((e) => (
             <SwiperSlide key={e.headline}>
               <div className={styles.slideContainer}>
                 <div className={styles.slideImage}>
                   <ImageComponent
                     layout="fill"
-                    className="aspect-1"
+                    className="aspect-1 rounded-full overflow-hidden bg-white"
                     image={e.image}
                   />
                 </div>

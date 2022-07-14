@@ -16,7 +16,7 @@ const FooterNewsletter = ({ data }: { data: AcfOptionsFooter }) => {
           {copy}
         </p>
       )}
-      <NewsletterForm inputClassName="w-340" />
+      <NewsletterForm inputClassName="md:w-340" />
       {note && (
         <div className="text-center md:text-left">
           <p className={`${styles.note} inline-flex items-center`}>

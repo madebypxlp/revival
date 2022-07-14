@@ -1,6 +1,7 @@
+import useCustomer from '@commerce/customer/use-customer'
+import Translations from 'constants/translations'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { Searchbar, UserNav } from '@components/common'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import AlertBar from '@components/ui/AlertBar/AlertBar'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
@@ -19,6 +20,9 @@ import styles from './Navbar.module.scss'
 import NavbarRoot from './NavbarRoot'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
 
+const INDEX_HELP = 100
+const INDEX_ACCOUNT = 101
+
 const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const {
     data: { navigationLayouts, alertBanner, navigation, yourAccount },
@@ -28,6 +32,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const [navOpen, setNavOpen] = useState<boolean>(false)
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
   const isMobile = useIsMobile()
+  const customer = useCustomer()
 
   useEffect(() => {
     if (ref.current && isMobile) {
@@ -44,7 +49,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   }, [navOpen])
 
   const handleClick = () => {
-    if (openSubNav === 100 || openSubNav === 101) {
+    if (openSubNav === INDEX_HELP || openSubNav === INDEX_ACCOUNT) {
       setOpenSubNav(false)
       setNavOpen(false)
     } else {
@@ -81,7 +86,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   variant="blue-outline"
                   placeholder="What do your pets need today?"
                 />
-                {/* <Searchbar /> */}
               </div>
               <div className="flex justify-end items-center flex-1 md:space-x-8 w-full">
                 <div>
@@ -89,18 +93,22 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     className="md:mr-60 mr-15 whitespace-nowrap"
                     color="blue"
                     subnav
-                    orientation={isMobile && openSubNav === 100 ? 'up' : 'down'}
+                    orientation={
+                      isMobile && openSubNav === INDEX_HELP ? 'up' : 'down'
+                    }
                     onClick={() =>
-                      openSubNav !== 100 ? setOpenSubNav(100) : handleClick()
+                      openSubNav !== INDEX_HELP
+                        ? setOpenSubNav(INDEX_HELP)
+                        : handleClick()
                     }
                   >
-                    Expert Help
+                    {Translations.NAVBAR.EXPERT_HELP}
                   </ArrowCTA>
                   <div
                     className={cn(
                       'absolute left-0 mt-10',
                       styles.subNav,
-                      openSubNav === 100 && styles.openSubNav
+                      openSubNav === INDEX_HELP && styles.openSubNav
                     )}
                   >
                     {renderNavigationLayouts(navigationLayouts[0])}
@@ -113,11 +121,13 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                       'flex justify-center items-center cursor-pointer mr-5 md:mr-50'
                     )}
                     onClick={() =>
-                      openSubNav !== 101 ? setOpenSubNav(101) : handleClick()
+                      openSubNav !== INDEX_ACCOUNT
+                        ? setOpenSubNav(INDEX_ACCOUNT)
+                        : handleClick()
                     }
                   >
                     <span className="mr-10 whitespace-nowrap hidden md:block">
-                      Your Account
+                      {Translations.NAVBAR.YOUR_ACCOUNT}
                     </span>
                     <Account />
                   </button>
@@ -126,7 +136,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     className={cn(
                       'absolute left-0 mt-10',
                       styles.subNav,
-                      openSubNav === 101 && styles.openSubNav
+                      openSubNav === INDEX_ACCOUNT && styles.openSubNav
                     )}
                   >
                     <NavigationLayoutsYourAccount data={yourAccount} />
@@ -138,7 +148,9 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     'flex justify-center items-center cursor-pointer relative'
                   )}
                 >
-                  <span className="mr-10 hidden md:block">Cart</span>
+                  <span className="mr-10 hidden md:block">
+                    {Translations.NAVBAR.CART}
+                  </span>
                   <Cart />
                   <div
                     className={cn(
@@ -149,7 +161,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     15
                   </div>
                 </div>
-                {/* <UserNav /> */}
               </div>
             </div>
             <div className="flex-1 md:hidden flex justify-between pb-10">

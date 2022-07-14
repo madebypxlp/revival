@@ -33,6 +33,7 @@ const signup: SignupHandlers['signup'] = async ({
       ]),
     })
   } catch (error) {
+    console.log(error)
     if (error instanceof BigcommerceApiError && error.status === 422) {
       const hasEmailError = '0.email' in error.data?.errors
 

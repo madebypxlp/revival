@@ -13,7 +13,7 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
   const { image, headline, subline, sublineImage, link, copy, facts } = module
 
   return (
-    <div className={`${styles.root} relative`}>
+    <div className={`${styles.root} relative md:mb-60`}>
       <div className="container">
         <div className="flex justify-center items-center min-h-[55.5rem] md:relative">
           <GradientOverlay className="absolute inset-0">
@@ -27,7 +27,7 @@ const ImageWithInfosModule: FunctionComponent<{ module: IImageWithInfos }> = ({
             <div
               className={cn([
                 'flex flex-row items-center',
-                facts?.length ? 'mb-50' : 'mb-10',
+                facts?.length ? 'md:mb-50 mb-10' : 'mb-10',
               ])}
             >
               {subline && (

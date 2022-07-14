@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Product } from '@commerce/types'
 import { Grid } from '@components/ui'
 import { ProductCard } from '@components/product'
-import { getCategoryPath, getDesignerPath } from '@lib/search'
+import { getCategoryPath } from '@lib/search'
 import s from './HomeAllProductsGrid.module.scss'
 
 interface Props {
@@ -12,11 +12,7 @@ interface Props {
   products?: Product[]
 }
 
-const HomeAllProductsGrid: FC<Props> = ({
-  categories,
-  brands,
-  products = [],
-}) => (
+const HomeAllProductsGrid: FC<Props> = ({ categories, products = [] }) => (
   <div className={s.root}>
     <div className={s.asideWrapper}>
       <div className={s.aside}>
@@ -30,20 +26,6 @@ const HomeAllProductsGrid: FC<Props> = ({
             <li key={cat.path} className="py-1  text-base">
               <Link href={getCategoryPath(cat.path)}>
                 <a>{cat.name}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul className="">
-          <li className="py-1 text-base font-bold tracking-wide">
-            <Link href={getDesignerPath('')}>
-              <a>All Designers</a>
-            </Link>
-          </li>
-          {brands.flatMap(({ node }: any) => (
-            <li key={node.path} className="py-1  text-base">
-              <Link href={getDesignerPath(node.path)}>
-                <a>{node.name}</a>
               </Link>
             </li>
           ))}

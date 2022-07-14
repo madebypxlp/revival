@@ -9,14 +9,17 @@ const OurBrandsModule: FunctionComponent<{ module: IOurBrands }> = ({
 }) => (
   <div className={`${styles.root} container pt-40 md:pt-100`}>
     {module.rows.map((row) => (
-      <div key={row?.headline} className="default-grid pb-35 md:pb-90">
-        <div className="col-span-2 md:col-span-12 flex flex-col md:flex-row md:justify-between items-start md:items-end mb-15 md:mb-35 pr-40 md:pr-10">
+      <div
+        key={row?.headline}
+        className="default-grid pb-35 md:pb-90 gap-x-10 md:gap-x-20 "
+      >
+        <div className="col-span-2 md:col-span-12 flex flex-col md:flex-row md:justify-between items-start md:items-end mb-15 md:mb-15 pr-40 md:pr-10">
           {row.headline && (
             <span className={styles.headline}>{row.headline}</span>
           )}
           {row.brands.length > 3 && (
             <div className="relative mt-20 md:mt-0">
-              <ArrowCTA color="blue" orientation="right" href="">
+              <ArrowCTA color="blue" orientation="right" subnav href="">
                 Shop All
               </ArrowCTA>
             </div>
@@ -27,9 +30,9 @@ const OurBrandsModule: FunctionComponent<{ module: IOurBrands }> = ({
             key={brand.url}
             className={`${
               row.brands.length > 3
-                ? 'md:col-span-3 col-span-1'
-                : 'md:col-span-4 col-span-2'
-            } my-5 md:my-10`}
+                ? 'md:col-span-3 col-span-1 mt-0 -mb-5'
+                : 'md:col-span-4 col-span-2 my-5 mx-5'
+            } md:-my-5`}
           >
             <a
               href={brand.url}
