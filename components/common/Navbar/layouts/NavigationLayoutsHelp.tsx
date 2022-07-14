@@ -40,32 +40,34 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsHelp }> = ({
             )}
           />
           <div className="absolute top-0 bottom-0 md:left-0 md:-right-85 -left-20 -right-20 bg-blue" />
-          {actions.map((action, index) => {
-            return (
-              <div className="flex items-center text-white md:mb-60 mb-10 z-10">
-                <div className="flex justify-center md:items-center md:mr-50 mr-16">
-                  <Image
-                    className="max-h-50"
-                    src={action.icon.sourceUrl}
-                    width={
-                      action.icon.mediaDetails.width / (isMobile ? 6.97 : 2.788)
-                    }
-                    height={
-                      action.icon.mediaDetails.height / (isMobile ? 6.6 : 2.64)
-                    }
-                  />
-                </div>
-                <h5
-                  className={cn(
-                    styles.helpInfoText,
-                    index >= 1 ? styles.helpInfoUnderlined : ''
-                  )}
-                >
-                  {action.link.title}
-                </h5>
+          {actions.map((action, index) => (
+            <div
+              key={action.link.title}
+              className="flex items-center text-white md:mb-60 mb-10 z-10"
+            >
+              <div className="flex justify-center md:items-center md:mr-50 mr-16">
+                <Image
+                  className="max-h-50"
+                  alt={action.icon.altText}
+                  src={action.icon.sourceUrl}
+                  width={
+                    action.icon.mediaDetails.width / (isMobile ? 6.97 : 2.788)
+                  }
+                  height={
+                    action.icon.mediaDetails.height / (isMobile ? 6.6 : 2.64)
+                  }
+                />
               </div>
-            )
-          })}
+              <h5
+                className={cn(
+                  styles.helpInfoText,
+                  index >= 1 ? styles.helpInfoUnderlined : ''
+                )}
+              >
+                {action.link.title}
+              </h5>
+            </div>
+          ))}
         </div>
       </div>
     </div>

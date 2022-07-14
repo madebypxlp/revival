@@ -11,10 +11,10 @@ export function useSearchMeta(asPath: string) {
     const path = asPath.split('?')[0]
     const parts = path.split('/')
 
-    let c = parts[2]
+    const c = parts[2]
     const b = parts[3]
 
-    //if (c === 'designers') {
+    //  if (c === 'designers') {
     // eslint-disable-next-line prefer-destructuring
     // c = parts[4]
     //  }

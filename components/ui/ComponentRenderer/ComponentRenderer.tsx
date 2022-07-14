@@ -1,3 +1,4 @@
+/*  eslint-disable */
 import React, { FunctionComponent, useState } from 'react'
 import Translations from 'constants/translations'
 import styles from './ComponentRenderer.module.scss'
@@ -21,6 +22,8 @@ import { useUI } from '../context'
 import CartProduct from '../CartProduct/CartProduct'
 import AccountSettings from '../AccountSettings/AccountSettings'
 import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
+import IProductCard from '../ProductCard/ProductCard.interface'
+import { Product } from '@commerce/types'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   // test for inputfield
@@ -37,39 +40,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const [searchModalOpen, setSearchModalOpen] = useState(false)
   const [petVetSummaryOpen, setPetVetSummaryOpen] = useState(false)
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
   const petAndVetInfo = {
     approvalMethod:
       'I will mail the prescription to Revival Animal Health myself.',
@@ -333,7 +303,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 1) Cart (your cart) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             showCartControls
@@ -341,14 +311,14 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 2) Cart (checkout 01A) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             showPrescriptionIcon
@@ -357,7 +327,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 4) RX (checkout 01A)  */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="checkout"
             showPrescriptionLabel
@@ -365,7 +335,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 5) RX Flow (info needed) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             rightColumn="empty"
@@ -376,7 +346,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 6) RX Flow (pet and vet clinic info) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             rightColumn="edit-details"
@@ -386,7 +356,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 7) Splitting shipments cart */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
@@ -395,7 +365,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 8) Splitting shipments (checkout) */}
           <CartProduct
             className="my-20"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="checkout"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
@@ -403,19 +373,20 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 9) Account (not finished, do not use yet) */}
           <CartProduct
             className="my-20"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="account"
           />
         </div>
       </div>
+
       <div className="my-50 py-50 container">
         <h1>Product components</h1>
         <div className="default-grid">
           {/* 1) Cart (your cart) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             showCartControls
@@ -423,14 +394,14 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 2) Cart (checkout 01A) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             showPrescriptionIcon
@@ -439,7 +410,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 4) RX (checkout 01A)  */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="checkout"
             showPrescriptionLabel
@@ -447,7 +418,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 5) RX Flow (info needed) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             rightColumn="empty"
@@ -458,7 +429,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 6) RX Flow (pet and vet clinic info) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             rightColumn="edit-details"
@@ -468,7 +439,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 7) Splitting shipments cart */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
@@ -477,7 +448,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 8) Splitting shipments (checkout) */}
           <CartProduct
             className="my-20"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="checkout"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
@@ -485,7 +456,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 9) Account (order detail) */}
           <CartProduct
             className="my-20"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="account"
             showBuyItAgain
@@ -493,7 +464,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 10) Account (order detail RX) */}
           <CartProduct
             className="my-20"
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="account"
             showPrescriptionIcon
@@ -508,3 +479,16 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
 }
 
 export default ComponentRenderer
+
+export const SAMPLE_PRODUCT = {
+  id: '91',
+  image: {
+    url: 'https://cdn11.bigcommerce.com/s-3xvwarb9yi/product…s/463/30301-415__31796.1657567018.220.290.jpg?c=1',
+  },
+  listPrice: 130.99,
+  name: 'Duramune Max 5',
+  price: 130.99,
+  requiresShipping: true,
+  sku: '30301-415',
+  variantId: '91',
+}

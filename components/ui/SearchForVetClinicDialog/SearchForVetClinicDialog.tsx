@@ -75,7 +75,7 @@ const SearchForVetClinicDialog: FunctionComponent<ISearchForVetClinicDialog> = (
       <ArrowCTA
         orientation="right"
         color="blue"
-        onClick={(e) => {
+        onClick={(e: any) => {
           e.preventDefault()
           onClose()
         }}

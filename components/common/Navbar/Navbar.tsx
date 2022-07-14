@@ -1,14 +1,12 @@
+/* eslint-disable no-unused-expressions */
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Searchbar, UserNav } from '@components/common'
-import NavbarRoot from './NavbarRoot'
-import styles from './Navbar.module.scss'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import AlertBar from '@components/ui/AlertBar/AlertBar'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import cn from 'classnames'
 import renderNavigationLayouts from 'repeater/navigation-layouts'
-import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import Input from '@components/ui/Input/Input'
 import { Account, Cart, Logo, Hamburger, ChevronUp } from '@components/icons'
 import { useIsMobile } from '@commerce/utils/hooks'
@@ -17,7 +15,11 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock'
+import { useUI } from '@components/ui'
+import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
+import NavbarRoot from './NavbarRoot'
+import styles from './Navbar.module.scss'
 
 const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const {
@@ -28,6 +30,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const [navOpen, setNavOpen] = useState<boolean>(false)
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
   const isMobile = useIsMobile()
+  const { openSidebar } = useUI()
 
   useEffect(() => {
     if (ref.current && isMobile) {
@@ -50,6 +53,10 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
     } else {
       setNavOpen((prev) => !prev)
     }
+  }
+
+  const openCart = () => {
+    openSidebar()
   }
 
   return (
@@ -89,7 +96,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     className="md:mr-60 mr-15 whitespace-nowrap"
                     color="blue"
                     subnav
-                    orientation={isMobile && openSubNav == 100 ? 'up' : 'down'}
+                    orientation={isMobile && openSubNav === 100 ? 'up' : 'down'}
                     onClick={() => {
                       openSubNav !== 100 ? setOpenSubNav(100) : handleClick()
                     }}
@@ -108,6 +115,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                 </div>
                 <div>
                   <div
+                    role="none"
                     className={cn(
                       styles.navButton,
                       'flex justify-center items-center cursor-pointer mr-5 md:mr-50'
@@ -133,10 +141,12 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   </div>
                 </div>
                 <div
+                  role="none"
                   className={cn(
                     styles.navButton,
                     'flex justify-center items-center cursor-pointer relative'
                   )}
+                  onClick={openCart}
                 >
                   <span className="mr-10 hidden md:block">Cart</span>
                   <Cart />
@@ -184,7 +194,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
               {/* <Searchbar /> */}
             </div>
           </div>
-          <div className={cn(styles.shadow, '')}></div>
+          <div className={cn(styles.shadow, '')} />
         </div>
 
         <nav
@@ -197,7 +207,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
         >
           <ul className="md:flex justify-around">
             {navigation.map((nav, index) => {
-              const {} = nav
               if (nav?.link) {
                 return (
                   <li
@@ -250,11 +259,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
             })}
           </ul>
           <div>
-            {/*console.log(
-              'data',
-              props.data.navigation[3].navigationLayouts[0].video.thumbnail
-              console.log(nav.navigationLayouts[0].marketingBox)
-            )*/}
             {props.data.navigation.map((nav, index) => {
               if (
                 (openSubNav || openSubNav === 0) &&
@@ -262,7 +266,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                 isMobile
               ) {
                 if (!nav.navigationLayouts[0].marketingBox) {
-                  return
+                  return null
                 }
                 return (
                   <NavigationMarketingBox
@@ -270,6 +274,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   />
                 )
               }
+              return null
             })}
           </div>
         </nav>

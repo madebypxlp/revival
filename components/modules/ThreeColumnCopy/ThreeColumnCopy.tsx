@@ -13,7 +13,7 @@ const ThreeColumnCopyModule: FunctionComponent<{
   return (
     <div
       className={`${styles.root} container default-grid`}
-      style={{ backgroundColor: backgroundColor }}
+      style={{ backgroundColor }}
     >
       {subline && (
         <div className={c(styles.subline, 'typo-eyebrow')}>{subline}</div>
