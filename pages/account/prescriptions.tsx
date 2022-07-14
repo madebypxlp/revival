@@ -10,6 +10,8 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './prescriptions.module.scss'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 
 export async function getStaticProps({
   preview,
@@ -84,21 +86,25 @@ export default function Profile({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.PRESCRIPTIONS}
-        className="mb-190"
+        className="md:mb-190"
       />
-      <div className="container default-grid mb-200">
-        {products.map((p) => (
-          <CartProduct
-            key={product.id}
-            className="pb-40 light-border-b mb-40"
-            product={product}
-            quantity={3}
-            variant="account"
-            showPrescriptionIcon
-            showPlaceNewOrder
-            vetInfo={petAndVetInfo}
-          />
-        ))}
+      <div className="container mb-200">
+        <AccountBreadcrumbs current={Translations.ACCOUNT.PRESCRIPTIONS} />
+        <div className={'default-grid mb-85'}>
+          {products.map((p) => (
+            <CartProduct
+              key={product.id}
+              className="pb-40 light-border-b mb-40"
+              product={product}
+              quantity={3}
+              variant="account"
+              showPrescriptionIcon
+              showPlaceNewOrder
+              vetInfo={petAndVetInfo}
+            />
+          ))}
+        </div>
+        <AccountLinkGroup mobileOnly />
       </div>
     </div>
   )

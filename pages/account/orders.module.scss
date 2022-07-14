@@ -2,4 +2,91 @@
   .breadcrumbsContainer {
     margin-bottom: 7.5rem;
   }
+
+  .ordersBox {
+    @apply mb-90 md:mb-300;
+  }
+
+  .accountLinkGroup {
+    @apply mb-50;
+  }
+
+  .orderBox {
+    border: 0.15rem solid theme('colors.greyscale.4');
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    line-height: 3.8rem;
+
+    display: grid;
+    @apply grid-cols-2 md:grid-cols-10;
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+
+    margin-bottom: 4.5rem;
+    padding: 2rem;
+
+    @screen md {
+      padding: 3rem;
+    }
+
+    @screen lg {
+      padding: 3rem 9rem 6rem 12rem;
+    }
+  }
+
+  .summaryContainer {
+    font-size: 2rem;
+    line-height: 3.8rem;
+    margin-bottom: 10rem;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .totalRow {
+    margin-top: 3rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .placedColumn {
+    @apply col-span-2;
+  }
+
+  .placeOrderAgainRow {
+    margin-bottom: 4rem;
+    display: flex;
+    row-gap: 2rem;
+    @apply flex-col md:flex-row;
+    @apply justify-start md:justify-between;
+    @apply items-start md:items-center;
+  }
+
+  .sentToColumn {
+    @apply col-span-2 md:col-span-3;
+  }
+
+  .paidWithColumn {
+    @apply col-span-2;
+  }
+
+  .trackingColumn {
+    word-break: break-all;
+    @apply col-span-2 md:col-span-3;
+  }
+
+  .product {
+    padding-bottom: 4rem;
+    border-bottom: 0.15rem solid theme('colors.greyscale.4');
+    margin-bottom: 4rem;
+  }
+
+  .summaryContainer {
+    @apply col-span-2 md:col-start-9 md:col-span-4;
+  }
 }

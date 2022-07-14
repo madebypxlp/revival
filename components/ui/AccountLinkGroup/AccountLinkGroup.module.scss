@@ -27,22 +27,34 @@
     }
   }
 
-  .infoGroup {
-    padding-bottom: 2.5rem;
-    border-bottom: 0.15rem solid black;
-    margin-bottom: 2rem;
+  .myPetHealthLink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: theme('colors.greyscale.6');
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 2.1rem;
 
-    font-size: 1.8rem;
-    line-height: 3.8rem;
+    @screen md {
+      margin-bottom: 2rem;
+      padding: 2.5rem 6.5rem;
+    }
 
-    > div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    span {
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
 
-      &.title {
-        color: theme('colors.blue.default');
-        font-weight: 700;
+      @screen md {
+        font-size: 1.8rem;
+        line-height: 3.8rem;
+      }
+    }
+
+    &.mobileOnly {
+      @screen md {
+        display: none;
       }
     }
   }
@@ -50,13 +62,5 @@
   .rightChevron {
     cursor: pointer;
     transform: rotate(90deg) scale(0.5);
-  }
-
-  .settingsColumn {
-    @apply col-span-2;
-    @apply md:col-span-3 md:col-start-10;
-    @apply lg:col-start-11;
-
-    @apply hidden md:block;
   }
 }

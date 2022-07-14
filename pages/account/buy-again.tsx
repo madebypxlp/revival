@@ -10,6 +10,8 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './buy-again.module.scss'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
 
 export async function getStaticProps({
   preview,
@@ -73,19 +75,23 @@ export default function Profile({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.BUY_AGAIN}
-        className="mb-190"
+        className="md:mb-175"
       />
-      <div className="container default-grid mb-150">
-        {products.map((p) => (
-          <CartProduct
-            key={p.id}
-            className="pb-40 light-border-b mb-40"
-            product={p}
-            quantity={3}
-            variant="account"
-            showAddToCart
-          />
-        ))}
+      <div className={'container mb-150'}>
+        <AccountBreadcrumbs current={Translations.ACCOUNT.BUY_AGAIN} />
+        <div className="default-grid">
+          {products.map((p) => (
+            <CartProduct
+              key={p.id}
+              className="pb-40 light-border-b mb-40"
+              product={p}
+              quantity={3}
+              variant="account"
+              showAddToCart
+            />
+          ))}
+        </div>
+        <AccountLinkGroup mobileOnly className={styles.accountLinkGroup} />
       </div>
     </div>
   )
