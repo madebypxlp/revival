@@ -19,6 +19,7 @@ import styles from './index.module.scss'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import fetch from '../../framework/wordpress/wp-client'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 
 export async function getStaticProps({
   preview,
@@ -60,17 +61,6 @@ export default function Profile({
   }
   const orders = [order, order, order, order]
 
-  // todo: see where I can get the button list?
-  const linkList = [
-    { title: 'Overview', link: '#', mobileOnly: true },
-    { title: 'Orders', link: '#', mobileOnly: true },
-    { title: 'Buy Again', link: '#', mobileOnly: true },
-    { title: 'Prescriptions', link: '#' },
-    { title: 'My Pet', link: '#' },
-    { title: 'My Vet', link: '#' },
-    { title: 'My Favorties', link: '#' },
-  ]
-
   const accountInfo = {
     username: data?.firstName,
     name: `${data?.firstName} ${data?.lastName}`,
@@ -91,12 +81,11 @@ export default function Profile({
     name: 'Jane Doe',
   }
   const headlineText = `${Translations.ACCOUNT.WELCOME_BACK}, ${accountInfo.username}`
-  const isMobile = useIsMobile()
 
   return (
     <div className={styles.root}>
       <AuthModal />
-      <AccountHero headline={headlineText} className="mb-155" />
+      <AccountHero headline={headlineText} className="mb-65 md:mb-155" />
       <div className="container default-grid mb-70">
         <div className="col-span-2 md:col-span-9">
           <div className={styles.headerContainer}>
@@ -106,22 +95,7 @@ export default function Profile({
             </ArrowCTA>
           </div>
           <OrdersBox orders={orders} variant="account" className="mb-85" />
-          <div className={styles.headerContainer}>
-            <h5>{Translations.ACCOUNT.MY_PET_HEALTH}</h5>
-          </div>
-          {linkList.map((l) => (
-            <NextLink href={l.link} key={l.title}>
-              <div
-                className={c(
-                  styles.myPetHealthLink,
-                  l.mobileOnly && !isMobile && styles.mobileOnly
-                )}
-              >
-                <span>{l.title}</span>
-                <ChevronUp className={styles.rightChevron} />
-              </div>
-            </NextLink>
-          ))}
+          <AccountLinkGroup />
         </div>
 
         <div className={styles.settingsColumn}>
