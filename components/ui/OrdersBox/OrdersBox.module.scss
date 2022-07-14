@@ -112,8 +112,12 @@
       }
     }
 
+    .sentTo {
+      @apply md:col-span-4;
+    }
+
     .orderContainer {
-      @apply md:grid-cols-8;
+      @apply md:grid-cols-10;
     }
   }
 }

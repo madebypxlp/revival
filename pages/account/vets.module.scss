@@ -1,0 +1,32 @@
+.root {
+  .vetCard {
+    border: 0.15rem solid theme('colors.greyscale.4');
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    text-align: left;
+    padding: 2rem;
+
+    @screen lg {
+      padding: 6rem 12rem;
+    }
+    h5 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    div {
+      @apply typo-large-paragraph;
+    }
+  }
+
+  .addNewVetContainer {
+    margin-bottom: 4rem;
+  }
+
+  .removeVetLinkContainer {
+    text-align: right;
+  }
+}

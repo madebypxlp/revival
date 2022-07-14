@@ -14,6 +14,8 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './favorites.module.scss'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 
 export async function getStaticProps({
   preview,
@@ -96,13 +98,19 @@ export default function Wishlist({
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.MY_FAVORITES}
-        className="mb-70"
+        className="md:mb-70"
       />
+      <div className={'container'}>
+        <AccountBreadcrumbs current={Translations.ACCOUNT.MY_FAVORITES} />
+      </div>
       <ProductCardGrid
         variant="favorites"
         products={products}
-        className="mb-200"
+        className="mb-60"
       />
+      <div className={'container'}>
+        <AccountLinkGroup mobileOnly className={'mb-250'} />
+      </div>
     </div>
   )
 }
