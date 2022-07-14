@@ -2,6 +2,7 @@ import useCustomer from '@commerce/customer/use-customer'
 import Translations from 'constants/translations'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { Searchbar, UserNav } from '@components/common'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import AlertBar from '@components/ui/AlertBar/AlertBar'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
@@ -106,7 +107,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   </ArrowCTA>
                   <div
                     className={cn(
-                      'absolute left-0 mt-10',
+                      'absolute left-0 md:-mt-20 mt-10',
                       styles.subNav,
                       openSubNav === INDEX_HELP && styles.openSubNav
                     )}
@@ -134,7 +135,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
 
                   <div
                     className={cn(
-                      'absolute left-0 mt-10',
+                      'absolute left-0 md:-mt-20 mt-10',
                       styles.subNav,
                       openSubNav === INDEX_ACCOUNT && styles.openSubNav
                     )}
@@ -163,7 +164,18 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 md:hidden flex justify-between pb-10">
+            <div
+              className={cn(
+                styles.mobileShadow,
+                (openSubNav === 100 || openSubNav === 101) && 'w-screen'
+              )}
+            />
+            <div
+              className={cn(
+                'flex-1 md:hidden flex justify-between pb-10',
+                navOpen && '!pb-0'
+              )}
+            >
               <div className="relative flex justify-center items-center z-50">
                 <Hamburger
                   isClosed={navOpen || openSubNav}
@@ -184,6 +196,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
               {/* <Searchbar /> */}
             </div>
           </div>
+          <div className={cn(styles.shadow, '')} />
         </div>
 
         <nav
@@ -226,11 +239,10 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     orientation={
                       isMobile && !(openSubNav === index) ? 'right' : 'down'
                     }
-                    onClick={() =>
-                      openSubNav !== index
-                        ? setOpenSubNav(index)
-                        : setOpenSubNav(false)
-                    }
+                    onClick={() => {
+                      if (openSubNav !== index) setOpenSubNav(index)
+                      else setOpenSubNav(false)
+                    }}
                   >
                     {nav.title}
                   </ArrowCTA>
@@ -257,7 +269,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                 if (!nav.navigationLayouts[0].marketingBox) return null
                 return (
                   <NavigationMarketingBox
-                    key={nav.title}
                     module={nav.navigationLayouts[0].marketingBox}
                   />
                 )

@@ -26,6 +26,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
   const [disabled, setDisabled] = useState(false)
   const { setModalView, displayModal, closeModal, modalView, openModal } =
     useUI()
+
   const handleValidation = useCallback(() => {
     // Test for Alphanumeric password
     const validPassword = /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)

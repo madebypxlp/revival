@@ -191,7 +191,7 @@
     @apply col-span-2 md:col-span-8;
 
     margin-top: 3rem;
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
     background-color: theme('colors.greyscale.6');
     font-weight: 700;
     border-radius: 3rem;
@@ -200,6 +200,7 @@
 
     @screen md {
       flex-direction: row;
+      padding: 1rem 4rem;
     }
 
     div {
@@ -208,27 +209,31 @@
   }
 
   .buyItAgainContainer {
-    @apply md:col-start-8 md:col-span-3;
+    @apply col-span-2 md:col-span-3;
+    @apply md:col-start-8;
     display: flex;
-    justify-content: flex-end;
     align-self: end;
+    @apply justify-start md:justify-end;
   }
 
   .addToCartContainer {
-    @apply col-span-2;
-    @apply md:col-span-8;
+    @apply col-span-2 md:col-span-8;
     align-self: end;
   }
 
   .placeNewOrderContainer {
-    @apply col-span-2;
-    @apply md:col-span-6;
-    text-align: right;
-    align-self: end;
+    @apply col-span-2 md:col-span-6;
+    margin-top: 2rem;
+
+    @screen md {
+      text-align: right;
+      align-self: end;
+      margin-top: 0;
+    }
   }
 
   &.variant--cart {
-    @apply col-span-2 grid-cols-2 md:col-start-1 md:col-span-8 md:grid-cols-8 gap-x-20;
+    @apply col-span-2 md:col-span-8 grid-cols-2 md:col-start-1 md:grid-cols-8 gap-x-20;
 
     .imageContainer {
       @apply md:col-span-2;
