@@ -1,3 +1,4 @@
+import { LineItem, ProductVariant } from '@commerce/types'
 import IProductCard from '../ProductCard/ProductCard.interface'
 
 export interface IVetInfo {
@@ -7,7 +8,7 @@ export interface IVetInfo {
 }
 
 export default interface ICartProduct {
-  product: IProductCard
+  product: ProductVariant
   quantity: number
   variant: 'cart' | 'sidebar' | 'checkout' | 'account'
   className?: string

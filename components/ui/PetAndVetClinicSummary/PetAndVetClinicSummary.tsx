@@ -12,6 +12,7 @@ import Input from '../Input/Input'
 import PlusCTA from '../PlusCTA/PlusCTA'
 import SearchResultCard from '../SearchForVetClinicResult/SearchForVetClinicResult'
 import CartProduct from '../CartProduct/CartProduct'
+import { SAMPLE_PRODUCT } from '../ComponentRenderer/ComponentRenderer'
 
 const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
   props
@@ -33,47 +34,13 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
   }
   const clinics = [dummyClinic, dummyClinic]
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
-
   return (
     <Modal title={title || 'Add a Pet'} open={open} onClose={() => onClose()}>
       <ModalContent>
         <div className={`${styles.root} pt-10 default-grid`}>
           <CartProduct
             className={cn(styles.product, 'mb-30')}
-            product={product}
+            product={SAMPLE_PRODUCT}
             quantity={3}
             variant="cart"
             rightColumn="empty"

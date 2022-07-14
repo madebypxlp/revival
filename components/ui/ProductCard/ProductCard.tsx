@@ -11,11 +11,10 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
   const {
     isOurBrand,
     label,
-    image,
+    images,
     name,
     id,
     price,
-    oldPrice,
     isNew,
     isPrescription,
     isFavorite,
@@ -28,7 +27,7 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
         isNew={isNew}
         isPrescription={isPrescription}
         label={label}
-        image={image}
+        imageUrl={images[0].url}
         isOurBrand={isOurBrand}
         isFavorite={isFavorite}
         showFavoriteIcon={showFavoriteIcon}
@@ -39,10 +38,12 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
           <div className={styles.productId}>{id}</div>
         </div>
         <div>
-          <div className={styles.productPrice}>{formatPrice(price)}</div>
+          <div className={styles.productPrice}>
+            {price.salePrice && formatPrice(price.salePrice)}
+          </div>
 
           <div className={styles.productOldPrice}>
-            {oldPrice && formatPrice(oldPrice)}
+            {price.listPrice && formatPrice(price.listPrice)}
           </div>
         </div>
       </div>

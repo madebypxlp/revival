@@ -54,7 +54,7 @@ const FullwidthItemRowModule: FunctionComponent<{
                       />
                     </div>
                   )}
-                  <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:self-start ">
+                  <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:self-start whitespace-nowrap">
                     {parse(item.label)}
                   </h4>
                   {item?.link?.title && (

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import useCustomer from '@commerce/customer/use-customer'
 import Translations from 'constants/translations'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
@@ -16,9 +17,10 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock'
-import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
+import { useUI } from '@components/ui'
 import styles from './Navbar.module.scss'
 import NavbarRoot from './NavbarRoot'
+import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
 
 const INDEX_HELP = 100
@@ -34,6 +36,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
   const isMobile = useIsMobile()
   const customer = useCustomer()
+  const { openSidebar } = useUI()
 
   useEffect(() => {
     if (ref.current && isMobile) {
@@ -56,6 +59,10 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
     } else {
       setNavOpen((prev) => !prev)
     }
+  }
+
+  const openCart = () => {
+    openSidebar()
   }
 
   return (
@@ -144,10 +151,12 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   </div>
                 </div>
                 <div
+                  role="none"
                   className={cn(
                     styles.navButton,
                     'flex justify-center items-center cursor-pointer relative'
                   )}
+                  onClick={openCart}
                 >
                   <span className="mr-10 hidden md:block">
                     {Translations.NAVBAR.CART}

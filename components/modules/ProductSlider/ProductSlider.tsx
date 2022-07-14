@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import ProductCard from '@components/ui/ProductCard/ProductCard'
 import { useIsMobile } from '@commerce/utils/hooks'
+import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import IProductSlider from './ProductSlider.interface'
 import styles from './ProductSlider.module.scss'
@@ -11,40 +12,14 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
 }) => {
   const { link } = module
   const isMobile = useIsMobile()
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
-  const products = [product, product, product, product, product, product]
+  const products = [
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+  ]
 
   return (
     <div
@@ -79,9 +54,7 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
           }}
         >
           {products.map((p, index) => (
-            <SwiperSlide key={p.id}>
-              <ProductCard {...p} />
-            </SwiperSlide>
+            <SwiperSlide key={p.id}>{/* <ProductCard {...p} /> */}</SwiperSlide>
           ))}
         </Swiper>
       </div>

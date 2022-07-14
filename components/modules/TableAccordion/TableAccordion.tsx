@@ -22,10 +22,7 @@ const TableAccordionModule: FunctionComponent<{ module: ITableAccordion }> = ({
               key={item.headline}
               headline={item.headline}
               open={openAccordion === index}
-              onOpen={() => {
-                setOpenAccordion(index)
-                handleClick()
-              }}
+              onOpen={() => setOpenAccordion(index)}
             >
               {item.rows.map((row) => (
                 <div

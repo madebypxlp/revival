@@ -9,7 +9,7 @@ export default interface IArrowCTA {
   orientation: 'up' | 'down' | 'right'
   disabled?: boolean
   link?: Link
-  onClick?: MouseEventHandler<HTMLAnchorElement>
+  onClick?: any
   className?: string
   subnav?: boolean
 }
