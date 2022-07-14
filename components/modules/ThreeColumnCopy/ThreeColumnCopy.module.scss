@@ -1,7 +1,7 @@
 .root {
   // add your styles here
   @apply pt-50 pb-25;
-  @apply md:pt-95 md:pb-20;
+  @apply md:pt-100 md:pb-120;
 
   .subline {
     @apply text-blue mb-10 col-start-1 col-span-2;
@@ -22,6 +22,6 @@
 
   .contentColumn p {
     @apply mb-30;
-    @apply md:mb-60;
+    @apply md:mb-20;
   }
 }

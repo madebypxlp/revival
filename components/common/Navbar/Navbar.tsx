@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-expressions */
+import useCustomer from '@commerce/customer/use-customer'
+import Translations from 'constants/translations'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Searchbar, UserNav } from '@components/common'
@@ -17,10 +19,13 @@ import {
   enableBodyScroll,
 } from 'body-scroll-lock'
 import { useUI } from '@components/ui'
+import styles from './Navbar.module.scss'
+import NavbarRoot from './NavbarRoot'
 import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
-import NavbarRoot from './NavbarRoot'
-import styles from './Navbar.module.scss'
+
+const INDEX_HELP = 100
+const INDEX_ACCOUNT = 101
 
 const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const {
@@ -31,6 +36,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const [navOpen, setNavOpen] = useState<boolean>(false)
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
   const isMobile = useIsMobile()
+  const customer = useCustomer()
   const { openSidebar } = useUI()
 
   useEffect(() => {
@@ -48,7 +54,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   }, [navOpen])
 
   const handleClick = () => {
-    if (openSubNav === 100 || openSubNav === 101) {
+    if (openSubNav === INDEX_HELP || openSubNav === INDEX_ACCOUNT) {
       setOpenSubNav(false)
       setNavOpen(false)
     } else {
@@ -95,45 +101,50 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     className="md:mr-60 mr-15 whitespace-nowrap"
                     color="blue"
                     subnav
-                    orientation={isMobile && openSubNav === 100 ? 'up' : 'down'}
-                    onClick={() => {
-                      openSubNav !== 100 ? setOpenSubNav(100) : handleClick()
-                    }}
+                    orientation={
+                      isMobile && openSubNav === INDEX_HELP ? 'up' : 'down'
+                    }
+                    onClick={() =>
+                      openSubNav !== INDEX_HELP
+                        ? setOpenSubNav(INDEX_HELP)
+                        : handleClick()
+                    }
                   >
-                    Expert Help
+                    {Translations.NAVBAR.EXPERT_HELP}
                   </ArrowCTA>
                   <div
                     className={cn(
                       'absolute left-0 md:-mt-20 mt-10',
                       styles.subNav,
-                      openSubNav === 100 && styles.openSubNav
+                      openSubNav === INDEX_HELP && styles.openSubNav
                     )}
                   >
                     {renderNavigationLayouts(navigationLayouts[0])}
                   </div>
                 </div>
                 <div>
-                  <div
-                    role="none"
+                  <button
                     className={cn(
                       styles.navButton,
                       'flex justify-center items-center cursor-pointer mr-5 md:mr-50'
                     )}
-                    onClick={() => {
-                      openSubNav !== 101 ? setOpenSubNav(101) : handleClick()
-                    }}
+                    onClick={() =>
+                      openSubNav !== INDEX_ACCOUNT
+                        ? setOpenSubNav(INDEX_ACCOUNT)
+                        : handleClick()
+                    }
                   >
                     <span className="mr-10 whitespace-nowrap hidden md:block">
-                      Your Account
+                      {Translations.NAVBAR.YOUR_ACCOUNT}
                     </span>
                     <Account />
-                  </div>
+                  </button>
 
                   <div
                     className={cn(
                       'absolute left-0 md:-mt-20 mt-10',
                       styles.subNav,
-                      openSubNav === 101 && styles.openSubNav
+                      openSubNav === INDEX_ACCOUNT && styles.openSubNav
                     )}
                   >
                     <NavigationLayoutsYourAccount data={yourAccount} />
@@ -147,7 +158,9 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   )}
                   onClick={openCart}
                 >
-                  <span className="mr-10 hidden md:block">Cart</span>
+                  <span className="mr-10 hidden md:block">
+                    {Translations.NAVBAR.CART}
+                  </span>
                   <Cart />
                   {cart.data && cart.data.lineItems.length > 0 && (
                     <div
@@ -237,9 +250,8 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                       isMobile && !(openSubNav === index) ? 'right' : 'down'
                     }
                     onClick={() => {
-                      openSubNav !== index
-                        ? setOpenSubNav(index)
-                        : setOpenSubNav(false)
+                      if (openSubNav !== index) setOpenSubNav(index)
+                      else setOpenSubNav(false)
                     }}
                   >
                     {nav.title}
@@ -264,9 +276,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                 index === openSubNav &&
                 isMobile
               ) {
-                if (!nav.navigationLayouts[0].marketingBox) {
-                  return null
-                }
+                if (!nav.navigationLayouts[0].marketingBox) return null
                 return (
                   <NavigationMarketingBox
                     module={nav.navigationLayouts[0].marketingBox}

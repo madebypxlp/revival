@@ -30,12 +30,16 @@
   :global {
     .swiper-button-prev,
     .swiper-button-next {
-      @apply w-50 md:w-70 h-auto;
-      &::before {
+      &::before,
+      &::after {
         content: '';
+        display: none;
       }
+      @apply rounded-full h-auto;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
-      border-radius: 5rem;
+      svg {
+        @apply w-50 md:w-70 h-auto;
+      }
     }
   }
 

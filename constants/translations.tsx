@@ -83,8 +83,16 @@ const Translations = {
     QTY: 'Qty',
     APPROVAL_METHOD: 'Approval Method',
     EDIT_DETAILS: 'Edit Details',
+    SUMMARY_TITLE: 'Pet & Vet Clinic Information',
+    ADD_PET_TITLE: 'Add a Pet',
+    ADD_VET_TITLE: 'Search for Your Veterinary Clinic',
   },
   BUY_ITEM_AGAIN: 'Buy Item Again',
   YOU_MAY_ALSO_LIKE: 'You may also like',
+  NAVBAR: {
+    EXPERT_HELP: 'Expert Help',
+    YOUR_ACCOUNT: 'Your Account',
+    CART: 'Cart',
+  },
 }
 export default Translations

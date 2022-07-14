@@ -27,6 +27,7 @@ const TeamGridModule: FunctionComponent<{ module: ITeamGrid }> = ({
                       src={tm.profileImage.sourceUrl}
                       layout="fill"
                       objectFit="contain"
+                      className="bg-white"
                     />
                   </div>
                   <div className={styles.teamMemberName}>

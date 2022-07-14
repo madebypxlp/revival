@@ -19,7 +19,7 @@ const FullwidthItemRowModule: FunctionComponent<{
   const isMobile = useIsMobile()
 
   return (
-    <div className={`${styles.root} container mt-20 mb-40 lg:mt-60 lg:mb-100`}>
+    <div className={`${styles.root} container mt-20 mb-40 lg:mt-80 lg:mb-100`}>
       <div
         className={`${backgroundColors[backgroundColor]} rounded-[15px] default-grid-lg pt-30 md:pb-20 lg:pt-50 lg:pb-60`}
       >
@@ -27,7 +27,7 @@ const FullwidthItemRowModule: FunctionComponent<{
           <div className="typo-eyebrow font-bold mb-10 tracking-widest">
             {subline}
           </div>
-          <h3 className="typo-h3 mb-50 lg:w-[276px] mx-30 lg:mx-auto lg:w-auto">
+          <h3 className="typo-h3 mb-50 mx-30 lg:mx-auto">
             <div>{parse(headline)}</div>
           </h3>
         </div>

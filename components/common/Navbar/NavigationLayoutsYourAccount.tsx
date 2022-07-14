@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
-import Link from 'next/link'
 import Button from '@components/ui/Button/Button'
 import parse from 'html-react-parser'
 import React, {
@@ -28,8 +27,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
   const { setModalView, displayModal, closeModal, modalView, openModal } =
     useUI()
 
-  const login = useLogin()
-
   const handleValidation = useCallback(() => {
     // Test for Alphanumeric password
     const validPassword = /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)
@@ -39,6 +36,8 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
       setDisabled(!validate(email) || password.length < 7 || !validPassword)
     }
   }, [email, password, dirty])
+
+  const login = useLogin()
 
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
@@ -58,7 +57,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      // setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
@@ -73,6 +72,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
     }
   }, [open])
  */
+
   return (
     <div className={cn(styles.NavigationLayoutsYourAccount, 'container')}>
       <div className="default-grid pt-75 pb-110 z-20 bg-white relative">
@@ -116,12 +116,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
               />
 
               <div className={cn(styles.links, '')}>
-                {/*       <button
-                  className="typo-hyperlink-modal mb-10 md:mb-0 mr-10"
-                  onClick={() => setModalView('SIGNUP_VIEW')}
-                >
-                  Create An Account
-                </button> */}
                 <Button
                   className=" mb-10 md:mb-30 col-span-2 mr-25 w-220"
                   color="yellow"

@@ -23,6 +23,7 @@
   .image {
     @apply bg-cream;
     border-radius: 1.5rem;
+    max-width: 975px;
     @screen lg {
       border-radius: 1.5rem 0 0 20rem;
     }

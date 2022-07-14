@@ -1,6 +1,6 @@
 .root {
   @apply py-40 relative overflow-hidden;
-  @apply md:py-10;
+  @apply md:pt-0 md:pb-10 md:mb-100;
 
   :global(.swiper-container) {
     @apply overflow-visible;
@@ -17,7 +17,7 @@
   }
 
   .headlineContainer {
-    @apply typo-h4 text-blue mb-40;
+    @apply typo-h4 text-blue mb-35;
   }
 
   .reviewCard {
