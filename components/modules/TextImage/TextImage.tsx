@@ -91,66 +91,72 @@ const ImageWrapper = ({
 const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
   module,
 }) => (
-  <div className={`${styles.root} container`}>
-    {module.rows.map((row, idx) => (
-      <div
-        key={row.subline}
-        className={`default-grid items-center ${styles.row}`}
-      >
-        {row.flipOrientation && (
+  <div className={`${styles.root} overflow-hidden`}>
+    <div className="container">
+      {module.rows.map((row, idx) => (
+        <div
+          key={row.subline}
+          className={`default-grid items-center ${styles.row}`}
+        >
+          {row.flipOrientation && (
+            <ImageWrapper
+              index={idx}
+              flipOrientation={row.flipOrientation}
+              image={row.image}
+              className="hidden md:flex"
+            />
+          )}
+          <div
+            className={`${
+              row.flipOrientation
+                ? 'md:col-span-6 md:col-start-7 lg:col-span-4 lg:col-start-8'
+                : 'md:col-span-6 md:col-start-1 lg:col-span-4 lg:col-start-2'
+            } col-span-12 pt-0 `}
+          >
+            {row.subline && (
+              <p className="typo-eyebrow text-blue uppercase">{row.subline}</p>
+            )}
+            {row.headline && (
+              <h3 className="mt-10 text-blue">{row.headline}</h3>
+            )}
+            {row.copy && (
+              <p className="typo-large-paragraph-text-image mt-20">
+                {row.copy}
+              </p>
+            )}
+            <div className="flex items-center mt-25 ">
+              {row.buttonLink && (
+                <Button
+                  variant="large"
+                  color="yellow"
+                  type="default"
+                  className="mr-20"
+                  href={row.buttonLink.url}
+                >
+                  {row.buttonLink.title}
+                </Button>
+              )}
+              {row.classicLink && (
+                <ArrowCTA
+                  orientation="right"
+                  color="blue"
+                  href={row.classicLink.url}
+                  subnav
+                >
+                  {row.classicLink.title}
+                </ArrowCTA>
+              )}
+            </div>
+          </div>
           <ImageWrapper
-            index={idx}
             flipOrientation={row.flipOrientation}
             image={row.image}
-            className="hidden md:flex"
+            className={!row.flipOrientation ? '' : 'md:hidden'}
+            index={idx}
           />
-        )}
-        <div
-          className={`${
-            row.flipOrientation
-              ? 'md:col-span-6 md:col-start-7 lg:col-span-4 lg:col-start-8'
-              : 'md:col-span-6 md:col-start-1 lg:col-span-4 lg:col-start-2'
-          } col-span-12 pt-0 `}
-        >
-          {row.subline && (
-            <p className="typo-eyebrow text-blue uppercase">{row.subline}</p>
-          )}
-          {row.headline && <h3 className="mt-10 text-blue">{row.headline}</h3>}
-          {row.copy && (
-            <p className="typo-large-paragraph-text-image mt-20">{row.copy}</p>
-          )}
-          <div className="flex items-center mt-25 ">
-            {row.buttonLink && (
-              <Button
-                variant="large"
-                color="yellow"
-                type="default"
-                className="mr-20"
-                href={row.buttonLink.url}
-              >
-                {row.buttonLink.title}
-              </Button>
-            )}
-            {row.classicLink && (
-              <ArrowCTA
-                orientation="right"
-                color="blue"
-                href={row.classicLink.url}
-                subnav
-              >
-                {row.classicLink.title}
-              </ArrowCTA>
-            )}
-          </div>
         </div>
-        <ImageWrapper
-          flipOrientation={row.flipOrientation}
-          image={row.image}
-          className={!row.flipOrientation ? '' : 'md:hidden'}
-          index={idx}
-        />
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
 )
 
