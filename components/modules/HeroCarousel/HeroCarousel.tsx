@@ -26,7 +26,7 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
   }
 
   return (
-    <div className={`${styles.root}`}>
+    <div className={`${styles.root} overflow-hidden`}>
       {!!carousel?.length && (
         <Swiper
           pagination

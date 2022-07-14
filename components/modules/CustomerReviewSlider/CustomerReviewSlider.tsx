@@ -24,7 +24,6 @@ const CustomerReviewSliderModule: FunctionComponent<{
             spaceBetween={spaceBetweenSlides}
             navigation
             loop
-            allowTouchMove={false}
           >
             {reviews.map((r) => (
               <SwiperSlide key={`${r.reviewCopy}-${r.author}`}>

@@ -22,7 +22,6 @@ const ImageInfoSliderModule: FunctionComponent<{
         </div>
         <Swiper
           slidesPerView={slidesPerView}
-          allowTouchMove={false}
           navigation
           className={styles.swiper}
         >
