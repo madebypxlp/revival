@@ -39,6 +39,7 @@ const Input: FunctionComponent<IInput> = (props) => {
     square = false,
     incrementerButtons = false,
     onChange,
+    onClick,
     onIconClick,
     status,
     ...rest
@@ -169,6 +170,7 @@ const Input: FunctionComponent<IInput> = (props) => {
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
+        onClick={onClick}
         {...(incrementerButtons ? { value: inputNumber } : {})}
         {...rest}
       />

@@ -8,6 +8,7 @@ import styles from './AddAPetModal.module.scss'
 import { ModalActions, ModalContent } from '../Modal/Modal'
 import Button from '../Button/Button'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
+import { useUI } from '../context'
 
 const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
   const { title, open, onClose } = props
@@ -23,12 +24,29 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
   const [petMedication, setPetMedication] = useState<string[]>()
   const [petAllergies, setPetAllergies] = useState<string[]>()
   const [petExistingCondition, setPetExistingCondition] = useState<string[]>()
+  const { addPetData } = useUI()
 
   const handleChange = () => {}
 
+  const handleCommit = () => {
+    addPetData({
+      name: petName,
+      type: petType,
+      gender: petGender,
+      breed: petBreed,
+      weight: petWeight,
+      birthday: petBirthDay,
+      birthMonth: petBirthMonth,
+      birthYear: petBirthYear,
+      medication: petMedication,
+      allergies: petAllergies,
+      existingCondition: petExistingCondition,
+    })
+  }
+
   const months = []
-  for (let i = 1; i <= 12; i += 1) {
-    months[i] = { value: String(i), label: String(i) }
+  for (let i = 0; i < 12; i++) {
+    months[i] = { value: String(i + 1), label: String(i + 1) }
   }
 
   const days = []
@@ -204,7 +222,7 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
         </div>
       </ModalContent>
       <ModalActions>
-        <Button variant="large" color="yellow">
+        <Button variant="large" color="yellow" onClick={handleCommit}>
           Done
         </Button>
         <ArrowCTA
