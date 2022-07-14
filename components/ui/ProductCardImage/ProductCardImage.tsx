@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import c from 'classnames'
 import Translations from 'constants/translations'
+import Image from 'next/image'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import { Heart } from '@components/icons'
 import styles from './ProductCardImage.module.scss'
 import IProductCardImage from './ProductCardImage.interface'
 import Button from '../Button/Button'
-import Image from 'next/image'
 
 const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
   const {

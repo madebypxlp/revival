@@ -1,6 +1,8 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { Heart } from '@components/icons'
 import { Layout } from '@components/common'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import { Text, Container } from '@components/ui'
 import { getConfig } from '@framework/api'
 import { useCustomer } from '@framework/customer'
@@ -13,9 +15,8 @@ import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
+
 import styles from './favorites.module.scss'
-import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
-import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 
 export async function getStaticProps({
   preview,
@@ -100,7 +101,7 @@ export default function Wishlist({
         headline={Translations.ACCOUNT.MY_FAVORITES}
         className="md:mb-70"
       />
-      <div className={'container'}>
+      <div className="container">
         <AccountBreadcrumbs current={Translations.ACCOUNT.MY_FAVORITES} />
       </div>
       <ProductCardGrid
@@ -108,8 +109,8 @@ export default function Wishlist({
         products={products}
         className="mb-60"
       />
-      <div className={'container'}>
-        <AccountLinkGroup mobileOnly className={'mb-250'} />
+      <div className="container">
+        <AccountLinkGroup mobileOnly className="mb-250" />
       </div>
     </div>
   )

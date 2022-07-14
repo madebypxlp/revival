@@ -8,12 +8,13 @@ import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import Button from '@components/ui/Button/Button'
 import Link from '@components/ui/Link/Link'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
+
 import styles from './pets.module.scss'
-import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
-import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 
 export async function getStaticProps({
   preview,
@@ -73,7 +74,7 @@ export default function Profile({
             </div>
           ))}
         </div>
-        <AccountLinkGroup mobileOnly className={'mb-300'} />
+        <AccountLinkGroup mobileOnly className="mb-300" />
       </div>
     </div>
   )

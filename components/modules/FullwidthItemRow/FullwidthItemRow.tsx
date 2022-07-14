@@ -41,37 +41,35 @@ const FullwidthItemRowModule: FunctionComponent<{
           )}
         >
           {items &&
-            items.map((item) => {
-              return (
-                <div key={item.label}>
-                  <div className="flex md:flex-col md:justify-center md:items-center justify-between col-span-1 mb-20 md:mb-0">
-                    {item?.icon?.sourceUrl && (
-                      <div className="mr-20 lg:mr-0 lg:mb-15 relative">
-                        <Image
-                          src={item.icon.sourceUrl}
-                          alt={item.icon.altText}
-                          width={isMobile ? 50 : 84}
-                          height={isMobile ? 50 : 84}
-                        />
-                      </div>
-                    )}
-                    <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:self-start whitespace-nowrap">
-                      {parse(item.label)}
-                    </h4>
-                    {item?.link?.title && (
-                      <ArrowCTA
-                        className={styles.cta + ' ml-auto lg:ml-0'}
-                        link={item.link}
-                        children={isMobile && ' '}
-                        orientation="right"
-                        color="white"
+            items.map((item) => (
+              <div key={item.label}>
+                <div className="flex md:flex-col md:justify-center md:items-center justify-between col-span-1 mb-20 md:mb-0">
+                  {item?.icon?.sourceUrl && (
+                    <div className="mr-20 lg:mr-0 lg:mb-15 relative">
+                      <Image
+                        src={item.icon.sourceUrl}
+                        alt={item.icon.altText}
+                        width={isMobile ? 50 : 84}
+                        height={isMobile ? 50 : 84}
                       />
-                    )}
-                  </div>
-                  <div className={styles.lgonly}></div>
+                    </div>
+                  )}
+                  <h4 className="typo-h6 h-auto lg:text-center lg:mb-20 lg:self-start whitespace-nowrap">
+                    {parse(item.label)}
+                  </h4>
+                  {item?.link?.title && (
+                    <ArrowCTA
+                      className={`${styles.cta} ml-auto lg:ml-0`}
+                      link={item.link}
+                      children={isMobile && ' '}
+                      orientation="right"
+                      color="white"
+                    />
+                  )}
                 </div>
-              )
-            })}
+                <div className={styles.lgonly} />
+              </div>
+            ))}
         </div>
       </div>
     </div>

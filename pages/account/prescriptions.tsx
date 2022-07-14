@@ -6,12 +6,12 @@ import { Layout } from '@components/common'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './prescriptions.module.scss'
-import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
-import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 
 export async function getStaticProps({
   preview,
@@ -90,7 +90,7 @@ export default function Profile({
       />
       <div className="container mb-200">
         <AccountBreadcrumbs current={Translations.ACCOUNT.PRESCRIPTIONS} />
-        <div className={'default-grid mb-85'}>
+        <div className="default-grid mb-85">
           {products.map((p) => (
             <CartProduct
               key={product.id}

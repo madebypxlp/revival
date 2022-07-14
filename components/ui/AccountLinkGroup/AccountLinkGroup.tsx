@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import c from 'classnames'
 import NextLink from 'next/link'
-import styles from './AccountLinkGroup.module.scss'
-import IAccountLinkGroup from './AccountLinkGroup.interface'
 import { useIsMobile } from '@commerce/utils/hooks'
 import { ChevronUp } from '@components/icons'
 import Translations from 'constants/translations'
+import IAccountLinkGroup from './AccountLinkGroup.interface'
+import styles from './AccountLinkGroup.module.scss'
 
 const AccountLinkGroup: FunctionComponent<IAccountLinkGroup> = (props) => {
   // todo: see where I can get the button list?

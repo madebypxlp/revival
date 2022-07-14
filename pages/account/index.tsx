@@ -15,11 +15,11 @@ import { LoginView } from '@components/auth'
 import AuthModal from '@components/ui/AuthModal/AuthModal'
 import { useEffect } from 'react'
 import { useUI } from '@components/ui'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import styles from './index.module.scss'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import fetch from '../../framework/wordpress/wp-client'
-import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 
 export async function getStaticProps({
   preview,

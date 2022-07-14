@@ -1,6 +1,7 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import c from 'classnames'
 import { getConfig } from '@framework/api'
+import { formatPrice } from '@commerce/product/use-price'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
@@ -8,16 +9,15 @@ import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import { useRouter } from 'next/router'
 import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
-import fetch from '../../framework/wordpress/wp-client'
-import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import styles from './orders.module.scss'
 import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
 import Button from '@components/ui/Button/Button'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
-import { formatDate, formatPrice } from '@lib/utils'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
+import fetch from '../../framework/wordpress/wp-client'
+import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
+import styles from './orders.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -106,11 +106,11 @@ export default function Profile({
   return (
     <div className={styles.root}>
       <AccountHero headline={heroHeadline} className="md:mb-175" />
-      <div className={'container'}>
+      <div className="container">
         <AccountBreadcrumbs current={Translations.ACCOUNT.ORDERS} />
       </div>
       {orderId ? (
-        <div className={'container'}>
+        <div className="container">
           <div className={styles.placeOrderAgainRow}>
             <Button color="yellow" variant="large" type="default">
               {Translations.ACCOUNT.PLACE_ORDER_AGAIN}
@@ -143,6 +143,7 @@ export default function Profile({
           </div>
           {order.products.map((p) => (
             <CartProduct
+              key={product.id}
               className={styles.product}
               product={product}
               quantity={3}
@@ -150,7 +151,7 @@ export default function Profile({
               showBuyItAgain
             />
           ))}
-          <div className={'default-grid'}>
+          <div className="default-grid">
             <div className={styles.summaryContainer}>
               <div className={c(styles.row, styles.title)}>
                 {Translations.ACCOUNT.SUMMARY}

@@ -1,4 +1,7 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
@@ -10,8 +13,6 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './buy-again.module.scss'
-import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
-import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
 
 export async function getStaticProps({
   preview,
@@ -77,7 +78,7 @@ export default function Profile({
         headline={Translations.ACCOUNT.BUY_AGAIN}
         className="md:mb-175"
       />
-      <div className={'container mb-150'}>
+      <div className="container mb-150">
         <AccountBreadcrumbs current={Translations.ACCOUNT.BUY_AGAIN} />
         <div className="default-grid">
           {products.map((p) => (
