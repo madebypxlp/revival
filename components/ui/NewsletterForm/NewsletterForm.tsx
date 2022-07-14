@@ -25,6 +25,7 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
         placeholder="Email address"
         required
         icon="arrow"
+        newsletter
         className={`${styles.input} ${inputClassName} inline-block mb-2 md:mb-20 w-full md:w-auto`}
         variant="blue-outline"
         onChange={(v) => {
@@ -48,7 +49,7 @@ const NewsletterForm: FunctionComponent<INewsletterForm> = (props) => {
             buttonType="submit"
             variant="large"
             color="yellow"
-            className="md:mt-30 mt-20"
+            className="md:mt-5 mt-20"
           >
             {submitLabel}
           </Button>

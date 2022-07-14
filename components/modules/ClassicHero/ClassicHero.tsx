@@ -10,7 +10,12 @@ const ClassicHeroModule: FunctionComponent<{ module: IClassicHero }> = ({
   return (
     <div className={`${styles.root}`}>
       <div className={styles.backgroundContainer}>
-        <ImageComponent className="h-full" image={image} layout="fill" />
+        <ImageComponent
+          className={'h-full'}
+          image={image}
+          imgClassName="object-cover object-right-bottom lg:object-right"
+          layout={'fill'}
+        />
       </div>
       <div className="container default-grid">
         <div className={styles.sublineContainer}>

@@ -14,32 +14,36 @@ const TableAccordionModule: FunctionComponent<{ module: ITableAccordion }> = ({
     <div className={`${styles.root} container default-grid`}>
       <div className=" col-span-2 md:col-span-10 md:col-start-2">
         {accordion.length &&
-          accordion.map((item, index) => (
-            <Accordion
-              headline={item.headline}
-              open={openAccordion === index}
-              onOpen={() => setOpenAccordion(index)}
-              key={item.rows[0].firstColumn}
-            >
-              {item.rows.map((row) => (
-                <div
-                  key={row.firstColumn}
-                  className="default-grid typo-accordion-copy mb-10"
-                >
-                  <div className="col-span-4">{row.firstColumn}</div>
-                  <div className="col-span-6">{row.secondColumn}</div>
-                  <div className="col-span-2 md:text-right">
-                    {row.thirdColumn}
+          accordion.map((item, index) => {
+            return (
+              <Accordion
+                headline={item.headline}
+                open={openAccordion === index}
+                onOpen={() => setOpenAccordion(index)}
+              >
+                {item.rows.map((row) => {
+                  return (
+                    <div className="default-grid typo-accordion-copy md:mb-10 mb-40">
+                      <div className="col-span-4 mb-10 md:mb-0">
+                        {row.firstColumn}
+                      </div>
+                      <div className="col-span-6 mb-10 md:mb-0">
+                        {row.secondColumn}
+                      </div>
+                      <div className="col-span-2 md:text-right">
+                        {row.thirdColumn}
+                      </div>
+                    </div>
+                  )
+                })}
+                {item.copy && (
+                  <div className="typo-accordion-copy mt-30">
+                    {parse(item.copy)}
                   </div>
-                </div>
-              ))}
-              {item.copy && (
-                <div className="typo-accordion-copy mt-30">
-                  {parse(item.copy)}
-                </div>
-              )}
-            </Accordion>
-          ))}
+                )}
+              </Accordion>
+            )
+          })}
       </div>
     </div>
   )

@@ -54,7 +54,7 @@
     */
   }
   &.small {
-    padding: 1.25rem 2.5rem;
+    padding: 1.25rem 3.5rem;
     border-radius: 2.5rem;
     font-size: 1.4rem;
     line-height: 1.8rem;
@@ -84,7 +84,7 @@
     }
     /*
     &:active {
-      border: 3px solid theme('colors.blue.default');
+      border: 1.5px solid theme('colors.blue.default');
     }
     */
   }
@@ -150,7 +150,6 @@
     &:active {
       color: theme('colors.blue.default');
       background: #fff;
-
       &::after {
         content: '';
         position: absolute;
@@ -193,6 +192,7 @@
         right: 2px;
         bottom: 2px;
         border: 1.5px solid theme('colors.blue.default');
+        border-radius: 2.5rem;
       }
     }*/
   }

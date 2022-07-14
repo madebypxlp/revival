@@ -55,8 +55,20 @@
     input:not([type='checkbox']):not([type='radio']) {
       @apply typo-small-paragraph border-blue px-25 rounded-30;
     }
+
     ::placeholder {
       @apply text-blue;
+    }
+
+    &.type-search {
+      ::placeholder {
+        @apply text-black;
+      }
+    }
+    &.type-email {
+      input {
+        @apply bg-transparent;
+      }
     }
     .error {
       @apply px-25;

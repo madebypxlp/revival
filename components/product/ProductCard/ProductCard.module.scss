@@ -16,7 +16,7 @@
     &:nth-child(6n + 1) .productTitle > span,
     &:nth-child(6n + 1) .productPrice,
     &:nth-child(6n + 1) .wishlistButton {
-      @apply  text-white;
+      @apply text-white;
     }
 
     &:nth-child(6n + 5) .productTitle > span,
@@ -39,7 +39,7 @@
   }
 
   &:nth-child(6n + 1) .squareBg {
-  //  @apply ;
+    //  @apply ;
   }
 
   &:nth-child(6n + 5) .squareBg {
@@ -60,7 +60,7 @@
 }
 
 .squareBg {
-  @apply transition-colors absolute inset-0 z-0;
+  @apply transition-colors absolute inset-50 z-0;
   background-color: #212529;
 }
 
