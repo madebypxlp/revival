@@ -77,15 +77,16 @@ const CartSidebarView: FC = () => {
               </h5>
             </Link>
             <div className={styles.productsContainer}>
-              {products.map((item) => (
-                <CartProduct
-                  key={item.id}
-                  product={item.variant}
-                  variant="sidebar"
-                  quantity={item.quantity}
-                  showCartControls
-                />
-              ))}
+              {data &&
+                products.map((item) => (
+                  <CartProduct
+                    key={item.id}
+                    product={item}
+                    variant="sidebar"
+                    showCartControls
+                    currencyCode={data.currency.code}
+                  />
+                ))}
             </div>
           </div>
 
@@ -102,7 +103,9 @@ const CartSidebarView: FC = () => {
                 </li>
                 <li className="flex justify-between py-1">
                   <span>Estimated Shipping</span>
-                  <span className="font-bold tracking-wide">FREE</span>
+                  <span className="font-bold tracking-wide">
+                    Calculated at checkou
+                  </span>
                 </li>
               </ul>
               <div className="flex justify-between border-t  py-5 font-bold mb-10">
