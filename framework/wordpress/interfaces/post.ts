@@ -1,11 +1,13 @@
 import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
+import { ACFGlobalData } from './globals'
 
 export interface PostDetailPage {
   data: PostInterface
   additionalData: {
     nodes: PostInterface[]
   }
+  globals: ACFGlobalData
 }
 
 export interface PostInterface {

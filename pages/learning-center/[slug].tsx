@@ -14,6 +14,7 @@ export default function Pages({
   data,
   additionalData,
   footer,
+  globals,
   header,
 }: InferGetStaticPropsType<LearningCenterDetailPage>) {
   if (!data) return null
@@ -23,6 +24,7 @@ export default function Pages({
       <LearningCenterDetail
         additionalData={additionalData}
         data={{ ...(data as any) }}
+        globals={globals}
       />
     </Layout>
   )
