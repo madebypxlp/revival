@@ -4,9 +4,6 @@ import IAccountHero from './AccountHero.interface'
 
 const AccountHeroModule: FunctionComponent<{ module: IAccountHero }> = ({
   module,
-}) => {
-  console.log(module)
-  return <div className={`${styles.root} container`}>Accounthero Module</div>
-}
+}) => <div className={`${styles.root} container`}>Accounthero Module</div>
 
 export default AccountHeroModule

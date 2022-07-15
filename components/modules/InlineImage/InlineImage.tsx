@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { FunctionComponent } from 'react'
 import Image from '@components/ui/Image/Image'
 import c from 'classnames'

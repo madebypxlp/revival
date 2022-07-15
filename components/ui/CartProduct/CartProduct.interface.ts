@@ -1,5 +1,4 @@
-import { LineItem, ProductVariant } from '@commerce/types'
-import IProductCard from '../ProductCard/ProductCard.interface'
+import { LineItem } from '@commerce/types'
 
 export interface IVetInfo {
   vet: string

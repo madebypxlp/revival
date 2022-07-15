@@ -27,7 +27,7 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
         isNew={isNew}
         isPrescription={isPrescription}
         label={label}
-        imageUrl={images[0].url}
+        image={images[0]}
         isOurBrand={isOurBrand}
         isFavorite={isFavorite}
         showFavoriteIcon={showFavoriteIcon}

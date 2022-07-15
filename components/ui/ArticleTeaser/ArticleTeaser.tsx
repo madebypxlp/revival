@@ -60,6 +60,7 @@ const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
           <GradientOverlay>
             <Image
               src={featuredImage.node.sourceUrl}
+              alt={featuredImage.node.altText}
               layout="fill"
               objectFit="cover"
             />
@@ -73,6 +74,7 @@ const ArticleTeaser: FunctionComponent<IArticleTeaser> = (props) => {
                 <span key={ct.learningCenterContentType.image.sourceUrl}>
                   <Image
                     src={ct.learningCenterContentType.image.sourceUrl}
+                    alt={ct.learningCenterContentType.image.altText}
                     width={116}
                     height={116}
                   />

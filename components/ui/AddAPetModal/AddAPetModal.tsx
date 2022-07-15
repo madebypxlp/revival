@@ -198,7 +198,6 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
             type="checkbox"
             className="col-span-4 self-center"
             label="none"
-            onChange={console.log}
           />
 
           <Dropdown
@@ -212,13 +211,7 @@ const AddAPetModal: FunctionComponent<IAddAPetModal> = (props) => {
             ]}
             className="col-span-6 pb-25"
           />
-          <Input
-            square
-            type="checkbox"
-            className="col-span-4"
-            label="none"
-            onChange={console.log}
-          />
+          <Input square type="checkbox" className="col-span-4" label="none" />
         </div>
       </ModalContent>
       <ModalActions>

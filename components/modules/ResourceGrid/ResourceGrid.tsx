@@ -41,6 +41,7 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
             className={styles.featuredImage}
             layout="fill"
             objectFit="cover"
+            alt={featuredResource.featuredImage.node.altText}
             src={featuredResource.featuredImage.node.sourceUrl}
           />
           <div>
@@ -72,6 +73,7 @@ const ResourceGridModule: FunctionComponent<{ module: IResourceGrid }> = ({
                 layout="fill"
                 objectFit="cover"
                 src={post.featuredImage.node.sourceUrl}
+                alt={post.featuredImage.node.altText}
               />
             </div>
           </div>

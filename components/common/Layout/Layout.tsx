@@ -78,7 +78,6 @@ const Layout: FC<any> = ({
         {headerObj && <Navbar data={headerObj} />}
         <main className="fit">{children}</main>
         {footerObj && <Footer data={footerObj} />}
-
         <Sidebar open={displaySidebar} onClose={closeSidebar}>
           <CartSidebarView />
         </Sidebar>

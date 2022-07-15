@@ -2,13 +2,11 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import c from 'classnames'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import useUpdateItem from '@framework/cart/use-update-item'
-import { usePrice } from '@framework/product'
 import { useIsMobile } from '@commerce/utils/hooks'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import Translations from 'constants/translations'
 import AlertIcon from '@components/icons/AlertIcon'
 import Button from '../Button/Button'
-import Link from '../Link/Link'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
 import ICartProduct from './CartProduct.interface'
 import styles from './CartProduct.module.scss'
@@ -39,7 +37,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const updateQuantity = async (val: number) => {
     await updateItem({ quantity: val })
   }
-
   const handleRemove = async () => {
     //  setRemoving(true)
 
@@ -72,7 +69,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         )}
       >
         <div className={styles.productPrice}>A</div>
-
         <div className={styles.productOldPrice}>XXX OLD</div>
       </div>
     )
@@ -94,16 +90,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     className
   )
 
-  /*
-  const { price } = usePrice({
-    amount: product.variant.price * product.quantity,
-    baseAmount: product.variant.listPrice * product.quantity,
-    currencyCode,
-  })
-  console.log(price)
-
-  */
-
   useEffect(() => {
     // Reset the quantity state if the item quantity changes
     if (product.quantity !== Number(quantity)) {
@@ -117,7 +103,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         {product.variant.image?.url && (
           <ProductCardImage
             isPrescription={showPrescriptionIcon}
-            imageUrl={product.variant.image?.url}
+            image={product.variant.image}
             variant={variant}
           />
         )}
@@ -126,7 +112,8 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
       <div className={styles.infoContainer}>
         <div className={styles.productNameContainer}>
           <div className={styles.productName}>{product.name}</div>
-          <div className={styles.productId}>{product.id}</div>
+          <div className={styles.productId}>#{product.id}</div>
+          <div>{product.variant.name}</div>
         </div>
         {!isMobile && rightColumn !== 'empty' && rightColumnComponent}
         {shippingRestrictionsMessage && (
@@ -193,7 +180,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
           <>
             <div className={styles.cartProductQuantityControls}>
               <div>
-                <div>-</div>
+                <button onClick={() => increaseQuantity(-1)}>-</button>
                 <div>{product.quantity}</div>
                 <button onClick={() => increaseQuantity(1)}>+</button>
               </div>
