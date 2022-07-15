@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-const SliderArrowLeft = forwardRef<SVGSVGElement, { className: string }>(
+const SliderArrowLeft = forwardRef<SVGSVGElement, { className?: string }>(
   (props, ref) => (
     <svg
       viewBox="15 15 70 70"

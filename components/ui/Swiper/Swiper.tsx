@@ -22,8 +22,8 @@ SwiperCore.use([Navigation, Pagination, Keyboard, A11y, Autoplay])
 export const Swiper: FunctionComponent<ISwiper> = (props) => {
   const { className, onSwiper, children, hideDisabledNavigation, ...rest } =
     props
-  const navPrevRef = useRef<SVGSVGElement>(null)
-  const navNextRef = useRef<SVGSVGElement>(null)
+  const navPrevRef = useRef<HTMLDivElement>(null)
+  const navNextRef = useRef<HTMLDivElement>(null)
 
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore>()
   const onSwiperHandler = (swiper: SwiperCore) => {
@@ -93,8 +93,8 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
           <div ref={navPrevRef} className="swiper-button-prev">
             <SliderArrowLeft />
           </div>
-          <div ref={navNextRef} className="swiper-button-next rotate-180">
-            <SliderArrowLeft />
+          <div ref={navNextRef} className="swiper-button-next">
+            <SliderArrowLeft className="rotate-180" />
           </div>
         </div>
       )}
