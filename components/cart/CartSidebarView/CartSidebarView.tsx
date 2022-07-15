@@ -5,14 +5,12 @@ import Link from 'next/link'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
-import Button from '@components/ui/Button/Button'
 import usePrice from '@framework/product/use-price'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 import styles from './CartSidebarView.module.scss'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()
-
   const { data, isLoading, isEmpty } = useCart()
 
   const { price: subTotal } = usePrice(
@@ -33,7 +31,6 @@ const CartSidebarView: FC = () => {
   const success = null
   const products = data?.lineItems || []
 
-  console.log(data?.currency.code)
   return (
     <div
       className={cn(styles.root, {

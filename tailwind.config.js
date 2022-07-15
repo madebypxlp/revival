@@ -132,7 +132,6 @@ module.exports = {
             'grid-template-columns': 'repeat(12, minmax(0, 1fr))',
           },
         },
-        /*
         '.light-border': {
           borderColor: '#C4C4C4',
         },
@@ -140,7 +139,7 @@ module.exports = {
           borderColor: '#C4C4C4',
           borderBottomWidth: '0.15rem',
         },
-        ' .typo-h1,h1': {
+        '.typo-h1,h1': {
           fontWeight: '700',
           fontSize: '5rem',
           lineHeight: '5.5rem',
@@ -150,77 +149,76 @@ module.exports = {
             lineHeight: '8.5rem',
           },
         },
-
         '.typo-h2, h2': {
           fontWeight: '700',
-          fontSize: '.5rem',
+          fontSize: '3.5rem',
           lineHeight: '4rem',
           letterSpacing: '-0.02em',
           '@screen md': {
-            fontSize: 'rem',
+            fontSize: '7rem',
             lineHeight: '7.5rem',
           },
         },
 
         '.typo-h3, h3': {
           fontWeight: '700',
-          fontSize: '.5rem',
+          fontSize: '3.5rem',
           lineHeight: '4rem',
           letterSpacing: '-0.02em',
           '@screen md': {
-            fontSize: 'rem',
+            fontSize: '5rem',
             lineHeight: '5.5rem',
           },
         },
         '.typo-h3-chiplinks,h3': {
           fontWeight: '700',
-          fontSize: '.5rem',
+          fontSize: '2.5rem',
           lineHeight: '3rem',
           letterSpacing: '-0.02em',
           '@screen md': {
-            fontSize: '.5rem',
+            fontSize: '3.5rem',
             lineHeight: '5.5rem',
           },
         },
         '.typo-h4,h4': {
           fontWeight: '700',
-          fontSize: '.5rem',
+          fontSize: '2.5rem',
           lineHeight: '3rem',
           letterSpacing: '-0.02em',
 
           '@screen md': {
-            fontSize: '.5rem',
+            fontSize: '3.5rem',
             lineHeight: '4rem',
           },
         },
         '.typo-h5,h5': {
           fontWeight: '400',
-          fontSize: '.5rem',
+          fontSize: '2.5rem',
           lineHeight: '3rem',
         },
 
         '.typo-h6,h6': {
           fontWeight: '700',
-          fontSize: '.8rem',
+          fontSize: '1.8rem',
           lineHeight: '2.3rem',
           '@screen md': {
-            fontSize: '.5rem',
+            fontSize: '2.5rem',
             lineHeight: '3rem',
           },
         },
         '.typo-eyebrow-author': {
           fontWeight: '700',
-          fontSize: '.1rem',
+          fontSize: '1.1rem',
           lineHeight: '3rem',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
           '@screen md': {
-            fontSize: '.6rem',
+            fontSize: '1.6rem',
           },
         },
         '.typo-eyebrow': {
           fontWeight: '700',
-          fontSize: '.6rem',
+          fontSize: '1.6rem',
           lineHeight: '3rem',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
@@ -228,25 +226,25 @@ module.exports = {
 
         '.typo-large-paragraph': {
           fontWeight: '400',
-          fontSize: '.6rem',
+          fontSize: '1.6rem',
           lineHeight: '2.2rem',
           '@screen md': {
-            fontSize: 'rem',
+            fontSize: '2rem',
             lineHeight: '3rem',
           },
         },
         ' .typo-large-paragraph-text-image': {
           fontWeight: '400',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '2.2rem',
           '@screen md': {
-            fontSize: 'rem',
+            fontSize: '2rem',
             lineHeight: '3rem',
           },
         },
         '.typo-large-paragraph-categories': {
           fontWeight: '400',
-          fontSize: 'rem',
+          fontSize: '2rem',
           lineHeight: '2.2rem',
           '@screen md': {
             fontSize: 'rem',
@@ -256,110 +254,110 @@ module.exports = {
 
         '.typo-small-paragraph': {
           fontWeight: '400',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '2.4rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '2.8rem',
           },
         },
 
         '.typo-nav-links': {
           fontWeight: '400',
-          fontSize: '.2rem',
+          fontSize: '1.2rem',
           lineHeight: '2.2rem',
           '@screen md': {
-            fontSize: '.5rem',
+            fontSize: '1.5rem',
             lineHeight: '2.5rem',
           },
         },
 
         '.typo-legal-text': {
-          fontSize: '.2rem',
+          fontSize: '1.2rem',
           lineHeight: '2.5rem',
           '@screen md': {
-            fontSize: '.4rem',
+            fontSize: '1.4rem',
             lineHeight: '2rem',
           },
         },
 
         '.typo-form-note': {
-          fontSize: '.1rem',
+          fontSize: '1.1rem',
           lineHeight: '1.33',
         },
 
         '.typo-button-01': {
           fontWeight: '700',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '1.8rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '2.3rem',
           },
         },
 
         ' .typo-right-arrow-cta': {
           fontWeight: '700',
-          fontSize: '.2rem',
+          fontSize: '1.2rem',
           lineHeight: '1.7rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '2.3rem',
           },
         },
         '.typo-right-arrow-cta-subnav': {
           fontWeight: '700',
-          fontSize: '.6rem',
+          fontSize: '1.6rem',
           lineHeight: '1.7rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '2.3rem',
           },
         },
 
         '.typo-hyperlink': {
           fontWeight: '700',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '2.4rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '2.8rem',
           },
         },
 
         ' .typo-fact': {
           fontWeight: '400',
-          fontSize: 'rem',
+          fontSize: '2rem',
           lineHeight: '3rem',
         },
 
         ' .typo-input': {
           fontWeight: '700',
-          fontSize: 'rem',
+          fontSize: '2rem',
           lineHeight: '1.5',
         },
 
         '.typo-input-error': {
           fontWeight: '400',
-          fontSize: '.3rem',
+          fontSize: '1.3rem',
           lineHeight: '1.5',
           color: '#C30045',
         },
 
         '.typo-feedback': {
           fontWeight: '400',
-          fontSize: '.6rem',
+          fontSize: '1.6rem',
           lineHeight: '2.6rem',
         },
 
         '.typo-accountheadline': {
           fontWeight: '700',
-          fontSize: 'rem',
+          fontSize: '5rem',
           lineHeight: '5.5rem',
           letterSpacing: '-0.02em',
           '@screen md': {
             fontWeight: '700',
-            fontSize: 'rem',
+            fontSize: '7rem',
             lineHeight: '7.5rem',
             letterSpacing: '-0.02em',
           },
@@ -367,20 +365,19 @@ module.exports = {
 
         '.typo-accordionheadline': {
           fontWeight: '700',
-          fontSize: 'rem',
+          fontSize: '2rem',
           lineHeight: '2.8rem',
-          '@screen md': {},
         },
 
         '.typo-accordion-copy': {
           fontWeight: '400',
-          fontSize: '.6rem',
+          fontSize: '1.6rem',
           lineHeight: '1.5',
         },
 
         '.typo-hyperlink-modal': {
           fontWeight: '700',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '2rem',
           textDecoration: 'underline',
           cursor: 'pointer',
@@ -388,87 +385,87 @@ module.exports = {
 
         '.typo-hyperlink-text': {
           fontWeight: '500',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '2rem',
         },
 
         '.typo-modal-text': {
           fontWeight: '400',
-          fontSize: '.8rem',
+          fontSize: '1.8rem',
           lineHeight: '3rem',
         },
 
         '.typo-alert-bar': {
           fontWeight: '400',
-          fontSize: '.2rem',
+          fontSize: '1.2rem',
           lineHeight: '1.5rem',
           '@screen md': {
-            fontSize: '.5rem',
+            fontSize: '1.5rem',
             lineHeight: '1.5rem',
           },
         },
 
         ' .typo-nav-quicklink': {
           fontWeight: '700',
-          fontSize: '.6rem',
+          fontSize: '1.6rem',
           lineHeight: '3rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '4.2rem',
           },
         },
         '.typo-nav-link ': {
           fontWeight: '400',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '4.4rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '4.2rem',
           },
         },
         '.typo-pharmacy-nav-link': {
           fontWeight: '400',
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           lineHeight: '4.4rem',
           '@screen md': {
-            fontSize: '.8rem',
+            fontSize: '1.8rem',
             lineHeight: '1.8rem',
           },
         },
 
         '.typo-quicklink': {
           fontWeight: '700',
-          fontSize: '.8rem',
+          fontSize: '1.8rem',
           lineHeight: '4.2rem',
         },
         '.typo-help-contact-info': {
-          fontSize: '.5rem',
+          fontSize: '2.5rem',
           fontWeight: '700',
           '@screen md': {
-            fontSize: '.5rem',
+            fontSize: '3.5rem',
           },
         },
         '.typo-cart-items': {
-          fontSize: '.4rem',
+          fontSize: '1.4rem',
           fontWeight: '700',
         },
         '.typo-multiselect-label': {
           fontWeight: '700',
-          fontSize: 'rem',
+          fontSize: '1rem',
           lineHeight: '1.3rem',
         },
         '.typo-category': {
           fontWeight: '700',
-          fontSize: '.1rem',
+          fontSize: '1.1rem',
           lineHeight: '2rem',
           letterSpacing: '0.1em',
           '@screen md': {
             fontWeight: '700',
-            fontSize: '.6rem',
+            fontSize: '1.6rem',
             lineHeight: '3rem',
             letterSpacing: '0.1em',
           },
-        }, */
+        },
       })
     },
   ],

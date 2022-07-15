@@ -70,7 +70,6 @@ export default function Slug({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
-
   return (
     <Layout header={header} footer={footer}>
       {router.isFallback ? (

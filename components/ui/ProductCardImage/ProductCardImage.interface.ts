@@ -1,7 +1,7 @@
-import Image from '@components/interfaces/Image'
+import { Image } from '@commerce/types'
 
 export default interface IProductCardImage {
-  imageUrl: string
+  image: Image
   isNew?: boolean
   isPrescription?: boolean
   isOurBrand?: boolean

@@ -54,7 +54,6 @@ export const getWpStaticProps = async (
       uri: (ctx.params?.slug as string[])?.join('/') || '/',
     },
   })
-
   if (!res || !res.entry || !res.entry?.template) {
     return {
       notFound: true,

@@ -155,7 +155,7 @@
   }
 
   .NavigationLayoutsDogsColumn {
-    @apply "col-start-1 grid  gap-x-20 col-span-full grid-cols-2";
-    @apply "md:col-start-3 md:col-span-8 md:grid-rows-9 md:grid-cols-8 md:grid-flow-col";
+    @apply col-start-1 grid  gap-x-20 col-span-full grid-cols-2;
+    @apply md:col-start-3 md:col-span-8 md:grid-rows-9 md:grid-cols-8 md:grid-flow-col;
   }
 }
