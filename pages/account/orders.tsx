@@ -114,7 +114,7 @@ export default function Profile({
               key={p.id}
               className={styles.product}
               product={p}
-              quantity={3}
+              currencyCode="USD"
               variant="account"
               showBuyItAgain
             />

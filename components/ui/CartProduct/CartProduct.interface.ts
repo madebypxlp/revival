@@ -8,8 +8,7 @@ export interface IVetInfo {
 }
 
 export default interface ICartProduct {
-  product: ProductVariant
-  quantity: number
+  product: LineItem
   variant: 'cart' | 'sidebar' | 'checkout' | 'account'
   className?: string
   showCartControls?: boolean
@@ -21,6 +20,7 @@ export default interface ICartProduct {
   showPlaceNewOrder?: boolean
   rightColumn?: 'price' | 'empty' | 'edit-details'
   shippingRestrictionsMessage?: string
+  currencyCode: string
   vetInfo?: {
     approvalMethod: string
     info: IVetInfo[]

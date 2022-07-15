@@ -8,6 +8,7 @@ import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import AlertBar from '@components/ui/AlertBar/AlertBar'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import cn from 'classnames'
+import { useCart } from '@framework/cart'
 import renderNavigationLayouts from 'repeater/navigation-layouts'
 import Input from '@components/ui/Input/Input'
 import { Account, Cart, Logo, Hamburger, ChevronUp } from '@components/icons'
@@ -30,7 +31,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const {
     data: { navigationLayouts, alertBanner, navigation, yourAccount },
   } = props
-
+  const cart = useCart()
   const ref = useRef<HTMLDivElement>(null)
   const [navOpen, setNavOpen] = useState<boolean>(false)
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
@@ -85,7 +86,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   </a>
                 </Link>
               </div>
-
               <div className="justify-center flex-1 hidden lg:flex mr-90">
                 <Input
                   className={cn(styles.search, 'xl:w-500 lg:w-350')}
@@ -162,14 +162,16 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     {Translations.NAVBAR.CART}
                   </span>
                   <Cart />
-                  <div
-                    className={cn(
-                      styles.cartItems,
-                      'flex justify-center items-center md:h-25 md:w-25 bg-yellow rounded-full absolute md:left-60 md:-top-15 -top-8 right-0'
-                    )}
-                  >
-                    15
-                  </div>
+                  {cart.data && cart.data.lineItems.length > 0 && (
+                    <div
+                      className={cn(
+                        styles.cartItems,
+                        'flex justify-center items-center md:h-25 md:w-25 bg-yellow rounded-full absolute md:left-60 md:-top-15 -top-8 right-0'
+                      )}
+                    >
+                      {cart.data.lineItems.length}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -202,7 +204,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   placeholder="What do your pets need today?"
                 />
               )}
-              {/* <Searchbar /> */}
             </div>
           </div>
           <div className={cn(styles.shadow, '')} />

@@ -37,7 +37,6 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
-  console.log(data)
 
   const vet = {
     name: 'Beach City Animal Hospital - Redondo Beach',
