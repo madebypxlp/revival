@@ -68,11 +68,12 @@ export default function Wishlist({
       <div className="container">
         <AccountBreadcrumbs current={Translations.ACCOUNT.MY_FAVORITES} />
       </div>
-      <ProductCardGrid
+
+      {/* <ProductCardGrid
         variant="favorites"
         products={products}
         className="mb-60"
-      />
+      /> */}
       <div className="container">
         <AccountLinkGroup mobileOnly className="mb-250" />
       </div>

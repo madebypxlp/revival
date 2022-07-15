@@ -46,11 +46,11 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
           <CartProduct
             className={cn(styles.product, 'mb-30')}
             product={SAMPLE_PRODUCT}
-            quantity={3}
             variant="cart"
             rightColumn="empty"
             showPrescriptionIcon
             showPrescriptionLabel
+            currencyCode="USD"
             showPrescriptionExtraInfo
           />
 

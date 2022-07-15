@@ -31,7 +31,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     currencyCode,
   } = props
 
-  const updateItem = useUpdateItem({ product })
+  const updateItem = useUpdateItem({ item: product })
   const removeCartItem = useRemoveItem()
   const isMobile = useIsMobile()
 
@@ -199,9 +199,9 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
               </div>
             </div>
             <div className={styles.controlLinksContainer}>
-              <Link color="black" onClick={handleRemove}>
+              <button color="black" onClick={handleRemove}>
                 Remove
-              </Link>
+              </button>
             </div>
           </>
         )}

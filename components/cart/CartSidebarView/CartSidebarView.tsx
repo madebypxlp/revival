@@ -33,7 +33,7 @@ const CartSidebarView: FC = () => {
   const success = null
   const products = data?.lineItems || []
 
-  console.log(products)
+  console.log(data?.currency.code)
   return (
     <div
       className={cn(styles.root, {

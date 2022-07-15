@@ -107,7 +107,7 @@ export default function Cart({
                     <CartProduct
                       product={item}
                       variant="cart"
-                      quantity={2}
+                      currencyCode="USD"
                       showCartControls
                     />
                   </div>
@@ -148,10 +148,12 @@ export default function Cart({
           </div>
         </div>
       </div>
+      {/*
       <ProductCardGrid
         products={products}
         headline={Translations.YOU_MAY_ALSO_LIKE}
       />
+              */}
     </div>
   )
 }
