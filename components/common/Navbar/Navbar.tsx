@@ -19,6 +19,7 @@ import {
   enableBodyScroll,
 } from 'body-scroll-lock'
 import { useUI } from '@components/ui'
+import { useRouter } from 'next/router'
 import styles from './Navbar.module.scss'
 import NavbarRoot from './NavbarRoot'
 import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
@@ -38,6 +39,8 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const isMobile = useIsMobile()
   const customer = useCustomer()
   const { openSidebar } = useUI()
+
+  const router = useRouter()
 
   useEffect(() => {
     if (ref.current && isMobile) {
@@ -128,11 +131,13 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                       styles.navButton,
                       'flex justify-center items-center cursor-pointer mr-5 md:mr-50'
                     )}
-                    onClick={() =>
-                      openSubNav !== INDEX_ACCOUNT
-                        ? setOpenSubNav(INDEX_ACCOUNT)
-                        : handleClick()
-                    }
+                    onClick={() => {
+                      if (customer?.data) router.push('/account')
+                      else
+                        openSubNav !== INDEX_ACCOUNT
+                          ? setOpenSubNav(INDEX_ACCOUNT)
+                          : handleClick()
+                    }}
                   >
                     <span className="mr-10 whitespace-nowrap hidden md:block">
                       {Translations.NAVBAR.YOUR_ACCOUNT}
