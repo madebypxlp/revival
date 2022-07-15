@@ -69,7 +69,7 @@ export default function Profile({
               key={p.id}
               className="pb-40 light-border-b mb-40"
               product={p}
-              quantity={3}
+              currencyCode="USD"
               variant="account"
               showPrescriptionIcon
               showPlaceNewOrder

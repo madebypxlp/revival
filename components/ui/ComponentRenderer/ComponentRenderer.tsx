@@ -25,6 +25,7 @@ import AccountSettings from '../AccountSettings/AccountSettings'
 import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
 import IProductCard from '../ProductCard/ProductCard.interface'
 import { Product } from '@commerce/types'
+import { LineItem } from '@framework/types'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   // test for inputfield
@@ -313,7 +314,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             showCartControls
           />
@@ -321,14 +322,14 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             showPrescriptionIcon
             showCartControls
@@ -337,7 +338,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="checkout"
             showPrescriptionLabel
           />
@@ -345,7 +346,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             rightColumn="empty"
             showPrescriptionIcon
@@ -356,7 +357,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             rightColumn="edit-details"
             showPrescriptionIcon
@@ -366,7 +367,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
             showCartControls
@@ -375,7 +376,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="checkout"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
           />
@@ -383,7 +384,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="account"
           />
         </div>
@@ -396,7 +397,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             showCartControls
           />
@@ -404,14 +405,14 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             showPrescriptionIcon
             showCartControls
@@ -420,7 +421,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="checkout"
             showPrescriptionLabel
           />
@@ -428,7 +429,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             rightColumn="empty"
             showPrescriptionIcon
@@ -439,7 +440,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             rightColumn="edit-details"
             showPrescriptionIcon
@@ -449,7 +450,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="cart"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
             showCartControls
@@ -458,7 +459,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="checkout"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
           />
@@ -466,7 +467,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="account"
             showBuyItAgain
           />
@@ -474,7 +475,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
-            quantity={3}
+            currencyCode="USD"
             variant="account"
             showPrescriptionIcon
             showPrescriptionLabel
@@ -490,14 +491,22 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
 export default ComponentRenderer
 
 export const SAMPLE_PRODUCT = {
-  id: '91',
-  image: {
-    url: 'https://cdn11.bigcommerce.com/s-3xvwarb9yi/product…s/463/30301-415__31796.1657567018.220.290.jpg?c=1',
-  },
-  listPrice: 130.99,
+  discounts: [],
+  id: '41f6da4e-8f3a-4d5a-a914-030c89d1bf98',
   name: 'Duramune Max 5',
-  price: 130.99,
-  requiresShipping: true,
-  sku: '30301-415',
+  path: 'duramune-max-5',
+  productId: '124',
+  quantity: 1,
   variantId: '91',
-}
+  variant: {
+    id: '91',
+    image: {
+      url: 'https://cdn11.bigcommerce.com/s-3xvwarb9yi/product…s/463/30301-415__31796.1657567018.220.290.jpg?c=1',
+    },
+    listPrice: 130.99,
+    name: 'Duramune Max 5',
+    price: 130.99,
+    requiresShipping: true,
+    sku: '30301-415',
+  },
+} as LineItem
