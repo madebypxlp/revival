@@ -93,8 +93,8 @@ export const Swiper: FunctionComponent<ISwiper> = (props) => {
           <div ref={navPrevRef} className="swiper-button-prev">
             <SliderArrowLeft />
           </div>
-          <div ref={navNextRef} className="swiper-button-next rotate-180">
-            <SliderArrowLeft />
+          <div ref={navNextRef} className="swiper-button-next">
+            <SliderArrowLeft className="rotate-180" />
           </div>
         </div>
       )}
