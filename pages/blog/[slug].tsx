@@ -15,12 +15,17 @@ export default function Pages({
   header,
   additionalData,
   footer,
+  globals,
 }: InferGetStaticPropsType<PostDetailPage>) {
   if (!data) return null
 
   return (
     <Layout header={header} footer={footer}>
-      <BlogDetail additionalData={additionalData} data={{ ...(data as any) }} />
+      <BlogDetail
+        additionalData={additionalData}
+        globals={globals}
+        data={{ ...(data as any) }}
+      />
     </Layout>
   )
 }

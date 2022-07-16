@@ -2,6 +2,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
+import globalsQuery from './queries/acfGlobalOptions/globals'
 import postDetailQuery from './queries/post-type-post/post-query'
 
 export const getAllPostDetailPagesQuery = `
@@ -54,6 +55,7 @@ export const getPostDetailPageWpStaticProps = async (
 
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+  const globals = await fetch({ query: globalsQuery })
 
   if (!res) {
     return {
@@ -65,6 +67,7 @@ export const getPostDetailPageWpStaticProps = async (
       header: { ...header?.acfOptionsHeader?.header },
       data: res.entry,
       footer: footer?.acfOptionsFooter?.footer,
+      globals: globals?.globals,
       additionalData: res.additionalData,
     },
     revalidate: undefined,
