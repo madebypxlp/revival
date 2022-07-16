@@ -291,6 +291,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           >
             Login
           </Button>
+          <LoginModal title="Title" />
 
           <br />
           <br />
@@ -298,8 +299,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           <br />
           <h3>ModalFlow</h3>
           <ModalFlowComponent />
-
-          <LoginModal title="Title" />
         </div>
       </div>
       <div className="my-50 py-50">

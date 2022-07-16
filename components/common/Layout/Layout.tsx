@@ -54,8 +54,8 @@ const Layout: FC<any> = ({
   const isMobile = useIsMobile()
   const { locale = 'en-us' } = useRouter()
 
-  const footerObj = footer || (pageProps.footer as AcfOptionsFooter)
-  const headerObj = header || (pageProps.header as AcfOptionsHeader)
+  const footerObj = footer || (pageProps?.footer as AcfOptionsFooter)
+  const headerObj = header || (pageProps?.header as AcfOptionsHeader)
   return (
     <CommerceProvider locale={locale}>
       {true && process.env.NODE_ENV === 'development' && (
