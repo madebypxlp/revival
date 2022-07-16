@@ -50,6 +50,8 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     }
   }
 
+  const handleEdit = async () => {}
+
   const increaseQuantity = (n = 1) => {
     const val = Number(quantity) + n
 
@@ -113,7 +115,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         <div className={styles.productNameContainer}>
           <div className={styles.productName}>{product.name}</div>
           <div className={styles.productId}>#{product.id}</div>
-          <div>{product.variant.name}</div>
+          <div className={styles.productId}>{product.variant.name}</div>
         </div>
         {!isMobile && rightColumn !== 'empty' && rightColumnComponent}
         {shippingRestrictionsMessage && (
@@ -188,6 +190,9 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             <div className={styles.controlLinksContainer}>
               <button color="black" onClick={handleRemove}>
                 Remove
+              </button>
+              <button color="black" onClick={handleEdit}>
+                Edit
               </button>
             </div>
           </>
