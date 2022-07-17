@@ -1,0 +1,7 @@
+.root {
+  column-gap: 2rem;
+
+  .formInput {
+    @apply mb-20 md:mb-70;
+  }
+}

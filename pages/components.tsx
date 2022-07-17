@@ -29,7 +29,7 @@ Pages.Layout = function getLayout() {
           </div>
         </div>
       )}
-      {false && process.env.NODE_ENV === 'development' && <ComponentRenderer />}
+      {true && process.env.NODE_ENV === 'development' && <ComponentRenderer />}
     </>
   )
 }

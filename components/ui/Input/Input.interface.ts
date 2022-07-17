@@ -28,6 +28,7 @@ type IInput = {
   type: string
   square?: boolean
   disabled?: boolean
+  value?: string
   onChange?: (arg0: string, arg1: InputError) => any
 } & (
   | {

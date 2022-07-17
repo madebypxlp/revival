@@ -20,12 +20,10 @@ import ModalFlowComponent from '../ModalFlowComponent/ModalFlowComponent'
 import LoginModal from '../AuthModal/AuthModal'
 import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
-import CartProduct from '../CartProduct/CartProduct'
 import AccountSettings from '../AccountSettings/AccountSettings'
 import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
-import IProductCard from '../ProductCard/ProductCard.interface'
-import { Product } from '@commerce/types'
 import { LineItem } from '@framework/types'
+import ShippingForm from '../ShippingForm/ShippingForm'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   // test for inputfield
@@ -57,6 +55,20 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         quantity: 2,
       },
     ],
+  }
+
+  const shippingInfo = {
+    firstName: '',
+    lastName: '',
+    company: '',
+    country: '',
+    addressOne: '',
+    addressTwo: '',
+    city: '',
+    stateProvince: '',
+    postalCode: '',
+    phoneNumber: '',
+    comments: '',
   }
 
   return (
@@ -307,93 +319,19 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
         <AccountHero headline="Welcome Back, Marie" />
         <AccountSettings />
       </div>
-      <div className="my-50 py-50 container">
-        <h1>Product components</h1>
-        <div className="default-grid">
-          {/* 1) Cart (your cart) */}
-          <CartProduct
-            className="my-20 md:col-start-1"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="cart"
-            showCartControls
-          />
-          {/* 2) Cart (checkout 01A) */}
-          <CartProduct
-            className="my-20 md:col-start-1"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="checkout"
-          />
-          {/* 3) RX Cart flow */}
-          <CartProduct
-            className="my-20 md:col-start-1"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="cart"
-            showPrescriptionIcon
-            showCartControls
-          />
-          {/* 4) RX (checkout 01A)  */}
-          <CartProduct
-            className="my-20 md:col-start-1"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="checkout"
-            showPrescriptionLabel
-          />
-          {/* 5) RX Flow (info needed) */}
-          <CartProduct
-            className="my-20 md:col-start-1"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="cart"
-            rightColumn="empty"
-            showPrescriptionIcon
-            showPrescriptionLabel
-            showPrescriptionExtraInfo
-          />
-          {/* 6) RX Flow (pet and vet clinic info) */}
-          <CartProduct
-            className="my-20 md:col-start-1"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="cart"
-            rightColumn="edit-details"
-            showPrescriptionIcon
-            vetInfo={petAndVetInfo}
-          />
-          {/* 7) Splitting shipments cart */}
-          <CartProduct
-            className="my-20 md:col-start-1"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="cart"
-            shippingRestrictionsMessage="1-Day Shipping Delay for this item"
-            showCartControls
-          />
-          {/* 8) Splitting shipments (checkout) */}
-          <CartProduct
-            className="my-20"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="checkout"
-            shippingRestrictionsMessage="1-Day Shipping Delay for this item"
-          />
-          {/* 9) Account (not finished, do not use yet) */}
-          <CartProduct
-            className="my-20"
-            product={SAMPLE_PRODUCT}
-            currencyCode="USD"
-            variant="account"
-          />
+
+      <div className="my-50 py-50 container default-grid">
+        <div className="col-start-1 col-span-8">
+          <ShippingForm {...shippingInfo}></ShippingForm>
         </div>
       </div>
 
       <div className="my-50 py-50 container">
+        {/*
         <h1>Product components</h1>
         <div className="default-grid">
-          {/* 1) Cart (your cart) */}
+          {// 1) Cart (your cart)
+          }
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
@@ -401,14 +339,16 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant="cart"
             showCartControls
           />
-          {/* 2) Cart (checkout 01A) */}
+          {// 2) Cart (checkout 01A) 
+          }
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
             currencyCode="USD"
             variant="checkout"
           />
-          {/* 3) RX Cart flow */}
+          {// 3) RX Cart flow 
+          }
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
@@ -417,7 +357,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             showPrescriptionIcon
             showCartControls
           />
-          {/* 4) RX (checkout 01A)  */}
+          {// 4) RX (checkout 01A) 
+          }
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
@@ -425,7 +366,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant="checkout"
             showPrescriptionLabel
           />
-          {/* 5) RX Flow (info needed) */}
+          {// 5) RX Flow (info needed) 
+          }
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
@@ -436,7 +378,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             showPrescriptionLabel
             showPrescriptionExtraInfo
           />
-          {/* 6) RX Flow (pet and vet clinic info) */}
+          {// 6) RX Flow (pet and vet clinic info) 
+          }
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
@@ -446,7 +389,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             showPrescriptionIcon
             vetInfo={petAndVetInfo}
           />
-          {/* 7) Splitting shipments cart */}
+          {// 7) Splitting shipments cart 
+          }
           <CartProduct
             className="my-20 md:col-start-1"
             product={SAMPLE_PRODUCT}
@@ -455,7 +399,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
             showCartControls
           />
-          {/* 8) Splitting shipments (checkout) */}
+          {// 8) Splitting shipments (checkout) 
+          }
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
@@ -463,7 +408,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant="checkout"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
           />
-          {/* 9) Account (order detail) */}
+          {// 9) Account (order detail) 
+          }
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
@@ -471,7 +417,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             variant="account"
             showBuyItAgain
           />
-          {/* 10) Account (order detail RX) */}
+          {// 10) Account (order detail RX) 
+          }
           <CartProduct
             className="my-20"
             product={SAMPLE_PRODUCT}
@@ -483,6 +430,7 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             showBuyItAgain
           />
         </div>
+        */}
       </div>
     </div>
   )

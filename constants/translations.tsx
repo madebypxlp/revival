@@ -94,5 +94,18 @@ const Translations = {
     YOUR_ACCOUNT: 'Your Account',
     CART: 'Cart',
   },
+  SHIPPING_FORM: {
+    FIRST_NAME: 'First Name',
+    LAST_NAME: 'Last Name',
+    ADDRESS_ONE: 'Address 1',
+    ADDRESS_TWO: 'Address 2',
+    COMPANY: 'Company',
+    COUNTRY: 'Country',
+    CITY: 'City',
+    STATE_PROVINCE: 'State/Province',
+    POSTAL_CODE: 'Postal Code',
+    PHONE_NUMBER: 'Phone Number',
+    COMMENTS: 'Comments',
+  },
 }
 export default Translations
