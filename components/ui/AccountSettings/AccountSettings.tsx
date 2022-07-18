@@ -282,7 +282,7 @@ const AccountSettings: FunctionComponent<IAccountSettings> = (props) => {
           <Input
             placeholder="CVV"
             validationType="card_cvv"
-            type="text"
+            type="number"
             onChange={(value) => {
               setGiftCardData((prevState) => {
                 return { ...prevState, cvv: +value }

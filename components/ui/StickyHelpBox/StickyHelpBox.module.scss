@@ -1,0 +1,29 @@
+.spacer {
+  @apply sticky bottom-0 h-380 xl:h-450 pointer-events-none;
+}
+
+.root {
+  // add your styles here
+  @apply hidden lg:block right-20 bottom-20 xl:right-85 xl:bottom-85;
+  @apply pointer-events-auto absolute;
+
+  width: 22rem;
+  max-width: calc((100vw / 12 * 2) - 2rem);
+
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3rem;
+  word-wrap: break-word;
+
+  .boxContainer {
+    @apply bg-blue py-50 px-18 rounded-15;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .button {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  }
+}

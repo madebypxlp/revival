@@ -12,7 +12,7 @@ export default function Pages({}: InferGetStaticPropsType<PageInterface>) {
 Pages.Layout = function getLayout() {
   const isMobile = useIsMobile()
   return (
-    <>
+    <Layout>
       {true && process.env.NODE_ENV === 'development' && (
         <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
           <div className="devGrid w-full h-full container">
@@ -29,7 +29,7 @@ Pages.Layout = function getLayout() {
           </div>
         </div>
       )}
-      {true && process.env.NODE_ENV === 'development' && <ComponentRenderer />}
-    </>
+      {process.env.NODE_ENV === 'development' && <ComponentRenderer />}
+    </Layout>
   )
 }
