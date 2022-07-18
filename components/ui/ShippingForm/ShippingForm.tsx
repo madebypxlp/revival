@@ -5,6 +5,8 @@ import styles from './ShippingForm.module.scss'
 import IShippingForm from './ShippingForm.interface'
 import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
+import ArrowCTA from '../ArrowCTA/ArrowCTA'
+import Button from '../Button/Button'
 
 const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
   const {
@@ -14,19 +16,28 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
     country,
     addressOne,
     addressTwo,
+    city,
+    stateProvince,
     phoneNumber,
+    postalCode,
+    comments,
+    onSubmit,
   } = props
 
   const [shippingData, setShippingData] = useState({
-    address1: '',
-    address2: '',
-    city: '',
-    state: '',
-    postalCode: 0,
-    country: '',
-    phoneNumber: 0,
-    email: '',
+    firstName,
+    lastName,
+    addressOne,
+    addressTwo,
+    city,
+    stateProvince,
+    postalCode,
+    phoneNumber,
+    country,
+    comments,
   })
+
+  const [showStateMessage, setShowStateMessage] = useState(false)
 
   return (
     <div className={cn(styles.root, 'grid grid-cols-2')}>
@@ -37,7 +48,7 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
         value={firstName}
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, adress1: value }
+            return { ...prevState, firstName: value }
           })
         }}
         className={styles.formInput}
@@ -50,7 +61,7 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
         value={lastName}
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, adress1: value }
+            return { ...prevState, lastName: value }
           })
         }}
         className={styles.formInput}
@@ -60,7 +71,7 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
         color="light"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, state: value?.value ?? '' }
+            return { ...prevState, company: value?.value ?? '' }
           })
         }}
         defaultInputValue={company}
@@ -69,22 +80,23 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
           { label: 'Company One', value: 'companyOne' },
           { label: 'Company Two', value: 'companyTwo' },
         ]}
-        className={styles.formInput}
+        className={styles.formDropdown}
       />
 
       <Dropdown
         color="light"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, state: value?.value ?? '' }
+            return { ...prevState, country: value?.value ?? '' }
           })
         }}
-        placeholder="State"
+        defaultInputValue={country}
+        placeholder={Translations.SHIPPING_FORM.COUNTRY}
         options={[
-          { label: 'State One', value: 'state one' },
-          { label: 'State Two', value: 'state two' },
+          { label: 'Country One', value: 'countryOne' },
+          { label: 'Country Two', value: 'countryTwo' },
         ]}
-        className={styles.formInput}
+        className={styles.formDropdown}
       />
 
       <Input
@@ -93,25 +105,44 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
         type="text"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, adress1: value }
+            return { ...prevState, addressOne: value }
           })
         }}
         className={styles.formInput}
       />
 
       <Input
-        placeholder="Adress 2"
+        placeholder={Translations.SHIPPING_FORM.ADDRESS_TWO}
         type="text"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, adress2: value }
+            return { ...prevState, addressTwo: value }
           })
         }}
         className={styles.formInput}
       />
 
+      <div className={styles.noStateCTA}>
+        <ArrowCTA
+          orientation="down"
+          color="blue"
+          onClick={(event: Event) => {
+            setShowStateMessage(!showStateMessage)
+            event.preventDefault()
+          }}
+        >
+          {Translations.SHIPPING_FORM.DONT_SEE_YOUR_STATE}
+        </ArrowCTA>
+      </div>
+
+      {showStateMessage && (
+        <div className={styles.noStateMessageContainer}>
+          {Translations.SHIPPING_FORM.NO_STATE_MESSAGE}
+        </div>
+      )}
+
       <Input
-        placeholder="City"
+        placeholder={Translations.SHIPPING_FORM.CITY}
         required
         type="text"
         onChange={(value) => {
@@ -126,66 +157,62 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
         color="light"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, state: value?.value ?? '' }
+            return { ...prevState, stateProvince: value?.value ?? '' }
           })
         }}
-        placeholder="State"
+        placeholder={Translations.SHIPPING_FORM.STATE_PROVINCE}
         options={[
           { label: 'State One', value: 'state one' },
           { label: 'State Two', value: 'state two' },
         ]}
-        className={styles.formInput}
+        className={styles.formDropdown}
       />
 
       <Input
-        placeholder="Postal Code"
+        placeholder={Translations.SHIPPING_FORM.POSTAL_CODE}
         required
         type="text"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, postalCode: +value }
+            return { ...prevState, postalCode: value }
           })
         }}
-        className={styles.formInput}
-      />
-
-      <Dropdown
-        color="light"
-        onChange={(value) => {
-          setShippingData((prevState) => {
-            return { ...prevState, state: value?.value ?? '' }
-          })
-        }}
-        placeholder="Country"
-        options={[
-          { label: 'Austria', value: 'austria' },
-          { label: 'USA', value: 'usa' },
-        ]}
         className={styles.formInput}
       />
 
       <Input
-        placeholder="Phone Number"
+        placeholder={Translations.SHIPPING_FORM.PHONE_NUMBER}
         required
         type="text"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, phoneNumber: +value }
+            return { ...prevState, phoneNumber: value }
           })
         }}
         className={styles.formInput}
       />
       <Input
-        placeholder="Email Adress"
+        placeholder={Translations.SHIPPING_FORM.COMMENTS}
         required
-        type="email"
+        type="text"
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, email: value }
+            return { ...prevState, comments: value }
           })
         }}
-        className={styles.formInput}
+        className={cn(styles.formInput, 'col-span-2 mb-50')}
       />
+
+      <div className="col-span-2">
+        <Button
+          color="yellow"
+          variant="large"
+          type="default"
+          onClick={onSubmit(shippingData)}
+        >
+          {Translations.SHIPPING_FORM.SAVE_AND_CONTINUE}
+        </Button>
+      </div>
     </div>
   )
 }

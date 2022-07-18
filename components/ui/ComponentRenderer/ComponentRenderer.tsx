@@ -69,6 +69,9 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
     postalCode: '',
     phoneNumber: '',
     comments: '',
+    onSubmit: (data: any) => {
+      console.log(data)
+    },
   }
 
   return (

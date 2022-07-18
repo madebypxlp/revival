@@ -106,6 +106,10 @@ const Translations = {
     POSTAL_CODE: 'Postal Code',
     PHONE_NUMBER: 'Phone Number',
     COMMENTS: 'Comments',
+    DONT_SEE_YOUR_STATE: "Don't See Your State?",
+    NO_STATE_MESSAGE:
+      'If your state isn’t listed in the dropdown delow, you have products in your cart that have shipping restrictions for your state. Check your cart to see which product(s) have state shipping restrictions. Ignore this message if your state is showing in the dropdown below.',
+    SAVE_AND_CONTINUE: 'Save and Continue',
   },
 }
 export default Translations

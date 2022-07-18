@@ -10,4 +10,5 @@ export default interface IShippingForm {
   postalCode: string
   phoneNumber: string
   comments: string
+  onSubmit: (data: any) => any
 }
