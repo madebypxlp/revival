@@ -17,7 +17,7 @@ export default interface ICartProduct {
   showBuyItAgain?: boolean
   showAddToCart?: boolean
   showPlaceNewOrder?: boolean
-  rightColumn?: 'price' | 'empty' | 'edit-details'
+  rightColumn?: 'price' | 'empty' | 'edit-details' | 'shipment-options'
   shippingRestrictionsMessage?: string
   currencyCode: string
   vetInfo?: {

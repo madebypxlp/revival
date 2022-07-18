@@ -10,6 +10,7 @@ import Button from '../Button/Button'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
 import ICartProduct from './CartProduct.interface'
 import styles from './CartProduct.module.scss'
+import Dropdown from '../Dropdown/Dropdown'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const {
@@ -72,13 +73,28 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         <div className={styles.productOldPrice}>XXX OLD</div>
       </div>
     )
-  }
-  if (rightColumn === 'edit-details') {
+  } else if (rightColumn === 'edit-details') {
     rightColumnComponent = (
       <div className={styles.rightColumnContainer}>
         <Button color="yellow" variant="large" type="default">
           {Translations.PET_AND_VET.EDIT_DETAILS}
         </Button>
+      </div>
+    )
+  } else if (rightColumn === 'shipment-options') {
+    rightColumnComponent = (
+      <div className={styles.rightColumnContainer}>
+        <Dropdown
+          color="light"
+          onChange={(value) => {}}
+          placeholder="Shipping Options"
+          options={[
+            { label: 'Ship Separately', value: 'shipSeparately' },
+            { label: '2-Day Shipping', value: 'twoDayShipping' },
+            { label: 'Overnight', value: 'overnight' },
+          ]}
+          className="text-left text-black"
+        />
       </div>
     )
   }

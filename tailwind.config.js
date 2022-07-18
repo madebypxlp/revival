@@ -149,7 +149,7 @@ module.exports = {
             lineHeight: '8.5rem',
           },
         },
-        '.typo-h2, h2': {
+        '.typo-h2,h2': {
           fontWeight: '700',
           fontSize: '3.5rem',
           lineHeight: '4rem',
@@ -159,7 +159,6 @@ module.exports = {
             lineHeight: '7.5rem',
           },
         },
-
         '.typo-h3, h3': {
           fontWeight: '700',
           fontSize: '3.5rem',

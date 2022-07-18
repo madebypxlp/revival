@@ -94,5 +94,7 @@ const Translations = {
     YOUR_ACCOUNT: 'Your Account',
     CART: 'Cart',
   },
+  UPDATE_SHIPMENTS: 'Update Shipments',
+  SAVE_UPDATES: 'Save Updates',
 }
 export default Translations
