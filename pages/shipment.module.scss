@@ -1,0 +1,15 @@
+.root {
+  padding-top: 8rem;
+
+  .headlineContainer {
+    color: theme('colors.blue.default');
+    @apply col-start-1 col-span-8;
+    @apply mb-30 md:mb-85;
+  }
+
+  .copyContainer {
+    @apply col-start-1 col-span-8;
+    @apply typo-large-paragraph;
+    @apply mb-60 md:mb-200;
+  }
+}
