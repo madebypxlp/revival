@@ -26,6 +26,7 @@ import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSum
 import IProductCard from '../ProductCard/ProductCard.interface'
 import { Product } from '@commerce/types'
 import { LineItem } from '@framework/types'
+import PDPAccordions from '../PDPAccordions/PDPAccordions'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   // test for inputfield
@@ -58,6 +59,23 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       },
     ],
   }
+
+  const pdpAccordions = [
+    {
+      title: 'Description',
+      content:
+        '<b>Cautions:</b> Keep out of reach of children and pets. No data is available for use in pregnant animals and dogs with food allergies. Always consult your veterinarian before using their product in dogs with chronic medical conditions, such as a clotting disorder, diabetes, or urinary tract disease.<br><br><b>Flavor:</b> Roast beef and liver flavor<br><br><b>Storage:</b> Store at controlled room temperature. Avoid excessive heat.',
+    },
+    {
+      title: 'Instructions',
+      content:
+        '<b>Recommended Use:</b><br><br><b>Up to 15 lb</b><br>give up to ½ chew/day initially for the first 4 to 6 weeks. For maintenance, give up to ¼ chew/day<br><br><b>15-30 lb</b><br>give 1 chew/day initially for the first 4 to 6 weeks. For maintenance, give ½ chew/ day<br><br><b>31-60 lb</b><br>give 2 chews/day initially for the first 4 to 6 weeks. For maintenance, give 1 chew/ day',
+    },
+    {
+      title: 'Species Info',
+      content: 'For use in dog only',
+    },
+  ]
 
   return (
     <div className={`${styles.root}`}>
@@ -483,6 +501,11 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           />
         </div>
       </div>
+
+      <div className="container">
+        <h2>PDP Accordions</h2>
+      </div>
+      <PDPAccordions accordions={pdpAccordions} />
     </div>
   )
 }
