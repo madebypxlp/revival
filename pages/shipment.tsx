@@ -4,13 +4,13 @@ import Translations from 'constants/translations'
 import { Layout } from '@components/common'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
-import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
-import fetch from '../framework/wordpress/wp-client'
-import styles from './shipment.module.scss'
-import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
-import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 import Button from '@components/ui/Button/Button'
+import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
+import styles from './shipment.module.scss'
+import fetch from '../framework/wordpress/wp-client'
+import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
+import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
 
 export async function getStaticProps({
   preview,
