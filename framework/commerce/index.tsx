@@ -36,6 +36,9 @@ export type Provider = CommerceConfig & {
     useLogin?: MutationHook<any, any, any>
     useLogout?: MutationHook<any, any, any>
   }
+  orders?: {
+    useOrders?: SWRHook<any | null, any, any>
+  }
 }
 
 export type CommerceProps<P extends Provider> = {

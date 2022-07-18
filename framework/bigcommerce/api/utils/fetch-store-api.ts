@@ -16,6 +16,7 @@ export default async function fetchStoreApi<T>(
       headers: {
         ...options?.headers,
         'Content-Type': 'application/json',
+        Accept: 'application/json',
         'X-Auth-Token': config.storeApiToken,
         'X-Auth-Client': config.storeApiClientId,
       },
@@ -24,7 +25,6 @@ export default async function fetchStoreApi<T>(
     const { message } = error as { message: string }
     throw new BigcommerceNetworkError(`Fetch to Bigcommerce failed: ${message}`)
   }
-
   const contentType = res.headers.get('Content-Type')
   const isJSON = contentType?.includes('application/json')
 
@@ -47,6 +47,9 @@ export default async function fetchStoreApi<T>(
     )
   }
 
+  if (endpoint.includes('v2')) {
+    return await res.json()
+  }
   // If something was removed, the response will be empty
   return res.status === 204 ? null : await res.json()
 }

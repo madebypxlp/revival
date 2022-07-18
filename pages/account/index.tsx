@@ -1,6 +1,7 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { getConfig } from '@framework/api'
+import useOrders from '@framework/orders/use-orders'
 import getAllPages from '@framework/common/get-all-pages'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
@@ -27,6 +28,7 @@ export async function getStaticProps({
   const { pages } = await getAllPages({ config, preview })
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+
   return {
     props: {
       pages,
@@ -42,6 +44,8 @@ export default function Profile({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data = null, isLoading } = useCustomer()
   const router = useRouter()
+  const THE_REAL_ORDERS = useOrders()
+
   const { setModalView, openModal, closeModal } = useUI()
 
   useEffect(() => {
