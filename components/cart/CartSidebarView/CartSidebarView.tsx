@@ -46,11 +46,11 @@ const CartSidebarView: FC = () => {
     >
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
-          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10  ">
+          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10 mb-15">
             <Bag className="absolute" />
           </span>
-          <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-            Your cart is empty
+          <h2 className="typo-h4 text-center text-blue-default">
+            {Translations.CART.YOUR_CART_IS_EMPTY}
           </h2>
         </div>
       ) : error ? (

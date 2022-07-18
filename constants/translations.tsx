@@ -39,6 +39,7 @@ const Translations = {
     SUBTOTAL: 'Subtotal',
   },
   ACCOUNT: {
+    LOGIN: 'Login to your Account',
     WELCOME_BACK: 'Welcome Back',
     ACCOUNT: 'Account',
     ORDERS: 'Orders',
