@@ -2,6 +2,7 @@ import cn from 'classnames'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import Button from '@components/ui/Button/Button'
 import parse from 'html-react-parser'
+import { useRouter } from 'next/router'
 import React, {
   useCallback,
   useEffect,
@@ -18,6 +19,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
   data,
 }) => {
   const { headline, copy } = data
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -56,8 +58,9 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
       })
       setLoading(false)
       closeModal()
-    } catch ({ errors }) {
-      //  setMessage(errors[0].message)
+      router.push('/account')
+    } catch ({ error }) {
+      setMessage(errors[0].message)
       setLoading(false)
     }
   }
@@ -65,13 +68,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
   useEffect(() => {
     handleValidation()
   }, [handleValidation])
-
-  /*   useEffect(() => {
-    if (open) {
-      openModal()
-    }
-  }, [open])
- */
 
   return (
     <div className={cn(styles.NavigationLayoutsYourAccount, 'container')}>
