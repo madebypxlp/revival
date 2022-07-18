@@ -64,3 +64,13 @@
     transition: max-height 1s ease-in-out;
   }
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 100%;
+  width: 1rem;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: theme('colors.blue.default');
+  border-radius: 3rem;
+}
