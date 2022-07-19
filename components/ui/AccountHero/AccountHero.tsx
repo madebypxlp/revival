@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import c from 'classnames'
+import Translations from 'constants/translations'
 import { useRouter } from 'next/router'
 import useLogout from '@commerce/auth/use-logout'
 import styles from './AccountHero.module.scss'
@@ -14,13 +15,16 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
 
   // change Links
   const ButtonList = [
-    { title: 'Overview', link: '/account' },
-    { title: 'Orders', link: '/account/orders' },
-    { title: 'Buy Again', link: '/account/buy-again' },
-    { title: 'Prescriptions', link: '/account/prescriptions' },
-    { title: 'My Pet', link: '/account/pets' },
-    { title: 'My Vet', link: '/account/vets' },
-    { title: 'My Favorties', link: '/account/favorites' },
+    { title: Translations.ACCOUNT.HEADER.OVERVIEW, link: '/account' },
+    { title: Translations.ACCOUNT.ORDERS, link: '/account/orders' },
+    { title: Translations.ACCOUNT.BUY_AGAIN, link: '/account/buy-again' },
+    {
+      title: Translations.ACCOUNT.PRESCRIPTIONS,
+      link: '/account/prescriptions',
+    },
+    { title: Translations.ACCOUNT.HEADER.MY_PET, link: '/account/pets' },
+    { title: Translations.ACCOUNT.HEADER.MY_VET, link: '/account/vets' },
+    { title: Translations.ACCOUNT.MY_FAVORITES, link: '/account/favorites' },
   ]
 
   /**
@@ -48,14 +52,16 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
                 color="yellow"
                 onClick={logoutUser}
               >
-                Logout
+                {Translations.ACCOUNT.HEADER.LOGOUT}
               </Button>
               <ArrowCTA
                 link={{ url: '/account', target: '', title: '' }}
                 color="blue"
                 orientation="right"
               >
-                <p className="typo-h6">Account Settings</p>
+                <p className="typo-h6">
+                  {Translations.ACCOUNT.HEADER.ACCOUNT_SETTINGS}
+                </p>
               </ArrowCTA>
             </div>
           </div>
@@ -82,7 +88,7 @@ const AccountHero: FunctionComponent<IAccountHero> = (props) => {
           className="ml-auto"
           onClick={logoutUser}
         >
-          Logout
+          {Translations.ACCOUNT.HEADER.LOGOUT}
         </Button>
       </div>
     </div>
