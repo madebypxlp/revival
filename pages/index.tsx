@@ -19,24 +19,31 @@ const searchClient =
 export default () => {
   function Hit({ hit }: any) {
     return (
-      <article className="hit">
-        <div className="hit-image">
-          <img src={hit.primaryPicture} alt={hit.name} />
+      <article className="hit flex items-center">
+        <div className="hit-image flex items-center">
+          <img
+            style={{ width: '80px' }}
+            src={hit.primaryPicture}
+            alt={hit.name}
+          />
         </div>
-        <h5>{hit.itemName}</h5>
+        <div>
+          <h5>{hit.itemName}</h5>
+          <span className="typo-nav-links">{hit.keywords}</span>
+        </div>
       </article>
     )
   }
 
   return (
-    <div className="container h-[100vh] flex justify-center">
+    <div className="container h-[70vh] flex justify-center">
       <div className="w-full pt-50">
         {searchClient && (
           <InstantSearch
             searchClient={searchClient}
             indexName="product-data-test"
           >
-            <Configure hitsPerPage={10} />
+            <Configure hitsPerPage={7} />
             <SearchBox />
             <Hits hitComponent={Hit} />
             <Pagination />

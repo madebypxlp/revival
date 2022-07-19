@@ -1,16 +1,14 @@
+/* eslint-disable */
 import React, { useMemo } from 'react'
 import { createElement, Fragment, useEffect, useRef, useState } from 'react'
-import { render } from 'react-dom'
-
 import { usePagination, useSearchBox } from 'react-instantsearch-hooks'
 import { autocomplete, AutocompleteOptions } from '@algolia/autocomplete-js'
 import { BaseItem } from '@algolia/autocomplete-core'
 import { createQuerySuggestionsPlugin } from '@algolia/autocomplete-plugin-query-suggestions'
 import type { SearchClient } from 'algoliasearch/lite'
+import { render } from 'react-dom'
 
 export const INSTANT_SEARCH_INDEX_NAME = 'product-data-test'
-// export const INSTANT_SEARCH_QUERY_SUGGESTIONS =
-//   'product-data-test_query_suggestions'
 export const INSTANT_SEARCH_QUERY_SUGGESTIONS = INSTANT_SEARCH_INDEX_NAME
 
 type AutocompleteProps = Partial<AutocompleteOptions<BaseItem>> & {
@@ -39,14 +37,8 @@ export function Autocomplete({
     const querySuggestions = createQuerySuggestionsPlugin({
       searchClient,
       indexName: INSTANT_SEARCH_INDEX_NAME,
-      // categoryAttribute: [
-      //   // 'instant_search',
-      //   // 'facets',
-      //   // 'exact_matches',
-      //   'manufacturerName',
-      // ],
-      // itemsWithCategories: 1,
-      // categoriesPerItem: 1,
+      itemsWithCategories: 1,
+      categoriesPerItem: 1,
       transformSource({ source }) {
         return {
           ...source,
@@ -67,7 +59,7 @@ export function Autocomplete({
               return (
                 <Fragment>
                   <span className="aa-SourceItemTitle">
-                    {item.item.itemName as any as string}
+                    {/*item.item.itemName as any as string*/}
                   </span>
                 </Fragment>
               )
@@ -76,7 +68,6 @@ export function Autocomplete({
         }
       },
     })
-    console.log(querySuggestions)
     return [querySuggestions]
   }, [])
 
@@ -108,7 +99,7 @@ export function Autocomplete({
           })
         }
       },
-      renderer: { createElement, Fragment, render },
+      renderer: { createElement, Fragment, render } as any,
     })
 
     return () => autocompleteInstance.destroy()
