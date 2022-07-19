@@ -7,6 +7,7 @@ import Input from '../Input/Input'
 import Dropdown from '../Dropdown/Dropdown'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Button from '../Button/Button'
+import TextArea from '../TextArea/TextArea'
 
 const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
   const {
@@ -67,20 +68,16 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
         className={styles.formInput}
       />
 
-      <Dropdown
-        color="light"
+      <Input
+        placeholder={Translations.SHIPPING_FORM.COMPANY}
+        type="text"
+        value={lastName}
         onChange={(value) => {
           setShippingData((prevState) => {
-            return { ...prevState, company: value?.value ?? '' }
+            return { ...prevState, company: value }
           })
         }}
-        defaultInputValue={company}
-        placeholder={Translations.SHIPPING_FORM.COMPANY}
-        options={[
-          { label: 'Company One', value: 'companyOne' },
-          { label: 'Company Two', value: 'companyTwo' },
-        ]}
-        className={styles.formDropdown}
+        className={styles.formInput}
       />
 
       <Dropdown
@@ -171,7 +168,7 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
       <Input
         placeholder={Translations.SHIPPING_FORM.POSTAL_CODE}
         required
-        type="text"
+        type="number"
         onChange={(value) => {
           setShippingData((prevState) => {
             return { ...prevState, postalCode: value }
@@ -191,16 +188,15 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
         }}
         className={styles.formInput}
       />
-      <Input
+
+      <TextArea
         placeholder={Translations.SHIPPING_FORM.COMMENTS}
-        required
-        type="text"
         onChange={(value) => {
           setShippingData((prevState) => {
             return { ...prevState, comments: value }
           })
         }}
-        className={cn(styles.formInput, 'col-span-2 mb-50')}
+        className={cn('col-span-2 mb-50')}
       />
 
       <div className="col-span-2">
