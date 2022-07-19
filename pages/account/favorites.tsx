@@ -15,6 +15,7 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './favorites.module.scss'
+import { WishlistCard } from '@components/wishlist'
 
 export async function getStaticProps({
   preview,
@@ -45,19 +46,7 @@ export default function Wishlist({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data: customer } = useCustomer()
-  // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
-
-  const products = [
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-  ]
 
   return (
     <div className={styles.root}>
@@ -68,12 +57,10 @@ export default function Wishlist({
       <div className="container">
         <AccountBreadcrumbs current={Translations.ACCOUNT.MY_FAVORITES} />
       </div>
+      {data?.items
+        ? 'WE MIGHT NEED A NEW INTERFACE HERE'
+        : 'No Items in Wishlist'}
 
-      {/* <ProductCardGrid
-        variant="favorites"
-        products={products}
-        className="mb-60"
-      /> */}
       <div className="container">
         <AccountLinkGroup mobileOnly className="mb-250" />
       </div>

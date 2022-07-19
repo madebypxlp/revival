@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { FC } from 'react'
 import cn from 'classnames'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Translations from 'constants/translations'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
@@ -12,6 +12,7 @@ import Button from '@components/ui/Button/Button'
 import styles from './CartSidebarView.module.scss'
 
 const CartSidebarView: FC = () => {
+  const router = useRouter()
   const { closeSidebar } = useUI()
   const { data, isLoading, isEmpty } = useCart()
 
@@ -69,11 +70,10 @@ const CartSidebarView: FC = () => {
         </div>
       ) : (
         <>
-          <Link href="/cart">
-            <h5 role="none" className={styles.headline} onClick={handleClose}>
-              {`Your Cart (${products.length})`}
-            </h5>
-          </Link>
+          <h5 role="none" className={styles.headline} onClick={handleClose}>
+            {`Your Cart (${products.length})`}
+          </h5>
+
           <div className={cn(styles.productsColumn, 'custom-scrollbar')}>
             <div className={cn(styles.productsContainer)}>
               {data &&
@@ -99,6 +99,10 @@ const CartSidebarView: FC = () => {
               variant="large"
               type="default"
               className="w-full"
+              onClick={() => {
+                handleClose()
+                router.push('/cart')
+              }}
             >
               {Translations.CART.PROCEED_TO_CHECKOUT}
             </Button>
