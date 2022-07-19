@@ -17,7 +17,6 @@ const getCart: CartHandlers['getCart'] = async ({
       result = await config.storeApiFetch(
         `/v3/carts/${cartId}?include=line_items.physical_items.options`
       )
-      const relatedProducts: CatalogProduct[] = []
 
       if (result.data) {
         const products = (await Promise.all(
@@ -33,7 +32,9 @@ const getCart: CartHandlers['getCart'] = async ({
 
         const finalData = (await Promise.all(
           relatedProducts.map((e) => {
-            return config.storeApiFetch(`/v3/catalog/products/${e}`)
+            return config.storeApiFetch(
+              `/v3/catalog/products/${e}?include=primary_image`
+            )
           })
         )) as [{ data: CatalogProduct }]
 

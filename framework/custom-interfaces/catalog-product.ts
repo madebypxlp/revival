@@ -71,4 +71,17 @@ export interface CatalogProduct {
   open_graph_use_meta_description: boolean
   open_graph_use_product_name: boolean
   open_graph_use_image: boolean
+  primary_image: {
+    id: number
+    product_id: number
+    is_thumbnail: boolean
+    sort_order: number
+    description: string
+    image_file: string
+    url_zoom: string
+    url_standard: string
+    url_thumbnail: string
+    url_tiny: string
+    date_modified: Date
+  }
 }

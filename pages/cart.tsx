@@ -62,6 +62,7 @@ export default function Cart({
     ? Translations.CART.YOUR_CART_IS_EMPTY
     : Translations.CART.YOUR_CART
 
+  console.log(data)
   return (
     <div className={styles.root}>
       <div className="container default-grid">

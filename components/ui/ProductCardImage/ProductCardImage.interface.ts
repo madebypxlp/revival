@@ -1,7 +1,7 @@
 import { Image } from '@commerce/types'
 
 export default interface IProductCardImage {
-  image: Image
+  imageUrl: string
   isNew?: boolean
   isPrescription?: boolean
   isOurBrand?: boolean

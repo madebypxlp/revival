@@ -14,7 +14,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
     isPrescription,
     isOurBrand,
     label,
-    image,
+    imageUrl,
     variant,
     isFavorite,
     showFavoriteIcon,
@@ -23,14 +23,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
   return (
     <div className={c(styles.root, variant && styles[`variant--${variant}`])}>
       <div className={styles.imageContainer}>
-        {image.url && (
-          <Image
-            alt={image.altText}
-            src={image.url}
-            layout="fill"
-            objectFit="contain"
-          />
-        )}
+        {imageUrl && <Image src={imageUrl} layout="fill" objectFit="contain" />}
       </div>
       <div className="flex flex-col justify-between h-full">
         <div className={styles.row}>
