@@ -28,7 +28,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsBrands }> = ({
 
           {ourBrands.map((brand) => (
             <a
-              key={brand.uri}
+              key={`${brand.uri} - ${brand.title}`}
               href={brand.uri}
               className="bg-white py-21 px-18 mb-20 relative w-250 h-105 flex justify-center items-center rounded-15 overflow-hidden"
             >
@@ -46,7 +46,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsBrands }> = ({
         <div className="md:col-start-5 md:col-span-8 col-span-full grid grid-cols-8 gap-x-18 gap-y-20 md:py-40 py-30">
           {featuredBrands.map((brand) => (
             <a
-              key={brand.uri}
+              key={`${brand.uri} - ${brand.title}`}
               href={brand.uri}
               className="border-[1.5px] border-[#000000] border-opacity-30 rounded-15 col-span-4 md:col-span-2 flex justify-center items-center md:h-90 h-65"
             >

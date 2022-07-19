@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import Translations from 'constants/translations'
@@ -28,18 +28,13 @@ const CartSidebarView: FC = () => {
       currencyCode: data.currency.code,
     }
   )
-  const handleClose = () => closeSidebar()
 
   const error = null
   const success = null
   const products = data?.lineItems || []
 
   return (
-    <div
-      className={cn(styles.root, {
-        [styles.empty]: error || success || isLoading || isEmpty,
-      })}
-    >
+    <div className={cn(styles.root)}>
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
           <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10 mb-15">
@@ -70,7 +65,7 @@ const CartSidebarView: FC = () => {
         </div>
       ) : (
         <>
-          <h5 role="none" className={styles.headline} onClick={handleClose}>
+          <h5 role="none" className={styles.headline} onClick={closeSidebar}>
             {`Your Cart (${products.length})`}
           </h5>
 
@@ -100,7 +95,7 @@ const CartSidebarView: FC = () => {
               type="default"
               className="w-full"
               onClick={() => {
-                handleClose()
+                closeSidebar()()
                 router.push('/cart')
               }}
             >

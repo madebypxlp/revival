@@ -26,7 +26,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsVaccines }> = ({
         >
           {quickLinks.map((link) => (
             <ArrowCTA
-              key={link.link.url}
+              key={link.link.title}
               className="mb-20 "
               color="blue"
               orientation="right"

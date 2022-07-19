@@ -12,6 +12,7 @@ import ProductCardImage from '../ProductCardImage/ProductCardImage'
 import ICartProduct from './CartProduct.interface'
 import styles from './CartProduct.module.scss'
 import Dropdown from '../Dropdown/Dropdown'
+import LoadingDots from '../LoadingDots/LoadingDots'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const {
@@ -28,38 +29,29 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     rightColumn = 'price',
     shippingRestrictionsMessage,
     vetInfo,
-    currencyCode,
   } = props
 
   const getProductDetails = getCatalogProduct({ productId: product.productId })
-  console.log(getProductDetails.data)
 
   const updateItem = useUpdateItem({ item: product })
-  const removeCartItem = useRemoveItem()
   const isMobile = useIsMobile()
-
+  const removeCartItem = useRemoveItem()
   const [quantity, setQuantity] = useState(product.quantity)
+  const [loading, setLoading] = useState(false)
+
   const updateQuantity = async (val: number) => {
+    setLoading(true)
     await updateItem({ quantity: val })
   }
   const handleRemove = async () => {
-    //  setRemoving(true)
-
-    try {
-      // If this action succeeds then there's no need to do `setRemoving(true)`
-      // because the component will be removed from the view
-      await removeCartItem(product)
-    } catch (error) {
-      console.log(error)
-      //  setRemoving(false)
-    }
+    setLoading(true)
+    await removeCartItem(product).finally(() => {
+      setLoading(false)
+    })
   }
-
-  const handleEdit = async () => {}
 
   const increaseQuantity = (n = 1) => {
     const val = Number(quantity) + n
-
     if (Number.isInteger(val) && val >= 0) {
       setQuantity(val)
       updateQuantity(val)
@@ -117,15 +109,17 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     if (product.quantity !== Number(quantity)) {
       setQuantity(product.quantity)
     }
+    if (loading) setLoading(false)
   }, [product.quantity])
 
   return (
     <div className={rootClasses}>
+      {loading && <LoadingDots portal />}
       <div className={styles.productImageContainer}>
         {product.variant.image?.url && (
           <ProductCardImage
             isPrescription={showPrescriptionIcon}
-            image={product.variant.image}
+            imageUrl={product.variant.image.url}
             variant={variant}
           />
         )}
@@ -210,9 +204,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             <div className={styles.controlLinksContainer}>
               <button color="black" onClick={handleRemove}>
                 Remove
-              </button>
-              <button color="black" onClick={handleEdit}>
-                Edit
               </button>
             </div>
           </>
