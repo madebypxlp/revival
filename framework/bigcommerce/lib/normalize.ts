@@ -85,6 +85,7 @@ export function normalizeCart(data: BigcommerceCart): Cart {
     lineItemsSubtotalPrice: data.base_amount,
     subtotalPrice: data.base_amount + data.discount_amount,
     totalPrice: data.cart_amount,
+    relatedProducts: data.relatedProducts,
     discounts: data.discounts?.map((discount) => {
       return {
         value: discount.discounted_amount,

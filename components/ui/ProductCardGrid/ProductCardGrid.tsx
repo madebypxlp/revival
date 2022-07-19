@@ -26,7 +26,7 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
       <div className={c('container default-grid', styles.productGridContainer)}>
         {products.map((p) => (
           <div className="col-span-1 md:col-span-4 lg:col-span-3" key={p.id}>
-            {/* <ProductCard {...p} {...productCardProps} /> */}
+            <ProductCard {...p} {...productCardProps} />
           </div>
         ))}
       </div>

@@ -17,22 +17,31 @@ const getCart: CartHandlers['getCart'] = async ({
       result = await config.storeApiFetch(
         `/v3/carts/${cartId}?include=line_items.physical_items.options`
       )
-      result.data?.line_items.physical_items.forEach(async (e) => {
-        const pid = e.product_id
-        const productData = (await config.storeApiFetch(
-          `/v3/catalog/products/${pid}`
-        )) as { data: CatalogProduct }
-        if (productData && productData?.data) {
-          const product = productData.data as CatalogProduct
-          const r = product.related_products
-          r.forEach(async (item) => {
-            const rData = await config.storeApiFetch(
-              `/v3/catalog/products/${item}`
-            )
-            console.log('FEINI', rData)
+      const relatedProducts: CatalogProduct[] = []
+
+      if (result.data) {
+        const products = (await Promise.all(
+          result.data.line_items.physical_items.map((e) => {
+            const pid = e.product_id
+            return config.storeApiFetch(`/v3/catalog/products/${pid}`)
           })
+        )) as [{ data: CatalogProduct }]
+
+        const relatedProducts = products
+          .map((e) => e.data.related_products)
+          .flat()
+
+        const finalData = (await Promise.all(
+          relatedProducts.map((e) => {
+            return config.storeApiFetch(`/v3/catalog/products/${e}`)
+          })
+        )) as [{ data: CatalogProduct }]
+
+        const relatedProductSet = finalData.map((e) => e.data)
+        if (result.data) {
+          result.data.relatedProducts = relatedProductSet
         }
-      })
+      }
     } catch (error) {
       if (error instanceof BigcommerceApiError && error.status === 404) {
         // Remove the cookie if it exists but the cart wasn't found
@@ -42,7 +51,6 @@ const getCart: CartHandlers['getCart'] = async ({
       }
     }
   }
-
   res.status(200).json({ data: result.data ?? null })
 }
 

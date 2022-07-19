@@ -138,12 +138,12 @@ export default function Cart({
           </div>
         </div>
       </div>
-      {/*
-      <ProductCardGrid
-        products={products}
-        headline={Translations.YOU_MAY_ALSO_LIKE}
-      />
-              */}
+      {data?.relatedProducts && (
+        <ProductCardGrid
+          products={data?.relatedProducts}
+          headline={Translations.YOU_MAY_ALSO_LIKE}
+        />
+      )}
     </div>
   )
 }

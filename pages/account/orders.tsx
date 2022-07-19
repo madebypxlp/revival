@@ -50,6 +50,7 @@ export default function Profile({
   const router = useRouter()
   const customerOrders = useOrders()
   const { data } = uselistOrderProducts({ orderId: router.query.id })
+
   const orderShippingAddresses = getOrderShippingAddresses({
     orderId: router.query.id,
   }).data
