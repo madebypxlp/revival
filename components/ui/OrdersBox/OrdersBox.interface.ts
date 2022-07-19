@@ -1,10 +1,4 @@
-export interface Order {
-  id: string
-  placed: Date
-  sentTo: string
-  total: number
-  status: string
-}
+import { Order } from 'framework/custom-interfaces/order'
 
 export default interface IOrdersBox {
   variant: 'orders' | 'account'

@@ -12,7 +12,6 @@ export type OrdersHandler = {
 
 const METHODS = ['GET']
 
-// TODO: a complete implementation should have schema validation for `req.body`
 const ordersApi: BigcommerceApiHandler<any, OrdersHandler> = async (
   req,
   res,

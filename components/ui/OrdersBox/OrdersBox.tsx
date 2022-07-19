@@ -12,7 +12,7 @@ const OrdersBox: FunctionComponent<IOrdersBox> = (props) => {
   const { orders, variant, className } = props
 
   const isMobile = useIsMobile()
-
+  console.log(orders)
   return (
     <div
       className={c(
@@ -40,15 +40,17 @@ const OrdersBox: FunctionComponent<IOrdersBox> = (props) => {
                   <ChevronUp />
                 </NextLink>
               </div>
-              <div className={styles.regular}>{formatDate(o.placed)} </div>
+              <div className={styles.regular}>{o.date_created} </div>
             </div>
             <div className={c(styles.sentTo)}>
               <div className={styles.title}>{Translations.ACCOUNT.SENT_TO}</div>
-              <div className={styles.regular}>{o.sentTo}</div>
+              <div className={styles.regular}>
+                {o.shipping_addresses.resource}
+              </div>
             </div>
             <div className={c(styles.total)}>
               <div className={styles.title}>{Translations.ACCOUNT.TOTAL}</div>
-              <div className={styles.regular}>{formatPrice(o.total)}</div>
+              <div className={styles.regular}>{o.subtotal_inc_tax}</div>
             </div>
             <div className={c(styles.status)}>
               <div className={styles.title}>{Translations.ACCOUNT.STATUS}</div>
@@ -80,11 +82,13 @@ const OrdersBox: FunctionComponent<IOrdersBox> = (props) => {
 
             <div className={c(styles.regular, styles.orderId)}>{o.id}</div>
             <div className={c(styles.regular, styles.placed)}>
-              {formatDate(o.placed)}
+              {o.date_created}
             </div>
-            <div className={c(styles.regular, styles.sentTo)}>{o.sentTo}</div>
+            <div className={c(styles.regular, styles.sentTo)}>
+              {o.shipping_addresses.resource}
+            </div>
             <div className={c(styles.regular, styles.total)}>
-              {formatPrice(o.total)}
+              {o.subtotal_inc_tax}
             </div>
             <div className={c(styles.regular, styles.status)}>
               <span>{o.status}</span>

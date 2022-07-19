@@ -64,7 +64,7 @@ const Translations = {
     YOUR_PROFILE: 'Your Profile',
     SHIPPING_ADDRESS: 'Shipping Address',
     PAYMENT_METHOD: 'Payment Method',
-    PAID_WITH: 'Payd With',
+    PAID_WITH: 'Paid With',
     GIFT_CARD: 'Gift Card',
     PASSWORD: 'Password',
     PHONE: 'Phone',

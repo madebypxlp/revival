@@ -15,6 +15,9 @@ import { handler as useLogout } from './auth/use-logout'
 import { handler as useSignup } from './auth/use-signup'
 
 import { handler as useOrders } from './orders/use-orders'
+import { handler as listOrderProducts } from './orders/order-products/order-products'
+import { handler as getOrderShippingAddresses } from './orders/order-shipping-addresses/order-shipping-addresses'
+import { handler as getOrderShipments } from './orders/order-shipments/order-shipments'
 
 import fetcher from './fetcher'
 
@@ -31,7 +34,12 @@ export const bigcommerceProvider = {
   customer: { useCustomer },
   products: { useSearch },
   auth: { useLogin, useLogout, useSignup },
-  orders: { useOrders },
+  orders: {
+    useOrders,
+    listOrderProducts,
+    getOrderShippingAddresses,
+    getOrderShipments,
+  },
 }
 
 export type BigcommerceProvider = typeof bigcommerceProvider

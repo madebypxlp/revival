@@ -1,26 +1,26 @@
 import { useMemo } from 'react'
 import { SWRHook } from '@commerce/utils/types'
-import useCustomer from '../customer/use-customer'
-import useOrders, { UseOrders } from '@commerce/orders/use-orders'
-import { Order } from 'framework/custom-interfaces/order'
+import uselistOrderProducts, {
+  ListOrderProducts,
+} from '@commerce/orders/list-order-products'
+import { OrderProduct } from 'framework/custom-interfaces/order-products'
 
-export default useOrders as UseOrders<typeof handler>
+export default uselistOrderProducts as ListOrderProducts<typeof handler>
 
 export const handler: SWRHook<
-  Order[] | null,
+  OrderProduct[] | null,
   any,
-  { customerId?: number } & any,
-  { isEmpty?: boolean }
+  { orderId?: number } & any
 > = {
   fetchOptions: {
-    url: '/api/bigcommerce/orders/orders',
+    url: '/api/bigcommerce/orders/order-products',
     method: 'GET',
   },
-  async fetcher({ input: { customerId }, options, fetch }) {
-    if (!customerId) return null
+  async fetcher({ input: { orderId }, options, fetch }) {
+    if (!orderId) return null
     // Use a dummy base as we only care about the relative path
     const url = new URL(options.url!, 'http://a')
-    url.searchParams.set('customer_id', customerId)
+    url.searchParams.set('orderId', orderId)
     return fetch({
       url: url.pathname + url.search,
       method: options.method,
@@ -29,9 +29,8 @@ export const handler: SWRHook<
   useHook:
     ({ useData }) =>
     (input) => {
-      const { data: customer } = useCustomer()
       const response = useData({
-        input: [['customerId', customer?.entityId]],
+        input: { orderId: input.orderId },
         swrOptions: {
           revalidateOnFocus: false,
           ...input?.swrOptions,
