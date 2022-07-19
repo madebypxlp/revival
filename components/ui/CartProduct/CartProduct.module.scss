@@ -84,9 +84,11 @@
     text-align: right;
     gap: 0.3rem;
 
-    a {
+    button {
       font-size: 1.4rem;
       line-height: 1.8rem;
+      font-weight: bold;
+      text-decoration: underline;
     }
   }
 
@@ -277,6 +279,7 @@
 
     .infoContainer {
       @apply md:col-span-3;
+      @apply md:grid-cols-3;
     }
 
     .productName,
@@ -291,17 +294,22 @@
       @apply typo-legal-text;
     }
 
-    .cartProductQuantityControls > div {
-      padding: 0.9rem 1.1rem;
+    .cartProductQuantityControls {
+      @apply md:col-span-2;
+      margin-top: 0.6rem;
 
-      div {
-        font-size: 1rem;
-        line-height: 1.3rem;
+      > div {
+        padding: 0.9rem 1.1rem;
+
+        div {
+          font-size: 1rem;
+          line-height: 1.3rem;
+        }
       }
     }
 
     .productNameContainer {
-      @apply md:col-span-5;
+      @apply md:col-span-2;
     }
   }
 

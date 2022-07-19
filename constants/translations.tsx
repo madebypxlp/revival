@@ -39,6 +39,7 @@ const Translations = {
     SUBTOTAL: 'Subtotal',
   },
   ACCOUNT: {
+    LOGIN: 'Login to your Account',
     WELCOME_BACK: 'Welcome Back',
     ACCOUNT: 'Account',
     ORDERS: 'Orders',
@@ -111,5 +112,7 @@ const Translations = {
       'If your state isn’t listed in the dropdown delow, you have products in your cart that have shipping restrictions for your state. Check your cart to see which product(s) have state shipping restrictions. Ignore this message if your state is showing in the dropdown below.',
     SAVE_AND_CONTINUE: 'Save and Continue',
   },
+  UPDATE_SHIPMENTS: 'Update Shipments',
+  SAVE_UPDATES: 'Save Updates',
 }
 export default Translations

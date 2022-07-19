@@ -3,6 +3,11 @@
   border-bottom: 1px solid #c4c4c4;
   padding-top: 2rem;
   margin-bottom: -1px;
+  transition: all 0.3s ease;
+
+  &.open {
+    padding-top: 4rem;
+  }
 
   .icon {
     margin-right: 4rem;
@@ -17,6 +22,42 @@
       transform: rotate(90deg);
       // TURBO MODE
       // transform: rotate(3690deg);
+    }
+  }
+
+  .accordion {
+    @apply max-h-[0px] transition-all duration-500 overflow-hidden;
+
+    &.open {
+      @apply max-h-[1000px];
+    }
+  }
+
+  .accordionContentContainer {
+    @apply w-11/12 mb-40;
+  }
+
+  &.variant--pdp {
+    @apply pt-20 md:pt-35;
+
+    > button {
+      @apply mb-20 md:mb-35;
+    }
+
+    .accordionContentContainer {
+      width: 100%;
+
+      @screen md {
+        margin-bottom: 0px;
+      }
+    }
+
+    @screen md {
+      .accordion {
+        transform: translateY(-6.3rem);
+        z-index: -1;
+        position: relative;
+      }
     }
   }
 }

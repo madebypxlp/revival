@@ -31,15 +31,17 @@ const AccountLinkGroup: FunctionComponent<IAccountLinkGroup> = (props) => {
           </div>
           {linkList.map((l) => (
             <NextLink href={l.link} key={l.title}>
-              <div
-                className={c(
-                  styles.myPetHealthLink,
-                  l.mobileOnly && !isMobile && styles.mobileOnly
-                )}
-              >
-                <span>{l.title}</span>
-                <ChevronUp className={styles.rightChevron} />
-              </div>
+              <a>
+                <div
+                  className={c(
+                    styles.myPetHealthLink,
+                    l.mobileOnly && !isMobile && styles.mobileOnly
+                  )}
+                >
+                  <span>{l.title}</span>
+                  <ChevronUp className={styles.rightChevron} />
+                </div>
+              </a>
             </NextLink>
           ))}
         </div>

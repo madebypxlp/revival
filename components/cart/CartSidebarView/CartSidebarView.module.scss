@@ -1,8 +1,15 @@
 .root {
-  @apply h-full flex flex-col;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
   background-color: white;
-  width: 60rem;
   padding: 3rem 5rem 5rem 6rem;
+  width: 100%;
+
+  @screen lg {
+    width: 60rem;
+  }
 
   .headline {
     font-weight: bold;
@@ -14,6 +21,25 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
+  }
+
+  .productsColumn {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-right: -3rem;
+    padding-right: 3rem;
+  }
+
+  .subtotalContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    margin-bottom: 3.5rem;
+
+    h5 {
+      color: theme('colors.blue.default');
+      font-weight: bold;
+    }
   }
 }
 

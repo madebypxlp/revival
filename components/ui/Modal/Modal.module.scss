@@ -1,7 +1,7 @@
 .root {
   @apply fixed flex inset-0 z-50 items-start justify-center;
-  @apply py-20 md:py-40 xl:py-200;
-  overflow: auto;
+  //  @apply py-20 md:py-40 xl:py-200;
+  overflow: scroll;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -20,6 +20,7 @@
   animation: 500ms FADE_IN forwards;
   animation-delay: 250ms;
   opacity: 0;
+  @apply my-20 md:my-40 xl:my-200;
 }
 
 .modalContent {
