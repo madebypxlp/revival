@@ -1,20 +1,37 @@
 .root {
-  @apply inline-flex text-center items-center leading-7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 
-  & span {
-    @apply  rounded-full h-5 w-5;
-    animation-name: blink;
-    animation-duration: 1.4s;
-    animation-iteration-count: infinite;
-    animation-fill-mode: both;
-    margin: 0 2px;
+  &.portal {
+    position: fixed;
+  }
 
-    &:nth-of-type(2) {
-      animation-delay: 0.2s;
-    }
+  .inner {
+    @apply inline-flex text-center items-center leading-7;
+    & span {
+      @apply rounded-full h-15 w-15;
+      animation-name: blink;
+      animation-duration: 1.4s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+      margin: 0 2px;
+      background-color: blue;
+      &:nth-of-type(2) {
+        animation-delay: 0.2s;
+      }
 
-    &:nth-of-type(3) {
-      animation-delay: 0.4s;
+      &:nth-of-type(3) {
+        animation-delay: 0.4s;
+      }
     }
   }
 }

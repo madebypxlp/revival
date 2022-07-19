@@ -1,10 +1,13 @@
-import s from './LoadingDots.module.scss'
+import classNames from 'classnames'
+import styles from './LoadingDots.module.scss'
 
-const LoadingDots: React.FC = () => (
-  <span className={s.root}>
-    <span />
-    <span />
-    <span />
+const LoadingDots = ({ portal = false }: { portal?: boolean }) => (
+  <span className={classNames(styles.root, { [styles.portal]: portal })}>
+    <div className={styles.inner}>
+      <span />
+      <span />
+      <span />
+    </div>
   </span>
 )
 

@@ -1,4 +1,5 @@
 .root {
+  position: relative;
   @apply pt-40 md:pt-80;
 
   > div {
@@ -12,19 +13,16 @@
 
   .learnMoreText {
     @apply text-center underline font-bold mb-40;
-    // typo-small-paragraph;
   }
 
   .subtotalContainer {
     @apply flex flex-row justify-between items-center mb-35;
-    // typo-h5
 
     h5 {
       @apply font-bold;
     }
     span {
       @apply font-bold;
-      // md:typo-large-paragraph
     }
   }
 

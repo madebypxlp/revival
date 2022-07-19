@@ -1,41 +1,16 @@
 import cn from 'classnames'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 import { useUI } from '@components/ui/context'
 import { Navbar, Footer } from '@components/common'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
-import { Sidebar, Modal, LoadingDots } from '@components/ui'
+import { Sidebar } from '@components/ui'
 import CartSidebarView from '@components/cart/CartSidebarView'
-
-import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
-import Button from '@components/ui/Button/Button'
 import { useIsMobile } from '@commerce/utils/hooks'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import { AcfOptionsFooter } from 'framework/wordpress/interfaces/footer'
 import s from './Layout.module.scss'
-
-const Loading = () => (
-  <div className="w-100 h-80 flex items-center text-center justify-center p-3">
-    <LoadingDots />
-  </div>
-)
-
-const SignUpView = dynamic(() => import('@components/auth/SignUpView'), {
-  loading: () => <Loading />,
-})
-
-const ForgotPassword = dynamic(
-  () => import('@components/auth/ForgotPassword'),
-  {
-    loading: () => <Loading />,
-  }
-)
-
-const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
-  loading: () => <Loading />,
-})
 
 const Layout: FC<any> = ({
   children,
@@ -48,9 +23,7 @@ const Layout: FC<any> = ({
   header: AcfOptionsHeader
   pageProps: any
 }) => {
-  const { displaySidebar, displayModal, closeSidebar, closeModal, modalView } =
-    useUI()
-  const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
+  const { displaySidebar, closeSidebar } = useUI()
   const isMobile = useIsMobile()
   const { locale = 'en-us' } = useRouter()
 
