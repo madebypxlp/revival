@@ -8,6 +8,7 @@ import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
 import styles from './CartSidebarView.module.scss'
+import Translations from 'constants/translations'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()

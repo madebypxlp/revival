@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import c from 'classnames'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import useUpdateItem from '@framework/cart/use-update-item'
+import getCatalogProduct from '@framework/catalog/products/product'
 import { useIsMobile } from '@commerce/utils/hooks'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import Translations from 'constants/translations'
@@ -28,6 +29,9 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     vetInfo,
     currencyCode,
   } = props
+
+  const getProductDetails = getCatalogProduct({ productId: product.productId })
+  console.log(getProductDetails.data)
 
   const updateItem = useUpdateItem({ item: product })
   const removeCartItem = useRemoveItem()

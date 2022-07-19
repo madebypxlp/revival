@@ -1,26 +1,26 @@
 import { useMemo } from 'react'
 import { SWRHook } from '@commerce/utils/types'
-import uselistOrderProducts, {
-  ListOrderProducts,
-} from '@commerce/orders/order-products'
-import { OrderProduct } from 'framework/custom-interfaces/order-products'
+import getCatalogProduct, {
+  CatalogProduct,
+} from '@commerce/catalog/products/product'
+import { CatalogProduct as CatalogProductInterface } from 'framework/custom-interfaces/catalog-product'
 
-export default uselistOrderProducts as ListOrderProducts<typeof handler>
+export default getCatalogProduct as CatalogProduct<typeof handler>
 
 export const handler: SWRHook<
-  OrderProduct[] | null,
+  CatalogProductInterface | null,
   any,
-  { orderId?: number } & any
+  { productId?: number } & any
 > = {
   fetchOptions: {
-    url: '/api/bigcommerce/orders/order-products',
+    url: '/api/bigcommerce/catalog/products/product',
     method: 'GET',
   },
-  async fetcher({ input: { orderId }, options, fetch }) {
-    if (!orderId) return null
+  async fetcher({ input: { productId }, options, fetch }) {
+    if (!productId) return null
     // Use a dummy base as we only care about the relative path
     const url = new URL(options.url!, 'http://a')
-    url.searchParams.set('orderId', orderId)
+    url.searchParams.set('productId', productId)
     return fetch({
       url: url.pathname + url.search,
       method: options.method,
@@ -30,7 +30,7 @@ export const handler: SWRHook<
     ({ useData }) =>
     (input) => {
       const response = useData({
-        input: { orderId: input.orderId },
+        input: { productId: input.productId },
         swrOptions: {
           revalidateOnFocus: false,
           ...input?.swrOptions,
@@ -41,7 +41,7 @@ export const handler: SWRHook<
           Object.create(response, {
             isEmpty: {
               get() {
-                return (response.data?.length || 0) <= 0
+                return response.data
               },
               enumerable: true,
             },

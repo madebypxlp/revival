@@ -43,6 +43,9 @@ export type Provider = CommerceConfig & {
     getOrderShippingAddresses?: SWRHook<any | null, any, any>
     getOrderShipments?: SWRHook<any | null, any, any>
   }
+  catalog?: {
+    getCatalogProduct?: SWRHook<any | null, any, any>
+  }
 }
 
 export type CommerceProps<P extends Provider> = {

@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { SWRHook } from '@commerce/utils/types'
 import getOrderShippingAddresses, {
   OrderShippingAddresses,
-} from '@commerce/orders/get-order-shipping-addresses'
+} from '@commerce/orders/order-shipping-addresses'
 import { OrderShippingAddress } from 'framework/custom-interfaces/order-shipping-address'
 
 export default getOrderShippingAddresses as OrderShippingAddresses<
