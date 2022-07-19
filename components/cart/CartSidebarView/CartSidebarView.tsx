@@ -2,15 +2,14 @@
 import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
+import Translations from 'constants/translations'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
-import Translations from 'constants/translations'
 import Button from '@components/ui/Button/Button'
 import styles from './CartSidebarView.module.scss'
-import Translations from 'constants/translations'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()
@@ -33,11 +32,6 @@ const CartSidebarView: FC = () => {
   const error = null
   const success = null
   const products = data?.lineItems || []
-  products.push(products[0])
-  products.push(products[0])
-  products.push(products[0])
-  products.push(products[0])
-  products.push(products[0])
 
   return (
     <div

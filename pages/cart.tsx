@@ -16,6 +16,8 @@ import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
 import fetch from '../framework/wordpress/wp-client'
 import styles from './cart.module.scss'
+import { useEffect } from 'react'
+import getCatalogProduct from '@framework/catalog/products/product'
 
 export async function getStaticProps({
   preview,
@@ -43,7 +45,6 @@ export default function Cart({
   const { data, isLoading, isEmpty } = useCart()
   const isMobile = useIsMobile()
 
-  console.log(data)
   const { price: subTotal } = usePrice(
     data && {
       amount: Number(data.subtotalPrice),
@@ -60,17 +61,6 @@ export default function Cart({
   const headline = isEmpty
     ? Translations.CART.YOUR_CART_IS_EMPTY
     : Translations.CART.YOUR_CART
-
-  const products = [
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-  ]
 
   return (
     <div className={styles.root}>
@@ -102,7 +92,7 @@ export default function Cart({
           ) : (
             <div>
               {!isEmpty &&
-                products.slice(0, 2).map((item) => (
+                data?.lineItems.map((item) => (
                   <div className={styles.cartProductContainer} key={item.id}>
                     <CartProduct
                       product={item}

@@ -85,7 +85,7 @@ const OrdersBox: FunctionComponent<IOrdersBox> = (props) => {
               {o.date_created}
             </div>
             <div className={c(styles.regular, styles.sentTo)}>
-              {o.shipping_addresses.resource}
+              {o.shipping_addresses?.resource}
             </div>
             <div className={c(styles.regular, styles.total)}>
               {o.subtotal_inc_tax}
