@@ -1,6 +1,7 @@
 import { MediaItem } from '@components/interfaces/Image'
 import Link from '@components/interfaces/Link'
 import { AcfOptionsFooter } from './footer'
+import { ACFGlobalData } from './globals'
 import { AcfOptionsHeader } from './header'
 import { Category } from './post'
 
@@ -21,6 +22,7 @@ export interface LearningCenterDetailPage {
   additionalData: {
     nodes: LearningCenterInterface[]
   }
+  globals: ACFGlobalData
 }
 
 export interface LearningCenterInterface {

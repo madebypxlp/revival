@@ -3,6 +3,7 @@ import fetch from './wp-client'
 import footerQuery from './queries/acfGlobalOptions/footer'
 import headerQuery from './queries/acfGlobalOptions/header'
 import learningCenterQuery from './queries/post-type-learning-center/learning-center-query'
+import globalsQuery from './queries/acfGlobalOptions/globals'
 
 export const getAllLearningCenterDetailPagesQuery = `
   query getAllLearningCenterDetailPagesQuery {
@@ -53,6 +54,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
   })
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+  const globals = await fetch({ query: globalsQuery })
 
   if (!res) {
     return {
@@ -64,6 +66,7 @@ export const getLearningCenterDetailPageWpStaticProps = async (
       data: res.entry,
       header: { ...header?.acfOptionsHeader?.header },
       footer: footer?.acfOptionsFooter?.footer,
+      globals: globals?.globals,
       additionalData: res.additionalData,
     },
     revalidate: undefined,

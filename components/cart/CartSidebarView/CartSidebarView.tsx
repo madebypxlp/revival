@@ -7,6 +7,8 @@ import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
+import Translations from 'constants/translations'
+import Button from '@components/ui/Button/Button'
 import styles from './CartSidebarView.module.scss'
 import Translations from 'constants/translations'
 
@@ -31,6 +33,11 @@ const CartSidebarView: FC = () => {
   const error = null
   const success = null
   const products = data?.lineItems || []
+  products.push(products[0])
+  products.push(products[0])
+  products.push(products[0])
+  products.push(products[0])
+  products.push(products[0])
 
   return (
     <div
@@ -68,13 +75,13 @@ const CartSidebarView: FC = () => {
         </div>
       ) : (
         <>
-          <div>
-            <Link href="/cart">
-              <h5 role="none" className={styles.headline} onClick={handleClose}>
-                {`Your Cart (${products.length})`}
-              </h5>
-            </Link>
-            <div className={styles.productsContainer}>
+          <Link href="/cart">
+            <h5 role="none" className={styles.headline} onClick={handleClose}>
+              {`Your Cart (${products.length})`}
+            </h5>
+          </Link>
+          <div className={cn(styles.productsColumn, 'custom-scrollbar')}>
+            <div className={cn(styles.productsContainer)}>
               {data &&
                 products.map((item) => (
                   <CartProduct
@@ -88,30 +95,19 @@ const CartSidebarView: FC = () => {
             </div>
           </div>
 
-          <div className="flex-shrink-0 px-4  py-5 sm:px-5">
-            <div className="border-t ">
-              <ul className="py-5">
-                <li className="flex justify-between py-1">
-                  <span>Subtotal</span>
-                  <span>{subTotal}</span>
-                </li>
-                <li className="flex justify-between py-1">
-                  <span>Taxes</span>
-                  <span>Calculated at checkout</span>
-                </li>
-                <li className="flex justify-between py-1">
-                  <span>Estimated Shipping</span>
-                  <span className="font-bold tracking-wide">
-                    Calculated at checkou
-                  </span>
-                </li>
-              </ul>
-              <div className="flex justify-between border-t  py-5 font-bold mb-10">
-                <span>Total</span>
-                <span>{total}</span>
-              </div>
+          <div>
+            <div className={styles.subtotalContainer}>
+              <h5>{Translations.CART.SUBTOTAL}:</h5>
+              <h5>{subTotal}</h5>
             </div>
-            <a href="/checkout">Proceed to Checkout</a>
+            <Button
+              color="yellow"
+              variant="large"
+              type="default"
+              className="w-full"
+            >
+              {Translations.CART.PROCEED_TO_CHECKOUT}
+            </Button>
           </div>
         </>
       )}
