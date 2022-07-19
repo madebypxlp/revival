@@ -37,7 +37,6 @@ const Modal: FC<IModal> = (props) => {
   useEffect(() => {
     if (ref.current) {
       if (open) {
-        console.log('locking scroll')
         disableBodyScroll(ref.current, {
           reserveScrollBarGap: true,
         })

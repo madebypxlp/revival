@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
+import useSearch from '@framework/product/use-search'
 import ProductCard from '@components/ui/ProductCard/ProductCard'
 import { useIsMobile } from '@commerce/utils/hooks'
-import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import IProductSlider from './ProductSlider.interface'
 import styles from './ProductSlider.module.scss'
@@ -10,16 +10,13 @@ import styles from './ProductSlider.module.scss'
 const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
   module,
 }) => {
-  const { link } = module
+  const { link, products } = module
   const isMobile = useIsMobile()
-  const products = [
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-  ]
+
+  const productIds = products.map((e) => e.productId) || []
+  const { data } = useSearch({
+    idIn: productIds.join(),
+  })
 
   return (
     <div
@@ -53,9 +50,13 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
             },
           }}
         >
-          {products.map((p, index) => (
-            <SwiperSlide key={p.id}>{/* <ProductCard {...p} /> */}</SwiperSlide>
-          ))}
+          {data?.products &&
+            data.products.map((p, index) => (
+              <SwiperSlide key={p.id}>
+                {/* <ProductCard {...p} />  */}
+                Hello
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

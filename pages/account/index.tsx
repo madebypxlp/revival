@@ -43,20 +43,20 @@ export default function Profile({
   header,
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { data = null, isLoading } = useCustomer()
+  const { data = null, isLoading, error } = useCustomer()
   const router = useRouter()
   const THE_REAL_ORDERS = useOrders()
 
   const { setModalView, openModal, closeModal } = useUI()
 
   useEffect(() => {
-    if (!isLoading && data === null) {
+    if (error || (!isLoading && data === null)) {
       openModal()
       setModalView('LOGIN_VIEW')
     } else {
       closeModal()
     }
-  }, [data])
+  }, [data, isLoading, error])
 
   const order = {
     id: '000000',

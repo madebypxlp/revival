@@ -95,7 +95,7 @@ const CartSidebarView: FC = () => {
               type="default"
               className="w-full"
               onClick={() => {
-                closeSidebar()()
+                closeSidebar()
                 router.push('/cart')
               }}
             >

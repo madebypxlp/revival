@@ -9,6 +9,7 @@ import React, {
   useState,
   FunctionComponent,
 } from 'react'
+import LoadingDots from '@components/ui/LoadingDots/LoadingDots'
 import { validate } from 'email-validator'
 import { useUI } from '@components/ui/context'
 import useLogin from '@framework/auth/use-login'
@@ -60,7 +61,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
       closeModal()
       router.push('/account')
     } catch ({ error }) {
-      setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
@@ -71,6 +72,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
 
   return (
     <div className={cn(styles.NavigationLayoutsYourAccount, 'container')}>
+      {loading && <LoadingDots portal />}
       <div className="default-grid pt-75 pb-110 z-20 bg-white relative">
         <div className="md:border-none border-t-[0.5px] border-greyscale-4 absolute top-60 w-full " />
         <div className="md:col-start-2 col-span-4">
