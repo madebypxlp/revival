@@ -60,7 +60,7 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader['yourAccount'] }> = ({
       closeModal()
       router.push('/account')
     } catch ({ error }) {
-      setMessage(errors[0].message)
+      //  setMessage(errors[0].message)
       setLoading(false)
     }
   }
