@@ -6,6 +6,7 @@ import { validate } from 'email-validator'
 import Button from '@components/ui/Button/Button'
 import Input from '@components/ui/Input/Input'
 import styles from './AuthStyle.module.scss'
+import LoadingDots from '@components/ui/LoadingDots/LoadingDots'
 
 interface Props {}
 
@@ -60,6 +61,7 @@ const LoginView: FC<Props> = () => {
 
   return (
     <div className={styles.root}>
+      {loading && <LoadingDots portal />}
       <form onSubmit={handleLogin} className={styles.form}>
         <Input
           placeholder="Email"

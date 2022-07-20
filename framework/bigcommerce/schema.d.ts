@@ -1,3 +1,5 @@
+import { CustomerAddress } from 'framework/custom-interfaces/customer-address'
+
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
@@ -379,6 +381,7 @@ export type Customer = {
   storeCredit: Array<Money>
   /** Customer attributes. */
   attributes: CustomerAttributes
+  addresses?: CustomerAddress[]
 }
 
 /** A custom, store-specific attribute for a customer */
@@ -1658,6 +1661,7 @@ export type GetLoggedInCustomerQuery = { __typename?: 'Query' } & {
       | 'phone'
       | 'addressCount'
       | 'attributeCount'
+      | 'addresses'
     > & {
         storeCredit: Array<
           { __typename?: 'Money' } & Pick<Money, 'value' | 'currencyCode'>
