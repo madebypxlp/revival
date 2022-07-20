@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
-import { Container, Grid, Skeleton } from '@components/ui'
+import { Skeleton } from '@components/ui'
 
 import { getConfig } from '@framework/api'
 import useSearch from '@framework/product/use-search'
@@ -91,7 +91,7 @@ export default function Search({
   }
 
   return (
-    <Container>
+    <div>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-3 mb-20">
         <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
           {/* Categories */}
@@ -256,7 +256,7 @@ export default function Search({
           )}
 
           {data ? (
-            <Grid layout="normal">
+            <div layout="normal">
               {data.products.map((product: Product) => (
                 <ProductCard
                   variant="simple"
@@ -269,9 +269,9 @@ export default function Search({
                   }}
                 />
               ))}
-            </Grid>
+            </div>
           ) : (
-            <Grid layout="normal">
+            <div layout="normal">
               {rangeMap(12, (i) => (
                 <Skeleton
                   key={i}
@@ -279,7 +279,7 @@ export default function Search({
                   height={325}
                 />
               ))}
-            </Grid>
+            </div>
           )}
         </div>
 
@@ -372,7 +372,7 @@ export default function Search({
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   )
 }
 

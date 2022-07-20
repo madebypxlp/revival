@@ -51,7 +51,7 @@ const ProductView: FC<Props> = ({ product }) => {
   }
 
   return (
-    <Container className="max-w-none w-full" clean>
+    <div className="max-w-none w-full">
       <NextSeo
         title={product.name}
         description={product.description}
@@ -134,7 +134,7 @@ const ProductView: FC<Props> = ({ product }) => {
             ))}
 
             <div className="pb-14 break-words w-full max-w-xl">
-              <Text html={product.description} />
+              <span>{product.description}</span>
             </div>
           </section>
           <div>
@@ -158,7 +158,7 @@ const ProductView: FC<Props> = ({ product }) => {
           />
         )}
       </div>
-    </Container>
+    </div>
   )
 }
 

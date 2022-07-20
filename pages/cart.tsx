@@ -130,7 +130,7 @@ export default function Cart({
                 color="yellow"
                 variant="large"
                 type="default"
-                href={isEmpty ? '/' : '/checkoutt'}
+                href={isEmpty ? '/' : '/checkout'}
                 className="w-full text-center"
               >
                 {isEmpty

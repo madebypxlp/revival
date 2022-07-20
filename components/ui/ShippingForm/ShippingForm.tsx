@@ -204,7 +204,7 @@ const ShippingForm: FunctionComponent<IShippingForm> = (props) => {
           color="yellow"
           variant="large"
           type="default"
-          onClick={onSubmit(shippingData)}
+          onClick={() => onSubmit(shippingData)}
         >
           {Translations.SHIPPING_FORM.SAVE_AND_CONTINUE}
         </Button>
