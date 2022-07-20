@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import type { Product } from '@commerce/types'
-import { Grid } from '@components/ui'
 import { ProductCard } from '@components/product'
 import { getCategoryPath } from '@lib/search'
 import s from './HomeAllProductsGrid.module.scss'
@@ -32,19 +31,20 @@ const HomeAllProductsGrid: FC<Props> = ({ categories, products = [] }) => (
       </div>
     </div>
     <div className="flex-1">
-      <Grid layout="normal">
+      <div className="default-grid">
         {products.map((product) => (
-          <ProductCard
-            key={product.path}
-            product={product}
-            variant="simple"
-            imgProps={{
-              width: 480,
-              height: 480,
-            }}
-          />
+          <div key={product.path} className="col-span-4">
+            <ProductCard
+              product={product}
+              variant="simple"
+              imgProps={{
+                width: 480,
+                height: 480,
+              }}
+            />
+          </div>
         ))}
-      </Grid>
+      </div>
     </div>
   </div>
 )

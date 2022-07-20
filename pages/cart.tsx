@@ -141,7 +141,7 @@ export default function Cart({
           </div>
         )}
       </div>
-      {data?.relatedProducts && !isEmpty && (
+      {data?.relatedProducts && data.relatedProducts.length > 0 && (
         <ProductCardGrid
           products={data?.relatedProducts}
           headline={Translations.YOU_MAY_ALSO_LIKE}

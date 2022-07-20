@@ -1,3 +1,5 @@
+import { CatalogProductVariant } from './catalog-product-variant'
+
 export interface OrderProduct {
   id: number
   order_id: number
@@ -52,4 +54,5 @@ export interface OrderProduct {
   applied_discounts: any[]
   product_options: any[]
   configurable_fields: any[]
+  variant?: CatalogProductVariant
 }

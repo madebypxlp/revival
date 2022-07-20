@@ -34,6 +34,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
 
   const getProductDetails = getCatalogProduct({ productId: product.productId })
 
+  console.log(getProductDetails)
   const updateItem = useUpdateItem({ item: product })
   const isMobile = useIsMobile()
   const removeCartItem = useRemoveItem()

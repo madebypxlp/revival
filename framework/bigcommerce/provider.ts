@@ -19,6 +19,8 @@ import { handler as listOrderProducts } from './orders/order-products/order-prod
 import { handler as getOrderShippingAddresses } from './orders/order-shipping-addresses/order-shipping-addresses'
 import { handler as getOrderShipments } from './orders/order-shipments/order-shipments'
 import { handler as getCatalogProduct } from './catalog/products/product'
+import { handler as getAcceptedPaymentMethods } from './payment/get-accepted-payment-methods'
+import { handler as getCheckout } from './checkout/get-checkout'
 
 import fetcher from './fetcher'
 
@@ -43,6 +45,12 @@ export const bigcommerceProvider = {
     listOrderProducts,
     getOrderShippingAddresses,
     getOrderShipments,
+  },
+  payments: {
+    getAcceptedPaymentMethods,
+  },
+  checkout: {
+    getCheckout,
   },
 }
 
