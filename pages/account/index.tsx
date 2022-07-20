@@ -45,7 +45,7 @@ export default function Profile({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data = null, isLoading, error } = useCustomer()
   const router = useRouter()
-  const THE_REAL_ORDERS = useOrders()
+  const orders = useOrders().data
 
   const { setModalView, openModal, closeModal } = useUI()
 
@@ -88,7 +88,13 @@ export default function Profile({
                   {Translations.ACCOUNT.VIEW_ALL_ORDERS}
                 </ArrowCTA>
               </div>
-              <OrdersBox orders={[]} variant="account" className="mb-85" />
+              {orders && (
+                <OrdersBox
+                  orders={orders}
+                  variant="account"
+                  className="mb-85"
+                />
+              )}
               <AccountLinkGroup />
             </div>
 
