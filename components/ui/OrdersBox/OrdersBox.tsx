@@ -29,80 +29,98 @@ const OrdersBox: FunctionComponent<IOrdersBox> = (props) => {
     >
       {isMobile &&
         orders.map((o) => (
-          <div
-            key={o.id}
-            className={c(styles.orderContainer, 'grid grid-cols-2 gap-x-20')}
-          >
-            <div className={c(styles.orderId)}>
-              <div className={styles.title}>
-                {Translations.ACCOUNT.ORDER_NUMBER}
+          <NextLink key={o.id} href={`/account/orders?id=${o.id}`}>
+            <a>
+              <div
+                className={c(
+                  styles.orderContainer,
+                  'grid grid-cols-2 gap-x-20'
+                )}
+              >
+                <div className={c(styles.orderId)}>
+                  <div className={styles.title}>
+                    {Translations.ACCOUNT.ORDER_NUMBER}
+                  </div>
+                  <div className={styles.regular}>{o.id}</div>
+                </div>
+                <div className={c(styles.placed)}>
+                  <div className={styles.title}>
+                    <span>{Translations.ACCOUNT.PLACED}</span>
+                    <ChevronUp />
+                  </div>
+                  <div className={styles.regular}>{printOrderDate(o)}</div>
+                </div>
+                <div className={c(styles.sentTo)}>
+                  <div className={styles.title}>
+                    {Translations.ACCOUNT.SENT_TO}
+                  </div>
+                  <div className={styles.regular}>
+                    {o.shipping_addresses.resource}
+                  </div>
+                </div>
+                <div className={c(styles.total)}>
+                  <div className={styles.title}>
+                    {Translations.ACCOUNT.TOTAL}
+                  </div>
+                  <div className={styles.regular}> {printTotalPrice(o)}</div>
+                </div>
+                <div className={c(styles.status)}>
+                  <div className={styles.title}>
+                    {Translations.ACCOUNT.STATUS}
+                  </div>
+                  <div className={styles.regular}>{o.status}</div>
+                </div>
               </div>
-              <div className={styles.regular}>{o.id}</div>
-            </div>
-            <div className={c(styles.placed)}>
-              <div className={styles.title}>
-                <span>{Translations.ACCOUNT.PLACED}</span>
-                <NextLink href={`/account/orders?id=${o.id}`}>
-                  <ChevronUp />
-                </NextLink>
-              </div>
-              <div className={styles.regular}>{printOrderDate(o)}</div>
-            </div>
-            <div className={c(styles.sentTo)}>
-              <div className={styles.title}>{Translations.ACCOUNT.SENT_TO}</div>
-              <div className={styles.regular}>
-                {o.shipping_addresses.resource}
-              </div>
-            </div>
-            <div className={c(styles.total)}>
-              <div className={styles.title}>{Translations.ACCOUNT.TOTAL}</div>
-              <div className={styles.regular}> {printTotalPrice(o)}</div>
-            </div>
-            <div className={c(styles.status)}>
-              <div className={styles.title}>{Translations.ACCOUNT.STATUS}</div>
-              <div className={styles.regular}>{o.status}</div>
-            </div>
-          </div>
+            </a>
+          </NextLink>
         ))}
       {!isMobile &&
         orders.map((o) => (
-          <div
+          <NextLink
+            className={styles.orderLink}
             key={o.id}
-            className={c(styles.orderContainer, 'grid grid-cols-11 gap-x-20')}
+            href={`/account/orders?id=${o.id}`}
           >
-            <div className={c(styles.title, styles.orderId)}>
-              {Translations.ACCOUNT.ORDER_NUMBER}
-            </div>
-            <div className={c(styles.title, styles.placed)}>
-              {Translations.ACCOUNT.PLACED}
-            </div>
-            <div className={c(styles.title, styles.sentTo)}>
-              {Translations.ACCOUNT.SENT_TO}
-            </div>
-            <div className={c(styles.title, styles.total)}>
-              {Translations.ACCOUNT.TOTAL}
-            </div>
-            <div className={c(styles.title, styles.status)}>
-              {Translations.ACCOUNT.STATUS}
-            </div>
+            <a>
+              <div
+                className={c(
+                  styles.orderContainer,
+                  'grid grid-cols-11 gap-x-20'
+                )}
+              >
+                <div className={c(styles.title, styles.orderId)}>
+                  {Translations.ACCOUNT.ORDER_NUMBER}
+                </div>
+                <div className={c(styles.title, styles.placed)}>
+                  {Translations.ACCOUNT.PLACED}
+                </div>
+                <div className={c(styles.title, styles.sentTo)}>
+                  {Translations.ACCOUNT.SENT_TO}
+                </div>
+                <div className={c(styles.title, styles.total)}>
+                  {Translations.ACCOUNT.TOTAL}
+                </div>
+                <div className={c(styles.title, styles.status)}>
+                  {Translations.ACCOUNT.STATUS}
+                </div>
 
-            <div className={c(styles.regular, styles.orderId)}>{o.id}</div>
-            <div className={c(styles.regular, styles.placed)}>
-              {printOrderDate(o)}
-            </div>
-            <div className={c(styles.regular, styles.sentTo)}>
-              {o.shipping_addresses?.resource}
-            </div>
-            <div className={c(styles.regular, styles.total)}>
-              {printTotalPrice(o)}
-            </div>
-            <div className={c(styles.regular, styles.status)}>
-              <span>{o.status}</span>
-              <NextLink href={`/account/orders?id=${o.id}`}>
-                <ChevronUp />
-              </NextLink>
-            </div>
-          </div>
+                <div className={c(styles.regular, styles.orderId)}>{o.id}</div>
+                <div className={c(styles.regular, styles.placed)}>
+                  {printOrderDate(o)}
+                </div>
+                <div className={c(styles.regular, styles.sentTo)}>
+                  {o.shipping_addresses?.resource}
+                </div>
+                <div className={c(styles.regular, styles.total)}>
+                  {printTotalPrice(o)}
+                </div>
+                <div className={c(styles.regular, styles.status)}>
+                  <span>{o.status}</span>
+                  <ChevronUp />
+                </div>
+              </div>
+            </a>
+          </NextLink>
         ))}
     </div>
   )
