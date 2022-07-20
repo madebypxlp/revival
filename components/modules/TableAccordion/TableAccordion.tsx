@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useRef } from 'react'
+import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import Accordion from '@components/ui/Accordion/Accordion'
 import parse from 'html-react-parser'
 import styles from './TableAccordion.module.scss'
@@ -8,11 +8,23 @@ const TableAccordionModule: FunctionComponent<{ module: ITableAccordion }> = ({
   module,
 }) => {
   const { accordion } = module
-  const [openAccordion, setOpenAccordion] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(-1)
   const ref = useRef<HTMLDivElement>(null)
   const handleClick = () => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  useEffect(() => {
+    if (activeIndex > -1) {
+      const d = document.querySelector(`.acc-${activeIndex}`)
+      if (d) {
+        setTimeout(() => {
+          d.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 500)
+      }
+    }
+  }, [activeIndex])
+
   return (
     <div className={`${styles.root} container default-grid`}>
       <div className=" col-span-2 md:col-span-10 md:col-start-2" ref={ref}>
@@ -21,8 +33,9 @@ const TableAccordionModule: FunctionComponent<{ module: ITableAccordion }> = ({
             <Accordion
               key={item.headline}
               headline={item.headline}
-              open={openAccordion === index}
-              onOpen={() => setOpenAccordion(index)}
+              open={activeIndex === index}
+              onOpen={() => setActiveIndex(index)}
+              className={`acc-${index}`}
             >
               {item.rows.map((row) => (
                 <div
