@@ -97,5 +97,7 @@ const Translations = {
   },
   UPDATE_SHIPMENTS: 'Update Shipments',
   SAVE_UPDATES: 'Save Updates',
+  FREE: 'FREE',
+  REMOVE: 'Remove',
 }
 export default Translations

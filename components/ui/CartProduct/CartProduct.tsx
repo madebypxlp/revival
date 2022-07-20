@@ -6,6 +6,7 @@ import getCatalogProduct from '@framework/catalog/products/product'
 import { useIsMobile } from '@commerce/utils/hooks'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import Translations from 'constants/translations'
+import { formatPrice } from '@lib/utils'
 import AlertIcon from '@components/icons/AlertIcon'
 import Button from '../Button/Button'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
@@ -67,8 +68,12 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
           styles.rightColumnContainer
         )}
       >
-        <div className={styles.productPrice}>A</div>
-        <div className={styles.productOldPrice}>XXX OLD</div>
+        <div className={styles.productPrice}>
+          {formatPrice(product.variant.price)}
+        </div>
+        <div className={styles.productOldPrice}>
+          {formatPrice(product.variant.listPrice)}
+        </div>
       </div>
     )
   } else if (rightColumn === 'edit-details') {
@@ -112,6 +117,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     if (loading) setLoading(false)
   }, [product.quantity])
 
+  console.log(product)
   return (
     <div className={rootClasses}>
       {loading && <LoadingDots portal />}
@@ -203,7 +209,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             </div>
             <div className={styles.controlLinksContainer}>
               <button color="black" onClick={handleRemove}>
-                Remove
+                {Translations.REMOVE}
               </button>
             </div>
           </>

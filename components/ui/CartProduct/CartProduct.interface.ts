@@ -1,4 +1,5 @@
 import { LineItem } from '@commerce/types'
+import { OrderProduct } from 'framework/custom-interfaces/order-products'
 
 export interface IVetInfo {
   vet: string
