@@ -48,6 +48,7 @@ const Translations = {
     MY_PETS: 'My Pet(s)',
     MY_VETS: 'My Vet',
     MY_FAVORITES: 'My Favorites',
+    NO_ITEMS_IN_FAVORITES: 'No items in Wishlist',
     ORDER_NUMBER: 'Order #',
     PLACED: 'Placed',
     SENT_TO: 'Sent To',
@@ -114,5 +115,7 @@ const Translations = {
   },
   UPDATE_SHIPMENTS: 'Update Shipments',
   SAVE_UPDATES: 'Save Updates',
+  FREE: 'FREE',
+  REMOVE: 'Remove',
 }
 export default Translations

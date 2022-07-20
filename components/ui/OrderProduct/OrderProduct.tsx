@@ -10,15 +10,14 @@ import { formatPrice } from '@lib/utils'
 import AlertIcon from '@components/icons/AlertIcon'
 import Button from '../Button/Button'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
-import ICartProduct from './CartProduct.interface'
-import styles from './CartProduct.module.scss'
+import IOrderProduct from './OrderProduct.interface'
+import styles from './OrderProduct.module.scss'
 import Dropdown from '../Dropdown/Dropdown'
 import LoadingDots from '../LoadingDots/LoadingDots'
 
-const CartProduct: FunctionComponent<ICartProduct> = (props) => {
+const OrderProduct: FunctionComponent<IOrderProduct> = (props) => {
   const {
-    product,
-    showCartControls,
+    orderProduct,
     variant,
     className,
     showPrescriptionIcon,
@@ -32,34 +31,12 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     vetInfo,
   } = props
 
-  const getProductDetails = getCatalogProduct({ productId: product.productId })
+  const catalogProduct = getCatalogProduct({
+    productId: orderProduct.product_id,
+  })
 
-  console.log('product details')
-  console.log(getProductDetails)
-  const updateItem = useUpdateItem({ item: product })
   const isMobile = useIsMobile()
-  const removeCartItem = useRemoveItem()
-  const [quantity, setQuantity] = useState(product.quantity)
   const [loading, setLoading] = useState(false)
-
-  const updateQuantity = async (val: number) => {
-    setLoading(true)
-    await updateItem({ quantity: val })
-  }
-  const handleRemove = async () => {
-    setLoading(true)
-    await removeCartItem(product).finally(() => {
-      setLoading(false)
-    })
-  }
-
-  const increaseQuantity = (n = 1) => {
-    const val = Number(quantity) + n
-    if (Number.isInteger(val) && val >= 0) {
-      setQuantity(val)
-      updateQuantity(val)
-    }
-  }
 
   let rightColumnComponent
   if (rightColumn === 'price') {
@@ -71,10 +48,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         )}
       >
         <div className={styles.productPrice}>
-          {formatPrice(product.variant.price)}
-        </div>
-        <div className={styles.productOldPrice}>
-          {formatPrice(product.variant.listPrice)}
+          {formatPrice(parseFloat(orderProduct.total_ex_tax))}
         </div>
       </div>
     )
@@ -111,23 +85,14 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     className
   )
 
-  useEffect(() => {
-    // Reset the quantity state if the item quantity changes
-    if (product.quantity !== Number(quantity)) {
-      setQuantity(product.quantity)
-    }
-    if (loading) setLoading(false)
-  }, [product.quantity])
-
-  console.log(product)
   return (
     <div className={rootClasses}>
       {loading && <LoadingDots portal />}
       <div className={styles.productImageContainer}>
-        {product.variant.image?.url && (
+        {orderProduct.variant?.image_url && (
           <ProductCardImage
             isPrescription={showPrescriptionIcon}
-            imageUrl={product.variant.image.url}
+            imageUrl={orderProduct.variant.image_url}
             variant={variant}
           />
         )}
@@ -135,9 +100,11 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
       {isMobile && rightColumn !== 'empty' && rightColumnComponent}
       <div className={styles.infoContainer}>
         <div className={styles.productNameContainer}>
-          <div className={styles.productName}>{product.name}</div>
-          <div className={styles.productId}>#{product.id}</div>
-          <div className={styles.productId}>{product.variant.name}</div>
+          <div className={styles.productName}>{orderProduct.name}</div>
+          <div className={styles.productId}>#{orderProduct.product_id}</div>
+          {orderProduct.variant && (
+            <div className={styles.productId}>{orderProduct.name}</div>
+          )}
         </div>
         {!isMobile && rightColumn !== 'empty' && rightColumnComponent}
         {shippingRestrictionsMessage && (
@@ -200,22 +167,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             ))}
           </div>
         )}
-        {showCartControls && (
-          <>
-            <div className={styles.cartProductQuantityControls}>
-              <div>
-                <button onClick={() => increaseQuantity(-1)}>-</button>
-                <div>{product.quantity}</div>
-                <button onClick={() => increaseQuantity(1)}>+</button>
-              </div>
-            </div>
-            <div className={styles.controlLinksContainer}>
-              <button color="black" onClick={handleRemove}>
-                {Translations.REMOVE}
-              </button>
-            </div>
-          </>
-        )}
       </div>
       {vetInfo && (
         <div className={styles.approvalMethodContainer}>
@@ -234,4 +185,4 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   )
 }
 
-export default CartProduct
+export default OrderProduct

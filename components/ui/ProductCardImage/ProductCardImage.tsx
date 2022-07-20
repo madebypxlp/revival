@@ -23,7 +23,11 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
   return (
     <div className={c(styles.root, variant && styles[`variant--${variant}`])}>
       <div className={styles.imageContainer}>
-        {imageUrl && <Image src={imageUrl} layout="fill" objectFit="contain" />}
+        <div className="h-full relative">
+          {imageUrl && (
+            <Image src={imageUrl} alt="" layout="fill" objectFit="contain" />
+          )}
+        </div>
       </div>
       <div className="flex flex-col justify-between h-full">
         <div className={styles.row}>

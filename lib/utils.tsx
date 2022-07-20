@@ -1,3 +1,4 @@
+import Translations from 'constants/translations'
 import dayjs from 'dayjs'
 
 /**
@@ -36,8 +37,11 @@ export const getBlogSlugAndPage = (_slug: string | string[] | undefined) => {
 // todo: at some point there might be a date format cno
 export const formatDate = (d: Date): string => dayjs(d).format('MMM DD, YYYY')
 
-export const formatPrice = (price: number) => {
-  if (price) {
+export const formatPrice = (price: number, zeroAsFree?: boolean) => {
+  if (price || price === 0) {
+    if (price === 0 && zeroAsFree) {
+      return Translations.FREE
+    }
     return `$${price.toFixed(2)}`
   }
   return ':('
