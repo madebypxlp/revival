@@ -12,11 +12,13 @@
   :global(.swiper-button-prev) {
     @apply -translate-x-25;
     @apply md:translate-x-0;
+    @apply w-50 md:w-70 h-auto;
   }
 
   :global(.swiper-button-next) {
     @apply translate-x-25;
     @apply md:translate-x-0;
+    @apply w-50 md:w-70 h-auto;
   }
 
   :global(.swiper-button-disabled) {
@@ -59,4 +61,5 @@
       @apply md:top-[152px];
     }
   }
+
 }
