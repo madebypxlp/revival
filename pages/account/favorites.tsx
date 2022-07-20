@@ -10,12 +10,10 @@ import useWishlist from '@framework/wishlist/use-wishlist'
 import getAllPages from '@framework/common/get-all-pages'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
-import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './favorites.module.scss'
-import { WishlistCard } from '@components/wishlist'
 
 export async function getStaticProps({
   preview,
@@ -47,7 +45,7 @@ export default function Wishlist({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data: customer } = useCustomer()
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
-
+  const wishlistItems = data
   return (
     <div className={styles.root}>
       <AccountHero
@@ -57,11 +55,13 @@ export default function Wishlist({
       <div className="container">
         <AccountBreadcrumbs current={Translations.ACCOUNT.MY_FAVORITES} />
       </div>
-      {data?.items
-        ? 'WE MIGHT NEED A NEW INTERFACE HERE'
-        : 'No Items in Wishlist'}
-
       <div className="container">
+        {!wishlistItems?.items && (
+          <div className={styles.noWishlistItem}>
+            <h5>{Translations.ACCOUNT.NO_ITEMS_IN_FAVORITES}</h5>
+          </div>
+        )}
+
         <AccountLinkGroup mobileOnly className="mb-250" />
       </div>
     </div>
