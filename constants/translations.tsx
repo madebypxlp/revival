@@ -102,6 +102,23 @@ const Translations = {
     YOUR_ACCOUNT: 'Your Account',
     CART: 'Cart',
   },
+  SHIPPING_FORM: {
+    FIRST_NAME: 'First Name',
+    LAST_NAME: 'Last Name',
+    ADDRESS_ONE: 'Address 1',
+    ADDRESS_TWO: 'Address 2',
+    COMPANY: 'Company',
+    COUNTRY: 'Country',
+    CITY: 'City',
+    STATE_PROVINCE: 'State/Province',
+    POSTAL_CODE: 'Postal Code',
+    PHONE_NUMBER: 'Phone Number',
+    COMMENTS: 'Comments',
+    DONT_SEE_YOUR_STATE: "Don't See Your State?",
+    NO_STATE_MESSAGE:
+      'If your state isn’t listed in the dropdown delow, you have products in your cart that have shipping restrictions for your state. Check your cart to see which product(s) have state shipping restrictions. Ignore this message if your state is showing in the dropdown below.',
+    SAVE_AND_CONTINUE: 'Save and Continue',
+  },
   UPDATE_SHIPMENTS: 'Update Shipments',
   SAVE_UPDATES: 'Save Updates',
 }

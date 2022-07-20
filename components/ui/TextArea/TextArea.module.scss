@@ -1,0 +1,14 @@
+.root {
+  textarea {
+    width: 100%;
+    @apply typo-input font-bold;
+    @apply py-14 px-20;
+    @apply bg-greyscale-6;
+    @apply border-greyscale-6 rounded-15;
+
+    @apply focus:border-blue;
+    ::placeholder {
+      @apply text-greyscale-3;
+    }
+  }
+}
