@@ -1,4 +1,4 @@
-import { LineItem } from '@commerce/types'
+import { OrderProduct } from 'framework/custom-interfaces/order-products'
 
 export interface IVetInfo {
   vet: string
@@ -6,11 +6,10 @@ export interface IVetInfo {
   quantity: number
 }
 
-export default interface ICartProduct {
-  product: LineItem
+export default interface IOrderProduct {
+  orderProduct: OrderProduct
   variant: 'cart' | 'sidebar' | 'checkout' | 'account'
   className?: string
-  showCartControls?: boolean
   showPrescriptionIcon?: boolean
   showPrescriptionLabel?: boolean
   showPrescriptionExtraInfo?: boolean

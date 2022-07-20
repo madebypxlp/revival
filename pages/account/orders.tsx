@@ -17,7 +17,7 @@ import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
 import Button from '@components/ui/Button/Button'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
-import CartProduct from '@components/ui/CartProduct/CartProduct'
+import OrderProduct from '@components/ui/OrderProduct/OrderProduct'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
@@ -102,17 +102,17 @@ export default function Profile({
               <div>{order?.shipping_addresses.resource}</div>
             </div>
           </div>
-          {/* orderProducts &&
+          {orderProducts &&
             orderProducts.map((p) => (
-              <CartProduct
+              <OrderProduct
                 key={p.id}
                 className={styles.product}
-                product={p}
+                orderProduct={p}
                 currencyCode="USD"
                 variant="account"
                 showBuyItAgain
               />
-            )) */}
+            ))}
           <div className="default-grid">
             <div className={styles.summaryContainer}>
               <div className={c(styles.row, styles.title)}>
