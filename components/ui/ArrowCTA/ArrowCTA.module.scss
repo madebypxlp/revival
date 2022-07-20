@@ -57,6 +57,12 @@
         stroke: theme('colors.white');
       }
     }
+    &.yellow {
+      color: theme('colors.yellow.default');
+      svg path {
+        stroke: theme('colors.yellow.default');
+      }
+    }
 
     &.disabled {
       pointer-events: none;

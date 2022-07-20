@@ -5,7 +5,7 @@ export default interface IArrowCTA {
   children?: ReactNode
   href?: string
   target?: string
-  color: 'blue' | 'black' | 'white'
+  color: 'blue' | 'black' | 'white' | 'yellow'
   orientation: 'up' | 'down' | 'right'
   disabled?: boolean
   link?: Link
