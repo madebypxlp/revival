@@ -1,0 +1,31 @@
+.root {
+  column-gap: 2rem;
+
+  .formInput {
+    @apply col-span-2 md:col-span-1;
+    @apply mb-20 md:mb-70;
+  }
+
+  .formDropdown {
+    @apply col-span-2 md:col-span-1;
+    @apply mb-40 md:mb-100;
+  }
+
+  .noStateCTA {
+    @apply col-span-2;
+    @apply -mt-20 md:-mt-35;
+    margin-bottom: 1rem;
+    text-align: right;
+  }
+
+  .noStateMessageContainer {
+    @apply col-span-2;
+    @apply typo-large-paragraph;
+    padding: 4.5rem 3rem;
+    margin-bottom: 1rem;
+    border: 0.15rem solid theme('colors.greyscale.4');
+    border-radius: 1.5rem;
+    color: theme('colors.blue.default');
+    text-align: center;
+  }
+}
