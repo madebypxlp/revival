@@ -6,4 +6,5 @@ export default interface IAccordion {
   headline: String
   children?: ReactNode
   variant?: 'pdp'
+  className?: string
 }
