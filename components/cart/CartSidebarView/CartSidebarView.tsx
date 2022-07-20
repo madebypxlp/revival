@@ -14,7 +14,9 @@ import styles from './CartSidebarView.module.scss'
 const CartSidebarView: FC = () => {
   const router = useRouter()
   const { closeSidebar } = useUI()
-  const { data, isLoading, isEmpty } = useCart()
+  const { data, isLoading, isEmpty, error } = useCart()
+
+  console.log(data, error)
 
   const { price: subTotal } = usePrice(
     data && {
@@ -29,7 +31,7 @@ const CartSidebarView: FC = () => {
     }
   )
 
-  const error = null
+  //const error = null
   const success = null
   const products = data?.lineItems || []
 

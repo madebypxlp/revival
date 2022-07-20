@@ -37,6 +37,7 @@ const cartApi: BigcommerceApiHandler<BigcommerceCart, CartHandlers> = async (
   const { cookies } = req
   const cartId = cookies[config.cartCookie]
 
+  console.log('CART ID: ', config)
   try {
     // Return current cart info
     if (req.method === 'GET') {

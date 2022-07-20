@@ -29,6 +29,7 @@ const getCart: CartHandlers['getCart'] = async ({
         const relatedProducts = products
           .map((e) => e.data.related_products)
           .flat()
+          .filter((e) => e > -1)
 
         const finalData = (await Promise.all(
           relatedProducts.map((e) => {
@@ -44,9 +45,10 @@ const getCart: CartHandlers['getCart'] = async ({
         }
       }
     } catch (error) {
+      console.log(error)
       if (error instanceof BigcommerceApiError && error.status === 404) {
         // Remove the cookie if it exists but the cart wasn't found
-        res.setHeader('Set-Cookie', getCartCookie(config.cartCookie))
+        //  res.setHeader('Set-Cookie', getCartCookie(config.cartCookie))
       } else {
         throw error
       }
