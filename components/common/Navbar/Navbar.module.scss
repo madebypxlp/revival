@@ -44,8 +44,18 @@
 
   .marketingBoxContainer {
     @apply absolute top-0 -right-85 bottom-0 overflow-hidden hidden md:block;
-    // 2 columns + 85px to the right - 20px gap to the left
-    width: calc((100% / 12 * 2) + 8.5rem - 2rem);
+
+    // 3 columns + 85px to the right - 40px gap to the left
+    width: calc((100% / 12 * 3) + 8.5rem);
+
+    @screen xl {
+      // 2 columns + 85px to the right - 20px gap to the left
+      // + remainder of screen size to the right up to 120px
+      width: calc(
+        (100% / 12 * 2) + 8.5rem - 2rem + min((100vw - 1560px) / 2, 12rem)
+      );
+      right: calc(-8.5rem - min((100vw - 1560px) / 2, 12rem));
+    }
   }
 
   .marketingBoxHeading {
@@ -142,5 +152,10 @@
     margin-bottom: 2px;
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, #e0e0e0 0%, rgba(255, 255, 255, 0) 60%);
+  }
+
+  .NavigationLayoutsDogsColumn {
+    @apply col-start-1 grid  gap-x-20 col-span-full grid-cols-2;
+    @apply md:col-start-3 md:col-span-8 md:grid-rows-9 md:grid-cols-8 md:grid-flow-col;
   }
 }

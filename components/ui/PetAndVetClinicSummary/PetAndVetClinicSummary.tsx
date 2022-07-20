@@ -9,9 +9,12 @@ import { ModalActions, ModalContent } from '../Modal/Modal'
 import Button from '../Button/Button'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Input from '../Input/Input'
+import { useUI } from '../context'
 import PlusCTA from '../PlusCTA/PlusCTA'
 import SearchResultCard from '../SearchForVetClinicResult/SearchForVetClinicResult'
 import CartProduct from '../CartProduct/CartProduct'
+import { SAMPLE_PRODUCT } from '../ComponentRenderer/ComponentRenderer'
+import { IClinic, IPet } from '../ModalFlowComponent/ModalFlowContext'
 
 const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
   props
@@ -21,51 +24,20 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
   const [petType, setPetType] = useState<Object>()
   const [petCount, setPetCount] = useState<Object>({ 0: 0 })
   const [addPetCount, setAddPetCount] = useState(1)
+  const {
+    setModalFlowView,
+    closeModalFlow,
+    clinicData,
+    petData,
+    setContactClinicBoolean,
+    setEmailMyselfBoolean,
+  } = useUI()
 
   const handleAddPet = () => {
     setAddPetCount((prev) => prev + 1)
   }
 
-  const dummyClinic = {
-    clinic: 'Beach City Animal Hospital - Redondo Beach',
-    address: '2147 Warner Ave, Redondo Beach, CA 90277',
-    phone: '(949) 500-1000',
-  }
-  const clinics = [dummyClinic, dummyClinic]
-
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
+  const clinics = clinicData
 
   return (
     <Modal title={title || 'Add a Pet'} open={open} onClose={() => onClose()}>
@@ -73,12 +45,12 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
         <div className={`${styles.root} pt-10 default-grid`}>
           <CartProduct
             className={cn(styles.product, 'mb-30')}
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
             variant="cart"
             rightColumn="empty"
             showPrescriptionIcon
             showPrescriptionLabel
+            currencyCode="USD"
             showPrescriptionExtraInfo
           />
 
@@ -101,11 +73,16 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
                     return { ...prevState, [index]: o?.value }
                   })
                 }
-                placeholder="Pet Type"
-                options={[
-                  { label: 'Cat', value: 'cat' },
-                  { label: 'Dog', value: 'dog' },
-                ]}
+                placeholder="Select your Pet"
+                options={
+                  petData &&
+                  petData.map((pet: IPet) => {
+                    return {
+                      label: pet.name,
+                      value: pet.name,
+                    }
+                  })
+                }
                 className="col-span-2 md:col-span-6 md:col-start-1 mb-25"
               />
               <div className="col-span-2 md:col-span-3 md:ml-30 ml-0 self-center">
@@ -128,7 +105,12 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
               <PlusCTA onClick={handleAddPet}>Add Another Pet</PlusCTA>
             </div>
 
-            <Button variant="large" color="yellow" className="">
+            <Button
+              variant="large"
+              color="yellow"
+              className=""
+              onClick={() => setModalFlowView('ADD_NEW_PET_VIEW')}
+            >
               Add A New Pet
             </Button>
           </div>
@@ -138,7 +120,7 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
           </h3>
           <div className="col-span-2 md:col-span-9 -mr-10">
             {clinics &&
-              clinics.map((clinic) => (
+              clinics.map((clinic: IClinic) => (
                 <SearchResultCard
                   noButton
                   key={clinic.clinic}
@@ -150,7 +132,12 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
           </div>
 
           <div className="col-span-2 md:col-span-12 flex justify-center md:justify-end ">
-            <Button variant="large" color="yellow" className="mt-10 mb:mt-0">
+            <Button
+              variant="large"
+              color="yellow"
+              className="mt-10 mb:mt-0"
+              onClick={() => setModalFlowView('ADD_VET_CLINIC_VIEW')}
+            >
               Add A Vet Clinic
             </Button>
           </div>
@@ -160,7 +147,13 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
           </h3>
           <div className="col-span-2 md:col-span-12">
             <div className="flex items-start mb-20 md:mb-0">
-              <Input name="method" className="basis-20" type="radio" square />
+              <Input
+                name="method"
+                className="basis-20"
+                type="radio"
+                square
+                onClick={setContactClinicBoolean}
+              />
               <div className="typo-fact">Contact my vet clinic for me</div>
             </div>
             <div className="flex items-start">
@@ -169,6 +162,7 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
                 className="md:-mb-30 basis-20"
                 type="radio"
                 square
+                onClick={setEmailMyselfBoolean}
               />
               <div className="typo-fact">
                 I will mail the prescription to Revival Animal Health myself.
@@ -178,7 +172,7 @@ const PetAndVetClinicSummary: FunctionComponent<IPetAndVetClinicSummary> = (
         </div>
       </ModalContent>
       <ModalActions>
-        <Button variant="large" color="yellow">
+        <Button variant="large" color="yellow" onClick={closeModalFlow}>
           Done
         </Button>
       </ModalActions>

@@ -1,3 +1,4 @@
+/*  eslint-disable */
 import React, { FunctionComponent, useState } from 'react'
 import Translations from 'constants/translations'
 import styles from './ComponentRenderer.module.scss'
@@ -8,19 +9,22 @@ import PlusCTA from '../PlusCTA/PlusCTA'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
 import Link from '../Link/Link'
 import Input from '../Input/Input'
-import Dropdown from '../Dropdown/Dropdown'
-import Video from '../VideoComponent/VideoComponent'
 import { InputError } from '../Input/Input.interface'
 import AccountHero from '../AccountHero/AccountHero'
 import Accordion from '../Accordion/Accordion'
 import SearchForVetClinicDialog from '../SearchForVetClinicDialog/SearchForVetClinicDialog'
 import AddAPetModal from '../AddAPetModal/AddAPetModal'
+import ModalFlowComponent from '../ModalFlowComponent/ModalFlowComponent'
 import LoginModal from '../AuthModal/AuthModal'
 import AddCustomVetClinic from '../AddCustomVetClinic/AddCustomVetClinic'
 import { useUI } from '../context'
 import CartProduct from '../CartProduct/CartProduct'
 import AccountSettings from '../AccountSettings/AccountSettings'
 import PetAndVetClinicSummary from '../PetAndVetClinicSummary/PetAndVetClinicSummary'
+import IProductCard from '../ProductCard/ProductCard.interface'
+import { Product } from '@commerce/types'
+import { LineItem } from '@framework/types'
+import PDPAccordions from '../PDPAccordions/PDPAccordions'
 
 const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   // test for inputfield
@@ -37,39 +41,6 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
   const [searchModalOpen, setSearchModalOpen] = useState(false)
   const [petVetSummaryOpen, setPetVetSummaryOpen] = useState(false)
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
   const petAndVetInfo = {
     approvalMethod:
       'I will mail the prescription to Revival Animal Health myself.',
@@ -86,6 +57,23 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
       },
     ],
   }
+
+  const pdpAccordions = [
+    {
+      title: 'Description',
+      content:
+        '<b>Cautions:</b> Keep out of reach of children and pets. No data is available for use in pregnant animals and dogs with food allergies. Always consult your veterinarian before using their product in dogs with chronic medical conditions, such as a clotting disorder, diabetes, or urinary tract disease.<br><br><b>Flavor:</b> Roast beef and liver flavor<br><br><b>Storage:</b> Store at controlled room temperature. Avoid excessive heat.',
+    },
+    {
+      title: 'Instructions',
+      content:
+        '<b>Recommended Use:</b><br><br><b>Up to 15 lb</b><br>give up to ½ chew/day initially for the first 4 to 6 weeks. For maintenance, give up to ¼ chew/day<br><br><b>15-30 lb</b><br>give 1 chew/day initially for the first 4 to 6 weeks. For maintenance, give ½ chew/ day<br><br><b>31-60 lb</b><br>give 2 chews/day initially for the first 4 to 6 weeks. For maintenance, give 1 chew/ day',
+    },
+    {
+      title: 'Species Info',
+      content: 'For use in dog only',
+    },
+  ]
 
   return (
     <div className={`${styles.root}`}>
@@ -320,6 +308,13 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
             Login
           </Button>
           <LoginModal title="Title" />
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <h3>ModalFlow</h3>
+          <ModalFlowComponent />
         </div>
       </div>
       <div className="my-50 py-50">
@@ -333,23 +328,23 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 1) Cart (your cart) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             showCartControls
           />
           {/* 2) Cart (checkout 01A) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             showPrescriptionIcon
             showCartControls
@@ -357,16 +352,16 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 4) RX (checkout 01A)  */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="checkout"
             showPrescriptionLabel
           />
           {/* 5) RX Flow (info needed) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             rightColumn="empty"
             showPrescriptionIcon
@@ -376,8 +371,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 6) RX Flow (pet and vet clinic info) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             rightColumn="edit-details"
             showPrescriptionIcon
@@ -386,8 +381,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 7) Splitting shipments cart */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
             showCartControls
@@ -395,43 +390,44 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 8) Splitting shipments (checkout) */}
           <CartProduct
             className="my-20"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="checkout"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
           />
           {/* 9) Account (not finished, do not use yet) */}
           <CartProduct
             className="my-20"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="account"
           />
         </div>
       </div>
+
       <div className="my-50 py-50 container">
         <h1>Product components</h1>
         <div className="default-grid">
           {/* 1) Cart (your cart) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             showCartControls
           />
           {/* 2) Cart (checkout 01A) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="checkout"
           />
           {/* 3) RX Cart flow */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             showPrescriptionIcon
             showCartControls
@@ -439,16 +435,16 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 4) RX (checkout 01A)  */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="checkout"
             showPrescriptionLabel
           />
           {/* 5) RX Flow (info needed) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             rightColumn="empty"
             showPrescriptionIcon
@@ -458,8 +454,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 6) RX Flow (pet and vet clinic info) */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             rightColumn="edit-details"
             showPrescriptionIcon
@@ -468,8 +464,8 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 7) Splitting shipments cart */}
           <CartProduct
             className="my-20 md:col-start-1"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="cart"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
             showCartControls
@@ -477,24 +473,24 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           {/* 8) Splitting shipments (checkout) */}
           <CartProduct
             className="my-20"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="checkout"
             shippingRestrictionsMessage="1-Day Shipping Delay for this item"
           />
           {/* 9) Account (order detail) */}
           <CartProduct
             className="my-20"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="account"
             showBuyItAgain
           />
           {/* 10) Account (order detail RX) */}
           <CartProduct
             className="my-20"
-            product={product}
-            quantity={3}
+            product={SAMPLE_PRODUCT}
+            currencyCode="USD"
             variant="account"
             showPrescriptionIcon
             showPrescriptionLabel
@@ -503,8 +499,34 @@ const ComponentRenderer: FunctionComponent<IComponentRenderer> = () => {
           />
         </div>
       </div>
+
+      <div className="container">
+        <h2>PDP Accordions</h2>
+      </div>
+      <PDPAccordions accordions={pdpAccordions} />
     </div>
   )
 }
 
 export default ComponentRenderer
+
+export const SAMPLE_PRODUCT = {
+  discounts: [],
+  id: '41f6da4e-8f3a-4d5a-a914-030c89d1bf98',
+  name: 'Duramune Max 5',
+  path: 'duramune-max-5',
+  productId: '124',
+  quantity: 1,
+  variantId: '91',
+  variant: {
+    id: '91',
+    image: {
+      url: 'https://cdn11.bigcommerce.com/s-3xvwarb9yi/product…s/463/30301-415__31796.1657567018.220.290.jpg?c=1',
+    },
+    listPrice: 130.99,
+    name: 'Duramune Max 5',
+    price: 130.99,
+    requiresShipping: true,
+    sku: '30301-415',
+  },
+} as LineItem

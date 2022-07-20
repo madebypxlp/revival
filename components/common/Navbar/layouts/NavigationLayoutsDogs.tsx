@@ -1,10 +1,9 @@
 import { FunctionComponent } from 'react'
 import cn from 'classnames'
 import { NavigationLayoutsDogs } from 'framework/wordpress/interfaces/header'
-import NavigationMarketingBox from './NavigationMarketingBox'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import parse from 'html-react-parser'
-import { useIsMobile } from '@commerce/utils/hooks'
+import NavigationMarketingBox from './NavigationMarketingBox'
 import styles from '../Navbar.module.scss'
 
 const Navbar: FunctionComponent<{ module: NavigationLayoutsDogs }> = ({
@@ -15,8 +14,7 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsDogs }> = ({
   return (
     <div
       className={
-        (cn(styles.NavigationLayoutsDogs),
-        'overflow-hidden container pl-0 md:pl-20 xl:pl-85')
+        (cn(styles.NavigationLayoutsDogs), 'container pl-0 md:pl-20 xl:pl-85')
       }
     >
       <div className="default-grid md:py-60 relative">
@@ -33,17 +31,9 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsDogs }> = ({
               )
             }
             return (
-              <a className={cn(styles.quicklink)} href={link.link.url}>
-                {parse(link.link.title)}
-              </a>
-            )
-          })}
-        </div>
-        <div className="col-start-1 md:col-start-3 md:col-span-8 grid md:grid-rows-9 md:grid-flow-col gap-x-20 col-span-full grid-cols-2 md:grid-cols-8">
-          {links.map((link) => {
-            return (
               <a
-                className={cn(styles.link, 'truncate col-span-1 md:col-span-2')}
+                key={link.link.title}
+                className={cn(styles.quicklink)}
                 href={link.link.url}
               >
                 {parse(link.link.title)}
@@ -51,7 +41,18 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsDogs }> = ({
             )
           })}
         </div>
-        <div className="col-start-1 md:col-start-3 md:col-span-8 grid md:grid-rows-9 md:grid-flow-col gap-x-20 col-span-full grid-cols-2 md:grid-cols-8">
+        <div className={styles.NavigationLayoutsDogsColumn}>
+          {links.map((link) => (
+            <a
+              key={link.link.title}
+              className={cn(styles.link, 'truncate col-span-1 md:col-span-2')}
+              href={link.link.url}
+            >
+              {parse(link.link.title)}
+            </a>
+          ))}
+        </div>
+        <div className={styles.NavigationLayoutsDogsColumn}>
           {links.map((link) => (
             <a
               key={link.link.title}

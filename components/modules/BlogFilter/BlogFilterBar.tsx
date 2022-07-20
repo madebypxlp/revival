@@ -34,9 +34,7 @@ const BlogFilterBar: FunctionComponent<{
     >
       <div className="md:default-grid">
         <Input
-          className={
-            'col-span-6 row-start-1 lg:col-span-4 xl:col-span-3 md:mr-40'
-          }
+          className="col-span-6 row-start-1 lg:col-span-4 xl:col-span-3 md:mr-40"
           placeholder={searchInputPlaceholder}
           variant="blue-outline"
           type="search"

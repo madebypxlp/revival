@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { FunctionComponent, useState } from 'react'
 import Image from '@components/ui/Image/Image'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
@@ -26,7 +27,7 @@ const HeroCarouselModule: FunctionComponent<{ module: IHeroCarousel }> = ({
   }
 
   return (
-    <div className={`${styles.root}`}>
+    <div className={`${styles.root} overflow-hidden`}>
       {!!carousel?.length && (
         <Swiper
           pagination

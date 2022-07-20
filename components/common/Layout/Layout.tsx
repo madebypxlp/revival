@@ -54,8 +54,8 @@ const Layout: FC<any> = ({
   const isMobile = useIsMobile()
   const { locale = 'en-us' } = useRouter()
 
-  const footerObj = footer || (pageProps.footer as AcfOptionsFooter)
-  const headerObj = header || (pageProps.header as AcfOptionsHeader)
+  const footerObj = footer || (pageProps?.footer as AcfOptionsFooter)
+  const headerObj = header || (pageProps?.header as AcfOptionsHeader)
   return (
     <CommerceProvider locale={locale}>
       {true && process.env.NODE_ENV === 'development' && (
@@ -78,7 +78,6 @@ const Layout: FC<any> = ({
         {headerObj && <Navbar data={headerObj} />}
         <main className="fit">{children}</main>
         {footerObj && <Footer data={footerObj} />}
-
         <Sidebar open={displaySidebar} onClose={closeSidebar}>
           <CartSidebarView />
         </Sidebar>

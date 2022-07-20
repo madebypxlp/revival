@@ -1,26 +1,26 @@
 .root {
   :global {
-    .plyr:not(:hover) .plyr__controls {
-      transform: translateY(100%);
-    }
+    // .plyr:not(:hover) .plyr__controls {
+    //   transform: translateY(100%);
+    // }
 
-    .plyr__control--overlaid {
-      background: transparent;
-      svg {
-        background: url('/playButton.svg') no-repeat center bottom;
-        background-size: contain;
-        width: 40px;
-        height: 49px;
-        display: flex !important;
-        @screen md {
-          width: 63px;
-          height: 80px;
-        }
-      }
+    // .plyr__control--overlaid {
+    //   background: transparent;
+    //   svg {
+    //     background: url('/playButton.svg') no-repeat center bottom;
+    //     background-size: contain;
+    //     width: 40px;
+    //     height: 49px;
+    //     display: flex !important;
+    //     @screen md {
+    //       width: 63px;
+    //       height: 80px;
+    //     }
+    //   }
 
-      &.plyr__control--overlaid:hover {
-        background: transparent;
-      }
-    }
+    //   &.plyr__control--overlaid:hover {
+    //     background: transparent;
+    //   }
+    // }
   }
 }

@@ -1,3 +1,4 @@
+/*
 .rounded-focus-box {
   &::after {
     content: '';
@@ -17,6 +18,7 @@
     }
   }
 }
+*/
 
 .wysiwyg {
   b {
@@ -63,12 +65,12 @@
   }
 }
 
-@layer utilities {
-  .light-border {
-    @apply border-greyscale-4;
-  }
+.custom-scrollbar::-webkit-scrollbar {
+  height: 100%;
+  width: 1rem;
+}
 
-  .light-border-b {
-    @apply light-border border-b-[0.15rem];
-  }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: theme('colors.blue.default');
+  border-radius: 3rem;
 }

@@ -27,38 +27,6 @@
     }
   }
 
-  .myPetHealthLink {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: theme('colors.greyscale.6');
-    border-radius: 1.5rem;
-    margin-bottom: 1rem;
-    padding: 2.1rem;
-
-    @screen md {
-      margin-bottom: 2rem;
-      padding: 2.5rem 6.5rem;
-    }
-
-    span {
-      font-weight: 700;
-      font-size: 1.6rem;
-      line-height: 2.2rem;
-
-      @screen md {
-        font-size: 1.8rem;
-        line-height: 3.8rem;
-      }
-    }
-
-    &.mobileOnly {
-      @screen md {
-        display: none;
-      }
-    }
-  }
-
   .infoGroup {
     padding-bottom: 2.5rem;
     border-bottom: 0.15rem solid black;
@@ -90,5 +58,8 @@
     @apply lg:col-start-11;
 
     @apply hidden md:block;
+  }
+  .empty {
+    height: 75vh;
   }
 }

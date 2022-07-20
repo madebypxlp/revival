@@ -1,10 +1,11 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { Heart } from '@components/icons'
 import { Layout } from '@components/common'
-import { Text, Container } from '@components/ui'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
+import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
 import { getConfig } from '@framework/api'
 import { useCustomer } from '@framework/customer'
-import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import getAllPages from '@framework/common/get-all-pages'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
@@ -47,62 +48,35 @@ export default function Wishlist({
   // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: {
-      desktopImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-      tabletImage: null,
-      mobileImage: {
-        sourceUrl:
-          'https://revival-wp.weareenvoy.net/app/uploads/2022/06/parker-coffman-pr6Blqs0yWA-unsplash-1.png',
-        altText: '',
-        mediaDetails: {
-          width: 0,
-          height: 0,
-        },
-      },
-    },
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: true,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
-
   const products = [
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
-    product,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
+    SAMPLE_PRODUCT,
   ]
 
   return (
     <div className={styles.root}>
       <AccountHero
         headline={Translations.ACCOUNT.MY_FAVORITES}
-        className="mb-70"
+        className="md:mb-70"
       />
-      <ProductCardGrid
+      <div className="container">
+        <AccountBreadcrumbs current={Translations.ACCOUNT.MY_FAVORITES} />
+      </div>
+
+      {/* <ProductCardGrid
         variant="favorites"
         products={products}
-        className="mb-200"
-      />
+        className="mb-60"
+      /> */}
+      <div className="container">
+        <AccountLinkGroup mobileOnly className="mb-250" />
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Modal from '@components/ui/Modal'
 import { useIsMobile } from '@commerce/utils/hooks'
 import Link from '@components/ui/Link/Link'
@@ -9,13 +9,9 @@ import { InputError } from '../Input/Input.interface'
 import Button from '../Button/Button'
 import { ModalActions, ModalContent } from '../Modal/Modal'
 import ArrowCTA from '../ArrowCTA/ArrowCTA'
+import { useUI } from '../context'
 import SearchResultCard from '../SearchForVetClinicResult/SearchForVetClinicResult'
-
-type IClinic = {
-  clinic: string
-  address: string
-  phone: string
-}
+import { IClinic } from '../ModalFlowComponent/ModalFlowContext'
 
 const SearchForVetClinicDialog: FunctionComponent<ISearchForVetClinicDialog> = (
   props
@@ -32,32 +28,44 @@ const SearchForVetClinicDialog: FunctionComponent<ISearchForVetClinicDialog> = (
     phone: '(949) 500-1000',
   }
 
-  // TODO
-  const handleSubmit = () => {
-    if (searchQueryText.length === 0) {
-      setClinics([])
-    } else {
-      setClinics([dummyCLinic, dummyCLinic, dummyCLinic, dummyCLinic])
-    }
+  const dummyCLinic_2 = {
+    clinic: 'xyzz-.,',
+    address: 'xy',
+    phone: 'xy',
+  }
+
+  // should be array from backend
+  const clinicData: IClinic[] = [dummyCLinic_2, dummyCLinic]
+
+  const handleSearch = () => {
+    const clinicHelper: IClinic[] = []
+    clinicData.forEach((clinic_, idx) => {
+      if (searchQueryText.length === 0) return
+
+      const searchString = `${clinic_.address} ${clinic_.clinic} ${clinic_.phone}`
+      if (searchString.includes(searchQueryText)) {
+        clinicHelper.push(clinicData[idx])
+      }
+    })
+
+    setClinics(clinicHelper)
   }
 
   const SearchResults = (
     <div className="border-t-[1px] border-greyscale-4 py-30 md:py-60">
-      <div className="typo-fact pb-5">{`${clinics.length} of ${clinics.length} results `}</div>
-      <div>
-        {clinics.map((c) => {
-          const { clinic, address, phone } = c
+      <div className="typo-fact pb-5">{`${clinics.length} of ${clinicData.length} results `}</div>
+      {clinics.map((c) => {
+        const { clinic, address, phone } = c
 
-          return (
-            <SearchResultCard
-              key={clinic}
-              clinic={clinic}
-              address={address}
-              phone={phone}
-            />
-          )
-        })}
-      </div>
+        return (
+          <SearchResultCard
+            key={clinic}
+            clinic={clinic}
+            address={address}
+            phone={phone}
+          />
+        )
+      })}
     </div>
   )
 
@@ -68,14 +76,14 @@ const SearchForVetClinicDialog: FunctionComponent<ISearchForVetClinicDialog> = (
         color="yellow"
         variant="large"
         type="default"
-        onClick={handleSubmit}
+        onClick={handleSearch}
       >
         <span className="px-30">Search</span>
       </Button>
       <ArrowCTA
         orientation="right"
         color="blue"
-        onClick={(e) => {
+        onClick={(e: any) => {
           e.preventDefault()
           onClose()
         }}
@@ -109,7 +117,7 @@ const SearchForVetClinicDialog: FunctionComponent<ISearchForVetClinicDialog> = (
             <form
               onSubmit={(e) => {
                 e.preventDefault()
-                handleSubmit()
+                handleSearch()
               }}
             >
               <Input
@@ -124,16 +132,19 @@ const SearchForVetClinicDialog: FunctionComponent<ISearchForVetClinicDialog> = (
                 icon="search"
                 size="small"
                 onChange={setSearchQueryText}
-                onIconClick={handleSubmit}
+                onIconClick={handleSearch}
               />
             </form>
 
-            {clinics.length > 1 && SearchResults}
+            {!!clinics?.length && SearchResults}
           </div>
         </div>
       </ModalContent>
       <ModalActions>
-        {clinics.length > 1 ? FooterAfterResults : FooterBeforeResults}
+        {
+          // eslint-disable-next-line no-extra-boolean-cast
+          !!clinics?.length ? FooterAfterResults : FooterBeforeResults
+        }
       </ModalActions>
     </Modal>
   )

@@ -188,7 +188,7 @@ export default function Search({
 
           {/* Designs */}
           <div className="relative inline-block w-full">
-            <div className="lg:hidden mt-3"></div>
+            <div className="lg:hidden mt-3" />
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-5 w-full rounded-15 shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'brands' || toggleFilter !== true
@@ -201,7 +201,7 @@ export default function Search({
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
-                ></div>
+                />
               </div>
             </div>
           </div>

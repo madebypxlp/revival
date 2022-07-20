@@ -2,7 +2,9 @@ import React, { FunctionComponent } from 'react'
 import ImageComponent from '@components/ui/Image/Image'
 import Image from '@components/interfaces/Image'
 import Button from '@components/ui/Button/Button'
+import cn from 'classnames'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
+import { EllipseHole, EllipseFull } from '@components/icons'
 import ITextImage from './TextImage.interface'
 import styles from './TextImage.module.scss'
 
@@ -10,34 +12,43 @@ interface ImageWrapperInterface {
   flipOrientation: boolean
   image: Image
   className: string
+  index: number
 }
 
 const ImageWrapper = ({
   flipOrientation,
   image,
   className,
+  index,
 }: ImageWrapperInterface) => {
   if (flipOrientation) {
     return (
       <div
-        className={`${className} md:col-span-6 col-span-12 relative mt-30 md:mt-0`}
+        className={`${className} md:col-span-6 col-span-12 relative mt-30 md:mt-55`}
       >
+        <EllipseHole
+          className={cn(
+            index === 0 && 'ellipseHoleOne',
+            index === 1 && 'alternateHole',
+            index === 2 && 'ellipseHoleThree',
+            'absolute'
+          )}
+        />
+        <EllipseFull
+          className={cn(
+            index === 0 && 'ellipseFullOne',
+            index === 1 && 'alternateFull',
+            index === 2 && 'ellipseFullThree',
+            'absolute'
+          )}
+        />
         <div className="default-grid w-full h-full absolute">
-          <div className="col-span-1 col-start-2 md:col-span-8 md:col-start-5 relative">
-            <div className={`${styles.image_left_pattern1_wrapper}`}>
-              <div className={styles.image_left_pattern1} />
-            </div>
-          </div>
+          <div className="col-span-1 col-start-2 md:col-span-8 md:col-start-1 relative" />
         </div>
         <div className="flex md:grid default-grid w-full h-full">
           <div className={`md:col-span-10 ${styles.image_block}`}>
             <div className="relative">
               <ImageComponent image={image} className={styles.image_left} />
-              <div className={`${styles.image_left_pattern2_block}`}>
-                <div className={`${styles.image_left_pattern2_wrapper}`}>
-                  <div className={styles.image_left_pattern2} />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -48,15 +59,21 @@ const ImageWrapper = ({
     <div
       className={`${className} md:col-span-6 md:col-start-7 col-span-12 relative mt-30 md:mt-0`}
     >
-      <div className="default-grid w-full h-full absolute">
-        <div className="col-span-1 md:col-span-6">
+      <div className="default-grid w-full h-full absolute md:-left-100">
+        <div className="col-span-1 md:col-span-5">
           <div className={`${styles.image_right_pattern1_wrapper}`}>
             <div className={styles.image_right_pattern1} />
           </div>
         </div>
       </div>
       <div className="flex justify-end md:grid default-grid w-full h-full">
-        <div className={`${styles.image_block} md:col-span-10 md:col-start-3`}>
+        <div
+          className={`${styles.image_block} ${
+            index === 1
+              ? 'md:col-span-12 md:col-start-1'
+              : 'md:col-span-10 md:col-start-3'
+          }`}
+        >
           <div className={`${styles.image_wrapper} relative`}>
             <div className="flex justify-end items-end w-full h-full absolute">
               <div className={`${styles.image_right_pattern2_wrapper}`}>
@@ -73,17 +90,17 @@ const ImageWrapper = ({
 
 const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
   module,
-}) => {
-  console.log(module)
-  return (
-    <div className={`${styles.root} container`}>
-      {module.rows.map((row) => (
+}) => (
+  <div className={`${styles.root} overflow-hidden`}>
+    <div className="container">
+      {module.rows.map((row, idx) => (
         <div
           key={row.subline}
           className={`default-grid items-center ${styles.row}`}
         >
           {row.flipOrientation && (
             <ImageWrapper
+              index={idx}
               flipOrientation={row.flipOrientation}
               image={row.image}
               className="hidden md:flex"
@@ -135,11 +152,12 @@ const TextImageModule: FunctionComponent<{ module: ITextImage }> = ({
             flipOrientation={row.flipOrientation}
             image={row.image}
             className={!row.flipOrientation ? '' : 'md:hidden'}
+            index={idx}
           />
         </div>
       ))}
     </div>
-  )
-}
+  </div>
+)
 
 export default TextImageModule

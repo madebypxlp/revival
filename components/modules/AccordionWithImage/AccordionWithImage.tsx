@@ -15,7 +15,7 @@ const AccordionWithImageModule: FunctionComponent<{
   return (
     <div className={`${styles.root} container mb-85 md:pt-100 pt-50`}>
       <div className="default-grid">
-        <div className="col-span-2 md:col-span-7 mb-55 md:mb-0 md:flex md:items-start">
+        <div className="col-span-2 col-start-1 md:col-span-7 mb-55 md:mb-0 md:flex md:items-start ">
           <ImageComponent layout="fill" image={image} className="aspect-1" />
         </div>
         <div className="col-span-2 md:col-span-5">
@@ -40,7 +40,7 @@ const AccordionWithImageModule: FunctionComponent<{
                         visibleIndex === index ? 'visible' : ''
                       }`,
                     },
-                    item.copy
+                    parse(item.copy)
                   )}
                 </button>
               ))}

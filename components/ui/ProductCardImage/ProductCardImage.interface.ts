@@ -1,4 +1,4 @@
-import Image from '@components/interfaces/Image'
+import { Image } from '@commerce/types'
 
 export default interface IProductCardImage {
   image: Image

@@ -1,4 +1,4 @@
-import IProductCard from '../ProductCard/ProductCard.interface'
+import { LineItem } from '@commerce/types'
 
 export interface IVetInfo {
   vet: string
@@ -7,8 +7,7 @@ export interface IVetInfo {
 }
 
 export default interface ICartProduct {
-  product: IProductCard
-  quantity: number
+  product: LineItem
   variant: 'cart' | 'sidebar' | 'checkout' | 'account'
   className?: string
   showCartControls?: boolean
@@ -18,8 +17,9 @@ export default interface ICartProduct {
   showBuyItAgain?: boolean
   showAddToCart?: boolean
   showPlaceNewOrder?: boolean
-  rightColumn?: 'price' | 'empty' | 'edit-details'
+  rightColumn?: 'price' | 'empty' | 'edit-details' | 'shipment-options'
   shippingRestrictionsMessage?: string
+  currencyCode: string
   vetInfo?: {
     approvalMethod: string
     info: IVetInfo[]

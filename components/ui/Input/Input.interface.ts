@@ -22,6 +22,7 @@ type IInput = {
   required?: boolean
   newsletter?: boolean
   onIconClick?: MouseEventHandler
+  onClick?: () => void
   status?: ReactNode
   multiple?: boolean
   type: string

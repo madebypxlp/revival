@@ -1,0 +1,17 @@
+.root {
+  margin: 2rem 0rem;
+
+  .breadCrumbs {
+    font-size: 1.1rem;
+    line-height: 3rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s linear;
+
+    a:active {
+      color: theme('colors.blue.default');
+      text-decoration: underline;
+    }
+  }
+}

@@ -112,7 +112,7 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
                           </div>
                           <h5>{p.headline}</h5>
                         </div>
-                        <ProductCard {...p} />
+                        {/* <ProductCard {...p} />  */}
                       </SwiperSlide>
                     ))}
                   </Swiper>

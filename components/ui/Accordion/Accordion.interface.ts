@@ -5,4 +5,5 @@ export default interface IAccordion {
   onOpen?: () => any
   headline: String
   children?: ReactNode
+  variant?: 'pdp'
 }

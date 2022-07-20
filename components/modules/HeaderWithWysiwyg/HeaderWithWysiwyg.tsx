@@ -9,7 +9,7 @@ const HeaderWithWysiwygModule: FunctionComponent<{
 }> = ({ module }) => {
   const { subline, headline, wysiwyg, link } = module
   return (
-    <div className={`${styles.root} container my-100`}>
+    <div className={`${styles.root} container my-100 md:mb-70`}>
       <div className="default-grid">
         <div className="col-span-2 md:col-span-10">
           {subline && (

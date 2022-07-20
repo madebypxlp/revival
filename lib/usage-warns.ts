@@ -9,6 +9,7 @@ export function missingLocaleInPages(): [string[], () => void] {
       const single = invalidPaths.length === 1
       const pages = single ? 'page' : 'pages'
 
+      // eslint-disable-next-line no-console
       console.log(
         `The ${pages} "${invalidPaths.join(', ')}" ${
           single ? 'does' : 'do'

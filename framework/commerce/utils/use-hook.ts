@@ -13,7 +13,7 @@ export function useHook<
   H extends MutationHook<any, any, any> | SWRHook<any, any, any>
 >(fn: (provider: P) => H) {
   const { providerRef } = useCommerce<P>()
-  const provider = providerRef.current
+  const provider = providerRef?.current
   return fn(provider)
 }
 

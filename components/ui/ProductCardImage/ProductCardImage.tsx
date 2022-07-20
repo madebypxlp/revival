@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import c from 'classnames'
 import Translations from 'constants/translations'
+import Image from 'next/image'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import { Heart } from '@components/icons'
 import styles from './ProductCardImage.module.scss'
 import IProductCardImage from './ProductCardImage.interface'
-import ImageComponent from '../Image/Image'
 import Button from '../Button/Button'
 
 const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
@@ -23,7 +23,14 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
   return (
     <div className={c(styles.root, variant && styles[`variant--${variant}`])}>
       <div className={styles.imageContainer}>
-        <ImageComponent image={image} layout="fill" objectFit="contain" />
+        {image.url && (
+          <Image
+            alt={image.altText}
+            src={image.url}
+            layout="fill"
+            objectFit="contain"
+          />
+        )}
       </div>
       <div className="flex flex-col justify-between h-full">
         <div className={styles.row}>

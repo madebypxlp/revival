@@ -40,8 +40,8 @@ const FormBuilderModule: FunctionComponent<IFormBuilder> = ({ module }) => {
       | OnChangeValue<IDropdownOption, boolean>,
     error: InputError | undefined
   ) => {
-    console.log(value)
-    console.log(error)
+    //  console.log(value)
+    //  console.log(error)
   }
 
   return (

@@ -1,15 +1,16 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import c from 'classnames'
+import useRemoveItem from '@framework/cart/use-remove-item'
+import useUpdateItem from '@framework/cart/use-update-item'
 import { useIsMobile } from '@commerce/utils/hooks'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import Translations from 'constants/translations'
 import AlertIcon from '@components/icons/AlertIcon'
-import { formatPrice } from '@lib/utils'
 import Button from '../Button/Button'
-import Link from '../Link/Link'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
 import ICartProduct from './CartProduct.interface'
 import styles from './CartProduct.module.scss'
+import Dropdown from '../Dropdown/Dropdown'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const {
@@ -17,7 +18,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     showCartControls,
     variant,
     className,
-    quantity,
     showPrescriptionIcon,
     showPrescriptionLabel,
     showPrescriptionExtraInfo,
@@ -27,9 +27,40 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     rightColumn = 'price',
     shippingRestrictionsMessage,
     vetInfo,
+    currencyCode,
   } = props
 
+  const updateItem = useUpdateItem({ item: product })
+  const removeCartItem = useRemoveItem()
   const isMobile = useIsMobile()
+
+  const [quantity, setQuantity] = useState(product.quantity)
+  const updateQuantity = async (val: number) => {
+    await updateItem({ quantity: val })
+  }
+  const handleRemove = async () => {
+    //  setRemoving(true)
+
+    try {
+      // If this action succeeds then there's no need to do `setRemoving(true)`
+      // because the component will be removed from the view
+      await removeCartItem(product)
+    } catch (error) {
+      console.log(error)
+      //  setRemoving(false)
+    }
+  }
+
+  const handleEdit = async () => {}
+
+  const increaseQuantity = (n = 1) => {
+    const val = Number(quantity) + n
+
+    if (Number.isInteger(val) && val >= 0) {
+      setQuantity(val)
+      updateQuantity(val)
+    }
+  }
 
   let rightColumnComponent
   if (rightColumn === 'price') {
@@ -40,20 +71,32 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
           styles.rightColumnContainer
         )}
       >
-        <div className={styles.productPrice}>{formatPrice(product.price)}</div>
-
-        <div className={styles.productOldPrice}>
-          {product.oldPrice && formatPrice(product.oldPrice)}
-        </div>
+        <div className={styles.productPrice}>A</div>
+        <div className={styles.productOldPrice}>XXX OLD</div>
       </div>
     )
-  }
-  if (rightColumn === 'edit-details') {
+  } else if (rightColumn === 'edit-details') {
     rightColumnComponent = (
       <div className={styles.rightColumnContainer}>
         <Button color="yellow" variant="large" type="default">
           {Translations.PET_AND_VET.EDIT_DETAILS}
         </Button>
+      </div>
+    )
+  } else if (rightColumn === 'shipment-options') {
+    rightColumnComponent = (
+      <div className={styles.rightColumnContainer}>
+        <Dropdown
+          color="light"
+          onChange={(value) => {}}
+          placeholder="Shipping Options"
+          options={[
+            { label: 'Ship Separately', value: 'shipSeparately' },
+            { label: '2-Day Shipping', value: 'twoDayShipping' },
+            { label: 'Overnight', value: 'overnight' },
+          ]}
+          className="text-left text-black"
+        />
       </div>
     )
   }
@@ -65,20 +108,30 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     className
   )
 
+  useEffect(() => {
+    // Reset the quantity state if the item quantity changes
+    if (product.quantity !== Number(quantity)) {
+      setQuantity(product.quantity)
+    }
+  }, [product.quantity])
+
   return (
     <div className={rootClasses}>
       <div className={styles.productImageContainer}>
-        <ProductCardImage
-          isPrescription={showPrescriptionIcon && product.isPrescription}
-          image={product.image}
-          variant={variant}
-        />
+        {product.variant.image?.url && (
+          <ProductCardImage
+            isPrescription={showPrescriptionIcon}
+            image={product.variant.image}
+            variant={variant}
+          />
+        )}
       </div>
       {isMobile && rightColumn !== 'empty' && rightColumnComponent}
       <div className={styles.infoContainer}>
         <div className={styles.productNameContainer}>
           <div className={styles.productName}>{product.name}</div>
-          <div className={styles.productId}>{product.id}</div>
+          <div className={styles.productId}>#{product.id}</div>
+          <div className={styles.productId}>{product.variant.name}</div>
         </div>
         {!isMobile && rightColumn !== 'empty' && rightColumnComponent}
         {shippingRestrictionsMessage && (
@@ -87,7 +140,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             <span>{shippingRestrictionsMessage}</span>
           </div>
         )}
-        {showPrescriptionLabel && product.isPrescription && (
+        {showPrescriptionLabel && true && (
           <div
             className={c(
               styles.alertTextContainer,
@@ -145,18 +198,18 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
           <>
             <div className={styles.cartProductQuantityControls}>
               <div>
-                <div>-</div>
-                <div>{quantity}</div>
-                <div>+</div>
+                <button onClick={() => increaseQuantity(-1)}>-</button>
+                <div>{product.quantity}</div>
+                <button onClick={() => increaseQuantity(1)}>+</button>
               </div>
             </div>
             <div className={styles.controlLinksContainer}>
-              <Link color="black" href="/">
+              <button color="black" onClick={handleRemove}>
                 Remove
-              </Link>
-              <Link color="black" href="/">
+              </button>
+              <button color="black" onClick={handleEdit}>
                 Edit
-              </Link>
+              </button>
             </div>
           </>
         )}

@@ -8,9 +8,12 @@ import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import Button from '@components/ui/Button/Button'
 import Link from '@components/ui/Link/Link'
+import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
+import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
+
 import styles from './pets.module.scss'
 
 export async function getStaticProps({
@@ -40,14 +43,18 @@ export default function Profile({
   const pets = [{ name: 'Billie Ellie' }, { name: 'Piper' }, { name: 'Bella' }]
   return (
     <div className={styles.root}>
-      <AccountHero headline={Translations.ACCOUNT.MY_PETS} className="mb-190" />
+      <AccountHero
+        headline={Translations.ACCOUNT.MY_PETS}
+        className="md:mb-190"
+      />
       <div className="container">
+        <AccountBreadcrumbs current={Translations.ACCOUNT.MY_PETS} />
         <div className={styles.addNewPetContainer}>
           <Button color="yellow" variant="large" type="default">
             {Translations.ACCOUNT.ADD_NEW_PET}
           </Button>
         </div>
-        <div className="default-grid gap-y-40 mb-500">
+        <div className="default-grid gap-y-40 mb-65">
           {pets.map((p) => (
             <div
               key={p.name}
@@ -67,6 +74,7 @@ export default function Profile({
             </div>
           ))}
         </div>
+        <AccountLinkGroup mobileOnly className="mb-300" />
       </div>
     </div>
   )

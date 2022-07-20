@@ -1,14 +1,15 @@
+/* eslint-disable no-unused-expressions */
+import useCustomer from '@commerce/customer/use-customer'
+import Translations from 'constants/translations'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Searchbar, UserNav } from '@components/common'
-import NavbarRoot from './NavbarRoot'
-import styles from './Navbar.module.scss'
 import { AcfOptionsHeader } from 'framework/wordpress/interfaces/header'
 import AlertBar from '@components/ui/AlertBar/AlertBar'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import cn from 'classnames'
+import { useCart } from '@framework/cart'
 import renderNavigationLayouts from 'repeater/navigation-layouts'
-import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import Input from '@components/ui/Input/Input'
 import { Account, Cart, Logo, Hamburger, ChevronUp } from '@components/icons'
 import { useIsMobile } from '@commerce/utils/hooks'
@@ -17,17 +18,29 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock'
+import { useUI } from '@components/ui'
+import { useRouter } from 'next/router'
+import styles from './Navbar.module.scss'
+import NavbarRoot from './NavbarRoot'
+import NavigationLayoutsYourAccount from './NavigationLayoutsYourAccount'
 import NavigationMarketingBox from './layouts/NavigationMarketingBox'
+
+const INDEX_HELP = 100
+const INDEX_ACCOUNT = 101
 
 const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   const {
     data: { navigationLayouts, alertBanner, navigation, yourAccount },
   } = props
-
+  const cart = useCart()
   const ref = useRef<HTMLDivElement>(null)
   const [navOpen, setNavOpen] = useState<boolean>(false)
   const [openSubNav, setOpenSubNav] = useState<false | number>(false)
   const isMobile = useIsMobile()
+  const customer = useCustomer()
+  const { openSidebar } = useUI()
+
+  const router = useRouter()
 
   useEffect(() => {
     if (ref.current && isMobile) {
@@ -44,12 +57,16 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
   }, [navOpen])
 
   const handleClick = () => {
-    if (openSubNav === 100 || openSubNav === 101) {
+    if (openSubNav === INDEX_HELP || openSubNav === INDEX_ACCOUNT) {
       setOpenSubNav(false)
       setNavOpen(false)
     } else {
       setNavOpen((prev) => !prev)
     }
+  }
+
+  const openCart = () => {
+    openSidebar()
   }
 
   return (
@@ -72,7 +89,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   </a>
                 </Link>
               </div>
-
               <div className="justify-center flex-1 hidden lg:flex mr-90">
                 <Input
                   className={cn(styles.search, 'xl:w-500 lg:w-350')}
@@ -81,7 +97,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   variant="blue-outline"
                   placeholder="What do your pets need today?"
                 />
-                {/* <Searchbar /> */}
               </div>
               <div className="flex justify-end items-center flex-1 md:space-x-8 w-full">
                 <div>
@@ -89,67 +104,80 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                     className="md:mr-60 mr-15 whitespace-nowrap"
                     color="blue"
                     subnav
-                    orientation={isMobile && openSubNav == 100 ? 'up' : 'down'}
-                    onClick={() => {
-                      openSubNav !== 100 ? setOpenSubNav(100) : handleClick()
-                    }}
+                    orientation={
+                      isMobile && openSubNav === INDEX_HELP ? 'up' : 'down'
+                    }
+                    onClick={() =>
+                      openSubNav !== INDEX_HELP
+                        ? setOpenSubNav(INDEX_HELP)
+                        : handleClick()
+                    }
                   >
-                    Expert Help
+                    {Translations.NAVBAR.EXPERT_HELP}
                   </ArrowCTA>
                   <div
                     className={cn(
                       'absolute left-0 md:-mt-20 mt-10',
                       styles.subNav,
-                      openSubNav === 100 && styles.openSubNav
+                      openSubNav === INDEX_HELP && styles.openSubNav
                     )}
                   >
                     {renderNavigationLayouts(navigationLayouts[0])}
                   </div>
                 </div>
                 <div>
-                  <div
+                  <button
                     className={cn(
                       styles.navButton,
                       'flex justify-center items-center cursor-pointer mr-5 md:mr-50'
                     )}
                     onClick={() => {
-                      openSubNav !== 101 ? setOpenSubNav(101) : handleClick()
+                      if (customer?.data) router.push('/account')
+                      else
+                        openSubNav !== INDEX_ACCOUNT
+                          ? setOpenSubNav(INDEX_ACCOUNT)
+                          : handleClick()
                     }}
                   >
                     <span className="mr-10 whitespace-nowrap hidden md:block">
-                      Your Account
+                      {Translations.NAVBAR.YOUR_ACCOUNT}
                     </span>
                     <Account />
-                  </div>
+                  </button>
 
                   <div
                     className={cn(
                       'absolute left-0 md:-mt-20 mt-10',
                       styles.subNav,
-                      openSubNav === 101 && styles.openSubNav
+                      openSubNav === INDEX_ACCOUNT && styles.openSubNav
                     )}
                   >
                     <NavigationLayoutsYourAccount data={yourAccount} />
                   </div>
                 </div>
                 <div
+                  role="none"
                   className={cn(
                     styles.navButton,
                     'flex justify-center items-center cursor-pointer relative'
                   )}
+                  onClick={openCart}
                 >
-                  <span className="mr-10 hidden md:block">Cart</span>
+                  <span className="mr-10 hidden md:block">
+                    {Translations.NAVBAR.CART}
+                  </span>
                   <Cart />
-                  <div
-                    className={cn(
-                      styles.cartItems,
-                      'flex justify-center items-center md:h-25 md:w-25 bg-yellow rounded-full absolute md:left-60 md:-top-15 -top-8 right-0'
-                    )}
-                  >
-                    15
-                  </div>
+                  {cart.data && cart.data.lineItems.length > 0 && (
+                    <div
+                      className={cn(
+                        styles.cartItems,
+                        'flex justify-center items-center md:h-25 md:w-25 bg-yellow rounded-full absolute md:left-60 md:-top-15 -top-8 right-0'
+                      )}
+                    >
+                      {cart.data.lineItems.length}
+                    </div>
+                  )}
                 </div>
-                {/* <UserNav /> */}
               </div>
             </div>
             <div
@@ -181,10 +209,9 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                   placeholder="What do your pets need today?"
                 />
               )}
-              {/* <Searchbar /> */}
             </div>
           </div>
-          <div className={cn(styles.shadow, '')}></div>
+          <div className={cn(styles.shadow, '')} />
         </div>
 
         <nav
@@ -197,7 +224,6 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
         >
           <ul className="md:flex justify-around">
             {navigation.map((nav, index) => {
-              const {} = nav
               if (nav?.link) {
                 return (
                   <li
@@ -229,9 +255,8 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
                       isMobile && !(openSubNav === index) ? 'right' : 'down'
                     }
                     onClick={() => {
-                      openSubNav !== index
-                        ? setOpenSubNav(index)
-                        : setOpenSubNav(false)
+                      if (openSubNav !== index) setOpenSubNav(index)
+                      else setOpenSubNav(false)
                     }}
                   >
                     {nav.title}
@@ -250,26 +275,20 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
             })}
           </ul>
           <div>
-            {/*console.log(
-              'data',
-              props.data.navigation[3].navigationLayouts[0].video.thumbnail
-              console.log(nav.navigationLayouts[0].marketingBox)
-            )*/}
             {props.data.navigation.map((nav, index) => {
               if (
                 (openSubNav || openSubNav === 0) &&
                 index === openSubNav &&
                 isMobile
               ) {
-                if (!nav.navigationLayouts[0].marketingBox) {
-                  return
-                }
+                if (!nav.navigationLayouts[0].marketingBox) return null
                 return (
                   <NavigationMarketingBox
                     module={nav.navigationLayouts[0].marketingBox}
                   />
                 )
               }
+              return null
             })}
           </div>
         </nav>
