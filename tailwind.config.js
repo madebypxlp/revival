@@ -169,7 +169,7 @@ module.exports = {
             lineHeight: '5.5rem',
           },
         },
-        '.typo-h3-chiplinks,h3': {
+        '.typo-h3-chiplinks': {
           fontWeight: '700',
           fontSize: '2.5rem',
           lineHeight: '3rem',
