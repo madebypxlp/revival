@@ -58,15 +58,6 @@ export default function Profile({
     }
   }, [data, isLoading, error])
 
-  const order = {
-    id: '000000',
-    placed: new Date(),
-    sentTo: '24 Tesla, Ste 100 Irvine CA, 92618',
-    total: 45,
-    status: 'Shipped',
-  }
-  const orders = [order, order, order, order]
-
   const accountInfo = {
     username: data?.firstName,
     name: `${data?.firstName} ${data?.lastName}`,
@@ -75,19 +66,10 @@ export default function Profile({
     giftCardBalance: data?.storeCredit[0]?.value,
   }
 
-  const shippingInfo = {
-    name: `${data?.firstName} ${data?.lastName}`,
-    addressLine1: '34 Tesla, Ste 100',
-    addressLine2: 'Irvine, CA 92618-4655',
-    phone: data?.phone,
-  }
-  const paymentMethod = {
-    card: 'Amex **** 3009',
-    expiration: '5/2022',
-    name: 'Jane Doe',
-  }
   const headlineText = `${Translations.ACCOUNT.WELCOME_BACK}, ${accountInfo.username}`
 
+  //  pick the first one
+  const customerAddress = data?.addresses ? data.addresses[0] : undefined
   return (
     <div className={styles.root}>
       <AuthModal onClose={() => router.push('/')} />
@@ -106,7 +88,7 @@ export default function Profile({
                   {Translations.ACCOUNT.VIEW_ALL_ORDERS}
                 </ArrowCTA>
               </div>
-              <OrdersBox orders={orders} variant="account" className="mb-85" />
+              <OrdersBox orders={[]} variant="account" className="mb-85" />
               <AccountLinkGroup />
             </div>
 
@@ -117,48 +99,60 @@ export default function Profile({
                 </div>
               </div>
               <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
+                <NextLink href="/account/settings">
+                  <a className={styles.title}>
                     {Translations.ACCOUNT.YOUR_PROFILE}
                     <ChevronUp className={styles.rightChevron} />
-                  </div>
+                  </a>
                 </NextLink>
                 <div>{accountInfo.name}</div>
                 <div>{accountInfo.email}</div>
-                <div>{`${Translations.ACCOUNT.PASSWORD} ${accountInfo.password}`}</div>
+                {false && (
+                  <div>{`${Translations.ACCOUNT.PASSWORD} ${accountInfo.password}`}</div>
+                )}
               </div>
-              <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
-                    {Translations.ACCOUNT.SHIPPING_ADDRESS}
-                    <ChevronUp className={styles.rightChevron} />
+              {customerAddress && (
+                <div className={styles.infoGroup}>
+                  <NextLink href="/account/settings">
+                    <a className={styles.title}>
+                      {Translations.ACCOUNT.SHIPPING_ADDRESS}
+                      <ChevronUp className={styles.rightChevron} />
+                    </a>
+                  </NextLink>
+                  <div>
+                    {customerAddress.first_name} {customerAddress.last_name}
                   </div>
-                </NextLink>
-                <div>{shippingInfo.name}</div>
-                <div>{shippingInfo.addressLine1}</div>
-                <div>{shippingInfo.addressLine2}</div>
-                <div>{`${Translations.ACCOUNT.PHONE} ${shippingInfo.phone}`}</div>
-              </div>
-              <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
-                    {Translations.ACCOUNT.PAYMENT_METHOD}
-                    <ChevronUp className={styles.rightChevron} />
-                  </div>
-                </NextLink>
-                <div>{paymentMethod.name}</div>
-                <div>{`${Translations.ACCOUNT.EXPIRE} ${paymentMethod.expiration}`}</div>
-                <div>${paymentMethod.name}</div>
-              </div>
-              <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
-                    {Translations.ACCOUNT.GIFT_CARD}
-                    <ChevronUp className={styles.rightChevron} />
-                  </div>
-                </NextLink>
-                <div>{paymentMethod.name}</div>
-              </div>
+                  <div>{customerAddress.address1}</div>
+                  <div>{`${customerAddress.city}, ${customerAddress.state_or_province} ${customerAddress.postal_code}`}</div>
+                  {customerAddress.phone && (
+                    <div>{`${Translations.ACCOUNT.PHONE}: ${customerAddress.phone}`}</div>
+                  )}
+                </div>
+              )}
+              {false && (
+                <div className={styles.infoGroup}>
+                  <NextLink href="/account/settings">
+                    <a className={styles.title}>
+                      {Translations.ACCOUNT.PAYMENT_METHOD}
+                      <ChevronUp className={styles.rightChevron} />
+                    </a>
+                  </NextLink>
+                  <div>{paymentMethod.name}</div>
+                  <div>{`${Translations.ACCOUNT.EXPIRE} ${paymentMethod.expiration}`}</div>
+                  <div>${paymentMethod.name}</div>
+                </div>
+              )}
+              {false && (
+                <div className={styles.infoGroup}>
+                  <NextLink href="#">
+                    <div className={styles.title}>
+                      {Translations.ACCOUNT.GIFT_CARD}
+                      <ChevronUp className={styles.rightChevron} />
+                    </div>
+                  </NextLink>
+                  <div>{paymentMethod.name}</div>
+                </div>
+              )}
             </div>
           </div>
         </>
