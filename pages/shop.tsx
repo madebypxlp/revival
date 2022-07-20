@@ -11,6 +11,8 @@ import { ACFGlobalData } from 'framework/wordpress/interfaces/globals'
 import fetch from '../framework/wordpress/wp-client'
 import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
+import Translations from 'constants/translations'
+import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
 
 export async function getStaticProps({
   preview,
@@ -63,6 +65,15 @@ export default function Orders({
           }}
         />
       )}
+      <div className="container default-grid">
+        <div className="col-span-2" />
+        <div className="col-span-10">
+          <ProductCardGrid
+            products={data?.relatedProducts}
+            headline={Translations.YOU_MAY_ALSO_LIKE}
+          />
+        </div>
+      </div>
       <HomeAllProductsGrid products={products} categories={categories} />
     </div>
   )
