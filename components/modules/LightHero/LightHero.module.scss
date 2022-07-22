@@ -2,7 +2,7 @@
   // add your styles here
 
   @apply bg-cream pb-25;
-  @apply md:pb-120;
+  @apply md:pb-120 md:-mb-60;
 
   .headlineContainer {
     @apply typo-h2 text-blue col-start-1 col-span-2 mt-50;

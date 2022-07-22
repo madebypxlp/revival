@@ -10,15 +10,8 @@ const Accordion: FunctionComponent<IAccordion> = (props) => {
     onOpen,
     headline = 'default',
     variant,
-    children = (
-      <p className="text-30">
-        &quot;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-        ipsum dolor sit amet.&quot;
-      </p>
-    ),
+    className,
+    children,
   } = props
 
   return (
@@ -26,7 +19,8 @@ const Accordion: FunctionComponent<IAccordion> = (props) => {
       className={cn(
         styles.root,
         open && styles.open,
-        variant && styles[`variant--${variant}`]
+        variant && styles[`variant--${variant}`],
+        className
       )}
     >
       <button

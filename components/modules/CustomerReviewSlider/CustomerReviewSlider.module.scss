@@ -9,11 +9,13 @@
   :global(.swiper-button-prev) {
     @apply -translate-x-20;
     @apply md:-translate-x-0 md:-translate-y-15;
+    @apply w-50 md:w-70 h-auto;
   }
 
   :global(.swiper-button-next) {
     @apply translate-x-20;
     @apply md:translate-x-0 md:-translate-y-15;
+    @apply w-50 md:w-70 h-auto;
   }
 
   .headlineContainer {

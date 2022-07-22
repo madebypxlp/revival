@@ -78,6 +78,13 @@ const Translations = {
     SHIPPING: 'Shipping',
     ESTIMATED_SALES_TAX: 'Estimated Sales Tex',
     ORDER_TOTAL: 'Order Total',
+    HEADER: {
+      ACCOUNT_SETTINGS: 'Account Settings',
+      OVERVIEW: 'Overview',
+      LOGOUT: 'Logout',
+      MY_PET: 'My Pet',
+      MY_VET: 'My Vet',
+    },
   },
   PET_AND_VET: {
     PET: 'Pet',

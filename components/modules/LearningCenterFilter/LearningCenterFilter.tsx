@@ -61,12 +61,23 @@ const LearningCenterFilterModule: FunctionComponent<{
   const debouncedCategories = useDebounce(selectedCategories, 750)
   const debouncedTypes = useDebounce(selectedContentTypes, 750)
 
+  useEffect(() => {
+    console.log('debouncedCategories', debouncedCategories)
+  }, [debouncedCategories])
+
+  useEffect(() => {
+    console.log('selectedCategories', selectedCategories)
+  }, [selectedCategories])
+
   // handle filter change
   useEffect(() => {
     if (!router.isReady) return
     if (!debouncedCategories?.length && !debouncedTypes?.length) return
-    if (debouncedCategories === defaultCategories) return
-    if (debouncedTypes === defaultTypes) return
+    if (
+      debouncedCategories.every((c: string) => defaultCategories.includes(c)) &&
+      debouncedTypes.every((c: string) => defaultTypes.includes(c))
+    )
+      return
 
     // use current slug on detail page otherwise get slug of first selected category
     const _slug = isDetail() ? slugAndPage.slug : debouncedCategories[0]
@@ -76,6 +87,7 @@ const LearningCenterFilterModule: FunctionComponent<{
       ),
     ].sort() as string[]
     if (!isDetail()) __categories.shift()
+    if (!_slug) return
 
     router.push({
       pathname: '/learning-center/category/[slug]',
@@ -106,7 +118,7 @@ const LearningCenterFilterModule: FunctionComponent<{
   }
 
   const handleCategoryChange = (checked: boolean | string, slug: string) => {
-    checked
+    checked && checked !== '0'
       ? setSelectedCategories((prev) =>
           Array.from(new Set([...prev, slug])).sort()
         )
@@ -116,7 +128,7 @@ const LearningCenterFilterModule: FunctionComponent<{
   }
 
   const handleContentTypeChange = (checked: boolean | string, slug: string) => {
-    checked
+    checked && checked !== '0'
       ? setSelectedContentTypes((prev) => [...new Set([...prev, slug])].sort())
       : setSelectedContentTypes((prev) =>
           [...new Set(prev.filter((s) => s !== slug))].sort()
@@ -149,6 +161,7 @@ const LearningCenterFilterModule: FunctionComponent<{
                   key={slug}
                   label={name}
                   checked={selectedCategories.includes(slug)}
+                  defaultChecked={selectedCategories.includes(slug)}
                   disabled={activeCategory?.slug === slug}
                   square
                   onChange={(v) => handleCategoryChange(v, slug)}
