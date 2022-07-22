@@ -29,13 +29,11 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
           navigation
           pagination={!isMobile}
         >
-          {data?.products &&
-            data.products.map((p) => (
-              <SwiperSlide key={p.id}>
-                {/* <ProductCard {...p} /> */}
-                Nice
-              </SwiperSlide>
-            ))}
+          {data?.products.map((p) => (
+            <SwiperSlide key={p.id}>
+              <ProductCard product={p} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 

@@ -18,7 +18,7 @@
     }
 
     > div {
-      padding: 1.5rem;
+      @apply p-15 md:p-0;
     }
   }
 

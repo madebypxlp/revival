@@ -92,8 +92,14 @@
   }
 
   .swiperContainer {
-    @apply mb-80;
-    @apply md:mb-90;
+    @apply mb-80 md:mb-90;
+
+    :global(.swiper-slide) {
+      max-width: 25%;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .cardHeader {
