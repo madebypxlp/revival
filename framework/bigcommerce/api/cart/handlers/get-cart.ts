@@ -1,10 +1,11 @@
 import type { BigcommerceCart } from '../../../types'
 import { BigcommerceApiError } from '../../utils/errors'
-import getCartCookie from '../../utils/get-cart-cookie'
 import type { CartHandlers } from '..'
 import { CatalogProduct } from 'framework/custom-interfaces/catalog-product'
-import { Product } from '@commerce/types'
-import { normalizePrimaryImage } from '@framework/lib/normalize'
+import {
+  normalizePrimaryImage,
+  normalizeProductVariant,
+} from '@framework/lib/normalize'
 
 // Return current cart info
 const getCart: CartHandlers['getCart'] = async ({
@@ -46,7 +47,9 @@ const getCart: CartHandlers['getCart'] = async ({
           .map((p) => normalizePrimaryImage(p))
 
         if (result.data) {
-          result.data.relatedProducts = relatedProductSet
+          result.data.relatedProducts = relatedProductSet.map((e) =>
+            e.variants ? normalizeProductVariant(e.variants[0]) : null
+          )
         }
       }
     } catch (error) {
