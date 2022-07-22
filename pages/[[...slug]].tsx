@@ -15,6 +15,7 @@ import TemplateVaccineExperts from '../templates/VaccineExperts'
 import TemplateOurStory from '../templates/OurStory'
 import TemplateBrandListing from '../templates/BrandListing'
 import TemplateHome from '../templates/Home'
+import TemplateDonationRequest from '../templates/DonationRequest'
 
 export const getStaticProps = getWpStaticProps
 export const getStaticPaths = getWpStaticPaths
@@ -33,6 +34,7 @@ const Templates: { [k: string]: any } = {
   Template_AllBrands: TemplateAllBrands,
   Template_CareerApplicationForm: TemplateCareerApplicationForm,
   Template_CalendarContest: TemplateCalendarContest,
+  Template_DonationRequest: TemplateDonationRequest,
   default: (t: string) => <div>TEMPLATE &quot;{t}&quot; NOT FOUND</div>,
 }
 

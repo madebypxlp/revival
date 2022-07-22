@@ -50,6 +50,7 @@ const Input: FunctionComponent<IInput> = (props) => {
   const [inputNumber, setInputNumber] = useState<number>(0)
 
   useEffect(() => {
+    if (type !== 'number') return
     if (typeof onChange === 'function') onChange(String(inputNumber), false)
   }, [inputNumber])
 
