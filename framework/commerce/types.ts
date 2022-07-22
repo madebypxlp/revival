@@ -177,6 +177,9 @@ export interface Product extends Entity {
     entityId: string
     name: string
   }
+  custom_url: {
+    url: string
+  }
 }
 
 interface ProductOption extends Entity {

@@ -38,7 +38,6 @@ const catalogProduct: BigcommerceApiHandler<
 
       if (req.method === 'GET') {
         const productId = parseInt(req.query.productId as string)
-        console.log(productId)
         return await handlers.getCatalogProduct({
           req,
           res,

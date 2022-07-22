@@ -16,20 +16,15 @@ const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()
   const { data, isLoading, isEmpty, error } = useCart()
 
+  const success = null
+  const products = data?.lineItems || []
+
   const { price: subTotal } = usePrice(
     data && {
       amount: Number(data.subtotalPrice),
       currencyCode: data.currency.code,
     }
   )
-  const { price: total } = usePrice(
-    data && {
-      amount: Number(data.totalPrice),
-      currencyCode: data.currency.code,
-    }
-  )
-  const success = null
-  const products = data?.lineItems || []
 
   return (
     <div className={cn(styles.root)}>

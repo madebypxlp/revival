@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import c from 'classnames'
+import { useRouter } from 'next/router'
 import Translations from 'constants/translations'
 import { formatPrice } from '@lib/utils'
 import { useAddItem } from '@framework/cart'
@@ -20,12 +21,23 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
     isPrescription,
     isFavorite,
     showFavoriteIcon,
+    type = 'default',
   } = props
+  const router = useRouter()
   const { openSidebar } = useUI()
   const addItem = useAddItem()
   const [loading, setLoading] = useState(false)
 
-  const { name, price, salePrice, retailPrice, sku, brand } = product
+  const {
+    name,
+    price,
+    salePrice,
+    retailPrice,
+    sku,
+    brand,
+    variants,
+    custom_url,
+  } = product
 
   const addToCart = async () => {
     setLoading(true)
@@ -41,6 +53,13 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
     }
   }
 
+  const goToPDP = () => {
+    if (custom_url?.url) {
+      router.push(`/product/${custom_url.url}`)
+    }
+  }
+
+  const isCardVariant = type === 'cart' && variants.length > 1
   return (
     <div className={styles.root}>
       {loading && <LoadingDots portal />}
@@ -60,26 +79,31 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
           <div className={styles.productName}>{name}</div>
           <div className={styles.productId}>#{sku}</div>
         </div>
-        <div>
-          <div className={styles.productPrice}>
-            {formatPrice(salePrice || retailPrice || price)}
-          </div>
-          {salePrice && (
-            <div className={styles.productOldPrice}>
-              {formatPrice(retailPrice || price)}
+        {!isCardVariant && (
+          <div>
+            <div className={styles.productPrice}>
+              {formatPrice(salePrice || retailPrice || price)}
             </div>
-          )}
-        </div>
+            {salePrice && (
+              <div className={styles.productOldPrice}>
+                {formatPrice(retailPrice || price)}
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <div className={styles.addToCartButtonContainer}>
         <Button
           className={styles.addToCartButton}
-          color="yellow"
+          color={isCardVariant ? 'blue' : 'yellow'}
           variant="large"
           type="default"
-          onClick={addToCart}
+          outline={isCardVariant}
+          onClick={isCardVariant ? goToPDP : addToCart}
         >
-          {Translations.PRODUCT.ADD_TO_CART}
+          {isCardVariant
+            ? Translations.PRODUCT.SEE_OPTIONS
+            : Translations.PRODUCT.ADD_TO_CART}
         </Button>
       </div>
     </div>

@@ -25,7 +25,6 @@ const checkoutApi: BigcommerceApiHandler<any, CheckoutHandlers> = async (
   const { cookies } = req
   const cartId = cookies[config.cartCookie]
 
-  console.log(cartId, 'SWAG')
   try {
     // Return current cart info
     if (req.method === 'GET') {

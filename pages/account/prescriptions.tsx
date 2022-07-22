@@ -36,7 +36,6 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
-  console.log(data)
 
   const petAndVetInfo = {
     approvalMethod: 'We have authorization from your vet.',

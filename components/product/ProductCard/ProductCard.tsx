@@ -24,7 +24,6 @@ const ProductCard: FC<Props> = ({
   ...props
 }) => {
   const isMobile = useIsMobile()
-  console.log(product)
   return (
     <Link href={`/product/${product.slug}`} {...props}>
       <a

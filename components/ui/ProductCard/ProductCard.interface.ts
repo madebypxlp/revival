@@ -7,6 +7,7 @@ interface CustomProductProperies {
   label?: string
   isFavorite?: boolean // up to this parameter, it should be all part of a 'product' interface,
   showFavoriteIcon?: boolean
+  type?: 'cart' | 'default'
 }
 export default interface IProductCard extends CustomProductProperies {
   product: Product

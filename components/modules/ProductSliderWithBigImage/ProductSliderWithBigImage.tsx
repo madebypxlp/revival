@@ -13,7 +13,6 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
   const isMobile = useIsMobile()
   const { products, image } = module
 
-  const maxProductsShown = 6
   const productIds = products.map((e) => e.productId) || []
   const { data } = useSearch({
     idIn: productIds.join(),
@@ -30,12 +29,11 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
           navigation
           pagination={!isMobile}
         >
-          {data?.products &&
-            data.products.slice(0, maxProductsShown).map((p) => (
-              <SwiperSlide key={p.id}>
-                <ProductCard product={p} />
-              </SwiperSlide>
-            ))}
+          {data?.products.map((p) => (
+            <SwiperSlide key={p.id}>
+              <ProductCard product={p} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 

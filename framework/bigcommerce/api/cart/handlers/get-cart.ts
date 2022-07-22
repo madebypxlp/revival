@@ -47,9 +47,7 @@ const getCart: CartHandlers['getCart'] = async ({
           .map((p) => normalizePrimaryImage(p))
 
         if (result.data) {
-          result.data.relatedProducts = relatedProductSet.map((e) =>
-            e.variants ? normalizeProductVariant(e.variants[0]) : null
-          )
+          result.data.relatedProducts = relatedProductSet.map((e) => e)
         }
       }
     } catch (error) {
