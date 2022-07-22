@@ -1,9 +1,7 @@
+import { Product } from '@commerce/types'
+
 export default interface IProductCard {
-  name: string
-  id: string | number
-  price: number
-  oldPrice?: number
-  imageURL: string
+  product: Product
   isNew?: boolean
   isPrescription?: boolean
   isOurBrand?: boolean

@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import { FC, useState } from 'react'
 
-import { Swatch, ProductSlider } from '@components/product'
-import { Container, Text, useUI } from '@components/ui'
+import { ProductSlider } from '@components/product'
+import { useUI } from '@components/ui'
 
 import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'

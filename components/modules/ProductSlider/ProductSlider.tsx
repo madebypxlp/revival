@@ -38,6 +38,7 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
           slidesPerView={isMobile ? 1.3 : 2.1}
           spaceBetween={20}
           navigation
+          watchOverflow
           breakpoints={{
             768: {
               slidesPerView: 2.1,
@@ -51,14 +52,9 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
           }}
         >
           {data?.products &&
-            data.products.map((p, index) => (
+            data.products.map((p) => (
               <SwiperSlide key={p.id}>
-                <ProductCard
-                  name={p.name}
-                  id={p.id}
-                  price={p.price.value}
-                  imageURL={p.images[0]?.url}
-                />
+                <ProductCard product={p} isNew isPrescription />
               </SwiperSlide>
             ))}
         </Swiper>

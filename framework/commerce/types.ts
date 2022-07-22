@@ -155,6 +155,21 @@ export type RemoveCartItemHandlerBody = Partial<RemoveCartItemBody> & {
  * Temporal types
  */
 
+interface Price {
+  value: number
+  currencyCode: string
+}
+
+interface SalePrice {
+  value: number
+  currencyCode: string
+}
+
+interface RetailPrice {
+  value: number
+  currencyCode: string
+}
+
 interface Entity {
   id: string | number
   [prop: string]: any
@@ -170,6 +185,11 @@ export interface Product extends Entity {
   price: ProductPrice
   options: ProductOption[]
   sku?: string
+  prices?: {
+    price: Price
+    salePrice: SalePrice
+    retailPrice: RetailPrice
+  }
 }
 
 interface ProductOption extends Entity {
@@ -182,7 +202,7 @@ interface ProductOptionValues {
   hexColors?: string[]
 }
 
-interface ProductImage {
+export interface ProductImage {
   url: string
   alt?: string
 }

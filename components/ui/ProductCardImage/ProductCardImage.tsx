@@ -14,7 +14,7 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
     isPrescription,
     isOurBrand,
     label,
-    imageUrl,
+    images,
     variant,
     isFavorite,
     showFavoriteIcon,
@@ -24,8 +24,13 @@ const ProductCardImage: FunctionComponent<IProductCardImage> = (props) => {
     <div className={c(styles.root, variant && styles[`variant--${variant}`])}>
       <div className={styles.imageContainer}>
         <div className="h-full relative">
-          {imageUrl && (
-            <Image src={imageUrl} alt="" layout="fill" objectFit="contain" />
+          {images && (
+            <Image
+              src={images[0].url}
+              alt={images[0].alt}
+              layout="fill"
+              objectFit="contain"
+            />
           )}
         </div>
       </div>

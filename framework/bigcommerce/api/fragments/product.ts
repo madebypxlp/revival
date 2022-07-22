@@ -43,6 +43,7 @@ export const productInfoFragment = /* GraphQL */ `
     entityId
     name
     path
+    sku
     brand {
       entityId
     }
