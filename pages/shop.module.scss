@@ -1,0 +1,98 @@
+.root {
+  .filterHeader {
+    @apply typo-eyebrow;
+    padding-bottom: 2.5rem;
+    border-bottom: 2px solid black;
+    margin-bottom: 2rem;
+  }
+
+  .categoriesContainer {
+    background-color: theme('colors.greyscale.6');
+    margin-bottom: 4rem;
+
+    @screen md {
+      background: none;
+      border-bottom: 2px solid black;
+      padding: 0;
+      margin-bottom: 3rem;
+    }
+
+    > div {
+      padding: 1.5rem;
+    }
+  }
+
+  .checkbox {
+    flex-wrap: nowrap;
+    align-items: center;
+    @apply mb-10 md:mb-20;
+
+    @screen md {
+      align-items: flex-start;
+    }
+    span {
+      flex-grow: 1;
+
+      @screen md {
+        padding-right: 0.5rem;
+        order: 1;
+        flex-grow: none;
+      }
+    }
+    input {
+      + span {
+        display: none;
+      }
+
+      @screen md {
+        order: 2;
+        margin: 0 0 0 auto;
+      }
+    }
+  }
+
+  .loadMoreButtonContainer {
+    text-align: center;
+    @apply mt-0 md:mt-20;
+    @apply mb-40 md:mb-80;
+  }
+
+  .mainContainer {
+    @screen md {
+      grid-template-rows: auto 1fr;
+    }
+  }
+
+  .gridHeader {
+    @apply col-span-2 md:col-span-10;
+    @apply mb-10 md:mb-40;
+
+    display: flex;
+    justify-content: space-between;
+    grid-row: 1;
+
+    .productCount {
+      @apply typo-eyebrow;
+    }
+
+    @screen md {
+      padding-left: 4rem;
+    }
+  }
+
+  .filtersContainer {
+    @apply col-start-1 col-span-2;
+
+    @screen md {
+      @apply row-start-1 row-span-2;
+    }
+  }
+
+  .gridColumnContainer {
+    @apply col-span-2 md:col-span-10;
+
+    @screen md {
+      padding-left: 4rem;
+    }
+  }
+}
