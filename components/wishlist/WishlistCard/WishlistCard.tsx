@@ -3,7 +3,6 @@ import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Trash } from '@components/icons'
-import { Text } from '@components/ui'
 
 import { useUI } from '@components/ui/context'
 import type { Product } from '@commerce/types'
@@ -73,7 +72,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
           </Link>
         </h3>
         <div className="mb-4">
-          <Text html={product.description} />
+          <div>{product.description}</div>
         </div>
         <Button
           aria-label="Add to Cart"

@@ -40,7 +40,7 @@ export type Provider = CommerceConfig & {
     useLogout?: MutationHook<any, any, any>
   }
   orders?: {
-    useOrders?: SWRHook<[Order] | null, any, any>
+    useOrders?: SWRHook<any | null, any, any>
     listOrderProducts?: SWRHook<any | null, any, any>
     getOrderShippingAddresses?: SWRHook<any | null, any, any>
     getOrderShipments?: SWRHook<any | null, any, any>
@@ -49,7 +49,7 @@ export type Provider = CommerceConfig & {
     getCatalogProduct?: SWRHook<any | null, any, any>
   }
   payments?: {
-    getAcceptedPaymentMethods?: SWRHook<PaymentMethod[] | null, any, any>
+    getAcceptedPaymentMethods?: SWRHook<any | null, any, any>
   }
   checkout?: {
     getCheckout?: SWRHook<CheckoutOrder | null, any, any>

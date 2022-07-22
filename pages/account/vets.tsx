@@ -13,7 +13,7 @@ import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import styles from './vets.module.scss'
+import styles from '../../styles/pages/account/vets.module.scss'
 
 export async function getStaticProps({
   preview,

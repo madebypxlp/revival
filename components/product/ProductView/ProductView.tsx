@@ -22,9 +22,9 @@ interface Props {
 const ProductView: FC<Props> = ({ product }) => {
   const addItem = useAddItem()
   const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
+    amount: product.price,
+    baseAmount: product.retailPrice,
+    currencyCode: product.currencyCode!,
   })
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
@@ -73,11 +73,7 @@ const ProductView: FC<Props> = ({ product }) => {
         <div className={cn(s.productDisplay, 'fit')}>
           <div className={s.nameBox}>
             <h1 className={s.name}>{product.name}</h1>
-            <div className={s.price}>
-              {price}
-              {` `}
-              {product.price?.currencyCode}
-            </div>
+            <div className={s.price}>{price}$</div>
           </div>
 
           <div className={s.sliderContainer}>

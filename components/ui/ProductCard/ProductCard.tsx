@@ -14,8 +14,8 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
   const {
     product,
     //  custom fields
-    isOurBrand,
     label,
+    isOurBrand,
     isNew,
     isPrescription,
     isFavorite,
@@ -25,11 +25,7 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
   const addItem = useAddItem()
   const [loading, setLoading] = useState(false)
 
-  const { name, prices, price, sku } = product
-
-  const defaultPrice = prices?.price?.value || price.value
-  const retailPrice = prices?.retailPrice?.value
-  const salePrice = prices?.salePrice?.value
+  const { name, price, salePrice, retailPrice, sku, brand } = product
 
   const addToCart = async () => {
     setLoading(true)
@@ -42,9 +38,9 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
       openSidebar()
     } catch (err) {
       setLoading(false)
-      console.log(err)
     }
   }
+
   return (
     <div className={styles.root}>
       {loading && <LoadingDots portal />}
@@ -53,7 +49,9 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
         isPrescription={isPrescription}
         label={label}
         images={product.images}
-        isOurBrand={isOurBrand}
+        isOurBrand={
+          isOurBrand && brand?.name?.toLowerCase().includes('revival')
+        }
         isFavorite={isFavorite}
         showFavoriteIcon={showFavoriteIcon}
       />
@@ -64,11 +62,11 @@ const ProductCard: FunctionComponent<IProductCard> = (props) => {
         </div>
         <div>
           <div className={styles.productPrice}>
-            {formatPrice(salePrice || defaultPrice)}
+            {formatPrice(salePrice || retailPrice || price)}
           </div>
           {salePrice && (
             <div className={styles.productOldPrice}>
-              {formatPrice(retailPrice || defaultPrice)}
+              {formatPrice(retailPrice || price)}
             </div>
           )}
         </div>

@@ -9,6 +9,7 @@ export type Discount = {
 
 export type LineItem = {
   id: string
+  sku: string
   variantId: string
   productId: string
   name: string
@@ -155,21 +156,6 @@ export type RemoveCartItemHandlerBody = Partial<RemoveCartItemBody> & {
  * Temporal types
  */
 
-interface Price {
-  value: number
-  currencyCode: string
-}
-
-interface SalePrice {
-  value: number
-  currencyCode: string
-}
-
-interface RetailPrice {
-  value: number
-  currencyCode: string
-}
-
 interface Entity {
   id: string | number
   [prop: string]: any
@@ -182,13 +168,14 @@ export interface Product extends Entity {
   path?: string
   images: ProductImage[]
   variants: ProductVariant2[]
-  price: ProductPrice
+  price: number
+  salePrice: number
+  retailPrice: number
   options: ProductOption[]
   sku?: string
-  prices?: {
-    price: Price
-    salePrice: SalePrice
-    retailPrice: RetailPrice
+  brand?: {
+    entityId: string
+    name: string
   }
 }
 
@@ -210,14 +197,4 @@ export interface ProductImage {
 interface ProductVariant2 {
   id: string | number
   options: ProductOption[]
-}
-
-interface ProductPrice {
-  value: number
-  currencyCode: 'USD' | 'ARS' | string | undefined
-  retailPrice?: number
-  salePrice?: number
-  listPrice?: number
-  extendedSalePrice?: number
-  extendedListPrice?: number
 }

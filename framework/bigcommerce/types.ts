@@ -21,13 +21,13 @@ export type BigcommerceCart = {
   }
   created_time: string
   discounts?: { id: number; discounted_amount: number }[]
-  relatedProducts?: CatalogProduct[]
+  relatedProducts?: Core.Product[]
   // TODO: add missing fields
 }
 
 export type Cart = Core.Cart & {
   lineItems: LineItem[]
-  relatedProducts?: CatalogProduct[]
+  relatedProducts?: Core.Product[]
 }
 
 export type LineItem = Core.LineItem

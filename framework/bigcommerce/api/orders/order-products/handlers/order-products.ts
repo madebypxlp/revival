@@ -3,6 +3,7 @@ import type { OrderProductsHandler } from '..'
 import { OrderProduct } from 'framework/custom-interfaces/order-products'
 import { ProductVariant } from '@commerce/types'
 import { CatalogProductVariant } from 'framework/custom-interfaces/catalog-product-variant'
+import { CatalogProductImages } from 'framework/custom-interfaces/catalog-product-images'
 
 // Return all orders for customer
 const listOrderProducts: OrderProductsHandler['listOrderProducts'] = async ({
@@ -18,13 +19,12 @@ const listOrderProducts: OrderProductsHandler['listOrderProducts'] = async ({
       if (products) {
         const variantData = (await Promise.all(
           products.map((e) => {
-            if (e.product_options && e.product_options.length > 0) {
-              return config.storeApiFetch(
-                `/v3/catalog/products/${e.product_id}/variants/${e.variant_id}`
-              )
-            }
+            return config.storeApiFetch(
+              `/v3/catalog/products/${e.product_id}/variants/${e.variant_id}`
+            )
           })
         )) as [{ data: CatalogProductVariant }]
+
         variantData
           .filter((e) => !!e)
           .forEach((element) => {
@@ -39,6 +39,14 @@ const listOrderProducts: OrderProductsHandler['listOrderProducts'] = async ({
               }
             }
           })
+
+        const productImages = (await Promise.all(
+          products.map((e) => {
+            return config.storeApiFetch(
+              `/v3/catalog/products/${e.product_id}/images`
+            )
+          })
+        )) as [{ data: CatalogProductImages[] }]
       }
     }
   } catch (error) {

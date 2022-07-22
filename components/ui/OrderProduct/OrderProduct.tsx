@@ -92,7 +92,7 @@ const OrderProduct: FunctionComponent<IOrderProduct> = (props) => {
         {orderProduct.variant?.image_url && (
           <ProductCardImage
             isPrescription={showPrescriptionIcon}
-            imageUrl={orderProduct.variant.image_url}
+            images={[{ url: orderProduct.variant.image_url }]}
             variant={variant}
           />
         )}

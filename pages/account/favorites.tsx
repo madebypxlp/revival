@@ -13,7 +13,7 @@ import Translations from 'constants/translations'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import styles from './favorites.module.scss'
+import styles from '../../styles/pages/account/favorites.module.scss'
 
 export async function getStaticProps({
   preview,

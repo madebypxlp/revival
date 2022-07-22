@@ -16,8 +16,6 @@ const CartSidebarView: FC = () => {
   const { closeSidebar } = useUI()
   const { data, isLoading, isEmpty, error } = useCart()
 
-  console.log(data, error)
-
   const { price: subTotal } = usePrice(
     data && {
       amount: Number(data.subtotalPrice),
@@ -30,8 +28,6 @@ const CartSidebarView: FC = () => {
       currencyCode: data.currency.code,
     }
   )
-
-  //const error = null
   const success = null
   const products = data?.lineItems || []
 
