@@ -32,13 +32,14 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     vetInfo,
   } = props
 
-  const getProductDetails = getCatalogProduct({ productId: product.productId })
+  const productDetails = getCatalogProduct({
+    productId: product.productId,
+  }).data
 
-  console.log('product details')
-  console.log(getProductDetails)
   const updateItem = useUpdateItem({ item: product })
-  const isMobile = useIsMobile()
   const removeCartItem = useRemoveItem()
+
+  const isMobile = useIsMobile()
   const [quantity, setQuantity] = useState(product.quantity)
   const [loading, setLoading] = useState(false)
 
@@ -70,12 +71,19 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
           styles.rightColumnContainer
         )}
       >
-        <div className={styles.productPrice}>
-          {formatPrice(product.variant.price)}
-        </div>
-        <div className={styles.productOldPrice}>
-          {formatPrice(product.variant.listPrice)}
-        </div>
+        {productDetails && (
+          <>
+            <div className={styles.productPrice}>
+              {formatPrice(productDetails.sale_price || productDetails.price)}
+            </div>
+
+            {productDetails.sale_price && (
+              <div className={styles.productOldPrice}>
+                {formatPrice(productDetails.price)}
+              </div>
+            )}
+          </>
+        )}
       </div>
     )
   } else if (rightColumn === 'edit-details') {
@@ -119,7 +127,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     if (loading) setLoading(false)
   }, [product.quantity])
 
-  console.log(product)
   return (
     <div className={rootClasses}>
       {loading && <LoadingDots portal />}
@@ -127,7 +134,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
         {product.variant.image?.url && (
           <ProductCardImage
             isPrescription={showPrescriptionIcon}
-            imageUrl={product.variant.image.url}
+            images={[product.variant.image]}
             variant={variant}
           />
         )}
@@ -136,7 +143,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
       <div className={styles.infoContainer}>
         <div className={styles.productNameContainer}>
           <div className={styles.productName}>{product.name}</div>
-          <div className={styles.productId}>#{product.id}</div>
+          <div className={styles.productId}>#{product.sku}</div>
           <div className={styles.productId}>{product.variant.name}</div>
         </div>
         {!isMobile && rightColumn !== 'empty' && rightColumnComponent}

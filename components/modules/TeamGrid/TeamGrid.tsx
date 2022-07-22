@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 import Button from '@components/ui/Button/Button'
+import { useIsMobile } from '@commerce/utils/hooks'
+import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
 import ITeamGrid from './TeamGrid.interface'
 import styles from './TeamGrid.module.scss'
 
@@ -8,6 +10,8 @@ const TeamGridModule: FunctionComponent<{ module: ITeamGrid }> = ({
   module,
 }) => {
   const { headline, team } = module
+  const isMobile = useIsMobile()
+
   return (
     <div className={`${styles.root}`}>
       <div className="container">
@@ -42,13 +46,22 @@ const TeamGridModule: FunctionComponent<{ module: ITeamGrid }> = ({
                   {links && links.length > 0 && (
                     <div className={styles.teamMemberLinksContainer}>
                       {links.map(({ link }) => (
-                        <Button
-                          key={link.title}
-                          color="yellow"
-                          variant="large"
-                          type="default"
-                          link={link}
-                        />
+                        <div key={link.title} className="">
+                          <Button
+                            color="yellow"
+                            variant="large"
+                            type="default"
+                            link={link}
+                            className="hidden md:block"
+                          />
+                          <ArrowCTA
+                            link={link}
+                            className="block md:hidden"
+                            subnav
+                            orientation="right"
+                            color="yellow"
+                          />
+                        </div>
                       ))}
                     </div>
                   )}

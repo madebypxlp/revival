@@ -6,13 +6,7 @@ import IProductCardGrid from './ProductCardGrid.interface'
 import ProductCard from '../ProductCard/ProductCard'
 
 const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
-  const {
-    headline,
-    products,
-    catalogProducts,
-    variant = 'default',
-    className,
-  } = props
+  const { headline, products, variant = 'default', className } = props
 
   const productCardProps = { showFavoriteIcon: variant === 'favorites' }
 
@@ -31,28 +25,10 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
         </div>
       )}
       <div className={c('default-grid', styles.productGridContainer)}>
-        {catalogProducts &&
-          catalogProducts.map((p) => (
-            <div className="col-span-1 md:col-span-4 lg:col-span-3" key={p.id}>
-              <ProductCard
-                price={p.price}
-                id={p.id}
-                name={p.name}
-                imageURL={p.primary_image.url_thumbnail}
-                {...productCardProps}
-              />
-            </div>
-          ))}
         {products &&
           products.map((p) => (
             <div className="col-span-1 md:col-span-4 lg:col-span-3" key={p.id}>
-              <ProductCard
-                price={p.price.value}
-                id={p.id}
-                name={p.name}
-                imageURL={p.images[0]?.url}
-                {...productCardProps}
-              />
+              <ProductCard product={p} />
             </div>
           ))}
       </div>

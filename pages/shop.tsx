@@ -14,13 +14,13 @@ import { ACFGlobalData } from 'framework/wordpress/interfaces/globals'
 import Input from '@components/ui/Input/Input'
 import { useState } from 'react'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
-import BreadCrumbs from '@components/ui/BreadCrumbs/BreadCrumbs'
+//  import BreadCrumbs from '@components/ui/BreadCrumbs/BreadCrumbs'
 import Button from '@components/ui/Button/Button'
 import Link from '@components/ui/Link/Link'
 import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
-import styles from './shop.module.scss'
 import fetch from '../framework/wordpress/wp-client'
 import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
+import styles from '../styles/pages/shop.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -101,7 +101,7 @@ export default function Orders({
           }}
         />
       )}
-      <BreadCrumbs breadcrumbs={breadcrumbs} className="container py-50" />
+      {/* <BreadCrumbs breadcrumbs={breadcrumbs} className="container py-50" /> */}
       <div className={cn(styles.mainContainer, 'container default-grid')}>
         <div className={styles.filtersContainer}>
           {!isMobile && (

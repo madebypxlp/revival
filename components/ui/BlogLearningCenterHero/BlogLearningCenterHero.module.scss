@@ -1,19 +1,14 @@
 .root {
   .circle {
     background-size: contain;
-    width: auto;
-    height: auto;
     top: auto;
     right: auto;
     bottom: 0;
     left: 0;
-    // z-index: 10;
-    // background-position: center;
-    // width: 100%;
     svg {
-      width: 55%;
+      width: 57%;
       height: auto;
-      transform: translate(-25%, 17%);
+      transform: translate(-25%, 32%);
     }
   }
 

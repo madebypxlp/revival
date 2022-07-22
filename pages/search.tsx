@@ -256,7 +256,7 @@ export default function Search({
           )}
 
           {data ? (
-            <div layout="normal">
+            <div>
               {data.products.map((product: Product) => (
                 <ProductCard
                   variant="simple"
@@ -271,7 +271,7 @@ export default function Search({
               ))}
             </div>
           ) : (
-            <div layout="normal">
+            <div>
               {rangeMap(12, (i) => (
                 <Skeleton
                   key={i}

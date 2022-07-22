@@ -16,7 +16,7 @@ import AuthModal from '@components/ui/AuthModal/AuthModal'
 import { useEffect } from 'react'
 import { useUI } from '@components/ui'
 import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
-import styles from './index.module.scss'
+import styles from '../../styles/pages/account/index.module.scss'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import fetch from '../../framework/wordpress/wp-client'
@@ -133,30 +133,6 @@ export default function Profile({
                   {customerAddress.phone && (
                     <div>{`${Translations.ACCOUNT.PHONE}: ${customerAddress.phone}`}</div>
                   )}
-                </div>
-              )}
-              {false && (
-                <div className={styles.infoGroup}>
-                  <NextLink href="/account/settings">
-                    <a className={styles.title}>
-                      {Translations.ACCOUNT.PAYMENT_METHOD}
-                      <ChevronUp className={styles.rightChevron} />
-                    </a>
-                  </NextLink>
-                  <div>{paymentMethod.name}</div>
-                  <div>{`${Translations.ACCOUNT.EXPIRE} ${paymentMethod.expiration}`}</div>
-                  <div>${paymentMethod.name}</div>
-                </div>
-              )}
-              {false && (
-                <div className={styles.infoGroup}>
-                  <NextLink href="#">
-                    <div className={styles.title}>
-                      {Translations.ACCOUNT.GIFT_CARD}
-                      <ChevronUp className={styles.rightChevron} />
-                    </div>
-                  </NextLink>
-                  <div>{paymentMethod.name}</div>
                 </div>
               )}
             </div>

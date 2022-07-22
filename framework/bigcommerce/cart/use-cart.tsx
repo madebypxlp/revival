@@ -3,7 +3,6 @@ import { SWRHook } from '@commerce/utils/types'
 import useCart, { UseCart, FetchCartInput } from '@commerce/cart/use-cart'
 import { normalizeCart } from '../lib/normalize'
 import type { Cart } from '../types'
-import { getProduct } from '@framework/product'
 
 export default useCart as UseCart<typeof handler>
 

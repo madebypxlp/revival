@@ -27,8 +27,6 @@ const CartItem = ({
 }) => {
   const { closeSidebarIfPresent } = useUI()
 
-  console.log('cart item id', item.id)
-
   const { price } = usePrice({
     amount: item.variant.price * item.quantity,
     baseAmount: item.variant.listPrice * item.quantity,

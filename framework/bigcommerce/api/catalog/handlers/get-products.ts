@@ -42,7 +42,6 @@ const getProducts: ProductsHandlers['getProducts'] = async ({
     }
   }
 
-  console.log(url)
   // We only want the id of each product
   url.searchParams.set('include_fields', 'id')
 

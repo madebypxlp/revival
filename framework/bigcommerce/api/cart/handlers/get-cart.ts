@@ -3,6 +3,8 @@ import { BigcommerceApiError } from '../../utils/errors'
 import getCartCookie from '../../utils/get-cart-cookie'
 import type { CartHandlers } from '..'
 import { CatalogProduct } from 'framework/custom-interfaces/catalog-product'
+import { Product } from '@commerce/types'
+import { normalizePrimaryImage } from '@framework/lib/normalize'
 
 // Return current cart info
 const getCart: CartHandlers['getCart'] = async ({
@@ -34,12 +36,15 @@ const getCart: CartHandlers['getCart'] = async ({
         const finalData = (await Promise.all(
           relatedProducts.map((e) => {
             return config.storeApiFetch(
-              `/v3/catalog/products/${e}?include=primary_image`
+              `/v3/catalog/products/${e}?include=primary_image, variants`
             )
           })
         )) as [{ data: CatalogProduct }]
 
-        const relatedProductSet = finalData.map((e) => e.data)
+        const relatedProductSet = finalData
+          .map((e) => e.data)
+          .map((p) => normalizePrimaryImage(p))
+
         if (result.data) {
           result.data.relatedProducts = relatedProductSet
         }

@@ -1,3 +1,5 @@
+import { ProductVariant } from '@commerce/types'
+
 interface CustomUrl {
   url: string
   is_customized: boolean
@@ -71,6 +73,7 @@ export interface CatalogProduct {
   open_graph_use_meta_description: boolean
   open_graph_use_product_name: boolean
   open_graph_use_image: boolean
+  images: []
   primary_image: {
     id: number
     product_id: number
@@ -84,4 +87,5 @@ export interface CatalogProduct {
     url_tiny: string
     date_modified: Date
   }
+  variants: ProductVariant[]
 }

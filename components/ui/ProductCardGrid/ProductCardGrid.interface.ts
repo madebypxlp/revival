@@ -6,5 +6,4 @@ export default interface IProductCardGrid {
   variant?: 'favorites' | 'shop' | 'default'
   className?: string
   products?: Product[]
-  catalogProducts?: CatalogProduct[]
 }

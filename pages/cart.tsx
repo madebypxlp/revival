@@ -15,7 +15,7 @@ import { useIsMobile } from '@commerce/utils/hooks'
 import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
 import fetch from '../framework/wordpress/wp-client'
-import styles from './cart.module.scss'
+import styles from '../styles/pages/cart.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -42,13 +42,8 @@ export default function Cart({
   const success = null
   const { data, isLoading, isEmpty } = useCart()
   const isMobile = useIsMobile()
+  console.log(data)
 
-  const { price: subTotal } = usePrice(
-    data && {
-      amount: Number(data.subtotalPrice),
-      currencyCode: data.currency.code,
-    }
-  )
   const { price: total } = usePrice(
     data && {
       amount: Number(data.totalPrice),
@@ -123,7 +118,7 @@ export default function Cart({
 
             <div className={c(styles.subtotalContainer, 'typo-h5')}>
               <h5 className="font-bold">{`${Translations.CART.SUBTOTAL}:`}</h5>
-              <span className="md:typo-large-paragraph">{subTotal}</span>
+              <span className="md:typo-large-paragraph">{total}</span>
             </div>
             <div>
               <Button
@@ -143,7 +138,7 @@ export default function Cart({
       </div>
       {data?.relatedProducts && data.relatedProducts.length > 0 && (
         <ProductCardGrid
-          catalogProducts={data?.relatedProducts}
+          products={data?.relatedProducts}
           headline={Translations.YOU_MAY_ALSO_LIKE}
         />
       )}

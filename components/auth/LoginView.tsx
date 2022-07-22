@@ -1,12 +1,11 @@
 import { FC, useEffect, useState, useCallback } from 'react'
-import { Logo } from '@components/ui'
+import LoadingDots from '@components/ui/LoadingDots/LoadingDots'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
 import Button from '@components/ui/Button/Button'
 import Input from '@components/ui/Input/Input'
 import styles from './AuthStyle.module.scss'
-import LoadingDots from '@components/ui/LoadingDots/LoadingDots'
 
 interface Props {}
 
