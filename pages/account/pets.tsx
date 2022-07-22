@@ -38,7 +38,6 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
-  console.log(data)
 
   const pets = [{ name: 'Billie Ellie' }, { name: 'Piper' }, { name: 'Bella' }]
   return (

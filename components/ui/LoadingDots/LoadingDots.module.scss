@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   pointer-events: none;
 
   &.portal {
@@ -24,7 +24,7 @@
       animation-iteration-count: infinite;
       animation-fill-mode: both;
       margin: 0 2px;
-      background-color: blue;
+      background-color: theme('colors.yellow.default');
       &:nth-of-type(2) {
         animation-delay: 0.2s;
       }

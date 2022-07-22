@@ -13,13 +13,11 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
   const isMobile = useIsMobile()
   const { products, image } = module
 
-  console.log(module)
   const productIds = products.map((e) => e.productId) || []
   const { data } = useSearch({
     idIn: productIds.join(),
   })
 
-  console.log(data)
   return (
     <div
       className={`${styles.root} container default-grid lg:mb-55 overflow-hidden mb-30`}

@@ -11,9 +11,16 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
   const productCardProps = { showFavoriteIcon: variant === 'favorites' }
 
   return (
-    <div className={c(styles.root, styles[`variant--${variant}`], className)}>
+    <div
+      className={c(
+        styles.root,
+        'container',
+        styles[`variant--${variant}`],
+        className
+      )}
+    >
       {headline && (
-        <div className="container default-grid">
+        <div className="default-grid">
           <div
             className={c(
               'col-start-1 col-span-2 md:col-span-3',
@@ -28,7 +35,7 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
         {products &&
           products.map((p) => (
             <div className="col-span-1 md:col-span-4 lg:col-span-3" key={p.id}>
-              <ProductCard product={p} />
+              <ProductCard type="cart" product={p} />
             </div>
           ))}
       </div>

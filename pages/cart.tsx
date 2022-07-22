@@ -1,5 +1,7 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { useEffect, useState } from 'react'
 import c from 'classnames'
+import { Product } from '@commerce/types'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
@@ -38,9 +40,8 @@ export default function Cart({
   header,
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const error = null
-  const success = null
   const { data, isLoading, isEmpty } = useCart()
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([])
   const isMobile = useIsMobile()
 
   const { price: total } = usePrice(
@@ -49,53 +50,38 @@ export default function Cart({
       currencyCode: data.currency.code,
     }
   )
-  const headline = isEmpty
-    ? Translations.CART.YOUR_CART_IS_EMPTY
-    : Translations.CART.YOUR_CART
+
+  useEffect(() => {
+    if (data?.relatedProducts) {
+      setRelatedProducts(data.relatedProducts)
+    }
+  }, [data])
 
   return (
     <div className={styles.root}>
       {isLoading && <LoadingDots portal />}
       <div className="container default-grid">
         <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-8 text-blue mb-65 md:mb-85">
-          <h2>{headline}</h2>
+          <h2>
+            {isEmpty
+              ? Translations.CART.YOUR_CART_IS_EMPTY
+              : Translations.CART.YOUR_CART}
+          </h2>
         </div>
         <div className="col-span-2 md:col-span-8">
-          {/* eslint-disable-next-line no-nested-ternary */}
-          {error ? (
-            <div className="flex-1 px-4 flex flex-col justify-center items-center">
-              <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
-                <Cross width={24} height={24} />
-              </span>
-              <h2 className="pt-6 text-xl font-light text-center">
-                We couldn’t process the purchase. Please check your card
-                information and try again.
-              </h2>
-            </div>
-          ) : success ? (
-            <div className="flex-1 px-4 flex flex-col justify-center items-center">
-              <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
-                <Check />
-              </span>
-              <h2 className="pt-6 text-xl font-light text-center">
-                Thank you for your order.
-              </h2>
-            </div>
-          ) : (
-            <div>
-              {!isEmpty &&
-                data?.lineItems.map((item) => (
-                  <div className={styles.cartProductContainer} key={item.id}>
-                    <CartProduct
-                      product={item}
-                      variant="cart"
-                      currencyCode="USD"
-                      showCartControls
-                    />
-                  </div>
-                ))}
-            </div>
-          )}
+          <div>
+            {!isEmpty &&
+              data?.lineItems.map((item) => (
+                <div className={styles.cartProductContainer} key={item.id}>
+                  <CartProduct
+                    product={item}
+                    variant="cart"
+                    currencyCode={data.currency.code}
+                    showCartControls
+                  />
+                </div>
+              ))}
+          </div>
         </div>
         {!isEmpty && (
           <div className={c(styles.informationBox, 'col-span-2 md:col-span-4')}>
@@ -134,10 +120,11 @@ export default function Cart({
           </div>
         )}
       </div>
-      {data?.relatedProducts && data.relatedProducts.length > 0 && (
+      {relatedProducts && relatedProducts.length > 0 && (
         <ProductCardGrid
-          products={data?.relatedProducts}
+          products={relatedProducts}
           headline={Translations.YOU_MAY_ALSO_LIKE}
+          variant="cart"
         />
       )}
     </div>

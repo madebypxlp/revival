@@ -24,6 +24,7 @@ const Translations = {
     NEW: 'NEW',
     OUR_BRANDS: 'OUR BRANDS',
     PLACE_NEW_ORDER: 'Place New Order',
+    SEE_OPTIONS: 'See Options',
   },
   PRESCRIPTIONS: {
     PRESCRIPTION_ITEM: 'Prescription Item',

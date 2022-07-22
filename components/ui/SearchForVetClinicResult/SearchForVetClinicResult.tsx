@@ -6,8 +6,6 @@ import Input from '../Input/Input'
 import { useUI } from '../context'
 
 const SearchResultCard: FunctionComponent<ISearchResultCard> = (props) => {
-  // console.log(props)
-
   const { clinic, address, phone, noButton } = props
   const { addClinicData } = useUI()
 

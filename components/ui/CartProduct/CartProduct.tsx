@@ -77,7 +77,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
               {formatPrice(productDetails.sale_price || productDetails.price)}
             </div>
 
-            {productDetails.sale_price && (
+            {productDetails.sale_price > 0 && productDetails.price > 0 && (
               <div className={styles.productOldPrice}>
                 {formatPrice(productDetails.price)}
               </div>
