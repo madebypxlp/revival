@@ -2,15 +2,18 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import c from 'classnames'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import useUpdateItem from '@framework/cart/use-update-item'
+import getCatalogProduct from '@framework/catalog/products/product'
 import { useIsMobile } from '@commerce/utils/hooks'
 import PrescriptionIcon from '@components/icons/PrescriptionIcon'
 import Translations from 'constants/translations'
+import { formatPrice } from '@lib/utils'
 import AlertIcon from '@components/icons/AlertIcon'
 import Button from '../Button/Button'
 import ProductCardImage from '../ProductCardImage/ProductCardImage'
 import ICartProduct from './CartProduct.interface'
 import styles from './CartProduct.module.scss'
 import Dropdown from '../Dropdown/Dropdown'
+import LoadingDots from '../LoadingDots/LoadingDots'
 
 const CartProduct: FunctionComponent<ICartProduct> = (props) => {
   const {
@@ -27,35 +30,32 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     rightColumn = 'price',
     shippingRestrictionsMessage,
     vetInfo,
-    currencyCode,
   } = props
+
+  const productDetails = getCatalogProduct({
+    productId: product.productId,
+  }).data
 
   const updateItem = useUpdateItem({ item: product })
   const removeCartItem = useRemoveItem()
-  const isMobile = useIsMobile()
 
+  const isMobile = useIsMobile()
   const [quantity, setQuantity] = useState(product.quantity)
+  const [loading, setLoading] = useState(false)
+
   const updateQuantity = async (val: number) => {
+    setLoading(true)
     await updateItem({ quantity: val })
   }
   const handleRemove = async () => {
-    //  setRemoving(true)
-
-    try {
-      // If this action succeeds then there's no need to do `setRemoving(true)`
-      // because the component will be removed from the view
-      await removeCartItem(product)
-    } catch (error) {
-      console.log(error)
-      //  setRemoving(false)
-    }
+    setLoading(true)
+    await removeCartItem(product).finally(() => {
+      setLoading(false)
+    })
   }
-
-  const handleEdit = async () => {}
 
   const increaseQuantity = (n = 1) => {
     const val = Number(quantity) + n
-
     if (Number.isInteger(val) && val >= 0) {
       setQuantity(val)
       updateQuantity(val)
@@ -71,8 +71,19 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
           styles.rightColumnContainer
         )}
       >
-        <div className={styles.productPrice}>A</div>
-        <div className={styles.productOldPrice}>XXX OLD</div>
+        {productDetails && (
+          <>
+            <div className={styles.productPrice}>
+              {formatPrice(productDetails.sale_price || productDetails.price)}
+            </div>
+
+            {productDetails.sale_price && (
+              <div className={styles.productOldPrice}>
+                {formatPrice(productDetails.price)}
+              </div>
+            )}
+          </>
+        )}
       </div>
     )
   } else if (rightColumn === 'edit-details') {
@@ -113,15 +124,17 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     if (product.quantity !== Number(quantity)) {
       setQuantity(product.quantity)
     }
+    if (loading) setLoading(false)
   }, [product.quantity])
 
   return (
     <div className={rootClasses}>
+      {loading && <LoadingDots portal />}
       <div className={styles.productImageContainer}>
         {product.variant.image?.url && (
           <ProductCardImage
             isPrescription={showPrescriptionIcon}
-            image={product.variant.image}
+            images={[product.variant.image]}
             variant={variant}
           />
         )}
@@ -130,7 +143,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
       <div className={styles.infoContainer}>
         <div className={styles.productNameContainer}>
           <div className={styles.productName}>{product.name}</div>
-          <div className={styles.productId}>#{product.id}</div>
+          <div className={styles.productId}>#{product.sku}</div>
           <div className={styles.productId}>{product.variant.name}</div>
         </div>
         {!isMobile && rightColumn !== 'empty' && rightColumnComponent}
@@ -205,10 +218,7 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
             </div>
             <div className={styles.controlLinksContainer}>
               <button color="black" onClick={handleRemove}>
-                Remove
-              </button>
-              <button color="black" onClick={handleEdit}>
-                Edit
+                {Translations.REMOVE}
               </button>
             </div>
           </>

@@ -1,16 +1,17 @@
 import React, { FunctionComponent } from 'react'
 import c from 'classnames'
+import type { Product } from '@commerce/types'
 import styles from './ProductCardGrid.module.scss'
 import IProductCardGrid from './ProductCardGrid.interface'
 import ProductCard from '../ProductCard/ProductCard'
 
 const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
-  const { headline, products, variant, className } = props
+  const { headline, products, variant = 'default', className } = props
 
   const productCardProps = { showFavoriteIcon: variant === 'favorites' }
 
   return (
-    <div className={c(styles.root, className)}>
+    <div className={c(styles.root, styles[`variant--${variant}`], className)}>
       {headline && (
         <div className="container default-grid">
           <div
@@ -23,12 +24,13 @@ const ProductCardGrid: FunctionComponent<IProductCardGrid> = (props) => {
           </div>
         </div>
       )}
-      <div className={c('container default-grid', styles.productGridContainer)}>
-        {products.map((p) => (
-          <div className="col-span-1 md:col-span-4 lg:col-span-3" key={p.id}>
-            {/* <ProductCard {...p} {...productCardProps} /> */}
-          </div>
-        ))}
+      <div className={c('default-grid', styles.productGridContainer)}>
+        {products &&
+          products.map((p) => (
+            <div className="col-span-1 md:col-span-4 lg:col-span-3" key={p.id}>
+              <ProductCard product={p} />
+            </div>
+          ))}
       </div>
     </div>
   )

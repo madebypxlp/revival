@@ -9,6 +9,7 @@ export type Discount = {
 
 export type LineItem = {
   id: string
+  sku: string
   variantId: string
   productId: string
   name: string
@@ -167,9 +168,15 @@ export interface Product extends Entity {
   path?: string
   images: ProductImage[]
   variants: ProductVariant2[]
-  price: ProductPrice
+  price: number
+  salePrice: number
+  retailPrice: number
   options: ProductOption[]
   sku?: string
+  brand?: {
+    entityId: string
+    name: string
+  }
 }
 
 interface ProductOption extends Entity {
@@ -182,7 +189,7 @@ interface ProductOptionValues {
   hexColors?: string[]
 }
 
-interface ProductImage {
+export interface ProductImage {
   url: string
   alt?: string
 }
@@ -190,14 +197,4 @@ interface ProductImage {
 interface ProductVariant2 {
   id: string | number
   options: ProductOption[]
-}
-
-interface ProductPrice {
-  value: number
-  currencyCode: 'USD' | 'ARS' | string | undefined
-  retailPrice?: number
-  salePrice?: number
-  listPrice?: number
-  extendedSalePrice?: number
-  extendedListPrice?: number
 }

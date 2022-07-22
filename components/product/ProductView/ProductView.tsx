@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import { FC, useState } from 'react'
 
-import { Swatch, ProductSlider } from '@components/product'
-import { Container, Text, useUI } from '@components/ui'
+import { ProductSlider } from '@components/product'
+import { useUI } from '@components/ui'
 
 import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
@@ -22,9 +22,9 @@ interface Props {
 const ProductView: FC<Props> = ({ product }) => {
   const addItem = useAddItem()
   const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
+    amount: product.price,
+    baseAmount: product.retailPrice,
+    currencyCode: product.currencyCode!,
   })
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
@@ -51,7 +51,7 @@ const ProductView: FC<Props> = ({ product }) => {
   }
 
   return (
-    <Container className="max-w-none w-full" clean>
+    <div className="max-w-none w-full">
       <NextSeo
         title={product.name}
         description={product.description}
@@ -73,11 +73,7 @@ const ProductView: FC<Props> = ({ product }) => {
         <div className={cn(s.productDisplay, 'fit')}>
           <div className={s.nameBox}>
             <h1 className={s.name}>{product.name}</h1>
-            <div className={s.price}>
-              {price}
-              {` `}
-              {product.price?.currencyCode}
-            </div>
+            <div className={s.price}>{price}$</div>
           </div>
 
           <div className={s.sliderContainer}>
@@ -134,7 +130,7 @@ const ProductView: FC<Props> = ({ product }) => {
             ))}
 
             <div className="pb-14 break-words w-full max-w-xl">
-              <Text html={product.description} />
+              <span>{product.description}</span>
             </div>
           </section>
           <div>
@@ -158,7 +154,7 @@ const ProductView: FC<Props> = ({ product }) => {
           />
         )}
       </div>
-    </Container>
+    </div>
   )
 }
 

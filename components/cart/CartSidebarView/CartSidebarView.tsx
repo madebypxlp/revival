@@ -1,19 +1,20 @@
 /* eslint-disable no-nested-ternary */
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import cn from 'classnames'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Translations from 'constants/translations'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import CartProduct from '@components/ui/CartProduct/CartProduct'
-import Translations from 'constants/translations'
 import Button from '@components/ui/Button/Button'
 import styles from './CartSidebarView.module.scss'
 
 const CartSidebarView: FC = () => {
+  const router = useRouter()
   const { closeSidebar } = useUI()
-  const { data, isLoading, isEmpty } = useCart()
+  const { data, isLoading, isEmpty, error } = useCart()
 
   const { price: subTotal } = usePrice(
     data && {
@@ -27,23 +28,11 @@ const CartSidebarView: FC = () => {
       currencyCode: data.currency.code,
     }
   )
-  const handleClose = () => closeSidebar()
-
-  const error = null
   const success = null
   const products = data?.lineItems || []
-  products.push(products[0])
-  products.push(products[0])
-  products.push(products[0])
-  products.push(products[0])
-  products.push(products[0])
 
   return (
-    <div
-      className={cn(styles.root, {
-        [styles.empty]: error || success || isLoading || isEmpty,
-      })}
-    >
+    <div className={cn(styles.root)}>
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
           <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-10 mb-15">
@@ -74,11 +63,10 @@ const CartSidebarView: FC = () => {
         </div>
       ) : (
         <>
-          <Link href="/cart">
-            <h5 role="none" className={styles.headline} onClick={handleClose}>
-              {`Your Cart (${products.length})`}
-            </h5>
-          </Link>
+          <h5 role="none" className={styles.headline} onClick={closeSidebar}>
+            {`Your Cart (${products.length})`}
+          </h5>
+
           <div className={cn(styles.productsColumn, 'custom-scrollbar')}>
             <div className={cn(styles.productsContainer)}>
               {data &&
@@ -104,6 +92,10 @@ const CartSidebarView: FC = () => {
               variant="large"
               type="default"
               className="w-full"
+              onClick={() => {
+                closeSidebar()
+                router.push('/cart')
+              }}
             >
               {Translations.CART.PROCEED_TO_CHECKOUT}
             </Button>

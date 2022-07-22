@@ -14,6 +14,14 @@ import { handler as useLogin } from './auth/use-login'
 import { handler as useLogout } from './auth/use-logout'
 import { handler as useSignup } from './auth/use-signup'
 
+import { handler as useOrders } from './orders/use-orders'
+import { handler as listOrderProducts } from './orders/order-products/order-products'
+import { handler as getOrderShippingAddresses } from './orders/order-shipping-addresses/order-shipping-addresses'
+import { handler as getOrderShipments } from './orders/order-shipments/order-shipments'
+import { handler as getCatalogProduct } from './catalog/products/product'
+import { handler as getAcceptedPaymentMethods } from './payment/get-accepted-payment-methods'
+import { handler as getCheckout } from './checkout/get-checkout'
+
 import fetcher from './fetcher'
 
 export const bigcommerceProvider = {
@@ -29,6 +37,21 @@ export const bigcommerceProvider = {
   customer: { useCustomer },
   products: { useSearch },
   auth: { useLogin, useLogout, useSignup },
+  catalog: {
+    getCatalogProduct,
+  },
+  orders: {
+    useOrders,
+    listOrderProducts,
+    getOrderShippingAddresses,
+    getOrderShipments,
+  },
+  payments: {
+    getAcceptedPaymentMethods,
+  },
+  checkout: {
+    getCheckout,
+  },
 }
 
 export type BigcommerceProvider = typeof bigcommerceProvider

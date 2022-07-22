@@ -2,6 +2,8 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/common/get-all-pages'
+import useOrders from '@framework/orders/use-orders'
+import uselistOrderProducts from '@framework/orders/order-products/order-products'
 import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
 import Translations from 'constants/translations'
@@ -14,7 +16,7 @@ import AuthModal from '@components/ui/AuthModal/AuthModal'
 import { useEffect } from 'react'
 import { useUI } from '@components/ui'
 import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
-import styles from './index.module.scss'
+import styles from '../../styles/pages/account/index.module.scss'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import fetch from '../../framework/wordpress/wp-client'
@@ -27,6 +29,7 @@ export async function getStaticProps({
   const { pages } = await getAllPages({ config, preview })
   const header = await fetch({ query: headerQuery })
   const footer = await fetch({ query: footerQuery })
+
   return {
     props: {
       pages,
@@ -40,27 +43,20 @@ export default function Profile({
   header,
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { data = null, isLoading } = useCustomer()
+  const { data = null, isLoading, error } = useCustomer()
   const router = useRouter()
+  const orders = useOrders().data
+
   const { setModalView, openModal, closeModal } = useUI()
 
   useEffect(() => {
-    if (!isLoading && data === null) {
+    if (error || (!isLoading && data === null)) {
       openModal()
       setModalView('LOGIN_VIEW')
     } else {
       closeModal()
     }
-  }, [data])
-
-  const order = {
-    id: '000000',
-    placed: new Date(),
-    sentTo: '24 Tesla, Ste 100 Irvine CA, 92618',
-    total: 45,
-    status: 'Shipped',
-  }
-  const orders = [order, order, order, order]
+  }, [data, isLoading, error])
 
   const accountInfo = {
     username: data?.firstName,
@@ -70,19 +66,10 @@ export default function Profile({
     giftCardBalance: data?.storeCredit[0]?.value,
   }
 
-  const shippingInfo = {
-    name: `${data?.firstName} ${data?.lastName}`,
-    addressLine1: '34 Tesla, Ste 100',
-    addressLine2: 'Irvine, CA 92618-4655',
-    phone: data?.phone,
-  }
-  const paymentMethod = {
-    card: 'Amex **** 3009',
-    expiration: '5/2022',
-    name: 'Jane Doe',
-  }
   const headlineText = `${Translations.ACCOUNT.WELCOME_BACK}, ${accountInfo.username}`
 
+  //  pick the first one
+  const customerAddress = data?.addresses ? data.addresses[0] : undefined
   return (
     <div className={styles.root}>
       <AuthModal onClose={() => router.push('/')} />
@@ -101,7 +88,13 @@ export default function Profile({
                   {Translations.ACCOUNT.VIEW_ALL_ORDERS}
                 </ArrowCTA>
               </div>
-              <OrdersBox orders={orders} variant="account" className="mb-85" />
+              {orders && (
+                <OrdersBox
+                  orders={orders}
+                  variant="account"
+                  className="mb-85"
+                />
+              )}
               <AccountLinkGroup />
             </div>
 
@@ -112,48 +105,36 @@ export default function Profile({
                 </div>
               </div>
               <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
+                <NextLink href="/account/settings">
+                  <a className={styles.title}>
                     {Translations.ACCOUNT.YOUR_PROFILE}
                     <ChevronUp className={styles.rightChevron} />
-                  </div>
+                  </a>
                 </NextLink>
                 <div>{accountInfo.name}</div>
                 <div>{accountInfo.email}</div>
-                <div>{`${Translations.ACCOUNT.PASSWORD} ${accountInfo.password}`}</div>
+                {false && (
+                  <div>{`${Translations.ACCOUNT.PASSWORD} ${accountInfo.password}`}</div>
+                )}
               </div>
-              <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
-                    {Translations.ACCOUNT.SHIPPING_ADDRESS}
-                    <ChevronUp className={styles.rightChevron} />
+              {customerAddress && (
+                <div className={styles.infoGroup}>
+                  <NextLink href="/account/settings">
+                    <a className={styles.title}>
+                      {Translations.ACCOUNT.SHIPPING_ADDRESS}
+                      <ChevronUp className={styles.rightChevron} />
+                    </a>
+                  </NextLink>
+                  <div>
+                    {customerAddress.first_name} {customerAddress.last_name}
                   </div>
-                </NextLink>
-                <div>{shippingInfo.name}</div>
-                <div>{shippingInfo.addressLine1}</div>
-                <div>{shippingInfo.addressLine2}</div>
-                <div>{`${Translations.ACCOUNT.PHONE} ${shippingInfo.phone}`}</div>
-              </div>
-              <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
-                    {Translations.ACCOUNT.PAYMENT_METHOD}
-                    <ChevronUp className={styles.rightChevron} />
-                  </div>
-                </NextLink>
-                <div>{paymentMethod.name}</div>
-                <div>{`${Translations.ACCOUNT.EXPIRE} ${paymentMethod.expiration}`}</div>
-                <div>${paymentMethod.name}</div>
-              </div>
-              <div className={styles.infoGroup}>
-                <NextLink href="#">
-                  <div className={styles.title}>
-                    {Translations.ACCOUNT.GIFT_CARD}
-                    <ChevronUp className={styles.rightChevron} />
-                  </div>
-                </NextLink>
-                <div>{paymentMethod.name}</div>
-              </div>
+                  <div>{customerAddress.address1}</div>
+                  <div>{`${customerAddress.city}, ${customerAddress.state_or_province} ${customerAddress.postal_code}`}</div>
+                  {customerAddress.phone && (
+                    <div>{`${Translations.ACCOUNT.PHONE}: ${customerAddress.phone}`}</div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </>

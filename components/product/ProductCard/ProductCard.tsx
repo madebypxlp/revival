@@ -24,7 +24,7 @@ const ProductCard: FC<Props> = ({
   ...props
 }) => {
   const isMobile = useIsMobile()
-
+  console.log(product)
   return (
     <Link href={`/product/${product.slug}`} {...props}>
       <a
@@ -40,7 +40,7 @@ const ProductCard: FC<Props> = ({
             {product?.images && (
               <Image
                 quality="85"
-                src={product.images[0].url || placeholderImg}
+                src={product.images[0].url}
                 alt={product.name || 'Product Image'}
                 height={320}
                 width={320}
@@ -56,11 +56,7 @@ const ProductCard: FC<Props> = ({
                 <h3 className={s.productTitle}>
                   <span>{product.name}</span>
                 </h3>
-                <span className={s.productPrice}>
-                  {product.price.value}
-                  &nbsp;
-                  {product.price.currencyCode}
-                </span>
+                <span className={s.productPrice}>{product.price}</span>s
               </div>
               {process.env.COMMERCE_WISHLIST_ENABLED && (
                 <WishlistButton
@@ -75,12 +71,11 @@ const ProductCard: FC<Props> = ({
                 <Image
                   alt={product.name || 'Product Image'}
                   className={s.productImage}
-                  src={product.images[0].url || placeholderImg}
-                  height={540}
-                  width={540}
+                  src={product.images[0].url}
+                  height={1}
+                  width={1}
                   quality="85"
-                  layout="responsive"
-                  //  {...imgProps}
+                  layout="responsive" //  {...imgProps}
                 />
               )}
             </div>

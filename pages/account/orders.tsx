@@ -1,25 +1,27 @@
+/* eslint-disable radix */
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import c from 'classnames'
-import { getConfig } from '@framework/api'
-import { formatPrice } from '@commerce/product/use-price'
-import { formatDate } from '@lib/utils'
 import getAllPages from '@framework/common/get-all-pages'
-import useCustomer from '@framework/customer/use-customer'
+import useOrders from '@framework/orders/use-orders'
+import { getConfig } from '@framework/api'
+import { formatDate, formatPrice } from '@lib/utils'
+import uselistOrderProducts from '@framework/orders/order-products/order-products'
+import getOrderShippingAddresses from '@framework/orders/order-shipping-addresses/order-shipping-addresses'
+import getOrderShipments from '@framework/orders/order-shipments/order-shipments'
 import { Layout } from '@components/common'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
 import { useRouter } from 'next/router'
-import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
 import OrdersBox from '@components/ui/OrdersBox/OrdersBox'
 import AccountLinkGroup from '@components/ui/AccountLinkGroup/AccountLinkGroup'
 import AccountBreadcrumbs from '@components/ui/AccountBreadcrumbs/AccountBreadcrumbs'
 import Button from '@components/ui/Button/Button'
 import ArrowCTA from '@components/ui/ArrowCTA/ArrowCTA'
-import CartProduct from '@components/ui/CartProduct/CartProduct'
+import OrderProduct from '@components/ui/OrderProduct/OrderProduct'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
-import styles from './orders.module.scss'
+import styles from '../../styles/pages/account/orders.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -44,31 +46,21 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
+  const customerOrders = useOrders()
+  const orderProducts = uselistOrderProducts({ orderId: router.query.id }).data
 
-  const { data } = useCustomer()
+  const orderShippingAddresses = getOrderShippingAddresses({
+    orderId: router.query.id,
+  }).data
 
-  const orderId = router.query.id
+  const orderShipmentData = getOrderShipments({ orderId: router.query.id }).data
 
-  const order = {
-    id: '000000',
-    placed: new Date(),
-    sentTo: '24 Tesla, Ste 100 Irvine CA, 92618',
-    total: 45,
-    status: 'Shipped',
-    paidWith: 'Amex **** 3009 Expire: 5/2022 Jane Doe',
-    tracking: '#XXXXXXXXXXXXXXXXXXXXXX',
-    products: [SAMPLE_PRODUCT, SAMPLE_PRODUCT],
-    summary: {
-      subtotal: 175.99,
-      shipping: 'FREE',
-      estimatedTax: 7.99,
-      total: 182.59,
-    },
-  }
+  const order = customerOrders.data?.find(
+    (e) => e.id === parseInt(router.query.id as string)
+  )
 
-  const orders = [order, order, order, order]
-  const heroHeadline = orderId
-    ? `Order #${order.id}`
+  const heroHeadline = router.query.id
+    ? `Order #${router.query.id}`
     : Translations.ACCOUNT.ORDERS
 
   return (
@@ -77,7 +69,7 @@ export default function Profile({
       <div className="container">
         <AccountBreadcrumbs current={Translations.ACCOUNT.ORDERS} />
       </div>
-      {orderId ? (
+      {order ? (
         <div className="container">
           <div className={styles.placeOrderAgainRow}>
             <Button color="yellow" variant="large" type="default">
@@ -90,35 +82,36 @@ export default function Profile({
           <div className={styles.orderBox}>
             <div className={styles.placedColumn}>
               <div className={styles.title}>{Translations.ACCOUNT.PLACED}</div>
-              <div>{formatDate(order.placed)}</div>
+              <div>{formatDate(new Date(order.date_created))}</div>
             </div>
             <div className={styles.sentToColumn}>
               <div className={styles.title}>{Translations.ACCOUNT.SENT_TO}</div>
-              <div>{order.sentTo}</div>
+              <div>{false && order?.shipping_addresses.resource}</div>
             </div>
             <div className={styles.paidWithColumn}>
               <div className={styles.title}>
                 {Translations.ACCOUNT.PAID_WITH}
               </div>
-              <div>{order.paidWith}</div>
+              <div>{order?.currency_code}</div>
             </div>
             <div className={styles.trackingColumn}>
               <div className={styles.title}>
                 {Translations.ACCOUNT.TRACKING}
               </div>
-              <div>{order.tracking}</div>
+              <div>{order?.shipping_addresses.resource}</div>
             </div>
           </div>
-          {order.products.map((p) => (
-            <CartProduct
-              key={p.id}
-              className={styles.product}
-              product={p}
-              currencyCode="USD"
-              variant="account"
-              showBuyItAgain
-            />
-          ))}
+          {orderProducts &&
+            orderProducts.map((p) => (
+              <OrderProduct
+                key={p.id}
+                className={styles.product}
+                orderProduct={p}
+                currencyCode="USD"
+                variant="account"
+                showBuyItAgain
+              />
+            ))}
           <div className="default-grid">
             <div className={styles.summaryContainer}>
               <div className={c(styles.row, styles.title)}>
@@ -126,19 +119,21 @@ export default function Profile({
               </div>
               <div className={styles.row}>
                 {Translations.ACCOUNT.SUBTOTAL}
-                <span>order subtotal</span>
+                <span>{formatPrice(parseFloat(order.total_ex_tax))}</span>
               </div>
               <div className={styles.row}>
                 {Translations.ACCOUNT.SHIPPING}
-                <span>{order.summary.shipping}</span>
+                <span>
+                  {formatPrice(parseFloat(order.shipping_cost_inc_tax), true)}
+                </span>
               </div>
               <div className={styles.row}>
                 {Translations.ACCOUNT.ESTIMATED_SALES_TAX}
-                <span>estimated tax</span>
+                <span>{formatPrice(parseFloat(order.total_tax))}</span>
               </div>
               <div className={c(styles.totalRow, styles.row, styles.title)}>
                 {Translations.ACCOUNT.ORDER_TOTAL}
-                <span>order total</span>
+                <span>{formatPrice(parseFloat(order.total_inc_tax))}</span>
               </div>
             </div>
           </div>
@@ -146,14 +141,19 @@ export default function Profile({
       ) : (
         <div>
           {/* orders page */}
-          <div className="container">
-            <OrdersBox
-              orders={orders}
-              variant="orders"
-              className={styles.ordersBox}
-            />
-            <AccountLinkGroup mobileOnly className={styles.accountLinkGroup} />
-          </div>
+          {customerOrders.data && (
+            <div className="container">
+              <OrdersBox
+                orders={customerOrders.data}
+                variant="orders"
+                className={styles.ordersBox}
+              />
+              <AccountLinkGroup
+                mobileOnly
+                className={styles.accountLinkGroup}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

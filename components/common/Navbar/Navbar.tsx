@@ -69,6 +69,11 @@ const Navbar: FunctionComponent<{ data: AcfOptionsHeader }> = (props) => {
     openSidebar()
   }
 
+  useEffect(() => {
+    setOpenSubNav(false)
+    setNavOpen(false)
+  }, [router.asPath])
+
   return (
     <div
       className={cn(

@@ -68,7 +68,7 @@ const renderLearningCenterDetail = (
       return (
         <ProductSliderWithBigImageModule
           key="ProductSliderWithBigImageModule"
-          module={layout.productSliderWithBigImageModule}
+          module={layout.productSliderWithBigImage}
         />
       )
     default:

@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
-import Text from '@components/ui/Text/Text'
 import ImageComponent from '@components/ui/Image/Image'
 import parse from 'html-react-parser'
 import ITextImageHero from './TextImageHero.interface'

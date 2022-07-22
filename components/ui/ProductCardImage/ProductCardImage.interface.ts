@@ -1,7 +1,7 @@
-import { Image } from '@commerce/types'
+import { ProductImage } from '@commerce/types'
 
 export default interface IProductCardImage {
-  image: Image
+  images: ProductImage[]
   isNew?: boolean
   isPrescription?: boolean
   isOurBrand?: boolean

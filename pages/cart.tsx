@@ -5,7 +5,7 @@ import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import { Layout } from '@components/common'
-import { SAMPLE_PRODUCT } from '@components/ui/ComponentRenderer/ComponentRenderer'
+import LoadingDots from '@components/ui/LoadingDots/LoadingDots'
 import { Cross, Check } from '@components/icons'
 import Button from '@components/ui/Button/Button'
 import ProductCardGrid from '@components/ui/ProductCardGrid/ProductCardGrid'
@@ -15,7 +15,7 @@ import { useIsMobile } from '@commerce/utils/hooks'
 import headerQuery from '../framework/wordpress/queries/acfGlobalOptions/header'
 import footerQuery from '../framework/wordpress/queries/acfGlobalOptions/footer'
 import fetch from '../framework/wordpress/wp-client'
-import styles from './cart.module.scss'
+import styles from '../styles/pages/cart.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -43,37 +43,19 @@ export default function Cart({
   const { data, isLoading, isEmpty } = useCart()
   const isMobile = useIsMobile()
 
-  console.log(data)
-  const { price: subTotal } = usePrice(
-    data && {
-      amount: Number(data.subtotalPrice),
-      currencyCode: data.currency.code,
-    }
-  )
   const { price: total } = usePrice(
     data && {
       amount: Number(data.totalPrice),
       currencyCode: data.currency.code,
     }
   )
-
   const headline = isEmpty
     ? Translations.CART.YOUR_CART_IS_EMPTY
     : Translations.CART.YOUR_CART
 
-  const products = [
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-  ]
-
   return (
     <div className={styles.root}>
+      {isLoading && <LoadingDots portal />}
       <div className="container default-grid">
         <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-8 text-blue mb-65 md:mb-85">
           <h2>{headline}</h2>
@@ -102,7 +84,7 @@ export default function Cart({
           ) : (
             <div>
               {!isEmpty &&
-                products.slice(0, 2).map((item) => (
+                data?.lineItems.map((item) => (
                   <div className={styles.cartProductContainer} key={item.id}>
                     <CartProduct
                       product={item}
@@ -115,45 +97,49 @@ export default function Cart({
             </div>
           )}
         </div>
-        <div className={c(styles.informationBox, 'col-span-2 md:col-span-4')}>
-          {!isMobile && (
-            <div>
-              <div className="text-center typo-large-paragraph mb-30">
-                You are $XX away from FREE economy Ground Shipping
+        {!isEmpty && (
+          <div className={c(styles.informationBox, 'col-span-2 md:col-span-4')}>
+            {!isMobile && (
+              <div>
+                <div className="text-center typo-large-paragraph mb-30">
+                  You are $XX away from FREE economy Ground Shipping
+                </div>
+                <div className="border-b-[1rem] border-white rounded-full mb-30" />
+                <div
+                  className={c(styles.learnMoreText, 'typo-small-paragraph')}
+                >
+                  {Translations.LEARN_MORE}
+                </div>
+                <div className="border-b-[0.1rem] border-[#C4C4C4] mb-40" />
               </div>
-              <div className="border-b-[1rem] border-white rounded-full mb-30" />
-              <div className={c(styles.learnMoreText, 'typo-small-paragraph')}>
-                {Translations.LEARN_MORE}
-              </div>
-              <div className="border-b-[0.1rem] border-[#C4C4C4] mb-40" />
-            </div>
-          )}
+            )}
 
-          <div className={c(styles.subtotalContainer, 'typo-h5')}>
-            <h5 className="font-bold">{`${Translations.CART.SUBTOTAL}:`}</h5>
-            <span className="md:typo-large-paragraph">{subTotal}</span>
+            <div className={c(styles.subtotalContainer, 'typo-h5')}>
+              <h5 className="font-bold">{`${Translations.CART.SUBTOTAL}:`}</h5>
+              <span className="md:typo-large-paragraph">{total}</span>
+            </div>
+            <div>
+              <Button
+                color="yellow"
+                variant="large"
+                type="default"
+                href={isEmpty ? '/' : '/checkout'}
+                className="w-full text-center"
+              >
+                {isEmpty
+                  ? Translations.CART.SHOP_NOW
+                  : Translations.CART.PROCEED_TO_CHECKOUT}
+              </Button>
+            </div>
           </div>
-          <div>
-            <Button
-              color="yellow"
-              variant="large"
-              type="default"
-              href={isEmpty ? '/' : '/checkout'}
-              className="w-full text-center"
-            >
-              {isEmpty
-                ? Translations.CART.SHOP_NOW
-                : Translations.CART.PROCEED_TO_CHECKOUT}
-            </Button>
-          </div>
-        </div>
+        )}
       </div>
-      {/*
-      <ProductCardGrid
-        products={products}
-        headline={Translations.YOU_MAY_ALSO_LIKE}
-      />
-              */}
+      {data?.relatedProducts && data.relatedProducts.length > 0 && (
+        <ProductCardGrid
+          products={data?.relatedProducts}
+          headline={Translations.YOU_MAY_ALSO_LIKE}
+        />
+      )}
     </div>
   )
 }

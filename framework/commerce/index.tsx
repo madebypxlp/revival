@@ -9,6 +9,9 @@ import {
 import { Fetcher, SWRHook, MutationHook } from './utils/types'
 import type { FetchCartInput } from './cart/use-cart'
 import type { Cart, Wishlist, Customer, SearchProductsData } from './types'
+import { Order } from 'framework/custom-interfaces/order'
+import { PaymentMethod } from 'framework/custom-interfaces/payment-method'
+import { CheckoutOrder } from 'framework/custom-interfaces/checkout'
 
 const Commerce = createContext<CommerceContextValue<any> | {}>({})
 
@@ -35,6 +38,21 @@ export type Provider = CommerceConfig & {
     useSignup?: MutationHook<any, any, any>
     useLogin?: MutationHook<any, any, any>
     useLogout?: MutationHook<any, any, any>
+  }
+  orders?: {
+    useOrders?: SWRHook<any | null, any, any>
+    listOrderProducts?: SWRHook<any | null, any, any>
+    getOrderShippingAddresses?: SWRHook<any | null, any, any>
+    getOrderShipments?: SWRHook<any | null, any, any>
+  }
+  catalog?: {
+    getCatalogProduct?: SWRHook<any | null, any, any>
+  }
+  payments?: {
+    getAcceptedPaymentMethods?: SWRHook<any | null, any, any>
+  }
+  checkout?: {
+    getCheckout?: SWRHook<CheckoutOrder | null, any, any>
   }
 }
 

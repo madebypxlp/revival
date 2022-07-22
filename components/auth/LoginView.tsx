@@ -1,5 +1,5 @@
 import { FC, useEffect, useState, useCallback } from 'react'
-import { Logo } from '@components/ui'
+import LoadingDots from '@components/ui/LoadingDots/LoadingDots'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
@@ -60,6 +60,7 @@ const LoginView: FC<Props> = () => {
 
   return (
     <div className={styles.root}>
+      {loading && <LoadingDots portal />}
       <form onSubmit={handleLogin} className={styles.form}>
         <Input
           placeholder="Email"

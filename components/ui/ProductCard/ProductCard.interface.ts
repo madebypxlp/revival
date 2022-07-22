@@ -1,13 +1,13 @@
-import { Product, ProductVariant } from '@commerce/types'
+import { Product } from '@commerce/types'
 
-export default interface IProductCard extends Product {
+interface CustomProductProperies {
   isNew?: boolean
   isPrescription?: boolean
   isOurBrand?: boolean
   label?: string
-  //  name?: string
-  //  oldPrice?: number
   isFavorite?: boolean // up to this parameter, it should be all part of a 'product' interface,
-  // but I am leaving that for refactoring until we have the ecommerce in place
   showFavoriteIcon?: boolean
+}
+export default interface IProductCard extends CustomProductProperies {
+  product: Product
 }

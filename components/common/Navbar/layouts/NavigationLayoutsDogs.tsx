@@ -27,7 +27,12 @@ const Navbar: FunctionComponent<{ module: NavigationLayoutsDogs }> = ({
           {quickLinks.map((link, index) => {
             if (index === quickLinks.length - 1) {
               return (
-                <ArrowCTA color="blue" orientation="right" link={link.link} />
+                <ArrowCTA
+                  color="blue"
+                  orientation="right"
+                  link={link.link}
+                  key={link.link.title}
+                />
               )
             }
             return (

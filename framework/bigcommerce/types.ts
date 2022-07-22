@@ -1,4 +1,5 @@
 import * as Core from '@commerce/types'
+import { CatalogProduct } from 'framework/custom-interfaces/catalog-product'
 
 // TODO: this type should match:
 // https://developer.bigcommerce.com/api-reference/cart-checkout/server-server-cart-api/cart/getacart#responses
@@ -20,11 +21,13 @@ export type BigcommerceCart = {
   }
   created_time: string
   discounts?: { id: number; discounted_amount: number }[]
+  relatedProducts?: Core.Product[]
   // TODO: add missing fields
 }
 
 export type Cart = Core.Cart & {
   lineItems: LineItem[]
+  relatedProducts?: Core.Product[]
 }
 
 export type LineItem = Core.LineItem
@@ -51,7 +54,8 @@ export type AddCartItemHandlerBody = Core.AddCartItemHandlerBody<CartItemBody>
 
 export type UpdateCartItemBody = Core.UpdateCartItemBody<CartItemBody>
 
-export type UpdateCartItemHandlerBody = Core.UpdateCartItemHandlerBody<CartItemBody>
+export type UpdateCartItemHandlerBody =
+  Core.UpdateCartItemHandlerBody<CartItemBody>
 
 export type RemoveCartItemBody = Core.RemoveCartItemBody
 

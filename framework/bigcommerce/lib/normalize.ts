@@ -1,4 +1,5 @@
-import type { Product } from '@commerce/types'
+import type { Product, ProductImage } from '@commerce/types'
+import { CatalogProduct } from 'framework/custom-interfaces/catalog-product'
 import type { Cart, BigcommerceCart, LineItem } from '../types'
 import update from './immutability'
 
@@ -16,6 +17,39 @@ function normalizeProductOption(productOption: any) {
     values: edges?.map(({ node }: any) => node),
     ...rest,
   }
+}
+
+export const normalizeProductVariant = (variant: any) => {
+  return update(variant, {
+    images: {
+      $apply: () => {
+        return [
+          {
+            url: variant.image_url,
+          },
+        ] as any
+      },
+    },
+  })
+}
+
+/**
+ * Called from get-cart.ts when fetching related card products
+ * @param product - Prodcut
+ * @returns
+ */
+export const normalizePrimaryImage = (product: any) => {
+  return update(product, {
+    images: {
+      $apply: () => {
+        return [
+          {
+            url: product.primary_image.url_thumbnail,
+          },
+        ] as any
+      },
+    },
+  })
 }
 
 export function normalizeProduct(productNode: any): Product {
@@ -58,17 +92,20 @@ export function normalizeProduct(productNode: any): Product {
         : [],
     },
     brand: {
-      $apply: (brand: any) => (brand?.entityId ? brand?.entityId : null),
+      $apply: (brand: any) =>
+        brand?.entityId
+          ? {
+              entitiyId: brand.entityId,
+              name: brand.name,
+            }
+          : null,
     },
     slug: {
       $set: path?.replace(/^\/+|\/+$/g, ''),
     },
-    price: {
-      $set: {
-        value: prices?.price.value,
-        currencyCode: prices?.price.currencyCode,
-      },
-    },
+    price: { $set: prices?.price.value },
+    retailPrice: { $set: prices?.retailPrice?.value || null },
+    salePrice: { $set: prices?.salePrice?.value || null },
     $unset: ['entityId'],
   })
 }
@@ -85,6 +122,7 @@ export function normalizeCart(data: BigcommerceCart): Cart {
     lineItemsSubtotalPrice: data.base_amount,
     subtotalPrice: data.base_amount + data.discount_amount,
     totalPrice: data.cart_amount,
+    relatedProducts: data.relatedProducts,
     discounts: data.discounts?.map((discount) => {
       return {
         value: discount.discounted_amount,
@@ -96,6 +134,7 @@ export function normalizeCart(data: BigcommerceCart): Cart {
 function normalizeLineItem(item: any): LineItem {
   return {
     id: item.id,
+    sku: item.sku,
     variantId: String(item.variant_id),
     productId: String(item.product_id),
     name: item.name,
