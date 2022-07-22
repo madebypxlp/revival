@@ -32,11 +32,14 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     vetInfo,
   } = props
 
-  const getProductDetails = getCatalogProduct({ productId: product.productId })
+  const productDetails = getCatalogProduct({
+    productId: product.productId,
+  }).data
 
   const updateItem = useUpdateItem({ item: product })
-  const isMobile = useIsMobile()
   const removeCartItem = useRemoveItem()
+
+  const isMobile = useIsMobile()
   const [quantity, setQuantity] = useState(product.quantity)
   const [loading, setLoading] = useState(false)
 
@@ -59,7 +62,6 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
     }
   }
 
-  console.log(product, getProductDetails)
   let rightColumnComponent
   if (rightColumn === 'price') {
     rightColumnComponent = (
@@ -69,12 +71,19 @@ const CartProduct: FunctionComponent<ICartProduct> = (props) => {
           styles.rightColumnContainer
         )}
       >
-        <div className={styles.productPrice}>
-          {formatPrice(product.variant.price)}
-        </div>
-        <div className={styles.productOldPrice}>
-          {formatPrice(product.variant.listPrice)}
-        </div>
+        {productDetails && (
+          <>
+            <div className={styles.productPrice}>
+              {formatPrice(productDetails.sale_price || productDetails.price)}
+            </div>
+
+            {productDetails.sale_price && (
+              <div className={styles.productOldPrice}>
+                {formatPrice(productDetails.price)}
+              </div>
+            )}
+          </>
+        )}
       </div>
     )
   } else if (rightColumn === 'edit-details') {

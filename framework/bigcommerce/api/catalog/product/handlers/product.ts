@@ -7,7 +7,7 @@ const getCatalogProduct: CatalogProductHandler['getCatalogProduct'] = async ({
   config,
   body,
 }) => {
-  let result = {}
+  let result = { data: {} }
   try {
     const { productId } = body
     if (productId) {
@@ -19,7 +19,7 @@ const getCatalogProduct: CatalogProductHandler['getCatalogProduct'] = async ({
       throw error
     }
   }
-  res.status(200).json({ data: result ?? null })
+  res.status(200).json({ data: result.data ?? null })
 }
 
 export default getCatalogProduct

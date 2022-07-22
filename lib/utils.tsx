@@ -44,7 +44,7 @@ export const formatPrice = (price: number, zeroAsFree?: boolean) => {
     }
     return `$${price.toFixed(2)}`
   }
-  return ':('
+  return ''
 }
 
 export const isExpDateValid = (date: string) => {
