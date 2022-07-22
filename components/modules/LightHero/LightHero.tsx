@@ -6,9 +6,9 @@ import ILightHero from './LightHero.interface'
 const LightHeroModule: FunctionComponent<{ module: ILightHero }> = ({
   module,
 }) => {
-  const { headline, subline } = module
+  const { headline, subline, className } = module
   return (
-    <div className={`${styles.root}`}>
+    <div className={c(styles.root, className)}>
       <div className="container default-grid">
         <div className={c(styles.headlineContainer)}>
           {headline && <span>{headline}</span>}

@@ -15,7 +15,6 @@ import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
 import styles from './favorites.module.scss'
-import { WishlistCard } from '@components/wishlist'
 
 export async function getStaticProps({
   preview,
