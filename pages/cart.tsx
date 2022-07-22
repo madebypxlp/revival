@@ -42,8 +42,8 @@ export default function Cart({
   const success = null
   const { data, isLoading, isEmpty } = useCart()
   const isMobile = useIsMobile()
-  console.log(data)
 
+  console.log(data)
   const { price: total } = usePrice(
     data && {
       amount: Number(data.totalPrice),

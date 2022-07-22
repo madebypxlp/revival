@@ -19,6 +19,20 @@ function normalizeProductOption(productOption: any) {
   }
 }
 
+export const normalizeProductVariant = (variant: any) => {
+  return update(variant, {
+    images: {
+      $apply: () => {
+        return [
+          {
+            url: variant.image_url,
+          },
+        ] as any
+      },
+    },
+  })
+}
+
 /**
  * Called from get-cart.ts when fetching related card products
  * @param product - Prodcut
