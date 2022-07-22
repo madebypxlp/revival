@@ -13,13 +13,12 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
   const isMobile = useIsMobile()
   const { products, image } = module
 
-  console.log(module)
+  const maxProductsShown = 6
   const productIds = products.map((e) => e.productId) || []
   const { data } = useSearch({
     idIn: productIds.join(),
   })
 
-  console.log(data)
   return (
     <div
       className={`${styles.root} container default-grid lg:mb-55 overflow-hidden mb-30`}
@@ -32,10 +31,9 @@ const ProductSliderWithBigImageModule: FunctionComponent<{
           pagination={!isMobile}
         >
           {data?.products &&
-            data.products.map((p) => (
+            data.products.slice(0, maxProductsShown).map((p) => (
               <SwiperSlide key={p.id}>
-                {/* <ProductCard {...p} /> */}
-                Nice
+                <ProductCard product={p} />
               </SwiperSlide>
             ))}
         </Swiper>

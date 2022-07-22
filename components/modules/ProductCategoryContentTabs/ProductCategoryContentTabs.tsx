@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import c from 'classnames'
 import ImageComponent from '@components/ui/Image/Image'
 import Button from '@components/ui/Button/Button'
+import useSearch from '@framework/product/use-search'
 import { Swiper, SwiperSlide } from '@components/ui/Swiper/Swiper'
 import ProductCard from '@components/ui/ProductCard/ProductCard'
 import { useIsMobile } from '@commerce/utils/hooks'
@@ -17,23 +18,19 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
 
   const [selectedTab, setSelectedTab] = useState(0)
 
-  const product = {
-    id: '#80122-795-431',
-    price: 25,
-    image: tabs[0].image,
-    name: "Doc Roy's Derma Coat Plus",
-    oldPrice: 35,
-    isNew: true,
-    isPrescription: true,
-    isOurBrand: true,
-    isFavorite: false,
-    label: 'STAFF PICK',
-    headline: 'Get her healthy first',
-  }
+  const productIds = tabs
+    .map((t) => t.productCarousel.map((p) => p.productId))
+    .flat()
+  const products = useSearch({
+    idIn: productIds.join(),
+  }).data
 
-  const products = [product, product, product, product, product, product]
   const isMobile = useIsMobile()
   const slidesPerView = isMobile ? 1.2 : 4
+
+  console.log(tabs)
+  console.log(productIds)
+  console.log(products)
   return (
     <div className={styles.root}>
       <div className={styles.background} />
@@ -104,17 +101,26 @@ const ProductCategoryContentTabsModule: FunctionComponent<{
                     spaceBetween={18}
                     navigation
                   >
-                    {products.map((p, pIndex) => (
-                      <SwiperSlide key={p.id}>
-                        <div className={styles.cardHeader}>
-                          <div className={styles.cardHeaderNumber}>
-                            {pIndex + 1}
-                          </div>
-                          <h5>{p.headline}</h5>
-                        </div>
-                        {/* <ProductCard {...p} />  */}
-                      </SwiperSlide>
-                    ))}
+                    {products &&
+                      t.productCarousel.map((pc, pIndex) => {
+                        const product = products.products?.find(
+                          (p: any) => p.id === pc.productId
+                        )
+                        if (product) {
+                          return (
+                            <SwiperSlide key={product.id + pc.headline}>
+                              <div className={styles.cardHeader}>
+                                <div className={styles.cardHeaderNumber}>
+                                  {pIndex + 1}
+                                </div>
+                                <h5>{pc.headline}</h5>
+                              </div>
+                              <ProductCard product={product} />
+                            </SwiperSlide>
+                          )
+                        }
+                        return <div key={pc.headline} />
+                      })}
                   </Swiper>
                 </div>
                 <div className="default-grid relative">
