@@ -8,7 +8,10 @@ import useCustomer from '@framework/customer/use-customer'
 import { Layout } from '@components/common'
 import AccountHero from '@components/ui/AccountHero/AccountHero'
 import Translations from 'constants/translations'
-import CartProduct from '@components/ui/CartProduct/CartProduct'
+import useOrders from '@framework/orders/use-orders'
+import uselistOrderProducts from '@framework/orders/order-products/order-products'
+import { OrderProduct as IOrderProduct } from 'framework/custom-interfaces/order-products'
+import OrderProduct from '@components/ui/OrderProduct/OrderProduct'
 import fetch from '../../framework/wordpress/wp-client'
 import footerQuery from '../../framework/wordpress/queries/acfGlobalOptions/footer'
 import headerQuery from '../../framework/wordpress/queries/acfGlobalOptions/header'
@@ -36,14 +39,25 @@ export default function Profile({
   footer,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useCustomer()
-  console.log(data)
 
-  const products = [
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-    SAMPLE_PRODUCT,
-  ]
+  const customerOrders = useOrders().data
+
+  const maxProducts = 10
+  const allProducts: IOrderProduct[] = []
+  if (customerOrders) {
+    for (
+      let i = 0;
+      i < customerOrders?.length && allProducts.length < maxProducts;
+      i++
+    ) {
+      const order = customerOrders[i]
+      const orderProducts = uselistOrderProducts({
+        orderId: order.id,
+      }).data
+      orderProducts?.forEach((o) => allProducts.push(o))
+    }
+  }
+
   return (
     <div className={styles.root}>
       <AccountHero
@@ -53,14 +67,14 @@ export default function Profile({
       <div className="container mb-150">
         <AccountBreadcrumbs current={Translations.ACCOUNT.BUY_AGAIN} />
         <div className="default-grid">
-          {products.map((p) => (
-            <CartProduct
+          {allProducts.map((p) => (
+            <OrderProduct
               key={p.id}
               className="pb-40 light-border-b mb-40"
-              product={p}
+              orderProduct={p}
               currencyCode="USD"
               variant="account"
-              showAddToCart
+              showBuyItAgain
             />
           ))}
         </div>
