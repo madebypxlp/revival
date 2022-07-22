@@ -1,7 +1,9 @@
-import { Product, ProductVariant } from '@commerce/types'
-import { CatalogProduct } from 'framework/custom-interfaces/catalog-product'
-
-export default interface IProductCard extends CatalogProduct {
+export default interface IProductCard {
+  name: string
+  id: string | number
+  price: number
+  oldPrice?: number
+  imageURL: string
   isNew?: boolean
   isPrescription?: boolean
   isOurBrand?: boolean

@@ -1,8 +1,10 @@
 import { CatalogProduct } from 'framework/custom-interfaces/catalog-product'
+import type { Product } from '@commerce/types'
 
 export default interface IProductCardGrid {
   headline?: string
-  variant?: 'favorites'
+  variant?: 'favorites' | 'shop' | 'default'
   className?: string
-  products: CatalogProduct[]
+  products?: Product[]
+  catalogProducts?: CatalogProduct[]
 }

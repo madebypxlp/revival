@@ -53,8 +53,12 @@ const ProductSliderModule: FunctionComponent<{ module: IProductSlider }> = ({
           {data?.products &&
             data.products.map((p, index) => (
               <SwiperSlide key={p.id}>
-                {/* <ProductCard {...p} />  */}
-                Hello
+                <ProductCard
+                  name={p.name}
+                  id={p.id}
+                  price={p.price.value}
+                  imageURL={p.images[0]?.url}
+                />
               </SwiperSlide>
             ))}
         </Swiper>
