@@ -43,14 +43,12 @@ export default function Cart({
   const { data, isLoading, isEmpty } = useCart()
   const isMobile = useIsMobile()
 
-  console.log(data)
   const { price: total } = usePrice(
     data && {
       amount: Number(data.totalPrice),
       currencyCode: data.currency.code,
     }
   )
-
   const headline = isEmpty
     ? Translations.CART.YOUR_CART_IS_EMPTY
     : Translations.CART.YOUR_CART

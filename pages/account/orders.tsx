@@ -63,7 +63,6 @@ export default function Profile({
     ? `Order #${router.query.id}`
     : Translations.ACCOUNT.ORDERS
 
-  console.log(orderProducts)
   return (
     <div className={styles.root}>
       <AccountHero headline={heroHeadline} className="md:mb-175" />
